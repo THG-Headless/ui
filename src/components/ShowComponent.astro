@@ -1,0 +1,226 @@
+---
+import "@thg/standalone-components-css/dist/index.css";
+import fs from "node:fs";
+import path from "node:path";
+import { createHighlighter } from "shiki";
+
+interface Props {
+  filePath: string;
+}
+
+const { filePath } = Astro.props;
+
+async function getFileContent(filepath: string): Promise<string> {
+  try {
+    const absolutePath = path.resolve(process.cwd(), filepath);
+    const content = fs.readFileSync(absolutePath, "utf-8");
+    const processedContent = content.replace(/---[\s\S]*?---/, "").trim();
+
+    const highlighter = await createHighlighter({
+      themes: ["github-dark", "github-light"],
+      langs: [
+        "astro",
+        "typescript",
+        "javascript",
+        "tsx",
+        "jsx",
+        "html",
+        "css",
+        "markdown",
+        "md",
+      ],
+    });
+
+    const darkHTML = highlighter.codeToHtml(processedContent, {
+      lang: "astro",
+      theme: "github-dark",
+    });
+
+    const lightHTML = highlighter.codeToHtml(processedContent, {
+      lang: "astro",
+      theme: "github-light",
+    });
+
+    return `
+      <div class="dark-theme dark:block hidden">${darkHTML}</div>
+      <div class="light-theme dark:hidden block">${lightHTML}</div>
+    `;
+  } catch (error) {
+    console.error(`Error reading file: ${error}`);
+    return `Error: Could not read file ${filepath}`;
+  }
+}
+
+const codeContent = await getFileContent(filePath);
+---
+
+<div
+  class="not-content rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 shadow-sm"
+>
+  <div class="border-b border-gray-200 dark:border-gray-700">
+    <div class="flex justify-between items-center">
+      <div class="flex">
+        <button
+          id="previewTab"
+          class="tab-button px-4 py-2 text-sm font-medium border-b-2 border-accent-500 text-accent-500"
+          aria-selected="true"
+          role="tab"
+        >
+          Preview
+        </button>
+        <button
+          id="codeTab"
+          class="tab-button px-4 py-2 text-sm font-medium text-gray-500 dark:text-gray-400 border-b-2 border-transparent hover:border-gray-300"
+          aria-selected="false"
+          role="tab"
+        >
+          Code
+        </button>
+      </div>
+      <button
+        id="copyButton"
+        class="px-4 py-2 text-sm text-gray-500 dark:text-gray-400 hover:text-accent-500 dark:hover:text-accent-400 flex items-center gap-1"
+        aria-label="Copy code to clipboard"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          fill="currentColor"
+          class="copy-icon"
+          viewBox="0 0 16 16"
+        >
+          <path
+            d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"
+          ></path>
+          <path
+            d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"
+          ></path>
+        </svg>
+        <span>Copy</span>
+      </button>
+    </div>
+
+    <div class="p-4">
+      <div id="previewPanel" class="tab-panel" role="tabpanel">
+        <slot />
+      </div>
+      <div id="codePanel" class="tab-panel hidden" role="tabpanel">
+        <div class="sl-markdown-content prose dark:prose-invert max-w-none">
+          <Fragment set:html={codeContent.trim()} />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function setupTabs() {
+      const previewTab = document.getElementById("previewTab");
+      const codeTab = document.getElementById("codeTab");
+      const previewPanel = document.getElementById("previewPanel");
+      const codePanel = document.getElementById("codePanel");
+
+      if (!previewTab || !codeTab || !previewPanel || !codePanel) return;
+
+      const switchTab = (
+        selectedTab: HTMLElement,
+        otherTab: HTMLElement,
+        selectedPanel: HTMLElement,
+        otherPanel: HTMLElement
+      ) => {
+        selectedTab.setAttribute("aria-selected", "true");
+        selectedTab.classList.remove(
+          "text-gray-500",
+          "dark:text-gray-400",
+          "border-transparent"
+        );
+        selectedTab.classList.add("border-accent-500", "text-accent-500");
+
+        otherTab.setAttribute("aria-selected", "false");
+        otherTab.classList.add(
+          "text-gray-500",
+          "dark:text-gray-400",
+          "border-transparent"
+        );
+        otherTab.classList.remove("border-accent-500", "text-accent-500");
+
+        selectedPanel.classList.remove("hidden");
+        otherPanel.classList.add("hidden");
+      };
+
+      previewTab.addEventListener("click", () => {
+        switchTab(previewTab, codeTab, previewPanel, codePanel);
+      });
+
+      codeTab.addEventListener("click", () => {
+        switchTab(codeTab, previewTab, codePanel, previewPanel);
+      });
+    }
+
+    function setupCopyButton() {
+      const copyButton = document.getElementById("copyButton");
+      if (!copyButton) return;
+
+      copyButton.addEventListener("click", async () => {
+        const codePanel = document.getElementById("codePanel");
+        if (!codePanel) return;
+
+        // Get content from only one theme version (either one works since they contain the same code)
+        const darkThemeCode =
+          codePanel.querySelector(".dark-theme")?.textContent?.trim() || "";
+
+        try {
+          await navigator.clipboard.writeText(darkThemeCode);
+
+          const originalContent = copyButton.innerHTML;
+          copyButton.innerHTML = `
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="check-icon" viewBox="0 0 16 16">
+            <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
+          </svg>
+          <span>Copied!</span>
+        `;
+          copyButton.classList.add("text-green-500", "dark:text-green-400");
+
+          setTimeout(() => {
+            copyButton.innerHTML = originalContent;
+            copyButton.classList.remove(
+              "text-green-500",
+              "dark:text-green-400"
+            );
+          }, 2000);
+        } catch (err) {
+          console.error("Failed to copy text: ", err);
+        }
+      });
+    }
+
+    setupTabs();
+    setupCopyButton();
+  </script>
+</div>
+
+<style is:global>
+  .dark-theme pre,
+  .light-theme pre {
+    background-color: transparent !important;
+    padding: 0 !important;
+  }
+
+  .dark-theme code,
+  .light-theme code {
+    white-space: pre-wrap !important;
+    word-wrap: break-word !important;
+    overflow-wrap: break-word !important;
+  }
+
+  /* Remove any default padding/margins */
+  pre {
+    margin: 0 !important;
+  }
+
+  /* Ensure inline code blocks maintain readability */
+  code {
+    font-size: 0.9em !important;
+    line-height: 1.5 !important;
+  }
+</style>

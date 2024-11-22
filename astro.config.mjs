@@ -1,27 +1,16 @@
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 
-// https://astro.build/config
+import tailwind from '@astrojs/tailwind';
+
 export default defineConfig({
-  integrations: [
-    starlight({
-      title: 'My Docs',
-      social: {
-        github: 'https://github.com/withastro/starlight',
+  integrations: [starlight({
+    title: 'Altitude Standalone Components',
+    sidebar: [
+      {
+        label: 'Components',
+        autogenerate: { directory: 'components' }
       },
-      sidebar: [
-        {
-          label: 'Guides',
-          items: [
-            // Each item here is one entry in the navigation menu.
-            { label: 'Example Guide', link: '/guides/example/' },
-          ],
-        },
-        {
-          label: 'Reference',
-          autogenerate: { directory: 'reference' },
-        },
-      ],
-    }),
-  ],
+    ],
+  }), tailwind()],
 });

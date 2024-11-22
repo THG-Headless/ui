@@ -7,10 +7,19 @@
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "build:css": "cd standalone-components-css && npm run build",
+    "publish:css": "cd standalone-components-css && npm publish --access public"
   },
   "dependencies": {
-    "@astrojs/starlight": "^0.17.3",
-    "astro": "^4.3.5"
+    "@astrojs/starlight": "^0.29.2",
+    "@astrojs/tailwind": "^5.1.2",
+    "@thg/standalone-components-css": "file:./standalone-components-css",
+    "astro": "^4.16.14",
+    "remark": "^15.0.1",
+    "remark-html": "^16.0.1",
+    "shiki": "^1.23.1",
+    "tailwindcss": "^3.4.15",
+    "unist-util-visit": "^5.0.0"
   }
 }
