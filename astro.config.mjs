@@ -17,9 +17,14 @@ export default defineConfig({
       },
     sidebar: [
       {
+        label: 'Styling',
+        autogenerate: { directory: 'styling' }
+      },
+      {
         label: 'Components',
         autogenerate: { directory: 'components' }
       },
+      
     ],
   })],
 });

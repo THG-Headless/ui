@@ -3,8 +3,22 @@ title: Button
 description: A simple button
 ---
 import ShowComponent from "../../../components/ShowComponent.astro"
-import Button from "../../../components/Button.astro"
+import PrimaryButton from "../../../components/buttons/PrimaryButton.astro"
+import SecondaryButton from "../../../components/buttons/SecondaryButton.astro"
+import StatusButtons from "../../../components/buttons/StatusButtons.astro"
 
-<ShowComponent filePath="./src/components/Button.astro">
-    <Button>Click Me!</Button>
+
+## Button styles
+### Primary button
+<ShowComponent filePath="./src/components/buttons/PrimaryButton.astro">
+    <PrimaryButton/>
+</ShowComponent>
+### Secondary button
+<ShowComponent filePath="./src/components/buttons/SecondaryButton.astro">
+    <SecondaryButton/>
+</ShowComponent>
+
+### Status buttons
+<ShowComponent filePath="./src/components/buttons/StatusButtons.astro">
+    <StatusButtons/>
 </ShowComponent>

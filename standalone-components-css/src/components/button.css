@@ -1,7 +1,49 @@
 @layer components{
-    .btn{
-        background-color: var(--primary-bg);
+    .btn-primary{
+        background-color: var(--primary);
         padding: 0.5rem 1rem ;
         border-radius: var(--site-corners);
+        color: var(--primary-content);
+    }
+    .btn-primary:hover{
+        background-color: var(--hover-primary)
+    }
+    .btn-secondary{
+        background-color: var(--secondary);
+        padding: 0.5rem 1rem ;
+        border-radius: var(--site-corners);
+        color: var(--secondary-content);
+    }
+    .btn-secondary:hover{
+        background-color: var(--hover-secondary)
+    }
+    .btn-success{
+        background-color: var(--success);
+        padding: 0.5rem 1rem ;
+        border-radius: var(--site-corners);
+        color: var(--success-content);
+    }
+    .btn-success:hover{
+        filter: brightness(85%)
+    }
+
+    .btn-warning{
+        background-color: var(--warning);
+        padding: 0.5rem 1rem ;
+        border-radius: var(--site-corners);
+        color: var(--warning-content);
+    }
+    .btn-waring:hover{
+        filter: brightness(85%)
+    }
+
+    .btn-error{
+        background-color: var(--error);
+        padding: 0.5rem 1rem ;
+        border-radius: var(--site-corners);
+        color: var(--error-content);
+    }
+    .btn-error:hover{
+        filter: brightness(85%)
     }
 }

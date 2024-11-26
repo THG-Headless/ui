@@ -1,0 +1,106 @@
+---
+import "../tailwind.css";
+
+const colorScheme = {
+  primary: {
+    variants: [
+      "--primary",
+      "--primary-content",
+      "--hover-primary",
+      "--primary-100",
+      "--primary-200",
+      "--primary-300",
+    ],
+    title: "Primary Colors",
+  },
+  secondary: {
+    variants: [
+      "--secondary",
+      "--secondary-content",
+      "--secondary-100",
+      "--secondary-200",
+      "--secondary-300",
+    ],
+    title: "Secondary Colors",
+  },
+  accent: {
+    variants: [
+      "--accent",
+      "--accent-content",
+      "--accent-100",
+      "--accent-200",
+      "--accent-300",
+    ],
+    title: "Accent Colors",
+  },
+  base: {
+    variants: ["--base-100", "--base-200", "--base-300"],
+    title: "Base Colors",
+  },
+  neutral: {
+    variants: ["--neutral", "--neutral-content"],
+    title: "Neutral Colors",
+  },
+  status: {
+    variants: [
+      "--success",
+      "--success-content",
+      "--warning",
+      "--warning-content",
+      "--error",
+      "--error-content",
+    ],
+    title: "Status Colors",
+  },
+};
+---
+
+<div class="flex flex-col gap-4 p-4">
+  {
+    Object.entries(colorScheme).map(([_, color]) => (
+      <div class="flex flex-col gap-0">
+        <h3 class="text-lg font-semibold">{color.title}</h3>
+        <div class="flex gap-4 flex-wrap flex-start">
+          {color.variants.map((variant) => (
+            <div class="group first:pt-4">
+              <button
+                class="border-2 border-zinc-200 bg-zinc-100 dark:bg-zinc-900 dark:border-zinc-800 rounded-xl p-2 w-full transition-all duration-200 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-accent-500 relative"
+                onclick={`
+                  document.querySelectorAll('.copied-indicator').forEach(indicator => {
+                    indicator.classList.remove('opacity-100');
+                    indicator.classList.add('opacity-0');
+                  });
+
+                  const el = this;
+                  navigator.clipboard.writeText('${variant}').then(() => {
+                    el.querySelector('.copied-indicator').classList.remove('opacity-0');
+                    el.querySelector('.copied-indicator').classList.add('opacity-100');
+                    setTimeout(() => {
+                      el.querySelector('.copied-indicator').classList.remove('opacity-100');
+                      el.querySelector('.copied-indicator').classList.add('opacity-0');
+                    }, 1500);
+                  });
+                `}
+              >
+                <div
+                  class="h-20 w-40 rounded"
+                  style={{ backgroundColor: `var(${variant})` }}
+                />
+                <div class="text-md font-bold mt-2">{variant}</div>
+                <div class="copied-indicator absolute top-2 right-5 bg-green-600 text-white text-xs px-2 py-1 rounded opacity-0 transition-opacity duration-200">
+                  Copied!
+                </div>
+              </button>
+            </div>
+          ))}
+        </div>
+      </div>
+    ))
+  }
+</div>
+
+<style>
+  .copied-indicator {
+    pointer-events: none;
+  }
+</style>

@@ -1,6 +1,60 @@
 @import "tailwindcss";
 
 @theme {
-  --primary-bg: oklch(54.12% 0.192 292);
-  --site-corners: 1rem;
+  /* Primary Colours */
+  --primary: oklch(55% 0.15 250);
+  --primary-content: oklch(98% 0.005 250);
+  --hover-primary: oklch(50% 0.15 250);
+  --primary-100: oklch(90% 0.03 250);
+  --primary-200: oklch(80% 0.08 250);
+  --primary-300: oklch(30% 0.05 250);
+
+  /* Secondary Colours */
+  --secondary: oklch(95% 0.02 250);
+  --secondary-content: oklch(25% 0.02 250);
+  --hover-secondary: oklch(90% 0.02 250);
+  --secondary-100: oklch(98% 0.01 250);
+  --secondary-200: oklch(93% 0.02 250);
+  --secondary-300: oklch(88% 0.02 250);
+
+  /* Accent Colours  */
+  --accent: oklch(70% 0.12 180);
+  --accent-content: oklch(25% 0.02 180);
+  --accent-100: oklch(85% 0.07 180);
+  --accent-200: oklch(65% 0.15 180);
+  --accent-300: oklch(55% 0.12 180);
+
+  /* Neutral Colours  */
+  --neutral: oklch(96% 0.005 250);
+  --neutral-content: oklch(25% 0.02 250);
+  --base-100: oklch(99% 0.002 250);
+  --base-200: oklch(95% 0.01 250);
+  --base-300: oklch(90% 0.015 250);
+
+  /* Success Colours  */
+  --success: oklch(65% 0.15 145);
+  --success-content: oklch(100% 0.15 145);
+
+  /* Warning Colours */
+  --warning: oklch(81.76% 0.163 80.47);
+  --warning-content: oklch(100% 0.064 93.18);
+
+  /* Error Colours*/
+  --error: oklch(65% 0.15 25);
+  --error-content: oklch(100% 0.15 25);
+
+  /* UI Elements */
+  --rounded-btn: 6px;
+  --rounded-box: 12px;
+  --animation-btn: 0.2s;
+  --btn-focus-scale: 0.98;
+  --site-corners: 0.75rem;
+
+  /* Containers and Backgrounds */
+  --container-bg: oklch(99% 0.002 250);
+  --container-border: oklch(90% 0.01 250);
+  --background: oklch(99% 0.002 250);
+
+  /* Corner Radius */
+  --site-corners: 0.5rem
 }

@@ -1,7 +1,8 @@
 ---
 import fs from "node:fs";
 import path from "node:path";
-import { createHighlighter } from "shiki";
+import type { Highlighter } from "shiki";
+import { createHighlighter, getHighlighter } from "shiki";
 import "../tailwind.css";
 import "@thg/standalone-components-css";
 
@@ -11,13 +12,11 @@ interface Props {
 
 const { filePath } = Astro.props;
 
-async function getFileContent(filepath: string): Promise<string> {
-  try {
-    const absolutePath = path.resolve(process.cwd(), filepath);
-    const content = fs.readFileSync(absolutePath, "utf-8");
-    const processedContent = content.replace(/---[\s\S]*?---/, "").trim();
+let highlighterInstance: Highlighter | null = null;
 
-    const highlighter = await createHighlighter({
+async function getHighlighterInstance(): Promise<Highlighter> {
+  if (!highlighterInstance) {
+    highlighterInstance = await createHighlighter({
       themes: ["github-dark", "github-light"],
       langs: [
         "astro",
@@ -31,6 +30,17 @@ async function getFileContent(filepath: string): Promise<string> {
         "md",
       ],
     });
+  }
+  return highlighterInstance;
+}
+
+async function getFileContent(filepath: string): Promise<string> {
+  try {
+    const absolutePath = path.resolve(process.cwd(), filepath);
+    const content = fs.readFileSync(absolutePath, "utf-8");
+    const processedContent = content.replace(/---[\s\S]*?---/, "").trim();
+
+    const highlighter = await getHighlighterInstance();
 
     const darkHTML = highlighter.codeToHtml(processedContent, {
       lang: "astro",
@@ -52,26 +62,27 @@ async function getFileContent(filepath: string): Promise<string> {
   }
 }
 
+const componentId = Math.random().toString(36).substr(2, 9);
 const codeContent = await getFileContent(filePath);
 ---
 
 <div
-  class="not-content rounded-lg border border-zinc-200 dark:border-zinc-700 bg-zinc-100 dark:bg-zinc-900 shadow-sm"
+  class="not-content rounded-lg border border-zinc-200 dark:border-zinc-700 bg-zinc-100 dark:bg-zinc-900 shadow-sm transition-colors duration-200"
 >
   <div class="border-b border-gray-200 dark:border-gray-700">
     <div class="flex justify-between items-center">
       <div class="flex">
         <button
-          id="previewTab"
-          class="tab-button px-4 py-2 text-sm font-bold text-accent-500 border-accent-500"
+          id={`previewTab-${componentId}`}
+          class="relative px-4 py-2 text-sm transition-all duration-200 ease-in-out border-0 rounded-tl-md hover:bg-zinc-50 dark:hover:bg-zinc-800"
           aria-selected="true"
           role="tab"
         >
           Preview
         </button>
         <button
-          id="codeTab"
-          class="tab-button px-4 py-2 text-sm font-normal text-gray-500 dark:text-gray-400"
+          id={`codeTab-${componentId}`}
+          class="relative px-4 py-2 text-sm transition-all duration-200 ease-in-out border-0 hover:bg-zinc-50 dark:hover:bg-zinc-800"
           aria-selected="false"
           role="tab"
         >
@@ -79,8 +90,8 @@ const codeContent = await getFileContent(filePath);
         </button>
       </div>
       <button
-        id="copyButton"
-        class="px-4 py-2 text-sm text-gray-500 dark:text-gray-400 hover:text-accent-500 dark:hover:text-accent-400 flex items-center gap-1"
+        id={`copyButton-${componentId}`}
+        class="px-4 py-2 text-sm text-gray-500 dark:text-gray-400 hover:text-accent-500 dark:hover:text-accent-400 flex items-center gap-1 transition-colors duration-200"
         aria-label="Copy code to clipboard"
       >
         <svg
@@ -103,10 +114,14 @@ const codeContent = await getFileContent(filePath);
     </div>
 
     <div class="p-4">
-      <div id="previewPanel" class="tab-panel" role="tabpanel">
+      <div id={`previewPanel-${componentId}`} class="tab-panel" role="tabpanel">
         <slot />
       </div>
-      <div id="codePanel" class="tab-panel hidden" role="tabpanel">
+      <div
+        id={`codePanel-${componentId}`}
+        class="tab-panel hidden"
+        role="tabpanel"
+      >
         <div class="sl-markdown-content prose dark:prose-invert max-w-none">
           <Fragment set:html={codeContent.trim()} />
         </div>
@@ -114,54 +129,61 @@ const codeContent = await getFileContent(filePath);
     </div>
   </div>
 
-  <script>
+  <script define:vars={{ componentId }}>
     function setupTabs() {
-      const previewTab = document.getElementById("previewTab");
-      const codeTab = document.getElementById("codeTab");
-      const previewPanel = document.getElementById("previewPanel");
-      const codePanel = document.getElementById("codePanel");
+      const previewTab = document.getElementById(`previewTab-${componentId}`);
+      const codeTab = document.getElementById(`codeTab-${componentId}`);
+      const previewPanel = document.getElementById(
+        `previewPanel-${componentId}`
+      );
+      const codePanel = document.getElementById(`codePanel-${componentId}`);
 
       if (!previewTab || !codeTab || !previewPanel || !codePanel) return;
 
-      const switchTab = (
-        selectedTab: HTMLElement,
-        otherTab: HTMLElement,
-        selectedPanel: HTMLElement,
-        otherPanel: HTMLElement
-      ) => {
+      const switchTab = (selectedTab, otherTab, selectedPanel, otherPanel) => {
+        // Active tab styles
         selectedTab.setAttribute("aria-selected", "true");
-        selectedTab.classList.remove(
-          "text-gray-500",
-          "dark:text-gray-400",
-          "border-transparent",
-          "font-normal"
-        );
         selectedTab.classList.add(
           "border-accent-500",
           "text-accent-500",
           "font-bold",
-          "dark:text-white",
-          "text-black"
+          "bg-white/5",
+          "hover:bg-white/10",
+          "border-b-2"
+        );
+        selectedTab.classList.remove(
+          "text-gray-500",
+          "dark:text-gray-400",
+          "border-transparent",
+          "font-normal",
+          "hover:bg-zinc-50",
+          "dark:hover:bg-zinc-800"
         );
 
+        // Inactive tab styles
         otherTab.setAttribute("aria-selected", "false");
+        otherTab.classList.remove(
+          "border-accent-500",
+          "text-accent-500",
+          "font-bold",
+          "bg-white/5",
+          "border-b-2"
+        );
         otherTab.classList.add(
           "text-gray-500",
           "dark:text-gray-400",
           "border-transparent",
-          "font-normal"
-        );
-        otherTab.classList.remove(
-          "border-accent-500",
-          "text-accent-500",
-          "font-bold"
+          "font-normal",
+          "hover:bg-zinc-50",
+          "dark:hover:bg-zinc-800"
         );
 
+        // Show/hide panels
         selectedPanel.classList.remove("hidden");
         otherPanel.classList.add("hidden");
       };
 
-      // Set initial active state
+      // Set initial state
       switchTab(previewTab, codeTab, previewPanel, codePanel);
 
       previewTab.addEventListener("click", () => {
@@ -174,14 +196,13 @@ const codeContent = await getFileContent(filePath);
     }
 
     function setupCopyButton() {
-      const copyButton = document.getElementById("copyButton");
+      const copyButton = document.getElementById(`copyButton-${componentId}`);
       if (!copyButton) return;
 
       copyButton.addEventListener("click", async () => {
-        const codePanel = document.getElementById("codePanel");
+        const codePanel = document.getElementById(`codePanel-${componentId}`);
         if (!codePanel) return;
 
-        // Get content from only one theme version (either one works since they contain the same code)
         const darkThemeCode =
           codePanel.querySelector(".dark-theme")?.textContent?.trim() || "";
 
@@ -190,11 +211,11 @@ const codeContent = await getFileContent(filePath);
 
           const originalContent = copyButton.innerHTML;
           copyButton.innerHTML = `
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="check-icon" viewBox="0 0 16 16">
-            <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
-          </svg>
-          <span>Copied!</span>
-        `;
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="check-icon" viewBox="0 0 16 16">
+              <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
+            </svg>
+            <span>Copied!</span>
+          `;
           copyButton.classList.add("text-green-500", "dark:text-green-400");
 
           setTimeout(() => {
@@ -229,14 +250,16 @@ const codeContent = await getFileContent(filePath);
     overflow-wrap: break-word !important;
   }
 
-  /* Remove any default padding/margins */
   pre {
     margin: 0 !important;
   }
 
-  /* Ensure inline code blocks maintain readability */
   code {
     font-size: 0.9em !important;
     line-height: 1.5 !important;
+  }
+
+  .tab-button:focus-visible {
+    border-radius: 4px;
   }
 </style>
