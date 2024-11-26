@@ -2,7 +2,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import type { Highlighter } from "shiki";
-import { createHighlighter, getHighlighter } from "shiki";
+import { getHighlighter } from "shiki";
 import "../tailwind.css";
 import "@thg/standalone-components-css";
 
@@ -12,11 +12,34 @@ interface Props {
 
 const { filePath } = Astro.props;
 
-let highlighterInstance: Highlighter | null = null;
+declare global {
+  var __shikiHighlighter: {
+    promise: Promise<Highlighter> | null;
+    instance: Highlighter | null;
+  };
+}
+
+if (!global.__shikiHighlighter) {
+  global.__shikiHighlighter = {
+    promise: null,
+    instance: null,
+  };
+}
+
+// Cleanup on HMR
+if (import.meta.hot) {
+  import.meta.hot.on("beforeUpdate", async () => {
+    if (global.__shikiHighlighter.instance) {
+      global.__shikiHighlighter.instance.dispose();
+      global.__shikiHighlighter.instance = null;
+      global.__shikiHighlighter.promise = null;
+    }
+  });
+}
 
 async function getHighlighterInstance(): Promise<Highlighter> {
-  if (!highlighterInstance) {
-    highlighterInstance = await createHighlighter({
+  if (!global.__shikiHighlighter.promise) {
+    global.__shikiHighlighter.promise = getHighlighter({
       themes: ["github-dark", "github-light"],
       langs: [
         "astro",
@@ -29,9 +52,12 @@ async function getHighlighterInstance(): Promise<Highlighter> {
         "markdown",
         "md",
       ],
+    }).then((highlighter) => {
+      global.__shikiHighlighter.instance = highlighter;
+      return highlighter;
     });
   }
-  return highlighterInstance;
+  return global.__shikiHighlighter.promise;
 }
 
 async function getFileContent(filepath: string): Promise<string> {
@@ -202,9 +228,6 @@ const codeContent = await getFileContent(filePath);
       copyButton.addEventListener("click", async () => {
         const codePanel = document.getElementById(`codePanel-${componentId}`);
         if (!codePanel) return;
-
-        const darkThemeCode =
-          codePanel.querySelector(".dark-theme")?.textContent?.trim() || "";
 
         try {
           await navigator.clipboard.writeText(darkThemeCode);
