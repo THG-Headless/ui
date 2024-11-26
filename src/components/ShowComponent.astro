@@ -26,7 +26,6 @@ if (!global.__shikiHighlighter) {
   };
 }
 
-// Cleanup on HMR
 if (import.meta.hot) {
   import.meta.hot.on("beforeUpdate", async () => {
     if (global.__shikiHighlighter.instance) {
@@ -117,7 +116,7 @@ const codeContent = await getFileContent(filePath);
       </div>
       <button
         id={`copyButton-${componentId}`}
-        class="px-4 py-2 text-sm text-gray-500 dark:text-gray-400 hover:text-accent-500 dark:hover:text-accent-400 flex items-center gap-1 transition-colors duration-200"
+        class="px-4 py-2 text-sm text-gray-500 dark:text-gray-400 hover:text-accent-500 dark:hover:text-accent-400 flex items-center gap-1 transition-colors duration-200 cursor-pointer"
         aria-label="Copy code to clipboard"
       >
         <svg
@@ -167,7 +166,6 @@ const codeContent = await getFileContent(filePath);
       if (!previewTab || !codeTab || !previewPanel || !codePanel) return;
 
       const switchTab = (selectedTab, otherTab, selectedPanel, otherPanel) => {
-        // Active tab styles
         selectedTab.setAttribute("aria-selected", "true");
         selectedTab.classList.add(
           "border-accent-500",
@@ -186,7 +184,6 @@ const codeContent = await getFileContent(filePath);
           "dark:hover:bg-zinc-800"
         );
 
-        // Inactive tab styles
         otherTab.setAttribute("aria-selected", "false");
         otherTab.classList.remove(
           "border-accent-500",
@@ -204,12 +201,10 @@ const codeContent = await getFileContent(filePath);
           "dark:hover:bg-zinc-800"
         );
 
-        // Show/hide panels
         selectedPanel.classList.remove("hidden");
         otherPanel.classList.add("hidden");
       };
 
-      // Set initial state
       switchTab(previewTab, codeTab, previewPanel, codePanel);
 
       previewTab.addEventListener("click", () => {
@@ -223,22 +218,27 @@ const codeContent = await getFileContent(filePath);
 
     function setupCopyButton() {
       const copyButton = document.getElementById(`copyButton-${componentId}`);
-      if (!copyButton) return;
+      if (!copyButton || copyButton.dataset.initialized) return;
+
+      copyButton.dataset.initialized = "true";
 
       copyButton.addEventListener("click", async () => {
         const codePanel = document.getElementById(`codePanel-${componentId}`);
         if (!codePanel) return;
 
         try {
-          await navigator.clipboard.writeText(codeContent);
+          const preElement = codePanel.querySelector("pre");
+          const codeText = preElement ? preElement.textContent : "";
+
+          await navigator.clipboard.writeText(codeText);
 
           const originalContent = copyButton.innerHTML;
           copyButton.innerHTML = `
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="check-icon" viewBox="0 0 16 16">
-              <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
-            </svg>
-            <span>Copied!</span>
-          `;
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="check-icon" viewBox="0 0 16 16">
+          <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
+        </svg>
+        <span>Copied!</span>
+      `;
           copyButton.classList.add("text-green-500", "dark:text-green-400");
 
           setTimeout(() => {
