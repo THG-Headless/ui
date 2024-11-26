@@ -1,2 +1,64 @@
 @layer components; 
-@import "./components/button.css"
+@import "./components/button.css";
+
+@layer components {
+  :root {
+    /* Primary Colours */
+    --default-primary: oklch(55% 0.15 250);
+    --default-primary-content: oklch(98% 0.005 250);
+    --default-hover-primary: oklch(50% 0.15 250);
+    --default-primary-100: oklch(90% 0.03 250);
+    --default-primary-200: oklch(80% 0.08 250);
+    --default-primary-300: oklch(30% 0.05 250);
+
+    /* Secondary Colours */
+    --default-secondary: oklch(95% 0.02 250);
+    --default-secondary-content: oklch(25% 0.02 250);
+    --default-hover-secondary: oklch(90% 0.02 250);
+    --default-secondary-100: oklch(98% 0.01 250);
+    --default-secondary-200: oklch(93% 0.02 250);
+    --default-secondary-300: oklch(88% 0.02 250);
+
+    /* Accent Colours  */
+    --default-accent: oklch(70% 0.12 180);
+    --default-accent-content: oklch(25% 0.02 180);
+    --default-hover-accent: oklch(55% 0.12 180);
+    --default-accent-100: oklch(85% 0.07 180);
+    --default-accent-200: oklch(65% 0.15 180);
+    --default-accent-300: oklch(55% 0.12 180);
+
+    /* Neutral Colours  */
+    --default-neutral: oklch(96% 0.005 250);
+    --default-neutral-content: oklch(25% 0.02 250);
+    --default-base-100: oklch(99% 0.002 250);
+    --default-base-200: oklch(95% 0.01 250);
+    --default-base-300: oklch(90% 0.015 250);
+
+    /* Success Colours  */
+    --default-success: oklch(65% 0.15 145);
+    --default-success-content: oklch(100% 0.15 145);
+
+    /* Warning Colours */
+    --default-warning: oklch(81.76% 0.163 80.47);
+    --default-warning-content: oklch(100% 0.064 93.18);
+
+    /* Error Colours*/
+    --default-error: oklch(65% 0.15 25);
+    --default-error-content: oklch(100% 0.15 25);
+
+    /* UI Elements */
+    --default-rounded-btn: 6px;
+    --default-rounded-box: 12px;
+    --default-animation-btn: 0.2s;
+    --default-btn-focus-scale: 0.98;
+    --default-site-corners: 0.75rem;
+
+    /* Containers and Backgrounds */
+    --default-container-bg: oklch(99% 0.002 250);
+    --default-container-border: oklch(90% 0.01 250);
+    --default-background: oklch(99% 0.002 250);
+
+    /* Corner Radius */
+    --default-site-corners: 0.5rem;
+  }
+}

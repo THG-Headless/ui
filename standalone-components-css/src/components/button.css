@@ -1,49 +1,49 @@
-@layer components{
-    .btn-primary{
-        background-color: var(--primary);
-        padding: 0.5rem 1rem ;
-        border-radius: var(--site-corners);
-        color: var(--primary-content);
+@layer components {
+    [class^="btn-"] {
+        border-radius: var(--site-corners, var(--default-site-corners));
+        padding: 0.5rem 1rem;
+        cursor: pointer;
     }
-    .btn-primary:hover{
-        background-color: var(--hover-primary)
+    .btn-primary {
+        background-color: var(--primary, var(--default-primary));
+        color: var(--primary-content, var(--default-primary-content));
     }
-    .btn-secondary{
-        background-color: var(--secondary);
-        padding: 0.5rem 1rem ;
-        border-radius: var(--site-corners);
-        color: var(--secondary-content);
+    .btn-primary:hover {
+        background-color: var(--hover-primary, var(--default-hover-primary));
     }
-    .btn-secondary:hover{
-        background-color: var(--hover-secondary)
+    .btn-secondary {
+        background-color: var(--secondary, var(--default-secondary));
+        color: var(--secondary-content, var(--default-secondary-content));
     }
-    .btn-success{
-        background-color: var(--success);
-        padding: 0.5rem 1rem ;
-        border-radius: var(--site-corners);
-        color: var(--success-content);
+    .btn-secondary:hover {
+        background-color: var(--hover-secondary, var(--default-hover-secondary));
     }
-    .btn-success:hover{
-        filter: brightness(85%)
+    .btn-accent {
+        background-color: var(--accent, var(--default-accent));
+        color: var(--accent-content, var(--default-accent-content));
     }
-
-    .btn-warning{
-        background-color: var(--warning);
-        padding: 0.5rem 1rem ;
-        border-radius: var(--site-corners);
-        color: var(--warning-content);
+    .btn-accent:hover {
+        background-color: var(--hover-accent, var(--default-hover-accent));
     }
-    .btn-waring:hover{
-        filter: brightness(85%)
+    .btn-success {
+        background-color: var(--success, var(--default-success));
+        color: var(--success-content, var(--default-success-content));
     }
-
-    .btn-error{
-        background-color: var(--error);
-        padding: 0.5rem 1rem ;
-        border-radius: var(--site-corners);
-        color: var(--error-content);
+    .btn-success:hover {
+        filter: brightness(85%);
     }
-    .btn-error:hover{
-        filter: brightness(85%)
+    .btn-warning {
+        background-color: var(--warning, var(--default-warning));
+        color: var(--warning-content, var(--default-warning-content));
+    }
+    .btn-warning:hover {
+        filter: brightness(85%);
+    }
+    .btn-error {
+        background-color: var(--error, var(--default-error));
+        color: var(--error-content, var(--default-error-content));
+    }
+    .btn-error:hover {
+        filter: brightness(85%);
     }
 }

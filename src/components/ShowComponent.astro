@@ -230,7 +230,7 @@ const codeContent = await getFileContent(filePath);
         if (!codePanel) return;
 
         try {
-          await navigator.clipboard.writeText(darkThemeCode);
+          await navigator.clipboard.writeText(codeContent);
 
           const originalContent = copyButton.innerHTML;
           copyButton.innerHTML = `
