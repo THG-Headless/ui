@@ -1,0 +1,6 @@
+@import "tailwindcss";
+
+@theme {
+  --primary-bg: oklch(54.12% 0.192 292);
+  --site-corners: 1rem;
+}

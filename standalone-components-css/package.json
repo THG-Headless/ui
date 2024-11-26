@@ -1,14 +1,16 @@
 {
-  "name": "@thg/standalone-components-css",
+  "name": "standalone-components-css",
   "version": "1.0.0",
-  "main": "dist/index.css",
-  "files": ["dist"],
+  "description": "",
+  "main": "index.js",
   "scripts": {
-    "build": "postcss src/index.css -o dist/index.css"
+    "build": "mkdir -p dist && cp -r src/* dist/",
+    "prepare": "npm run build"
   },
-  "devDependencies": {
-    "postcss": "^8.4.31",
-    "postcss-cli": "^10.1.0",
-    "postcss-import": "^15.1.0"
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "exports": {
+    ".": "./dist/main.css"
   }
 }

@@ -1,8 +1,9 @@
 ---
-import "@thg/standalone-components-css/dist/index.css";
 import fs from "node:fs";
 import path from "node:path";
 import { createHighlighter } from "shiki";
+import "../tailwind.css";
+import "@thg/standalone-components-css";
 
 interface Props {
   filePath: string;

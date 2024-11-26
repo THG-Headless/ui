@@ -1,0 +1,7 @@
+@layer components{
+    .btn{
+        background-color: var(--primary-bg);
+        padding: 0.5rem 1rem ;
+        border-radius: var(--site-corners);
+    }
+}

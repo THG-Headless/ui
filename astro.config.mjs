@@ -1,9 +1,11 @@
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
-
-import tailwind from '@astrojs/tailwind';
+import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
+  vite: {
+    plugins: [tailwindcss()],
+  },
   integrations: [starlight({
     title: 'Altitude Standalone Components',
     customCss: ["/src/styles.css", "@fontsource-variable/inter"],
@@ -19,5 +21,5 @@ export default defineConfig({
         autogenerate: { directory: 'components' }
       },
     ],
-  }), tailwind()],
+  })],
 });
