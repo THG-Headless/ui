@@ -1,8 +1,13 @@
 @layer components {
     [class^="btn-"] {
-        border-radius: var(--site-corners, var(--default-site-corners));
+        border-radius: var(--rounded-btn, var(--default-rounded-btn));
         padding: 0.5rem 1rem;
         cursor: pointer;
+        transition: var(--animation-btn, var(--default-animation-btn));
+        border: var(--btn-border, var(--default-btn-border))
+    }
+    [class^="btn-"]:hover {
+        scale:var(--btn-hover-scale, var(--default-btn-hover-scale));
     }
     .btn-primary {
         background-color: var(--primary, var(--default-primary));

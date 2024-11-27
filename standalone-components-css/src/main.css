@@ -35,30 +35,28 @@
     --default-base-300: oklch(90% 0.015 250);
 
     /* Success Colours  */
-    --default-success: oklch(65% 0.15 145);
-    --default-success-content: oklch(100% 0.15 145);
+    --default-success: oklch(77.5% 0.081 142.41);
+    --default-success-content: oklch(0% 0 0);
 
     /* Warning Colours */
-    --default-warning: oklch(81.76% 0.163 80.47);
-    --default-warning-content: oklch(100% 0.064 93.18);
+    --default-warning: oklch(83.68% 0.1 70.41);
+    --default-warning-content: oklch(0% 0 0);
 
     /* Error Colours*/
-    --default-error: oklch(65% 0.15 25);
-    --default-error-content: oklch(100% 0.15 25);
+    --default-error: oklch(77.5% 0.103 33.35);
+    --default-error-content: oklch(0% 0 0);
 
     /* UI Elements */
     --default-rounded-btn: 6px;
     --default-rounded-box: 12px;
-    --default-animation-btn: 0.2s;
-    --default-btn-focus-scale: 0.98;
+    --animation-btn: 0.1s;
+    --default-btn-hover-scale: 0.98;
     --default-site-corners: 0.75rem;
+    --default-btn-border: 0px;
 
     /* Containers and Backgrounds */
     --default-container-bg: oklch(99% 0.002 250);
     --default-container-border: oklch(90% 0.01 250);
     --default-background: oklch(99% 0.002 250);
-
-    /* Corner Radius */
-    --default-site-corners: 0.5rem;
   }
 }

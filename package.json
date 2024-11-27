@@ -9,19 +9,33 @@
     "preview": "astro preview",
     "astro": "astro",
     "build:css": "cd standalone-components-css && npm run build",
-    "publish:css": "cd standalone-components-css && npm publish --access public"
+    "publish:css": "cd standalone-components-css && npm publish --access public",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "dependencies": {
     "@astrojs/starlight": "^0.29.2",
     "@fontsource-variable/inter": "^5.1.0",
     "@fontsource/inter": "^5.1.0",
     "@tailwindcss/vite": "^4.0.0-beta.2",
+    "@thg/standalone-components-css": "file:./standalone-components-css",
     "astro": "^4.16.14",
     "remark": "^15.0.1",
     "remark-html": "^16.0.1",
     "shiki": "^1.23.1",
     "tailwindcss": "^4.0.0-beta.2",
-    "unist-util-visit": "^5.0.0",
-    "@thg/standalone-components-css": "file:./standalone-components-css"
+    "unist-util-visit": "^5.0.0"
+  },
+  "devDependencies": {
+    "@chromatic-com/storybook": "^3.2.2",
+    "@storybook/addon-a11y": "^8.4.5",
+    "@storybook/addon-essentials": "^8.4.5",
+    "@storybook/addon-interactions": "^8.4.5",
+    "@storybook/addon-webpack5-compiler-swc": "^1.0.5",
+    "@storybook/blocks": "^8.4.5",
+    "@storybook/html": "^8.4.5",
+    "@storybook/html-webpack5": "^8.4.5",
+    "@storybook/test": "^8.4.5",
+    "storybook": "^8.4.5"
   }
 }
