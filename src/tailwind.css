@@ -33,15 +33,15 @@
   --base-300: oklch(90% 0.015 250);
 
   /* Success Colours  */
-  --success: oklch(77.5% 0.081 142.41);
+  --success: oklch(70% 0.149 152.93);
   --success-content: oklch(0% 0 0);
 
   /* Warning Colours */
-  --warning: oklch(83.68% 0.1 70.41);
+  --warning: oklch(70% 0.168 75.0819);
   --warning-content: oklch(0% 0 0);
 
   /* Error Colours*/
-  --error: oklch(77.5% 0.103 33.35);
+  --error: oklch(70% 0.246 30.911);
   --error-content: oklch(0% 0 0);
 
   /* UI Elements */
