@@ -43,7 +43,8 @@
     --default-warning-content: oklch(0% 0 0);
 
     /* Error Colours*/
-    --default-error: oklch(70% 0.246 30.911);
+    /* --default-error: oklch(70% 0.246 30.911); */
+    --default-error: oklch(2% 1 1);
     --default-error-content: oklch(0% 0 0);
 
     /* UI Elements */
