@@ -38,6 +38,9 @@ jobs:
           
           # Additional wait to ensure Storybook is fully loaded
           sleep 10
+
+          # Install playwright
+          npx playwright install 
           
           # Run the tests
           npm run test-storybook
