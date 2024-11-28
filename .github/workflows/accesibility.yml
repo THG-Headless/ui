@@ -2,53 +2,53 @@ name: PR Accessibility Validation
 
 on:
   pull_request:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
   accessibility-test:
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Setup Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
-          node-version: '18'
-          cache: 'npm'
+          node-version: "18"
+          cache: "npm"
 
       - name: Install dependencies
         run: npm install
 
       - name: Build CSS package
         run: npm run build:css
-        
+
       - name: Start Storybook and Run Tests
         run: |
           # Start Storybook in background
           npm run storybook & 
-          
+
           # Store the Storybook process ID
           STORYBOOK_PID=$!
-          
+
           # Wait for Storybook to be ready (checking port 6006)
           echo "Waiting for Storybook to be ready..."
           timeout 60 bash -c 'until nc -z localhost 6006; do sleep 2; done'
-          
+
           # Additional wait to ensure Storybook is fully loaded
           sleep 10
 
           # Install playwright
           npx playwright install 
-          
+
           # Run the tests
           npm run test-storybook
           TEST_EXIT_CODE=$?
-          
+
           # Kill Storybook process
           kill $STORYBOOK_PID
-          
+
           # Exit with the test result
           exit $TEST_EXIT_CODE
         env:
