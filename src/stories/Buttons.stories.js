@@ -3,7 +3,7 @@ import PrimaryButton from '../components/buttons/PrimaryButton.html';
 import SecondaryButton from '../components/buttons/SecondaryButton.html';
 import StatusButtons from '../components/buttons/StatusButtons.html';
 
-import "@thg/standalone-components-css";
+import "@thg-altitude/standalone-components-css";
 
 export default {
   title: 'Buttons',
