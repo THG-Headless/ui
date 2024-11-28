@@ -18,6 +18,17 @@ jobs:
           node-version: 18.17.1
           cache: "npm"
 
+      - name: Set Git Config
+        run: |
+          git config --local user.email "DL-HeadlessTech@thehutgroup.com"
+          git config --local user.name "THG Altitude [bot]"
+
+      - name: Setup npm authentication
+        run: |
+          echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > ~/.npmrc
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
       - name: Install and Build
         run: |
           cd standalone-components-css
@@ -27,9 +38,5 @@ jobs:
       - name: Publish to npm
         run: |
           cd standalone-components-css
-          git config --local user.email "DL-HeadlessTech@thehutgroup.com"
-          git config --local user.name "THG Altitude [bot]"
           npm version ${GITHUB_REF_NAME} --no-git-tag-version
           npm publish --access public
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
