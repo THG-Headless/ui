@@ -1,0 +1,35 @@
+name: Publish to NPM
+
+permissions:
+  contents: write
+
+on:
+  push:
+    tags:
+      - "v*"
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 18.17.1
+          cache: "npm"
+
+      - name: Install and Build
+        run: |
+          cd standalone-components-css
+          npm ci
+          npm run build
+
+      - name: Publish to npm
+        run: |
+          cd standalone-components-css
+          git config --local user.email "DL-HeadlessTech@thehutgroup.com"
+          git config --local user.name "THG Altitude [bot]"
+          npm version ${GITHUB_REF_NAME} --no-git-tag-version
+          npm publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
