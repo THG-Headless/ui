@@ -1,7 +1,7 @@
 {
-  "name": "standalone-components-css",
+  "name": "@thg-altitude/standalone-components-css",
   "version": "1.0.0",
-  "description": "",
+  "description": "Reusable pure CSS styling for components",
   "main": "index.js",
   "scripts": {
     "build": "mkdir -p dist && cp -r src/* dist/",
