@@ -5,11 +5,6 @@ import tailwindcss from '@tailwindcss/vite';
 export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
-    build: {
-      rollupOptions: {
-        external: ['sharp']
-      }
-    }
   },
   integrations: [starlight({
     title: 'Altitude Standalone Components',
