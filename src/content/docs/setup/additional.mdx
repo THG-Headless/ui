@@ -6,11 +6,11 @@ sidebar:
 ---
 You may find that you need to create additional variants of the provided classes. In order to do this, tailwind can be used to build upon the existing classes in order to create your own additional variants, e.g. a tertiary button.
 
-Shown below is an implementation of this for creating a tertiary button, inherited from the primary button using **[tailwindcss](https://tailwindcss.com)**.
+Shown below is an implementation of this for creating a strong button, inherited from the primary button using **[tailwindcss](https://tailwindcss.com)**.
 
 ```css
 @layer components {
-    .btn-tertiary {
+    .btn-strong {
         @apply btn-primary;.
         /* Add your additional styles */
         @apply border-2 font-bold;
