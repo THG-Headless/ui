@@ -3,60 +3,71 @@
 
 @layer components {
   :root {
-    /* Primary Colours */
-    --default-primary: oklch(55% 0.15 250);
-    --default-primary-content: oklch(98% 0.005 250);
-    --default-hover-primary: oklch(50% 0.15 250);
-    --default-primary-100: oklch(90% 0.03 250);
-    --default-primary-200: oklch(80% 0.08 250);
-    --default-primary-300: oklch(30% 0.05 250);
+    /* Primary */
+    --default-primary-100: #E6E5EC;
+    --default-primary-200: #B4B3C6;
+    --default-primary-300: #5C5A83;
+    --default-primary-400: #050241;
+    --default-primary-500: #040134;
+    --default-primary-600: #020120;
+    --default-primary-700: #010010;
 
-    /* Secondary Colours */
-    --default-secondary: oklch(95% 0.02 250);
-    --default-secondary-content: oklch(25% 0.02 250);
-    --default-hover-secondary: oklch(90% 0.02 250);
-    --default-secondary-100: oklch(98% 0.01 250);
-    --default-secondary-200: oklch(93% 0.02 250);
-    --default-secondary-300: oklch(88% 0.02 250);
+    /* Secondary */
+    --default-secondary-100: #E5F4FE;
+    --default-secondary-200: #A5DAFD;
+    --default-secondary-300: #4CB5FB;
+    --default-secondary-400: #0096FA;
+    --default-secondary-500: #0078C8;
+    --default-secondary-600: #004B7D;
+    --default-secondary-700: #003457;
 
-    /* Accent Colours  */
-    --default-accent: oklch(70% 0.12 180);
-    --default-accent-content: oklch(25% 0.02 180);
-    --default-hover-accent: oklch(55% 0.12 180);
-    --default-accent-100: oklch(85% 0.07 180);
-    --default-accent-200: oklch(65% 0.15 180);
-    --default-accent-300: oklch(55% 0.12 180);
+    /* Tertiary */
+    --default-tertiary-100: #E3E5DE;
+    --default-tertiary-200: #C8CBBD;
+    --default-tertiary-300: #ADB19C;
+    --default-tertiary-400: #92987C;
+    --default-tertiary-500: #747963;
+    --default-tertiary-600: #5E6250;
+    --default-tertiary-700: #414437;
 
-    /* Neutral Colours  */
-    --default-neutral: oklch(96% 0.005 250);
-    --default-neutral-content: oklch(25% 0.02 250);
-    --default-base-100: oklch(99% 0.002 250);
-    --default-base-200: oklch(95% 0.01 250);
-    --default-base-300: oklch(90% 0.015 250);
+    /* Neutral */
+    --default-neutral-100: #FFFFFF;
+    --default-neutral-200: #F2F2F2;
+    --default-neutral-300: #CCCCCC;
+    --default-neutral-400: #8C8C8C;
+    --default-neutral-500: #666666;
+    --default-neutral-600: #333333;
+    --default-neutral-700: #000000;
 
-    /* Success Colours  */
-    --default-success: oklch(70% 0.149 152.93);
-    --default-success-content: oklch(0% 0 0);
+    /* Attention */
+    --default-attention-100: #E6F0F8;
+    --default-attention-400: #0065AD;
 
-    /* Warning Colours */
-    --default-warning:oklch(70% 0.168 75.0819);
-    --default-warning-content: oklch(0% 0 0);
+    /* Success */
+    --default-success-100: #E5F1EA;
+    --default-success-400: #007831;
 
-    /* Error Colours*/
-    --default-error: oklch(70% 0.246 30.911);
-    --default-error-content: oklch(0% 0 0);
+    /* Error */
+    --default-error-100: #FAE8E6;
+    --default-error-400: #C42C21;
+
+    /* Promotion */
+    --default-promotion: #FF0000;
 
     /* UI Elements */
     --default-rounded-btn: 6px;
     --default-rounded-box: 12px;
-    --animation-btn: 0.1s;
+    --default-animation-btn: 0.1s;
     --default-btn-hover-scale: 0.98;
     --default-site-corners: 0.75rem;
     --default-btn-border: 0px;
 
-    /* Containers and Backgrounds */
-    --default-container-bg: oklch(99% 0.002 250);
-    --default-container-border: oklch(90% 0.01 250);
-    --default-background: oklch(99% 0.002 250);
+    /* UI Elements */
+    --default-rounded-btn: 6px;
+    --default-rounded-box: 12px;
+    --default-animation-btn: 0.1s;
+    --default-btn-hover-scale: 0.98;
+    --default-site-corners: 0.75rem;
+    --default-btn-border: 0px;
   }
 }
