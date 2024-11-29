@@ -1,10 +1,13 @@
-import { defineConfig } from 'astro/config';
+import { defineConfig, passthroughImageService } from 'astro/config';
 import starlight from '@astrojs/starlight';
 import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
+  },
+  image: {
+    service: passthroughImageService(),
   },
   integrations: [starlight({
     title: 'Altitude Standalone Components',
