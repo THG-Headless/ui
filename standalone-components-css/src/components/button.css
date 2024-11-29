@@ -11,21 +11,21 @@
     }
     .btn-primary {
         background-color: var(--primary-400, var(--default-primary-400));
-        color: var(--primary-100, var(--default-primary-100));
+        color: var(--neutral-100, var(--default-neutral-100));
     }
     .btn-primary:hover {
         background-color: var(--primary-300, var(--primary-300));
     }
     .btn-secondary {
-        background-color: var(--secondary-400, var(--default-secondary-400));
-        color: var(--secondary-100, var(--default-secondary-100));
+        background-color: var(--secondary-500, var(--default-secondary-500));
+        color: var(--neutral-100, var(--default-neutral-100));
     }
     .btn-secondary:hover {
         background-color: var(--secondary-300, var(--default-secondary-300));
     }
     .btn-tertiary {
-        background-color: var(--tertiary-400, var(--tertiary-400));
-        color: var(--tertiary-100, var(--default-tertiary-100));
+        background-color: var(--tertiary-500, var(--default-tertiary-500));
+        color: var(--neutral-100, var(--default-neutral-100));
     }
     .btn-tertiary:hover {
         background-color: var(--tertiary-300, var(--default-tertiary-300));
