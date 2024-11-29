@@ -19,7 +19,7 @@
     "@fontsource-variable/inter": "^5.1.0",
     "@fontsource/inter": "^5.1.0",
     "@tailwindcss/vite": "^4.0.0-beta.2",
-    "@thg-altitude/standalone-components-css": "file:./standalone-components-css",
+    "@thg-altitude/standalone-components-css": "latest",
     "astro": "^4.16.14",
     "remark": "^15.0.1",
     "remark-html": "^16.0.1",
@@ -39,6 +39,8 @@
     "@storybook/test": "^8.4.5",
     "@storybook/test-runner": "^0.19.1",
     "axe-playwright": "^2.0.3",
-    "storybook": "^8.4.5"
+    "postcss-import": "^16.1.0",
+    "storybook": "^8.4.5",
+    "@thg-altitude/standalone-components-css": "file:./standalone-components-css"
   }
 }
