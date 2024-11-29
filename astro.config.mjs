@@ -17,8 +17,8 @@ export default defineConfig({
       },
     sidebar: [
       {
-        label: 'Styling',
-        autogenerate: { directory: 'styling' }
+        label: 'Getting Started',
+        autogenerate: { directory: 'setup' }
       },
       {
         label: 'Components',
