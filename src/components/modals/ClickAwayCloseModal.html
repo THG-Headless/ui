@@ -1,0 +1,18 @@
+<button class="btn-secondary" onclick="modal3.showModal()">Open Modal with No Backdrop, Click Away</button>
+
+<dialog id="modal3" class="modal-no-backdrop">
+  <div class="modal-box">
+    <h3 class="modal-title">No Backdrop, Click Away</h3>
+    <div class="modal-body">
+      <p>This modal allows closing by clicking the page below it</p>
+    </div>
+    <div class="modal-action">
+      <form method="dialog">
+        <button class="btn-primary">Close Modal</button>
+      </form>
+    </div>
+  </div>
+  <form method="dialog" class="modal-backdrop">
+    <button aria-label="close"></button>
+  </form>
+</dialog>

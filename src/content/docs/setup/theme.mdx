@@ -5,6 +5,7 @@ sidebar:
     order: 3
 ---
 import ColorScheme from "../../../components/Colorscheme.astro"
+import ShowComponent from "../../../components/ShowComponent.astro"
 
 Default CSS variables are provided, which match the style shown in the documentation. These can be overwritten within your project by defining the specified css variables.
 
@@ -12,4 +13,9 @@ On this page, variables that effect many components are documented. Beyond this,
 
 ## Colour Schemes
 The library uses the colour schemes defined in the main css file.
-<ColorScheme/>
+
+<ShowComponent filePath="./src/tailwind.css">
+    <ColorScheme/>
+</ShowComponent>
+
+{/* <ColorScheme/> */}

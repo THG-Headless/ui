@@ -1,0 +1,70 @@
+---
+title: Modal
+description: A primitive modal
+---
+import ShowComponent from "../../../components/ShowComponent.astro"
+import ButtonCloseModal from "../../../components/modals/ButtonCloseModal.html"
+import BackdropModal from "../../../components/modals/BackdropModal.html"
+import ClickAwayCloseModal from "../../../components/modals/ClickAwayCLoseModal.html"
+import BackdropCloseModal from "../../../components/modals/BackdropCloseModal.html"
+
+The modal system provides four basic examples of modals with different behaviors and styling options. Each modal is built using the native HTML `<dialog>` element, enhanced with custom styling and functionality.
+
+## Example Usage
+### No Backdrop, No Click Away
+
+This modal can only be closed via its close button or by pressing the escape key, making it ideal for important messages requiring explicit user action.
+
+<ShowComponent filePath="./src/components/modals/ButtonCloseModal.html">
+    <ButtonCloseModal/>
+</ShowComponent>
+
+### Backdrop, No Click Away
+
+The Modal with Backdrop adds a semi-transparent overlay to the page, providing visual separation from the main content.
+
+<ShowComponent filePath="./src/components/modals/BackdropModal.html">
+    <BackdropModal/>
+</ShowComponent>
+
+### No Backdrop, Click Away
+
+The Click Away Modal allows users to close it by clicking anywhere outside the modal content, suitable for non-critical information.
+
+<ShowComponent filePath="./src/components/modals/ClickAwayCloseModal.html">
+    <ClickAwayCloseModal/>
+</ShowComponent>
+
+### Backdrop, Click Away
+
+Finally, this modal combines both backdrop and click-away functionality.
+
+<ShowComponent filePath="./src/components/modals/BackdropCloseModal.html">
+    <BackdropCloseModal/>
+</ShowComponent>
+
+
+## CSS Variables
+
+The modal system can be customized using CSS variables:
+
+| Variable | Default Value | Description |
+|----------|---------------|-------------|
+| `--modal-backdrop-color` | `rgba(0, 0, 0, 0.3)` | Background color of the modal backdrop |
+| `--modal-backdrop-blur` | `4px` | Blur effect applied to the backdrop |
+| `--modal-width` | `32rem` | Maximum width of the modal |
+| `--modal-padding` | `1.5rem` | Internal padding of the modal |
+| `--modal-border-radius` | `var(--default-rounded-box)` | Border radius of the modal |
+| `--modal-max-height` | `calc(100vh - 5rem)` | Maximum height on desktop |
+| `--modal-mobile-max-height` | `calc(100vh - 2rem)` | Maximum height on mobile |
+| `--modal-mobile-margin` | `1rem` | Margin on mobile devices |
+| `--modal-content-bg` | `var(--default-neutral-100)` | Background color of the modal |
+| `--modal-shadow` | `0 25px 50px -12px rgba(0, 0, 0, 0.25)` | Shadow effect |
+| `--modal-box-scale` | `0.95` | Initial scale for animation |
+| `--modal-title-color` | `var(--default-primary-400)` | Color of the modal title |
+| `--modal-body-color` | `var(--default-primary-300)` | Color of the modal body text |
+| `--modal-title-size` | `1.25rem` | Font size of the title |
+| `--modal-title-weight` | `600` | Font weight of the title |
+| `--modal-animation-duration` | `0.3s` | Duration of open/close animations |
+| `--modal-z-index` | `1000` | Stack order of the modal |
+| `--modal-action-gap` | `0.5rem` | Gap between action buttons |
