@@ -1,6 +1,6 @@
-import AccentButton from '../components/buttons/AccentButton.html';
 import PrimaryButton from '../components/buttons/PrimaryButton.html';
 import SecondaryButton from '../components/buttons/SecondaryButton.html';
+import TertiaryButton from '../components/buttons/TertiaryButton.html';
 import StatusButtons from '../components/buttons/StatusButtons.html';
 
 import "@thg-altitude/standalone-components-css";
@@ -21,8 +21,8 @@ Primary.storyName = 'Primary Button';
 export const Secondary = () => SecondaryButton;
 Secondary.storyName = 'Secondary Button';
 
-export const Accent = () => AccentButton;
-Accent.storyName = 'Accent Button';
+export const Tertiary = () => TertiaryButton;
+Tertiary.storyName = 'Tertiary Button';
 
 export const Status = () => StatusButtons;
 Status.storyName = 'Status Buttons';

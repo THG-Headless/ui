@@ -10,45 +10,38 @@
         scale:var(--btn-hover-scale, var(--default-btn-hover-scale));
     }
     .btn-primary {
-        background-color: var(--primary, var(--default-primary));
-        color: var(--primary-content, var(--default-primary-content));
+        background-color: var(--primary-400, var(--default-primary-400));
+        color: var(--neutral-100, var(--default-neutral-100));
     }
     .btn-primary:hover {
-        background-color: var(--hover-primary, var(--default-hover-primary));
+        background-color: var(--primary-300, var(--primary-300));
     }
     .btn-secondary {
-        background-color: var(--secondary, var(--default-secondary));
-        color: var(--secondary-content, var(--default-secondary-content));
+        background-color: var(--secondary-500, var(--default-secondary-500));
+        color: var(--neutral-100, var(--default-neutral-100));
     }
     .btn-secondary:hover {
-        background-color: var(--hover-secondary, var(--default-hover-secondary));
+        background-color: var(--secondary-300, var(--default-secondary-300));
     }
-    .btn-accent {
-        background-color: var(--accent, var(--default-accent));
-        color: var(--accent-content, var(--default-accent-content));
+    .btn-tertiary {
+        background-color: var(--tertiary-500, var(--default-tertiary-500));
+        color: var(--neutral-100, var(--default-neutral-100));
     }
-    .btn-accent:hover {
-        background-color: var(--hover-accent, var(--default-hover-accent));
+    .btn-tertiary:hover {
+        background-color: var(--tertiary-300, var(--default-tertiary-300));
     }
     .btn-success {
-        background-color: var(--success, var(--default-success));
-        color: var(--success-content, var(--default-success-content));
+        background-color: var(--success-400, var(--default-success-400));
+        color: var(--success-content, var(--default-success-100));
     }
     .btn-success:hover {
         filter: brightness(85%);
     }
-    .btn-warning {
-        background-color: var(--warning, var(--default-warning));
-        color: var(--warning-content, var(--default-warning-content));
-    }
-    .btn-warning:hover {
-        filter: brightness(85%);
-    }
     .btn-error {
-        background-color: var(--error, var(--default-error));
-        color: var(--error-content, var(--default-error-content));
+        background-color: var(--error-400, var(--default-error-400));
+        color: var(--error-100, var(--default-error-100));
     }
     .btn-error:hover {
-        filter: brightness(85%);
+        filter: brightness(115%);
     }
 }
