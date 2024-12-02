@@ -1,14 +1,14 @@
-<button class="btn-tertiary" onclick="modal1.showModal()">Open Modal</button>
+<button class="btn-secondary" onclick="modal1.showModal()">Open Modal with No Backdrop, No Click Away</button>
 
-<dialog id="modal1" class="modal">
+<dialog id="modal1" class="modal-no-backdrop">
   <div class="modal-box">
-    <h3 class="modal-title">Welcome!</h3>
+    <h3 class="modal-title">Modal with No Backdrop, No Click Away</h3>
     <div class="modal-body">
-      <p>This is a custom modal using your design system variables.</p>
+      <p>This is a simple modal that can only be closed using the button below</p>
     </div>
     <div class="modal-action">
       <form method="dialog">
-        <button class="btn-primary">Close</button>
+        <button class="btn-primary">Close Modal</button>
       </form>
     </div>
   </div>

@@ -72,13 +72,24 @@
     --default-btn-border: 0px;
 
 
-    --default-modal-backdrop-color: rgba(0, 0, 0, 0.3);
-    --default-modal-content-bg: var(--default-neutral-100);
-    --default-modal-border-radius: var(--default-rounded-box);
-    --default-modal-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-    --default-modal-width: 32rem;
-    --default-modal-padding: 1.5rem;
-    --default-modal-animation-duration: 0.3s;
-    --default-modal-backdrop-blur: 2px;
+    /* Modal */
+  --default-modal-backdrop-color: rgba(0, 0, 0, 0.3);
+  --default-modal-content-bg: var(--default-neutral-100);
+  --default-modal-border-radius: var(--default-rounded-box);
+  --default-modal-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  --default-modal-width: 32rem;
+  --default-modal-padding: 1.5rem;
+  --default-modal-animation-duration: 0.3s;
+  --default-modal-backdrop-blur: 4px;
+  --default-modal-title-color: var(--default-primary-400);
+  --default-modal-body-color: var(--default-primary-300);
+  --default-modal-title-size: 1.25rem;
+  --default-modal-title-weight: 600;
+  --default-modal-z-index: 1000;
+  --default-modal-mobile-margin: 1rem;
+  --default-modal-box-scale: 0.95;
+  --default-modal-max-height: calc(100vh - 5rem);
+  --default-modal-mobile-max-height: calc(100vh - 2rem);
+  --default-modal-action-gap: 0.5rem;
   }
 }
