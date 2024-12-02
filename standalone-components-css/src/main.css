@@ -1,5 +1,6 @@
 @layer components; 
 @import "./components/button.css";
+@import "./components//modal.css";
 
 @layer components {
   :root {
@@ -55,7 +56,7 @@
     --default-promotion: #FF0000;
 
     /* UI Elements */
-    --default-rounded-btn: 6px;
+    --default-rounded-btn: 8px;
     --default-rounded-box: 12px;
     --default-animation-btn: 0.1s;
     --default-btn-hover-scale: 0.98;
@@ -64,10 +65,20 @@
 
     /* UI Elements */
     --default-rounded-btn: 6px;
-    --default-rounded-box: 12px;
+    --default-rounded-box: 4px;
     --default-animation-btn: 0.1s;
     --default-btn-hover-scale: 0.98;
     --default-site-corners: 0.75rem;
     --default-btn-border: 0px;
+
+
+    --default-modal-backdrop-color: rgba(0, 0, 0, 0.3);
+    --default-modal-content-bg: var(--default-neutral-100);
+    --default-modal-border-radius: var(--default-rounded-box);
+    --default-modal-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    --default-modal-width: 32rem;
+    --default-modal-padding: 1.5rem;
+    --default-modal-animation-duration: 0.3s;
+    --default-modal-backdrop-blur: 2px;
   }
 }

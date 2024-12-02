@@ -53,12 +53,4 @@
 
   /* Promotion */
   --promotion: #FF0000;
-
-  /* UI Elements */
-  --rounded-btn: 6px;
-  --rounded-box: 12px;
-  --animation-btn: 0.1s;
-  --btn-hover-scale: 0.98;
-  --site-corners: 0.75rem;
-  --btn-border: 0px;
 }
