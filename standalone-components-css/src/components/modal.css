@@ -8,7 +8,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: var(--default-modal-z-index);
+    z-index: var(--modal-z-index, var(--default-modal-z-index));
     opacity: 0;
     visibility: hidden;
     background-color: transparent;
@@ -17,13 +17,13 @@
     margin: 0;
     overflow: hidden;
     will-change: opacity;
-    transition: opacity var(--default-modal-animation-duration) ease;
+    transition: opacity var(--modal-animation-duration, var(--default-modal-animation-duration)) ease;
   }
 
   .modal::backdrop {
-    background-color: var(--default-modal-backdrop-color);
-    -webkit-backdrop-filter: blur(var(--default-modal-backdrop-blur));
-    backdrop-filter: blur(var(--default-modal-backdrop-blur));
+    background-color: var(--modal-backdrop-color, var(--default-modal-backdrop-color));
+    -webkit-backdrop-filter: blur(var(--modal-backdrop-blur, var(--default-modal-backdrop-blur)));
+    backdrop-filter: blur(var(--modal-backdrop-blur, var(--default-modal-backdrop-blur)));
   }
 
   .modal-no-backdrop::backdrop {
@@ -61,16 +61,16 @@
   }
 
   .modal-box {
-    background: var(--default-modal-content-bg);
-    padding: var(--default-modal-padding);
-    border-radius: var(--default-modal-border-radius);
-    box-shadow: var(--default-modal-shadow);
-    width: min(var(--default-modal-width), calc(100% - 2rem));
-    max-height: var(--default-modal-max-height);
+    background: var(--surface-cards, var(--default-surface-cards));
+    padding: var(--modal-padding, var(--default-modal-padding));
+    border-radius: var(--modal-border-radius, var(--default-modal-border-radius));
+    box-shadow: var(--modal-shadow, var(--default-modal-shadow));
+    width: min(var(--modal-width, var(--default-modal-width)), calc(100% - 2rem));
+    max-height: var(--modal-max-height, var(--default-modal-max-height));
     overflow-y: auto;
     position: relative;
-    transform: scale(var(--default-modal-box-scale));
-    transition: transform var(--default-modal-animation-duration) ease;
+    transform: scale(var(--modal-box-scale, var(--default-modal-box-scale)));
+    transition: transform var(--modal-animation-duration, var(--default-modal-animation-duration)) ease;
     z-index: 2;
     display: flex;          
     flex-direction: column;
@@ -79,14 +79,14 @@
   }
 
   .modal-title {
-    color: var(--default-modal-title-color);
-    font-size: var(--default-modal-title-size);
-    font-weight: var(--default-modal-title-weight);
+    color: var(--text-high-emphasis, var(--default-text-high-emphasis));
+    font-size: var(--modal-title-size, var(--default-modal-title-size));
+    font-weight: var(--modal-title-weight, var(--default-modal-title-weight));
     margin-bottom: 1rem;
   }
 
   .modal-body {
-    color: var(--default-modal-body-color);
+    color: var(--text-medium-emphasis, var(--default-text-medium-emphasis));
     flex: 1;               
     margin-bottom: 1.5rem; 
   }
@@ -94,16 +94,16 @@
   .modal-action {
     display: flex;
     justify-content: flex-end;
-    gap: var(--default-modal-action-gap);
+    gap: var(--modal-action-gap, var(--default-modal-action-gap));
     margin-top: auto;      
-    padding-top: var(--default-modal-padding);
+    padding-top: var(--modal-padding, var(--default-modal-padding));
   }
 
   @media (max-width: 640px) {
     .modal-box {
       width: calc(100% - 2rem);
-      margin: var(--default-modal-mobile-margin);
-      max-height: var(--default-modal-mobile-max-height);
+      margin: var(--modal-mobile-margin, var(--default-modal-mobile-margin));
+      max-height: var(--modal-mobile-max-height, var(--default-modal-mobile-max-height));
     }
   }
 }

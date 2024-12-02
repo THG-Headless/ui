@@ -4,7 +4,7 @@
 
 @layer components {
   :root {
-    /* Primary */
+    
     --default-primary-100: #E6E5EC;
     --default-primary-200: #B4B3C6;
     --default-primary-300: #5C5A83;
@@ -13,7 +13,7 @@
     --default-primary-600: #020120;
     --default-primary-700: #010010;
 
-    /* Secondary */
+    
     --default-secondary-100: #E5F4FE;
     --default-secondary-200: #A5DAFD;
     --default-secondary-300: #4CB5FB;
@@ -22,7 +22,7 @@
     --default-secondary-600: #004B7D;
     --default-secondary-700: #003457;
 
-    /* Tertiary */
+    
     --default-tertiary-100: #E3E5DE;
     --default-tertiary-200: #C8CBBD;
     --default-tertiary-300: #ADB19C;
@@ -31,7 +31,7 @@
     --default-tertiary-600: #5E6250;
     --default-tertiary-700: #414437;
 
-    /* Neutral */
+    
     --default-neutral-100: #FFFFFF;
     --default-neutral-200: #F2F2F2;
     --default-neutral-300: #CCCCCC;
@@ -40,22 +40,118 @@
     --default-neutral-600: #333333;
     --default-neutral-700: #000000;
 
-    /* Attention */
+    
     --default-attention-100: #E6F0F8;
     --default-attention-400: #0065AD;
 
-    /* Success */
+    
     --default-success-100: #E5F1EA;
     --default-success-400: #007831;
 
-    /* Error */
+    
     --default-error-100: #FAE8E6;
     --default-error-400: #C42C21;
 
-    /* Promotion */
+    
     --default-promotion: #FF0000;
 
-    /* UI Elements */
+    
+    --default-black: #000000;
+    --default-white: #ffffff;
+
+
+    
+
+    
+
+    --default-surface-white: var(--default-white); 
+    --default-surface-black: var(--default-black); 
+    
+    --default-surface-primary-default: var(--default-primary-400); 
+    --default-surface-primary-lightest: var(--default-primary-100); 
+    --default-surface-primary-darkest: var(--default-primary-700); 
+    --default-surface-primary-hover-dark: var(--default-primary-500); 
+    --default-surface-primary-hover-light: var(--default-primary-300); 
+    --default-surface-primary-active: var(--default-primary-600); 
+
+    --default-surface-secondary-default: var(--default-secondary-400); 
+    --default-surface-secondary-lightest: var(--default-secondary-100);
+    --default-surface-secondary-darkest: var(--default-secondary-700); 
+    --default-surface-secondary-hover-dark: var(--default-secondary-500); 
+    --default-surface-secondary-hover-light: var(--default-secondary-300); 
+    --default-surface-secondary-active: var(--default-secondary-600); 
+    
+    --default-surface-tertiary-default: var(--default-tertiary-400); 
+    --default-surface-tertiary-lightest: var(--default-tertiary-100); 
+    --default-surface-tertiary-darkest: var(--default-tertiary-700); 
+    --default-surface-tertiary-hover-dark: var(--default-tertiary-500) 
+    --default-surface-tertiary-hover-light: var(--default-tertiary-300); 
+    --default-surface-tertiary-active: var(--default-tertiary-600); 
+
+    --default-surface-inactive: var(--default-neutral-300); 
+    --default-surface-success: var(--default-success-100); 
+    --default-surface-error: var(--default-error-100); 
+    --default-surface-attention: var(--default-attention-100); 
+    --default-surface-cards: var(--default-neutral-200); 
+    --default-surface-promotion: var(--default-promotion); 
+    
+    
+
+    --default-border-black: var(--default-black); 
+    --default-border-white: var(--default-white); 
+    --default-border-primary: var(--default-primary-400); 
+    --default-border-secondary: var(--default-secondary-400); 
+    --default-border-tertiary: var(--default-tertiary-400); 
+    --default-border-controls: var(--default-neutral-500); 
+    --default-border-error: var(--default-error-400); 
+    --default-border-success: var(--default-success-400); 
+    --default-border-attention: var(--default-attention-400); 
+    --default-border-inactive: var(--default-neutral-300); 
+    --default-border-promotion: var(--default-promotion); 
+    --default-border-cards: var(--default-neutral-300); 
+
+      
+
+    --default-text-high-emphasis: var(--default-neutral-600); 
+    --default-text-medium-emphasis: var(--default-neutral-500); 
+    --default-text-black: var(--default-black); 
+    --default-text-white: var(--default-white);
+
+    --default-text-primary-default: var(--default-primary-400); 
+    --default-text-primary-hover-dark: var(--default-primary-500); 
+    --default-text-primary-hover-light: var(--default-primary-300); 
+    --default-text-primary-active: var(--default-primary-600); 
+
+    --default-text-secondary-default: var(--default-secondary-400); 
+    --default-text-secondary-hover-dark: var(--default-secondary-500); 
+    --default-text-secondary-hover-light: var(--default-secondary-300); 
+    --default-text-secondary-active: var(--default-secondary-600); 
+
+    --default-text-tertiary-default: var(--default-tertiary-400); 
+    --default-text-tertiary-hover-dark: var(--default-tertiary-500);
+    --default-text-tertiary-hover-light: var(--default-tertiary-300);
+    --default-text-tertiary-active: var(--default-tertiary-600);
+
+    --default-text-inactive: var(--default-neutral-300); 
+    --default-text-success: var(--default-success-400); 
+    --default-text-error: var(--default-error-400); 
+    --default-text-attention: var(--default-attention-400); 
+    --default-text-promotion: var(--default-promotion); 
+
+    
+    --default-icons-black: var(--default-black); 
+    --default-icons-white: var(--default-white);  
+    --default-icons-primary: var(--default-primary-400);  
+    --default-icons-primary-darker: var(--default-primary-500);  
+    --default-icons-secondary: var(--default-secondary-400);  
+    --default-icons-secondary-darker: var(--default-secondary-500);  
+    --default-icons-tertiary: var(--default-tertiary-400);  
+    --default-icons-tertiary-darker: var(--default-tertiary-500);  
+    --default-icons-error: var(--default-error-400); 
+    --default-icons-success: var(--default-success-400); 
+    --default-icons-attention: var(--default-attention-400); 
+
+    
     --default-rounded-btn: 8px;
     --default-rounded-box: 12px;
     --default-animation-btn: 0.1s;
@@ -63,7 +159,7 @@
     --default-site-corners: 0.75rem;
     --default-btn-border: 0px;
 
-    /* UI Elements */
+    
     --default-rounded-btn: 6px;
     --default-rounded-box: 4px;
     --default-animation-btn: 0.1s;
@@ -72,17 +168,14 @@
     --default-btn-border: 0px;
 
 
-    /* Modal */
+    
   --default-modal-backdrop-color: rgba(0, 0, 0, 0.3);
-  --default-modal-content-bg: var(--default-neutral-100);
   --default-modal-border-radius: var(--default-rounded-box);
   --default-modal-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
   --default-modal-width: 32rem;
   --default-modal-padding: 1.5rem;
   --default-modal-animation-duration: 0.3s;
   --default-modal-backdrop-blur: 4px;
-  --default-modal-title-color: var(--default-primary-400);
-  --default-modal-body-color: var(--default-primary-300);
   --default-modal-title-size: 1.25rem;
   --default-modal-title-weight: 600;
   --default-modal-z-index: 1000;
