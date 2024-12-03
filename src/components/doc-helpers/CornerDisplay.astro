@@ -1,0 +1,89 @@
+---
+import "../../tailwind.css";
+import fs from "node:fs";
+import path from "node:path";
+import { parseRadiusScheme } from "../../utils/radiusParser";
+
+const cssFilePath = path.resolve("./src/sample-css/corners.css");
+const cssContent = fs.readFileSync(cssFilePath, "utf-8");
+const { primitiveRadii, semanticRadii } = parseRadiusScheme(cssContent);
+---
+
+<div class="max-w-7xl mx-auto p-6">
+  <!-- Primitive Radii -->
+  <section>
+    <h2 class="text-xl font-bold pb-4">Primitive Radii</h2>
+    <div
+      class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8"
+    >
+      {
+        Object.entries(primitiveRadii).map(([_, category]) =>
+          category.radii.map((radius) => (
+            <div class="flex flex-col items-center min-w-0">
+              {/* Radius Demo Box */}
+              <div
+                class="aspect-square w-full max-w-[120px] bg-zinc-300 mb-3"
+                style={{
+                  borderRadius: `var(${radius.name})`,
+                  display: "block",
+                }}
+              />
+
+              {/* Info Panel */}
+              <div class="w-full text-center min-w-0">
+                <div class="truncate">
+                  <span class="text-sm font-mono whitespace-nowrap">
+                    {radius.name}
+                  </span>
+                </div>
+                <div class="truncate">
+                  <span class="text-sm text-zinc-500 whitespace-nowrap">
+                    {radius.value}
+                  </span>
+                </div>
+              </div>
+            </div>
+          ))
+        )
+      }
+    </div>
+  </section>
+
+  <!-- Semantic Radii -->
+  <section>
+    <h2 class="text-2xl font-bold mb-8 pt-16">Semantic Radii</h2>
+    {
+      Object.entries(semanticRadii).map(([key, category]) => (
+        <div>
+          <table class="w-full">
+            <thead>
+              <tr class="border-b">
+                <th class="text-left py-2 px-3">Variable Name</th>
+                <th class="text-left py-2 px-3">Default Value</th>
+                <th class="text-left py-2 px-3 w-[30%]">Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              {category.radii.map((radius) => (
+                <tr class="border-b border-zinc-600">
+                  <td class="py-3 px-3">
+                    <button
+                      class="font-mono text-sm hover:text-blue-400 transition-colors"
+                      onclick={`navigator.clipboard.writeText('${radius.name}')`}
+                    >
+                      {radius.name}
+                    </button>
+                  </td>
+                  <td class="font-mono text-sm py-3 px-3">{radius.value}</td>
+                  <td class="text-sm py-3 px-3 w-[30%]">
+                    {radius.description || "-"}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      ))
+    }
+  </section>
+</div>
