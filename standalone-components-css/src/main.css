@@ -64,125 +64,87 @@
 
     
 
-    --default-surface-white: var(--default-white); 
-    --default-surface-black: var(--default-black); 
+    --surface-white: var(--white, var(--default-white)); 
+    --surface-black: var(--black, var(--default-black)); 
     
-    --default-surface-primary-default: var(--default-primary-400); 
-    --default-surface-primary-lightest: var(--default-primary-100); 
-    --default-surface-primary-darkest: var(--default-primary-700); 
-    --default-surface-primary-hover-dark: var(--default-primary-500); 
-    --default-surface-primary-hover-light: var(--default-primary-300); 
-    --default-surface-primary-active: var(--default-primary-600); 
+    --surface-primary-default: var(--primary-400, var(--default-primary-400)); 
+    --surface-primary-lightest: var(--primary-100, var(--default-primary-100)); 
+    --surface-primary-darkest: var(--primary-700, var(--default-primary-700)); 
+    --surface-primary-hover-dark: var(--primary-500, var(--default-primary-500)); 
+    --surface-primary-hover-light: var(--primary-300, var(--default-primary-300)); 
+    --surface-primary-active: var(--primary-600, var(--default-primary-600)); 
 
-    --default-surface-secondary-default: var(--default-secondary-400); 
-    --default-surface-secondary-lightest: var(--default-secondary-100);
-    --default-surface-secondary-darkest: var(--default-secondary-700); 
-    --default-surface-secondary-hover-dark: var(--default-secondary-500); 
-    --default-surface-secondary-hover-light: var(--default-secondary-300); 
-    --default-surface-secondary-active: var(--default-secondary-600); 
+    --surface-secondary-default: var(--secondary-400, var(--default-secondary-400)); 
+    --surface-secondary-lightest: var(--secondary-100, var(--default-secondary-100));
+    --surface-secondary-darkest: var(--secondary-700, var(--default-secondary-700)); 
+    --surface-secondary-hover-dark: var(--secondary-500, var(--default-secondary-500)); 
+    --surface-secondary-hover-light: var(--secondary-300, var(--default-secondary-300)); 
+    --surface-secondary-active: var(--secondary-600, var(--default-secondary-600)); 
     
-    --default-surface-tertiary-default: var(--default-tertiary-400); 
-    --default-surface-tertiary-lightest: var(--default-tertiary-100); 
-    --default-surface-tertiary-darkest: var(--default-tertiary-700); 
-    --default-surface-tertiary-hover-dark: var(--default-tertiary-500) 
-    --default-surface-tertiary-hover-light: var(--default-tertiary-300); 
-    --default-surface-tertiary-active: var(--default-tertiary-600); 
+    --surface-tertiary-default: var(--tertiary-400, var(--default-tertiary-400)); 
+    --surface-tertiary-lightest: var(--tertiary-100, var(--default-tertiary-100)); 
+    --surface-tertiary-darkest: var(--tertiary-700, var(--default-tertiary-700)); 
+    --surface-tertiary-hover-dark: var(--tertiary-500, var(--default-tertiary-500)); 
+    --surface-tertiary-hover-light: var(--tertiary-300, var(--default-tertiary-300)); 
+    --surface-tertiary-active: var(--tertiary-600, var(--default-tertiary-600)); 
 
-    --default-surface-inactive: var(--default-neutral-300); 
-    --default-surface-success: var(--default-success-100); 
-    --default-surface-error: var(--default-error-100); 
-    --default-surface-attention: var(--default-attention-100); 
-    --default-surface-cards: var(--default-neutral-200); 
-    --default-surface-promotion: var(--default-promotion); 
+    --surface-inactive: var(--neutral-300, var(--default-neutral-300)); 
+    --surface-success: var(--success-100, var(--default-success-100)); 
+    --surface-error: var(--error-100, var(--default-error-100)); 
+    --surface-attention: var(--attention-100, var(--default-attention-100)); 
+    --surface-cards: var(--neutral-200, var(--default-neutral-200)); 
+    --surface-promotion: var(--promotion, var(--default-promotion)); 
     
-    
+    --border-black: var(--black, var(--default-black)); 
+    --border-white: var(--white, var(--default-white)); 
+    --border-primary: var(--primary-400, var(--default-primary-400)); 
+    --border-secondary: var(--secondary-400, var(--default-secondary-400)); 
+    --border-tertiary: var(--tertiary-400, var(--default-tertiary-400)); 
+    --border-controls: var(--neutral-500, var(--default-neutral-500)); 
+    --border-error: var(--error-400, var(--default-error-400)); 
+    --border-success: var(--success-400, var(--default-success-400)); 
+    --border-attention: var(--attention-400, var(--default-attention-400)); 
+    --border-inactive: var(--neutral-300, var(--default-neutral-300)); 
+    --border-promotion: var(--promotion, var(--default-promotion)); 
+    --border-cards: var(--neutral-300, var(--default-neutral-300)); 
 
-    --default-border-black: var(--default-black); 
-    --default-border-white: var(--default-white); 
-    --default-border-primary: var(--default-primary-400); 
-    --default-border-secondary: var(--default-secondary-400); 
-    --default-border-tertiary: var(--default-tertiary-400); 
-    --default-border-controls: var(--default-neutral-500); 
-    --default-border-error: var(--default-error-400); 
-    --default-border-success: var(--default-success-400); 
-    --default-border-attention: var(--default-attention-400); 
-    --default-border-inactive: var(--default-neutral-300); 
-    --default-border-promotion: var(--default-promotion); 
-    --default-border-cards: var(--default-neutral-300); 
+    --text-high-emphasis: var(--neutral-600, var(--default-neutral-600)); 
+    --text-medium-emphasis: var(--neutral-500, var(--default-neutral-500)); 
+    --text-black: var(--black, var(--default-black)); 
+    --text-white: var(--white, var(--default-white));
 
-      
+    --text-primary-default: var(--primary-400, var(--default-primary-400)); 
+    --text-primary-hover-dark: var(--primary-500, var(--default-primary-500)); 
+    --text-primary-hover-light: var(--primary-300, var(--default-primary-300)); 
+    --text-primary-active: var(--primary-600, var(--default-primary-600)); 
 
-    --default-text-high-emphasis: var(--default-neutral-600); 
-    --default-text-medium-emphasis: var(--default-neutral-500); 
-    --default-text-black: var(--default-black); 
-    --default-text-white: var(--default-white);
+    --text-secondary-default: var(--secondary-400, var(--default-secondary-400)); 
+    --text-secondary-hover-dark: var(--secondary-500, var(--default-secondary-500)); 
+    --text-secondary-hover-light: var(--secondary-300, var(--default-secondary-300)); 
+    --text-secondary-active: var(--secondary-600, var(--default-secondary-600)); 
 
-    --default-text-primary-default: var(--default-primary-400); 
-    --default-text-primary-hover-dark: var(--default-primary-500); 
-    --default-text-primary-hover-light: var(--default-primary-300); 
-    --default-text-primary-active: var(--default-primary-600); 
+    --text-tertiary-default: var(--tertiary-400, var(--default-tertiary-400)); 
+    --text-tertiary-hover-dark: var(--tertiary-500, var(--default-tertiary-500));
+    --text-tertiary-hover-light: var(--tertiary-300, var(--default-tertiary-300));
+    --text-tertiary-active: var(--tertiary-600, var(--default-tertiary-600));
 
-    --default-text-secondary-default: var(--default-secondary-400); 
-    --default-text-secondary-hover-dark: var(--default-secondary-500); 
-    --default-text-secondary-hover-light: var(--default-secondary-300); 
-    --default-text-secondary-active: var(--default-secondary-600); 
+    --text-inactive: var(--neutral-300, var(--default-neutral-300)); 
+    --text-success: var(--success-400, var(--default-success-400)); 
+    --text-error: var(--error-400, var(--default-error-400)); 
+    --text-attention: var(--attention-400, var(--default-attention-400)); 
+    --text-promotion: var(--promotion, var(--default-promotion)); 
 
-    --default-text-tertiary-default: var(--default-tertiary-400); 
-    --default-text-tertiary-hover-dark: var(--default-tertiary-500);
-    --default-text-tertiary-hover-light: var(--default-tertiary-300);
-    --default-text-tertiary-active: var(--default-tertiary-600);
+    --icons-black: var(--black, var(--default-black)); 
+    --icons-white: var(--white, var(--default-white));  
+    --icons-primary: var(--primary-400, var(--default-primary-400));  
+    --icons-primary-darker: var(--primary-500, var(--default-primary-500));  
+    --icons-secondary: var(--secondary-400, var(--default-secondary-400));  
+    --icons-secondary-darker: var(--secondary-500, var(--default-secondary-500));  
+    --icons-tertiary: var(--tertiary-400, var(--default-tertiary-400));  
+    --icons-tertiary-darker: var(--tertiary-500, var(--default-tertiary-500));  
+    --icons-error: var(--error-400, var(--default-error-400)); 
+    --icons-success: var(--success-400, var(--default-success-400)); 
+    --icons-attention: var(--attention-400, var(--default-attention-400)); 
 
-    --default-text-inactive: var(--default-neutral-300); 
-    --default-text-success: var(--default-success-400); 
-    --default-text-error: var(--default-error-400); 
-    --default-text-attention: var(--default-attention-400); 
-    --default-text-promotion: var(--default-promotion); 
-
-    
-    --default-icons-black: var(--default-black); 
-    --default-icons-white: var(--default-white);  
-    --default-icons-primary: var(--default-primary-400);  
-    --default-icons-primary-darker: var(--default-primary-500);  
-    --default-icons-secondary: var(--default-secondary-400);  
-    --default-icons-secondary-darker: var(--default-secondary-500);  
-    --default-icons-tertiary: var(--default-tertiary-400);  
-    --default-icons-tertiary-darker: var(--default-tertiary-500);  
-    --default-icons-error: var(--default-error-400); 
-    --default-icons-success: var(--default-success-400); 
-    --default-icons-attention: var(--default-attention-400); 
-
-    
-    --default-rounded-btn: 8px;
-    --default-rounded-box: 12px;
-    --default-animation-btn: 0.1s;
-    --default-btn-hover-scale: 0.98;
-    --default-site-corners: 0.75rem;
-    --default-btn-border: 0px;
-
-    
-    --default-rounded-btn: 6px;
-    --default-rounded-box: 4px;
-    --default-animation-btn: 0.1s;
-    --default-btn-hover-scale: 0.98;
-    --default-site-corners: 0.75rem;
-    --default-btn-border: 0px;
-
-
-    
-  --default-modal-backdrop-color: rgba(0, 0, 0, 0.3);
-  --default-modal-border-radius: var(--default-rounded-box);
-  --default-modal-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-  --default-modal-width: 32rem;
-  --default-modal-padding: 1.5rem;
-  --default-modal-animation-duration: 0.3s;
-  --default-modal-backdrop-blur: 4px;
-  --default-modal-title-size: 1.25rem;
-  --default-modal-title-weight: 600;
-  --default-modal-z-index: 1000;
-  --default-modal-mobile-margin: 1rem;
-  --default-modal-box-scale: 0.95;
-  --default-modal-max-height: calc(100vh - 5rem);
-  --default-modal-mobile-max-height: calc(100vh - 2rem);
-  --default-modal-action-gap: 0.5rem;
   }
 }
