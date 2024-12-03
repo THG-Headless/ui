@@ -24,7 +24,7 @@ const { primitiveColours, semanticColours } = parseColourScheme(cssContent);
                   {/* Color Swatch */}
                   <div
                     class="w-full h-2/3 rounded-t-md"
-                    style={{ backgroundColor: colour.value }}
+                    style={{ backgroundColor: `var(${colour.name})` }}
                   />
 
                   {/* Info Panel */}

@@ -1,45 +1,45 @@
 @layer components {
     [class^="btn-"] {
-        border-radius: var(--rounded-btn, var(--default-rounded-btn));
+        border-radius: var(--radius-btn);
         padding: 0.5rem 1rem;
         cursor: pointer;
-        transition: var(--animation-btn, var(--default-animation-btn));
-        border: var(--btn-border, var(--default-btn-border))
+        transition: var(--animation-btn);
+        border: var(--btn-border)
     }
     [class^="btn-"]:hover {
-        scale:var(--btn-hover-scale, var(--default-btn-hover-scale));
+        scale: var(--btn-hover-scale);
     }
     .btn-primary {
-        background-color: var(--primary-400, var(--default-primary-400));
-        color: var(--neutral-100, var(--default-neutral-100));
+        background-color: var(--surface-primary-default);
+        color: var(--text-white);
     }
     .btn-primary:hover {
-        background-color: var(--primary-300, var(--primary-300));
+        background-color: var(--surface-primary-hover-light);
     }
     .btn-secondary {
-        background-color: var(--secondary-500, var(--default-secondary-500));
-        color: var(--neutral-100, var(--default-neutral-100));
+        background-color: var(--surface-secondary-default);
+        color: var(--text-white);
     }
     .btn-secondary:hover {
-        background-color: var(--secondary-300, var(--default-secondary-300));
+        background-color: var(--surface-secondary-hover-light);
     }
     .btn-tertiary {
-        background-color: var(--tertiary-500, var(--default-tertiary-500));
-        color: var(--neutral-100, var(--default-neutral-100));
+        background-color: var(--surface-tertiary-default);
+        color: var(--text-black);
     }
     .btn-tertiary:hover {
-        background-color: var(--tertiary-300, var(--default-tertiary-300));
+        background-color: var(--surface-tertiary-hover-light);
     }
     .btn-success {
-        background-color: var(--success-400, var(--default-success-400));
-        color: var(--success-content, var(--default-success-100));
+        background-color: var(--surface-success);
+        color: var(--text-success);
     }
     .btn-success:hover {
         filter: brightness(85%);
     }
     .btn-error {
-        background-color: var(--error-400, var(--default-error-400));
-        color: var(--error-100, var(--default-error-100));
+        background-color: var(--surface-error);
+        color: var(--text-error);
     }
     .btn-error:hover {
         filter: brightness(115%);
