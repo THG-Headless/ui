@@ -146,5 +146,27 @@
     --icons-success: var(--success-400, var(--default-success-400)); 
     --icons-attention: var(--attention-400, var(--default-attention-400)); 
 
+    --default-rounded-btn: 6px;
+    --default-animation-btn: 0.1s;
+    --default-btn-hover-scale: 0.98;
+    --default-site-corners: 0.75rem;
+    --default-btn-border: 0px;
+
+
+    --default-modal-backdrop-color: rgba(0, 0, 0, 0.3);
+    --default-modal-border-radius: 4px;
+    --default-modal-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    --default-modal-width: 32rem;
+    --default-modal-padding: 1.5rem;
+    --default-modal-animation-duration: 0.3s;
+    --default-modal-backdrop-blur: 4px;
+    --default-modal-title-size: 1.25rem;
+    --default-modal-title-weight: 600;
+    --default-modal-z-index: 1000;
+    --default-modal-mobile-margin: 1rem;
+    --default-modal-box-scale: 0.95;
+    --default-modal-max-height: calc(100vh - 5rem);
+    --default-modal-mobile-max-height: calc(100vh - 2rem);
+    --default-modal-action-gap: 0.5rem;
   }
 }
