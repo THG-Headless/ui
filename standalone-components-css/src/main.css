@@ -1,6 +1,7 @@
 @layer theme; 
 @import "./components/button.css";
-@import "./components//modal.css";
+@import "./components/modal.css";
+@import "./components/dropdown.css";
 
 @layer theme {
   :root {
@@ -153,6 +154,7 @@
 
     --radius-btn: var(--radius-size-md); 
     --radius-modal: var(--radius-size-md);
+    --radius-dropdown: var(--radius-size-none);
 
     --animation-btn: 0.1s;
     --btn-hover-scale: 0.98;
@@ -173,5 +175,6 @@
     --modal-max-height: calc(100vh - 5rem);
     --modal-mobile-max-height: calc(100vh - 2rem);
     --modal-action-gap: 0.5rem;
+    
   }
 }

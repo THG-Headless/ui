@@ -1,0 +1,95 @@
+/* Base dropdown container */
+.dropdown {
+  position: relative;
+  display: inline-block;
+  width: 16rem; /* Set default width */
+  max-width: 100%;
+}
+
+/* Dropdown button/summary styling */
+.dropdown-summary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  background-color: var(--surface-white);
+  border: 2px solid var(--border-primary);
+  border-radius: var(--radius-dropdown);
+  color: var(--text-primary);
+  list-style: none;
+  margin: 0.5rem 0rem;
+}
+
+/* Summary content styling - keep on one line with ellipsis */
+.dropdown-summary > div {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  min-width: 0;
+}
+
+/* Ensure the text span uses ellipsis */
+.dropdown-summary span {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.dropdown summary::-webkit-details-marker {
+  display: none;
+}
+
+/* Show dropdown content when details is open */
+.dropdown[open] .dropdown-content {
+  display: block;
+}
+
+/* Menu styling */
+.menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  background-color: var(--surface-white);
+  border-radius: var(--radius-dropdown);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  width: 100%; /* Match parent width */
+  position: absolute;
+  z-index: 10;
+}
+
+.menu li {
+  margin: 0;
+}
+
+.menu li a {
+  display: block;
+  padding: 0.5rem 1rem;
+  color: #1f2937;
+  text-decoration: none;
+  transition: background-color 150ms ease;
+  white-space: normal;
+  word-wrap: break-word;
+}
+
+.menu li a:hover {
+  background-color: var(--surface-white);
+}
+
+/* Animation for dropdown */
+.dropdown[open] .dropdown-content {
+  animation: dropdown-slide 0.2s ease-out;
+}
+
+@keyframes dropdown-slide {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
