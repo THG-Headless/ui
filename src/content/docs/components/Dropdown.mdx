@@ -4,10 +4,48 @@ description: A drop down selector
 ---
 import ShowComponent from "../../../components/doc-helpers/ShowComponent.astro"
 import BasicDropdown from "../../../components/dropdown/BasicDropdown.html"
+import ErrorDropdown from "../../../components/dropdown/ErrorDropdown.html"
+import InactiveDropdown from "../../../components/dropdown/InactiveDropdown.html"
 
+The dropdown system provides three basic variations with different states and styling options. Each dropdown is built using the native HTML `<details>` and `<summary>` elements, enhanced with custom styling and functionality.
 
 ## Dropdown Styles
+
 ### Basic Dropdown
+The basic dropdown provides standard functionality with hover and active states. It includes a label, placeholder text, and optional helper text.
+
 <ShowComponent filePath="./src/components/dropdown/BasicDropdown.html">
     <BasicDropdown/>
 </ShowComponent>
+
+### Error Dropdown
+The Error Dropdown variant displays validation errors with a distinct red border and error message. It includes an error icon for better visibility.
+
+<ShowComponent filePath="./src/components/dropdown/ErrorDropdown.html">
+    <ErrorDropdown/>
+</ShowComponent>
+
+### Inactive Dropdown
+The Inactive Dropdown represents a disabled state where user interaction is prevented. It displays with muted colors and a disabled cursor.
+
+<ShowComponent filePath="./src/components/dropdown/InactiveDropdown.html">
+    <InactiveDropdown/>
+</ShowComponent>
+
+## CSS Variables
+
+The dropdown system can be customized using CSS variables:
+
+| Variable | Default Value | Description |
+|----------|---------------|-------------|
+| `--dropdown-width` | `16rem` | Width of the dropdown |
+| `--dropdown-gap` | `0.25rem` | Gap between dropdown elements |
+| `--dropdown-padding-y` | `0.5rem` | Vertical padding of the dropdown |
+| `--dropdown-padding-x` | `1rem` | Horizontal padding of the dropdown |
+| `--dropdown-menu-padding-y` | `0.25rem` | Vertical padding of the dropdown menu |
+| `--dropdown-menu-margin-top` | `0.25rem` | Space between dropdown and its menu |
+| `--dropdown-border-width-default` | `1px` | Default border width |
+| `--dropdown-border-width-active` | `2px` | Border width for active/hover states |
+| `--radius-dropdown-menu` | `--radius-size-none` | Border radius of the dropdown menu |
+| `--radius-dropdown-summary` | `--radius-size-sm` | Border radius of the dropdown button |
+| `--dropdown-menu-shadow` | `[complex shadow]` | Shadow effect for the dropdown menu |
