@@ -88,6 +88,9 @@
     --surface-tertiary-hover-light: var(--tertiary-300); 
     --surface-tertiary-active: var(--tertiary-600); 
 
+    --surface-controls-dark: var(--neutral-400);   
+    --surface-controls-default: var(--neutral-200);
+
     --surface-inactive: var(--neutral-300); 
     --surface-success: var(--success-100); 
     --surface-error: var(--error-100); 
@@ -223,8 +226,10 @@
     --dropdown-menu-margin-top: 0.25rem;
     --dropdown-border-width-default: 1px;
     --dropdown-border-width-active: 2px;
-
-    /* Dropdown Shadow */
+    --dropdown-max-items: 5;
+    --dropdown-item-height: 2.5rem; 
+    --dropdown-item-padding-y: 0.5rem;
+    --dropdown-search-height: 3rem;
     --dropdown-menu-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
       0 4px 6px -2px rgba(0, 0, 0, 0.05);
   }
