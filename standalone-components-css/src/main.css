@@ -89,7 +89,7 @@
     --surface-tertiary-active: var(--tertiary-600); 
 
     --surface-controls-dark: var(--neutral-400);   
-    --surface-controls-default: var(--neutral-200);
+    --surface-controls-default: var(--neutral-300);
 
     --surface-inactive: var(--neutral-300); 
     --surface-success: var(--success-100); 
