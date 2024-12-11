@@ -77,6 +77,11 @@
     will-change: transform;
   }
 
+  .modal-close-form {
+    display: flex;
+    justify-content: flex-end;
+  }
+
   .modal-title {
     color: var(--text-high-emphasis);
     font-size: var(--modal-title-size);

@@ -2,14 +2,15 @@
 
 <dialog id="modal2" class="modal">
   <div class="modal-box">
+    <form method="dialog" class="modal-close-form">
+      <button class="btn-control square" aria-label="close">✕</button>
+    </form>
     <h3 class="modal-title">Modal with Backdrop, No Click Away</h3>
     <div class="modal-body">
       <p>This modal can be closed by clicking the button below, and applies a backdrop to the page</p>
     </div>
     <div class="modal-action">
-      <form method="dialog">
-        <button class="btn-primary">Close Modal</button>
-      </form>
+      <button class="btn-primary" onclick="event.preventDefault()">CTA</button>
     </div>
   </div>
 </dialog>
