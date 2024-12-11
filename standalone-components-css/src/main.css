@@ -1,6 +1,7 @@
 @layer theme; 
 @import "./components/button.css";
-@import "./components//modal.css";
+@import "./components/modal.css";
+@import "./components/dropdown.css";
 
 @layer theme {
   :root {
@@ -87,6 +88,9 @@
     --surface-tertiary-hover-light: var(--tertiary-300); 
     --surface-tertiary-active: var(--tertiary-600); 
 
+    --surface-controls-dark: var(--neutral-400);   
+    --surface-controls-default: var(--neutral-200);
+
     --surface-inactive: var(--neutral-300); 
     --surface-success: var(--success-100); 
     --surface-error: var(--error-100); 
@@ -153,11 +157,49 @@
 
     --radius-btn: var(--radius-size-md); 
     --radius-modal: var(--radius-size-md);
+    --radius-dropdown-menu: var(--radius-size-none);
+    --radius-dropdown-summary: var(--radius-size-sm);
+
+    --text-size-xl2: 45px;
+    --line-height-xl2: 56px;
+    --text-size-xl1: 37px;
+    --line-height-xl1: 48px;
+    --text-size-l2: 30px;
+    --line-height-l2: 40px;
+    --text-size-l1: 24px;
+    --line-height-l1: 32px;
+    --text-size-m: 20px;
+    --line-height-m: 28px;
+    --text-size-body: 16px;
+    --line-height-body: 24px;
+    --text-size-s: 14px;
+    --line-height-s: 20px;
+    --text-size-xs: 13px;
+    --line-height-xs: 20px;
+
+    --text-size-mobile-xl2: 32px;
+    --line-height-mobile-xl2: 40px;
+    --text-size-mobile-xl1: 28px;
+    --line-height-mobile-xl1: 36px;
+    --text-size-mobile-l2: 24px;
+    --line-height-mobile-l2: 32px;
+    --text-size-mobile-l1: 21px;
+    --line-height-mobile-l1: 28px;
+    --text-size-mobile-m: 18px;
+    --line-height-mobile-m: 24px;
+    --text-size-mobile-body: 16px;
+    --line-height-mobile-body: 24px;
+    --text-size-mobile-s: 14px;
+    --line-height-mobile-s: 20px;
+    --text-size-mobile-xs: 13px;
+    --line-height-mobile-xs: 20px;
 
     --animation-btn: 0.1s;
     --btn-hover-scale: 0.98;
     --site-corners: 0.75rem;
+
     --btn-border: 0px;
+    --dropdown-border: 0px;
 
     --modal-backdrop-color: rgba(0, 0, 0, 0.3);
     --modal-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
@@ -173,5 +215,22 @@
     --modal-max-height: calc(100vh - 5rem);
     --modal-mobile-max-height: calc(100vh - 2rem);
     --modal-action-gap: 0.5rem;
+    
+
+        /* Dropdown Layout */
+    --dropdown-width: 16rem;
+    --dropdown-gap: 0.25rem;
+    --dropdown-padding-y: 0.5rem;
+    --dropdown-padding-x: 1rem;
+    --dropdown-menu-padding-y: 0.25rem;
+    --dropdown-menu-margin-top: 0.25rem;
+    --dropdown-border-width-default: 1px;
+    --dropdown-border-width-active: 2px;
+    --dropdown-max-items: 5;
+    --dropdown-item-height: 2.5rem; 
+    --dropdown-item-padding-y: 0.5rem;
+    --dropdown-search-height: 3rem;
+    --dropdown-menu-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+      0 4px 6px -2px rgba(0, 0, 0, 0.05);
   }
 }

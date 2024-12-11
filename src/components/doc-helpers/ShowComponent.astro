@@ -90,15 +90,15 @@ const componentId = Math.random().toString(36).substr(2, 9);
 const codeContent = await getFileContent(filePath);
 ---
 
-<div
-  class="not-content rounded-lg border border-zinc-200 dark:border-zinc-700 bg-zinc-100 dark:bg-zinc-900 shadow-sm transition-colors duration-200"
->
+<div class="not-content rounded-lg border border-zinc-700 shadow-sm">
   <div>
-    <div class="flex justify-between items-center">
+    <div
+      class="flex justify-between items-center bg-zinc-800 rounded-t-lg border-b border-zinc-700"
+    >
       <div class="flex">
         <button
           id={`previewTab-${componentId}`}
-          class="relative px-4 py-2 text-sm transition-all duration-200 ease-in-out border-0 rounded-tl-md hover:bg-zinc-50 dark:hover:bg-zinc-800"
+          class="relative px-4 py-2 text-sm text-gray-200 transition-all duration-200 ease-in-out border-0 rounded-tl-md"
           aria-selected="true"
           role="tab"
         >
@@ -106,7 +106,7 @@ const codeContent = await getFileContent(filePath);
         </button>
         <button
           id={`codeTab-${componentId}`}
-          class="relative px-4 py-2 text-sm transition-all duration-200 ease-in-out border-0 hover:bg-zinc-50 dark:hover:bg-zinc-800"
+          class="relative px-4 py-2 text-sm text-gray-400 transition-all duration-200 ease-in-out border-0"
           aria-selected="false"
           role="tab"
         >
@@ -115,7 +115,7 @@ const codeContent = await getFileContent(filePath);
       </div>
       <button
         id={`copyButton-${componentId}`}
-        class="px-4 py-2 text-sm text-gray-500 dark:text-gray-400 hover:text-accent-500 dark:hover:text-accent-400 flex items-center gap-1 transition-colors duration-200 cursor-pointer"
+        class="px-4 py-2 text-sm text-gray-400 hover:text-accent-400 flex items-center gap-1 transition-colors duration-200 cursor-pointer"
         aria-label="Copy code to clipboard"
       >
         <svg
@@ -137,126 +137,114 @@ const codeContent = await getFileContent(filePath);
       </button>
     </div>
 
-    <div class="p-4">
-      <div id={`previewPanel-${componentId}`} class="tab-panel" role="tabpanel">
-        <slot />
-      </div>
-      <div
-        id={`codePanel-${componentId}`}
-        class="tab-panel hidden"
-        role="tabpanel"
-      >
-        <div class="sl-markdown-content prose dark:prose-invert max-w-none">
-          <Fragment set:html={codeContent.trim()} />
-        </div>
+    <div
+      id={`previewPanel-${componentId}`}
+      class="bg-zinc-100 p-4 rounded-b-lg"
+      role="tabpanel"
+    >
+      <slot />
+    </div>
+    <div
+      id={`codePanel-${componentId}`}
+      class="bg-zinc-900 p-4 hidden rounded-b-lg"
+      role="tabpanel"
+    >
+      <div class="sl-markdown-content prose dark:prose-invert max-w-none">
+        <Fragment set:html={codeContent.trim()} />
       </div>
     </div>
   </div>
+</div>
 
-  <script define:vars={{ componentId }}>
-    function setupTabs() {
-      const previewTab = document.getElementById(`previewTab-${componentId}`);
-      const codeTab = document.getElementById(`codeTab-${componentId}`);
-      const previewPanel = document.getElementById(
-        `previewPanel-${componentId}`
+<script define:vars={{ componentId }}>
+  function setupTabs() {
+    const previewTab = document.getElementById(`previewTab-${componentId}`);
+    const codeTab = document.getElementById(`codeTab-${componentId}`);
+    const previewPanel = document.getElementById(`previewPanel-${componentId}`);
+    const codePanel = document.getElementById(`codePanel-${componentId}`);
+
+    if (!previewTab || !codeTab || !previewPanel || !codePanel) return;
+
+    const switchTab = (selectedTab, otherTab, selectedPanel, otherPanel) => {
+      selectedTab.setAttribute("aria-selected", "true");
+      selectedTab.classList.add(
+        "border-accent-500",
+        "text-accent-500",
+        "font-bold",
+        "border-b-2"
       );
-      const codePanel = document.getElementById(`codePanel-${componentId}`);
+      selectedTab.classList.remove(
+        "text-gray-400",
+        "border-transparent",
+        "font-normal"
+      );
 
-      if (!previewTab || !codeTab || !previewPanel || !codePanel) return;
+      otherTab.setAttribute("aria-selected", "false");
+      otherTab.classList.remove(
+        "border-accent-500",
+        "text-accent-500",
+        "font-bold",
+        "border-b-2"
+      );
+      otherTab.classList.add(
+        "text-gray-400",
+        "border-transparent",
+        "font-normal"
+      );
 
-      const switchTab = (selectedTab, otherTab, selectedPanel, otherPanel) => {
-        selectedTab.setAttribute("aria-selected", "true");
-        selectedTab.classList.add(
-          "border-accent-500",
-          "text-accent-500",
-          "font-bold",
-          "bg-white/5",
-          "hover:bg-white/10",
-          "border-b-2"
-        );
-        selectedTab.classList.remove(
-          "text-gray-500",
-          "dark:text-gray-400",
-          "border-transparent",
-          "font-normal",
-          "hover:bg-zinc-50",
-          "dark:hover:bg-zinc-800"
-        );
+      selectedPanel.classList.remove("hidden");
+      otherPanel.classList.add("hidden");
+    };
 
-        otherTab.setAttribute("aria-selected", "false");
-        otherTab.classList.remove(
-          "border-accent-500",
-          "text-accent-500",
-          "font-bold",
-          "bg-white/5",
-          "border-b-2"
-        );
-        otherTab.classList.add(
-          "text-gray-500",
-          "dark:text-gray-400",
-          "border-transparent",
-          "font-normal",
-          "hover:bg-zinc-50",
-          "dark:hover:bg-zinc-800"
-        );
+    switchTab(previewTab, codeTab, previewPanel, codePanel);
 
-        selectedPanel.classList.remove("hidden");
-        otherPanel.classList.add("hidden");
-      };
-
+    previewTab.addEventListener("click", () => {
       switchTab(previewTab, codeTab, previewPanel, codePanel);
+    });
 
-      previewTab.addEventListener("click", () => {
-        switchTab(previewTab, codeTab, previewPanel, codePanel);
-      });
+    codeTab.addEventListener("click", () => {
+      switchTab(codeTab, previewTab, codePanel, previewPanel);
+    });
+  }
 
-      codeTab.addEventListener("click", () => {
-        switchTab(codeTab, previewTab, codePanel, previewPanel);
-      });
-    }
+  function setupCopyButton() {
+    const copyButton = document.getElementById(`copyButton-${componentId}`);
+    if (!copyButton || copyButton.dataset.initialized) return;
 
-    function setupCopyButton() {
-      const copyButton = document.getElementById(`copyButton-${componentId}`);
-      if (!copyButton || copyButton.dataset.initialized) return;
+    copyButton.dataset.initialized = "true";
 
-      copyButton.dataset.initialized = "true";
+    copyButton.addEventListener("click", async () => {
+      const codePanel = document.getElementById(`codePanel-${componentId}`);
+      if (!codePanel) return;
 
-      copyButton.addEventListener("click", async () => {
-        const codePanel = document.getElementById(`codePanel-${componentId}`);
-        if (!codePanel) return;
+      try {
+        const preElement = codePanel.querySelector("pre");
+        const codeText = preElement ? preElement.textContent : "";
 
-        try {
-          const preElement = codePanel.querySelector("pre");
-          const codeText = preElement ? preElement.textContent : "";
+        await navigator.clipboard.writeText(codeText);
 
-          await navigator.clipboard.writeText(codeText);
-
-          const originalContent = copyButton.innerHTML;
-          copyButton.innerHTML = `
+        const originalContent = copyButton.innerHTML;
+        copyButton.innerHTML = `
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="check-icon" viewBox="0 0 16 16">
           <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
         </svg>
         <span>Copied!</span>
       `;
-          copyButton.classList.add("text-green-500", "dark:text-green-400");
+        copyButton.classList.add("text-green-500", "dark:text-green-400");
 
-          setTimeout(() => {
-            copyButton.innerHTML = originalContent;
-            copyButton.classList.remove(
-              "text-green-500",
-              "dark:text-green-400"
-            );
-          }, 2000);
-        } catch (err) {
-          console.error("Failed to copy text: ", err);
-        }
-      });
-    }
+        setTimeout(() => {
+          copyButton.innerHTML = originalContent;
+          copyButton.classList.remove("text-green-500", "dark:text-green-400");
+        }, 2000);
+      } catch (err) {
+        console.error("Failed to copy text: ", err);
+      }
+    });
+  }
 
-    setupTabs();
-    setupCopyButton();
-  </script>
-</div>
+  setupTabs();
+  setupCopyButton();
+</script>
 
 <style is:global>
   .dark-theme pre,
