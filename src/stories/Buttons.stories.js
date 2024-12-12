@@ -1,5 +1,3 @@
-// import '../tailwind.css'
-
 import PrimaryButton from '../components/buttons/PrimaryButton.html';
 import SecondaryButton from '../components/buttons/SecondaryButton.html';
 import TertiaryButton from '../components/buttons/TertiaryButton.html';
