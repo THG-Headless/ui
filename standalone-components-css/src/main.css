@@ -159,6 +159,7 @@
     --radius-modal: var(--radius-size-md);
     --radius-dropdown-menu: var(--radius-size-none);
     --radius-dropdown-summary: var(--radius-size-sm);
+    --radius-scrollbar: var(--radius-size-none);
 
     --text-size-xl2: 45px;
     --line-height-xl2: 56px;
