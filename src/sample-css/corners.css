@@ -8,6 +8,9 @@
   --radius-size-full: 9999px;
 
   /* Semantic radii */
-  --radius-button: var(--radius-size-md); /* Standard button radius */
+  --radius-btn: var(--radius-size-md); /* Standard button radius */
   --radius-modal: var(--radius-size-md); /* Modal / Dialogue radius */
+  --radius-dropdown-menu: var(--radius-size-none); /* Dropdown menu radius */
+  --radius-dropdown-summary: var(--radius-size-sm); /* Dropdown summary radius */
+  --radius-scrollbar: var(--radius-size-none); /* Scroll bar thumb radius */
 }
