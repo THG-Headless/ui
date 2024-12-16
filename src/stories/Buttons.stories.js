@@ -1,26 +1,25 @@
-import PrimaryButton from '../components/buttons/PrimaryButton.html';
-import SecondaryButton from '../components/buttons/SecondaryButton.html';
-import TertiaryButton from '../components/buttons/TertiaryButton.html';
-import StatusButtons from '../components/buttons/StatusButtons.html';
+import PrimaryButton from "../components/buttons/PrimaryButton.html";
+import SecondaryButton from "../components/buttons/SecondaryButton.html";
+import TertiaryButton from "../components/buttons/TertiaryButton.html";
+import StatusButtons from "../components/buttons/StatusButtons.html";
 
 export default {
-  title: 'Buttons',
+  title: "Buttons",
   parameters: {
     a11y: {
-      config: {
-      },
+      config: {},
     },
   },
 };
 
 export const Primary = () => PrimaryButton;
-Primary.storyName = 'Primary Button';
+Primary.storyName = "Primary Button";
 
 export const Secondary = () => SecondaryButton;
-Secondary.storyName = 'Secondary Button';
+Secondary.storyName = "Secondary Button";
 
 export const Tertiary = () => TertiaryButton;
-Tertiary.storyName = 'Tertiary Button';
+Tertiary.storyName = "Tertiary Button";
 
 export const Status = () => StatusButtons;
-Status.storyName = 'Status Buttons';
+Status.storyName = "Status Buttons";

@@ -1,6 +1,6 @@
 /** @type { import('@storybook/html').Preview } */
 
-import '../src/tailwind.css'
+import "../src/tailwind.css";
 
 const preview = {
   parameters: {

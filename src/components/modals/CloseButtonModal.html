@@ -1,0 +1,28 @@
+<button
+  class="btn-secondary"
+  onclick="closeButtonModal.showModal()"
+  aria-haspopup="dialog"
+  aria-controls="closeButtonModal"
+>
+  Open Modal with Close Button
+</button>
+
+<dialog
+  id="closeButtonModal"
+  class="modal"
+  role="dialog"
+  aria-modal="true"
+  aria-label="Close Button Modal"
+>
+  <div class="modal-box">
+    <form method="dialog" class="modal-control-bar">
+      <button class="modal-close-button" aria-label="Close modal">
+        <span>Close</span>
+        <span aria-hidden="true">✕</span>
+      </button>
+    </form>
+    <div id="close-button-modal-content">
+      Click the close button or press ESC to close
+    </div>
+  </div>
+</dialog>

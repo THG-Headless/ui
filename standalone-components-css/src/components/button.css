@@ -9,6 +9,10 @@
   [class^="btn-"]:hover {
     scale: var(--btn-hover-scale);
   }
+  [class^="btn-"].full-width {
+    width: 100%;
+    display: block;
+  }
   .btn-primary {
     background-color: var(--surface-primary-default);
     color: var(--text-white);
