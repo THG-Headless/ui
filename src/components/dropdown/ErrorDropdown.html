@@ -2,13 +2,19 @@
   class="dropdown-wrapper dropdown-error"
   role="region"
   aria-description="Dropdown selection component with a list of options"
+  aria-expanded="false"
 >
   <label id="error-dropdown-label" class="dropdown-label">Label</label>
-  <details class="dropdown">
-    <summary class="dropdown-summary" aria-invalid="true">
+  <details class="dropdown" aria-labelledby="error-dropdown-label">
+    <summary
+      class="dropdown-summary"
+      aria-invalid="true"
+      aria-labelledby="error-dropdown-label"
+      aria-describedby="error-dropdown-message"
+      aria-expanded="false"
+    >
       <div class="dropdown-summary-content">
         <svg
-          xmlns="http://www.w3.org/2000/svg"
           class="dropdown-icon"
           viewBox="0 0 20 20"
           fill="currentColor"
@@ -27,7 +33,6 @@
           >Placeholder Text</span
         >
         <svg
-          xmlns="http://www.w3.org/2000/svg"
           class="dropdown-icon chevron"
           viewBox="0 0 20 20"
           fill="currentColor"
@@ -42,23 +47,34 @@
         </svg>
       </div>
     </summary>
-    <ul
-      id="error-dropdown-list"
-      class="menu dropdown-content"
-      role="listbox"
-      aria-labelledby="error-dropdown-label"
-    >
-      <li role="option" id="error-option-1" tabindex="0" aria-selected="false">
-        Item 1
-      </li>
-      <li role="option" id="error-option-2" tabindex="0" aria-selected="false">
-        Item 2
-      </li>
-    </ul>
+    <div class="dropdown-content-wrapper">
+      <ul
+        id="error-dropdown-list"
+        class="dropdown-list"
+        role="listbox"
+        aria-labelledby="error-dropdown-label"
+      >
+        <li
+          role="option"
+          id="error-option-1"
+          tabindex="0"
+          aria-selected="false"
+        >
+          Item 1
+        </li>
+        <li
+          role="option"
+          id="error-option-2"
+          tabindex="0"
+          aria-selected="false"
+        >
+          Item 2
+        </li>
+      </ul>
+    </div>
   </details>
   <p id="error-dropdown-message" class="dropdown-helper" aria-live="assertive">
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       class="dropdown-icon"
       viewBox="0 0 20 20"
       fill="currentColor"

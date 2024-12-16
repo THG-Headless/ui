@@ -2,13 +2,18 @@
   class="dropdown-wrapper"
   role="region"
   aria-description="Searchable dropdown selection component with a list of options"
+  aria-expanded="false"
 >
   <label id="search-dropdown-label" class="dropdown-label">Label</label>
-  <details class="dropdown">
-    <summary class="dropdown-summary">
+  <details class="dropdown" aria-labelledby="search-dropdown-label">
+    <summary
+      class="dropdown-summary"
+      aria-labelledby="search-dropdown-label"
+      aria-describedby="helper-text"
+      aria-expanded="false"
+    >
       <div class="dropdown-summary-content">
         <svg
-          xmlns="http://www.w3.org/2000/svg"
           class="dropdown-icon"
           viewBox="0 0 20 20"
           fill="currentColor"
@@ -25,7 +30,6 @@
           >Placeholder Text</span
         >
         <svg
-          xmlns="http://www.w3.org/2000/svg"
           class="dropdown-icon chevron"
           viewBox="0 0 20 20"
           fill="currentColor"
@@ -40,16 +44,11 @@
         </svg>
       </div>
     </summary>
-    <div
-      class="dropdown-content search-dropdown-content"
-      role="listbox"
-      aria-labelledby="search-dropdown-label"
-    >
+    <div class="dropdown-content-wrapper">
       <div class="search-wrapper">
         <label for="dropdown-search" class="sr-only">Search options</label>
         <div class="search-input-wrapper">
           <svg
-            xmlns="http://www.w3.org/2000/svg"
             class="search-icon"
             viewBox="0 0 20 20"
             fill="currentColor"
@@ -71,7 +70,12 @@
           />
         </div>
       </div>
-      <ul id="search-dropdown-list" class="dropdown-list" role="presentation">
+      <ul
+        id="search-dropdown-list"
+        class="dropdown-list"
+        role="listbox"
+        aria-labelledby="search-dropdown-label"
+      >
         <li
           role="option"
           id="search-option-1"

@@ -2,13 +2,18 @@
   class="dropdown-wrapper"
   role="region"
   aria-description="Dropdown selection component with a list of options"
+  aria-expanded="false"
 >
   <label id="dropdown-label" class="dropdown-label">Label</label>
-  <details class="dropdown">
-    <summary class="dropdown-summary">
+  <details class="dropdown" aria-labelledby="dropdown-label">
+    <summary
+      class="dropdown-summary"
+      aria-labelledby="dropdown-label"
+      aria-describedby="helper-text"
+      aria-expanded="false"
+    >
       <div class="dropdown-summary-content">
         <svg
-          xmlns="http://www.w3.org/2000/svg"
           class="dropdown-icon"
           viewBox="0 0 20 20"
           fill="currentColor"
@@ -40,37 +45,40 @@
         </svg>
       </div>
     </summary>
-    <ul
-      id="dropdown-list"
-      class="menu dropdown-content"
-      role="listbox"
-      aria-labelledby="dropdown-label"
-    >
-      <li role="option" id="option-1" tabindex="0" aria-selected="false">
-        Item 1
-      </li>
-      <li role="option" id="option-2" tabindex="0" aria-selected="false">
-        Item 2
-      </li>
-      <li role="option" id="option-3" tabindex="0" aria-selected="false">
-        Item 3
-      </li>
-      <li role="option" id="option-4" tabindex="0" aria-selected="false">
-        Item 4
-      </li>
-      <li role="option" id="option-5" tabindex="0" aria-selected="false">
-        Item 5
-      </li>
-      <li role="option" id="option-6" tabindex="0" aria-selected="false">
-        Item 6
-      </li>
-      <li role="option" id="option-7" tabindex="0" aria-selected="false">
-        Item 7
-      </li>
-      <li role="option" id="option-8" tabindex="0" aria-selected="false">
-        Item 8
-      </li>
-    </ul>
+
+    <div class="dropdown-content-wrapper">
+      <ul
+        id="dropdown-list"
+        class="dropdown-list"
+        role="listbox"
+        aria-labelledby="dropdown-label"
+      >
+        <li role="option" id="option-1" tabindex="0" aria-selected="false">
+          Item 1
+        </li>
+        <li role="option" id="option-2" tabindex="0" aria-selected="false">
+          Item 2
+        </li>
+        <li role="option" id="option-3" tabindex="0" aria-selected="false">
+          Item 3
+        </li>
+        <li role="option" id="option-4" tabindex="0" aria-selected="false">
+          Item 4
+        </li>
+        <li role="option" id="option-5" tabindex="0" aria-selected="false">
+          Item 5
+        </li>
+        <li role="option" id="option-6" tabindex="0" aria-selected="false">
+          Item 6
+        </li>
+        <li role="option" id="option-7" tabindex="0" aria-selected="false">
+          Item 7
+        </li>
+        <li role="option" id="option-8" tabindex="0" aria-selected="false">
+          Item 8
+        </li>
+      </ul>
+    </div>
   </details>
   <p id="helper-text" class="dropdown-helper" aria-live="polite">Helper Text</p>
 </div>

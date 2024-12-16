@@ -145,9 +145,6 @@
     --radius-size-full: 9999px;
 
     --radius-btn: var(--radius-size-md);
-    --radius-dropdown-menu: var(--radius-size-none);
-    --radius-dropdown-summary: var(--radius-size-sm);
-    --radius-scrollbar: var(--radius-size-none);
 
     --text-size-desktop-xl2: 45px;
     --line-height-desktop-xl2: 56px;
@@ -237,52 +234,6 @@
     --site-corners: 0.75rem;
 
     --btn-border: 0px;
-    --dropdown-border: 0px;
-
-    --modal-backdrop-color: rgba(0, 0, 0, 0.3);
-    --modal-text-color: var(--text-black);
-    --modal-text-title-color: var(--text-high-emphasis);
-    --modal-text-body-color: var(--text-medium-emphasis);
-    --modal-text-action-color: var(--text-primary-default);
-    --modal-text-action-hover-color: var(--text-primary-hover-light);
-    --modal-surface: var(--surface-cards);
-    --modal-backdrop-blur: 4px;
-    --modal-text-title-size: var(--text-size-md);
-    --modal-text-title-line-height: var(--line-height-md);
-    --modal-text-body-size: var(--text-size-body);
-    --modal-text-body-line-height: var(--line-height-body);
-    --modal-text-action-size: var(--text-size-body);
-    --modal-text-action-line-height: var(--line-height-body);
-    --modal-text-close-button-size: var(--text-size-md);
-    --modal-text-close-button-line-height: var(--line-height-md);
-    --modal-width-min: 320px;
-    --modal-margin: 2rem;
-    --modal-padding: 2rem;
-    --modal-mobile-padding: 1rem;
-    --modal-mobile-margin: 0rem;
-    --modal-hero-width: 18rem;
-    --modal-box-scale: 0.95;
-    --modal-action-gap: 0.5rem;
-    --modal-mobile-hero-height: 150px;
-    --modal-mobile-slide-up-max-height: 90vh;
-    --modal-animation-speed: var(--animation-speed-slow);
-    --modal-radius: var(--radius-size-none);
-    --modal-shadow: var(--shadow-2xl);
-    --modal-shadow-mobile: var(--shadow-2xl);
-
-    --dropdown-width: 16rem;
-    --dropdown-gap: 0.25rem;
-    --dropdown-padding-y: 0.5rem;
-    --dropdown-padding-x: 1rem;
-    --dropdown-menu-padding-y: 0.25rem;
-    --dropdown-menu-margin-top: 0.25rem;
-    --dropdown-border-width-default: 1px;
-    --dropdown-border-width-active: 2px;
-    --dropdown-max-items: 5;
-    --dropdown-item-height: 2.5rem;
-    --dropdown-item-padding-y: 0.5rem;
-    --dropdown-search-height: 3rem;
-    --dropdown-menu-shadow: var(--shadow-md);
   }
 
   @media (min-width: 640px) {

@@ -2,13 +2,23 @@
   class="dropdown-wrapper dropdown-inactive"
   role="region"
   aria-description="Dropdown selection component with a list of options"
+  aria-expanded="false"
 >
   <label id="inactive-dropdown-label" class="dropdown-label">Label</label>
-  <details class="dropdown" aria-disabled="true" inert>
-    <summary class="dropdown-summary" aria-disabled="true" disabled>
+  <details
+    class="dropdown"
+    aria-disabled="true"
+    aria-labelledby="inactive-dropdown-label"
+  >
+    <summary
+      class="dropdown-summary"
+      aria-disabled="true"
+      aria-labelledby="inactive-dropdown-label"
+      aria-describedby="helper-text"
+      aria-expanded="false"
+    >
       <div class="dropdown-summary-content">
         <svg
-          xmlns="http://www.w3.org/2000/svg"
           class="dropdown-icon"
           viewBox="0 0 20 20"
           fill="currentColor"
@@ -21,13 +31,8 @@
             clip-rule="evenodd"
           />
         </svg>
-        <span
-          id="selected-value"
-          aria-describedby="inactive-dropdown-label helper-text"
-          >Placeholder Text</span
-        >
+        <span id="selected-value">Placeholder Text</span>
         <svg
-          xmlns="http://www.w3.org/2000/svg"
           class="dropdown-icon chevron"
           viewBox="0 0 20 20"
           fill="currentColor"
@@ -42,31 +47,38 @@
         </svg>
       </div>
     </summary>
-    <ul
-      id="inactive-dropdown-list"
-      class="menu dropdown-content"
-      role="listbox"
-      aria-labelledby="inactive-dropdown-label"
-    >
-      <li
-        role="option"
-        id="inactive-option-1"
-        aria-selected="false"
-        aria-disabled="true"
+    <div class="dropdown-content-wrapper">
+      <ul
+        id="inactive-dropdown-list"
+        class="dropdown-list"
+        role="listbox"
+        aria-labelledby="inactive-dropdown-label"
       >
-        Item 1
-      </li>
-      <li
-        role="option"
-        id="inactive-option-2"
-        aria-selected="false"
-        aria-disabled="true"
-      >
-        Item 2
-      </li>
-    </ul>
+        <li
+          role="option"
+          id="inactive-option-1"
+          aria-selected="false"
+          aria-disabled="true"
+        >
+          Item 1
+        </li>
+        <li
+          role="option"
+          id="inactive-option-2"
+          aria-selected="false"
+          aria-disabled="true"
+        >
+          Item 2
+        </li>
+      </ul>
+    </div>
   </details>
-  <p id="helper-text" aria-disabled="true" class="dropdown-helper">
+  <p
+    id="helper-text"
+    aria-disabled="true"
+    class="dropdown-helper"
+    aria-live="polite"
+  >
     This dropdown is currently disabled
   </p>
 </div>
