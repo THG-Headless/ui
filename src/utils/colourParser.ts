@@ -29,7 +29,6 @@ export function parseColourScheme(cssContent: string) {
     icons: { name: "Icon Colours", colours: [] },
   };
 
-  // Updated regex to only match comments on the same line
   const lines = cssContent.split("\n");
   const variableRegex = /^\s*(--.+?):\s*(.+?);(?:\s*\/\*([^*]+?)\*\/)?$/;
 
@@ -43,7 +42,6 @@ export function parseColourScheme(cssContent: string) {
         description: description?.trim(),
       };
 
-      // Categorize the variable
       if (name.startsWith("--primary-")) {
         primitiveColours.primary.colours.push(colourVar);
       } else if (name.startsWith("--secondary-")) {

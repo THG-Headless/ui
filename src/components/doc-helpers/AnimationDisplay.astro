@@ -1,5 +1,4 @@
 ---
-// src/components/doc-helpers/AnimationDisplay.astro
 import "../../tailwind.css";
 import fs from "node:fs";
 import path from "node:path";
@@ -13,7 +12,7 @@ const animationVariables = parseAnimationScheme(cssContent);
 
 <script>
   function startAnimations() {
-    const bars = document.querySelectorAll(".progress-bar");
+    const bars = document.querySelectorAll<HTMLElement>(".progress-bar");
     const maxDuration = Math.max(
       ...Array.from(bars).map((bar) =>
         parseFloat(bar.getAttribute("data-duration") || "0")
@@ -57,9 +56,9 @@ const animationVariables = parseAnimationScheme(cssContent);
               {variable.name}
             </div>
             <div class="col-span-2">
-              <div class="w-full bg-gray-200 rounded-full h-2.5">
+              <div class="w-full bg-gray-400 rounded-full h-2.5">
                 <div
-                  class="progress-bar h-2.5 rounded-full bg-black"
+                  class="progress-bar h-2.5 rounded-full bg-blue-500"
                   style="width: 0%;"
                   data-duration={variable.value.replace("s", "")}
                 />
