@@ -237,7 +237,6 @@
       object-fit: cover;
     }
 
-    /* Content container */
     .modal-box--with-hero > div:last-child {
       padding: var(--modal-mobile-padding);
     }
