@@ -1,5 +1,3 @@
-// utils/colourParser.ts
-
 interface ColourVariable {
   name: string;
   value: string;

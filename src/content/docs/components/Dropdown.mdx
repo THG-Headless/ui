@@ -49,50 +49,70 @@ The Search Dropdown extends the basic dropdown functionality with a search input
 
 The dropdown system can be customized using CSS variables:
 
+### Colors and Styling
+
+| Variable                              | Default Value                     | Description                           |
+| ------------------------------------- | --------------------------------- | ------------------------------------- |
+| `--dropdown-text-color`               | `var(--text-black)`               | Main text color for the dropdown      |
+| `--dropdown-text-label-color`         | `var(--text-high-emphasis)`       | Color of the dropdown label           |
+| `--dropdown-text-summary-color`       | `var(--text-high-emphasis)`       | Color of the dropdown summary text    |
+| `--dropdown-text-helper-color`        | `var(--text-high-emphasis)`       | Color of the helper text              |
+| `--dropdown-text-option-color`        | `var(--text-high-emphasis)`       | Color of the dropdown options         |
+| `--dropdown-text-inactive-color`      | `var(--text-inactive)`            | Color for inactive dropdown text      |
+| `--dropdown-text-error-color`         | `var(--text-error)`               | Color for error text                  |
+| `--dropdown-surface`                  | `var(--surface-white)`            | Background color of the dropdown      |
+| `--dropdown-surface-controls-default` | `var(--surface-controls-default)` | Default background color for controls |
+| `--dropdown-surface-controls-dark`    | `var(--surface-controls-dark)`    | Dark background color for controls    |
+| `--dropdown-surface-hover`            | `var(--surface-primary-lightest)` | Background color on hover             |
+| `--dropdown-border-color`             | `var(--border-controls)`          | Border color for the dropdown         |
+| `--dropdown-border-color-hover`       | `var(--border-primary)`           | Border color on hover                 |
+| `--dropdown-border-color-active`      | `var(--border-primary)`           | Border color when active              |
+| `--dropdown-border-color-error`       | `var(--border-error)`             | Border color for error state          |
+| `--dropdown-icon-color`               | `var(--icons-black)`              | Color of the dropdown icons           |
+| `--dropdown-icon-error-color`         | `var(--icons-error)`              | Color of the error icon               |
+
+### Typography
+
+| Variable                              | Default Value                  | Description                         |
+| ------------------------------------- | ------------------------------ | ----------------------------------- |
+| `--dropdown-text-label-size`          | `var(--text-size-body)`        | Font size of the dropdown label     |
+| `--dropdown-text-label-line-height`   | `var(--line-height-body)`      | Line height of the dropdown label   |
+| `--dropdown-text-summary-size`        | `var(--text-size-body)`        | Font size of the dropdown summary   |
+| `--dropdown-text-summary-line-height` | `var(--line-height-body)`      | Line height of the dropdown summary |
+| `--dropdown-text-helper-size`         | `var(--text-size-sm)`          | Font size of the helper text        |
+| `--dropdown-text-helper-line-height`  | `var(--line-height-sm)`        | Line height of the helper text      |
+| `--dropdown-text-option-size`         | `var(--text-size-body)`        | Font size of the dropdown options   |
+| `--dropdown-text-option-line-height`  | `var(--line-height-body)`      | Line height of the dropdown options |
+| `--dropdown-font-weight-label`        | `var(--font-weight-semi-bold)` | Font weight of the dropdown label   |
+| `--dropdown-font-weight-summary`      | `var(--font-weight-normal)`    | Font weight of the dropdown summary |
+| `--dropdown-font-weight-helper`       | `var(--font-weight-normal)`    | Font weight of the helper text      |
+| `--dropdown-font-weight-option`       | `var(--font-weight-normal)`    | Font weight of the dropdown options |
+
 ### Layout and Sizing
 
-| Variable                     | Default Value | Description                                                             |
-| ---------------------------- | ------------- | ----------------------------------------------------------------------- |
-| `--dropdown-width`           | `16rem`       | Width of the dropdown container                                         |
-| `--dropdown-gap`             | `0.25rem`     | Vertical spacing between main elements (label, button, and helper text) |
-| `--dropdown-padding-x`       | `1rem`        | Horizontal padding within the dropdown button and options               |
-| `--dropdown-padding-y`       | `0.5rem`      | Vertical padding within the dropdown button                             |
-| `--dropdown-menu-margin-top` | `0.25rem`     | Space between dropdown button and its popup menu when opened            |
-
-### Item Configuration
-
-| Variable                    | Default Value | Description                                             |
-| --------------------------- | ------------- | ------------------------------------------------------- |
-| `--dropdown-item-height`    | `2.5rem`      | Height of each dropdown option                          |
-| `--dropdown-item-padding-y` | `0.5rem`      | Vertical padding of individual dropdown options         |
-| `--dropdown-max-items`      | `5`           | Maximum number of visible items before scrolling begins |
-
-### Search Configuration
-
-| Variable                   | Default Value | Description                          |
-| -------------------------- | ------------- | ------------------------------------ |
-| `--dropdown-search-height` | `3rem`        | Height of the search input container |
-
-### Borders and Styling
-
-| Variable                          | Default Value        | Description                          |
-| --------------------------------- | -------------------- | ------------------------------------ |
-| `--dropdown-border-width-default` | `1px`                | Border width in default state        |
-| `--dropdown-border-width-active`  | `2px`                | Border width in hover/focus states   |
-| `--dropdown-border`               | `1px`                | Border width of the dropdown menu    |
-| `--radius-dropdown-menu`          | `--radius-size-none` | Border radius of the dropdown menu   |
-| `--radius-dropdown-summary`       | `--radius-size-sm`   | Border radius of the dropdown button |
-| `--dropdown-menu-shadow`          | `[complex shadow]`   | Shadow effect for the dropdown menu  |
+| Variable                          | Default Value             | Description                                |
+| --------------------------------- | ------------------------- | ------------------------------------------ |
+| `--dropdown-border-radius`        | `var(--radius-size-none)` | Border radius of the dropdown              |
+| `--dropdown-border`               | `0px`                     | Border width of the dropdown               |
+| `--dropdown-width`                | `16rem`                   | Width of the dropdown                      |
+| `--dropdown-gap`                  | `0.25rem`                 | Gap between dropdown elements              |
+| `--dropdown-padding-y`            | `0.5rem`                  | Vertical padding of the dropdown           |
+| `--dropdown-padding-x`            | `1rem`                    | Horizontal padding of the dropdown         |
+| `--dropdown-menu-margin-top`      | `0.25rem`                 | Top margin of the dropdown menu            |
+| `--dropdown-border-width-default` | `1px`                     | Default border width                       |
+| `--dropdown-border-width-active`  | `2px`                     | Border width when active                   |
+| `--dropdown-max-items`            | `5`                       | Maximum number of visible items            |
+| `--dropdown-item-height`          | `2.5rem`                  | Height of each dropdown item               |
+| `--dropdown-menu-shadow`          | `var(--shadow-md)`        | Shadow of the dropdown menu                |
+| `--dropdown-menu-padding-y`       | `0.5rem`                  | Vertical padding of the dropdown menu      |
+| `--dropdown-search-height`        | `3rem`                    | Height of the search input in the dropdown |
 
 ### Scrolling Behavior
 
 The dropdown uses a dynamic max-height calculation based on the following formula:
 
 ```css
-max-height: calc(
-  (var(--dropdown-item-height) * var(--dropdown-max-items)) +
-    (var(--dropdown-menu-padding-y) * 2)
-);
+max-height: calc((var(--dropdown-item-height) * var(--dropdown-max-items)));
 ```
 
 This ensures consistent height across all dropdown variants. When content exceeds this height, a scrollbar appears automatically. For the search dropdown, the formula is adjusted to account for the search input:
@@ -100,7 +120,7 @@ This ensures consistent height across all dropdown variants. When content exceed
 ```css
 max-height: calc(
   (var(--dropdown-item-height) * var(--dropdown-max-items)) +
-    (var(--dropdown-menu-padding-y) * 2) + var(--dropdown-search-height)
+    var(--dropdown-search-height)
 );
 ```
 
@@ -112,17 +132,18 @@ The dropdown components are built with accessibility in mind, using semantic HTM
 
 #### Structure and Labeling
 
-> Each dropdown is wrapped in a `region` with a clear description of its purpose
-> Every dropdown has a proper label that's connected to the component
-> The dropdown uses the native HTML `<details>` and `<summary>` elements for built-in keyboard support
+- Each dropdown is wrapped in a `region` with a clear description of its purpose
+- Every dropdown has a proper label that's connected to the component using `aria-labelledby`
+- The dropdown uses the native HTML `<details>` and `<summary>` elements for built-in keyboard support
+- `aria-describedby` is used to provide additional context where needed
 
 #### Keyboard Support
 
 The current implementation provides:
 
-> Space/Enter keys to open/close the dropdown (built-in with `<details>`)
-> Tab navigation between focusable elements
-> Focus indicators on interactive elements
+- Space/Enter keys to open/close the dropdown (built-in with `<details>`)
+- Tab navigation between focusable elements
+- Focus indicators on interactive elements
 
 #### Screen Reader Support
 
@@ -130,21 +151,22 @@ Each variant includes specific features for screen readers:
 
 **Basic Dropdown:**
 
-- [x] Clear labeling with `aria-describedby` to connect the selected value to its label
+- [x] Clear labeling with `aria-labelledby` to connect the dropdown to its label
+- [x] Additional context provided with `aria-describedby` for the summary element
 - [x] Helper text that updates through an `aria-live="polite"` region
 - [x] Options marked with `role="option"` and `aria-selected` states
+- [x] Expanded state indicated with `aria-expanded` on the wrapper and summary
 
 **Error Dropdown:**
 
 - [x] Error state indicated with `aria-invalid="true"`
 - [x] Error message announced through `aria-live="assertive"` for immediate attention
 - [x] Error icon hidden from screen readers with `aria-hidden="true"`
-- [x] Selected value connected to both label and error message via `aria-describedby`
+- [x] Summary element connected to both label and error message via `aria-labelledby` and `aria-describedby`
 
 **Inactive Dropdown:**
 
-- [x] Clearly marked as disabled using `aria-disabled="true"`
-- [x] Interaction prevented using the `inert` attribute
+- [x] Clearly marked as disabled using `aria-disabled="true"` on multiple elements
 - [x] Disabled state reflected in helper text
 - [x] All options marked with `aria-disabled="true"`
 
@@ -153,6 +175,7 @@ Each variant includes specific features for screen readers:
 - [x] Search input labeled with `sr-only` class for screen readers
 - [x] Search icon marked as decorative with `aria-hidden="true"`
 - [x] Results list maintains proper ARIA roles and states
+- [x] Search input connected to results list with `aria-controls`
 
 ### Required JavaScript Implementation
 
