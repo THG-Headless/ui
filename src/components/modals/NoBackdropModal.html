@@ -1,0 +1,22 @@
+<button
+  class="btn-secondary"
+  onclick="noBackdropModal.showModal()"
+  aria-haspopup="dialog"
+  aria-controls="noBackdropModal"
+>
+  Open Modal with no Backdrop
+</button>
+
+<dialog
+  id="noBackdropModal"
+  class="modal modal-disable-backdrop"
+  role="dialog"
+  aria-modal="true"
+  aria-label="No Backdrop Modal"
+>
+  <div class="modal-box">
+    <div id="no-backdrop-modal-content">
+      This modal can be closed with ESC key
+    </div>
+  </div>
+</dialog>

@@ -1,153 +1,142 @@
-@layer theme; 
+@layer theme;
 @import "./components/button.css";
 @import "./components/modal.css";
 @import "./components/dropdown.css";
 
 @layer theme {
   :root {
-    --primary-100: #E6E5EC;
-    --primary-200: #B4B3C6;
-    --primary-300: #5C5A83;
+    --primary-100: #e6e5ec;
+    --primary-200: #b4b3c6;
+    --primary-300: #5c5a83;
     --primary-400: #050241;
     --primary-500: #040134;
     --primary-600: #020120;
     --primary-700: #010010;
 
-    
-    --secondary-100: #E5F4FE;
-    --secondary-200: #A5DAFD;
-    --secondary-300: #4CB5FB;
-    --secondary-400: #017ACD;
-    --secondary-500: #0078C8;
-    --secondary-600: #004B7D;
+    --secondary-100: #e5f4fe;
+    --secondary-200: #a5dafd;
+    --secondary-300: #4cb5fb;
+    --secondary-400: #017acd;
+    --secondary-500: #0078c8;
+    --secondary-600: #004b7d;
     --secondary-700: #003457;
 
-    
-    --tertiary-100: #E3E5DE;
-    --tertiary-200: #C8CBBD;
-    --tertiary-300: #ADB19C;
-    --tertiary-400: #92987C;
+    --tertiary-100: #e3e5de;
+    --tertiary-200: #c8cbbd;
+    --tertiary-300: #adb19c;
+    --tertiary-400: #92987c;
     --tertiary-500: #747963;
-    --tertiary-600: #5E6250;
+    --tertiary-600: #5e6250;
     --tertiary-700: #414437;
 
-    
-    --neutral-100: #FFFFFF;
-    --neutral-200: #F2F2F2;
-    --neutral-300: #CCCCCC;
-    --neutral-400: #8C8C8C;
+    --neutral-100: #ffffff;
+    --neutral-200: #f2f2f2;
+    --neutral-300: #cccccc;
+    --neutral-400: #8c8c8c;
     --neutral-500: #666666;
     --neutral-600: #333333;
     --neutral-700: #000000;
 
-    
-    --attention-100: #E6F0F8;
-    --attention-400: #0065AD;
+    --attention-100: #e6f0f8;
+    --attention-400: #0065ad;
 
-    
-    --success-100: #E5F1EA;
+    --success-100: #e5f1ea;
     --success-400: #007831;
 
-    
-    --error-100: #FAE8E6;
-    --error-400: #C42C21;
+    --error-100: #fae8e6;
+    --error-400: #c42c21;
 
-    
-    --promotion: #FF0000;
+    --promotion: #ff0000;
 
-    
     --black: #000000;
     --white: #ffffff;
 
+    --surface-white: var(--white);
+    --surface-black: var(--black);
 
-    
+    --surface-primary-default: var(--primary-400);
+    --surface-primary-lightest: var(--primary-100);
+    --surface-primary-darkest: var(--primary-700);
+    --surface-primary-hover-dark: var(--primary-500);
+    --surface-primary-hover-light: var(--primary-300);
+    --surface-primary-active: var(--primary-600);
 
-    
-
-    --surface-white: var(--white); 
-    --surface-black: var(--black); 
-    
-    --surface-primary-default: var(--primary-400); 
-    --surface-primary-lightest: var(--primary-100); 
-    --surface-primary-darkest: var(--primary-700); 
-    --surface-primary-hover-dark: var(--primary-500); 
-    --surface-primary-hover-light: var(--primary-300); 
-    --surface-primary-active: var(--primary-600); 
-
-    --surface-secondary-default: var(--secondary-400); 
+    --surface-secondary-default: var(--secondary-400);
     --surface-secondary-lightest: var(--secondary-100);
-    --surface-secondary-darkest: var(--secondary-700); 
-    --surface-secondary-hover-dark: var(--secondary-500); 
-    --surface-secondary-hover-light: var(--secondary-300); 
-    --surface-secondary-active: var(--secondary-600); 
-    
-    --surface-tertiary-default: var(--tertiary-400); 
-    --surface-tertiary-lightest: var(--tertiary-100); 
-    --surface-tertiary-darkest: var(--tertiary-700); 
-    --surface-tertiary-hover-dark: var(--tertiary-500); 
-    --surface-tertiary-hover-light: var(--tertiary-300); 
-    --surface-tertiary-active: var(--tertiary-600); 
+    --surface-secondary-darkest: var(--secondary-700);
+    --surface-secondary-hover-dark: var(--secondary-500);
+    --surface-secondary-hover-light: var(--secondary-300);
+    --surface-secondary-active: var(--secondary-600);
 
-    --surface-controls-dark: var(--neutral-400);   
+    --surface-tertiary-default: var(--tertiary-400);
+    --surface-tertiary-lightest: var(--tertiary-100);
+    --surface-tertiary-darkest: var(--tertiary-700);
+    --surface-tertiary-hover-dark: var(--tertiary-500);
+    --surface-tertiary-hover-light: var(--tertiary-300);
+    --surface-tertiary-active: var(--tertiary-600);
+
+    --surface-controls-dark: var(--neutral-400);
     --surface-controls-default: var(--neutral-300);
 
-    --surface-inactive: var(--neutral-300); 
-    --surface-success: var(--success-100); 
-    --surface-error: var(--error-100); 
-    --surface-attention: var(--attention-100); 
-    --surface-cards: var(--neutral-200); 
-    --surface-promotion: var(--promotion); 
-    
-    --border-black: var(--black); 
-    --border-white: var(--white); 
-    --border-primary: var(--primary-400); 
-    --border-secondary: var(--secondary-400); 
-    --border-tertiary: var(--tertiary-400); 
-    --border-controls: var(--neutral-500); 
-    --border-error: var(--error-400); 
-    --border-success: var(--success-400); 
-    --border-attention: var(--attention-400); 
-    --border-inactive: var(--neutral-300); 
-    --border-promotion: var(--promotion); 
-    --border-cards: var(--neutral-300); 
+    --surface-inactive: var(--neutral-300);
+    --surface-success: var(--success-100);
+    --surface-error: var(--error-100);
+    --surface-attention: var(--attention-100);
+    --surface-cards: var(--neutral-200);
+    --surface-promotion: var(--promotion);
 
-    --text-high-emphasis: var(--neutral-600); 
-    --text-medium-emphasis: var(--neutral-500); 
-    --text-black: var(--black); 
+    --border-black: var(--black);
+    --border-white: var(--white);
+    --border-primary: var(--primary-400);
+    --border-secondary: var(--secondary-400);
+    --border-tertiary: var(--tertiary-400);
+    --border-controls: var(--neutral-500);
+    --border-error: var(--error-400);
+    --border-success: var(--success-400);
+    --border-attention: var(--attention-400);
+    --border-inactive: var(--neutral-300);
+    --border-promotion: var(--promotion);
+    --border-cards: var(--neutral-300);
+
+    --text-high-emphasis: var(--neutral-600);
+    --text-medium-emphasis: var(--neutral-500);
+    --text-black: var(--black);
     --text-white: var(--white);
 
-    --text-primary-default: var(--primary-400); 
-    --text-primary-hover-dark: var(--primary-500); 
-    --text-primary-hover-light: var(--primary-300); 
-    --text-primary-active: var(--primary-600); 
+    --text-primary-default: var(--primary-400);
+    --text-primary-hover-dark: var(--primary-500);
+    --text-primary-hover-light: var(--primary-300);
+    --text-primary-active: var(--primary-600);
 
-    --text-secondary-default: var(--secondary-400); 
-    --text-secondary-hover-dark: var(--secondary-500); 
-    --text-secondary-hover-light: var(--secondary-300); 
-    --text-secondary-active: var(--secondary-600); 
+    --text-secondary-default: var(--secondary-400);
+    --text-secondary-hover-dark: var(--secondary-500);
+    --text-secondary-hover-light: var(--secondary-300);
+    --text-secondary-active: var(--secondary-600);
 
-    --text-tertiary-default: var(--tertiary-400); 
+    --text-tertiary-default: var(--tertiary-400);
     --text-tertiary-hover-dark: var(--tertiary-500);
     --text-tertiary-hover-light: var(--tertiary-300);
     --text-tertiary-active: var(--tertiary-600);
 
-    --text-inactive: var(--neutral-300); 
-    --text-success: var(--success-400); 
-    --text-error: var(--error-400); 
-    --text-attention: var(--attention-400); 
-    --text-promotion: var(--promotion); 
+    --text-inactive: var(--neutral-300);
+    --text-success: var(--success-400);
+    --text-error: var(--error-400);
+    --text-attention: var(--attention-400);
+    --text-promotion: var(--promotion);
 
-    --icons-black: var(--black); 
-    --icons-white: var(--white);  
-    --icons-primary: var(--primary-400);  
-    --icons-primary-darker: var(--primary-500);  
-    --icons-secondary: var(--secondary-400);  
-    --icons-secondary-darker: var(--secondary-500);  
-    --icons-tertiary: var(--tertiary-400);  
-    --icons-tertiary-darker: var(--tertiary-500);  
-    --icons-error: var(--error-400); 
-    --icons-success: var(--success-400); 
-    
+    --icons-black: var(--black);
+    --icons-white: var(--white);
+    --icons-primary: var(--primary-400);
+    --icons-primary-darker: var(--primary-500);
+    --icons-secondary: var(--secondary-400);
+    --icons-secondary-darker: var(--secondary-500);
+    --icons-tertiary: var(--tertiary-400);
+    --icons-tertiary-darker: var(--tertiary-500);
+    --icons-error: var(--error-400);
+    --icons-success: var(--success-400);
+
+    --mobile-breakpoint: 640px;
+
     --radius-size-none: 0px;
     --radius-size-sm: 4px;
     --radius-size-md: 8px;
@@ -155,28 +144,27 @@
     --radius-size-xl: 32px;
     --radius-size-full: 9999px;
 
-    --radius-btn: var(--radius-size-md); 
-    --radius-modal: var(--radius-size-md);
+    --radius-btn: var(--radius-size-md);
     --radius-dropdown-menu: var(--radius-size-none);
     --radius-dropdown-summary: var(--radius-size-sm);
     --radius-scrollbar: var(--radius-size-none);
 
-    --text-size-xl2: 45px;
-    --line-height-xl2: 56px;
-    --text-size-xl1: 37px;
-    --line-height-xl1: 48px;
-    --text-size-l2: 30px;
-    --line-height-l2: 40px;
-    --text-size-l1: 24px;
-    --line-height-l1: 32px;
-    --text-size-m: 20px;
-    --line-height-m: 28px;
-    --text-size-body: 16px;
-    --line-height-body: 24px;
-    --text-size-s: 14px;
-    --line-height-s: 20px;
-    --text-size-xs: 13px;
-    --line-height-xs: 20px;
+    --text-size-desktop-xl2: 45px;
+    --line-height-desktop-xl2: 56px;
+    --text-size-desktop-xl1: 37px;
+    --line-height-desktop-xl1: 48px;
+    --text-size-desktop-l2: 30px;
+    --line-height-desktop-l2: 40px;
+    --text-size-desktop-l1: 24px;
+    --line-height-desktop-l1: 32px;
+    --text-size-desktop-md: 20px;
+    --line-height-desktop-md: 28px;
+    --text-size-desktop-body: 16px;
+    --line-height-desktop-body: 24px;
+    --text-size-desktop-sm: 14px;
+    --line-height-desktop-sm: 20px;
+    --text-size-desktop-xs: 13px;
+    --line-height-desktop-xs: 20px;
 
     --text-size-mobile-xl2: 32px;
     --line-height-mobile-xl2: 40px;
@@ -186,14 +174,63 @@
     --line-height-mobile-l2: 32px;
     --text-size-mobile-l1: 21px;
     --line-height-mobile-l1: 28px;
-    --text-size-mobile-m: 18px;
-    --line-height-mobile-m: 24px;
+    --text-size-mobile-md: 18px;
+    --line-height-mobile-md: 24px;
     --text-size-mobile-body: 16px;
     --line-height-mobile-body: 24px;
-    --text-size-mobile-s: 14px;
-    --line-height-mobile-s: 20px;
+    --text-size-mobile-sm: 14px;
+    --line-height-mobile-sm: 20px;
     --text-size-mobile-xs: 13px;
     --line-height-mobile-xs: 20px;
+
+    --text-size-xl2: var(--text-size-mobile-xl2);
+    --line-height-xl2: var(--line-height-mobile-xl2);
+    --text-size-xl1: var(--text-size-mobile-xl1);
+    --line-height-xl1: var(--line-height-mobile-xl1);
+    --text-size-l2: var(--text-size-mobile-l2);
+    --line-height-l2: var(--line-height-mobile-l2);
+    --text-size-l1: var(--text-size-mobile-l1);
+    --line-height-l1: var(--line-height-mobile-l1);
+    --text-size-md: var(--text-size-mobile-md);
+    --line-height-md: var(--line-height-mobile-md);
+    --text-size-body: var(--text-size-mobile-body);
+    --line-height-body: var(--line-height-mobile-body);
+    --text-size-sm: var(--text-size-mobile-sm);
+    --line-height-sm: var(--line-height-mobile-sm);
+    --text-size-xs: var(--text-size-mobile-xs);
+    --line-height-xs: var(--line-height-mobile-xs);
+
+    --font-weight-thin: 100;
+    --font-weight-extra-light: 200;
+    --font-weight-light: 300;
+    --font-weight-normal: 400;
+    --font-weight-medium: 500;
+    --font-weight-semi-bold: 600;
+    --font-weight-bold: 700;
+    --font-weight-extra-bold: 800;
+    --font-weight-black: 900;
+
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05), 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+      0 2px 4px -1px rgba(0, 0, 0, 0.06), 0 2px 8px 0 rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+      0 4px 6px -2px rgba(0, 0, 0, 0.05), 0 4px 12px 0 rgba(0, 0, 0, 0.1);
+    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+      0 10px 10px -5px rgba(0, 0, 0, 0.04), 0 8px 16px 0 rgba(0, 0, 0, 0.1);
+    --shadow-2xl: 0 25px 30px -8px rgba(0, 0, 0, 0.2),
+      0 10px 15px -5px rgba(0, 0, 0, 0.15),
+      -12px 0 15px -5px rgba(0, 0, 0, 0.2), 12px 0 15px -5px rgba(0, 0, 0, 0.2),
+      0 0 20px 0 rgba(0, 0, 0, 0.25);
+
+    --shadow-inner: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06),
+      inset -1px 0 2px 0 rgba(0, 0, 0, 0.03),
+      inset 1px 0 2px 0 rgba(0, 0, 0, 0.03);
+    --shadow-none: none;
+
+    --animation-speed-none: 0s;
+    --animation-speed-quick: 0.1s;
+    --animation-speed-default: 0.2s;
+    --animation-speed-slow: 0.3s;
 
     --animation-btn: 0.1s;
     --btn-hover-scale: 0.98;
@@ -203,22 +240,36 @@
     --dropdown-border: 0px;
 
     --modal-backdrop-color: rgba(0, 0, 0, 0.3);
-    --modal-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-    --modal-width: 32rem;
-    --modal-padding: 1.5rem;
-    --modal-animation-duration: 0.3s;
+    --modal-text-color: var(--text-black);
+    --modal-text-title-color: var(--text-high-emphasis);
+    --modal-text-body-color: var(--text-medium-emphasis);
+    --modal-text-action-color: var(--text-primary-default);
+    --modal-text-action-hover-color: var(--text-primary-hover-light);
+    --modal-surface: var(--surface-cards);
     --modal-backdrop-blur: 4px;
-    --modal-title-size: 1.25rem;
-    --modal-title-weight: 600;
-    --modal-z-index: 1000;
-    --modal-mobile-margin: 1rem;
+    --modal-text-title-size: var(--text-size-md);
+    --modal-text-title-line-height: var(--line-height-md);
+    --modal-text-body-size: var(--text-size-body);
+    --modal-text-body-line-height: var(--line-height-body);
+    --modal-text-action-size: var(--text-size-body);
+    --modal-text-action-line-height: var(--line-height-body);
+    --modal-text-close-button-size: var(--text-size-md);
+    --modal-text-close-button-line-height: var(--line-height-md);
+    --modal-width-min: 320px;
+    --modal-margin: 2rem;
+    --modal-padding: 2rem;
+    --modal-mobile-padding: 1rem;
+    --modal-mobile-margin: 0rem;
+    --modal-hero-width: 18rem;
     --modal-box-scale: 0.95;
-    --modal-max-height: calc(100vh - 5rem);
-    --modal-mobile-max-height: calc(100vh - 2rem);
     --modal-action-gap: 0.5rem;
-    
+    --modal-mobile-hero-height: 150px;
+    --modal-mobile-slide-up-max-height: 90vh;
+    --modal-animation-speed: var(--animation-speed-slow);
+    --modal-radius: var(--radius-size-none);
+    --modal-shadow: var(--shadow-2xl);
+    --modal-shadow-mobile: var(--shadow-2xl);
 
-        /* Dropdown Layout */
     --dropdown-width: 16rem;
     --dropdown-gap: 0.25rem;
     --dropdown-padding-y: 0.5rem;
@@ -228,10 +279,30 @@
     --dropdown-border-width-default: 1px;
     --dropdown-border-width-active: 2px;
     --dropdown-max-items: 5;
-    --dropdown-item-height: 2.5rem; 
+    --dropdown-item-height: 2.5rem;
     --dropdown-item-padding-y: 0.5rem;
     --dropdown-search-height: 3rem;
-    --dropdown-menu-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
-      0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    --dropdown-menu-shadow: var(--shadow-md);
+  }
+
+  @media (min-width: 640px) {
+    :root {
+      --text-size-xl2: var(--text-size-desktop-xl2);
+      --line-height-xl2: var(--line-height-desktop-xl2);
+      --text-size-xl1: var(--text-size-desktop-xl1);
+      --line-height-xl1: var(--line-height-desktop-xl1);
+      --text-size-l2: var(--text-size-desktop-l2);
+      --line-height-l2: var(--line-height-desktop-l2);
+      --text-size-l1: var(--text-size-desktop-l1);
+      --line-height-l1: var(--line-height-desktop-l1);
+      --text-size-md: var(--text-size-desktop-md);
+      --line-height-md: var(--line-height-desktop-md);
+      --text-size-body: var(--text-size-desktop-body);
+      --line-height-body: var(--line-height-desktop-body);
+      --text-size-sm: var(--text-size-desktop-sm);
+      --line-height-sm: var(--line-height-desktop-sm);
+      --text-size-xs: var(--text-size-desktop-xs);
+      --line-height-xs: var(--line-height-desktop-xs);
+    }
   }
 }
