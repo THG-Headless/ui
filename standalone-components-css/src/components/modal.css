@@ -4,8 +4,6 @@
     --modal-text-color: var(--text-black);
     --modal-text-title-color: var(--text-high-emphasis);
     --modal-text-body-color: var(--text-medium-emphasis);
-    --modal-text-action-color: var(--text-primary-default);
-    --modal-text-action-hover-color: var(--text-primary-hover-light);
     --modal-surface: var(--surface-cards);
     --modal-backdrop-blur: 4px;
     --modal-text-title-size: var(--text-size-md);
@@ -14,8 +12,6 @@
     --modal-text-body-size: var(--text-size-body);
     --modal-text-body-weight: var(--font-weight-normal);
     --modal-text-body-line-height: var(--line-height-body);
-    --modal-text-action-size: var(--text-size-body);
-    --modal-text-action-line-height: var(--line-height-body);
     --modal-text-close-button-size: var(--text-size-md);
     --modal-text-close-button-weight: var(--font-weight-normal);
     --modal-text-close-button-line-height: var(--line-height-md);
@@ -26,7 +22,6 @@
     --modal-mobile-margin: 0rem;
     --modal-hero-width: 18rem;
     --modal-box-scale: 0.95;
-    --modal-action-gap: 0.5rem;
     --modal-mobile-hero-height: 150px;
     --modal-mobile-slide-up-max-height: 90vh;
     --modal-animation-speed: var(--animation-speed-slow);
@@ -150,29 +145,12 @@
     line-height: var(--modal-text-body-line-height);
     font-weight: var(--modal-text-body-weight);
     flex: 1;
-    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
   }
 
-  .modal-action {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: var(--modal-action-gap);
-    padding-top: 1.5rem;
-    color: var(--modal-text-action-color);
+  .modal-body:last-child {
+    padding-bottom: 0;
   }
-
-  .modal-action a {
-    font-size: var(--modal-text-action-size);
-    line-height: var(--modal-text-action-line-height);
-  }
-
-  .modal-action a:hover {
-    color: var(--modal-text-action-hover-color);
-    cursor: pointer;
-  }
-
   .modal-box--with-hero {
     display: flex;
     flex-direction: row;

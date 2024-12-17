@@ -10,7 +10,6 @@ import BackdropOnlyModal from "../../../components/modals/BackdropOnlyModal.html
 import NoBackdropModal from "../../../components/modals/NoBackdropModal.html";
 import CloseButtonModal from "../../../components/modals/CloseButtonModal.html";
 import ContentModal from "../../../components/modals/ContentModal.html";
-import ActionsModal from "../../../components/modals/ActionsModal.html";
 import HeroModal from "../../../components/modals/HeroModal.html";
 import ComplexModal from "../../../components/modals/ComplexModal.html";
 
@@ -123,24 +122,6 @@ To create a structured content layout, use the `modal-title` class for headings 
 | `--modal-text-body-line-height`  | `var(--line-height-body)`      | Line height for modal body text |
 | `--modal-text-body-line-weight`  | `var(--font-weight-normal)`    | Font weight for modal body      |
 | `--modal-text-body-color`        | `var(--text-medium-emphasis)`  | Color for modal body text       |
-
-### Action Buttons
-
-To add action buttons, include a `div` with the `modal-action` class after your content. This will centre the content and provide consistent spacing between buttons. Use the `full-width` class on the primary button to make it span the container width.
-
-<ShowComponent filePath="./src/components/modals/ActionsModal.html">
-  <ActionsModal />
-</ShowComponent>
-
-The action section is controlled by the following variables:
-
-| Variable                          | Default Value                     | Description                         |
-| --------------------------------- | --------------------------------- | ----------------------------------- |
-| `--modal-text-action-size`        | `var(--text-size-body)`           | Font size for call-to-action text   |
-| `--modal-text-action-line-height` | `var(--line-height-body)`         | Line height for call-to-action text |
-| `--modal-text-action-color`       | `var(--text-primary-default)`     | Color for call-to-action text       |
-| `--modal-text-action-hover-color` | `var(--text-primary-hover-light)` | Hover color for call-to-action text |
-| `--modal-action-gap`              | `0.5rem`                          | Spacing between action buttons      |
 
 ### Hero Image
 
