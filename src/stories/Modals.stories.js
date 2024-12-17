@@ -3,7 +3,6 @@ import BackdropModal from "../components/modals/BackdropOnlyModal.html";
 import NoBackdropModal from "../components/modals/NoBackdropModal.html";
 import CloseButtonModal from "../components/modals/CloseButtonModal.html";
 import ContentModal from "../components/modals/ContentModal.html";
-import ActionsModal from "../components/modals/ActionsModal.html";
 import HeroModal from "../components/modals/HeroModal.html";
 import ComplexModal from "../components/modals/ComplexModal.html";
 
@@ -34,9 +33,6 @@ CloseButton.storyName = "Close Button";
 
 export const Content = () => addOpenAttribute(ContentModal);
 Content.storyName = "Content Structure";
-
-export const Actions = () => addOpenAttribute(ActionsModal);
-Actions.storyName = "Action Buttons";
 
 export const Hero = () => addOpenAttribute(HeroModal);
 Hero.storyName = "Hero Image";
