@@ -6,8 +6,8 @@ sidebar:
 ---
 
 import ShowComponent from "../../../components/doc-helpers/ShowComponent.astro";
-import PrimaryButtonHighEmphasis from "../../../components/buttons/PrimaryButtonHighEmphasis.html";
-import PrimaryButtonCustom from "../../../doc-helpers//PrimaryButtonCustom.html";
+import PrimaryButton from "../../../components/doc-helpers/PrimaryButton.html";
+import PrimaryButtonCustom from "../../../components/doc-helpers/PrimaryButtonCustom.html";
 
 ## Steps
 
@@ -33,12 +33,12 @@ import "@thg-altitude/standalone-components-css";
 
 This documentation provides examples of components that make use of these custom css classes. To create a component, such as a [button](/components/button), simply copy the provided code example into your codebase. This approach allows you to use this as a starting point, and build any additional functionality you may need ontop of this component, giving you full control over its appearance and functionality.
 
-<ShowComponent filePath="./src/components/buttons/PrimaryButtonHighEmphasis.html">
-  <PrimaryButtonHighEmphasis />
+<ShowComponent filePath="./src/components/doc-helpers/PrimaryButton.html">
+  <PrimaryButton />
 </ShowComponent>
 
 **[Tailwind CSS](https://tailwindcss.com/)** allows for easy editing of the styles beyond your **[configured theming](/setup/theme)**. Below is an example fo using it to alter the buttons appearance.
 
-<ShowComponent filePath="../../../doc-helpers//PrimaryButtonCustom.html">
+<ShowComponent filePath="./src/components/doc-helpers/PrimaryButtonCustom.html">
   <PrimaryButtonCustom />
 </ShowComponent>{" "}
