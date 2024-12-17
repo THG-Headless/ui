@@ -115,7 +115,7 @@
 
     --text-tertiary-default: var(--tertiary-500);
     --text-tertiary-hover-dark: var(--tertiary-600);
-    --text-tertiary-hover-light: var(--tertiary-500);
+    --text-tertiary-hover-light: var(--tertiary-400);
     --text-tertiary-active: var(--tertiary-700);
 
     --text-inactive: var(--neutral-300);

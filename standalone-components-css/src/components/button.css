@@ -268,7 +268,7 @@
     border-color: var(--btn-primary-medium-emphasis-border-default);
   }
 
-  .btn-primary.btn-medium:hover:not(:disabled) {
+  .btn-primary.btn-medium:hover:not(:disabled):not(:active) {
     background-color: var(--btn-primary-medium-emphasis-bg-hover);
     color: var(--btn-primary-medium-emphasis-text-hover);
     border-color: var(--btn-primary-medium-emphasis-border-hover);
@@ -287,6 +287,7 @@
     background-color: var(--btn-primary-medium-emphasis-bg-active);
     color: var(--btn-primary-medium-emphasis-text-active);
     border-color: var(--btn-primary-medium-emphasis-border-active);
+    text-decoration: none;
   }
 
   .btn-primary.btn-medium:disabled {
@@ -373,7 +374,7 @@
     border-color: var(--btn-secondary-medium-emphasis-border-default);
   }
 
-  .btn-secondary.btn-medium:hover:not(:disabled) {
+  .btn-secondary.btn-medium:hover:not(:disabled):not(:active) {
     background-color: var(--btn-secondary-medium-emphasis-bg-hover);
     color: var(--btn-secondary-medium-emphasis-text-hover);
     border-color: var(--btn-secondary-medium-emphasis-border-hover);
@@ -392,6 +393,7 @@
     background-color: var(--btn-secondary-medium-emphasis-bg-active);
     color: var(--btn-secondary-medium-emphasis-text-active);
     border-color: var(--btn-secondary-medium-emphasis-border-active);
+    text-decoration: none;
   }
 
   .btn-secondary.btn-medium:disabled {
@@ -478,7 +480,7 @@
     border-color: var(--btn-tertiary-medium-emphasis-border-default);
   }
 
-  .btn-tertiary.btn-medium:hover:not(:disabled) {
+  .btn-tertiary.btn-medium:hover:not(:disabled):not(:active) {
     background-color: var(--btn-tertiary-medium-emphasis-bg-hover);
     color: var(--btn-tertiary-medium-emphasis-text-hover);
     border-color: var(--btn-tertiary-medium-emphasis-border-hover);
@@ -497,6 +499,7 @@
     background-color: var(--btn-tertiary-medium-emphasis-bg-active);
     color: var(--btn-tertiary-medium-emphasis-text-active);
     border-color: var(--btn-tertiary-medium-emphasis-border-active);
+    text-decoration: none;
   }
 
   .btn-tertiary.btn-medium:disabled {
