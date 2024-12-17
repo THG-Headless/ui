@@ -68,12 +68,12 @@
     --surface-secondary-hover-light: var(--secondary-300);
     --surface-secondary-active: var(--secondary-600);
 
-    --surface-tertiary-default: var(--tertiary-400);
+    --surface-tertiary-default: var(--tertiary-500);
     --surface-tertiary-lightest: var(--tertiary-100);
     --surface-tertiary-darkest: var(--tertiary-700);
-    --surface-tertiary-hover-dark: var(--tertiary-500);
-    --surface-tertiary-hover-light: var(--tertiary-300);
-    --surface-tertiary-active: var(--tertiary-600);
+    --surface-tertiary-hover-dark: var(--tertiary-600);
+    --surface-tertiary-hover-light: var(--tertiary-400);
+    --surface-tertiary-active: var(--tertiary-700);
 
     --surface-controls-dark: var(--neutral-400);
     --surface-controls-default: var(--neutral-300);
@@ -113,10 +113,10 @@
     --text-secondary-hover-light: var(--secondary-300);
     --text-secondary-active: var(--secondary-600);
 
-    --text-tertiary-default: var(--tertiary-400);
-    --text-tertiary-hover-dark: var(--tertiary-500);
-    --text-tertiary-hover-light: var(--tertiary-300);
-    --text-tertiary-active: var(--tertiary-600);
+    --text-tertiary-default: var(--tertiary-500);
+    --text-tertiary-hover-dark: var(--tertiary-600);
+    --text-tertiary-hover-light: var(--tertiary-500);
+    --text-tertiary-active: var(--tertiary-700);
 
     --text-inactive: var(--neutral-300);
     --text-success: var(--success-400);
@@ -228,12 +228,6 @@
     --animation-speed-quick: 0.1s;
     --animation-speed-default: 0.2s;
     --animation-speed-slow: 0.3s;
-
-    --animation-btn: 0.1s;
-    --btn-hover-scale: 0.98;
-    --site-corners: 0.75rem;
-
-    --btn-border: 0px;
   }
 
   @media (min-width: 640px) {
