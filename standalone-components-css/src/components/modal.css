@@ -7,10 +7,13 @@
     --modal-surface: var(--surface-cards);
     --modal-backdrop-blur: 4px;
     --modal-text-title-size: var(--text-size-md);
+    --modal-text-title-weight: var(--font-weight-semi-bold);
     --modal-text-title-line-height: var(--line-height-md);
     --modal-text-body-size: var(--text-size-body);
+    --modal-text-body-weight: var(--font-weight-normal);
     --modal-text-body-line-height: var(--line-height-body);
     --modal-text-close-button-size: var(--text-size-md);
+    --modal-text-close-button-weight: var(--font-weight-normal);
     --modal-text-close-button-line-height: var(--line-height-md);
     --modal-width-min: 320px;
     --modal-margin: 2rem;
@@ -118,6 +121,7 @@
     gap: 0.5rem;
     color: var(--modal-text-body-color);
     font-size: var(--modal-text-close-button-size);
+    font-weight: var(--modal-text-close-button-weight);
     line-height: var(--modal-text-close-button-line-height);
     height: var(--modal-text-close-button-line-height);
     transition: color var(--modal-animation-speed) ease;
@@ -131,14 +135,15 @@
     color: var(--modal-text-title-color);
     font-size: var(--modal-text-title-size);
     line-height: var(--modal-text-title-line-height);
-    font-weight: 600;
-    padding-bottom: 1rem;
+    font-weight: var(--modal-text-title-weight);
+    margin-bottom: 1rem;
   }
 
   .modal-body {
     color: var(--modal-text-body-color);
     font-size: var(--modal-text-body-size);
     line-height: var(--modal-text-body-line-height);
+    font-weight: var(--modal-text-body-weight);
     flex: 1;
     padding-bottom: 1.5rem;
   }
