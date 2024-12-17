@@ -317,7 +317,7 @@
   /* Full width btn */
   .btn.full-width {
     width: 100%;
-    display: block;
+    /* display: block; */
   }
 
   /* Primary btn styles */
