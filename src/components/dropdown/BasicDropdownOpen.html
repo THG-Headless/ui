@@ -1,22 +1,21 @@
-<div class="dropdown-wrapper" disabled aria-disabled="true">
+<div class="dropdown-wrapper dropdown-open">
   <label id="basic-dropdown-label" class="dropdown-label">Label</label>
   <div class="dropdown">
     <div
       class="combobox-wrapper"
       role="combobox"
       aria-haspopup="listbox"
-      aria-expanded="false"
+      aria-expanded="true"
       aria-owns="basic-dropdown-list"
       aria-labelledby="basic-dropdown-label"
-      aria-disabled="true"
+      aria-controls="basic-dropdown-list"
     >
       <button
         id="basic-dropdown-trigger"
         class="dropdown-summary"
         aria-haspopup="listbox"
-        aria-expanded="false"
+        aria-expanded="true"
         aria-controls="basic-dropdown-list"
-        disabled
       >
         <div class="dropdown-summary-content">
           <svg
@@ -58,74 +57,16 @@
         aria-labelledby="basic-dropdown-label"
         tabindex="-1"
       >
-        <li
-          role="option"
-          id="basic-option-1"
-          aria-selected="false"
-          aria-disabled="true"
-        >
-          Item 1
-        </li>
-        <li
-          role="option"
-          id="basic-option-2"
-          aria-selected="false"
-          aria-disabled="true"
-        >
-          Item 2
-        </li>
-        <li
-          role="option"
-          id="basic-option-3"
-          aria-selected="false"
-          aria-disabled="true"
-        >
-          Item 3
-        </li>
-        <li
-          role="option"
-          id="basic-option-4"
-          aria-selected="false"
-          aria-disabled="true"
-        >
-          Item 4
-        </li>
-        <li
-          role="option"
-          id="basic-option-5"
-          aria-selected="false"
-          aria-disabled="true"
-        >
-          Item 5
-        </li>
-        <li
-          role="option"
-          id="basic-option-6"
-          aria-selected="false"
-          aria-disabled="true"
-        >
-          Item 6
-        </li>
-        <li
-          role="option"
-          id="basic-option-7"
-          aria-selected="false"
-          aria-disabled="true"
-        >
-          Item 7
-        </li>
-        <li
-          role="option"
-          id="basic-option-8"
-          aria-selected="false"
-          aria-disabled="true"
-        >
-          Item 8
-        </li>
+        <li role="option" id="basic-option-1" aria-selected="false">Item 1</li>
+        <li role="option" id="basic-option-2" aria-selected="false">Item 2</li>
+        <li role="option" id="basic-option-3" aria-selected="false">Item 3</li>
+        <li role="option" id="basic-option-4" aria-selected="false">Item 4</li>
+        <li role="option" id="basic-option-5" aria-selected="false">Item 5</li>
+        <li role="option" id="basic-option-6" aria-selected="false">Item 6</li>
+        <li role="option" id="basic-option-7" aria-selected="false">Item 7</li>
+        <li role="option" id="basic-option-8" aria-selected="false">Item 8</li>
       </ul>
     </div>
   </div>
-  <p id="helper-text" class="dropdown-helper" aria-live="polite">
-    Dropdown is disabled
-  </p>
+  <p id="helper-text" class="dropdown-helper" aria-live="polite">Helper Text</p>
 </div>
