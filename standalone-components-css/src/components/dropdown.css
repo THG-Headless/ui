@@ -75,7 +75,7 @@
     margin: 0;
   }
 
-  .combobox-wrapper {
+  .listbox-wrapper {
     position: relative;
   }
 
@@ -97,7 +97,7 @@
   }
 
   .dropdown-summary:hover,
-  .combobox-wrapper[aria-expanded="true"] .dropdown-summary {
+  .listbox-wrapper[aria-expanded="true"] .dropdown-summary {
     box-shadow: inset 0 0 0 var(--dropdown-border-width-active)
       var(--dropdown-border-color-hover);
   }
