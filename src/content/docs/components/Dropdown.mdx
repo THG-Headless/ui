@@ -5,44 +5,62 @@ description: A drop down selector
 
 import ShowComponent from "../../../components/doc-helpers/ShowComponent.astro";
 import BasicDropdown from "../../../components/dropdown/BasicDropdown.html";
+import BasicDropdownOpen from "../../../components/dropdown/BasicDropdownOpen.html";
 import ErrorDropdown from "../../../components/dropdown/ErrorDropdown.html";
 import InactiveDropdown from "../../../components/dropdown/InactiveDropdown.html";
 import SearchDropdown from "../../../components/dropdown/SearchDropdown.html";
+import SearchDropdownOpen from "../../../components/dropdown/SearchDropdownOpen.html";
 
-The dropdown system provides three basic variations with different states and styling options. Each dropdown is built using the native HTML `<details>` and `<summary>` elements, enhanced with custom styling and functionality.
+The dropdown component provides a flexible and accessible way to present a list of options to users. It supports various styles, states, and even includes a search functionality.
 
-## Dropdown Styles
+## Basic Usage
 
-### Basic Dropdown
-
-The basic dropdown provides standard functionality with hover and active states. It includes a label, placeholder text, and optional helper text. When the content exceeds the maximum height, a scrollbar appears allowing users to navigate through all options while maintaining a consistent component height.
+To use the basic dropdown, simply include the following HTML structure:
 
 <ShowComponent filePath="./src/components/dropdown/BasicDropdown.html">
   <BasicDropdown />
 </ShowComponent>
 
-### Error Dropdown
+The open state of the search dropdown can be triggered by adding the `dropdown-open` to the main wrapper.
 
-The Error Dropdown variant displays validation errors with a distinct red border and error message. It includes an error icon for better visibility.
+<div style={{ marginBottom: "200px" }}>
+  <ShowComponent filePath="./src/components/dropdown/BasicDropdownOpen.html">
+    <BasicDropdownOpen />
+  </ShowComponent>
+</div>
+
+## Adding Search Functionality
+
+To add search functionality to your dropdown, use the search dropdown variant:
+
+<ShowComponent filePath="./src/components/dropdown/SearchDropdown.html">
+  <SearchDropdown />
+</ShowComponent>
+
+The open variant is applied in the same way as before, by adding the `dropdown-open` class to the main wrapper.
+
+<div style={{ marginBottom: "240px" }}>
+  <ShowComponent filePath="./src/components/dropdown/SearchDropdownOpen.html">
+    <SearchDropdownOpen />
+  </ShowComponent>
+</div>
+
+## States
+
+### Error State
+
+To indicate an error state, add the `dropdown-error` class to the main wrapper:
 
 <ShowComponent filePath="./src/components/dropdown/ErrorDropdown.html">
   <ErrorDropdown />
 </ShowComponent>
 
-### Inactive Dropdown
+### Inactive State
 
-The Inactive Dropdown represents a disabled state where user interaction is prevented. It displays with muted colors and a disabled cursor.
+For an inactive dropdown, add the `disabled` property to the `dropdown-wrapper` div. Ensure that the aria labels are also changed to reflect this.
 
 <ShowComponent filePath="./src/components/dropdown/InactiveDropdown.html">
   <InactiveDropdown />
-</ShowComponent>
-
-### Search Dropdown
-
-The Search Dropdown extends the basic dropdown functionality with a search input field, allowing users to filter through options in real-time.
-
-<ShowComponent filePath="./src/components/dropdown/SearchDropdown.html">
-  <SearchDropdown />
 </ShowComponent>
 
 ## CSS Variables
@@ -53,21 +71,23 @@ The dropdown system can be customized using CSS variables:
 
 | Variable                              | Default Value                     | Description                           |
 | ------------------------------------- | --------------------------------- | ------------------------------------- |
-| `--dropdown-text-color`               | `var(--text-black)`               | Main text color for the dropdown      |
 | `--dropdown-text-label-color`         | `var(--text-high-emphasis)`       | Color of the dropdown label           |
 | `--dropdown-text-summary-color`       | `var(--text-high-emphasis)`       | Color of the dropdown summary text    |
 | `--dropdown-text-helper-color`        | `var(--text-high-emphasis)`       | Color of the helper text              |
 | `--dropdown-text-option-color`        | `var(--text-high-emphasis)`       | Color of the dropdown options         |
 | `--dropdown-text-inactive-color`      | `var(--text-inactive)`            | Color for inactive dropdown text      |
 | `--dropdown-text-error-color`         | `var(--text-error)`               | Color for error text                  |
+| `--dropdown-text-search-color`        | `var(--text-medium-emphasis)`     | Color for search input placeholder    |
 | `--dropdown-surface`                  | `var(--surface-white)`            | Background color of the dropdown      |
 | `--dropdown-surface-controls-default` | `var(--surface-controls-default)` | Default background color for controls |
 | `--dropdown-surface-controls-dark`    | `var(--surface-controls-dark)`    | Dark background color for controls    |
 | `--dropdown-surface-hover`            | `var(--surface-primary-lightest)` | Background color on hover             |
+| `--dropdown-surface-inactive`         | `var(--surface-white)`            | Background color for inactive state   |
 | `--dropdown-border-color`             | `var(--border-controls)`          | Border color for the dropdown         |
 | `--dropdown-border-color-hover`       | `var(--border-primary)`           | Border color on hover                 |
 | `--dropdown-border-color-active`      | `var(--border-primary)`           | Border color when active              |
 | `--dropdown-border-color-error`       | `var(--border-error)`             | Border color for error state          |
+| `--dropdown-border-color-inactive`    | `var(--border-inactive)`          | Border color for inactive state       |
 | `--dropdown-icon-color`               | `var(--icons-black)`              | Color of the dropdown icons           |
 | `--dropdown-icon-error-color`         | `var(--icons-error)`              | Color of the error icon               |
 
@@ -90,22 +110,21 @@ The dropdown system can be customized using CSS variables:
 
 ### Layout and Sizing
 
-| Variable                          | Default Value             | Description                                |
-| --------------------------------- | ------------------------- | ------------------------------------------ |
-| `--dropdown-border-radius`        | `var(--radius-size-none)` | Border radius of the dropdown              |
-| `--dropdown-border`               | `0px`                     | Border width of the dropdown               |
-| `--dropdown-width`                | `16rem`                   | Width of the dropdown                      |
-| `--dropdown-gap`                  | `0.25rem`                 | Gap between dropdown elements              |
-| `--dropdown-padding-y`            | `0.5rem`                  | Vertical padding of the dropdown           |
-| `--dropdown-padding-x`            | `1rem`                    | Horizontal padding of the dropdown         |
-| `--dropdown-menu-margin-top`      | `0.25rem`                 | Top margin of the dropdown menu            |
-| `--dropdown-border-width-default` | `1px`                     | Default border width                       |
-| `--dropdown-border-width-active`  | `2px`                     | Border width when active                   |
-| `--dropdown-max-items`            | `5`                       | Maximum number of visible items            |
-| `--dropdown-item-height`          | `2.5rem`                  | Height of each dropdown item               |
-| `--dropdown-menu-shadow`          | `var(--shadow-md)`        | Shadow of the dropdown menu                |
-| `--dropdown-menu-padding-y`       | `0.5rem`                  | Vertical padding of the dropdown menu      |
-| `--dropdown-search-height`        | `3rem`                    | Height of the search input in the dropdown |
+| Variable                             | Default Value             | Description                          |
+| ------------------------------------ | ------------------------- | ------------------------------------ |
+| `--dropdown-border-radius`           | `var(--radius-size-none)` | Border radius of the dropdown        |
+| `--dropdown-width`                   | `16rem`                   | Width of the dropdown                |
+| `--dropdown-gap`                     | `0.25rem`                 | Gap between dropdown elements        |
+| `--dropdown-padding-y`               | `0.5rem`                  | Vertical padding of the dropdown     |
+| `--dropdown-padding-x`               | `1rem`                    | Horizontal padding of the dropdown   |
+| `--dropdown-menu-margin-top`         | `0.25rem`                 | Top margin of the dropdown menu      |
+| `--dropdown-border-width-default`    | `1px`                     | Default border width                 |
+| `--dropdown-border-width-active`     | `2px`                     | Border width when active             |
+| `--dropdown-max-items`               | `5`                       | Maximum number of visible items      |
+| `--dropdown-item-height`             | `2.5rem`                  | Height of each dropdown item         |
+| `--dropdown-menu-shadow`             | `var(--shadow-md)`        | Shadow of the dropdown menu          |
+| `--dropdown-focus-ring-color`        | `var(--border-attention)` | Color of the focus ring              |
+| `--dropdown-scrollbar-border-radius` | `var(--radius-size-full)` | Border radius of the scrollbar thumb |
 
 ### Scrolling Behavior
 
@@ -132,77 +151,84 @@ The dropdown components are built with accessibility in mind, using semantic HTM
 
 #### Structure and Labeling
 
-- Each dropdown is wrapped in a `region` with a clear description of its purpose
-- Every dropdown has a proper label that's connected to the component using `aria-labelledby`
-- The dropdown uses the native HTML `<details>` and `<summary>` elements for built-in keyboard support
-- `aria-describedby` is used to provide additional context where needed
+- [x] Every dropdown has a proper label that's connected to the component using `aria-labelledby`
+- [x] The dropdown uses a `button` element for the trigger and a `ul` element for the list of options
+- [x] The dropdown wrapper uses the `listbox` role with appropriate ARIA attributes
+- [x] Inactive state is managed using the `disabled` attribute on the dropdown wrapper
 
 #### Keyboard Support
 
-The current implementation provides:
+The current HTML structure supports:
 
-- Space/Enter keys to open/close the dropdown (built-in with `<details>`)
-- Tab navigation between focusable elements
-- Focus indicators on interactive elements
+- [x] Tab navigation to move focus to the dropdown button
+- [x] Focus indicators on interactive elements
 
 #### Screen Reader Support
 
 Each variant includes specific features for screen readers:
 
-**Basic Dropdown:**
-
-- [x] Clear labeling with `aria-labelledby` to connect the dropdown to its label
-- [x] Additional context provided with `aria-describedby` for the summary element
-- [x] Helper text that updates through an `aria-live="polite"` region
+- [x] Use of `label` and the `for` attribute
 - [x] Options marked with `role="option"` and `aria-selected` states
-- [x] Expanded state indicated with `aria-expanded` on the wrapper and summary
+- Expanded state indicated with `aria-expanded` on the button and listbox wrapper
+- [x] List of options connected to the button with `aria-controls`
+- Helper text that uses an `aria-live="polite"` region for dynamic updates
 
-**Error Dropdown:**
+#### Search Functionality (for search dropdowns)
 
-- [x] Error state indicated with `aria-invalid="true"`
-- [x] Error message announced through `aria-live="assertive"` for immediate attention
-- [x] Error icon hidden from screen readers with `aria-hidden="true"`
-- [x] Summary element connected to both label and error message via `aria-labelledby` and `aria-describedby`
+- [x] Search input is properly labeled with a visually hidden label
+- [x] Search input has `aria-controls` attribute linking it to the dropdown list
+- [x] Search icon is marked as `aria-hidden="true"` to prevent redundant announcements
 
-**Inactive Dropdown:**
+### States
 
-- [x] Clearly marked as disabled using `aria-disabled="true"` on multiple elements
-- [x] Disabled state reflected in helper text
-- [x] All options marked with `aria-disabled="true"`
+- [x] Inactive dropdowns use the `disabled` attribute on the wrapper to prevent interaction
+- [x] The `disabled` attribute is properly reflected in the ARIA states of child elements
 
-**Search Dropdown:**
+While the current implementation provides a good foundation for accessibility, there are still some JavaScript-dependent features that need to be implemented to ensure full accessibility support.
 
-- [x] Search input labeled with `sr-only` class for screen readers
-- [x] Search icon marked as decorative with `aria-hidden="true"`
-- [x] Results list maintains proper ARIA roles and states
-- [x] Search input connected to results list with `aria-controls`
+## JavaScript Functionality
 
-### Required JavaScript Implementation
+To make the dropdown components fully functional and accessible, several JavaScript features need to be implemented. Here's an overview of the key areas to address:
 
-#### Keyboard Navigation
+### Event Handling
 
-Implement the following keyboard interactions:
+- [ ] Toggle dropdown visibility on button click
+- [ ] Close dropdown when clicking outside or pressing the Escape key
+- [ ] Handle option selection and update the selected value
 
-- [ ] Up/Down arrows to navigate through options
-- [ ] Home/End keys to jump to first/last option
-- [ ] Type-ahead functionality to jump to options starting with typed characters
-- [ ] Escape key to close the dropdown
-- [ ] Enter/Space to select the current option
+### Keyboard Navigation
 
-#### ARIA State Management
+- [ ] Implement up/down arrow key navigation through options
+- [ ] Add support for Home/End keys to jump to first/last options
+- [ ] Implement character search for quick option selection
 
-Update the following ARIA states dynamically:
+### ARIA Attribute Management
 
-- [ ] `aria-selected="true"` on the currently selected option
-- [ ] `aria-expanded` state on the dropdown button
+- [ ] Dynamically update `aria-expanded` on the dropdown button
+- [ ] Manage `aria-selected` states on options
 - [ ] Update `aria-activedescendant` to reflect the currently focused option
-- [ ] Maintain proper focus management when dropdown closes
 
-#### Search Functionality
+### Search Functionality
 
-For search dropdown variant:
+- [ ] Filter options based on search input
+- [ ] Update the displayed options list in real-time
+- [ ] Manage focus within search results
 
-- [ ] Announce number of search results to screen readers
-- [ ] Update `aria-live` region when search results change
-- [ ] Maintain focus within search results when navigating
-- [ ] Reset search and focus when dropdown closes
+### Focus Management
+
+- [ ] Control focus when opening and closing the dropdown
+- [ ] Implement a focus trap within the open dropdown
+- [ ] Restore focus appropriately when closing the dropdown
+
+### State Management
+
+- [ ] Keep track of the selected option
+- [ ] Maintain the open/closed state of the dropdown
+- [ ] Handle disabled/error states and their interactions
+- [ ] Manage the `disabled` attribute on the dropdown wrapper and ensure it's reflected in ARIA states of child elements
+
+### Performance Considerations
+
+- [ ] Use event delegation for option list interactions
+- [ ] Implement debouncing for search input to optimize performance
+- [ ] Consider virtualizing long option lists for improved rendering performance

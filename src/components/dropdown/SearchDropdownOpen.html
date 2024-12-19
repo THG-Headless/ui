@@ -1,22 +1,21 @@
-<div class="dropdown-wrapper" disabled aria-disabled="true">
-  <label id="basic-dropdown-label" class="dropdown-label">Label</label>
-  <div class="dropdown">
+<div class="dropdown-wrapper">
+  <label id="search-dropdown-label" class="dropdown-label">Label</label>
+  <div class="dropdown dropdown-open">
     <div
       class="listbox-wrapper"
       role="combobox"
       aria-haspopup="listbox"
-      aria-expanded="false"
-      aria-owns="basic-dropdown-list"
-      aria-labelledby="basic-dropdown-label"
-      aria-disabled="true"
+      aria-expanded="true"
+      aria-owns="search-dropdown-list"
+      aria-labelledby="search-dropdown-label"
+      aria-controls="search-dropdown-list"
     >
       <button
-        id="basic-dropdown-trigger"
+        id="search-dropdown-trigger"
         class="dropdown-summary"
         aria-haspopup="listbox"
-        aria-expanded="false"
-        aria-controls="basic-dropdown-list"
-        disabled
+        aria-expanded="true"
+        aria-controls="search-dropdown-list"
       >
         <div class="dropdown-summary-content">
           <svg
@@ -34,7 +33,6 @@
           </svg>
           <span id="selected-value">Placeholder Text</span>
           <svg
-            xmlns="http://www.w3.org/2000/svg"
             class="dropdown-icon chevron"
             viewBox="0 0 20 20"
             fill="currentColor"
@@ -51,81 +49,105 @@
       </button>
     </div>
     <div class="dropdown-content-wrapper">
+      <div class="search-wrapper">
+        <label for="dropdown-search" class="sr-only">Search options</label>
+        <div class="search-input-wrapper">
+          <svg
+            class="search-icon"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+            aria-hidden="true"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+              clip-rule="evenodd"
+            />
+          </svg>
+          <input
+            type="search"
+            id="dropdown-search"
+            class="dropdown-search-input"
+            placeholder="Search..."
+            aria-controls="search-dropdown-list"
+            aria-autocomplete="list"
+            autocomplete="off"
+          />
+        </div>
+      </div>
       <ul
-        id="basic-dropdown-list"
+        id="search-dropdown-list"
         class="dropdown-list"
         role="listbox"
-        aria-labelledby="basic-dropdown-label"
+        aria-labelledby="search-dropdown-label"
         tabindex="-1"
       >
         <li
           role="option"
-          id="basic-option-1"
+          id="search-option-1"
+          tabindex="-1"
           aria-selected="false"
-          aria-disabled="true"
         >
           Item 1
         </li>
         <li
           role="option"
-          id="basic-option-2"
+          id="search-option-2"
+          tabindex="-1"
           aria-selected="false"
-          aria-disabled="true"
         >
           Item 2
         </li>
         <li
           role="option"
-          id="basic-option-3"
+          id="search-option-3"
+          tabindex="-1"
           aria-selected="false"
-          aria-disabled="true"
         >
           Item 3
         </li>
         <li
           role="option"
-          id="basic-option-4"
+          id="search-option-4"
+          tabindex="-1"
           aria-selected="false"
-          aria-disabled="true"
         >
           Item 4
         </li>
         <li
           role="option"
-          id="basic-option-5"
+          id="search-option-5"
+          tabindex="-1"
           aria-selected="false"
-          aria-disabled="true"
         >
           Item 5
         </li>
         <li
           role="option"
-          id="basic-option-6"
+          id="search-option-6"
+          tabindex="-1"
           aria-selected="false"
-          aria-disabled="true"
         >
           Item 6
         </li>
         <li
           role="option"
-          id="basic-option-7"
+          id="search-option-7"
+          tabindex="-1"
           aria-selected="false"
-          aria-disabled="true"
         >
           Item 7
         </li>
         <li
           role="option"
-          id="basic-option-8"
+          id="search-option-8"
+          tabindex="-1"
           aria-selected="false"
-          aria-disabled="true"
         >
           Item 8
         </li>
       </ul>
     </div>
   </div>
-  <p id="helper-text" class="dropdown-helper" aria-live="polite">
-    Dropdown is disabled
-  </p>
+  <p id="helper-text" class="dropdown-helper" aria-live="polite">Helper Text</p>
 </div>
