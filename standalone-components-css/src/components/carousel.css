@@ -1,0 +1,25 @@
+
+ul {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    height: 500px;
+    list-style: none;
+    scroll-snap-type: x mandatory;
+    overflow: auto;
+    overflow-x: scroll;
+  }
+
+  li {
+    scroll-snap-align: center;
+    margin: 8px;
+    background: white;
+    min-width: 800px;
+    border: 2px solid black;
+    place-content: center;
+    text-align: center;
+  }
+
+  li:last-child {
+    margin-left: 0;
+  }
