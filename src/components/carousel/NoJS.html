@@ -1,0 +1,54 @@
+
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <body>
+    <div class="slide-center">
+      <ul>
+        <li>Slide 1</li>
+        <li>Slide 2</li>
+        <li>Slide 3</li>
+        <li>Slide 4</li>
+        <li>Slide 5</li>
+      </ul>
+    </div>
+  </body>
+
+  <style>
+    :root {
+      --container-size: 1200px;
+    }
+
+    .slide-center {
+      transform: translateX(calc(max(var--container-size, 100vw) / 2));
+    }
+
+    ul {
+      padding: 0;
+      margin: 0;
+      display: flex;
+      height: 500px;
+      list-style: none;
+      scroll-snap-type: x mandatory;
+      overflow: auto;
+      overflow-x: scroll;
+    }
+
+    li {
+      scroll-snap-align: center;
+      margin: 8px;
+      background: white;
+      min-width: 800px;
+      border: 2px solid black;
+      place-content: center;
+      text-align: center;
+    }
+
+    li:last-child {
+      margin-left: 0;
+    }
+  </style>
+</html>
