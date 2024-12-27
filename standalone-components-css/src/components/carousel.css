@@ -1,25 +1,44 @@
+.carousel {
+  width: 300px;
+  height: 300px;
+  display: block;
+  margin-bottom: 40px;
+}
 
-ul {
-    padding: 0;
-    margin: 0;
-    display: flex;
-    height: 500px;
-    list-style: none;
-    scroll-snap-type: x mandatory;
-    overflow: auto;
-    overflow-x: scroll;
-  }
+.carousel-window {
+  display: flex;
+  width: 100%;
+  overflow-x:auto;
+  scroll-snap-type: x mandatory;  
+}
 
-  li {
-    scroll-snap-align: center;
-    margin: 8px;
-    background: white;
-    min-width: 800px;
-    border: 2px solid black;
-    place-content: center;
-    text-align: center;
-  }
+.carousel-window > div {
+  flex: 0 0 auto;   /* don't flex-shrink */
+  width: 300px;
+  height: 300px;
+  margin: 1px;
+  font-size: 30px;
+  background: #eee;
+  scroll-snap-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}  
 
-  li:last-child {
-    margin-left: 0;
-  }
+.bullet-wrapper > a {
+  background: #ccc;
+  margin: 4px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.bullet-wrapper > a:active {
+  background: black;
+}
+
+.bullet-wrapper {
+  display: flex;
+  justify-content: center;
+  margin: 10px auto 10px auto;
+}

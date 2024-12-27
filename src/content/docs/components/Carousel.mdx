@@ -6,20 +6,32 @@ description: Carousel
 import ShowComponent from "@components/doc-helpers/ShowComponent.astro";
 import NoJS from "@components/carousel/NoJS.html";
 
+# Carousel (work in progress)
 
-Coming soon...
+## CSS Scroll snapping + anchor jump links
 
-## No JS 
+based on [this resource](https://css-tricks.com/css-only-carousel/)
 
-- implemented with CSS scroll snapping
+* con: anchor jumping is jarring (when you use the bullets to navigate it jumps vertically to a particular section)
 
-Example component
+* con: horizontal scrollbar is visible
 
+
+### No left/right arrows, one slide in view at a time
 
 <ShowComponent filePath="./src/components/carousel/NoJS.html">
   <NoJS />
 </ShowComponent>
 
+### To do
+
+- [ ] make margins show up again when I wrap the whole thing in an `@layer components { }` 
+- [ ] try one with left/right arrows
+- [ ] do a carousel with multiple slides in view at a time
+- [ ] do a carousel 
+- [ ] try using js to fix the cons in the above implementation
+- [ ] check out [google's recommendation]()
+- [ ] clearly define the 'props' of this component (i.e width, colors palette, array of slides to display )
 ## Some JS
 
 ## Mostly JS
