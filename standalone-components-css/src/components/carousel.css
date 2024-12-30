@@ -10,6 +10,7 @@
   width: 100%;
   overflow-x:auto;
   scroll-snap-type: x mandatory;  
+  scrollbar-width: none; /* remove scrollbar */
 }
 
 .carousel-window > div {
