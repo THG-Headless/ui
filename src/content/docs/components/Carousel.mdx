@@ -6,42 +6,60 @@ description: Carousel
 import ShowComponent from "@components/doc-helpers/ShowComponent.astro";
 import Carousel from "@components/carousel/Carousel.html";
 
-# Carousel (work in progress)
+# Carousel 
 
-## CSS Scroll snapping + anchor jump links
-
-based on [this resource](https://css-tricks.com/css-only-carousel/)
-
-* con: anchor jumping is jarring (when you use the bullets to navigate it jumps vertically to a particular section)
-
-* con: horizontal scrollbar is visible
+### Basic Product Carousel
 
 
-### No left/right arrows, one slide in view at a time
+* Full width by default (takes up the size of its parent container)
+* Responsive to the size of its children (can be anything as long as they have the class `.carousel-slide`)
+* Carousel is reponsive to the sizes of the product cards inside it
+
 
 <ShowComponent filePath="./src/components/carousel/Carousel.html">
   <Carousel />
 </ShowComponent>
 
+
+### Variables
+
+```
+--carousel-gap: (1rem default)
+```
+
 ### To do
 
 - [ ] make not break when I wrap the whole thing in an `@layer components { }` 
 - [ ] try one with left/right arrows
-- [ ] do a carousel with multiple slides in view at a time
 - [ ] try using js to fix the cons in the above implementation
 - [ ] clearly define the 'props' of this component (i.e width, colors palette, array of slides to display )
+- [x] do a carousel with multiple slides in view at a time
 
-## Some JS
+
+## Full Width Carousel
+
+## Product List with Left/Right buttons
+
+* con: anchor jumping is jarring (when you use the bullets to navigate it jumps vertically to a particular section)
+* con: horizontal scrollbar is visible
+
 
 ## Accessibility
 
 The button system is designed with accessibility in mind:
 
-- ✅ Use of semantic html tags (`section`, `ul` and `li`)
+- ✅ Use of semantic html tags (`ul` and `li`)
 - ✅ Supports keyboard-only navigation. 
 - ⚠️ Does not provide descriptive text for screen readers.
+
+## Implementation tips
+
+* It's good practice to wrap the 'carousel' element in a `<section`>
 
 ## Further reading
 
 Carousel WAI
 https://www.w3.org/WAI/tutorials/carousels/
+
+CSS Only Carousel CSS-Tricks
+https://css-tricks.com/css-only-carousel/

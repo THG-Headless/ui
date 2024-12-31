@@ -1,45 +1,30 @@
+:root {
+  --carousel-gap: 1.3rem;
+}
+
 .carousel {
-  width: 300px;
-  height: 300px;
-  display: block;
-  margin-bottom: 40px;
-}
-
-.slides-container {
   display: flex;
+  gap: var(--carousel-gap);
   width: 100%;
-  overflow-x:auto;
-  scroll-snap-type: x mandatory;  
-  scrollbar-width: none; /* remove scrollbar */
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
 }
 
-.slides-container > div {
+.carousel-item {
   flex-shrink: 0;
-  width: 300px;
-  height: 300px;
-  margin: 1px;
-  font-size: 30px;
-  background: #eee;
-  scroll-snap-align: center;
+  scroll-snap-align: start;
+}
+
+/* example */
+
+.carousel-item > div {
   display: flex;
   justify-content: center;
   align-items: center;
-}  
-
-.bullet-wrapper > a {
-  background: #ccc;
-  margin: 4px;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
+  width: 346px;
+  height: 346px;
+  font-size: 30px;
+  background: #eee;
 }
 
-.bullet-wrapper > a:active {
-  background: black;
-}
-
-.bullet-wrapper {
-  display: flex;
-  justify-content: center;
-  margin: 10px auto 10px auto;
-}
