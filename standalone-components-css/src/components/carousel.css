@@ -24,4 +24,7 @@
     background: #eee;
   }
 
+  .w-full {
+    width: 100%;
+  }
 }
