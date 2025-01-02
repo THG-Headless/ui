@@ -14,5 +14,13 @@
   aria-modal="true"
   aria-label="No Backdrop Modal"
 >
-  <div class="modal-box">This modal can be closed with ESC key</div>
+  <div class="modal-box">
+    <form method="dialog" class="modal-control-bar">
+      <button autofocus class="modal-close-button">
+        <span>Close</span>
+        <span aria-hidden="true">✕</span>
+      </button>
+    </form>
+    This modal can be closed with ESC key
+  </div>
 </dialog>

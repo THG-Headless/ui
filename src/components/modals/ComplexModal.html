@@ -2,6 +2,7 @@
   class="btn btn-primary btn-high"
   onclick="complexModal.showModal()"
   aria-haspopup="dialog"
+  aria-controls="complexModal"
 >
   Open Complex Modal
 </button>
@@ -11,12 +12,15 @@
   class="modal"
   role="dialog"
   aria-modal="true"
-  aria-labelledby="complex-modal-title"
-  aria-describedby="complex-modal-body"
+  aria-label="Hero Modal"
 >
+  <form method="dialog" class="modal-backdrop-click">
+    <button aria-hidden="true" tabindex="-1"></button>
+  </form>
+
   <div class="modal-box modal-box--with-hero">
     <form method="dialog" class="modal-control-bar">
-      <button class="modal-close-button">
+      <button autofocus class="modal-close-button">
         <span>Close</span>
         <span aria-hidden="true">✕</span>
       </button>
@@ -33,13 +37,17 @@
         Modal with Hero Image
       </h3>
       <div id="complex-modal-body" class="modal-body">
-        <p>This modal features a hero image on the left side.</p>
+        <p>
+          This modal features a hero image on the left side, content, and a
+          backdrop click away
+        </p>
       </div>
-      <button class="btn btn-primary btn-high full-width">Primary CTA</button>
-      <button class="btn btn-primary btn-low full-width">Secondary CTA</button>
+      <button type="button" class="btn btn-primary btn-high full-width">
+        Primary CTA
+      </button>
+      <button type="button" class="btn btn-primary btn-low full-width">
+        Secondary CTA
+      </button>
     </div>
   </div>
-  <form method="dialog" class="modal-clickaway">
-    <button aria-label="Close modal by clicking backdrop"></button>
-  </form>
 </dialog>
