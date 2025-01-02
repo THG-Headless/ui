@@ -1,30 +1,24 @@
-:root {
-  --carousel-gap: 1.3rem;
-}
 
-.carousel {
-  display: flex;
-  gap: var(--carousel-gap);
-  width: 100%;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  scrollbar-width: none;
-}
+  :root {
+    --carousel-gap: 1.3rem;
+  }
 
-.carousel-item {
-  flex-shrink: 0;
-  scroll-snap-align: start;
-}
+  .carousel {
+    display: flex;
+    gap: var(--carousel-gap);
+    width: 100%;
+    overflow-x: auto;
+    scrollbar-width: none;
+    scroll-snap-type: x mandatory;
+  }
 
-/* example */
+  .carousel-item {
+    flex-shrink: 0;
+    scroll-snap-align: start;
+    width: 346px;
+  }
 
-.carousel-item > div {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 346px;
-  height: 346px;
-  font-size: 30px;
-  background: #eee;
-}
-
+  .image {
+    height: 346px;
+    background: #eee;
+  }
