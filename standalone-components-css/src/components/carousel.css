@@ -1,6 +1,7 @@
 
   :root {
     --carousel-gap: 1.3rem;
+    --carousel-item-width: 346px;
   }
 
   .carousel {
@@ -15,7 +16,6 @@
   .carousel-item {
     flex-shrink: 0;
     scroll-snap-align: start;
-    width: 346px;
   }
 
   .image {
