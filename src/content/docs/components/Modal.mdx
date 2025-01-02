@@ -92,6 +92,19 @@ To enable closing the modal by clicking the backdrop, add a `form` element with 
   <BackdropOnlyModal />
 </ShowComponent>
 
+<Aside type="tip" title="Accessibility Consideration">
+  The backdrop close functionality should be used sparingly and critically. Backdrop click-away modals can harm user experience and accessibility because:
+
+- [ ] The interaction pattern isn't immediately obvious to all users
+- [ ] Users may accidentally dismiss the modal when attempting to interact with elements outside it
+- [ ] Screen reader users may find it difficult to discover this dismissal method
+
+While backdrop click-away can be appropriate for non-critical interactions like promotional popups or quick information displays, it should be avoided for important tasks such as form submissions, configuration changes, or any workflow where accidental dismissal could lead to data loss or workflow interruption.
+
+Always prefer explicit dismissal method of the close button for important modal interactions.
+
+</Aside>
+
 ### Content Structure
 
 To create a structured content layout, use the `modal-title` class for headings and `modal-body` class for content.
