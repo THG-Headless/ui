@@ -1,5 +1,10 @@
 <div class="dropdown-wrapper">
-  <label id="basic-dropdown-label" class="dropdown-label">Label</label>
+  <label
+    for="basic-dropdown-trigger"
+    id="basic-dropdown-label"
+    class="dropdown-label"
+    >Label</label
+  >
   <div class="dropdown">
     <div
       class="listbox-wrapper"
@@ -12,9 +17,7 @@
       <button
         id="basic-dropdown-trigger"
         class="dropdown-summary"
-        aria-haspopup="listbox"
-        aria-expanded="false"
-        aria-controls="basic-dropdown-list"
+        aria-labelledby="basic-dropdown-label"
       >
         <div class="dropdown-summary-content">
           <svg
