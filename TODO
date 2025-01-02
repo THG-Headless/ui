@@ -1,5 +1,7 @@
 ## To do
 
+
+- [ ] add arrows
 - [ ] support keyboard only navigation
 - [ ] make not break when I wrap the whole thing in an `@layer components { }` 
 - [ ] try one with left/right arrows

@@ -1,13 +1,14 @@
-
+@layer components {
   :root {
     --carousel-gap: 1.3rem;
     --carousel-item-width: 346px;
+    --carousel-width: 100%;
   }
 
   .carousel {
     display: flex;
     gap: var(--carousel-gap);
-    width: 100%;
+    width: var(--carousel-width);
     overflow-x: auto;
     scrollbar-width: none;
     scroll-snap-type: x mandatory;
@@ -22,3 +23,5 @@
     height: 346px;
     background: #eee;
   }
+
+}

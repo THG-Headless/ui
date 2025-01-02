@@ -4,17 +4,28 @@ description: Carousel
 ---
 
 import ShowComponent from "@components/doc-helpers/ShowComponent.astro";
-import Carousel from "@components/carousel/Carousel.html";
+import ProductCarousel from "@components/carousel/ProductCarousel.html";
+import CarouselBanner from "@components/carousel/CarouselBanner.html";
+
+Work in progress...
 
 ## Variations
 
 ### Product Carousel
 
-<ShowComponent filePath="./src/components/carousel/Carousel.html">
-  <Carousel />
+<ShowComponent filePath="./src/components/carousel/ProductCarousel.html">
+  <ProductCarousel />
 </ShowComponent>
 
-### Product Carousel with Disabled bullets. 
+### Carousel Banner
+
+Exactly the same as above, but with: `width: 100%` applied to every `carousel-item`
+
+<ShowComponent filePath="./src/components/carousel/CarouselBanner.html">
+  <CarouselBanner />
+</ShowComponent>
+
+### Product Carousel with Disabled bullets.
 
 the "active" bullet is styled according to the THG figma and has to be dynamically applied using client-side javascript.
 
@@ -28,26 +39,29 @@ the bullet functionality is implemented using CSS. The downside of this approach
 --carousel-gap: (1rem default)
 ```
 
-
-## Full Width Carousel
-
 ## Product List with Left/Right buttons
 
-* con: anchor jumping is jarring (when you use the bullets to navigate it jumps vertically to a particular section)
-* con: horizontal scrollbar is visible
-
+- con: anchor jumping is jarring (when you use the bullets to navigate it jumps vertically to a particular section)
+- con: horizontal scrollbar is visible
 
 ## Accessibility
 
 The button system is designed with accessibility in mind:
 
 - ✅ Use of semantic html tags (`ul` and `li`)
-- ✅ Supports keyboard-only navigation. 
+- ✅ Supports keyboard-only navigation.
 - ⚠️ Does not provide descriptive text for screen readers.
 
 ## Implementation tips
 
-* It's good practice to wrap the 'carousel' element in a `<section`>
+- It's good practice to wrap the 'carousel' element in a `<section`>
+
+
+## JavaScript
+
+This CSS-only implementation is lacking the following functionality, for which there are JS solutions:
+
+- Keyboard navigation (users should be able to toggle through the different `carousel-items` by pressing tab)
 
 ## Further reading
 
