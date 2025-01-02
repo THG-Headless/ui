@@ -6,7 +6,7 @@ description: A composable modal system built with HTML dialog element
 import { Aside } from "@astrojs/starlight/components";
 import ShowComponent from "../../../components/doc-helpers/ShowComponent.astro";
 import BasicModal from "../../../components/modals/BasicModal.html";
-import BackdropOnlyModal from "../../../components/modals/BackdropOnlyModal.html";
+import BackdropCloseModal from "../../../components/modals/BackdropCloseModal.html";
 import NoBackdropModal from "../../../components/modals/NoBackdropModal.html";
 import ContentModal from "../../../components/modals/ContentModal.html";
 import HeroModal from "../../../components/modals/HeroModal.html";
@@ -88,8 +88,8 @@ To remove the backdrop blur and dimming effects, add the `modal-disable-backdrop
 
 To enable closing the modal by clicking the backdrop, add a `form` element with `method="dialog"` and the `modal-clickaway` class after the modal content.
 
-<ShowComponent filePath="./src/components/modals/BackdropOnlyModal.html">
-  <BackdropOnlyModal />
+<ShowComponent filePath="./src/components/modals/BackdropCloseModal.html">
+  <BackdropCloseModal />
 </ShowComponent>
 
 <Aside type="tip" title="Accessibility Consideration">
