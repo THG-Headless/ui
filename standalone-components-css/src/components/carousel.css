@@ -27,4 +27,27 @@
   .w-full {
     width: 100%;
   }
+
+  .carousel-bullet {
+    display: flex;
+    width: 8px;
+    height: 8px;
+    padding: 4px;
+    align-items: flex-start;
+    gap: 4px;
+    border-radius: 50%;
+    background-color: #cccccc;
+  }
+  .carousel-bullet-wrapper {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+  }
+  .hover {
+    outline: 2px solid black;
+  }
+
+  .active {
+    background-color: black;
+  }
 }
