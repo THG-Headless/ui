@@ -5,6 +5,10 @@
     --carousel-width: 100%;
   }
 
+  .carousel-dummy-product-card {
+    color: var(--neutral-600); 
+    width: 346px
+  }
   .carousel {
     display: flex;
     gap: var(--carousel-gap);
@@ -19,9 +23,9 @@
     scroll-snap-align: start;
   }
 
-  .image {
+  .carousel-slide-dummy-image {
     height: 346px;
-    background: #eee;
+    background: var(--neutral-300);
   }
 
   .w-full {
