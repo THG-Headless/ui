@@ -19,10 +19,15 @@ jobs:
           cache: "npm"
 
       - name: Install dependencies
-        run: npm install
+        run: |
+          # Install root dependencies
+          npm install
 
-      - name: Build CSS package
-        run: npm run build:css
+          # Link local package
+          cd standalone-components-css
+          npm link
+          cd ..
+          npm link @thg-altitude/standalone-components-css
 
       - name: Start Storybook and Run Tests
         run: |
