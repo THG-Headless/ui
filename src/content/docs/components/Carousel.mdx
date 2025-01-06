@@ -46,25 +46,19 @@ the bullet functionality is implemented using CSS. The downside of this approach
 
 ## Accessibility
 
-The button system is designed with accessibility in mind:
-
-- ✅ Use of semantic html tags (`ul` and `li`)
-- ✅ Supports keyboard-only navigation.
-- ⚠️ Does not provide descriptive text for screen readers.
+* Use of semantic html tags (`ul` and `li`) to display content
+* <kbd>Shift+Tab</kbd> and <kbd>Tab</kbd> are used to tab through the `<li class="carousel-item">`s
 
 ## Implementation tips
 
 - It's good practice to wrap the 'carousel' element in a `<section`>
 
-## JavaScript
-
-This CSS-only implementation is lacking the following functionality, for which there are JS solutions:
-
-- Keyboard navigation (users should be able to toggle through the different `carousel-items` by pressing tab)
-
 ## Further reading
 
-Carousel WAI
+Carousel Pattern on W3C Web Accessibility Initiative
+https://www.w3.org/WAI/ARIA/apg/patterns/carousel/
+
+W3.org carousel tutorial
 https://www.w3.org/WAI/tutorials/carousels/
 
 CSS Only Carousel CSS-Tricks
