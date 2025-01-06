@@ -1,0 +1,72 @@
+<div class="dropdown-wrapper dropdown-open">
+  <label id="basic-dropdown-label" class="dropdown-label">Label</label>
+  <div class="dropdown">
+    <div
+      class="listbox-wrapper"
+      role="combobox"
+      aria-haspopup="listbox"
+      aria-expanded="true"
+      aria-owns="basic-dropdown-list"
+      aria-labelledby="basic-dropdown-label"
+      aria-controls="basic-dropdown-list"
+    >
+      <button
+        id="basic-dropdown-trigger"
+        class="dropdown-summary"
+        aria-haspopup="listbox"
+        aria-expanded="true"
+        aria-controls="basic-dropdown-list"
+      >
+        <div class="dropdown-summary-content">
+          <svg
+            class="dropdown-icon"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+            aria-hidden="true"
+            focusable="false"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
+              clip-rule="evenodd"
+            />
+          </svg>
+          <span id="selected-value">Placeholder Text</span>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="dropdown-icon chevron"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+            aria-hidden="true"
+            focusable="false"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+              clip-rule="evenodd"
+            />
+          </svg>
+        </div>
+      </button>
+    </div>
+    <div class="dropdown-content-wrapper">
+      <ul
+        id="basic-dropdown-list"
+        class="dropdown-list"
+        role="listbox"
+        aria-labelledby="basic-dropdown-label"
+        tabindex="-1"
+      >
+        <li role="option" id="basic-option-1" aria-selected="false">Item 1</li>
+        <li role="option" id="basic-option-2" aria-selected="false">Item 2</li>
+        <li role="option" id="basic-option-3" aria-selected="false">Item 3</li>
+        <li role="option" id="basic-option-4" aria-selected="false">Item 4</li>
+        <li role="option" id="basic-option-5" aria-selected="false">Item 5</li>
+        <li role="option" id="basic-option-6" aria-selected="false">Item 6</li>
+        <li role="option" id="basic-option-7" aria-selected="false">Item 7</li>
+        <li role="option" id="basic-option-8" aria-selected="false">Item 8</li>
+      </ul>
+    </div>
+  </div>
+  <p id="helper-text" class="dropdown-helper" aria-live="polite">Helper Text</p>
+</div>

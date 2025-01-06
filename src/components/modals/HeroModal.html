@@ -1,0 +1,25 @@
+<button
+  class="btn btn-primary btn-high"
+  onclick="heroModal.showModal()"
+  aria-haspopup="dialog"
+  aria-controls="heroModal"
+>
+  Open Modal with Hero Image
+</button>
+
+<dialog
+  id="heroModal"
+  class="modal"
+  role="dialog"
+  aria-modal="true"
+  aria-label="Hero Modal"
+>
+  <div class="modal-box modal-box--with-hero">
+    <img
+      class="modal-hero-image"
+      src="https://picsum.photos/id/558/1920/1080"
+      alt="Hero image"
+    />
+    <div>This modal can be closed with ESC key</div>
+  </div>
+</dialog>

@@ -1,70 +1,196 @@
 ---
 title: Modal
-description: A primitive modal
+description: A composable modal system built with HTML dialog element
 ---
-import ShowComponent from "../../../components/doc-helpers/ShowComponent.astro"
-import ButtonCloseModal from "../../../components/modals/ButtonCloseModal.html"
-import BackdropModal from "../../../components/modals/BackdropModal.html"
-import ClickAwayCloseModal from "../../../components/modals/ClickAwayCloseModal.html"
-import BackdropCloseModal from "../../../components/modals/BackdropCloseModal.html"
 
-The modal system provides four basic examples of modals with different behaviors and styling options. Each modal is built using the native HTML `<dialog>` element, enhanced with custom styling and functionality.
+import { Aside } from "@astrojs/starlight/components";
+import ShowComponent from "../../../components/doc-helpers/ShowComponent.astro";
+import BasicModal from "../../../components/modals/BasicModal.html";
+import BackdropOnlyModal from "../../../components/modals/BackdropOnlyModal.html";
+import NoBackdropModal from "../../../components/modals/NoBackdropModal.html";
+import CloseButtonModal from "../../../components/modals/CloseButtonModal.html";
+import ContentModal from "../../../components/modals/ContentModal.html";
+import HeroModal from "../../../components/modals/HeroModal.html";
+import ComplexModal from "../../../components/modals/ComplexModal.html";
 
-## Example Usage
-### No Backdrop, No Click Away
+The modal system is built using the native HTML `<dialog>` element and enhanced with CSS for styling and animations. It's designed to be highly composable, allowing you to build modals ranging from simple to complex by combining various features.
 
-This modal can only be closed via its close button or by pressing the escape key, making it ideal for important messages requiring explicit user action.
+## Default Behavior
 
-<ShowComponent filePath="./src/components/modals/ButtonCloseModal.html">
-    <ButtonCloseModal/>
+The default modal implementation centers in the viewport on desktop and slides up from the bottom on mobile devices. It includes a semi-transparent, blurred backdrop and can be closed with the ESC key. All modals are fully accessible with ARIA attributes and support both mouse and keyboard navigation.
+
+## Mobile Implementation
+
+On mobile devices (screens below 640px), modals slide up from the bottom and take full width of the viewport. They feature reduced padding, and hero images adjust to a top-banner layout.
+
+<Aside type="caution">
+When implementing modals for mobile devices, you **MUST** include at least one of the following:
+
+> A close button (using the modal-control-bar)
+
+> A clickable backdrop (using the modal-clickaway)
+
+Without one of these, mobile users will have no way to close the modal as the ESC key isn't available on mobile keyboards.
+
+</Aside>
+
+## Modal Construction
+
+### Complete Modal Example
+
+Here's an example that combines multiple features into a complete modal. This demonstrates how the modal system's composable nature allows you to build complex interfaces by combining simple components. This example includes a hero image with responsive layout, a close button in the control bar, structured content with title and body, primary and secondary actions, and supports backdrop click-to-close.
+
+<ShowComponent>
+  <ComplexModal />
 </ShowComponent>
 
-### Backdrop, No Click Away
+### Basic Modal
 
-The Modal with Backdrop adds a semi-transparent overlay to the page, providing visual separation from the main content.
+The simplest implementation of a modal includes basic container styling, a backdrop with blur effect, ESC key to close, and default padding and margins.
 
-<ShowComponent filePath="./src/components/modals/BackdropModal.html">
-    <BackdropModal/>
+<ShowComponent>
+  <BasicModal />
 </ShowComponent>
 
-### No Backdrop, Click Away
+The styling of the base modal is defined by the following variables. As with all components, they will use these default values, but can be redefined within your main css file.
 
-The Click Away Modal allows users to close it by clicking anywhere outside the modal content, suitable for non-critical information.
+| Variable                             | Default Value                 | Description                               |
+| ------------------------------------ | ----------------------------- | ----------------------------------------- |
+| `--modal-width-min`                  | `320px`                       | Minimum width of the modal container      |
+| `--modal-margin`                     | `2rem`                        | Margin around the modal on desktop        |
+| `--modal-padding`                    | `2rem`                        | Internal padding of the modal content     |
+| `--modal-box-scale`                  | `0.95`                        | Initial scale of modal for animation      |
+| `--modal-shadow`                     | `var(--shadow-2xl)`           | Shadow effect for the modal box           |
+| `--modal-radius`                     | `var(--radius-size-none)`     | Border radius of the modal                |
+| `--modal-animation-speed`            | `var(--animation-speed-slow)` | Duration of modal animations              |
+| `--modal-surface`                    | `var(--surface-cards)`        | Background color for the modal            |
+| `--modal-backdrop-color`             | `rgba(0, 0, 0, 0.3)`          | Color and opacity of the modal backdrop   |
+| `--modal-backdrop-blur`              | `4px`                         | Blur effect intensity for the backdrop    |
+| `--modal-text-color`                 | `var(--text-black)`           | Default text color for the modal          |
+| `--modal-mobile-padding`             | `1rem`                        | Internal padding on mobile devices        |
+| `--modal-mobile-margin`              | `0rem`                        | Margin around the modal on mobile         |
+| `--modal-mobile-slide-up-max-height` | `90vh`                        | Maximum height of modal on mobile         |
+| `--modal-shadow-mobile`              | `var(--shadow-2xl)`           | Shadow effect for the modal box on mobile |
 
-<ShowComponent filePath="./src/components/modals/ClickAwayCloseModal.html">
-    <ClickAwayCloseModal/>
+### Close Button
+
+It is generally advised to always include a close button for a clear UX. To add a close button, include a `form` element with the `modal-control-bar` class at the start of your modal content. Within this, add a button with the `modal-close-button` class.
+
+<ShowComponent>
+  <CloseButtonModal />
 </ShowComponent>
 
-### Backdrop, Click Away
+| Variable                                | Default Value                 | Description                          |
+| --------------------------------------- | ----------------------------- | ------------------------------------ |
+| `--modal-text-close-button-size`        | `var(--text-size-md)`         | Font size for close button           |
+| `--modal-text-close-button-weight`      | `var(--font-weight-normal)`   | Font weight for close button         |
+| `--modal-text-close-button-line-height` | `var(--line-height-md)`       | Line height for close button         |
+| `--modal-text-body-color`               | `var(--text-medium-emphasis)` | Color for close button text          |
+| `--modal-text-title-color`              | `var(--text-high-emphasis)`   | Color for close button text on hover |
 
-Finally, this modal combines both backdrop and click-away functionality.
+### Disable Backdrop
 
-<ShowComponent filePath="./src/components/modals/BackdropCloseModal.html">
-    <BackdropCloseModal/>
+To remove the backdrop blur and dimming effects, add the `modal-disable-backdrop` class to the dialog element alongside the `modal` class.
+
+<ShowComponent>
+  <NoBackdropModal />
 </ShowComponent>
 
+### Backdrop Click Away
 
-## CSS Variables
+To enable closing the modal by clicking the backdrop, add a `form` element with `method="dialog"` and the `modal-clickaway` class after the modal content.
 
-The modal system can be customized using CSS variables:
+<ShowComponent>
+  <BackdropOnlyModal />
+</ShowComponent>
 
-| Variable | Default Value | Description |
-|----------|---------------|-------------|
-| `--modal-backdrop-color` | `rgba(0, 0, 0, 0.3)` | Background color of the modal backdrop |
-| `--modal-backdrop-blur` | `4px` | Blur effect applied to the backdrop |
-| `--modal-width` | `32rem` | Maximum width of the modal |
-| `--modal-padding` | `1.5rem` | Internal padding of the modal |
-| `--modal-border-radius` | `var(--default-rounded-box)` | Border radius of the modal |
-| `--modal-max-height` | `calc(100vh - 5rem)` | Maximum height on desktop |
-| `--modal-mobile-max-height` | `calc(100vh - 2rem)` | Maximum height on mobile |
-| `--modal-mobile-margin` | `1rem` | Margin on mobile devices |
-| `--modal-content-bg` | `var(--default-neutral-100)` | Background color of the modal |
-| `--modal-shadow` | `0 25px 50px -12px rgba(0, 0, 0, 0.25)` | Shadow effect |
-| `--modal-box-scale` | `0.95` | Initial scale for animation |
-| `--modal-title-color` | `var(--default-primary-400)` | Color of the modal title |
-| `--modal-body-color` | `var(--default-primary-300)` | Color of the modal body text |
-| `--modal-title-size` | `1.25rem` | Font size of the title |
-| `--modal-title-weight` | `600` | Font weight of the title |
-| `--modal-animation-duration` | `0.3s` | Duration of open/close animations |
-| `--modal-z-index` | `1000` | Stack order of the modal |
-| `--modal-action-gap` | `0.5rem` | Gap between action buttons |
+### Content Structure
+
+To create a structured content layout, use the `modal-title` class for headings and `modal-body` class for content.
+
+<ShowComponent>
+  <ContentModal />
+</ShowComponent>
+
+| Variable                         | Default Value                  | Description                     |
+| -------------------------------- | ------------------------------ | ------------------------------- |
+| `--modal-text-title-size`        | `var(--text-size-md)`          | Font size for modal title       |
+| `--modal-text-title-line-height` | `var(--line-height-md)`        | Line height for modal title     |
+| `--modal-text-title-line-weight` | `var(--font-weight-semi-bold)` | Font weight for modal title     |
+| `--modal-text-title-color`       | `var(--text-high-emphasis)`    | Color for modal title text      |
+| `--modal-text-body-size`         | `var(--text-size-body)`        | Font size for modal body text   |
+| `--modal-text-body-line-height`  | `var(--line-height-body)`      | Line height for modal body text |
+| `--modal-text-body-line-weight`  | `var(--font-weight-normal)`    | Font weight for modal body      |
+| `--modal-text-body-color`        | `var(--text-medium-emphasis)`  | Color for modal body text       |
+
+### Hero Image
+
+To create a modal with a hero image, add the `modal-box--with-hero` class to your modal box. Place your image with the `modal-hero-image` class in a separate `div` before your content. The layout will automatically adjust between desktop (left-aligned) and mobile (top-aligned).
+
+<ShowComponent>
+  <HeroModal />
+</ShowComponent>
+
+The hero image is effected by the following variables:
+
+| Variable                     | Default Value | Description                            |
+| ---------------------------- | ------------- | -------------------------------------- |
+| `--modal-hero-width`         | `18rem`       | Width of hero image section on desktop |
+| `--modal-mobile-hero-height` | `150px`       | Height of hero image on mobile devices |
+
+## Accessibility
+
+The modal system is built following the [WAI-ARIA Modal Dialog Pattern](https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/), implementing key accessibility features through semantic HTML and ARIA attributes.
+
+### Current Implementation Features
+
+#### Structure and Labeling
+
+Each modal includes:
+
+- [x] The `role="dialog"` attribute to identify it as a modal dialog
+- [x] `aria-modal="true"` to indicate it's a modal context
+- [x] `aria-label` to provide an accessible name for the modal
+- [x] `aria-controls` on trigger buttons to associate them with their respective modals
+
+#### Keyboard Support
+
+The native HTML `<dialog>` element provides:
+
+- [x] ESC key to close the modal
+- [x] Tab key to navigate through focusable elements
+- [x] Automatic focus management within the modal
+
+#### Screen Reader Support
+
+Each modal variant includes:
+
+- [x] Clear labeling of all interactive elements
+- [x] Proper content organization
+- [x] Hidden decorative elements using `aria-hidden="true"`
+- [x] Descriptive button labels for actions and close buttons
+
+### Mobile Accessibility
+
+For mobile devices:
+
+- [x] Clear close mechanisms (either close button or backdrop)
+- [x] Touch-friendly target sizes
+- [x] Maintained content structure
+
+### Required Implementation Steps
+
+When implementing modals in your project, ensure you:
+
+#### Content Structure
+
+- [ ] Use semantic HTML elements for content structure
+- [ ] Include descriptive text for all buttons and interactive elements
+- [ ] Maintain proper focus management
+
+#### ARIA Attributes
+
+- [ ] Add appropriate `aria-label` value to the dialog element
+- [ ] Include `aria-controls` on trigger buttons
+- [ ] Add descriptive `aria-label` values for action buttons
+- [ ] Use `aria-hidden="true"` for decorative elements
