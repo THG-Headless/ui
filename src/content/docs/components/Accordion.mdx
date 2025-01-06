@@ -84,15 +84,17 @@ An alternative is the use of the HTML details and summary tags, however at the t
 The current implementation provides:
 > Tab navigation between focusable elements
 > Focus indicators on interactive elements
-> ( Summary/Details Accordion Only )Space/Enter keys to open/close the dropdown (built-in with `<details>`)
+> Space/Enter keys to open/close the dropdown
 
 #### Screen Reader Support
 
-#### ARIA State Management
+#### ARIA State Management (Basic Accordion Only)
 Update the following ARIA states dynamically:
 - [ ] `aria-expanded` on an open accordion panel
 - [ ] `aria-controls=ID` link the top level element around the trigger for an accordion panel
 - [ ] Use role=region / `aria-labelledby` on the accordion content panel div, to demonstrate the link to the button controlling visibility
+
+If using the Summary/Details HTML elements, the accessible name is inferred automatically from the contents of these elements. There remain inconsistencies and gaps in assitive technologies ability to perceive this which is why we do not yet promote this format as an accessible option.
 
 These steps will need to be done through JavaScript implementation
 
