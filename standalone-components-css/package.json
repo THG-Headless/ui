@@ -2,15 +2,18 @@
   "name": "@thg-altitude/standalone-components-css",
   "version": "1.0.0",
   "description": "Reusable pure CSS styling for components",
-  "main": "index.js",
+  "main": "src/main.css",
+  "files": [
+    "src/**/*"
+  ],
   "scripts": {
-    "build": "mkdir -p dist && cp -r src/* dist/",
-    "prepare": "npm run build"
+    "prepare": "echo 'No build needed'"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "exports": {
-    ".": "./dist/main.css"
+    ".": "./src/main.css",
+    "./components/*": "./src/components/*"
   }
 }
