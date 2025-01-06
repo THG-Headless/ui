@@ -145,7 +145,7 @@
     --radius-size-xl: 32px;
     --radius-size-full: 9999px;
 
-    --radius-btn: var(--radius-size-md);
+    --radius-md: var(--radius-size-md);
 
     --text-size-desktop-xl2: 45px;
     --line-height-desktop-xl2: 56px;

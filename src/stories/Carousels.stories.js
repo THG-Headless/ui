@@ -1,4 +1,5 @@
 import HeroCarousel from "../components/carousel/HeroCarousel.html"
+import ProductCarousel from "../components/carousel/ProductCarousel.html"
 
 export default {
   title: "Carousels",
@@ -9,5 +10,8 @@ export default {
   },
 };
 
-export const Hero = () => HeroCarousel ;
-HeroCarousel.storyName = "hero Carousel";
+export const Hero = () => HeroCarousel;
+Hero.storyName = "Hero Carousel";
+
+export const ProductList = () => ProductCarousel;
+ProductList.storyName = "Product List Carousel";
