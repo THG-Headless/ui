@@ -35,6 +35,11 @@ if (import.meta.hot) {
   });
 }
 
+function getFileExtension(filepath: string): string {
+  return filepath.split('.').pop()?.toLowerCase() || '';
+}
+
+
 async function getHighlighterInstance(): Promise<Highlighter> {
   if (!global.__shikiHighlighter.promise) {
     global.__shikiHighlighter.promise = getHighlighter({
@@ -58,9 +63,9 @@ async function getHighlighterInstance(): Promise<Highlighter> {
   return global.__shikiHighlighter.promise;
 }
 
-async function getCodeContent(content: string, highlighter: Highlighter): Promise<string> {
+async function getCodeContent(content: string, highlighter: Highlighter, language: string = 'html'): Promise<string> {
   const darkHTML = highlighter.codeToHtml(content, {
-    lang: "html",
+    lang: language,
     theme: "github-dark",
   });
 
@@ -80,9 +85,36 @@ async function getFileContent(filepath: string): Promise<string> {
     const absolutePath = path.resolve(process.cwd(), filepath);
     const content = fs.readFileSync(absolutePath, "utf-8");
     const processedContent = content.replace(/---[\s\S]*?---/, "").trim();
+    
+    const fileExt = getFileExtension(filepath);
+    const languageMap: { [key: string]: string } = {
+      css: 'css',
+      html: 'html',
+      js: 'javascript',
+      jsx: 'jsx',
+      ts: 'typescript',
+      tsx: 'tsx',
+      astro: 'astro',
+      md: 'markdown',
+      mdx: 'markdown'
+    };
+    const language = languageMap[fileExt] || 'html';
 
     const highlighter = await getHighlighterInstance();
-    return getCodeContent(processedContent, highlighter);
+    const darkHTML = highlighter.codeToHtml(processedContent, {
+      lang: language,
+      theme: "github-dark",
+    });
+
+    const lightHTML = highlighter.codeToHtml(processedContent, {
+      lang: language,
+      theme: "github-light",
+    });
+
+    return `
+      <div class="dark-theme dark:block hidden">${darkHTML}</div>
+      <div class="light-theme dark:hidden block">${lightHTML}</div>
+    `;
   } catch (error) {
     console.error(`Error reading file: ${error}`);
     return `Error: Could not read file ${filepath}`;
@@ -91,21 +123,18 @@ async function getFileContent(filepath: string): Promise<string> {
 
 const componentId = Math.random().toString(36).substr(2, 9);
 
-// Get the slot content
 const slotContent = await Astro.slots.render('default');
 
-// Store the original slot content for the preview
 const previewContent = slotContent;
 
 const htmlContent = slotContent.replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '')
                               .replace(/<style\b[^<]*(?:(?!<\/style>)<[^<]*)*<\/style>/gi, '')
                               .trim();
 
-// Use either file content or slot content
 const highlighter = await getHighlighterInstance();
 const codeContent = filePath 
   ? await getFileContent(filePath)
-  : await getCodeContent(htmlContent, highlighter);
+  : await getCodeContent(htmlContent, highlighter, 'html');
 ---
 
 <div class="not-content rounded-lg border border-zinc-700 shadow-sm">
