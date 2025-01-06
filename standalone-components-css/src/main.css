@@ -2,6 +2,7 @@
 @import "./components/button.css";
 @import "./components/modal.css";
 @import "./components/dropdown.css";
+@import "./components/accordion.css";
 
 @layer theme {
   :root {
@@ -197,8 +198,8 @@
 
     --animation-btn: 0.1s;
     --btn-hover-scale: 0.98;
+    --accordion-hover-scale: 0.98;
     --site-corners: 0.75rem;
-
     --btn-border: 0px;
     --dropdown-border: 0px;
 
@@ -233,5 +234,19 @@
     --dropdown-search-height: 3rem;
     --dropdown-menu-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
       0 4px 6px -2px rgba(0, 0, 0, 0.05);
+
+
+    /* Accordion Layout */
+    --accordion-wrapper-padding: 5px;
+    --accordion-width: 20em;
+    --accordion-gap: 0.5em;
+    --accordion-radius: 7px;
+    --accordion-border: none;
+    --accordion-inner-margin: 0px;
+    --accordion-inner-padding: 1em 1.5em;
+    --accordion-outline: auto;
+    --accordion-title-weight: normal;
+    --accordion-content-weight: normal;
+    --accordion-trigger-hover: none;
   }
 }
