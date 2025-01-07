@@ -1,4 +1,4 @@
-name: Deploy Preview Environment on Pull Request 
+name: Deploy Preview Environment 
 run-name: "Pull Request Deployment"
 
 on: 
@@ -25,10 +25,3 @@ jobs:
       - name: deploy to new environment
         id: deploy
         run: npx @thg-altitude/cli deploy --site "Starter Single-Tenant Commerce" --branch ${{ github.event.pull_request.head.ref }} --env ${{ github.event.pull_request.head.ref }} --verbose
-
-      - name: Get environment details
-        id: details
-        run: |
-          URL=$(npx @thg-altitude/cli environment info --site "Starter Single-Tenant Commerce" --env ${{ github.event.pull_request.head.ref }} | jq -r '.deploymentUrl')
-          echo "DEPLOYMENT_URL=$URL" >> "$GITHUB_OUTPUT"
-          echo $URL
