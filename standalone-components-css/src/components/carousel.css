@@ -1,35 +1,48 @@
 @layer components {
   :root {
-    --carousel-gap: 1.3rem;
-    --carousel-item-width: 346px;
     --carousel-width: 100%;
+    --carousel-item-width: auto;
+    --carousel-item-gap: 1rem;
   }
 
-  .carousel-dummy-product-card {
-    color: var(--neutral-600); 
-    width: 346px
-  }
   .carousel {
     display: flex;
-    gap: var(--carousel-gap);
-    width: var(--carousel-width);
     overflow-x: auto;
     scrollbar-width: none;
     scroll-snap-type: x mandatory;
+    gap: var(--carousel-item-gap);
+    width: var(--carousel-item-width);
   }
 
   .carousel-item {
     flex-shrink: 0;
     scroll-snap-align: start;
+    width: var(--carousel-item-width);
   }
+
+  .carousel-item-fullwidth {
+    --carousel-item-width: 100%;
+  }
+
+  /* dummy slides */
 
   .carousel-slide-dummy-image {
     height: 346px;
     background: var(--neutral-300);
   }
 
-  .w-full {
-    width: 100%;
+  .carousel-dummy-product-card {
+    color: var(--neutral-600);
+    width: 346px;
+  }
+
+  /* BULLETS AKA PIPS */
+
+  .carousel-bullet-wrapper {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin: 8px 0px 0px;
   }
 
   .carousel-bullet {
@@ -42,16 +55,55 @@
     border-radius: 50%;
     background-color: #cccccc;
   }
-  .carousel-bullet-wrapper {
-    display: flex;
-    justify-content: center;
-    gap: 8px;
-  }
-  .hover {
-    outline: 2px solid black;
+
+  .carousel-bullet-hover {
+    outline: 2px solid var(--primary-700);
   }
 
-  .active {
-    background-color: black;
+  .carousel-bullet-active {
+    background-color: var(--primary-700);
+  }
+
+  .carousel-control-btn {
+    border: 2px solid var(--primary-700);
+    border-radius: 0;
+    background-color: white;
+    width: 48px;
+    height: 48px;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    border: 0;
+    outline: 1px solid var(--primary-700);
+    overflow: hidden;
+    cursor: pointer;
+  }
+
+  .carousel-controls {
+    display: flex;
+    align-items: flex-start;
+  }
+
+  .carousel-control-pagination {
+    color: var(--primary-700);
+    display: flex;
+    padding: 12px 14px;
+    align-items: center;
+    gap: 10px;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: bold;
+    line-height: 24px; /* 150% */
+  }
+
+  .carousel-controls-banner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .carousel-controls-product-rail {
+    display: flex;
+    justify-content: flex-end;
   }
 }

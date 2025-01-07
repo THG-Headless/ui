@@ -4,41 +4,39 @@ description: Carousel
 ---
 
 import ShowComponent from "@components/doc-helpers/ShowComponent.astro";
-import ProductCarousel from "@components/carousel/ProductCarousel.html";
-import HeroCarousel from "@components/carousel/HeroCarousel.html";
+import ProductRail from "@components/carousel/ProductRail.html";
+import Carousel from "@components/carousel/Banner.html";
 import CarouselControls from "@components/carousel/CarouselControls.html";
 import CarouselControls_Banner from "@components/carousel/CarouselControls_Banner.html";
 import CarouselControls_ProductRail from "@components/carousel/CarouselControls_ProductRail.html";
 import CarouselControls_ProductRail_Additional from "@components/carousel/CarouselControls_ProductRail_Additional.html";
+import Bullets from "@components/carousel/CarouselBullets.html";
 
+Used to show images or content in a horizontally scrollable area. Is composed of a `carousel` > `carousel-items` and a `carousel-bullet-wrapper` > `carousel-bullet`
 
+# Examples
 
-Used to show images or content in a horizontally scrollable area.
+# Product Rail
 
+Use this if you need multiple slides in view at any one time.
 
-## Variations
-
-### Product Carousel
-
-Use this if you need multiple slides in view at any one time. 
-
-<ShowComponent filePath="./src/components/carousel/ProductCarousel.html">
-  <ProductCarousel />
+<ShowComponent filePath="./src/components/carousel/ProductRail.html">
+  <ProductRail />
 </ShowComponent>
 
-Users can scroll through the items using their mouse or trackpad. Items can be tabbed through with `tab` and `shift tab`.
-The little 'bullets' at the bottom have no functionality by default; this has to be applied with JavaScript. 
+- Users can scroll through the items using their mouse or trackpad.
 
-### Hero Carousel
+- The little `carousel-bullet-wrapper` at the bottom have no functionality by default; this has to be applied with JavaScript.
 
-Use if your "Hero" section needs a carousel. 
+## Hero Banner
 
-<ShowComponent filePath="./src/components/carousel/HeroCarousel.html">
-  <HeroCarousel />
+<ShowComponent filePath="./src/components/carousel/Banner.html">
+  <Carousel />
 </ShowComponent>
 
+This version is identical to the [Product Rail](<#Product Rail>) `--carousel-item-width: 100%` through the `carousel-item-fullwidth` modifier
 
-### Control Buttons
+## Carousel Control Variations
 
 These are used to navigate between slides
 
@@ -46,42 +44,52 @@ These are used to navigate between slides
   <CarouselControls />
 </ShowComponent>
 
-#### Banner 
+### Banner
 
 <ShowComponent filePath="./src/components/carousel/CarouselControls_Banner.html">
   <CarouselControls_Banner />
 </ShowComponent>
 
-
-#### Product Rail
+### Product Rail
 
 <ShowComponent filePath="./src/components/carousel/CarouselControls_ProductRail.html">
   <CarouselControls_ProductRail />
 </ShowComponent>
 
-#### Product Rail with Additional Controls
+## Bullets
+
+The bullets are not functional without JavaScript. Use the `carousel-bullet-hover` and `carousel-bullet-active` modifiers to style the hover and active states.
+
+<ShowComponent filePath="./src/components/carousel/CarouselBullets.html">
+  <Bullets />
+</ShowComponent>
+
+## Product Rail with Additional Controls
 
 <ShowComponent filePath="./src/components/carousel/CarouselControls_ProductRail_Additional.html">
   <CarouselControls_ProductRail_Additional />
 </ShowComponent>
 
-### Variables
+### Variables (TODO)
 
-```
---carousel-gap: (1rem default)
-```
+The carousel can be customized with the following variables:
+
+| Variable | default |
+| -------- | ------- |
+|          |         |
+
 ## Notes
 
-- Note that the carousel-item by default 
+- Note that the carousel-item by default
+
 ## Accessibility
 
-* Use of semantic html tags (`ul` and `li`) to display content
-* The `tabindex="0"` attributes ensures that we can use `Tab` and `Shift+Tab` to tab through carousel items.
+- Use of semantic html tags (`ul` and `li`) to display content
+- The `tabindex="0"` attributes ensures that we can use `Tab` and `Shift+Tab` to tab through carousel items.
 
 ## JavaScript implementation
 
-- You will need to add JavaScript to the bullets and the controls for them to function properly. 
-
+- You will need to add JavaScript to the bullets and the controls for them to function properly.
 
 ## Further reading
 
@@ -93,6 +101,3 @@ https://www.w3.org/WAI/tutorials/carousels/
 
 CSS Only Carousel CSS-Tricks
 https://css-tricks.com/css-only-carousel/
-
-
-
