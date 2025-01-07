@@ -6,51 +6,81 @@ description: Carousel
 import ShowComponent from "@components/doc-helpers/ShowComponent.astro";
 import ProductCarousel from "@components/carousel/ProductCarousel.html";
 import HeroCarousel from "@components/carousel/HeroCarousel.html";
+import CarouselControls from "@components/carousel/CarouselControls.html";
+import CarouselControls_Banner from "@components/carousel/CarouselControls_Banner.html";
+import CarouselControls_ProductRail from "@components/carousel/CarouselControls_ProductRail.html";
+import CarouselControls_ProductRail_Additional from "@components/carousel/CarouselControls_ProductRail_Additional.html";
+
+
+
+Used to show images or content in a horizontally scrollable area.
+
 
 ## Variations
 
 ### Product Carousel
 
+Use this if you need multiple slides in view at any one time. 
+
 <ShowComponent filePath="./src/components/carousel/ProductCarousel.html">
   <ProductCarousel />
 </ShowComponent>
 
-JavScript is needed to make the bullets change styling based on the slide that's in view, for instance using the intersection observer API.
+Users can scroll through the items using their mouse or trackpad. Items can be tabbed through with `tab` and `shift tab`.
+The little 'bullets' at the bottom have no functionality by default; this has to be applied with JavaScript. 
 
 ### Hero Carousel
 
-Exactly the same as above, but with: `width: 100%` applied to every `carousel-item` using the `w-full` utility class
+Use if your "Hero" section needs a carousel. 
 
 <ShowComponent filePath="./src/components/carousel/HeroCarousel.html">
   <HeroCarousel />
 </ShowComponent>
 
-### Product Carousel with Disabled bullets.
+
+### Control Buttons
+
+These are used to navigate between slides
+
+<ShowComponent filePath="./src/components/carousel/CarouselControls.html">
+  <CarouselControls />
+</ShowComponent>
+
+#### Banner 
+
+<ShowComponent filePath="./src/components/carousel/CarouselControls_Banner.html">
+  <CarouselControls_Banner />
+</ShowComponent>
 
 
-### Notes
-- the `tabIndex="0"` attributes ensures that we can tab through carousel items. This ensures compliance[^1]. 
-- The bullets have no functionality by default, this has to be applied with JavaScript. 
+#### Product Rail
+
+<ShowComponent filePath="./src/components/carousel/CarouselControls_ProductRail.html">
+  <CarouselControls_ProductRail />
+</ShowComponent>
+
+#### Product Rail with Additional Controls
+
+<ShowComponent filePath="./src/components/carousel/CarouselControls_ProductRail_Additional.html">
+  <CarouselControls_ProductRail_Additional />
+</ShowComponent>
 
 ### Variables
 
 ```
 --carousel-gap: (1rem default)
 ```
+## Notes
 
-## Product List with Left/Right buttons
-
-- con: anchor jumping is jarring (when you use the bullets to navigate it jumps vertically to a particular section)
-- con: horizontal scrollbar is visible
-
+- Note that the carousel-item by default 
 ## Accessibility
 
 * Use of semantic html tags (`ul` and `li`) to display content
-* <kbd>Shift+Tab</kbd> and <kbd>Tab</kbd> are used to tab through the `<li class="carousel-item">`s
+* The `tabindex="0"` attributes ensures that we can use `Tab` and `Shift+Tab` to tab through carousel items.
 
-## Implementation tips
+## JavaScript implementation
 
-- It's good practice to wrap the 'carousel' element in a `<section`>
+- You will need to add JavaScript to the bullets and the controls for them to function properly. 
 
 
 ## Further reading
@@ -64,7 +94,5 @@ https://www.w3.org/WAI/tutorials/carousels/
 CSS Only Carousel CSS-Tricks
 https://css-tricks.com/css-only-carousel/
 
-## Footnotes
 
-[^1] https://www.w3.org/WAI/ARIA/apg/patterns/carousel/
 
