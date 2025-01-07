@@ -11,14 +11,14 @@ interface RadiusCategory {
 
 export function parseRadiusScheme(cssContent: string) {
   const primitiveRadii: Record<string, RadiusCategory> = {
-    sizes: { name: 'Size Variants', radii: [] },
+    sizes: { name: "Size Variants", radii: [] },
   };
 
   const semanticRadii: Record<string, RadiusCategory> = {
-    components: { name: 'Component Radii', radii: [] },
+    components: { name: "Component Radii", radii: [] },
   };
 
-  const lines = cssContent.split('\n');
+  const lines = cssContent.split("\n");
   const variableRegex = /^\s*(--.+?):\s*(.+?);(?:\s*\/\*([^*]+?)\*\/)?$/;
 
   for (const line of lines) {
@@ -31,9 +31,9 @@ export function parseRadiusScheme(cssContent: string) {
         description: description?.trim(),
       };
 
-      if (name.startsWith('--radius-size-')) {
+      if (name.startsWith("--radius-size-")) {
         primitiveRadii.sizes.radii.push(radiusVar);
-      } else if (name.startsWith('--radius-')) {
+      } else if (name.startsWith("--radius-")) {
         semanticRadii.components.radii.push(radiusVar);
       }
     }

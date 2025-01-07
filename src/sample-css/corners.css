@@ -6,8 +6,4 @@
   --radius-size-lg: 16px;
   --radius-size-xl: 32px;
   --radius-size-full: 9999px;
-
-  /* Semantic radii */
-  --radius-button: var(--radius-size-md); /* Standard button radius */
-  --radius-modal: var(--radius-size-md); /* Modal / Dialogue radius */
 }

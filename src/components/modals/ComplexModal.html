@@ -1,0 +1,45 @@
+<button
+  class="btn btn-primary btn-high"
+  onclick="complexModal.showModal()"
+  aria-haspopup="dialog"
+>
+  Open Complex Modal
+</button>
+
+<dialog
+  id="complexModal"
+  class="modal"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="complex-modal-title"
+  aria-describedby="complex-modal-body"
+>
+  <div class="modal-box modal-box--with-hero">
+    <form method="dialog" class="modal-control-bar">
+      <button class="modal-close-button">
+        <span>Close</span>
+        <span aria-hidden="true">✕</span>
+      </button>
+    </form>
+    <div>
+      <img
+        class="modal-hero-image"
+        src="https://picsum.photos/id/558/1920/1080"
+        alt="Hero image"
+      />
+    </div>
+    <div>
+      <h3 id="complex-modal-title" class="modal-title">
+        Modal with Hero Image
+      </h3>
+      <div id="complex-modal-body" class="modal-body">
+        <p>This modal features a hero image on the left side.</p>
+      </div>
+      <button class="btn btn-primary btn-high full-width">Primary CTA</button>
+      <button class="btn btn-primary btn-low full-width">Secondary CTA</button>
+    </div>
+  </div>
+  <form method="dialog" class="modal-clickaway">
+    <button aria-label="Close modal by clicking backdrop"></button>
+  </form>
+</dialog>

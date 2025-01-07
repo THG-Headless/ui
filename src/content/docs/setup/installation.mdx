@@ -2,16 +2,17 @@
 title: Installation
 description: Installing and setting up the package in your project
 sidebar:
-    order: 2
+  order: 2
 ---
 
-import ShowComponent from "../../../components/doc-helpers/ShowComponent.astro"
-import PrimaryButton from "../../../components/buttons/PrimaryButton.html"
-import PrimaryButtonCustom from "../../../components/buttons/PrimaryButtonCustom.html"
+import ShowComponent from "../../../components/doc-helpers/ShowComponent.astro";
+import PrimaryButton from "../../../components/doc-helpers/PrimaryButton.html";
+import PrimaryButtonCustom from "../../../components/doc-helpers/PrimaryButtonCustom.html";
 
 ## Steps
 
 ### 1. Installing the package
+
 The package can be installed using npm, using the command shown below. This package provides the custom css classes used to achieve the styling shown in this documentation.
 
 ```bash
@@ -21,23 +22,23 @@ npm install @thg-altitude/standalone-components-css
 The npm page for the package can be found **[here](https://www.npmjs.com/package/@thg-altitude/standalone-components-css)**.
 
 ### 2. Importing the package
+
 Within your main application file, giving all subsequent files access to these custom css classes.
 
 ```js
-import "@thg-altitude/standalone-components-css"
+import "@thg-altitude/standalone-components-css";
 ```
 
 ### 3. Creating components
+
 This documentation provides examples of components that make use of these custom css classes. To create a component, such as a [button](/components/button), simply copy the provided code example into your codebase. This approach allows you to use this as a starting point, and build any additional functionality you may need ontop of this component, giving you full control over its appearance and functionality.
 
-
-
-<ShowComponent filePath="./src/components/buttons/PrimaryButton.html">
-    <PrimaryButton/>
+<ShowComponent filePath="./src/components/doc-helpers/PrimaryButton.html">
+  <PrimaryButton />
 </ShowComponent>
 
 **[Tailwind CSS](https://tailwindcss.com/)** allows for easy editing of the styles beyond your **[configured theming](/setup/theme)**. Below is an example fo using it to alter the buttons appearance.
 
-<ShowComponent filePath="./src/components/buttons/PrimaryButtonCustom.html">
-    <PrimaryButtonCustom/>
-</ShowComponent>
+<ShowComponent filePath="./src/components/doc-helpers/PrimaryButtonCustom.html">
+  <PrimaryButtonCustom />
+</ShowComponent>{" "}
