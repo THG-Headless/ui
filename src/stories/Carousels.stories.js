@@ -1,5 +1,5 @@
-import HeroCarousel from "../components/carousel/HeroCarousel.html"
-import ProductCarousel from "../components/carousel/ProductCarousel.html"
+import HeroCarousel from "../components/carousel/Banner.html";
+import ProductCarousel from "../components/carousel/ProductRail_withBulletsAndControls.html";
 
 export default {
   title: "Carousels",
