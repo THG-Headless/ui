@@ -5,6 +5,8 @@ description: Carousel
 
 import ShowComponent from "@components/doc-helpers/ShowComponent.astro";
 import ProductRail from "@components/carousel/ProductRail.html";
+import ProductRail_withBullets from "@components/carousel/ProductRail_withBullets.html";
+
 import Carousel from "@components/carousel/Banner.html";
 import CarouselControls from "@components/carousel/CarouselControls.html";
 import CarouselControls_Banner from "@components/carousel/CarouselControls_Banner.html";
@@ -12,37 +14,56 @@ import CarouselControls_ProductRail from "@components/carousel/CarouselControls_
 import CarouselControls_ProductRail_Additional from "@components/carousel/CarouselControls_ProductRail_Additional.html";
 import Bullets from "@components/carousel/CarouselBullets.html";
 
-Used to show images or content in a horizontally scrollable area. Is composed of a `carousel` > `carousel-items` and a `carousel-bullet-wrapper` > `carousel-bullet`
+Used to show images or content in a horizontally scrollable area.
 
-# Examples
+## Building Blocks
 
-# Product Rail
+### Bullets
 
-Use this if you need multiple slides in view at any one time.
+A subtle indicator of the remaining unseen slides.
+The bullets are not functional without JavaScript. Use the `carousel-bullet-hover` and `carousel-bullet-active` modifiers to style the hover and active states. These will need to be applied with JavaScript.
 
-<ShowComponent filePath="./src/components/carousel/ProductRail.html">
-  <ProductRail />
+<ShowComponent filePath="./src/components/carousel/CarouselBullets.html">
+  <Bullets />
 </ShowComponent>
 
-- Users can scroll through the items using their mouse or trackpad.
-
-- The little `carousel-bullet-wrapper` at the bottom have no functionality by default; this has to be applied with JavaScript.
-
-## Hero Banner
-
-<ShowComponent filePath="./src/components/carousel/Banner.html">
-  <Carousel />
-</ShowComponent>
-
-This version is identical to the [Product Rail](<#Product Rail>) `--carousel-item-width: 100%` through the `carousel-item-fullwidth` modifier
-
-## Carousel Control Variations
+### Controls
 
 These are used to navigate between slides
 
 <ShowComponent filePath="./src/components/carousel/CarouselControls.html">
   <CarouselControls />
 </ShowComponent>
+
+### Carousel
+
+Allows users to swipe across to see multiple slides
+
+<ShowComponent filePath="./src/components/carousel/ProductRail.html">
+  <ProductRail />
+</ShowComponent>
+
+## Combinations
+
+### Example 1 - Hero Banner
+
+We can create full-width banner by applying `w-full` to the div with class `carousel-item`:
+
+<ShowComponent filePath="./src/components/carousel/Banner.html">
+  <Carousel />
+</ShowComponent>
+
+### Example 2 - Product Rail
+
+<ShowComponent filePath="./src/components/carousel/ProductRail_withBullets.html">
+  <ProductRail_withBullets />
+</ShowComponent>
+You may need explicit controls to move to the next slide or start/stop
+animations.
+
+### Example 3 - Product Rail with Additional Controls
+
+This version is identical to the [Product Rail](<#Product Rail>) `--carousel-item-width: 100%` through the `carousel-item-fullwidth` modifier
 
 ### Banner
 
@@ -54,14 +75,6 @@ These are used to navigate between slides
 
 <ShowComponent filePath="./src/components/carousel/CarouselControls_ProductRail.html">
   <CarouselControls_ProductRail />
-</ShowComponent>
-
-## Bullets
-
-The bullets are not functional without JavaScript. Use the `carousel-bullet-hover` and `carousel-bullet-active` modifiers to style the hover and active states.
-
-<ShowComponent filePath="./src/components/carousel/CarouselBullets.html">
-  <Bullets />
 </ShowComponent>
 
 ## Product Rail with Additional Controls
