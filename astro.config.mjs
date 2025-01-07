@@ -4,7 +4,34 @@ import tailwindcss from "@tailwindcss/vite";
 
 export default defineConfig({
   vite: {
-    plugins: [tailwindcss()],
+    plugins: [
+      tailwindcss(),
+      {
+        name: "css-reload",
+        enforce: "post",
+        handleHotUpdate({ file, server }) {
+          if (
+            file.endsWith(".css") &&
+            file.includes("standalone-components-css")
+          ) {
+            server.ws.send({ type: "full-reload" });
+            return [];
+          }
+        },
+      },
+    ],
+    server: {
+      watch: {
+        ignored: ["!**/standalone-components-css/**"],
+      },
+      hmr: {
+        protocol: "ws",
+        host: "localhost",
+      },
+    },
+    css: {
+      devSourcemap: true,
+    },
   },
   image: {
     service: passthroughImageService(),
