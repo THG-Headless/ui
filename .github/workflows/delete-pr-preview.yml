@@ -1,0 +1,23 @@
+name: Deletion PR Environment
+run-name: "🗑️ PR Env Deletion"
+
+on:
+  pull_request:
+    types: [closed]
+
+jobs:
+  run_dev_env_deletion:
+    if: github.head_ref !='uat' && github.head_ref != 'main'
+    runs-on: ubuntu-latest
+    env:
+      ALTITUDE_CLIENT_ID: ${{ secrets.ALTITUDE_CLIENT_ID }}
+      ALTITUDE_SECRET_KEY: ${{ secrets.ALTITUDE_SECRET_KEY }}
+    steps:
+      - name: Set up node version
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18.15.0
+
+      - name: Request preview environment deletion
+        id: env_deletion
+        run: npx @thg-altitude/cli environment delete --site "Standalone Components"  --env ${{ github.event.pull_request.head.ref }} --verbose

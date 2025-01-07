@@ -1,0 +1,27 @@
+name: Deploy Preview Environment 
+run-name: "Pull Request Deployment"
+
+on: 
+  pull_request:
+
+concurrency:
+  group: development-environment-${{ github.head_ref }}
+  cancel-in-progress: true
+
+jobs:
+  publish-pr:
+    runs-on: ubuntu-latest
+    outputs:
+      deployment_url: ${{ steps.details.outputs.DEPLOYMENT_URL }}
+    env:
+      ALTITUDE_CLIENT_ID: ${{ secrets.ALTITUDE_CLIENT_ID }}
+      ALTITUDE_SECRET_KEY: ${{ secrets.ALTITUDE_SECRET_KEY }}
+    steps:
+      - name: Set up node version
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18.15.0
+
+      - name: deploy to new environment
+        id: deploy
+        run: npx @thg-altitude/cli deploy --site "Starter Single-Tenant Commerce" --branch ${{ github.event.pull_request.head.ref }} --env ${{ github.event.pull_request.head.ref }} --verbose
