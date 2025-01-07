@@ -27,11 +27,10 @@ Exactly the same as above, but with: `width: 100%` applied to every `carousel-it
 
 ### Product Carousel with Disabled bullets.
 
-the "active" bullet is styled according to the THG figma and has to be dynamically applied using client-side javascript.
 
-### Product Carousel with CSS-Only bullets
-
-the bullet functionality is implemented using CSS. The downside of this approach is 'anchor jumping', which happens when you click a slide and the viewport jumps in the vertical direction.
+### Notes
+- the `tabIndex="0"` attributes ensures that we can tab through carousel items. This ensures compliance[^1]. 
+- The bullets have no functionality by default, this has to be applied with JavaScript. 
 
 ### Variables
 
@@ -53,6 +52,7 @@ the bullet functionality is implemented using CSS. The downside of this approach
 
 - It's good practice to wrap the 'carousel' element in a `<section`>
 
+
 ## Further reading
 
 Carousel Pattern on W3C Web Accessibility Initiative
@@ -63,3 +63,8 @@ https://www.w3.org/WAI/tutorials/carousels/
 
 CSS Only Carousel CSS-Tricks
 https://css-tricks.com/css-only-carousel/
+
+## Footnotes
+
+[^1] https://www.w3.org/WAI/ARIA/apg/patterns/carousel/
+
