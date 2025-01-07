@@ -11,14 +11,11 @@ hero:
       link: /setup/introduction
       icon: right-arrow
       variant: primary
+
 ---
 
-import {
-  Card,
-  CardGrid,
-  LinkButton,
-  Icon,
-} from "@astrojs/starlight/components";
+import { Card, CardGrid, LinkButton, Icon  } from '@astrojs/starlight/components';
+
 
 <CardGrid stagger>
   <Card title="Introduction" icon="open-book">
@@ -30,24 +27,20 @@ import {
     Installing and setting up the package in your project.
 
     <LinkButton href="/setup/installation">Read <Icon name="right-arrow" /></LinkButton>
-
   </Card>
   <Card title="Themes" icon="pen">
     Specifying styles to your project.
 
     <LinkButton href="/setup/theme">Read <Icon name="right-arrow" /></LinkButton>
-
   </Card>
   <Card title="Custom Components" icon="add-document">
     Building upon the built in classes to create custom additional classes.
 
     <LinkButton href="/setup/additional">Read <Icon name="right-arrow" /></LinkButton>
-
   </Card>
    <Card title="Components" icon="puzzle">
     Get the components, ready to copy and paste into your code base.
 
     <LinkButton href="/components/button">Read <Icon name="right-arrow" /></LinkButton>
-
   </Card>
 </CardGrid>

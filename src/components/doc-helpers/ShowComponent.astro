@@ -6,7 +6,7 @@ import { getHighlighter } from "shiki";
 import "../../tailwind.css";
 
 interface Props {
-  filePath?: string;
+  filePath: string;
 }
 
 const { filePath } = Astro.props;
@@ -35,11 +35,6 @@ if (import.meta.hot) {
   });
 }
 
-function getFileExtension(filepath: string): string {
-  return filepath.split('.').pop()?.toLowerCase() || '';
-}
-
-
 async function getHighlighterInstance(): Promise<Highlighter> {
   if (!global.__shikiHighlighter.promise) {
     global.__shikiHighlighter.promise = getHighlighter({
@@ -63,51 +58,21 @@ async function getHighlighterInstance(): Promise<Highlighter> {
   return global.__shikiHighlighter.promise;
 }
 
-async function getCodeContent(content: string, highlighter: Highlighter, language: string = 'html'): Promise<string> {
-  const darkHTML = highlighter.codeToHtml(content, {
-    lang: language,
-    theme: "github-dark",
-  });
-
-  const lightHTML = highlighter.codeToHtml(content, {
-    lang: "html",
-    theme: "github-light",
-  });
-
-  return `
-    <div class="dark-theme dark:block hidden">${darkHTML}</div>
-    <div class="light-theme dark:hidden block">${lightHTML}</div>
-  `;
-}
-
 async function getFileContent(filepath: string): Promise<string> {
   try {
     const absolutePath = path.resolve(process.cwd(), filepath);
     const content = fs.readFileSync(absolutePath, "utf-8");
     const processedContent = content.replace(/---[\s\S]*?---/, "").trim();
-    
-    const fileExt = getFileExtension(filepath);
-    const languageMap: { [key: string]: string } = {
-      css: 'css',
-      html: 'html',
-      js: 'javascript',
-      jsx: 'jsx',
-      ts: 'typescript',
-      tsx: 'tsx',
-      astro: 'astro',
-      md: 'markdown',
-      mdx: 'markdown'
-    };
-    const language = languageMap[fileExt] || 'html';
 
     const highlighter = await getHighlighterInstance();
+
     const darkHTML = highlighter.codeToHtml(processedContent, {
-      lang: language,
+      lang: "astro",
       theme: "github-dark",
     });
 
     const lightHTML = highlighter.codeToHtml(processedContent, {
-      lang: language,
+      lang: "astro",
       theme: "github-light",
     });
 
@@ -122,19 +87,7 @@ async function getFileContent(filepath: string): Promise<string> {
 }
 
 const componentId = Math.random().toString(36).substr(2, 9);
-
-const slotContent = await Astro.slots.render('default');
-
-const previewContent = slotContent;
-
-const htmlContent = slotContent.replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '')
-                              .replace(/<style\b[^<]*(?:(?!<\/style>)<[^<]*)*<\/style>/gi, '')
-                              .trim();
-
-const highlighter = await getHighlighterInstance();
-const codeContent = filePath 
-  ? await getFileContent(filePath)
-  : await getCodeContent(htmlContent, highlighter, 'html');
+const codeContent = await getFileContent(filePath);
 ---
 
 <div class="not-content rounded-lg border border-zinc-700 shadow-sm">
@@ -143,25 +96,23 @@ const codeContent = filePath
       class="flex justify-between items-center bg-zinc-800 rounded-t-lg border-b border-zinc-700"
     >
       <div class="flex">
-      <button
-        id={`previewTab-${componentId}`}
-        class="relative px-4 py-2 text-sm transition-all duration-200 ease-in-out border-0 rounded-tl-md"
-        style="color: #e1e4e8;" 
-        aria-selected="true"
-        role="tab"
-      >
-        Preview
-      </button>
-      <button
-        id={`codeTab-${componentId}`}
-        class="relative px-4 py-2 text-sm transition-all duration-200 ease-in-out border-0"
-        style="color: #e1e4e8;" 
-        aria-selected="false"
-        role="tab"
-      >
-        Code
-      </button>
-    </div>
+        <button
+          id={`previewTab-${componentId}`}
+          class="relative px-4 py-2 text-sm text-gray-200 transition-all duration-200 ease-in-out border-0 rounded-tl-md"
+          aria-selected="true"
+          role="tab"
+        >
+          Preview
+        </button>
+        <button
+          id={`codeTab-${componentId}`}
+          class="relative px-4 py-2 text-sm text-gray-400 transition-all duration-200 ease-in-out border-0"
+          aria-selected="false"
+          role="tab"
+        >
+          Code
+        </button>
+      </div>
       <button
         id={`copyButton-${componentId}`}
         class="px-4 py-2 text-sm text-gray-400 hover:text-accent-400 flex items-center gap-1 transition-colors duration-200 cursor-pointer"
@@ -191,7 +142,7 @@ const codeContent = filePath
       class="bg-zinc-100 p-4 rounded-b-lg"
       role="tabpanel"
     >
-      <Fragment set:html={previewContent} />
+      <slot />
     </div>
     <div
       id={`codePanel-${componentId}`}
@@ -296,30 +247,17 @@ const codeContent = filePath
 </script>
 
 <style is:global>
-  .dark-theme pre {
+  .dark-theme pre,
+  .light-theme pre {
     background-color: transparent !important;
     padding: 0 !important;
   }
 
-  .dark-theme code {
+  .dark-theme code,
+  .light-theme code {
     white-space: pre-wrap !important;
     word-wrap: break-word !important;
     overflow-wrap: break-word !important;
-  }
-
-  /* Force dark theme styles */
-  .dark-theme {
-    --shiki-color-text: #e1e4e8 !important;
-    --shiki-color-background: transparent !important;
-    --shiki-token-constant: #79b8ff !important;
-    --shiki-token-string: #9ecbff !important;
-    --shiki-token-comment: #6a737d !important;
-    --shiki-token-keyword: #f97583 !important;
-    --shiki-token-parameter: #e1e4e8 !important;
-    --shiki-token-function: #b392f0 !important;
-    --shiki-token-string-expression: #85e89d !important;
-    --shiki-token-punctuation: #e1e4e8 !important;
-    --shiki-token-link: #79b8ff !important;
   }
 
   pre {
@@ -329,29 +267,9 @@ const codeContent = filePath
   code {
     font-size: 0.9em !important;
     line-height: 1.5 !important;
-    color: var(--shiki-color-text) !important;
   }
 
   .tab-button:focus-visible {
     border-radius: 4px;
   }
-
-  /* Override any theme-based colors in the component */
-  [id^="copyButton-"] {
-    color: #9ca3af !important; /* text-gray-400 */
-  }
-
-  [id^="copyButton-"]:hover {
-    color: var(--accent-400) !important;
-  }
-
-  [id^="previewTab-"][aria-selected="true"],
-  [id^="codeTab-"][aria-selected="true"] {
-    color: #ffffff !important;
-    font-weight: bold !important;
-  }
-
-  [id^="previewTab-"][aria-selected="false"],
-  [id^="codeTab-"][aria-selected="false"] {
-    color: #9ca3af !important; /* text-gray-400 */
-  }
+</style>

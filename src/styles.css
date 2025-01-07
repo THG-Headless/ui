@@ -1,3 +1,4 @@
+
 :root {
   --sl-color-bg: #000;
   --sl-color-bg-nav: #000;
@@ -30,11 +31,11 @@ strong {
 }
 
 input[type="checkbox"] {
-  margin-right: 8px;
-  cursor: pointer;
+    margin-right: 8px;
+    cursor: pointer;
 }
 
 input[type="checkbox"]:checked + span {
-  text-decoration: line-through;
-  opacity: 0.7;
+    text-decoration: line-through;
+    opacity: 0.7;
 }
