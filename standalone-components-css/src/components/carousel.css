@@ -21,9 +21,6 @@
     width: var(--carousel-item-width);
   }
 
-  .carousel-item-fullwidth {
-    --carousel-item-width: 100%;
-  }
   /* dummy slides */
 
   .carousel-dummy-image {
@@ -32,7 +29,7 @@
     height: 346px;
   }
 
-  /* BULLETS AKA PIPS */
+  /* BULLETS */
 
   .carousel-bullet-wrapper {
     display: flex;
@@ -85,12 +82,6 @@
     font-style: normal;
     font-weight: bold;
     line-height: 24px; /* 150% */
-  }
-
-  .carousel-controls-banner {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
   }
 
   .side-control {

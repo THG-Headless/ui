@@ -10,15 +10,12 @@ import ProductRail_withBulletsAndControls from "@components/carousel/ProductRail
 import ProductRail_Additional from "@components/carousel/ProductRail_Additional.html";
 import CarouselBanner from "@components/carousel/CarouselBanner.html";
 import CarouselControls from "@components/carousel/CarouselControls.html";
-import CarouselControls_Banner from "@components/carousel/CarouselControls_Banner.html";
 import CarouselControls_ProductRail from "@components/carousel/CarouselControls_ProductRail.html";
 import Bullets from "@components/carousel/CarouselBullets.html";
 
-Used to show images or content in a horizontally scrollable area. Interactivity of bullets and controls has to be added with JavaScript.
+Used to show images or content in a horizontally scrollable area.
 
-## Building Blocks
-
-### Carousel Slides
+## Slides
 
 Allows users to swipe across to see multiple slides.
 
@@ -26,7 +23,7 @@ Allows users to swipe across to see multiple slides.
   <BasicCarousel />
 </ShowComponent>
 
-### Bullets
+## Bullets
 
 A subtle indicator of the remaining unseen slides. Use the `carousel-bullet-hover` and `carousel-bullet-active` modifiers to style the hover and active states. These will need to be applied and removed with JavaScript.
 
@@ -34,7 +31,7 @@ A subtle indicator of the remaining unseen slides. Use the `carousel-bullet-hove
   <Bullets />
 </ShowComponent>
 
-### Controls
+## Controls
 
 Use these to navigate between slides. They use the`btn` class (see [Button](/components/button/)), and additional styling is applied by the `carousel-control-btn` modifier class.
 
@@ -74,11 +71,26 @@ The carousel can be customized with the following variables:
 
 ## Accessibility
 
-- The `tabindex="0"` attribute ensures that we can use `Tab` and `Shift+Tab` to tab through carousel items.
+- The CSS-only version is not WCAG 2.1 compliant by default. You should add the correct aria attributes in your markup (these will somewhat depend on the use case of the carousel)
+- Please see https://www.w3.org/WAI/ARIA/apg/patterns/carousel/ for more information
 
-## JavaScript implementation
+## Implementation Notes
 
-- You will need to add JavaScript to the bullets and the controls for them to function properly.
+When implementing a carousel:
+
+### Ensuring compliance with A11y
+
+- Make sure to add the correct [aria labels](https://www.w3.org/WAI/ARIA/apg/patterns/carousel/#wai-ariaroles,states,andproperties) to make the component accessible. I.e
+  - Ensure that aria labels for slides are correct.
+  - Make sure the carousel container has the aria-roledescription property set to carousel.
+  - Make sure each slide has an accessible name
+  - Make sure each slide container has role group with the property aria-roledescription set to slide.
+
+see:
+
+### Adding interactivity
+
+- You may want to use the [Intersection Observer API](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API) to add interactivity.
 
 ## Further reading
 
