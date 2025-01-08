@@ -11,7 +11,7 @@
     scrollbar-width: none;
     scroll-snap-type: x mandatory;
     gap: var(--carousel-item-gap);
-    width: var(--carousel-item-width);
+    width: var(--carousel-width);
   }
 
   .carousel-item {
@@ -25,11 +25,6 @@
   }
 
   /* dummy slides */
-
-  .carousel-slide-dummy-image {
-    height: 346px;
-    background: var(--neutral-300);
-  }
 
   .carousel-dummy-product-card {
     color: var(--neutral-600);
@@ -100,5 +95,10 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+  }
+
+  .side-control {
+    outline: 2px solid green;
+    position: absolute;
   }
 }
