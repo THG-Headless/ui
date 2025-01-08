@@ -2,149 +2,241 @@
   /* PRIMITIVE VARIABLES */
 
   /* Primary */
-  --primary-100: #E6E5EC;
-  --primary-200: #B4B3C6;
-  --primary-300: #5C5A83;
+  --primary-100: #e6e5ec;
+  --primary-200: #b4b3c6;
+  --primary-300: #5c5a83;
   --primary-400: #050241;
   --primary-500: #040134;
   --primary-600: #020120;
   --primary-700: #010010;
 
   /* Secondary */
-  --secondary-100: #E5F4FE;
-  --secondary-200: #A5DAFD;
-  --secondary-300: #4CB5FB;
-  --secondary-400: #017ACD;
-  --secondary-500: #0078C8;
-  --secondary-600: #004B7D;
+  --secondary-100: #e5f4fe;
+  --secondary-200: #a5dafd;
+  --secondary-300: #4cb5fb;
+  --secondary-400: #017acd;
+  --secondary-500: #0078c8;
+  --secondary-600: #004b7d;
   --secondary-700: #003457;
 
   /* Tertiary */
-  --tertiary-100: #E3E5DE;
-  --tertiary-200: #C8CBBD;
-  --tertiary-300: #ADB19C;
-  --tertiary-400: #92987C;
+  --tertiary-100: #e3e5de;
+  --tertiary-200: #c8cbbd;
+  --tertiary-300: #adb19c;
+  --tertiary-400: #92987c;
   --tertiary-500: #747963;
-  --tertiary-600: #5E6250;
+  --tertiary-600: #5e6250;
   --tertiary-700: #414437;
 
   /* Neutral */
-  --neutral-100: #FFFFFF;
-  --neutral-200: #F2F2F2;
-  --neutral-300: #CCCCCC;
-  --neutral-400: #8C8C8C;
+  --neutral-100: #ffffff;
+  --neutral-200: #f2f2f2;
+  --neutral-300: #cccccc;
+  --neutral-400: #8c8c8c;
   --neutral-500: #666666;
   --neutral-600: #333333;
   --neutral-700: #000000;
 
   /* Attention */
-  --attention-100: #E6F0F8;
-  --attention-400: #0065AD;
+  --attention-100: #e6f0f8;
+  --attention-400: #0065ad;
 
   /* Success */
-  --success-100: #E5F1EA;
+  --success-100: #e5f1ea;
   --success-400: #007831;
 
   /* Error */
-  --error-100: #FAE8E6;
-  --error-400: #C42C21;
+  --error-100: #fae8e6;
+  --error-400: #c42c21;
 
   /* Promotion */
-  --promotion: #FF0000;
+  --promotion: #ff0000;
 
   /* Basic */
   --black: #000000;
   --white: #ffffff;
 
-
   /* SEMANTIC VARIABLES */
 
   /* Surfaces */
 
-  --surface-white: var(--white); /* The default background colour of the site. */
+  --surface-white: var(
+    --white
+  ); /* The default background colour of the site. */
   --surface-black: var(--black); /* 100% Black */
-  
-  --surface-primary-default: var(--primary-400); /* Primary colour base. Default CTA state */
-  --surface-primary-lightest: var(--primary-100); /* Primary colour lightest.  */
+
+  --surface-primary-default: var(
+    --primary-400
+  ); /* Primary colour base. Default CTA state */
+  --surface-primary-lightest: var(
+    --primary-100
+  ); /* Primary colour lightest.  */
   --surface-primary-darkest: var(--primary-700); /* Primary colour darkest.  */
-  --surface-primary-hover-dark: var(--primary-500); /* CTA hover dark - for use when Primary default is a light colour */
-  --surface-primary-hover-light: var(--primary-300); /* CTA hover light - for use when Primary default is a dark colour */
+  --surface-primary-hover-dark: var(
+    --primary-500
+  ); /* CTA hover dark - for use when Primary default is a light colour */
+  --surface-primary-hover-light: var(
+    --primary-300
+  ); /* CTA hover light - for use when Primary default is a dark colour */
   --surface-primary-active: var(--primary-600); /* Primary CTA active state  */
 
-  --surface-secondary-default: var(--secondary-400); /* Secondary colour base. */
-  --surface-secondary-lightest: var(--secondary-100);/* Secondary colour lightest. */
-  --surface-secondary-darkest: var(--secondary-700); /* Secondary colour darkest. */
-  --surface-secondary-hover-dark: var(--secondary-500); /* CTA hover dark - for use when Secondary default is a light colour. */
-  --surface-secondary-hover-light: var(--secondary-300); /* CTA hover light - for use when Secondary default is a dark colour */
-  --surface-secondary-active: var(--secondary-600); /* Secondary CTA active state */
-  
-  --surface-tertiary-default: var(--tertiary-400); /* Teritary colour base. Default CTA state */
-  --surface-tertiary-lightest: var(--tertiary-100); /* Tertiary colour lightest */
-  --surface-tertiary-darkest: var(--tertiary-700); /* Tertiary colour darkest */
-  --surface-tertiary-hover-dark: var(--tertiary-500) /* CTA hover dark - for use when Tertiary default is a light colour */
-  --surface-tertiary-hover-light: var(--tertiary-300); /* CTA hover light - for use when Secondary default is a dark colour */
-  --surface-tertiary-active: var(--tertiary-600); /* Tertiary CTA active state  */
+  --surface-secondary-default: var(
+    --secondary-400
+  ); /* Secondary colour base. */
+  --surface-secondary-lightest: var(
+    --secondary-100
+  ); /* Secondary colour lightest. */
+  --surface-secondary-darkest: var(
+    --secondary-700
+  ); /* Secondary colour darkest. */
+  --surface-secondary-hover-dark: var(
+    --secondary-500
+  ); /* CTA hover dark - for use when Secondary default is a light colour. */
+  --surface-secondary-hover-light: var(
+    --secondary-300
+  ); /* CTA hover light - for use when Secondary default is a dark colour */
+  --surface-secondary-active: var(
+    --secondary-600
+  ); /* Secondary CTA active state */
 
-  --surface-inactive: var(--neutral-300); /* Inactive state of CTA’s, controls, input fields  */
-  --surface-success: var(--success-100); /* Surface colour for success messaging */
+  --surface-tertiary-default: var(
+    --tertiary-400
+  ); /* Teritary colour base. Default CTA state */
+  --surface-tertiary-lightest: var(
+    --tertiary-100
+  ); /* Tertiary colour lightest */
+  --surface-tertiary-darkest: var(--tertiary-700); /* Tertiary colour darkest */
+  --surface-tertiary-hover-dark: var(--tertiary-500)
+    /* CTA hover dark - for use when Tertiary default is a light colour */
+    --surface-tertiary-hover-light: var(--tertiary-300); /* CTA hover light - for use when Secondary default is a dark colour */
+  --surface-tertiary-active: var(
+    --tertiary-600
+  ); /* Tertiary CTA active state  */
+
+  --surface-inactive: var(
+    --neutral-300
+  ); /* Inactive state of CTA’s, controls, input fields  */
+  --surface-success: var(
+    --success-100
+  ); /* Surface colour for success messaging */
   --surface-error: var(--error-100); /* Surface colour for error messaging */
-  --surface-attention: var(--attention-100); /* Surface colour for attention messaging */
+  --surface-attention: var(
+    --attention-100
+  ); /* Surface colour for attention messaging */
   --surface-cards: var(--neutral-200); /* Surface colour for cards */
   --surface-promotion: var(--promotion); /* For use with PAP messaging */
-  
+
   /* Borders */
 
   --border-black: var(--black); /* For use when 100% black border is required */
   --border-white: var(--white); /* For use when 100% white border is required */
-  --border-primary: var(--primary-400); /* For use when a primary base border is required, example: CTA border */
-  --border-secondary: var(--secondary-400); /* For use when a secondary base border is required, example: CTA border */
-  --border-tertiary: var(--tertiary-400); /* For use when a tertiary base border is required, example CTA border */
-  --border-controls: var(--neutral-500); /* For use on input fields, controls, CTA’s */
-  --border-error: var(--error-400); /* For use on error messaging notifications */
-  --border-success: var(--success-400); /* For use on success messaging notifications */
-  --border-attention: var(--attention-400); /* For use on attention messaging notifications */
-  --border-inactive: var(--neutral-300); /* For use on inactive input fields, controls, CTA’s */
+  --border-primary: var(
+    --primary-400
+  ); /* For use when a primary base border is required, example: CTA border */
+  --border-secondary: var(
+    --secondary-400
+  ); /* For use when a secondary base border is required, example: CTA border */
+  --border-tertiary: var(
+    --tertiary-400
+  ); /* For use when a tertiary base border is required, example CTA border */
+  --border-controls: var(
+    --neutral-500
+  ); /* For use on input fields, controls, CTA’s */
+  --border-error: var(
+    --error-400
+  ); /* For use on error messaging notifications */
+  --border-success: var(
+    --success-400
+  ); /* For use on success messaging notifications */
+  --border-attention: var(
+    --attention-400
+  ); /* For use on attention messaging notifications */
+  --border-inactive: var(
+    --neutral-300
+  ); /* For use on inactive input fields, controls, CTA’s */
   --border-promotion: var(--promotion); /* For use on PAP messages */
   --border-cards: var(--neutral-300); /* For use on cards */
 
-    /* Text */
+  /* Text */
 
-  --text-high-emphasis: var(--neutral-600); /* For use on high priority text, example: Headlines, titles, CTA text */
-  --text-medium-emphasis: var(--neutral-500); /* For use on medium priority text, example: bodytext */
+  --text-high-emphasis: var(
+    --neutral-600
+  ); /* For use on high priority text, example: Headlines, titles, CTA text */
+  --text-medium-emphasis: var(
+    --neutral-500
+  ); /* For use on medium priority text, example: bodytext */
   --text-black: var(--black); /* For optional use on headings, and CTA text */
-  --text-white: var(--white);/* For use when text is required on a dark background. Example, CTA’s  */
+  --text-white: var(
+    --white
+  ); /* For use when text is required on a dark background. Example, CTA’s  */
 
-  --text-primary-default: var(--primary-400); /* For optional use on CTA default state text. Optional use for headings  */
-  --text-primary-hover-dark: var(--primary-500); /* For optional use on CTA hover state text, against a light surface. */
-  --text-primary-hover-light: var(--primary-300); /* For optional use on CTA hover state text, against a dark surface. */
-  --text-primary-active: var(--primary-600); /* For optional use on CTA active state text, against a light surface */
+  --text-primary-default: var(
+    --primary-400
+  ); /* For optional use on CTA default state text. Optional use for headings  */
+  --text-primary-hover-dark: var(
+    --primary-500
+  ); /* For optional use on CTA hover state text, against a light surface. */
+  --text-primary-hover-light: var(
+    --primary-300
+  ); /* For optional use on CTA hover state text, against a dark surface. */
+  --text-primary-active: var(
+    --primary-600
+  ); /* For optional use on CTA active state text, against a light surface */
 
-  --text-secondary-default: var(--secondary-400); /* For optional use on CTA default state text. Optional use for headings */
-  --text-secondary-hover-dark: var(--secondary-500); /* For optional use on CTA hover state text, against a light surface. */
-  --text-secondary-hover-light: var(--secondary-300); /* For optional use on CTA hover state text, against a dark surface. */
-  --text-secondary-active: var(--secondary-600); /* For optional use on CTA active state text, against a light surface */
+  --text-secondary-default: var(
+    --secondary-400
+  ); /* For optional use on CTA default state text. Optional use for headings */
+  --text-secondary-hover-dark: var(
+    --secondary-500
+  ); /* For optional use on CTA hover state text, against a light surface. */
+  --text-secondary-hover-light: var(
+    --secondary-300
+  ); /* For optional use on CTA hover state text, against a dark surface. */
+  --text-secondary-active: var(
+    --secondary-600
+  ); /* For optional use on CTA active state text, against a light surface */
 
-  --text-tertiary-default: var(--tertiary-400); /* For optional use on CTA default state text. Optional use for headings */
-  --text-tertiary-hover-dark: var(--tertiary-500);/* For optional use on CTA hover state text, against a light surface. */
-  --text-tertiary-hover-light: var(--tertiary-300);/* For optional use on CTA hover state text, against a dark surface. */
-  --text-tertiary-active: var(--tertiary-600);/* For optional use on CTA active state text, against a light surface */
+  --text-tertiary-default: var(
+    --tertiary-400
+  ); /* For optional use on CTA default state text. Optional use for headings */
+  --text-tertiary-hover-dark: var(
+    --tertiary-500
+  ); /* For optional use on CTA hover state text, against a light surface. */
+  --text-tertiary-hover-light: var(
+    --tertiary-300
+  ); /* For optional use on CTA hover state text, against a dark surface. */
+  --text-tertiary-active: var(
+    --tertiary-600
+  ); /* For optional use on CTA active state text, against a light surface */
 
-  --text-inactive: var(--neutral-300); /* For use on CTA inactive state text, input fields */
+  --text-inactive: var(
+    --neutral-300
+  ); /* For use on CTA inactive state text, input fields */
   --text-success: var(--success-400); /* Text colour for success messaging */
   --text-error: var(--error-400); /* Text colour for error messaging */
-  --text-attention: var(--attention-400); /* Text colour for attention messaging */
-  --text-promotion: var(--promotion); /* Text colour for promotional messaging */
+  --text-attention: var(
+    --attention-400
+  ); /* Text colour for attention messaging */
+  --text-promotion: var(
+    --promotion
+  ); /* Text colour for promotional messaging */
 
   /* Icons */
   --icons-black: var(--black); /* For optional use with icons */
-  --icons-white: var(--white);  /* For optional use with icons */
-  --icons-primary: var(--primary-400);  /* For optional use with icons */
-  --icons-primary-darker: var(--primary-500);  /* For optional use with icons */
-  --icons-secondary: var(--secondary-400);  /* For optional use with icons */
-  --icons-secondary-darker: var(--secondary-500);  /* For optional use with icons */
-  --icons-tertiary: var(--tertiary-400);  /* For optional use with icons */
-  --icons-tertiary-darker: var(--tertiary-500);  /* For optional use with icons */
+  --icons-white: var(--white); /* For optional use with icons */
+  --icons-primary: var(--primary-400); /* For optional use with icons */
+  --icons-primary-darker: var(--primary-500); /* For optional use with icons */
+  --icons-secondary: var(--secondary-400); /* For optional use with icons */
+  --icons-secondary-darker: var(
+    --secondary-500
+  ); /* For optional use with icons */
+  --icons-tertiary: var(--tertiary-400); /* For optional use with icons */
+  --icons-tertiary-darker: var(
+    --tertiary-500
+  ); /* For optional use with icons */
   --icons-error: var(--error-400); /* For use with error message icons */
   --icons-success: var(--success-400); /* For use with success message icons */
-  --icons-attention: var(--attention-400); /* For use with attention message icons */
+  --icons-attention: var(
+    --attention-400
+  ); /* For use with attention message icons */
 }

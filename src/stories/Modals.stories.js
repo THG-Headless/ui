@@ -1,30 +1,41 @@
-import ButtonCloseModal from "../components/modals/ButtonCloseModal.html"
-import BackdropModal from "../components/modals/BackdropModal.html"
-import ClickAwayCloseModal from "../components/modals/ClickAwayCloseModal.html"
-import BackdropCloseModal from "../components/modals/BackdropCloseModal.html"
+import ButtonCloseModal from "../components/modals/BasicModal.html";
+import BackdropModal from "../components/modals/BackdropOnlyModal.html";
+import NoBackdropModal from "../components/modals/NoBackdropModal.html";
+import CloseButtonModal from "../components/modals/CloseButtonModal.html";
+import ContentModal from "../components/modals/ContentModal.html";
+import HeroModal from "../components/modals/HeroModal.html";
+import ComplexModal from "../components/modals/ComplexModal.html";
 
 const addOpenAttribute = (htmlString) => {
-  return htmlString.replace('<dialog', '<dialog open');
+  return htmlString.replace("<dialog", "<dialog open");
 };
 
 export default {
-  title: 'Modals',
+  title: "Modals",
   parameters: {
     a11y: {
-      config: {
-      },
+      config: {},
     },
   },
 };
 
-export const ButtonClose = () => addOpenAttribute(ButtonCloseModal);
-ButtonClose.storyName = 'No Backdrop, No Click Away';
+export const Basic = () => addOpenAttribute(ButtonCloseModal);
+Basic.storyName = "Basic Modal";
 
-export const Backdrop = () => addOpenAttribute(BackdropModal);
-Backdrop.storyName = 'Backdrop, No Click Away';
+export const BackdropOnly = () => addOpenAttribute(BackdropModal);
+BackdropOnly.storyName = "Backdrop Click Away";
 
-export const ClickAwayClose = () => addOpenAttribute(ClickAwayCloseModal);
-ClickAwayClose.storyName = 'No Backdrop, Click Away';
+export const NoBackdrop = () => addOpenAttribute(NoBackdropModal);
+NoBackdrop.storyName = "No Backdrop";
 
-export const BackdropClose = () => addOpenAttribute(BackdropCloseModal);
-BackdropClose.storyName = 'Backdrop, Click Away';
+export const CloseButton = () => addOpenAttribute(CloseButtonModal);
+CloseButton.storyName = "Close Button";
+
+export const Content = () => addOpenAttribute(ContentModal);
+Content.storyName = "Content Structure";
+
+export const Hero = () => addOpenAttribute(HeroModal);
+Hero.storyName = "Hero Image";
+
+export const Complex = () => addOpenAttribute(ComplexModal);
+Complex.storyName = "Complex Modal";
