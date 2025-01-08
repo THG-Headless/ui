@@ -3,6 +3,7 @@
     --carousel-width: 100%;
     --carousel-item-width: auto;
     --carousel-item-gap: 1rem;
+    --carousel-dummy-image-color: var(--secondary-300);
   }
 
   .carousel {
@@ -23,12 +24,12 @@
   .carousel-item-fullwidth {
     --carousel-item-width: 100%;
   }
-
   /* dummy slides */
 
-  .carousel-dummy-product-card {
-    color: var(--neutral-600);
+  .carousel-dummy-image {
+    background: var(--carousel-dummy-image-color);
     width: 346px;
+    height: 346px;
   }
 
   /* BULLETS AKA PIPS */
