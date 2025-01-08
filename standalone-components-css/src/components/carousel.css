@@ -4,6 +4,7 @@
     --carousel-item-gap: 1rem;
     --carousel-dummy-image-color: var(--secondary-300);
     --carousel-bullet-color: var(--neutral-300);
+    --carousel-control-outline-color: var(--primary-700);
   }
 
   .carousel {
@@ -66,7 +67,7 @@
     align-items: center;
     padding: 0;
     border: 0;
-    outline: 1px solid var(--primary-700);
+    outline: 1px solid var(--carousel-control-outline-color);
     overflow: hidden;
     cursor: pointer;
   }

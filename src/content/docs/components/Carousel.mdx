@@ -63,33 +63,35 @@ Use for full-width slides.
   <ProductRail_Additional />
 </ShowComponent>
 
-### Variables
+## Variables
 
 The carousel can be customized with the following variables:
 
-| Variable                       | default                |
-| ------------------------------ | ---------------------- |
-| `--carousel-width`             | `100%`                 |
-| `--carousel-item-gap`          | `1rem`                 |
-| `--carousel-dummy-image-color` | `var(--secondary-300)` |
-| `--carousel-bullet-color`      | `var(--neutral-300)`   |
+| Variable                           | default           |
+| ---------------------------------- | ----------------- |
+| `--carousel-width`                 | `100%`            |
+| `--carousel-item-gap`              | `1rem`            |
+| `--carousel-dummy-image-color`     | `--secondary-300` |
+| `--carousel-bullet-color`          | `--neutral-300`   |
+| `--carousel-control-outline-color` | `--primary-700`   |
 
-## Implementation Notes
+## Accessibility
 
-When implementing a carousel:
+This carousel does not come with aria attributes; You must make sure to add them.
 
-### A11y
+- [x] Each carousel wrapper has the `aria-roledescription` property set to 'carousel'.
+- [x] Each slide container has role group with the property `aria-roledescription` set to slide.
+- [x] You can to tab through the slides using `Tab` and `Shift+Tab`
 
-- [ ] The CSS-only version is not WCAG 2.1 compliant by default.
-- [ ] Make sure to add the correct [aria labels](https://www.w3.org/WAI/ARIA/apg/patterns/carousel/#wai-ariaroles,states,andproperties) to make the component accessible: I.e
-- [ ] Ensure that aria labels for slides are correct.
-- [ ] The carousel container has the aria-roledescription property set to carousel.
+In addition, you must implement the following:
+
 - [ ] Make sure each slide has an accessible name
-- [ ] Make sure each slide container has role group with the property aria-roledescription set to slide.
 
-### Interactivity
+- see [this guide](https://www.w3.org/WAI/ARIA/apg/patterns/carousel/#wai-ariaroles,states,andproperties) for more information
 
-- It's recommended to use the [Intersection Observer API](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API) to add interactivity.
+## Interactivity
+
+- [ ] When implementing interactivity for the buttons and pips, we recommended to use the [Intersection Observer API](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API) to add interactivity.
 
 ## Further reading
 
