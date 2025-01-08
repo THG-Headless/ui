@@ -13,11 +13,11 @@ import CarouselControls from "@components/carousel/CarouselControls.html";
 import CarouselControls_ProductRail from "@components/carousel/CarouselControls_ProductRail.html";
 import Bullets from "@components/carousel/CarouselBullets.html";
 
-Used to show images or content in a horizontally scrollable area.
+Used to display lists of cards in a horizontally scrollable area.
 
 ## Slides
 
-Allows users to swipe across to see multiple slides.
+Swipe across to see remaining slides.
 
 <ShowComponent filePath="./src/components/carousel/BasicCarousel.html">
   <BasicCarousel />
@@ -25,7 +25,7 @@ Allows users to swipe across to see multiple slides.
 
 ## Bullets
 
-A subtle indicator of the remaining unseen slides. Use the `carousel-bullet-hover` and `carousel-bullet-active` modifiers to style the hover and active states. These will need to be applied and removed with JavaScript.
+Indicate the remaining unseen slides. Use the `carousel-bullet-hover` and `carousel-bullet-active` modifiers to style the hover and active states. These will need to be applied and removed with JavaScript.
 
 <ShowComponent filePath="./src/components/carousel/CarouselBullets.html">
   <Bullets />
@@ -33,11 +33,13 @@ A subtle indicator of the remaining unseen slides. Use the `carousel-bullet-hove
 
 ## Controls
 
-Use these to navigate between slides. They use the`btn` class (see [Button](/components/button/)), and additional styling is applied by the `carousel-control-btn` modifier class.
+Use these to navigate between slides.
 
 <ShowComponent filePath="./src/components/carousel/CarouselControls.html">
   <CarouselControls />
 </ShowComponent>
+
+They use the`btn` class (see [Button](/components/button/)), and additional styling is applied by the `carousel-control-btn` modifier class.
 
 ## Examples
 
@@ -65,35 +67,29 @@ Use for full-width slides.
 
 The carousel can be customized with the following variables:
 
-| Variable                       | default              |
-| ------------------------------ | -------------------- |
-| `--carousel-width`             | 100%                 |
-| `--carousel-item-gap`          | 1rem                 |
-| `--carousel-dummy-image-color` | var(--secondary-300) |
-| `--carousel-bullet-color`      | var(--neutral-300)   |
-
-## Accessibility
-
-- The CSS-only version is not WCAG 2.1 compliant by default. You should add the correct aria attributes in your markup (these will somewhat depend on the use case of the carousel)
-- Please see https://www.w3.org/WAI/ARIA/apg/patterns/carousel/ for more information
+| Variable                       | default                |
+| ------------------------------ | ---------------------- |
+| `--carousel-width`             | `100%`                 |
+| `--carousel-item-gap`          | `1rem`                 |
+| `--carousel-dummy-image-color` | `var(--secondary-300)` |
+| `--carousel-bullet-color`      | `var(--neutral-300)`   |
 
 ## Implementation Notes
 
 When implementing a carousel:
 
-### Ensuring compliance with A11y
+### A11y
 
-- Make sure to add the correct [aria labels](https://www.w3.org/WAI/ARIA/apg/patterns/carousel/#wai-ariaroles,states,andproperties) to make the component accessible. I.e
-  - Ensure that aria labels for slides are correct.
-  - Make sure the carousel container has the aria-roledescription property set to carousel.
-  - Make sure each slide has an accessible name
-  - Make sure each slide container has role group with the property aria-roledescription set to slide.
+- [ ] The CSS-only version is not WCAG 2.1 compliant by default.
+- [ ] Make sure to add the correct [aria labels](https://www.w3.org/WAI/ARIA/apg/patterns/carousel/#wai-ariaroles,states,andproperties) to make the component accessible: I.e
+- [ ] Ensure that aria labels for slides are correct.
+- [ ] The carousel container has the aria-roledescription property set to carousel.
+- [ ] Make sure each slide has an accessible name
+- [ ] Make sure each slide container has role group with the property aria-roledescription set to slide.
 
-see:
+### Interactivity
 
-### Adding interactivity
-
-- You may want to use the [Intersection Observer API](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API) to add interactivity.
+- It's recommended to use the [Intersection Observer API](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API) to add interactivity.
 
 ## Further reading
 
