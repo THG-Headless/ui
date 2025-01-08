@@ -1,4 +1,6 @@
-storybook-static/
+# Storybook static build directory
+storybook-static
+
 # build output
 dist/
 # generated types

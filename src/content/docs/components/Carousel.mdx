@@ -4,7 +4,7 @@ description: Carousel
 ---
 
 import ShowComponent from "@components/doc-helpers/ShowComponent.astro";
-import CarouselBasic from "@components/carousel/CarouselBasic.html";
+import BasicCarousel from "@components/carousel/BasicCarousel.html";
 import ProductRail_withBullets from "@components/carousel/ProductRail_withBullets.html";
 import ProductRail_withBulletsAndControls from "@components/carousel/ProductRail_withBulletsAndControls.html";
 import ProductRail_Additional from "@components/carousel/ProductRail_Additional.html";
@@ -23,8 +23,8 @@ Used to show images or content in a horizontally scrollable area. Interactivity 
 
 Allows users to swipe across to see multiple slides.
 
-<ShowComponent filePath="./src/components/carousel/CarouselBasic.html">
-  <CarouselBasic />
+<ShowComponent filePath="./src/components/carousel/BasicCarousel.html">
+  <BasicCarousel />
 </ShowComponent>
 
 ### Bullets
@@ -59,23 +59,9 @@ Use for full-width slides.
   <ProductRail_withBulletsAndControls />
 </ShowComponent>
 
-### Example 3 - Product Rail with Additional Controls
+### Product Rail 2
 
 <ShowComponent filePath="./src/components/carousel/ProductRail_withBulletsAndControls.html">
-  <ProductRail_Additional />
-</ShowComponent>
-
-### Banner
-
-### Product Rail
-
-<ShowComponent filePath="./src/components/carousel/CarouselControls_ProductRail.html">
-  <CarouselControls_ProductRail />
-</ShowComponent>
-
-## Product Rail with Additional Controls
-
-<ShowComponent filePath="./src/components/carousel/CarouselControls_ProductRail_Additional.html">
   <ProductRail_Additional />
 </ShowComponent>
 
@@ -87,14 +73,10 @@ The carousel can be customized with the following variables:
 | -------- | ------- |
 |          |         |
 
-## Notes
-
-- Note that the carousel-item by default
-
 ## Accessibility
 
 - Use of semantic html tags (`ul` and `li`) to display content
-- The `tabindex="0"` attributes ensures that we can use `Tab` and `Shift+Tab` to tab through carousel items.
+- The `tabindex="0"` attribute ensures that we can use `Tab` and `Shift+Tab` to tab through carousel items.
 
 ## JavaScript implementation
 
