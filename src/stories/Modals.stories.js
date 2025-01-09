@@ -1,17 +1,19 @@
-import ButtonCloseModal from "../components/modals/BasicModal.html";
-import BackdropModal from "../components/modals/BackdropOnlyModal.html";
-import NoBackdropModal from "../components/modals/NoBackdropModal.html";
-import CloseButtonModal from "../components/modals/CloseButtonModal.html";
-import ContentModal from "../components/modals/ContentModal.html";
-import HeroModal from "../components/modals/HeroModal.html";
-import ComplexModal from "../components/modals/ComplexModal.html";
+import ButtonCloseModal from '../components/modals/BasicModal.html';
+import BackdropModal from '../components/modals/BackdropOnlyModal.html';
+import NoBackdropModal from '../components/modals/NoBackdropModal.html';
+import CloseButtonModal from '../components/modals/CloseButtonModal.html';
+import ContentModal from '../components/modals/ContentModal.html';
+import HeroModal from '../components/modals/HeroModal.html';
+import ComplexModal from '../components/modals/ComplexModal.html';
+import FullScreenModal from '../components/modals/FullScreenModal.html';
+import NoEntranceModal from '../components/modals/NoEntrance.html';
 
 const addOpenAttribute = (htmlString) => {
-  return htmlString.replace("<dialog", "<dialog open");
+  return htmlString.replace('<dialog', '<dialog open');
 };
 
 export default {
-  title: "Modals",
+  title: 'Modals',
   parameters: {
     a11y: {
       config: {},
@@ -20,22 +22,28 @@ export default {
 };
 
 export const Basic = () => addOpenAttribute(ButtonCloseModal);
-Basic.storyName = "Basic Modal";
+Basic.storyName = 'Basic Modal';
 
 export const BackdropOnly = () => addOpenAttribute(BackdropModal);
-BackdropOnly.storyName = "Backdrop Click Away";
+BackdropOnly.storyName = 'Backdrop Click Away';
 
 export const NoBackdrop = () => addOpenAttribute(NoBackdropModal);
-NoBackdrop.storyName = "No Backdrop";
+NoBackdrop.storyName = 'No Backdrop';
 
 export const CloseButton = () => addOpenAttribute(CloseButtonModal);
-CloseButton.storyName = "Close Button";
+CloseButton.storyName = 'Close Button';
 
 export const Content = () => addOpenAttribute(ContentModal);
-Content.storyName = "Content Structure";
+Content.storyName = 'Content Structure';
 
 export const Hero = () => addOpenAttribute(HeroModal);
-Hero.storyName = "Hero Image";
+Hero.storyName = 'Hero Image';
 
 export const Complex = () => addOpenAttribute(ComplexModal);
-Complex.storyName = "Complex Modal";
+Complex.storyName = 'Complex Modal';
+
+export const Fullscreen = () => addOpenAttribute(FullScreenModal);
+Fullscreen.storyName = 'Fullscreen Modal';
+
+export const NoEntrance = () => addOpenAttribute(ComplexModal);
+NoEntrance.storyName = 'No Entrance Animation Modal';
