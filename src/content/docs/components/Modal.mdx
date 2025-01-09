@@ -3,15 +3,17 @@ title: Modal
 description: A composable modal system built with HTML dialog element
 ---
 
-import { Aside } from "@astrojs/starlight/components";
-import ShowComponent from "../../../components/doc-helpers/ShowComponent.astro";
-import BasicModal from "../../../components/modals/BasicModal.html";
-import BackdropOnlyModal from "../../../components/modals/BackdropOnlyModal.html";
-import NoBackdropModal from "../../../components/modals/NoBackdropModal.html";
-import CloseButtonModal from "../../../components/modals/CloseButtonModal.html";
-import ContentModal from "../../../components/modals/ContentModal.html";
-import HeroModal from "../../../components/modals/HeroModal.html";
-import ComplexModal from "../../../components/modals/ComplexModal.html";
+import { Aside } from '@astrojs/starlight/components';
+import ShowComponent from '../../../components/doc-helpers/ShowComponent.astro';
+import BasicModal from '../../../components/modals/BasicModal.html';
+import BackdropOnlyModal from '../../../components/modals/BackdropOnlyModal.html';
+import NoBackdropModal from '../../../components/modals/NoBackdropModal.html';
+import CloseButtonModal from '../../../components/modals/CloseButtonModal.html';
+import ContentModal from '../../../components/modals/ContentModal.html';
+import HeroModal from '../../../components/modals/HeroModal.html';
+import ComplexModal from '../../../components/modals/ComplexModal.html';
+import FullScreenModal from '../../../components/modals/FullScreenModal.html';
+import NoEntrance from '../../../components/modals/NoEntrance.html';
 
 The modal system is built using the native HTML `<dialog>` element and enhanced with CSS for styling and animations. It's designed to be highly composable, allowing you to build modals ranging from simple to complex by combining various features.
 
@@ -137,6 +139,27 @@ The hero image is effected by the following variables:
 | ---------------------------- | ------------- | -------------------------------------- |
 | `--modal-hero-width`         | `18rem`       | Width of hero image section on desktop |
 | `--modal-mobile-hero-height` | `150px`       | Height of hero image on mobile devices |
+
+### Fullscreen Modals
+
+The modal system supports fullscreen layouts for both desktop and mobile views. You can control this behavior using two classes:
+
+- `modal-fullscreen`: Makes the modal fill the entire viewport on desktop
+- `modal-fullscreen-mobile`: Makes the modal fill the entire viewport on mobile devices
+
+These classes can be used independently or together for different responsive behaviors.
+
+<ShowComponent>
+  <FullScreenModal />
+</ShowComponent>
+
+### Disable Entrance animation
+
+By applying the `modal-disable-entrance` class, the pop up / slide in animations are disabled for desktop and mobile respectively.
+
+<ShowComponent>
+  <NoEntrance />
+</ShowComponent>
 
 ## Accessibility
 
