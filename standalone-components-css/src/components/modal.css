@@ -206,7 +206,6 @@
     transform: translate(-50%, -50%) !important;
     padding: 0 !important;
     margin: 0 !important;
-    /* Remove the transform override to keep animations */
   }
 
   .modal-fullscreen .modal-box {
@@ -315,7 +314,6 @@
       max-width: 100vw !important;
       max-height: 100vh !important;
       transform: translate(-50%, -50%) !important;
-      /* Remove the transform override to keep animations */
     }
 
     .modal-fullscreen-mobile .modal-box {
@@ -332,7 +330,6 @@
       right: 0 !important;
       bottom: 0 !important;
       padding: var(--modal-mobile-padding) !important;
-      /* Remove the transform override to keep animations */
     }
 
     .modal-fullscreen-mobile .modal-box--with-hero {
