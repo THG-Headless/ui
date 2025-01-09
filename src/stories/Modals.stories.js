@@ -45,5 +45,5 @@ Complex.storyName = 'Complex Modal';
 export const Fullscreen = () => addOpenAttribute(FullScreenModal);
 Fullscreen.storyName = 'Fullscreen Modal';
 
-export const NoEntrance = () => addOpenAttribute(ComplexModal);
+export const NoEntrance = () => addOpenAttribute(NoEntranceModal);
 NoEntrance.storyName = 'No Entrance Animation Modal';
