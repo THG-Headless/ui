@@ -1,6 +1,3 @@
-# Storybook static build directory
-storybook-static
-
 # build output
 dist/
 # generated types
@@ -27,6 +24,9 @@ pnpm-debug.log*
 
 .npmrc
 .DS_Store
+.github/
 
 *storybook.log
 storybook-static/*
+
+
