@@ -1,0 +1,34 @@
+@layer components {
+  :root {
+    --alert-text-error-color: var(--text-error);
+    --alert-text-success-color: var(--text-success);
+    --alert-text-info-color: var(--text-attention);
+
+    --alert-background-error-color: var(--text-error);
+    --alert-background-success-color: var(--text-success);
+    --alert-background-info-color: var(--text-attention);
+
+    --alert-font-weight-option: var(--font-weight-semi-bold);
+  };
+
+  .alert {
+    display: flex;
+    flex-direction: row;
+    font-weight: var(--dropdown-font-weight-label);
+  };
+
+  .alert-success {
+    color: var(--alert-text-success-color);
+    background-color: var(--alert-background-success-color);
+  };
+
+  .alert-error {
+    color: var(--alert-text-error-color);
+    background-color: var(--alert-background-error-color);
+  };
+
+  .alert-info {
+    color: var(--alert-text-info-color);
+    background-color: var(--alert-background-info-color);
+  };
+}

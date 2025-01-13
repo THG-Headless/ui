@@ -1,7 +1,8 @@
 @layer theme;
+@import "./components/alert.css";
 @import "./components/button.css";
-@import "./components/modal.css";
 @import "./components/dropdown.css";
+@import "./components/modal.css";
 
 @layer theme {
   :root {
@@ -123,6 +124,7 @@
     --text-error: var(--error-400);
     --text-attention: var(--attention-400);
     --text-promotion: var(--promotion);
+    --text-info: var()
 
     --icons-black: var(--black);
     --icons-white: var(--white);
