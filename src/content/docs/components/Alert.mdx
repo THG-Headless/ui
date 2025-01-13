@@ -3,24 +3,72 @@ title: Alert
 description: A platform messaging element
 ---
 
-import ShowComponent from "../../../components/doc-helpers/ShowComponent.astro";
-import SuccessAlert from "../../../components/alerts/SuccessAlert.html";
-import InfoAlert from "../../../components/alerts/InfoAlert.html";
-import ErrorAlert from "../../../components/alerts/ErrorAlert.html";
+import ShowComponent from '../../../components/doc-helpers/ShowComponent.astro';
+import SuccessAlert from '../../../components/alerts/SuccessAlert.html';
+import InfoAlert from '../../../components/alerts/InfoAlert.html';
+import ErrorAlert from '../../../components/alerts/ErrorAlert.html';
 
+### Success Alert
 
-### SuccessAlert
+The colour scheme on this alert box indicates a success state message
+
 <ShowComponent>
   <SuccessAlert />
 </ShowComponent>
 
-### InfoAlert
+### Info Alert
+
+The colour scheme on this alert box indicates an informational message
+
 <ShowComponent>
   <InfoAlert />
 </ShowComponent>
 
+### Error Alert
 
-### ErrorAlert
+The colour scheme on this alert box indicates a error state message
+
 <ShowComponent>
   <ErrorAlert />
 </ShowComponent>
+
+### General Alert Variables
+
+| Variable                 | Default Value                  | Description                         |
+| ------------------------ | ------------------------------ | ----------------------------------- |
+| `--alert-padding`        | `0.5em`                        | Padding around the content          |
+| `--alert-font-weight`    | `var(--font-weight-semi-bold)` | Weight of the font                  |
+| `--alert-border-default` | `none`                         | Allow a border, deafult none        |
+| `--alert-border-default` | `0`                            | Allow a border radius, default none |
+
+### Alert Icon Variables
+
+| Variable                  | Default Value                  | Description                  |
+| ------------------------- | ------------------------------ | ---------------------------- |
+| `--alert-icon-padding-x`  | `0.5em`                        | Padding around the content   |
+| `--alert-icon-padding-y`  | `var(--font-weight-semi-bold)` | Weight of the content font   |
+| `--alert-icon-height`     | `24px`                         | Default icon height|
+| `--alert-icon-min-height` | `24px`                         | Prevent shrinking of icon    |
+| `--alert-icon-width`      | `24px`                         | Default icon width |
+| `--alert-icon-min-width`  | `24px`                         | Prevent shrinking of icon    |
+
+#### Success Alert Variables
+
+| Variable                           | Default Value            | Description               |
+| ---------------------------------- | ------------------------ | ------------------------- |
+| `--alert-text-success-color`       | `var(--text-success)`    | Text content colour       |
+| `--alert-background-success-color` | `var(--surface-success)` | Background content colour |
+
+#### Info Alert Variables
+
+| Variable                        | Default Value              | Description               |
+| ------------------------------- | -------------------------- | ------------------------- |
+| `--alert-text-info-color`       | `var(--text-attention)`    | Text content colour       |
+| `--alert-background-info-color` | `var(--surface-attention)` | Background content colour |
+
+#### Error Alert Variables
+
+| Variable                         | Default Value          | Description               |
+| -------------------------------- | ---------------------- | ------------------------- |
+| `--alert-text-error-color`       | `var(--text-error)`    | Text content colour       |
+| `--alert-background-error-color` | `var(--surface-error)` | Background content colour |

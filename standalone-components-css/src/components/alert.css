@@ -8,13 +8,12 @@
     --alert-background-success-color: var(--surface-success);
     --alert-background-info-color: var(--surface-attention);
 
-    --alert-font-weight-option: var(--font-weight-semi-bold);
+    --alert-font-weight: var(--font-weight-semi-bold);
 
     --alert-border-default: none;
     --alert-border-radius: var(--radius-size-none);
 
     --alert-padding: 0.5em;
-
     --alert-icon-min-height: 24px;
     --alert-icon-height: 24px;
     --alert-icon-min-width: 24px;
@@ -28,16 +27,15 @@
     flex-direction: row;
     align-items: start;
     padding: var(--alert-padding);
-    font-weight: var(--dropdown-font-weight-label);
+    font-weight: var(--alert-font-weight);
     border: var(--alert-border-default) solid;
-    border-radius: var(--alert-border-default);
+    border-radius: var(--alert-border-radius);
   }
 
-  /* Should there be a generic section on svg-styling?? */
   .alert-icon {
     padding: var(--alert-icon-padding-x), var(--alert-icon-padding-y);
     height: var(--alert-icon-height);
-    width: var(--alert-icon-min-height);
+    width: var(--alert-icon--width);
     min-width: var(--alert-icon-min-width);
     min-height: var(--alert-icon-min-height);
   }
