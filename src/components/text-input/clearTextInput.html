@@ -1,17 +1,19 @@
-<div class="input-wrapper">
-  <label class="input-label" for="clear-text-input">Label</label>
+<div class="input-wrapper w-64">
+  <label class="input-label" for="clear-button-input">Label</label>
   <div class="input-field-wrapper">
     <input
+      type="text"
       class="input-field"
-      id="clear-text-input"
+      id="clear-button-input"
+      name="clear-button-input"
       placeholder="Placeholder text"
       aria-invalid="false"
-    ></input>
-    <button
-      type="button"
-      class="input-clear-button"
-      aria-label="Clear input"
-    >
+      aria-describedby="clear-button-helper"
+      aria-errormessage="clear-button-helper"
+      autocomplete="off"
+      spellcheck="true"
+    />
+    <button type="button" class="input-clear-button" aria-label="Clear input">
       <svg
         class="input-icon"
         viewBox="0 0 20 20"
@@ -42,8 +44,11 @@
           clip-rule="evenodd"
         />
       </svg>
-      <p class="input-helper">Helper text</p>
-      <p class="input-error">Error message</p>
+      <p
+        class="input-helper"
+        id="clear-button-helper"
+        data-content="Helper text"
+      ></p>
     </div>
   </div>
 </div>

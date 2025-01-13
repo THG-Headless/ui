@@ -4,10 +4,17 @@
     <textarea
       class="input-field"
       id="basic-textarea"
+      name="basic-textarea"
       placeholder="Placeholder text"
       aria-invalid="false"
-      rows="4"
+      aria-describedby="basic-textarea-helper"
+      aria-errormessage="basic-textarea-error"
+      autocomplete="off"
+      spellcheck="true"
+      minlength="0"
       maxlength="500"
+      rows="4"
+      style="resize: vertical"
     ></textarea>
   </div>
   <div class="input-helper-wrapper">
@@ -25,9 +32,18 @@
           clip-rule="evenodd"
         />
       </svg>
-      <p class="input-helper">Helper text</p>
-      <p class="input-error">Error message</p>
+      <p
+        class="input-helper"
+        id="basic-textarea-helper"
+        data-content="Helper text"
+      ></p>
     </div>
-    <p class="input-char-limit">0/500</p>
+    <p
+      class="input-char-limit"
+      id="basic-textarea-char-limit"
+      aria-live="polite"
+      role="status"
+      data-content="500 characters remaining"
+    ></p>
   </div>
 </div>
