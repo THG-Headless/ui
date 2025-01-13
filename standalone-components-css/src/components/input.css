@@ -42,11 +42,13 @@
     --input-helper-surface: transparent;
     --input-helper-surface-invalid: var(--surface-error);
 
+    --input-char-limit-color: var(--text-medium-emphasis);
+
     --input-clear-surface: var(--surface-controls-default);
     --input-clear-surface-hover: var(--surface-controls-dark);
     --input-clear-color: var(--white);
 
-    --input-width: 16rem;
+    --input-width: 20rem;
     --input-spacing: 0.25rem;
     --input-padding: 1rem;
     --input-padding-small: 0.5rem;
@@ -54,6 +56,11 @@
     --input-border-width-active: 2px;
     --input-radius: var(--radius-size-sm);
     --input-radius-full: var(--radius-size-full);
+
+    --input-min-height: calc(
+      var(--input-field-line-height) + (2 * var(--input-padding-small)) +
+        (2 * var(--input-border-width))
+    );
   }
 
   .input-wrapper {
@@ -110,6 +117,10 @@
     padding-left: var(--input-padding);
   }
 
+  .input-wrapper:has(textarea) .input-label {
+    padding-left: 0;
+  }
+
   .input-field {
     width: 100%;
     padding: var(--input-padding-small) var(--input-padding);
@@ -150,6 +161,17 @@
     gap: var(--input-spacing);
     padding: 0 var(--input-padding);
     background: var(--input-helper-surface);
+  }
+
+  .input-helper-content {
+    display: flex;
+    align-items: center;
+    gap: var(--input-spacing);
+  }
+
+  .input-wrapper:has(textarea) .input-helper-wrapper {
+    padding: 0;
+    justify-content: space-between;
   }
 
   .input-helper,
@@ -241,5 +263,46 @@
       color: var(--input-label-color-disabled);
       font-weight: var(--input-label-weight-disabled);
     }
+  }
+
+  input-char-limit {
+    color: var(--input-char-limit-color);
+    font-size: var(--input-helper-size);
+    line-height: var(--input-helper-line-height);
+    font-weight: var(--input-helper-weight);
+    margin: 0;
+  }
+
+  /* Override error state background for textarea */
+  .input-wrapper:has(textarea):has(.input-field[aria-invalid='true'])
+    .input-helper-wrapper {
+    background: transparent;
+    padding: 0;
+  }
+
+  /* Override disabled state for textarea */
+  .input-wrapper:has(textarea):has(.input-field:disabled) {
+    & .input-helper-wrapper {
+      display: flex;
+    }
+
+    & .input-helper {
+      color: var(--input-label-color-disabled);
+    }
+
+    & .input-label {
+      color: var(--input-label-color);
+      font-weight: var(--input-label-weight);
+    }
+  }
+
+  /* Ensure character limit stays the same color in error state */
+  .input-wrapper:has(.input-field[aria-invalid='true']) .input-char-limit {
+    color: var(--input-char-limit-color);
+  }
+
+  .input-wrapper textarea.input-field {
+    min-height: var(--input-min-height);
+    resize: vertical;
   }
 }
