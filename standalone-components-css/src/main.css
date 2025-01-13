@@ -1,7 +1,8 @@
 @layer theme;
-@import "./components/button.css";
-@import "./components/modal.css";
-@import "./components/dropdown.css";
+@import './components/button.css';
+@import './components/modal.css';
+@import './components/dropdown.css';
+@import './components/textInput.css';
 
 @layer theme {
   :root {
