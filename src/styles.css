@@ -3,14 +3,14 @@
   --sl-color-bg-nav: #000;
   --sl-color-text-accent: #fff;
   --sl-color-bg-sidebar: #000;
-  --sl-font: "Inter Variable", sans-serif;
+  --sl-font: 'Inter Variable', sans-serif;
   --sl-color-gray-6: rgba(255, 255, 255, 0.1);
   --sl-color-gray-7: rgba(255, 255, 255, 0.1);
   --sl-content-width: 60rem;
 }
 
-:root[data-theme="light"],
-[data-theme="light"] ::backdrop {
+:root[data-theme='light'],
+[data-theme='light'] ::backdrop {
   --sl-color-bg: #fff;
   --sl-color-bg-sidebar: #fff;
   --sl-color-bg-nav: #fff;
@@ -20,7 +20,7 @@ strong {
   color: #fff;
 }
 
-[data-theme="light"] strong {
+[data-theme='light'] strong {
   color: #000;
 }
 
@@ -29,12 +29,12 @@ strong {
   overflow: hidden;
 }
 
-input[type="checkbox"] {
-  margin-right: 8px;
+input[type='checkbox'] {
+  /* margin-right: 8px; */
   cursor: pointer;
 }
 
-input[type="checkbox"]:checked + span {
+input[type='checkbox']:checked + span {
   text-decoration: line-through;
   opacity: 0.7;
 }

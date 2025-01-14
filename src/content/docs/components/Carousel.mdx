@@ -3,77 +3,82 @@ title: Carousel
 description: Carousel
 ---
 
-import ShowComponent from "@components/doc-helpers/ShowComponent.astro";
-import BasicCarousel from "@components/carousel/BasicCarousel.html";
-import ProductRail_withBullets from "@components/carousel/ProductRail_withBullets.html";
-import ProductRail_withBulletsAndControls from "@components/carousel/ProductRail_withBulletsAndControls.html";
-import ProductRail_Additional from "@components/carousel/ProductRail_Additional.html";
-import CarouselBanner from "@components/carousel/CarouselBanner.html";
-import CarouselControls from "@components/carousel/CarouselControls.html";
-import CarouselControls_ProductRail from "@components/carousel/CarouselControls_ProductRail.html";
-import Bullets from "@components/carousel/CarouselBullets.html";
+import ShowComponent from '@components/doc-helpers/ShowComponent.astro';
+import BasicCarousel from '@components/carousel/BasicCarousel.html';
+import CarouselContent from '@components/carousel/CarouselContent.html';
+import CarouselBanner from '@components/carousel/CarouselBanner.html';
+import Bullets from '@components/carousel/CarouselBullets.html';
+import CarouselControls from '@components/carousel/CarouselControls.html';
+import Counter from '@components/carousel/CarouselCounter.html';
+import CarouselBulletControlled from '@components/carousel/CarouselBulletControlled.html';
+import CarouselButtonControlled from '@components/carousel/CarouselButtonControlled.html';
+import CarouselBannerControlled from '@components/carousel/CarouselBannerControlled.html';
 
 Used to display lists of cards in a horizontally scrollable area.
 
-## Slides
+## Basic Carousel
 
-Swipe across to see remaining slides.
-
-<ShowComponent filePath="./src/components/carousel/BasicCarousel.html">
+<ShowComponent>
   <BasicCarousel />
 </ShowComponent>
 
-## Bullets
+## Carousel Content
 
-Indicate the remaining unseen slides. Use the `carousel-bullet-hover` and `carousel-bullet-active` modifiers to style the hover and active states. These will need to be applied and removed with JavaScript.
+<ShowComponent>
+  <CarouselContent />
+</ShowComponent>
 
-<ShowComponent filePath="./src/components/carousel/CarouselBullets.html">
+## Banner Carousel
+
+<ShowComponent>
+  <CarouselBanner />
+</ShowComponent>
+
+## Bullet Controls
+
+<ShowComponent>
   <Bullets />
 </ShowComponent>
 
-## Controls
+## Button Controls
 
 Use these to navigate between slides.
 
-<ShowComponent filePath="./src/components/carousel/CarouselControls.html">
+<ShowComponent>
   <CarouselControls />
 </ShowComponent>
 
 They use the`btn` class (see [Button](/components/button/)), and additional styling is applied by the `carousel-control-btn` modifier class.
 
+## Counter
+
+<ShowComponent>
+  <Counter />
+</ShowComponent>
+
 ## Examples
 
-### Hero banner
+### Carousel with Bullet Controls
 
-Use for full-width slides.
-
-<ShowComponent filePath="./src/components/carousel/CarouselBanner.html">
-  <CarouselBanner />
+<ShowComponent>
+  <CarouselBulletControlled />
 </ShowComponent>
 
-### Product Rail
+### Carousel with Button Controls
 
-<ShowComponent filePath="./src/components/carousel/ProductRail_withBulletsAndControls.html">
-  <ProductRail_withBulletsAndControls />
+<ShowComponent>
+  <CarouselButtonControlled />
 </ShowComponent>
 
-### Product Rail w/ Additional Controls
+### Carousel Banner with Controls
 
-<ShowComponent filePath="./src/components/carousel/ProductRail_withBulletsAndControls.html">
-  <ProductRail_Additional />
+<ShowComponent>
+  <CarouselBannerControlled />
 </ShowComponent>
 
 ## Variables
 
 The carousel can be customized with the following variables:
-
-| Variable                           | default           |
-| ---------------------------------- | ----------------- |
-| `--carousel-width`                 | `100%`            |
-| `--carousel-item-gap`              | `1rem`            |
-| `--carousel-dummy-image-color`     | `--secondary-300` |
-| `--carousel-bullet-color`          | `--neutral-300`   |
-| `--carousel-control-outline-color` | `--primary-700`   |
 
 ## Accessibility
 
