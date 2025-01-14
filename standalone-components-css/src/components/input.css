@@ -269,10 +269,10 @@
 
   .input-char-limit {
     position: relative;
-    margin-left: auto; /* Push to the right */
+    margin-left: auto;
     &::before {
-      right: 0; /* Align content to the right */
-      left: auto; /* Override left: 0 */
+      right: 0;
+      left: auto;
     }
   }
 
@@ -319,7 +319,7 @@
         color: var(--input-helper-color-disabled);
         pointer-events: none;
         &::before {
-          visibility: visible; /* Add this to ensure pseudo-element stays visible */
+          visibility: visible;
         }
       }
     }
