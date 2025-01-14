@@ -3,14 +3,16 @@ title: Modal
 description: A composable modal system built with HTML dialog element
 ---
 
-import { Aside } from "@astrojs/starlight/components";
-import ShowComponent from "../../../components/doc-helpers/ShowComponent.astro";
-import BasicModal from "../../../components/modals/BasicModal.html";
-import BackdropCloseModal from "../../../components/modals/BackdropCloseModal.html";
-import NoBackdropModal from "../../../components/modals/NoBackdropModal.html";
-import ContentModal from "../../../components/modals/ContentModal.html";
-import HeroModal from "../../../components/modals/HeroModal.html";
-import ComplexModal from "../../../components/modals/ComplexModal.html";
+import { Aside } from '@astrojs/starlight/components';
+import ShowComponent from '../../../components/doc-helpers/ShowComponent.astro';
+import BasicModal from '../../../components/modals/BasicModal.html';
+import NoBackdropModal from '../../../components/modals/NoBackdropModal.html';
+import ContentModal from '../../../components/modals/ContentModal.html';
+import HeroModal from '../../../components/modals/HeroModal.html';
+import ComplexModal from '../../../components/modals/ComplexModal.html';
+import BackdropCloseModal from '../../../components/modals/BackdropCloseModal.html';
+import FullScreenModal from '../../../components/modals/FullScreenModal.html';
+import NoEntranceModal from '../../../components/modals/NoEntrance.html';
 
 The modal system is built using the native HTML `<dialog>` element and enhanced with CSS for styling and animations. It's designed to be highly composable, allowing you to build modals ranging from simple to complex by combining various features.
 
@@ -39,7 +41,7 @@ Without one of these, mobile users will have no way to close the modal as the ES
 
 Here's an example that combines multiple features into a complete modal. This demonstrates how the modal system's composable nature allows you to build complex interfaces by combining simple components. This example includes a hero image with responsive layout, a close button in the control bar, structured content with title and body, primary and secondary actions, and supports backdrop click-to-close.
 
-<ShowComponent filePath="./src/components/modals/ComplexModal.html">
+<ShowComponent>
   <ComplexModal />
 </ShowComponent>
 
@@ -47,7 +49,7 @@ Here's an example that combines multiple features into a complete modal. This de
 
 The simplest implementation of a modal includes basic container styling, a backdrop with blur effect, ESC key to close, and default padding and margins.
 
-<ShowComponent filePath="./src/components/modals/BasicModal.html">
+<ShowComponent>
   <BasicModal />
 </ShowComponent>
 
@@ -80,7 +82,7 @@ The styling of the base modal is defined by the following variables. As with all
 
 To remove the backdrop blur and dimming effects, add the `modal-disable-backdrop` class to the dialog element alongside the `modal` class.
 
-<ShowComponent filePath="./src/components/modals/NoBackdropModal.html">
+<ShowComponent>
   <NoBackdropModal />
 </ShowComponent>
 
@@ -88,7 +90,7 @@ To remove the backdrop blur and dimming effects, add the `modal-disable-backdrop
 
 To enable closing the modal by clicking the backdrop, add a `form` element with `method="dialog"` and the `modal-clickaway` class after the modal content.
 
-<ShowComponent filePath="./src/components/modals/BackdropCloseModal.html">
+<ShowComponent>
   <BackdropCloseModal />
 </ShowComponent>
 
@@ -109,7 +111,7 @@ Always prefer explicit dismissal method of the close button for important modal 
 
 To create a structured content layout, use the `modal-title` class for headings and `modal-body` class for content.
 
-<ShowComponent filePath="./src/components/modals/ContentModal.html">
+<ShowComponent>
   <ContentModal />
 </ShowComponent>
 
@@ -128,7 +130,7 @@ To create a structured content layout, use the `modal-title` class for headings 
 
 To create a modal with a hero image, add the `modal-box--with-hero` class to your modal box. Place your image with the `modal-hero-image` class in a separate `div` before your content. The layout will automatically adjust between desktop (left-aligned) and mobile (top-aligned).
 
-<ShowComponent filePath="./src/components/modals/HeroModal.html">
+<ShowComponent>
   <HeroModal />
 </ShowComponent>
 
@@ -138,6 +140,27 @@ The hero image is effected by the following variables:
 | ---------------------------- | ------------- | -------------------------------------- |
 | `--modal-hero-width`         | `18rem`       | Width of hero image section on desktop |
 | `--modal-mobile-hero-height` | `150px`       | Height of hero image on mobile devices |
+
+### Fullscreen Modals
+
+The modal system supports fullscreen layouts for both desktop and mobile views. You can control this behavior using two classes:
+
+- `modal-fullscreen`: Makes the modal fill the entire viewport on desktop
+- `modal-fullscreen-mobile`: Makes the modal fill the entire viewport on mobile devices
+
+These classes can be used independently or together for different responsive behaviors.
+
+<ShowComponent>
+  <FullScreenModal />
+</ShowComponent>
+
+### Disable Entrance animation
+
+By applying the `modal-disable-entrance` class, the pop up / slide in animations are disabled for desktop and mobile respectively.
+
+<ShowComponent>
+  <NoEntranceModal />
+</ShowComponent>
 
 ## Accessibility
 

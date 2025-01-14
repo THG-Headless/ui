@@ -3,13 +3,13 @@ title: Dropdown
 description: A drop down selector
 ---
 
-import ShowComponent from "../../../components/doc-helpers/ShowComponent.astro";
-import BasicDropdown from "../../../components/dropdown/BasicDropdown.html";
-import BasicDropdownOpen from "../../../components/dropdown/BasicDropdownOpen.html";
-import ErrorDropdown from "../../../components/dropdown/ErrorDropdown.html";
-import InactiveDropdown from "../../../components/dropdown/InactiveDropdown.html";
-import SearchDropdown from "../../../components/dropdown/SearchDropdown.html";
-import SearchDropdownOpen from "../../../components/dropdown/SearchDropdownOpen.html";
+import ShowComponent from '../../../components/doc-helpers/ShowComponent.astro';
+import BasicDropdown from '../../../components/dropdown/BasicDropdown.html';
+import BasicDropdownOpen from '../../../components/dropdown/BasicDropdownOpen.html';
+import ErrorDropdown from '../../../components/dropdown/ErrorDropdown.html';
+import InactiveDropdown from '../../../components/dropdown/InactiveDropdown.html';
+import SearchDropdown from '../../../components/dropdown/SearchDropdown.html';
+import SearchDropdownOpen from '../../../components/dropdown/SearchDropdownOpen.html';
 
 The dropdown component provides a flexible and accessible way to present a list of options to users. It supports various styles, states, and even includes a search functionality.
 
@@ -17,14 +17,14 @@ The dropdown component provides a flexible and accessible way to present a list 
 
 To use the basic dropdown, simply include the following HTML structure:
 
-<ShowComponent filePath="./src/components/dropdown/BasicDropdown.html">
+<ShowComponent>
   <BasicDropdown />
 </ShowComponent>
 
 The open state of the search dropdown can be triggered by adding the `dropdown-open` to the main wrapper.
 
-<div style={{ marginBottom: "200px" }}>
-  <ShowComponent filePath="./src/components/dropdown/BasicDropdownOpen.html">
+<div style={{ marginBottom: '200px' }}>
+  <ShowComponent>
     <BasicDropdownOpen />
   </ShowComponent>
 </div>
@@ -33,14 +33,14 @@ The open state of the search dropdown can be triggered by adding the `dropdown-o
 
 To add search functionality to your dropdown, use the search dropdown variant:
 
-<ShowComponent filePath="./src/components/dropdown/SearchDropdown.html">
+<ShowComponent>
   <SearchDropdown />
 </ShowComponent>
 
 The open variant is applied in the same way as before, by adding the `dropdown-open` class to the main wrapper.
 
-<div style={{ marginBottom: "240px" }}>
-  <ShowComponent filePath="./src/components/dropdown/SearchDropdownOpen.html">
+<div style={{ marginBottom: '240px' }}>
+  <ShowComponent>
     <SearchDropdownOpen />
   </ShowComponent>
 </div>
@@ -51,7 +51,7 @@ The open variant is applied in the same way as before, by adding the `dropdown-o
 
 To indicate an error state, add the `dropdown-error` class to the main wrapper:
 
-<ShowComponent filePath="./src/components/dropdown/ErrorDropdown.html">
+<ShowComponent>
   <ErrorDropdown />
 </ShowComponent>
 
@@ -59,7 +59,7 @@ To indicate an error state, add the `dropdown-error` class to the main wrapper:
 
 For an inactive dropdown, add the `disabled` property to the `dropdown-wrapper` div. Ensure that the aria labels are also changed to reflect this.
 
-<ShowComponent filePath="./src/components/dropdown/InactiveDropdown.html">
+<ShowComponent>
   <InactiveDropdown />
 </ShowComponent>
 
