@@ -198,3 +198,110 @@ The input system can be customized using the below CSS variables:
 | `--input-helper-weight`          | `var(--font-weight-normal)`  | Font weight of helper text          |
 | `--input-helper-weight-disabled` | `var(--input-helper-weight)` | Font weight of disabled helper text |
 | `--input-helper-weight-invalid`  | `var(--font-weight-bold)`    | Font weight of error message        |
+
+## Accessibility
+
+The input system is built following WCAG guidelines and WAI-ARIA best practices for form inputs, implementing key accessibility features through semantic HTML and ARIA attributes.
+
+### Current Implementation Features
+
+#### Structure and Labeling
+
+Each input includes:
+
+- [x] Semantic HTML with proper `<label>` elements explicitly linked to inputs via `for` attributes
+- [x] `aria-invalid` attribute to communicate validation state
+- [x] `aria-describedby` to associate helper text with inputs
+- [x] `aria-errormessage` to link error messages with inputs
+- [x] Visible labels that remain visible in all states
+- [x] Helper text for additional context
+- [x] Error messages that are announced by screen readers via `role="alert"`
+
+#### Visual States
+
+The system provides clear visual indicators for:
+
+- [x] Default state with distinct borders
+- [x] Focus state with visible outlines
+- [x] Error state with high-contrast borders and background
+- [x] Disabled state with muted colors and disabled cursor
+- [x] Hover state with enhanced borders
+
+#### Screen Reader Support
+
+Each input variant includes:
+
+- [x] Clear labeling of all interactive elements
+- [x] Helper text linked via `aria-describedby`
+- [x] Error messages linked via `aria-errormessage`
+- [x] Character count updates for text areas using `aria-live="polite"`
+- [x] Clear button with descriptive `aria-label`
+- [x] Error icons hidden from screen readers with `aria-hidden="true"`
+
+### Required JavaScript Implementation
+
+While the components are built to be functional without JavaScript, some features require JavaScript for full accessibility:
+
+#### Character Counter
+
+For text areas with character limits:
+
+- [ ] Update the character count text as the user types
+- [ ] Announce updates to screen readers via the `aria-live` region
+
+#### Clear Button
+
+For inputs with clear functionality:
+
+- [ ] Reset focus to the input field after clearing
+- [ ] Announce the clear action to screen readers
+
+#### Error Handling
+
+For proper error management:
+
+- [ ] Set `aria-invalid="true"` when validation fails
+- [ ] Update error messages dynamically
+- [ ] Focus the first invalid field when form submission fails
+- [ ] Announce error messages to screen readers
+
+### Keyboard Navigation
+
+The native HTML elements provide:
+
+- [x] Tab key to navigate between inputs
+- [x] Space/Enter to activate the clear button
+- [x] Arrow keys for cursor movement within inputs
+- [x] Standard text editing shortcuts (when implemented by the browser)
+
+### Mobile Accessibility
+
+For mobile devices:
+
+- [x] Touch targets meet minimum size requirements
+- [x] Clear visual feedback for all states
+- [x] Native input behaviors maintained
+- [x] Proper viewport zooming supported
+- [x] Clear button positioned for easy touch access
+
+## Required Implementation Steps
+
+When implementing inputs in your project, ensure you:
+
+#### HTML Structure
+
+- [ ] Maintain the semantic structure of labels, inputs, and helper text
+- [ ] Keep error messages in the correct order for screen reader announcement
+- [ ] Preserve all ARIA attributes and relationships
+
+#### Error Handling
+
+- [ ] Implement client-side validation where appropriate
+- [ ] Ensure error messages are clear and actionable
+- [ ] Maintain proper focus management during validation
+
+#### JavaScript Enhancements
+
+- [ ] Add character counter functionality for text areas
+- [ ] Implement clear button functionality
+- [ ] Handle dynamic error states and announcements
