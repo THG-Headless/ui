@@ -1,0 +1,32 @@
+<button
+  class="btn btn-primary btn-high"
+  onclick="noEntranceModal.showModal()"
+  aria-haspopup="dialog"
+  aria-controls="noEntranceModal"
+>
+  Open Modal Without Entrance Animation
+</button>
+
+<dialog
+  id="noEntranceModal"
+  class="modal modal-disable-entrance"
+  role="dialog"
+  aria-modal="true"
+  aria-label="No Entrance Animation Modal"
+>
+  <div class="modal-box">
+    <form method="dialog" class="modal-control-bar">
+      <button class="modal-close-button">
+        <span>Close</span>
+        <span aria-hidden="true">✕</span>
+      </button>
+    </form>
+    <div id="no-entrance-modal-content">
+      <h3 class="modal-title">No Entrance Animation</h3>
+      <div class="modal-body">
+        This modal simply fades in and out, with no pop-up or slide-in
+        animations.
+      </div>
+    </div>
+  </div>
+</dialog>
