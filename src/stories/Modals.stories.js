@@ -1,10 +1,11 @@
-import BackdropModal from '../components/modals/BackdropOnlyModal.html';
+import BackdropModal from '../components/modals/BackdropCloseModal.html';
 import NoBackdropModal from '../components/modals/NoBackdropModal.html';
 import ContentModal from '../components/modals/ContentModal.html';
 import HeroModal from '../components/modals/HeroModal.html';
 import ComplexModal from '../components/modals/ComplexModal.html';
 import FullScreenModal from '../components/modals/FullScreenModal.html';
 import NoEntranceModal from '../components/modals/NoEntrance.html';
+import BasicModal from '../components/modals/BasicModal.html';
 
 const addOpenAttribute = (htmlString) => {
   return htmlString.replace('<dialog', '<dialog open');
