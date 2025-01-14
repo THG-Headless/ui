@@ -2,7 +2,6 @@
   :root {
     --accordion-wrapper-padding: 5px;
     --accordion-inner-padding: 1em 1.5em;
-    --accordion-title-padding: 0.25em;
     --accordion-width: 20em;
     --accordion-gap: 0.5em;
     --accordion-radius: var(--radius-size-sm);
@@ -11,8 +10,8 @@
 
     --accordion-focus-outline: auto;
     --accordion-text-size: var(--text-size-sm);
-    --accordion-title-weight: normal;
-    --accordion-content-weight: normal;
+    --accordion-title-weight: var(--font-weight-normal);
+    --accordion-content-weight: var(--font-weight-normal);
     --accordion-trigger-hover: none;
 
     --acc-icon-expanded-transform: rotate(180deg);
@@ -70,7 +69,6 @@
   }
   .accordion-title {
     display: block;
-    padding: var(--accordion-title-padding);
   }
 
   .accordion-trigger[aria-expanded='true'] .accordion-icon {
