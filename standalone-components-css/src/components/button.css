@@ -2,8 +2,8 @@
   :root {
     --btn-radius: var(--radius-md);
     --btn-animation-speed: var(--animation-speed-quick);
-    --btn-hover-scale: 1.02;
-    --btn-active-scale: 0.98;
+    --btn-hover-scale: 1.005;
+    --btn-active-scale: 0.995;
     --btn-icon-size: 20px;
     --btn-icon-scale-hover: 1.15;
     --btn-icon-scale-active: 1.3;

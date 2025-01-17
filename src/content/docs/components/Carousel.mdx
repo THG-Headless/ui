@@ -3,6 +3,7 @@ title: Carousel
 description: Carousel
 ---
 
+import { Aside } from '@astrojs/starlight/components';
 import ShowComponent from '@components/doc-helpers/ShowComponent.astro';
 import BasicCarousel from '@components/carousel/BasicCarousel.html';
 import Small from '@components/carousel/CarouselSmall.html';
@@ -13,6 +14,7 @@ import SnapEnd from '@components/carousel/CarouselSnapEnd.html';
 import SnapCenter from '@components/carousel/CarouselSnapCenter.html';
 import SnapPad from '@components/carousel/CarouselSnapPad.html';
 import CarouselContent from '@components/carousel/CarouselContent.html';
+import CarouselInteractive from '@components/carousel/CarouselInteractive.html';
 import CarouselBanner from '@components/carousel/CarouselBanner.html';
 
 The carousel is used to display a set of images or content in a neat way.
@@ -98,6 +100,30 @@ Content can be added as well as images, and should be placed within a div with t
 <ShowComponent>
   <CarouselContent />
 </ShowComponent>
+
+<Aside type="caution">
+If the content of the carousels includes elements that are interactive such as buttons, then this will mean that a keyboard user will have to navigate through all of the items in the carousel to get to the next section of the site.
+
+Tab index of -1 are provided for the items, and a tab index of -2 should be applied to all interactive elements within them.
+
+Javascript will be required in order to manage focus. This should implement the following behaviour:
+
+- [ ] Users can navigate to the carousel wrapper
+- [ ] Pressing ENTER on the carousel wrapper should trap focus into the carousel
+- [ ] Tab and Shift Tab should navigate through the items
+- [ ] The escape key should bring focus out of the items, and back to the carousel wrapper
+
+If the user is on a item within the carousel, they should be able to:
+
+- [ ] A user can press enter to trap their focus on the item
+- [ ] The user should be able to navigate through any interactive elements for the item
+- [ ] Pressing the escape key should bring their focus out of the item, and back to the carousel
+
+<ShowComponent>
+  <CarouselInteractive />
+</ShowComponent>
+
+</Aside>
 
 ## Banner Carousel
 
