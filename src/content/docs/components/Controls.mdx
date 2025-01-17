@@ -1,0 +1,50 @@
+---
+title: Controls
+description: Controls
+---
+
+import ShowComponent from '@components/doc-helpers/ShowComponent.astro';
+import Bullets from '@components/controls/Bullets.html';
+import ControlButton from '@components/controls/ControlButton.html';
+import ControlBar from '@components/controls/ControlBar.html';
+import ControlBarVertical from '@components/controls/ControlBarVertical.html';
+
+Specifically styled versions of elements for use in controlling components such as [carousels](/components/carousel/).
+
+## Bullets
+
+Used to change between multiple elements in a list.
+
+<ShowComponent>
+  <Bullets />
+</ShowComponent>
+
+## Control Buttons
+
+Specifically styled buttons to provide clear and identifiable site controls.
+
+### Basic Control Button
+
+The `control-btn` class can be applied along side the `btn` class (see [Button Component](/components/button)).
+
+<ShowComponent>
+  <ControlButton />
+</ShowComponent>
+
+### Combined Buttons
+
+#### Horizontal Bar
+
+When using multiple control buttons, they can be wrapped in a `control-bar`. This ensure uniform borders between buttons, creating a cohesive collection of control buttons.
+
+<ShowComponent>
+  <ControlBar />
+</ShowComponent>
+
+#### Vertical Bar
+
+The `control-bar-vertical` class can be used instead if a vertical control bar is desired.
+
+<ShowComponent>
+  <ControlBarVertical />
+</ShowComponent>

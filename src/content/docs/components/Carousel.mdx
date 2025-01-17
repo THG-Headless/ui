@@ -5,24 +5,95 @@ description: Carousel
 
 import ShowComponent from '@components/doc-helpers/ShowComponent.astro';
 import BasicCarousel from '@components/carousel/BasicCarousel.html';
+import Small from '@components/carousel/CarouselSmall.html';
+import Large from '@components/carousel/CarouselLarge.html';
+import Tight from '@components/carousel/CarouselTight.html';
+import SnapStart from '@components/carousel/CarouselSnapStart.html';
+import SnapEnd from '@components/carousel/CarouselSnapEnd.html';
+import SnapCenter from '@components/carousel/CarouselSnapCenter.html';
+import SnapPad from '@components/carousel/CarouselSnapPad.html';
 import CarouselContent from '@components/carousel/CarouselContent.html';
 import CarouselBanner from '@components/carousel/CarouselBanner.html';
-import Bullets from '@components/carousel/CarouselBullets.html';
-import CarouselControls from '@components/carousel/CarouselControls.html';
-import Counter from '@components/carousel/CarouselCounter.html';
-import CarouselBulletControlled from '@components/carousel/CarouselBulletControlled.html';
-import CarouselButtonControlled from '@components/carousel/CarouselButtonControlled.html';
-import CarouselBannerControlled from '@components/carousel/CarouselBannerControlled.html';
 
-Used to display lists of cards in a horizontally scrollable area.
+The carousel is used to display a set of images or content in a neat way.
+
+These carousels have can be scrolled by holding `SHIFT` and scrolling the mouse wheel, or setting the focus on the carousel by clicking it or navigating to it using keyboard navigation and using the arrow keys to navigate through the carousel.
 
 ## Basic Carousel
+
+The basic html structure of the carousel is seen below, applying the base styles without providing any more complex behaviour such as scroll snapping.
 
 <ShowComponent>
   <BasicCarousel />
 </ShowComponent>
 
+### Size
+
+On top of the default size, small and large styles exist to provide a range of carousel sizes.
+
+#### Small
+
+The `carousel-small` class can be used to create a small carousel.
+
+<ShowComponent>
+  <Small />
+</ShowComponent>
+
+#### Large
+
+The `carousel-large` class can be used to create a large carousel.
+
+<ShowComponent>
+  <Large />
+</ShowComponent>
+
+### Tight
+
+Applying the `carousel-large` class will remove the gap between the items.
+
+<ShowComponent>
+  <Tight />
+</ShowComponent>
+
+## Snapping Styles
+
+A number of snapping styles have been provided, giving you the option for how you would like the carousel to behave. It is recommended to choose one of these, as it will improve the keyboard navigation within your carousel as users can quickly navigate through the items.
+
+### Start Snap
+
+The `carousel-snap-start` class will snap the items to the left edge of the carousel.
+
+<ShowComponent>
+  <SnapStart />
+</ShowComponent>
+
+### End Snap
+
+The `carousel-snap-end` class will snap the items to the right edge of the carousel.
+
+<ShowComponent>
+  <SnapEnd />
+</ShowComponent>
+
+### Center Snap
+
+The `carousel-snap-center` class will snap the items to the middle of the carousel.
+
+<ShowComponent>
+  <SnapCenter />
+</ShowComponent>
+
+### Snap Alignment
+
+By adding the `carousel-align` class, additional padding is added to the carousel such that all items will follow the snapping style.
+
+<ShowComponent>
+  <SnapPad />
+</ShowComponent>
+
 ## Carousel Content
+
+Content can be added as well as images, and should be placed within a div with the class `carousel-content` applied.
 
 <ShowComponent>
   <CarouselContent />
@@ -30,51 +101,22 @@ Used to display lists of cards in a horizontally scrollable area.
 
 ## Banner Carousel
 
+By adding the `carousel-banner` class, the items will become full width, with the content and image placed next to each other.
+
+Note that due to the nature of this, banner style carousels are unaffected by snapping or tight properties. The small and large classes are still applicable, but have separate size variables for banner layouts.
+
 <ShowComponent>
   <CarouselBanner />
 </ShowComponent>
 
-## Bullet Controls
+## Related components
 
-<ShowComponent>
-  <Bullets />
-</ShowComponent>
+For the best user experience, and best accessibility it is recommended to implement buttons to control the carousel. For these purposes, the following components can be used:
 
-## Button Controls
+- [ ] [Bullet Selector](/components/controls/#bullets)
+- [ ] [Control Buttons](/components/controls/#control-buttons)
 
-Use these to navigate between slides.
-
-<ShowComponent>
-  <CarouselControls />
-</ShowComponent>
-
-They use the`btn` class (see [Button](/components/button/)), and additional styling is applied by the `carousel-control-btn` modifier class.
-
-## Counter
-
-<ShowComponent>
-  <Counter />
-</ShowComponent>
-
-## Examples
-
-### Carousel with Bullet Controls
-
-<ShowComponent>
-  <CarouselBulletControlled />
-</ShowComponent>
-
-### Carousel with Button Controls
-
-<ShowComponent>
-  <CarouselButtonControlled />
-</ShowComponent>
-
-### Carousel Banner with Controls
-
-<ShowComponent>
-  <CarouselBannerControlled />
-</ShowComponent>
+The [Intersection Observer API](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API) can be used to add this interactivity.
 
 ## Variables
 
@@ -82,19 +124,19 @@ The carousel can be customized with the following variables:
 
 ## Accessibility
 
-- [x] Each carousel wrapper has the `aria-roledescription` property set to 'carousel'.
-- [x] Each slide container has role group with the property `aria-roledescription` set to slide.
-- [x] You can to tab through the slides using `Tab` and `Shift+Tab`
+{/* - [x] Each carousel wrapper has the `aria-roledescription` property set to 'carousel'. */}
 
-In addition, you must implement the following:
+{/* - [x] Each slide container has role group with the property `aria-roledescription` set to slide. */}
 
-- [ ] Make sure each slide has an accessible name
+{/* - [x] You can to tab through the slides using `Tab` and `Shift+Tab` */}
+
+{/* In addition, you must implement the following: */}
+
+{/* - [ ] Make sure each slide has an accessible name */}
 
 - see [this guide](https://www.w3.org/WAI/ARIA/apg/patterns/carousel/#wai-ariaroles,states,andproperties) for more information
 
 ## Interactivity
-
-- [ ] When implementing interactivity for the buttons and pips, we recommended to use the [Intersection Observer API](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API) to add interactivity.
 
 ## Further reading
 

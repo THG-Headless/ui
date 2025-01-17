@@ -1,0 +1,171 @@
+@layer components {
+  :root {
+    --control-gap: 2rem;
+    --control-item-gap: 1rem;
+
+    --control-bullet-color: var(--neutral-300);
+    --control-bullet-active-color: var(--primary-700);
+    --control-outline-color: var(--primary-700);
+    --control-background: var(--surface-white);
+    --control-color: var(--primary-400);
+    --control-hover-color: var(--primary-500);
+    --control-active-color: var(--primary-600);
+
+    --control-bullet-size: 12px;
+    --control-bullet-active-length: 3;
+    --control-border-width: 1px;
+
+    --control-counter-active-color: var(--text-high-emphasis);
+    --control-counter-separator-color: var(--text-medium-emphasis);
+    --control-counter-gap: 4px;
+
+    --control-text-size: var(--text-size-sm);
+    --control-text-weight: var(--font-weight-medium);
+    --control-text-line-height: var(--line-height-sm);
+    --control-counter-text-size: var(--text-size-sm);
+    --control-counter-text-weight: var(--font-weight-medium);
+    --control-counter-text-weight-active: var(--font-weight-semi-bold);
+    --control-counter-text-line-height: var(--line-height-sm);
+
+    --control-animation-speed: var(--animation-speed-default);
+  }
+
+  .controls-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+
+  .controls-left {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  .controls-right {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: var(--control-item-gap);
+  }
+
+  .control-bullet-wrapper {
+    display: flex;
+    gap: 8px;
+    border: none;
+    padding: 0;
+  }
+
+  .control-bullet {
+    width: var(--control-bullet-size);
+    height: var(--control-bullet-size);
+    align-items: flex-start;
+    gap: 4px;
+    border-radius: var(--radius-size-full);
+    background-color: var(--control-bullet-color);
+    transition: width var(--control-animation-speed) ease;
+    border: none;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+
+  .control-bullet:hover {
+    outline: 2px solid var(--control-bullet-active-color);
+    outline-offset: 2px;
+  }
+
+  .control-bullet:checked {
+    background-color: var(--control-bullet-active-color);
+    width: calc(
+      var(--control-bullet-size) * var(--control-bullet-active-length)
+    );
+  }
+
+  .control-counter {
+    font-size: var(--control-counter-text-size);
+    font-weight: var(--control-counter-text-weight);
+    line-height: var(--control-counter-text-line-height);
+    display: flex;
+    align-items: center;
+    gap: var(--control-counter-gap);
+  }
+
+  .control-current {
+    color: var(--control-counter-active-color);
+    font-weight: var(--control-counter-text-weight-active);
+  }
+
+  .control-separator {
+    color: var(--control-counter-separator-color);
+  }
+
+  .control-total {
+    color: var(--control-counter-separator-color);
+  }
+
+  .control-wrapper {
+    display: inline-flex;
+  }
+
+  .control-bar {
+    display: flex;
+  }
+
+  .control-bar-vertical {
+    display: block;
+  }
+
+  .control-btn {
+    background-color: var(--control-background);
+    color: var(--control-color);
+    width: 48px;
+    height: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    border: var(--control-border-width) solid var(--control-outline-color);
+    border-radius: var(--radius-none);
+    box-shadow: var(--shadow-default);
+    overflow: hidden;
+    cursor: pointer;
+    transition: all var(--control-animation-speed) ease;
+  }
+
+  .control-btn:hover {
+    color: var(--control-hover-color);
+    box-shadow: var(--shadow-hover);
+  }
+
+  .control-btn:active {
+    color: var(--control-active-color);
+    box-shadow: var(--shadow-active);
+  }
+
+  .control-pagination {
+    color: var(--control-color);
+    padding: 12px 14px;
+    font-weight: var(--control-text-weight);
+    font-size: var(--control-text-size);
+    line-height: var(--control-text-line-height);
+    transition: color var(--control-animation-speed) ease;
+  }
+
+  .control-bar .control-btn:not(:first-child) {
+    margin-left: calc(-1 * var(--control-border-width)) !important;
+  }
+
+  .control-bar-vertical .control-btn:not(:first-child) {
+    margin-top: calc(-1 * var(--control-border-width)) !important;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .control-btn {
+      transition: none;
+    }
+  }
+}
