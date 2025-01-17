@@ -3,16 +3,16 @@
     /* Layout */
     --carousel-width: 100%;
 
-    --carousel-small-item-gap: 2rem;
+    --carousel-small-item-gap: 0.5rem;
     --carousel-small-content-padding: 0rem;
     --carousel-small-banner-content-padding: 1rem;
     --carousel-small-content-gap: 0.5rem;
-    --carousel-small-image-height: 300px;
-    --carousel-small-image-width: 300px;
+    --carousel-small-image-height: 200px;
+    --carousel-small-image-width: 200px;
     --carousel-small-banner-image-width: 50%;
     --carousel-small-banner-image-height: 200px;
 
-    --carousel-item-gap: 2rem;
+    --carousel-item-gap: 1rem;
     --carousel-content-padding: 0rem;
     --carousel-banner-content-padding: 1rem;
     --carousel-content-gap: 0.5rem;
@@ -21,7 +21,7 @@
     --carousel-banner-image-width: 50%;
     --carousel-banner-image-height: 400px;
 
-    --carousel-large-item-gap: 3rem;
+    --carousel-large-item-gap: 1rem;
     --carousel-large-content-padding: 0rem;
     --carousel-large-banner-content-padding: 1rem;
     --carousel-large-content-gap: 0.5rem;
