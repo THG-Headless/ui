@@ -108,8 +108,7 @@
   /* Carousel Item Styles */
   .carousel-item {
     flex: 0 0 auto;
-    width: min(var(--carousel-image-width), 100%);
-    max-width: 100%;
+    width: var(--carousel-image-width);
   }
 
   .carousel-item > div {
