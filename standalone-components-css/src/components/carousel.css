@@ -395,14 +395,12 @@
     height: var(--carousel-large-banner-image-height-mobile);
   }
 
-  /* Reset the width since we're stacking vertically */
   .carousel-banner .carousel-image,
   .carousel-banner.carousel-small .carousel-image,
   .carousel-banner.carousel-large .carousel-image {
     width: 100%;
   }
 
-  /* Optional: Adjust content padding for mobile if needed */
   .carousel-banner .carousel-content {
     padding: var(--carousel-banner-content-padding);
     width: 100%;
