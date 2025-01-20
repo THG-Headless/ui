@@ -11,6 +11,7 @@
     --carousel-small-image-width: 200px;
     --carousel-small-banner-image-width: 50%;
     --carousel-small-banner-image-height: 200px;
+    --carousel-small-banner-image-height-mobile: 200px;
 
     --carousel-item-gap: 1rem;
     --carousel-content-padding: 0rem;
@@ -20,6 +21,7 @@
     --carousel-image-width: 300px;
     --carousel-banner-image-width: 50%;
     --carousel-banner-image-height: 400px;
+    --carousel-banner-image-height-mobile: 300px;
 
     --carousel-large-item-gap: 1rem;
     --carousel-large-content-padding: 0rem;
@@ -28,7 +30,8 @@
     --carousel-large-image-height: 400px;
     --carousel-large-image-width: 400px;
     --carousel-large-banner-image-width: 50%;
-    --carousel-large-banner-image-height: 600px;
+    --carousel-large-banner-image-height: 400px;
+    --carousel-large-banner-image-height-mobile: 400px;
 
     --carousel-surface-image: var(--surface-inactive);
     --carousel-surface-item: var(--surface-transparent);
@@ -362,5 +365,38 @@
 
   .carousel-tight .carousel {
     gap: 0;
+  }
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+  .carousel-banner .carousel-item {
+    flex-direction: column;
+  }
+
+  .carousel-banner .carousel-image {
+    width: 100%;
+    height: var(--carousel-banner-image-height-mobile);
+  }
+
+  .carousel-banner.carousel-small .carousel-image {
+    height: var(--carousel-small-banner-image-height-mobile);
+  }
+
+  .carousel-banner.carousel-large .carousel-image {
+    height: var(--carousel-large-banner-image-height-mobile);
+  }
+
+  /* Reset the width since we're stacking vertically */
+  .carousel-banner .carousel-image,
+  .carousel-banner.carousel-small .carousel-image,
+  .carousel-banner.carousel-large .carousel-image {
+    width: 100%;
+  }
+
+  /* Optional: Adjust content padding for mobile if needed */
+  .carousel-banner .carousel-content {
+    padding: var(--carousel-banner-content-padding);
+    width: 100%;
   }
 }
