@@ -106,7 +106,8 @@
   /* Carousel Item Styles */
   .carousel-item {
     flex: 0 0 auto;
-    width: var(--carousel-image-width);
+    width: min(var(--carousel-image-width), 100%);
+    max-width: 100%;
   }
 
   .carousel-item > div {
@@ -186,6 +187,7 @@
     flex: 0 0 100%;
     width: 100%;
     min-width: 100%;
+    max-width: 100%;
     scroll-snap-align: start;
     scroll-snap-stop: always;
     background-color: var(--carousel-surface-banner);
@@ -226,11 +228,13 @@
 
   /* Size Styles (excluding banners) */
   .carousel-small:not(.carousel-banner) .carousel-item {
-    width: var(--carousel-small-image-width);
+    width: min(var(--carousel-small-image-width), 100%);
+    max-width: 100%;
   }
 
   .carousel-small:not(.carousel-banner) .carousel-image {
-    width: var(--carousel-small-image-width);
+    width: 100%;
+    max-width: 100%;
     height: var(--carousel-small-image-height);
   }
 
@@ -240,11 +244,13 @@
   }
 
   .carousel-large:not(.carousel-banner) .carousel-item {
-    width: var(--carousel-large-image-width);
+    width: min(var(--carousel-large-image-width), 100%);
+    max-width: 100%;
   }
 
   .carousel-large:not(.carousel-banner) .carousel-image {
-    width: var(--carousel-large-image-width);
+    width: 100%;
+    max-width: 100%;
     height: var(--carousel-large-image-height);
   }
 
