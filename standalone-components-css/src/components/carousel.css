@@ -47,6 +47,8 @@
 
     /* Focus Outline */
     --carousel-focus-outline: var(--border-attention);
+    --carousel-focus-width: 2px;
+    --carousel-focus-offset: 2px;
 
     /* Text Colors */
     --carousel-text-color: var(--text-black);
@@ -85,8 +87,8 @@
   }
 
   .carousel-wrapper:focus-visible {
-    outline: 2px solid var(--carousel-focus-outline);
-    outline-offset: 2px;
+    outline: var(--carousel-focus-width) solid var(--carousel-focus-outline);
+    outline-offset: var(--carousel-focus-offset);
   }
 
   .carousel-wrapper::-webkit-scrollbar {
