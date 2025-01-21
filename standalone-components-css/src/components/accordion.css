@@ -5,6 +5,7 @@
     --accordion-width: 20em;
     --accordion-gap: 0em;
     --accordion-radius: var(--radius-size-none);
+    --accordion-section-radius: var(--radius-size-none);
     --accordion-box-shadow: none; /* --shadow-md */
     --accordion-border: none;
     --accordion-inner-margin: 0px;
@@ -44,7 +45,7 @@
   }
 
   .accordion-section {
-    border-radius: var(--accordion-radius);
+    border-radius: var(--accordion-section-radius);
     overflow: hidden;
     background: var(--white);
     box-shadow: var(--accordion-box-shadow);

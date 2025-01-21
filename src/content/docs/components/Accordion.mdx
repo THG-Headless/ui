@@ -68,16 +68,17 @@ The accordion system can be customized using CSS variables:
 
 ### Borders and Styling
 
-| Variable                     | Default Value                        | Description                                |
-| ---------------------------- | ------------------------------------ | ------------------------------------------ |
-| `--accordion-focus-outline`  | `auto`                               | Accessibiility feature on focussed content |
-| `--accordion-title-weight`   | `normal`                             | Font weight for the triggers               |
-| `--accordion-content-weight` | `normal`                             | Font weight for the content                |
-| `--accordion-trigger-hover`  | `none`                               | Background color on hover                  |
-| `--accordion-radius`         | `none`                               | Rounding on borders                        |
-| `--accordion-border`         | `none`                               | Border around the accordion                |
-| `--accordion-box-shadow`     | `none`                               | Box shadow around the accordion            |
-| --acc-panel-divider`         | var(--neutral-200) solid 2px         | Border division between  panels                |
+| Variable                     | Default Value                | Description                                |
+| ---------------------------- | ---------------------------- | ------------------------------------------ |
+| `--accordion-focus-outline`  | `auto`                       | Accessibiility feature on focussed content |
+| `--accordion-title-weight`   | `normal`                     | Font weight for the triggers               |
+| `--accordion-content-weight` | `normal`                     | Font weight for the content                |
+| `--accordion-trigger-hover`  | `none`                       | Background color on hover                  |
+| `--accordion-radius`         | `none`                       | Rounding on outer borders                  |
+| `--accordion-section-radius` | `none`                       | Rounding on section borders                |
+| `--accordion-border`         | `none`                       | Border around the accordion                |
+| `--accordion-box-shadow`     | `none`                       | Box shadow around the accordion            |
+| --acc-panel-divider`         | var(--neutral-200) solid 2px | Border division between panels             |
 
 ## Accessibility
 
@@ -108,7 +109,7 @@ Update the following ARIA states dynamically:
 - [ ] `aria-controls=ID` link the top level element around the trigger for an accordion panel
 - [ ] Use role=region / `aria-labelledby` on the accordion content panel div, to demonstrate the link to the button controlling visibility
 
-This is not a typical implementation of aria and accessibility. It is known to work against Android talkback and Apple VoiceOver screen-readers. If a fully WCAG compliant version is needed, 
+This is not a typical implementation of aria and accessibility. It is known to work against Android talkback and Apple VoiceOver screen-readers. If a fully WCAG compliant version is needed, please refer to the WCAGAccordion example. This will need Javascript implementation to make it interactive.
 
 #### Keyboard Navigation
 
