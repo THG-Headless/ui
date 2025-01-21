@@ -68,17 +68,17 @@ The accordion system can be customized using CSS variables:
 
 ### Borders and Styling
 
-| Variable                     | Default Value                | Description                                |
-| ---------------------------- | ---------------------------- | ------------------------------------------ |
-| `--accordion-focus-outline`  | `auto`                       | Accessibiility feature on focussed content |
-| `--accordion-title-weight`   | `normal`                     | Font weight for the triggers               |
-| `--accordion-content-weight` | `normal`                     | Font weight for the content                |
-| `--accordion-trigger-hover`  | `none`                       | Background color on hover                  |
-| `--accordion-radius`         | `none`                       | Rounding on outer borders                  |
-| `--accordion-section-radius` | `none`                       | Rounding on section borders                |
-| `--accordion-border`         | `none`                       | Border around the accordion                |
-| `--accordion-box-shadow`     | `none`                       | Box shadow around the accordion            |
-| --acc-panel-divider`         | var(--neutral-200) solid 2px | Border division between panels             |
+| Variable                     | Default Value                  | Description                                |
+| ---------------------------- | ------------------------------ | ------------------------------------------ |
+| `--accordion-focus-outline`  | `auto`                         | Accessibiility feature on focussed content |
+| `--accordion-title-weight`   | `normal`                       | Font weight for the triggers               |
+| `--accordion-content-weight` | `normal`                       | Font weight for the content                |
+| `--accordion-trigger-hover`  | `none`                         | Background color on hover                  |
+| `--accordion-radius`         | `none`                         | Rounding on outer borders                  |
+| `--accordion-section-radius` | `none`                         | Rounding on section borders                |
+| `--accordion-border`         | `none`                         | Border around the accordion                |
+| `--accordion-box-shadow`     | `none`                         | Box shadow around the accordion            |
+| `--acc-panel-divider`        | `var(--neutral-200) solid 2px` | Border division between panels             |
 
 ## Accessibility
 
@@ -88,7 +88,7 @@ Using the pattern of the html details and summary tags allows the open/close int
 
 #### Structure and Labeling
 
-> Each section of content in an accordion panel is wrapped in a `region` with a clear description of its purpose
+> Each trigger has a role of button to indicate it's interactivity to screen readers.
 > Every accordion section has aria to link the trigger / heading of the section to its content
 
 #### Keyboard Support
@@ -105,7 +105,7 @@ The current implementation provides:
 
 Update the following ARIA states dynamically:
 
-- [ ] `aria-expanded` on an open accordion panel
+- [ ] `aria-expanded` This should be toggled with javascript
 - [ ] `aria-controls=ID` link the top level element around the trigger for an accordion panel
 - [ ] Use role=region / `aria-labelledby` on the accordion content panel div, to demonstrate the link to the button controlling visibility
 
