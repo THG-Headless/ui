@@ -1,0 +1,307 @@
+---
+title: Input
+description: Input components provide various text input fields for collecting user data, including single-line inputs and text areas.
+---
+
+import ShowComponent from '../../../components/doc-helpers/ShowComponent.astro';
+import BasicTextInput from '../../../components/text-input/basicTextInput.html';
+import ErrorTextInput from '../../../components/text-input/errorTextInput.html';
+import CustomErrorTextInput from '../../../components/text-input/customErrorTextInput.html';
+import DisabledTextInput from '../../../components/text-input/disabledTextInput.html';
+import ClearTextInput from '../../../components/text-input/clearTextInput.html';
+import BasicTextArea from '../../../components/text-input/basicTextArea.html';
+import ErrorTextArea from '../../../components/text-input/errorTextArea.html';
+import CustomErrorTextArea from '../../../components/text-input/customErrorTextArea.html';
+import DisabledTextArea from '../../../components/text-input/disabledTextArea.html';
+
+## Overview
+
+Input components are essential UI elements that allow users to enter and edit text. They come in two main variants: single-line text inputs and multi-line text areas. Each type supports various states including basic, error, custom error messages, and disabled states.
+
+## Single-line Text Inputs
+
+### Basic Input
+
+The basic text input includes a label, placeholder text, and optional helper text. The width will default to 100%, but can be set using postcss such as Tailwind as demonstrated here.
+
+<ShowComponent>
+  <BasicTextInput />
+</ShowComponent>
+
+### Error State
+
+The error state indicates invalid input with red borders and an error message. It can be applied by changing the `aria-invalid` attribute to `true`.
+
+<ShowComponent>
+  <ErrorTextInput />
+</ShowComponent>
+
+### Custom Error Message
+
+You can customize the error message to provide more specific feedback by adding the `input-error` class to the additional message. This will hide the helper text and show this instead, providing utility for cases where the helper text is insufficient (such as when a user name is already taken).
+
+<ShowComponent>
+  <CustomErrorTextInput />
+</ShowComponent>
+
+### Disabled State
+
+The `disabled` attribute can be applied to the `<input/>` element to style the whole component to its disabled state.
+
+<ShowComponent>
+  <DisabledTextInput />
+</ShowComponent>
+
+### Clearable Input
+
+Inputs can include a clear button to quickly remove entered text, although the functionality for this must be added in javascript.
+
+<ShowComponent>
+  <ClearTextInput />
+</ShowComponent>
+
+## Text Areas
+
+### Basic Text Area
+
+Text areas provide multi-line input capabilities with optional character limits. They behave in the same way as the `<input/>` above, but use a `<textarea/>` element instead.
+
+<ShowComponent>
+  <BasicTextArea />
+</ShowComponent>
+
+### Error State
+
+Text areas support the same error states as single-line inputs. ike in the single line input, this is activated by changing the `aria-invalid` attribute to `true`.
+
+<ShowComponent>
+  <ErrorTextArea />
+</ShowComponent>
+
+### Custom Error Message
+
+This includes the functionality of the custom error message.
+
+<ShowComponent>
+  <CustomErrorTextArea />
+</ShowComponent>
+
+### Disabled State
+
+Text areas also support the disabled state. Like in the single line input, this is activated by applying the `disabled` attribute to the `<textarea/>`.
+
+<ShowComponent>
+  <DisabledTextArea />
+</ShowComponent>
+
+## CSS Variables
+
+The input system can be customized using the below CSS variables:
+
+### General
+
+#### Layout
+
+| Variable                      | Default Value             | Description                   |
+| ----------------------------- | ------------------------- | ----------------------------- |
+| `--input-spacing`             | `0.25rem`                 | Gap between input elements    |
+| `--input-padding-x`           | `0.5rem`                  | Horizontal padding            |
+| `--input-padding-y`           | `0.5rem`                  | Vertical padding              |
+| `--input-border-width`        | `1px`                     | Default border width          |
+| `--input-border-width-active` | `2px`                     | Border width when active      |
+| `--input-radius`              | `var(--radius-size-sm)`   | Border radius for inputs      |
+| `--input-radius-textarea`     | `var(--radius-size-sm)`   | Border radius for textareas   |
+| `--input-clear-radius`        | `var(--radius-size-full)` | Border radius of clear button |
+
+#### Colors
+
+| Variable                      | Default Value                     | Description                               |
+| ----------------------------- | --------------------------------- | ----------------------------------------- |
+| `--input-clear-surface`       | `var(--surface-controls-default)` | Background color of clear button          |
+| `--input-clear-surface-hover` | `var(--surface-controls-dark)`    | Background color of clear button on hover |
+| `--input-clear-color`         | `var(--white)`                    | Color of clear button icon                |
+
+### Label Styling
+
+#### Colors
+
+| Variable                       | Default Value               | Description                   |
+| ------------------------------ | --------------------------- | ----------------------------- |
+| `--input-label-color`          | `var(--text-high-emphasis)` | Color of the input label      |
+| `--input-label-color-disabled` | `var(--text-inactive)`      | Color of disabled label       |
+| `--input-label-color-invalid`  | `var(--input-label-color)`  | Color of label in error state |
+
+#### Typography
+
+| Variable                        | Default Value                  | Description                         |
+| ------------------------------- | ------------------------------ | ----------------------------------- |
+| `--input-label-size`            | `var(--text-size-body)`        | Font size of the label              |
+| `--input-label-line-height`     | `var(--line-height-body)`      | Line height of the label            |
+| `--input-label-weight`          | `var(--font-weight-semi-bold)` | Font weight of the label            |
+| `--input-label-weight-disabled` | `var(--input-label-weight)`    | Font weight of disabled label       |
+| `--input-label-weight-invalid`  | `var(--input-label-weight)`    | Font weight of label in error state |
+
+### Input Field Styling
+
+#### Colors
+
+| Variable                         | Default Value                 | Description                        |
+| -------------------------------- | ----------------------------- | ---------------------------------- |
+| `--input-field-color`            | `var(--text-medium-emphasis)` | Color of the input text            |
+| `--input-field-color-disabled`   | `var(--text-inactive)`        | Color of disabled input text       |
+| `--input-field-color-invalid`    | `var(--input-field-color)`    | Color of input text in error state |
+| `--input-field-placeholder`      | `var(--text-medium-emphasis)` | Color of placeholder text          |
+| `--input-field-surface`          | `var(--surface-white)`        | Background color of the input      |
+| `--input-field-surface-hover`    | `var(--surface-white)`        | Background color on hover          |
+| `--input-field-surface-disabled` | `var(--input-field-surface)`  | Background color when disabled     |
+| `--input-field-surface-invalid`  | `var(--input-field-surface)`  | Background color in error state    |
+
+#### Typography
+
+| Variable                        | Default Value               | Description                |
+| ------------------------------- | --------------------------- | -------------------------- |
+| `--input-field-size`            | `var(--text-size-body)`     | Font size of input text    |
+| `--input-field-line-height`     | `var(--line-height-body)`   | Line height of input text  |
+| `--input-field-weight`          | `var(--font-weight-normal)` | Font weight of input text  |
+| `--input-field-weight-disabled` | `var(--input-field-weight)` | Font weight when disabled  |
+| `--input-field-weight-invalid`  | `var(--input-field-weight)` | Font weight in error state |
+
+#### Borders
+
+| Variable                        | Default Value             | Description                 |
+| ------------------------------- | ------------------------- | --------------------------- |
+| `--input-field-border`          | `var(--border-controls)`  | Default border color        |
+| `--input-field-border-hover`    | `var(--border-primary)`   | Border color on hover       |
+| `--input-field-border-active`   | `var(--border-primary)`   | Border color when active    |
+| `--input-field-border-disabled` | `var(--border-inactive)`  | Border color when disabled  |
+| `--input-field-border-invalid`  | `var(--border-error)`     | Border color in error state |
+| `--input-field-border-focus`    | `var(--border-attention)` | Border color when focused   |
+
+### Helper Text Styling
+
+#### Colors
+
+| Variable                         | Default Value               | Description                                    |
+| -------------------------------- | --------------------------- | ---------------------------------------------- |
+| `--input-helper-color`           | `var(--text-high-emphasis)` | Color of helper text                           |
+| `--input-helper-color-disabled`  | `var(--text-inactive)`      | Color of disabled helper text                  |
+| `--input-helper-color-invalid`   | `var(--text-error)`         | Color of error message                         |
+| `--input-helper-surface`         | `transparent`               | Background color of helper text area           |
+| `--input-helper-surface-invalid` | `var(--surface-error)`      | Background color of helper text in error state |
+
+#### Typography
+
+| Variable                         | Default Value                | Description                         |
+| -------------------------------- | ---------------------------- | ----------------------------------- |
+| `--input-helper-size`            | `var(--text-size-sm)`        | Font size of helper text            |
+| `--input-helper-line-height`     | `var(--line-height-sm)`      | Line height of helper text          |
+| `--input-helper-weight`          | `var(--font-weight-normal)`  | Font weight of helper text          |
+| `--input-helper-weight-disabled` | `var(--input-helper-weight)` | Font weight of disabled helper text |
+| `--input-helper-weight-invalid`  | `var(--font-weight-bold)`    | Font weight of error message        |
+
+## Accessibility
+
+The input system is built following WCAG guidelines and WAI-ARIA best practices for form inputs, implementing key accessibility features through semantic HTML and ARIA attributes.
+
+### Current Implementation Features
+
+#### Structure and Labeling
+
+Each input includes:
+
+- [x] Semantic HTML with proper `<label>` elements explicitly linked to inputs via `for` attributes
+- [x] `aria-invalid` attribute to communicate validation state
+- [x] `aria-describedby` to associate helper text with inputs
+- [x] `aria-errormessage` to link error messages with inputs
+- [x] Visible labels that remain visible in all states
+- [x] Helper text for additional context
+- [x] Error messages that are announced by screen readers via `role="alert"`
+
+#### Visual States
+
+The system provides clear visual indicators for:
+
+- [x] Default state with distinct borders
+- [x] Focus state with visible outlines
+- [x] Error state with high-contrast borders and background
+- [x] Disabled state with muted colors and disabled cursor
+- [x] Hover state with enhanced borders
+
+#### Screen Reader Support
+
+Each input variant includes:
+
+- [x] Clear labeling of all interactive elements
+- [x] Helper text linked via `aria-describedby`
+- [x] Error messages linked via `aria-errormessage`
+- [x] Character count updates for text areas using `aria-live="polite"`
+- [x] Clear button with descriptive `aria-label`
+- [x] Error icons hidden from screen readers with `aria-hidden="true"`
+
+### Required JavaScript Implementation
+
+While the components are built to be functional without JavaScript, some features require JavaScript for full accessibility:
+
+#### Character Counter
+
+For text areas with character limits:
+
+- [ ] Update the character count text as the user types
+- [ ] Announce updates to screen readers via the `aria-live` region
+
+#### Clear Button
+
+For inputs with clear functionality:
+
+- [ ] Reset focus to the input field after clearing
+- [ ] Announce the clear action to screen readers
+
+#### Error Handling
+
+For proper error management:
+
+- [ ] Set `aria-invalid="true"` when validation fails
+- [ ] Update error messages dynamically
+- [ ] Focus the first invalid field when form submission fails
+- [ ] Announce error messages to screen readers
+
+### Keyboard Navigation
+
+The native HTML elements provide:
+
+- [x] Tab key to navigate between inputs
+- [x] Space/Enter to activate the clear button
+- [x] Arrow keys for cursor movement within inputs
+- [x] Standard text editing shortcuts (when implemented by the browser)
+
+### Mobile Accessibility
+
+For mobile devices:
+
+- [x] Touch targets meet minimum size requirements
+- [x] Clear visual feedback for all states
+- [x] Native input behaviors maintained
+- [x] Proper viewport zooming supported
+- [x] Clear button positioned for easy touch access
+
+## Required Implementation Steps
+
+When implementing inputs in your project, ensure you:
+
+#### HTML Structure
+
+- [ ] Maintain the semantic structure of labels, inputs, and helper text
+- [ ] Keep error messages in the correct order for screen reader announcement
+- [ ] Preserve all ARIA attributes and relationships
+
+#### Error Handling
+
+- [ ] Implement client-side validation where appropriate
+- [ ] Ensure error messages are clear and actionable
+- [ ] Maintain proper focus management during validation
+
+#### JavaScript Enhancements
+
+- [ ] Add character counter functionality for text areas
+- [ ] Implement clear button functionality
+- [ ] Handle dynamic error states and announcements

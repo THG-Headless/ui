@@ -1,0 +1,36 @@
+<button
+  class="btn btn-primary btn-high"
+  onclick="fullscreenModal.showModal()"
+  aria-haspopup="dialog"
+  aria-controls="fullscreenModal"
+>
+  Open Fullscreen Modal
+</button>
+
+<dialog
+  id="fullscreenModal"
+  class="modal modal-fullscreen modal-fullscreen-mobile"
+  role="dialog"
+  aria-modal="true"
+  aria-label="Fullscreen Modal"
+>
+  <div class="modal-box">
+    <form method="dialog" class="modal-control-bar">
+      <button class="modal-close-button">
+        <span>Close</span>
+        <span aria-hidden="true">✕</span>
+      </button>
+    </form>
+    <div
+      id="fullscreen-modal-content"
+      style="
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      "
+    >
+      <h1>This modal is fullscreen on both desktop and mobile</h1>
+    </div>
+  </div>
+</dialog>

@@ -24,4 +24,4 @@ jobs:
 
       - name: deploy to new environment
         id: deploy
-        run: npx @thg-altitude/cli deploy --site "Starter Single-Tenant Commerce" --branch ${{ github.event.pull_request.head.ref }} --env ${{ github.event.pull_request.head.ref }} --verbose
+        run: npx @thg-altitude/cli deploy --site "Standalone Components" --branch ${{ github.event.pull_request.head.ref }} --env ${{ github.event.pull_request.head.ref }} --verbose
