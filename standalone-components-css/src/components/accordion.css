@@ -4,7 +4,7 @@
     --accordion-inner-padding: 1em 1.5em;
     --accordion-width: 20em;
     --accordion-gap: 0em;
-    --accordion-radius: var(--radius-size-none);
+    --accordion-radius: var(--radius-size-sm);
     --accordion-section-radius: var(--radius-size-none);
     --accordion-box-shadow: none; /* --shadow-md */
     --accordion-border: none;
@@ -58,8 +58,6 @@
     align-items: center;
     width: 100%;
     text-align: left;
-    box-shadow: var(--accordion-box-shadow);
-
     background: none;
     border-style: none;
     font-size: var(--accordion-text-size);

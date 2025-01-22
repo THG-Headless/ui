@@ -29,6 +29,16 @@ Building on the initial Summary accordion, the use of the name attribute on the 
   <NamedSummaryAccordion />
 </ShowComponent>
 
+### Style Override Example
+
+This is identical in functionality to the previous accordion, but demonstrates the styling flexibility of the accordion css variables
+
+<ShowComponent filePath='./src/components/accordion/NamedSummaryAccordion.html'>
+  <div style={{'--accordion-gap': '0.5em', '--acc-panel-divider': 'none', '--accordion-radius': 'var(--radius-size-sm)', '--accordion-section-radius': 'var(--radius-size-sm)', '--acc-panel-border-top': 'none', '--acc-panel-border-bottom': 'none', '--accordion-box-shadow': 'var(--shadow-md)'  }}>
+    <NamedSummaryAccordion />
+  </div>
+</ShowComponent>
+
 ## CSS Variables
 
 The accordion system can be customized using CSS variables:
