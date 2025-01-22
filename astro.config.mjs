@@ -3,6 +3,7 @@ import starlight from "@astrojs/starlight";
 import tailwindcss from "@tailwindcss/vite";
 
 export default defineConfig({
+  site: "https://components.thgaltitude.com",
   vite: {
     plugins: [
       tailwindcss(),
