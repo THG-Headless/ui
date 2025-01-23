@@ -1,4 +1,4 @@
-<div class="input-wrapper">
+<div class="input-wrapper" aria-disabled="true">
   <div class="input-label-wrapper">
     <label class="input-label" for="disabled-textarea">Label</label>
     <span class="input-status" aria-hidden="true">(Optional status)</span>
@@ -37,7 +37,12 @@
           clip-rule="evenodd"
         />
       </svg>
-      <p class="input-error" id="disabled-textarea-error" role="alert">
+      <p
+        class="input-error"
+        id="disabled-textarea-error"
+        role="alert"
+        aria-hidden="true"
+      >
         Error message
       </p>
     </div>
@@ -45,7 +50,6 @@
       class="input-char-limit"
       id="disabled-textarea-char-limit"
       aria-hidden="true"
-      aria-disabled="true"
     >
       0/500
     </p>

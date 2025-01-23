@@ -1,4 +1,4 @@
-<div class="input-wrapper w-64">
+<div class="input-wrapper w-64" aria-disabled="true">
   <div class="input-label-wrapper">
     <label class="input-label" for="disabled-input">Label</label>
     <span class="input-status" aria-hidden="true">(Optional status)</span>
@@ -11,15 +11,18 @@
       name="disabled-input"
       placeholder="Placeholder text"
       aria-invalid="false"
-      aria-describedby="disabled-helper disabled-status"
+      aria-describedby="disabled-helper disabled-message"
       aria-errormessage="disabled-message"
       autocomplete="off"
       spellcheck="true"
       disabled
+      aria-disabled="true"
     />
   </div>
   <div class="input-helper-wrapper">
-    <p class="input-helper" id="disabled-helper">Helper text</p>
+    <p class="input-helper" id="disabled-helper" aria-hidden="true">
+      Helper text
+    </p>
     <div class="input-error-content">
       <svg
         class="input-error-icon"
@@ -34,7 +37,12 @@
           clip-rule="evenodd"
         />
       </svg>
-      <p class="input-error" id="disabled-message" role="alert">
+      <p
+        class="input-error"
+        id="disabled-message"
+        role="alert"
+        aria-hidden="true"
+      >
         Error message
       </p>
     </div>

@@ -53,6 +53,7 @@
     --input-padding-y: 0.5rem;
     --input-border-width: 1px;
     --input-border-width-active: 2px;
+    --input-border-width-invalid: 2px;
     --input-radius: var(--radius-size-sm);
     --input-radius-textarea: var(--radius-size-sm);
 
@@ -219,14 +220,13 @@
     & .input-char-limit {
       color: var(--input-helper-color-disabled);
     }
+    & .input-helper {
+      display: none;
+    }
   }
 
   /* Invalid state styles */
   .input-wrapper:has(.input-field[aria-invalid='true']) {
-    & .input-helper-wrapper {
-      background: transparent;
-    }
-
     & .input-label {
       color: var(--input-label-color-invalid);
       font-weight: var(--input-label-weight-invalid);
@@ -240,7 +240,7 @@
       background-color: var(--input-field-surface-invalid);
       color: var(--input-field-color-invalid);
       font-weight: var(--input-field-weight-invalid);
-      box-shadow: inset 0 0 0 var(--input-border-width)
+      box-shadow: inset 0 0 0 var(--input-border-width-invalid)
         var(--input-field-border-invalid);
     }
 
@@ -254,6 +254,14 @@
 
     & .input-error-icon {
       display: block;
+    }
+  }
+
+  .input-wrapper:has(input[type='text'][aria-invalid='true']) {
+    & .input-helper-wrapper {
+      background: var(--input-helper-surface-invalid);
+      padding-top: var(--input-padding-y);
+      padding-bottom: var(--input-padding-y);
     }
   }
 
@@ -299,13 +307,5 @@
   /* Hide clear button when input is empty */
   .input-wrapper:has(.input-field:placeholder-shown) .input-clear {
     display: none;
-  }
-
-  /* Responsive adjustments */
-  @media (min-width: 640px) {
-    .input-wrapper {
-      --input-padding-x: 0.75rem;
-      --input-padding-y: 0.75rem;
-    }
   }
 }
