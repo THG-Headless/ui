@@ -6,7 +6,7 @@
     --accordion-gap: 0em;
     --accordion-radius: var(--radius-size-sm);
     --accordion-section-radius: var(--radius-size-none);
-    --accordion-box-shadow: none; /* --shadow-md */
+    --accordion-box-shadow: none;
     --accordion-border: none;
     --accordion-inner-margin: 0px;
 
@@ -14,12 +14,14 @@
     --accordion-text-size: var(--text-size-sm);
     --accordion-title-weight: var(--font-weight-normal);
     --accordion-content-weight: var(--font-weight-normal);
+    --accordion-trigger-text-color: var(--text-medium-emphasis);
+    --accordion-content-text-color: var(--text-medium-emphasis);
     --accordion-trigger-hover: none;
 
     --acc-icon-expanded-transform: rotate(180deg);
-    --acc-icon-expanded-transition: all 0.1s ease-in;
+    --acc-icon-expanded-transition: all var(--animation-speed-quick) ease-in;
     --acc-icon-collapsed-transform: rotate(0deg);
-    --acc-icon-collapsed-transition: all 0.1s ease-in;
+    --acc-icon-collapsed-transition: all var(--animation-speed-quick) ease-in;
 
     --acc-panel-border-top: var(--neutral-500) solid 2px;
     --acc-panel-border-bottom: var(--neutral-500) solid 2px;
@@ -64,6 +66,7 @@
     font-weight: var(--accordion-title-weight);
     margin: var(--accordion-inner-margin);
     padding: var(--accordion-inner-padding);
+    color: var(--accordion-trigger-text-color);
   }
 
   .accordion-wrapper .accordion-section .accordion-trigger:not(:last-child) {
@@ -89,12 +92,12 @@
     display: block;
   }
 
-  .accordion-trigger[aria-expanded='true'] .accordion-icon {
+  .accordion-section[open] .accordion-trigger .accordion-icon {
     transform: var(--acc-icon-expanded-transform);
     transition: var(--acc-icon-expanded-transition);
   }
 
-  .accordion-trigger:not([aria-expanded='false']) .accordion-icon {
+  .accordion-icon {
     transform: var(--acc-icon-collapsed-transform);
     transition: var(--acc-icon-collapsed-transition);
   }
@@ -104,6 +107,7 @@
     padding: var(--accordion-inner-padding);
     border-bottom: var(--acc-panel-border-top);
     border-top: var(--acc-panel-border-bottom);
+    color: var(--accordion-content-text-color);
   }
 
   .accordion-panel.panel-hidden {

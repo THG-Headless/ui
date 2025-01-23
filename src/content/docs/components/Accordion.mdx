@@ -34,7 +34,17 @@ Building on the initial Summary accordion, the use of the name attribute on the 
 This is identical in functionality to the previous accordion, but demonstrates the styling flexibility of the accordion css variables
 
 <ShowComponent filePath='./src/components/accordion/NamedSummaryAccordion.html'>
-  <div style={{'--accordion-gap': '0.5em', '--acc-panel-divider': 'none', '--accordion-radius': 'var(--radius-size-sm)', '--accordion-section-radius': 'var(--radius-size-sm)', '--acc-panel-border-top': 'none', '--acc-panel-border-bottom': 'none', '--accordion-box-shadow': 'var(--shadow-md)'  }}>
+  <div
+    style={{
+      '--accordion-gap': '0.5em',
+      '--acc-panel-divider': 'none',
+      '--accordion-radius': 'var(--radius-size-sm)',
+      '--accordion-section-radius': 'var(--radius-size-sm)',
+      '--acc-panel-border-top': 'none',
+      '--acc-panel-border-bottom': 'none',
+      '--accordion-box-shadow': 'var(--shadow-md)',
+    }}
+  >
     <NamedSummaryAccordion />
   </div>
 </ShowComponent>
@@ -53,11 +63,14 @@ The accordion system can be customized using CSS variables:
 
 ### Trigger Configuration
 
-| Variable                    | Default Value | Description                                            |
-| --------------------------- | ------------- | ------------------------------------------------------ |
-| `--accordion-inner-margin`  | `0px`         | Shared value between trigger and content to align text |
-| `--accordion-inner-padding` | `1em 1.5em`   | Shared value between trigger and content to align text |
-| `--accordion-text-size`     | `normal`      |                                                        |
+| Variable                         | Default Value                 | Description                                            |
+| -------------------------------- | ----------------------------- | ------------------------------------------------------ |
+| `--accordion-inner-margin`       | `0px`                         | Shared value between trigger and content to align text |
+| `--accordion-inner-padding`      | `1em 1.5em`                   | Shared value between trigger and content to align text |
+| `--accordion-text-size`          | `normal`                      |                                                        |
+| `--accordion-trigger-text-color` | `var(--text-medium-emphasis)` | Text colour on the accordion trigger                   |
+| `--accordion-text-size`          | `normal`                      |                                                        |
+| `--accordion-content-text-color` | `var(--text-medium-emphasis)` | Text colour in the accordion panel                     |
 
 ### Content Configuration
 
