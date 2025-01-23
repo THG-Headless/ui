@@ -302,16 +302,12 @@
   /* Icon hover state */
   .btn:not(:disabled):hover .icon-container svg,
   .btn:not(:disabled):focus-visible .icon-container svg {
-    fill: currentColor;
-    stroke: none;
     transform: scale(var(--btn-icon-scale-hover));
   }
 
   /* Icon active state */
   .btn:not(:disabled):active .icon-container svg {
     transform: scale(var(--btn-icon-scale-active));
-    fill: currentColor;
-    stroke: none;
   }
 
   /* Full width btn */

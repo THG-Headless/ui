@@ -1,12 +1,11 @@
-import ButtonCloseModal from '../components/modals/BasicModal.html';
-import BackdropModal from '../components/modals/BackdropOnlyModal.html';
+import BackdropModal from '../components/modals/BackdropCloseModal.html';
 import NoBackdropModal from '../components/modals/NoBackdropModal.html';
-import CloseButtonModal from '../components/modals/CloseButtonModal.html';
 import ContentModal from '../components/modals/ContentModal.html';
 import HeroModal from '../components/modals/HeroModal.html';
 import ComplexModal from '../components/modals/ComplexModal.html';
 import FullScreenModal from '../components/modals/FullScreenModal.html';
 import NoEntranceModal from '../components/modals/NoEntrance.html';
+import BasicModal from '../components/modals/BasicModal.html';
 
 const addOpenAttribute = (htmlString) => {
   return htmlString.replace('<dialog', '<dialog open');
@@ -21,17 +20,14 @@ export default {
   },
 };
 
-export const Basic = () => addOpenAttribute(ButtonCloseModal);
+export const Basic = () => addOpenAttribute(BasicModal);
 Basic.storyName = 'Basic Modal';
 
-export const BackdropOnly = () => addOpenAttribute(BackdropModal);
-BackdropOnly.storyName = 'Backdrop Click Away';
+export const BackdropClickaway = () => addOpenAttribute(BackdropModal);
+BackdropClickaway.storyName = 'Backdrop Click Away';
 
 export const NoBackdrop = () => addOpenAttribute(NoBackdropModal);
 NoBackdrop.storyName = 'No Backdrop';
-
-export const CloseButton = () => addOpenAttribute(CloseButtonModal);
-CloseButton.storyName = 'Close Button';
 
 export const Content = () => addOpenAttribute(ContentModal);
 Content.storyName = 'Content Structure';
