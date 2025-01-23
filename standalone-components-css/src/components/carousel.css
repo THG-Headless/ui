@@ -339,6 +339,16 @@
   }
 }
 
+/* Tight Carousel Style */
+.carousel-tight .carousel {
+  gap: 0;
+}
+
+.carousel-tight .carousel-item {
+  margin: 0;
+  padding: 0;
+}
+
 /* Mobile Styles */
 @media (max-width: 768px) {
   .carousel-banner .carousel-item {
