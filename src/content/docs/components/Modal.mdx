@@ -6,12 +6,11 @@ description: A composable modal system built with HTML dialog element
 import { Aside } from '@astrojs/starlight/components';
 import ShowComponent from '../../../components/doc-helpers/ShowComponent.astro';
 import BasicModal from '../../../components/modals/BasicModal.html';
-import BackdropOnlyModal from '../../../components/modals/BackdropOnlyModal.html';
 import NoBackdropModal from '../../../components/modals/NoBackdropModal.html';
-import CloseButtonModal from '../../../components/modals/CloseButtonModal.html';
 import ContentModal from '../../../components/modals/ContentModal.html';
 import HeroModal from '../../../components/modals/HeroModal.html';
 import ComplexModal from '../../../components/modals/ComplexModal.html';
+import BackdropCloseModal from '../../../components/modals/BackdropCloseModal.html';
 import FullScreenModal from '../../../components/modals/FullScreenModal.html';
 import NoEntranceModal from '../../../components/modals/NoEntrance.html';
 
@@ -56,39 +55,28 @@ The simplest implementation of a modal includes basic container styling, a backd
 
 The styling of the base modal is defined by the following variables. As with all components, they will use these default values, but can be redefined within your main css file.
 
-| Variable                             | Default Value                 | Description                               |
-| ------------------------------------ | ----------------------------- | ----------------------------------------- |
-| `--modal-width-min`                  | `320px`                       | Minimum width of the modal container      |
-| `--modal-margin`                     | `2rem`                        | Margin around the modal on desktop        |
-| `--modal-padding`                    | `2rem`                        | Internal padding of the modal content     |
-| `--modal-box-scale`                  | `0.95`                        | Initial scale of modal for animation      |
-| `--modal-shadow`                     | `var(--shadow-2xl)`           | Shadow effect for the modal box           |
-| `--modal-radius`                     | `var(--radius-size-none)`     | Border radius of the modal                |
-| `--modal-animation-speed`            | `var(--animation-speed-slow)` | Duration of modal animations              |
-| `--modal-surface`                    | `var(--surface-cards)`        | Background color for the modal            |
-| `--modal-backdrop-color`             | `rgba(0, 0, 0, 0.3)`          | Color and opacity of the modal backdrop   |
-| `--modal-backdrop-blur`              | `4px`                         | Blur effect intensity for the backdrop    |
-| `--modal-text-color`                 | `var(--text-black)`           | Default text color for the modal          |
-| `--modal-mobile-padding`             | `1rem`                        | Internal padding on mobile devices        |
-| `--modal-mobile-margin`              | `0rem`                        | Margin around the modal on mobile         |
-| `--modal-mobile-slide-up-max-height` | `90vh`                        | Maximum height of modal on mobile         |
-| `--modal-shadow-mobile`              | `var(--shadow-2xl)`           | Shadow effect for the modal box on mobile |
-
-### Close Button
-
-It is generally advised to always include a close button for a clear UX. To add a close button, include a `form` element with the `modal-control-bar` class at the start of your modal content. Within this, add a button with the `modal-close-button` class.
-
-<ShowComponent>
-  <CloseButtonModal />
-</ShowComponent>
-
-| Variable                                | Default Value                 | Description                          |
-| --------------------------------------- | ----------------------------- | ------------------------------------ |
-| `--modal-text-close-button-size`        | `var(--text-size-md)`         | Font size for close button           |
-| `--modal-text-close-button-weight`      | `var(--font-weight-normal)`   | Font weight for close button         |
-| `--modal-text-close-button-line-height` | `var(--line-height-md)`       | Line height for close button         |
-| `--modal-text-body-color`               | `var(--text-medium-emphasis)` | Color for close button text          |
-| `--modal-text-title-color`              | `var(--text-high-emphasis)`   | Color for close button text on hover |
+| Variable                                | Default Value                 | Description                               |
+| --------------------------------------- | ----------------------------- | ----------------------------------------- |
+| `--modal-width-min`                     | `320px`                       | Minimum width of the modal container      |
+| `--modal-margin`                        | `2rem`                        | Margin around the modal on desktop        |
+| `--modal-padding`                       | `2rem`                        | Internal padding of the modal content     |
+| `--modal-box-scale`                     | `0.95`                        | Initial scale of modal for animation      |
+| `--modal-shadow`                        | `var(--shadow-2xl)`           | Shadow effect for the modal box           |
+| `--modal-radius`                        | `var(--radius-size-none)`     | Border radius of the modal                |
+| `--modal-animation-speed`               | `var(--animation-speed-slow)` | Duration of modal animations              |
+| `--modal-surface`                       | `var(--surface-cards)`        | Background color for the modal            |
+| `--modal-backdrop-color`                | `rgba(0, 0, 0, 0.3)`          | Color and opacity of the modal backdrop   |
+| `--modal-backdrop-blur`                 | `4px`                         | Blur effect intensity for the backdrop    |
+| `--modal-text-color`                    | `var(--text-black)`           | Default text color for the modal          |
+| `--modal-mobile-padding`                | `1rem`                        | Internal padding on mobile devices        |
+| `--modal-mobile-margin`                 | `0rem`                        | Margin around the modal on mobile         |
+| `--modal-mobile-slide-up-max-height`    | `90vh`                        | Maximum height of modal on mobile         |
+| `--modal-shadow-mobile`                 | `var(--shadow-2xl)`           | Shadow effect for the modal box on mobile |
+| `--modal-text-close-button-size`        | `var(--text-size-md)`         | Font size for close button                |
+| `--modal-text-close-button-weight`      | `var(--font-weight-normal)`   | Font weight for close button              |
+| `--modal-text-close-button-line-height` | `var(--line-height-md)`       | Line height for close button              |
+| `--modal-text-body-color`               | `var(--text-medium-emphasis)` | Color for close button text               |
+| `--modal-text-title-color`              | `var(--text-high-emphasis)`   | Color for close button text on hover      |
 
 ### Disable Backdrop
 
@@ -103,8 +91,21 @@ To remove the backdrop blur and dimming effects, add the `modal-disable-backdrop
 To enable closing the modal by clicking the backdrop, add a `form` element with `method="dialog"` and the `modal-clickaway` class after the modal content.
 
 <ShowComponent>
-  <BackdropOnlyModal />
+  <BackdropCloseModal />
 </ShowComponent>
+
+<Aside type="tip" title="Accessibility Consideration">
+  The backdrop close functionality should be used sparingly and critically. Backdrop click-away modals can harm user experience and accessibility because:
+
+- [ ] The interaction pattern isn't immediately obvious to all users
+- [ ] Users may accidentally dismiss the modal when attempting to interact with elements outside it
+- [ ] Screen reader users may find it difficult to discover this dismissal method
+
+While backdrop click-away can be appropriate for non-critical interactions like promotional popups or quick information displays, it should be avoided for important tasks such as form submissions, configuration changes, or any workflow where accidental dismissal could lead to data loss or workflow interruption.
+
+Always prefer explicit dismissal method of the close button for important modal interactions.
+
+</Aside>
 
 ### Content Structure
 
@@ -210,6 +211,10 @@ When implementing modals in your project, ensure you:
 - [ ] Use semantic HTML elements for content structure
 - [ ] Include descriptive text for all buttons and interactive elements
 - [ ] Maintain proper focus management
+
+#### Keyboard Navigation & focus
+
+- [ ] Javascript must be used to entirely trap the focus within the modal. In some browsers such as chrome, one the user has reached the end of the modal, tabbing again will move focus to the browsers toolbar. In order to make the modal as accessible as possible, it should ignore the tool bar and go back to the start of the modals index.
 
 #### ARIA Attributes
 

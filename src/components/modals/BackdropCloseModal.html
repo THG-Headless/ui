@@ -13,12 +13,18 @@
   aria-modal="true"
   aria-labelledby="backdrop-modal-content"
 >
+  <form method="dialog" class="modal-backdrop-click" aria-hidden="true">
+    <button aria-hidden="true" tabindex="-1" aria-label="Close Modal"></button>
+  </form>
   <div class="modal-box">
+    <form method="dialog" class="modal-control-bar">
+      <button class="modal-close-button">
+        <span>Close</span>
+        <span aria-hidden="true">✕</span>
+      </button>
+    </form>
     <div id="backdrop-modal-content" class="modal-content">
       This modal can be closed with ESC key or by clicking the background
     </div>
   </div>
-  <form method="dialog" class="modal-clickaway">
-    <button aria-label="Close modal by clicking backdrop"></button>
-  </form>
 </dialog>
