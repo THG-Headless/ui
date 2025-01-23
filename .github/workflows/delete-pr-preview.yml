@@ -20,4 +20,4 @@ jobs:
 
       - name: Request preview environment deletion
         id: env_deletion
-        run: npx @thg-altitude/cli environment delete --site "Standalone Components"  --env ${{ github.event.pull_request.head.ref }} --verbose
+        run: npx @thg-altitude/cli environment delete --site "Browser Components"  --env ${{ github.event.pull_request.head.ref }} --verbose
