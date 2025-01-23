@@ -1,0 +1,130 @@
+---
+title: Controls
+description: Controls
+---
+
+import ShowComponent from '@components/doc-helpers/ShowComponent.astro';
+import Pips from '@components/controls/Pips.html';
+import ControlButton from '@components/controls/ControlButton.html';
+import ControlBar from '@components/controls/ControlBar.html';
+import ControlBarVertical from '@components/controls/ControlBarVertical.html';
+
+Specifically styled versions of elements for use in controlling components such as [carousels](/components/carousel/).
+
+## Pips
+
+Pip indicators provide an accessible way to navigate between items in a carousel or similar component. They use native radio inputs styled to provide a visual indicator of the current selection.
+
+The pip indicators are built using native HTML radio inputs, providing built-in accessibility and state management without JavaScript. Each pip expands when selected and includes proper ARIA labels for screen readers.
+
+<ShowComponent>
+  <Pips />
+</ShowComponent>
+
+### CSS Variables
+
+| Variable                               | Default Value                                                                                 | Description                             |
+| -------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------- |
+| `--control-pip-wrapper-padding`        | `1rem`                                                                                        | Padding around the pip container        |
+| `--control-pip-wrapper-margin`         | `0`                                                                                           | Margin around the pip container         |
+| `--control-pip-wrapper-min-height`     | `48px`                                                                                        | Minimum height of the pip container     |
+| `--control-pip-wrapper-background`     | `transparent`                                                                                 | Background color of the pip container   |
+| `--control-pip-wrapper-border-radius`  | `var(--radius-size-none)`                                                                     | Border radius of the pip container      |
+| `--control-pip-size`                   | `12px`                                                                                        | Size of individual pip indicators       |
+| `--control-pip-gap`                    | `8px`                                                                                         | Space between pip indicators            |
+| `--control-pip-active-width`           | `36px`                                                                                        | Width of the active pip indicator       |
+| `--control-pip-color`                  | `var(--neutral-300)`                                                                          | Default color of pip indicators         |
+| `--control-pip-active-color`           | `var(--primary-700)`                                                                          | Color of the active pip indicator       |
+| `--control-pip-hover-color`            | `var(--primary-700)`                                                                          | Color of pip indicators on hover        |
+| `--control-pip-focus-ring-width`       | `2px`                                                                                         | Width of the focus ring                 |
+| `--control-pip-focus-ring-offset`      | `2px`                                                                                         | Offset of the focus ring                |
+| `--control-pip-focus-ring-color`       | `var(--primary-700)`                                                                          | Color of the focus ring                 |
+| `--control-pip-focus-ring-style`       | `solid`                                                                                       | Style of the focus ring                 |
+| `--control-pip-disabled-background`    | `var(--neutral-300)`                                                                          | Background color of disabled pips       |
+| `--control-pip-hover-scale`            | `1.1`                                                                                         | Scale factor for pip hover effect       |
+| `--control-pip-disabled-opacity`       | `0.5`                                                                                         | Opacity of disabled pip indicators      |
+| `--control-pip-active-transition`      | `width var(--animation-speed-quick) ease, background-color var(--animation-speed-quick) ease` | Transition for active state             |
+| `--control-pip-hover-transition`       | `transform var(--animation-speed-quick) ease`                                                 | Transition for hover state              |
+| `--control-pip-wrapper-mobile-padding` | `0.5rem`                                                                                      | Padding around pip container on mobile  |
+| `--control-pip-mobile-size`            | `10px`                                                                                        | Size of pip indicators on mobile        |
+| `--control-pip-mobile-active-width`    | `30px`                                                                                        | Width of active pip indicator on mobile |
+
+### Accessibility
+
+#### Implemented Accessibility Features
+
+- [x] Complete keyboard navigation support through native radio controls
+- [x] Semantic structure using `radiogroup` role
+- [x] Clear descriptive labels for navigation ("Show item X of Y")
+- [x] Purpose description via `aria-description` for keyboard usage
+- [x] Screen reader context through `sr-only` class
+- [x] Visual focus indicators through native radio states
+- [x] Proper use of semantic HTML with `<label>` elements
+- [x] Current state indication through native radio checked state
+- [x] Content relationships via `aria-controls`
+- [x] Touch-friendly target sizes through label wrapping
+- [x] Motion-respecting animations using `prefers-reduced-motion`
+- [x] Consistent naming patterns across all controls
+
+#### Accessibility Considerations when Implementing
+
+- [ ] Ensure radio input names are unique per instance
+- [ ] Match `aria-controls` values with corresponding content IDs
+- [ ] Maintain proper tab order matching visual presentation
+- [ ] Consider auto-advance pause on focus/hover
+- [ ] Handle dynamic content updates appropriately
+- [ ] Maintain state synchronization between controls and content
+
+## Control Buttons
+
+Specifically styled buttons to provide clear and identifiable site controls.
+
+### Basic Control Button
+
+The `control-btn` class can be applied along side the `btn` class (see [Button Component](/components/button)).
+
+<ShowComponent>
+  <ControlButton />
+</ShowComponent>
+
+### CSS Variables
+
+| Variable                          | Default Value                 | Description                               |
+| --------------------------------- | ----------------------------- | ----------------------------------------- |
+| `--control-btn-background`        | `var(--surface-white)`        | Background color of control buttons       |
+| `--control-btn-color`             | `var(--icons-primary)`        | Color of control button icons             |
+| `--control-btn-hover-color`       | `var(--icons-primary-darker)` | Color of control button icons on hover    |
+| `--control-btn-active-color`      | `var(--icons-primary-darker)` | Color of control button icons when active |
+| `--control-btn-background-hover`  | `var(--neutral-200)`          | Background color on hover                 |
+| `--control-btn-background-active` | `var(--neutral-300)`          | Background color when active              |
+| `--control-btn-border-width`      | `1px`                         | Width of control button border            |
+| `--control-btn-size`              | `48px`                        | Size of control buttons                   |
+| `--control-btn-shadow`            | `var(--shadow-default)`       | Default shadow for control buttons        |
+| `--control-btn-shadow-hover`      | `var(--shadow-hover)`         | Shadow on hover for control buttons       |
+| `--control-btn-shadow-active`     | `var(--shadow-active)`        | Shadow when active for control buttons    |
+| `--control-btn-radius`            | `var(--radius-none)`          | Border radius of control buttons          |
+| `--control-btn-outline-color`     | `var(--primary-700)`          | Border color of control buttons           |
+
+## Combined Control Buttons
+
+### Horizontal Bar
+
+When using multiple control buttons, they can be wrapped in a `control-bar`. This ensure uniform borders between buttons, creating a cohesive collection of control buttons.
+
+<ShowComponent>
+  <ControlBar />
+</ShowComponent>
+
+### Vertical Bar
+
+The `control-bar-vertical` class can be used instead if a vertical control bar is desired.
+
+<ShowComponent>
+  <ControlBarVertical />
+</ShowComponent>
+
+### CSS Variables
+
+| Variable                 | Default Value | Description                 |
+| ------------------------ | ------------- | --------------------------- |
+| `--control-btn-item-gap` | `0rem`        | Gap between control buttons |

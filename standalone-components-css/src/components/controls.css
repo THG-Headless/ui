@@ -1,0 +1,186 @@
+@layer components {
+  :root {
+    /* Control Buttons */
+    --control-btn-item-gap: 0rem;
+    --control-btn-outline-color: var(--primary-700);
+    --control-btn-background: var(--surface-white);
+    --control-btn-color: var(--icons-primary);
+    --control-btn-hover-color: var(--icons-primary-darker);
+    --control-btn-active-color: var(--icons-primary-darker);
+    --control-btn-background-hover: var(--neutral-200);
+    --control-btn-background-active: var(--neutral-300);
+    --control-btn-border-width: 1px;
+
+    --control-btn-size: 48px;
+    --control-btn-shadow: var(--shadow-default);
+    --control-btn-shadow-hover: var(--shadow-hover);
+    --control-btn-shadow-active: var(--shadow-active);
+    --control-btn-radius: var(--radius-none);
+
+    /* Control Pips */
+    --control-pip-wrapper-padding: 1rem;
+    --control-pip-wrapper-margin: 0;
+    --control-pip-wrapper-min-height: 48px;
+    --control-pip-wrapper-background: transparent;
+    --control-pip-wrapper-border-radius: var(--radius-size-none);
+
+    --control-pip-size: 12px;
+    --control-pip-gap: 8px;
+    --control-pip-active-width: 36px;
+    --control-pip-color: var(--neutral-300);
+    --control-pip-active-color: var(--primary-700);
+    --control-pip-hover-color: var(--primary-700);
+    --control-pip-focus-ring-width: 2px;
+    --control-pip-focus-ring-offset: 2px;
+
+    --control-pip-focus-ring-color: var(--primary-700);
+    --control-pip-focus-ring-style: solid;
+    --control-pip-disabled-background: var(--neutral-300);
+    --control-pip-hover-scale: 1.1;
+    --control-pip-disabled-opacity: 0.5;
+
+    --control-pip-active-transition: width var(--animation-speed-quick) ease,
+      background-color var(--animation-speed-quick) ease;
+    --control-pip-hover-transition: transform var(--animation-speed-quick) ease;
+
+    --control-pip-wrapper-mobile-padding: 0.5rem;
+    --control-pip-mobile-size: 10px;
+    --control-pip-mobile-active-width: 30px;
+  }
+
+  /* Control Pip Styles */
+  .control-pip-wrapper {
+    display: flex;
+    gap: var(--control-pip-gap);
+    align-items: center;
+    padding: var(--control-pip-wrapper-padding);
+    margin: var(--control-pip-wrapper-margin);
+    min-height: var(--control-pip-wrapper-min-height);
+    background: var(--control-pip-wrapper-background);
+    border-radius: var(--control-pip-wrapper-border-radius);
+  }
+
+  .control-pip-label {
+    display: flex;
+    align-items: center;
+    margin: 0;
+    cursor: pointer;
+  }
+
+  .control-pip {
+    appearance: none;
+    -webkit-appearance: none;
+    width: var(--control-pip-size);
+    height: var(--control-pip-size);
+    padding: 0;
+    border: none;
+    border-radius: var(--radius-size-full);
+    background-color: var(--control-pip-color);
+    cursor: pointer;
+    margin: 0;
+    transition: var(--control-pip-hover-transition);
+  }
+
+  .control-pip:hover {
+    background-color: var(--control-pip-hover-color);
+    outline: var(--control-pip-focus-ring-width) solid
+      var(--control-pip-focus-ring-color);
+    outline-style: var(--control-pip-focus-ring-style);
+    outline-offset: var(--control-pip-focus-ring-offset);
+    transform: scale(var(--control-pip-hover-scale));
+  }
+
+  .control-pip:focus-visible {
+    outline: var(--control-pip-focus-ring-width) solid
+      var(--control-pip-focus-ring-color);
+    outline-style: var(--control-pip-focus-ring-style);
+    outline-offset: var(--control-pip-focus-ring-offset);
+  }
+
+  .control-pip:checked {
+    width: var(--control-pip-active-width);
+    background-color: var(--control-pip-active-color);
+    transition: var(--control-pip-active-transition);
+  }
+
+  .control-pip:disabled {
+    opacity: var(--control-pip-disabled-opacity);
+    background-color: var(--control-pip-disabled-background);
+    cursor: not-allowed;
+  }
+
+  /* Control Bar Styles */
+  .control-btn {
+    background-color: var(--control-btn-background);
+    color: var(--control-btn-color);
+    width: var(--control-btn-size);
+    height: var(--control-btn-size);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    border: var(--control-btn-border-width) solid
+      var(--control-btn-outline-color);
+    border-radius: var(--control-btn-radius);
+    box-shadow: var(--control-btn-shadow);
+    overflow: hidden;
+    cursor: pointer;
+  }
+
+  .control-btn:hover {
+    background-color: var(--control-btn-background-hover);
+    box-shadow: var(--control-btn-shadow-hover);
+  }
+
+  .control-btn svg path {
+    fill: var(--control-btn-color);
+  }
+
+  .control-btn:hover svg path {
+    fill: var(--control-btn-hover-color);
+  }
+
+  .control-btn:active svg path {
+    fill: var(--control-btn-active-color);
+  }
+
+  .control-btn:active {
+    background-color: var(--control-btn-background-active);
+    box-shadow: var(--control-btn-shadow-active);
+  }
+
+  /* Control Bar Styles */
+  .control-bar {
+    display: flex;
+    gap: var(--control-btn-item-gap);
+  }
+
+  .control-bar-vertical {
+    display: flex;
+    flex-direction: column;
+    gap: var(--control-btn-item-gap);
+  }
+
+  .control-bar .control-btn:not(:first-child) {
+    margin-left: calc(-1 * var(--control-btn-border-width)) !important;
+  }
+
+  .control-bar-vertical .control-btn:not(:first-child) {
+    margin-top: calc(-1 * var(--control-btn-border-width)) !important;
+  }
+
+  @media (max-width: 640px) {
+    .control-pip-wrapper {
+      padding: var(--control-pip-wrapper-mobile-padding);
+    }
+
+    .control-pip {
+      width: var(--control-pip-mobile-size);
+      height: var(--control-pip-mobile-size);
+    }
+
+    .control-pip:checked {
+      width: var(--control-pip-mobile-active-width);
+    }
+  }
+}

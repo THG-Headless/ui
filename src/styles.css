@@ -30,7 +30,7 @@ strong {
 }
 
 input[type='checkbox'] {
-  margin-right: 8px;
+  /* margin-right: 8px; */
   cursor: pointer;
 }
 
