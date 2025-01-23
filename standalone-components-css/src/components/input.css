@@ -1,5 +1,6 @@
 @layer components {
   :root {
+    /* Existing input styles */
     --input-label-color: var(--text-high-emphasis);
     --input-label-color-disabled: var(--text-inactive);
     --input-label-color-invalid: var(--input-label-color);
@@ -31,7 +32,7 @@
     --input-field-border-invalid: var(--border-error);
     --input-field-border-focus: var(--border-attention);
 
-    --input-helper-color: var(--text-high-emphasis);
+    --input-helper-color: var(--text-medium-emphasis);
     --input-helper-color-disabled: var(--text-inactive);
     --input-helper-color-invalid: var(--text-error);
     --input-helper-size: var(--text-size-sm);
@@ -55,13 +56,12 @@
     --input-radius: var(--radius-size-sm);
     --input-radius-textarea: var(--radius-size-sm);
 
-    --input-clear-button-padding: calc(
-      var(--input-padding-x) * 2 + var(--input-field-line-height)
-    );
-    --input-min-height: calc(
-      var(--input-field-line-height) + (2 * var(--input-padding-y)) +
-        (2 * var(--input-border-width))
-    );
+    --input-status-color: var(--text-medium-emphasis);
+    --input-status-color-disabled: var(--text-inactive);
+    --input-status-color-invalid: var(--input-status-color);
+    --input-status-size: var(--text-size-sm);
+    --input-status-line-height: var(--line-height-sm);
+    --input-status-weight: var(--font-weight-light);
   }
 
   .input-wrapper {
@@ -69,6 +69,28 @@
     flex-direction: column;
     gap: var(--input-spacing);
     position: relative;
+  }
+
+  .input-label-wrapper {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    padding-left: var(--input-padding-x);
+  }
+
+  .input-status {
+    color: var(--input-status-color);
+    font-size: var(--input-status-size);
+    line-height: var(--input-status-line-height);
+    font-weight: var(--input-status-weight);
+  }
+
+  .input-label {
+    color: var(--input-label-color);
+    font-size: var(--input-label-size);
+    line-height: var(--input-label-line-height);
+    font-weight: var(--input-label-weight);
+    margin: 0;
   }
 
   .input-field-wrapper {
@@ -111,27 +133,12 @@
     color: var(--input-field-placeholder);
   }
 
-  .input-label {
-    color: var(--input-label-color);
-    font-size: var(--input-label-size);
-    line-height: var(--input-label-line-height);
-    font-weight: var(--input-label-weight);
-    margin: 0;
-    padding-left: var(--input-padding-x);
-  }
-
   .input-helper-wrapper {
     display: flex;
     align-items: center;
-    gap: var(--input-spacing);
-    padding: 0 var(--input-padding-x);
+    justify-content: space-between;
+    padding-left: var(--input-padding-x);
     background: var(--input-helper-surface);
-  }
-
-  .input-helper-content {
-    display: flex;
-    align-items: center;
-    gap: var(--input-spacing);
   }
 
   .input-helper,
@@ -152,6 +159,12 @@
     font-weight: var(--input-helper-weight-invalid);
   }
 
+  .input-error-content {
+    display: flex;
+    align-items: center;
+    gap: var(--input-spacing);
+  }
+
   .input-error-icon {
     height: var(--input-helper-line-height);
     width: var(--input-helper-line-height);
@@ -160,204 +173,139 @@
     flex-shrink: 0;
   }
 
-  .input-clear-button {
-    position: absolute;
-    right: var(--input-padding-x);
-    background: var(--input-clear-surface);
-    border: none;
-    padding: 0;
-    cursor: pointer;
-    display: grid;
-    place-items: center;
-    color: var(--input-clear-color);
-    height: var(--input-field-size);
-    width: var(--input-field-size);
-    border-radius: var(--input-clear-radius);
-  }
-
-  .input-clear-button:hover {
-    background: var(--input-clear-surface-hover);
-  }
-
-  .input-clear-button .input-icon {
-    height: 75%;
-    width: 75%;
-    display: block;
-  }
-
-  .input-field-wrapper .input-field {
-    padding-right: var(--input-clear-button-padding);
-  }
-
+  /* Char limit styles */
   .input-char-limit {
-    color: var(--input-helper-color);
     font-size: var(--input-helper-size);
     line-height: var(--input-helper-line-height);
     font-weight: var(--input-helper-weight);
+    color: var(--input-helper-color);
     margin: 0;
   }
 
-  .input-wrapper:has(.input-field[aria-invalid='true']) {
-    & .input-label {
-      color: var(--input-label-color-invalid);
-      font-weight: var(--input-label-weight-invalid);
-    }
-
-    & .input-field {
-      color: var(--input-field-color-invalid);
-      font-weight: var(--input-field-weight-invalid);
-      background-color: var(--input-field-surface-invalid);
-      box-shadow: inset 0 0 0 var(--input-border-width-active)
-        var(--input-field-border-invalid);
-    }
-
-    & .input-field:hover {
-      box-shadow: inset 0 0 0 var(--input-border-width-active)
-        var(--input-field-border-invalid);
-    }
-
-    & .input-helper-wrapper {
-      background: var(--input-helper-surface-invalid);
-      padding: var(--input-padding-y) var(--input-padding-x);
-    }
-
-    & .input-helper {
-      color: var(--input-helper-color-invalid);
-      font-weight: var(--input-helper-weight-invalid);
-    }
-
-    & .input-error {
-      display: flex;
-    }
-
-    & .input-error-icon {
-      display: flex;
-    }
-  }
-
-  .input-wrapper:has(.input-error):has(.input-field[aria-invalid='true']) {
-    & .input-helper {
-      display: none;
-    }
-  }
-
-  .input-helper,
-  .input-char-limit,
-  .input-error {
-    position: relative;
-    min-height: var(--input-helper-line-height);
-    min-width: fit-content;
-    &::before {
-      content: attr(data-content);
-      position: absolute;
-      left: 0;
-      top: 0;
-      display: flex;
-      white-space: nowrap;
-      width: max-content;
-    }
-  }
-
-  .input-char-limit {
-    position: relative;
-    margin-left: auto;
-    &::before {
-      right: 0;
-      left: auto;
-    }
-  }
-
-  .input-char-limit {
-    position: relative;
-    margin-left: auto;
-    &::before {
-      right: 0;
-      left: auto;
-    }
-  }
-
-  .input-field:disabled {
-    pointer-events: none;
-    background-color: var(--input-field-surface-disabled);
-    color: var(--input-field-color-disabled);
-    box-shadow: inset 0 0 0 var(--input-border-width)
-      var(--input-field-border-disabled);
-    font-weight: var(--input-field-weight-disabled);
-  }
-
-  .input-field:disabled::placeholder {
-    color: transparent;
-  }
-
-  .input-wrapper:has(.input-field:disabled) {
+  /* Disabled state styles */
+  .input-wrapper:has(input:disabled),
+  .input-wrapper:has(textarea:disabled) {
     cursor: not-allowed;
-    & .input-helper-wrapper {
-      display: none;
+    opacity: 0.7;
+
+    & .input-status {
+      color: var(--input-status-color-disabled);
     }
 
     & .input-label {
       color: var(--input-label-color-disabled);
       font-weight: var(--input-label-weight-disabled);
-      cursor: not-allowed;
-    }
-
-    & .input-clear-button {
-      display: none;
     }
 
     & .input-field {
       cursor: not-allowed;
+      background-color: var(--input-field-surface-disabled);
+      color: var(--input-field-color-disabled);
+      font-weight: var(--input-field-weight-disabled);
+      box-shadow: inset 0 0 0 var(--input-border-width)
+        var(--input-field-border-disabled);
     }
-  }
 
-  .input-wrapper:has(textarea):has(.input-field:disabled) {
-    cursor: not-allowed;
-    & .input-helper-wrapper {
-      display: flex;
-      & .input-helper,
-      & .input-char-limit {
-        color: var(--input-helper-color-disabled);
-        pointer-events: none;
-        &::before {
-          visibility: visible;
-        }
-      }
-    }
-    & .input-label {
-      color: var(--input-label-color);
-    }
-  }
-
-  .input-wrapper:has(textarea) {
-    & .input-label {
-      padding-left: 0;
+    & .input-field:hover {
+      box-shadow: inset 0 0 0 var(--input-border-width)
+        var(--input-field-border-disabled);
     }
 
     & .input-helper-wrapper {
-      padding: 0;
-      justify-content: space-between;
+      color: var(--input-helper-color-disabled);
+      font-weight: var(--input-helper-weight-disabled);
     }
 
-    & textarea.input-field {
-      min-height: var(--input-min-height);
-      resize: vertical;
-      border-radius: var(--input-radius-textarea);
+    & .input-char-limit {
+      color: var(--input-helper-color-disabled);
     }
   }
 
-  .input-wrapper:has(textarea):has(.input-field[aria-invalid='true']) {
+  /* Invalid state styles */
+  .input-wrapper:has(.input-field[aria-invalid='true']) {
     & .input-helper-wrapper {
       background: transparent;
-      padding: 0;
+    }
+
+    & .input-label {
+      color: var(--input-label-color-invalid);
+      font-weight: var(--input-label-weight-invalid);
+    }
+
+    & .input-status {
+      color: var(--input-status-color-invalid);
+    }
+
+    & .input-field {
+      background-color: var(--input-field-surface-invalid);
+      color: var(--input-field-color-invalid);
+      font-weight: var(--input-field-weight-invalid);
+      box-shadow: inset 0 0 0 var(--input-border-width)
+        var(--input-field-border-invalid);
     }
 
     & .input-helper {
-      color: var(--input-helper-color-invalid);
-      font-weight: var(--input-helper-weight);
+      display: none;
     }
 
     & .input-error {
-      font-weight: var(--input-helper-weight);
+      display: block;
+    }
+
+    & .input-error-icon {
+      display: block;
+    }
+  }
+
+  /* Textarea specific styles */
+  .input-wrapper:has(textarea.input-field) {
+    & .input-field {
+      min-height: 100px;
+      resize: vertical;
+      border-radius: var(--input-radius-textarea);
+    }
+
+    & .input-label-wrapper {
+      padding-left: var(--input-padding-x);
+    }
+  }
+
+  /* Clear button styles */
+  .input-clear {
+    position: absolute;
+    right: var(--input-padding-x);
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.125rem;
+    background-color: var(--input-clear-surface);
+    border-radius: var(--input-clear-radius);
+    color: var(--input-clear-color);
+    cursor: pointer;
+    z-index: 1;
+  }
+
+  .input-clear:hover {
+    background-color: var(--input-clear-surface-hover);
+  }
+
+  .input-clear svg {
+    width: 1rem;
+    height: 1rem;
+  }
+
+  /* Hide clear button when input is empty */
+  .input-wrapper:has(.input-field:placeholder-shown) .input-clear {
+    display: none;
+  }
+
+  /* Responsive adjustments */
+  @media (min-width: 640px) {
+    .input-wrapper {
+      --input-padding-x: 0.75rem;
+      --input-padding-y: 0.75rem;
     }
   }
 }

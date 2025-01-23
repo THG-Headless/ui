@@ -1,5 +1,8 @@
 <div class="input-wrapper">
-  <label class="input-label" for="error-textarea">Label</label>
+  <div class="input-label-wrapper">
+    <label class="input-label" for="error-textarea">Label</label>
+    <span class="input-status" aria-hidden="true">(Optional status)</span>
+  </div>
   <div class="input-field-wrapper">
     <textarea
       class="input-field"
@@ -7,8 +10,8 @@
       name="error-textarea"
       placeholder="Placeholder text"
       aria-invalid="true"
-      aria-describedby="error-textarea-helper"
-      aria-errormessage="error-textarea-helper"
+      aria-describedby="error-textarea-error error-textarea-char-limit"
+      aria-errormessage="error-textarea-error"
       autocomplete="off"
       spellcheck="true"
       minlength="0"
@@ -18,7 +21,7 @@
     ></textarea>
   </div>
   <div class="input-helper-wrapper">
-    <div class="input-helper-content">
+    <div class="input-error-content">
       <svg
         class="input-error-icon"
         viewBox="0 0 20 20"
@@ -32,18 +35,16 @@
           clip-rule="evenodd"
         />
       </svg>
-      <p
-        class="input-helper"
-        id="error-textarea-helper"
-        data-content="Helper text"
-      ></p>
+      <p class="input-error" id="error-textarea-error" role="alert">
+        Error message
+      </p>
     </div>
     <p
       class="input-char-limit"
       id="error-textarea-char-limit"
-      aria-live="polite"
-      role="status"
-      data-content="Character Limit"
-    ></p>
+      aria-hidden="true"
+    >
+      0/500
+    </p>
   </div>
 </div>
