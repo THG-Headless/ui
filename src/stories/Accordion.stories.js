@@ -1,4 +1,4 @@
-import BasicAccordion from '../components/accordion/BasicAccordion.html';
+
 import SummaryAccordion from '../components/accordion/SummaryAccordion.html';
 import NamedSummaryAccordion from '../components/accordion/NamedSummaryAccordion.html';
 
@@ -12,9 +12,6 @@ export default {
     },
   },
 };
-
-export const Basic = () => BasicAccordion;
-Basic.storyName = 'Basic Accordion';
 
 export const Summary = () => SummaryAccordion;
 Summary.storyName = 'Ungrouped Accordion';
