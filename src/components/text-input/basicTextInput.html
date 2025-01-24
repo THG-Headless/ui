@@ -1,21 +1,25 @@
 <div class="input-wrapper w-64">
-  <label class="input-label" for="basic-text-input">Label</label>
+  <div class="input-label-wrapper">
+    <label class="input-label" for="basic-input">Label</label>
+    <span class="input-status" aria-hidden="true">(Optional status)</span>
+  </div>
   <div class="input-field-wrapper">
     <input
       type="text"
       class="input-field"
-      id="basic-text-input"
-      name="basic-text-input"
+      id="basic-input"
+      name="basic-input"
       placeholder="Placeholder text"
       aria-invalid="false"
-      aria-describedby="basic-text-helper"
-      aria-errormessage="basic-text-helper"
+      aria-describedby="basic-helper basic-status"
+      aria-errormessage="basic-message"
       autocomplete="off"
       spellcheck="true"
     />
   </div>
   <div class="input-helper-wrapper">
-    <div class="input-helper-content">
+    <p class="input-helper" id="basic-helper">Helper text</p>
+    <div class="input-error-content">
       <svg
         class="input-error-icon"
         viewBox="0 0 20 20"
@@ -29,11 +33,7 @@
           clip-rule="evenodd"
         />
       </svg>
-      <p
-        class="input-helper"
-        id="basic-text-helper"
-        data-content="Helper text"
-      ></p>
+      <p class="input-error" id="basic-message" role="alert">Error message</p>
     </div>
   </div>
 </div>

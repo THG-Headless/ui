@@ -6,15 +6,11 @@ description: Input components provide various text input fields for collecting u
 import ShowComponent from '../../../components/doc-helpers/ShowComponent.astro';
 import BasicTextInput from '../../../components/text-input/basicTextInput.html';
 import ErrorTextInput from '../../../components/text-input/errorTextInput.html';
-import CustomErrorTextInput from '../../../components/text-input/customErrorTextInput.html';
 import DisabledTextInput from '../../../components/text-input/disabledTextInput.html';
 import ClearTextInput from '../../../components/text-input/clearTextInput.html';
 import BasicTextArea from '../../../components/text-input/basicTextArea.html';
 import ErrorTextArea from '../../../components/text-input/errorTextArea.html';
-import CustomErrorTextArea from '../../../components/text-input/customErrorTextArea.html';
 import DisabledTextArea from '../../../components/text-input/disabledTextArea.html';
-
-## Overview
 
 Input components are essential UI elements that allow users to enter and edit text. They come in two main variants: single-line text inputs and multi-line text areas. Each type supports various states including basic, error, custom error messages, and disabled states.
 
@@ -36,14 +32,6 @@ The error state indicates invalid input with red borders and an error message. I
   <ErrorTextInput />
 </ShowComponent>
 
-### Custom Error Message
-
-You can customize the error message to provide more specific feedback by adding the `input-error` class to the additional message. This will hide the helper text and show this instead, providing utility for cases where the helper text is insufficient (such as when a user name is already taken).
-
-<ShowComponent>
-  <CustomErrorTextInput />
-</ShowComponent>
-
 ### Disabled State
 
 The `disabled` attribute can be applied to the `<input/>` element to style the whole component to its disabled state.
@@ -54,7 +42,7 @@ The `disabled` attribute can be applied to the `<input/>` element to style the w
 
 ### Clearable Input
 
-Inputs can include a clear button to quickly remove entered text, although the functionality for this must be added in javascript.
+Inputs can include a clear button to quickly remove entered text, although the functionality for this must be added in javascript. The clear button appears when the text input contains text.
 
 <ShowComponent>
   <ClearTextInput />
@@ -76,14 +64,6 @@ Text areas support the same error states as single-line inputs. ike in the singl
 
 <ShowComponent>
   <ErrorTextArea />
-</ShowComponent>
-
-### Custom Error Message
-
-This includes the functionality of the custom error message.
-
-<ShowComponent>
-  <CustomErrorTextArea />
 </ShowComponent>
 
 ### Disabled State
