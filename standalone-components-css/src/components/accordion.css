@@ -12,9 +12,9 @@
 
     --accordion-focus-outline: none;
     --accordion-text-size: var(--text-size-sm);
-    --accordion-title-weight: var(--font-weight-normal);
+    --accordion-title-weight: var(--font-weight-semi-bold);
     --accordion-content-weight: var(--font-weight-normal);
-    --accordion-trigger-text-color: var(--text-medium-emphasis);
+    --accordion-trigger-text-color: var(--text-high-emphasis);
     --accordion-content-text-color: var(--text-medium-emphasis);
     --accordion-trigger-hover: none;
 
