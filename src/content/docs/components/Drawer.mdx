@@ -1,0 +1,20 @@
+---
+title: Drawer
+description: A composable drawer built with HTML dialog element
+---
+
+import { Aside } from "@astrojs/starlight/components";
+import ShowComponent from "../../../components/doc-helpers/ShowComponent.astro";
+import BasicDrawer from "../../../components/drawer/BasicDrawer.html";
+import Drawer from "../../../components/drawer/Drawer.html";
+import BackdropDrawer from "../../../components/drawer/BackdropDrawer.html";
+
+### Basic Drawer
+
+The simplest implementation of a drawer includes basic container styling, a backdrop with blur effect, ESC key to close, and default padding and margins.
+
+### Drawer
+
+<ShowComponent>
+  <BackdropDrawer />
+</ShowComponent>
