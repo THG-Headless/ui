@@ -82,16 +82,17 @@ The input system can be customized using the below CSS variables:
 
 #### Layout
 
-| Variable                      | Default Value             | Description                   |
-| ----------------------------- | ------------------------- | ----------------------------- |
-| `--input-spacing`             | `0.25rem`                 | Gap between input elements    |
-| `--input-padding-x`           | `0.5rem`                  | Horizontal padding            |
-| `--input-padding-y`           | `0.5rem`                  | Vertical padding              |
-| `--input-border-width`        | `1px`                     | Default border width          |
-| `--input-border-width-active` | `2px`                     | Border width when active      |
-| `--input-radius`              | `var(--radius-size-sm)`   | Border radius for inputs      |
-| `--input-radius-textarea`     | `var(--radius-size-sm)`   | Border radius for textareas   |
-| `--input-clear-radius`        | `var(--radius-size-full)` | Border radius of clear button |
+| Variable                       | Default Value             | Description                   |
+| ------------------------------ | ------------------------- | ----------------------------- |
+| `--input-spacing`              | `0.25rem`                 | Gap between input elements    |
+| `--input-padding-x`            | `0.5rem`                  | Horizontal padding            |
+| `--input-padding-y`            | `0.75rem`                 | Vertical padding              |
+| `--input-border-width`         | `1px`                     | Default border width          |
+| `--input-border-width-active`  | `2px`                     | Border width when active      |
+| `--input-border-width-invalid` | `2px`                     | Border width in error state   |
+| `--input-radius`               | `var(--radius-size-sm)`   | Border radius for inputs      |
+| `--input-radius-textarea`      | `var(--radius-size-sm)`   | Border radius for textareas   |
+| `--input-clear-radius`         | `var(--radius-size-full)` | Border radius of clear button |
 
 #### Colors
 
@@ -178,6 +179,17 @@ The input system can be customized using the below CSS variables:
 | `--input-helper-weight`          | `var(--font-weight-normal)`  | Font weight of helper text          |
 | `--input-helper-weight-disabled` | `var(--input-helper-weight)` | Font weight of disabled helper text |
 | `--input-helper-weight-invalid`  | `var(--font-weight-bold)`    | Font weight of error message        |
+
+### Status Text Styling
+
+| Variable                        | Default Value                 | Description                |
+| ------------------------------- | ----------------------------- | -------------------------- |
+| `--input-status-color`          | `var(--text-medium-emphasis)` | Color of status text       |
+| `--input-status-color-disabled` | `var(--text-inactive)`        | Color of disabled status   |
+| `--input-status-color-invalid`  | `var(--input-status-color)`   | Color of invalid status    |
+| `--input-status-size`           | `var(--text-size-sm)`         | Font size of status text   |
+| `--input-status-line-height`    | `var(--line-height-sm)`       | Line height of status text |
+| `--input-status-weight`         | `var(--font-weight-light)`    | Font weight of status text |
 
 ## Accessibility
 

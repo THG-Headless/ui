@@ -1,6 +1,5 @@
 @layer components {
   :root {
-    /* Existing input styles */
     --input-label-color: var(--text-high-emphasis);
     --input-label-color-disabled: var(--text-inactive);
     --input-label-color-invalid: var(--input-label-color);
@@ -21,7 +20,7 @@
     --input-field-weight-invalid: var(--input-field-weight);
 
     --input-field-surface: var(--surface-white);
-    --input-field-surface-hover: var(--surface-white);
+    --input-field-surface-hover: var (--surface-white);
     --input-field-surface-disabled: var(--input-field-surface);
     --input-field-surface-invalid: var(--input-field-surface);
 
@@ -50,7 +49,7 @@
 
     --input-spacing: 0.25rem;
     --input-padding-x: 0.5rem;
-    --input-padding-y: 0.5rem;
+    --input-padding-y: 0.75rem;
     --input-border-width: 1px;
     --input-border-width-active: 2px;
     --input-border-width-invalid: 2px;
@@ -111,6 +110,7 @@
     font-size: var(--input-field-size);
     line-height: var(--input-field-line-height);
     font-weight: var(--input-field-weight);
+    height: calc(var(--input-field-line-height) + 2 * var(--input-padding-y));
   }
 
   .input-field:hover {
@@ -174,7 +174,6 @@
     flex-shrink: 0;
   }
 
-  /* Char limit styles */
   .input-char-limit {
     font-size: var(--input-helper-size);
     line-height: var(--input-helper-line-height);
@@ -183,7 +182,6 @@
     margin: 0;
   }
 
-  /* Disabled state styles */
   .input-wrapper:has(input:disabled),
   .input-wrapper:has(textarea:disabled) {
     cursor: not-allowed;
@@ -225,7 +223,6 @@
     }
   }
 
-  /* Invalid state styles */
   .input-wrapper:has(.input-field[aria-invalid='true']) {
     & .input-label {
       color: var(--input-label-color-invalid);
@@ -239,7 +236,7 @@
     & .input-field {
       background-color: var(--input-field-surface-invalid);
       color: var(--input-field-color-invalid);
-      font-weight: var(--input-field-weight-invalid);
+      font-weight: var (--input-field-weight-invalid);
       box-shadow: inset 0 0 0 var(--input-border-width-invalid)
         var(--input-field-border-invalid);
     }
@@ -265,7 +262,6 @@
     }
   }
 
-  /* Textarea specific styles */
   .input-wrapper:has(textarea.input-field) {
     & .input-field {
       min-height: 100px;
@@ -278,7 +274,22 @@
     }
   }
 
-  /* Clear button styles */
+  .input-wrapper:has(.resize-handle) {
+    & .input-field::-webkit-resizer {
+      display: none;
+    }
+
+    & .resize-handle {
+      position: absolute;
+      right: 2px;
+      bottom: 2px;
+      pointer-events: none;
+      width: 16px;
+      height: 16px;
+      color: var(--input-field-border);
+    }
+  }
+
   .input-clear {
     position: absolute;
     right: var(--input-padding-x);
@@ -290,7 +301,7 @@
     padding: 0.125rem;
     background-color: var(--input-clear-surface);
     border-radius: var(--input-clear-radius);
-    color: var(--input-clear-color);
+    color: var (--input-clear-color);
     cursor: pointer;
     z-index: 1;
   }
@@ -304,7 +315,6 @@
     height: 1rem;
   }
 
-  /* Hide clear button when input is empty */
   .input-wrapper:has(.input-field:placeholder-shown) .input-clear {
     display: none;
   }
