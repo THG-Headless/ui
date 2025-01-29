@@ -7,11 +7,13 @@ import { Aside } from "@astrojs/starlight/components";
 import ShowComponent from "../../../components/doc-helpers/ShowComponent.astro";
 import BackdropDrawer from "../../../components/drawer/BackdropDrawer.html";
 
-### Basic Drawer
-
-The simplest implementation of a drawer includes basic container styling, a backdrop with blur effect, ESC key to close, and default padding and margins.
-
 ### Drawer
+
+The drawer component is a modal sidebar built on top of the native `<dialog>` element. It provides a smooth sliding animation and a seamless user experience across both desktop and mobile devices.
+The default implementation slides in from the left when opened and snaps closed when dismissed. It includes a semi-transparent blurred background and can be closed using the ESC key or by clicking on the background.
+The drawer is fully accessible with ARIA attributes and supports both mouse and keyboard navigation.
+
+### Complete Drawer with Button Example
 
 <ShowComponent>
   <BackdropDrawer />

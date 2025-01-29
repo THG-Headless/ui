@@ -3,7 +3,7 @@
   onclick="backdropDrawer.showModal()"
   aria-haspopup="dialog"
 >
-  Open Drawer with Backdrop Click Away
+  Open Drawer
 </button>
 
 <dialog
@@ -11,7 +11,8 @@
   class="drawer"
   role="dialog"
   aria-modal="true"
-  aria-labelledby="backdrop-drawer-content"
+  aria-labelledby="simple-drawer-title"
+  aria-describedby="backdrop-drawer-content"
 >
   <form method="dialog" class="drawer-backdrop-click" aria-hidden="true">
     <button aria-hidden="true" tabindex="-1" aria-label="Close Drawer"></button>
@@ -23,8 +24,10 @@
         <span aria-hidden="true">✕</span>
       </button>
     </form>
-    <div id="backdrop-drawer-content" class="drawer-content">
-      This Drawer can be closed with ESC key or by clicking the background
+    <h3 id="simple-drawer-title" class="drawer-title">Simple Drawer</h3>
+    <div id="backdrop-drawer-content">
+      This Drawer opens with a transition from the left and can be closed with
+      ESC key or by clicking the background
     </div>
   </div>
 </dialog>
