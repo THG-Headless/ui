@@ -13,8 +13,103 @@ The drawer component is a modal sidebar built on top of the native `<dialog>` el
 The default implementation slides in from the left when opened and snaps closed when dismissed. It includes a semi-transparent blurred background and can be closed using the ESC key or by clicking on the background.
 The drawer is fully accessible with ARIA attributes and supports both mouse and keyboard navigation.
 
+<Aside type="caution">
+When implementing drawers for mobile devices, you **MUST** include at least one of the following:
+
+> A close button
+
+> A clickable backdrop
+
+Without one of these, mobile users will be unable to close the drawer as the ESC key isn't available on mobile keyboards.
+
+</Aside>
+
 ### Complete Drawer with Button Example
 
 <ShowComponent>
   <BackdropDrawer />
 </ShowComponent>
+
+The styling of the base drawer is defined by the following variables. As with all components, they will use these default values, but can be redefined within your main css file.
+
+| Variable                                 | Default Value                 | Description                                   |
+| ---------------------------------------- | ----------------------------- | --------------------------------------------- |
+| `--drawer-width-min`                     | `320px`                       | Minimum width of the drawer container         |
+| `--drawer-margin`                        | `2rem`                        | Margin around the drawer on desktop           |
+| `--drawer-padding`                       | `2rem`                        | Internal padding of the drawer content        |
+| `--drawer-shadow`                        | `var(--shadow-2xl)`           | Shadow effect for the drawer box              |
+| `--drawer-radius`                        | `var(--radius-size-none)`     | Border radius of the drawer                   |
+| `--drawer-animation-speed`               | `var(--animation-speed-slow)` | Duration of drawer animations and transitions |
+| `--drawer-surface`                       | `var(--surface-cards)`        | Background color for the drawer               |
+| `--drawer-backdrop-color`                | `rgba(0, 0, 0, 0.3)`          | Color and opacity of the drawer backdrop      |
+| `--drawer-backdrop-blur`                 | `4px`                         | Blur effect intensity for the backdrop        |
+| `--drawer-text-color`                    | `var(--text-black)`           | Default text color for the drawer             |
+| `--drawer-mobile-padding`                | `1rem`                        | Internal padding on mobile devices            |
+| `--drawer-mobile-margin`                 | `0rem`                        | Margin around the drawer on mobile            |
+| `--drawer-shadow-mobile`                 | `var(--shadow-2xl)`           | Shadow effect for the drawer box on mobile    |
+| `--drawer-text-close-button-size`        | `var(--text-size-md)`         | Font size for close button                    |
+| `--drawer-text-close-button-weight`      | `var(--font-weight-normal)`   | Font weight for close button                  |
+| `--drawer-text-close-button-line-height` | `var(--line-height-md)`       | Line height for close button                  |
+| `--drawer-text-body-color`               | `var(--text-medium-emphasis)` | Color for close button text                   |
+| `--drawer-text-title-color`              | `var(--text-high-emphasis)`   | Color for close button text on hover          |
+
+## Accessibility
+
+The drawer is built following the [WAI-ARIA Modal Dialog Pattern](https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/), implementing key accessibility features through semantic HTML and ARIA attributes.
+
+### Current Implementation Features
+
+#### Structure and Labeling
+
+Each Drawer includes:
+
+- [x] The `role="dialog"` attribute to identify it as a modal dialog
+- [x] `aria-modal="true"` to indicate it's a modal context
+- [x] `aria-label` to provide an accessible name for the drawer
+- [x] `aria-controls` on trigger buttons to associate them with their respective drawers
+
+#### Keyboard Support
+
+The native HTML `<dialog>` element provides:
+
+- [x] ESC key to close the drawer
+- [x] Tab key to navigate through focusable elements
+- [x] Automatic focus management within the drawer
+
+#### Screen Reader Support
+
+The drawer includes:
+
+- [x] Clear labeling of all interactive elements
+- [x] Proper content organization
+- [x] Hidden decorative elements using `aria-hidden="true"`
+- [x] Descriptive button labels for actions and close buttons
+
+### Mobile Accessibility
+
+For mobile devices:
+
+- [x] Clear close mechanisms (either close button or backdrop)
+- [x] Touch-friendly target sizes
+- [x] Maintained content structure
+
+### Required Implementation Steps
+
+When implementing drawers in your project, ensure you:
+
+#### Content Structure
+
+- [ ] Use semantic HTML elements for content structure
+- [ ] Include descriptive text for all buttons and interactive elements
+- [ ] Maintain proper focus management
+
+#### Keyboard Navigation & focus
+
+- [ ] Javascript must be used to entirely trap the focus within the drawer. In some browsers such as Chrome, when the user has reached the end of the drawer, tabbing again will move focus to the browsers toolbar. In order to make the drawer as accessible as possible, it should ignore the tool bar and go back to the start of the drawer's index.
+
+#### ARIA Attributes
+
+- [ ] Add appropriate `aria-label` value to the dialog element
+- [ ] Include `aria-controls` on trigger buttons
+- [ ] Add descriptive `aria-label` values for action buttons
+- [ ] Use `aria-hidden="true"` for decorative elements
