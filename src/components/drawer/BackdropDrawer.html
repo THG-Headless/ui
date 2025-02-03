@@ -1,0 +1,33 @@
+<button
+  class="btn btn-primary btn-high"
+  onclick="backdropDrawer.showModal()"
+  aria-haspopup="dialog"
+>
+  Open Drawer
+</button>
+
+<dialog
+  id="backdropDrawer"
+  class="drawer"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="simple-drawer-title"
+  aria-describedby="backdrop-drawer-content"
+>
+  <form method="dialog" class="drawer-backdrop-click" aria-hidden="true">
+    <button aria-hidden="true" tabindex="-1" aria-label="Close Drawer"></button>
+  </form>
+  <div class="drawer-box">
+    <form method="dialog" class="drawer-control-bar">
+      <button class="drawer-close-button">
+        <span>Close</span>
+        <span aria-hidden="true">✕</span>
+      </button>
+    </form>
+    <h3 id="simple-drawer-title" class="drawer-title">Simple Drawer</h3>
+    <div id="backdrop-drawer-content">
+      This Drawer opens with a transition from the left and can be closed with
+      ESC key or by clicking the background
+    </div>
+  </div>
+</dialog>
