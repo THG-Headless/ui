@@ -1,0 +1,41 @@
+@layer components {
+  .popover-trigger {
+    anchor-name: --popover-trigger;
+  }
+
+  .popover {
+    position-anchor: --popover-trigger;
+    position: absolute;
+    border: 1px solid var(--border-primary);
+    border-radius: var(--radius-size-sm);
+    box-shadow: var(--shadow-sm);
+    margin: 0.5rem;
+    padding: 0.25rem;
+    text-wrap: pretty;
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0);
+    transition:
+      opacity 0.2s ease-in-out,
+      filter 0.2s ease-in-out,
+      transform 0.2s ease-in-out;
+  }
+
+  .popover.popover-bottom {
+    position-area: end center;
+    @starting-style {
+      opacity: 0;
+      filter: blur(8px);
+      transform: translateY(-1rem);
+    }
+  }
+
+  .popover.popover-top {
+    position-area: start center;
+    @starting-style {
+      opacity: 0;
+      filter: blur(8px);
+      transform: translateY(1rem);
+    }
+  }
+}
