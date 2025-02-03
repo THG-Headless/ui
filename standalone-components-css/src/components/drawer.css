@@ -16,14 +16,17 @@
     --drawer-text-close-button-weight: var(--font-weight-normal);
     --drawer-text-close-button-line-height: var(--line-height-md);
     --drawer-width-min: 320px;
+    --drawer-width-max: 80vw;
     --drawer-margin: 2rem;
     --drawer-padding: 2rem;
     --drawer-mobile-padding: 1rem;
     --drawer-mobile-margin: 0rem;
+    --drawer-mobile-max-width: 80vw;
     --drawer-hero-width: 18rem;
     --drawer-mobile-hero-height: 150px;
     --drawer-animation-speed: var(--animation-speed-slow);
-    --drawer-radius: var(--radius-size-none);
+    --drawer-top-right-radius: var(--radius-size-none);
+    --drawer-bottom-right-radius: var(--radius-size-none);
     --drawer-shadow: var(--shadow-2xl);
     --drawer-shadow-mobile: var(--shadow-2xl);
   }
@@ -33,7 +36,7 @@
     left: 0% !important;
     min-height: 100vh;
     max-height: 100vh;
-    max-width: 80vw;
+    max-width: var(--drawer-width-max);
     display: flex;
     justify-content: center;
     opacity: 0;
@@ -75,11 +78,11 @@
 
   .drawer-box {
     width: min(fit-content, calc(100vw - (var(--drawer-margin, 2rem) * 2)));
-    max-width: 80vw;
     min-height: 100vh;
     background: var(--drawer-surface);
     padding: var(--drawer-padding);
-    border-radius: var(--drawer-radius);
+    border-top-right-radius: var(--drawer-top-right-radius);
+    border-bottom-right-radius: var(--drawer-bottom-right-radius);
     box-shadow: var(--drawer-shadow);
     max-height: calc(100vh - 2 * var(--drawer-margin));
     overflow-y: auto;
@@ -168,7 +171,7 @@
       align-items: flex-end;
       padding: 0;
       width: 100vw !important;
-      max-width: 80vw !important;
+      max-width: var(--drawer-mobile-max-width) !important;
       min-height: 100vh !important;
       max-height: 100vh;
       margin: 0 !important;
@@ -181,7 +184,7 @@
       margin: 0 var(--drawer-mobile-margin) !important;
       min-height: 100vh !important;
       max-height: 100vh !important;
-      border-radius: var(--drawer-radius) var(--drawer-radius) 0 0;
+      border-radius: 0 var(--drawer-radius) var(--drawer-radius) 0;
       transform: translateX(-100%);
       transition: transform var(--drawer-animation-speed) ease;
       box-shadow: var(--drawer-shadow-mobile) !important;
