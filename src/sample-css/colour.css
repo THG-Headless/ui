@@ -106,9 +106,11 @@
     --tertiary-100
   ); /* Tertiary colour lightest */
   --surface-tertiary-darkest: var(--tertiary-700); /* Tertiary colour darkest */
-  --surface-tertiary-hover-dark: var(--tertiary-500)
-    /* CTA hover dark - for use when Tertiary default is a light colour */
-    --surface-tertiary-hover-light: var(--tertiary-300); /* CTA hover light - for use when Secondary default is a dark colour */
+  --surface-tertiary-hover-dark: var(--tertiary-500);
+  /* CTA hover dark - for use when Tertiary default is a light colour */
+  --surface-tertiary-hover-light: var(
+    --tertiary-300
+  ); /* CTA hover light - for use when Secondary default is a dark colour */
   --surface-tertiary-active: var(
     --tertiary-600
   ); /* Tertiary CTA active state  */
