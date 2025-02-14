@@ -61,7 +61,7 @@
     --surface-white: var(--white);
     --surface-black: var(--black);
 
-    --surface-primary-default: var(--primary-400);
+    --surface-primary-default: var(--primary-700);
     --surface-primary-lightest: var(--primary-100);
     --surface-primary-darkest: var(--primary-700);
     --surface-primary-hover-dark: var(--primary-500);
