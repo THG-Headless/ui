@@ -1,40 +1,40 @@
 @layer theme;
 
-@import "./components/accordion.css";
-@import "./components/alert.css";
-@import "./components/button.css";
-@import "./components/carousel.css";
-@import "./components/controls.css";
-@import "./components/modal.css";
-@import "./components/input.css";
-@import "./components/dropdown.css";
-@import "./components/drawer.css";
+@import './components/accordion.css';
+@import './components/alert.css';
+@import './components/button.css';
+@import './components/carousel.css';
+@import './components/controls.css';
+@import './components/modal.css';
+@import './components/input.css';
+@import './components/dropdown.css';
+@import './components/drawer.css';
 
 @layer theme {
   :root {
-    --primary-100: #e6e5ec;
-    --primary-200: #b4b3c6;
-    --primary-300: #5c5a83;
-    --primary-400: #050241;
-    --primary-500: #040134;
-    --primary-600: #020120;
-    --primary-700: #010010;
+    --primary-100: #f8f9fa;
+    --primary-200: #e9ecef;
+    --primary-300: #dee2e6;
+    --primary-400: #495057;
+    --primary-500: #343a40;
+    --primary-600: #212529;
+    --primary-700: #121416;
 
-    --secondary-100: #e5f4fe;
-    --secondary-200: #a5dafd;
-    --secondary-300: #4cb5fb;
-    --secondary-400: #017acd;
-    --secondary-500: #0078c8;
-    --secondary-600: #004b7d;
-    --secondary-700: #003457;
+    --secondary-100: #f8f9fa;
+    --secondary-200: #e9ecef;
+    --secondary-300: #dee2e6;
+    --secondary-400: #495057;
+    --secondary-500: #343a40;
+    --secondary-600: #212529;
+    --secondary-700: #121416;
 
-    --tertiary-100: #e3e5de;
-    --tertiary-200: #c8cbbd;
-    --tertiary-300: #adb19c;
-    --tertiary-400: #92987c;
-    --tertiary-500: #747963;
-    --tertiary-600: #5e6250;
-    --tertiary-700: #414437;
+    --tertiary-100: #f8f9fa;
+    --tertiary-200: #e9ecef;
+    --tertiary-300: #dee2e6;
+    --tertiary-400: #495057;
+    --tertiary-500: #343a40;
+    --tertiary-600: #212529;
+    --tertiary-700: #121416;
 
     --neutral-100: #ffffff;
     --neutral-200: #f2f2f2;
