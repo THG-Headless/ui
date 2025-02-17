@@ -17,7 +17,7 @@ The two options have differing levels on functionality with the compromise being
 
 This accordion has a basic open close mechanic from the details/summary tag used.
 
-<ShowComponent filePath='./src/components/accordion/SummaryAccordion.html'>
+<ShowComponent filePath="./src/components/accordion/SummaryAccordion.html">
   <SummaryAccordion />
 </ShowComponent>
 
@@ -25,7 +25,7 @@ This accordion has a basic open close mechanic from the details/summary tag used
 
 Building on the initial Summary accordion, the use of the name attribute on the details tag allows only one section to be open at a time.
 
-<ShowComponent filePath='./src/components/accordion/NamedSummaryAccordion.html'>
+<ShowComponent filePath="./src/components/accordion/NamedSummaryAccordion.html">
   <NamedSummaryAccordion />
 </ShowComponent>
 
@@ -33,7 +33,7 @@ Building on the initial Summary accordion, the use of the name attribute on the 
 
 This is identical in functionality to the previous accordion, but demonstrates the styling flexibility of the accordion css variables
 
-<ShowComponent filePath='./src/components/accordion/NamedSummaryAccordion.html'>
+<ShowComponent filePath="./src/components/accordion/NamedSummaryAccordion.html">
   <div
     style={{
       '--accordion-gap': '0.5em',
@@ -63,22 +63,22 @@ The accordion system can be customized using CSS variables:
 
 ### Trigger Configuration
 
-| Variable                         | Default Value                 | Description                                            |
-| -------------------------------- | ----------------------------- | ------------------------------------------------------ |
-| `--accordion-inner-margin`       | `0px`                         | Shared value between trigger and content to align text |
-| `--accordion-inner-padding`      | `1em 1.5em`                   | Shared value between trigger and content to align text |
-| `--accordion-text-size`          | `normal`                      |                                                        |
-| `--accordion-trigger-text-color` | `var(--text-medium-emphasis)` | Text colour on the accordion trigger                   |
-| `--accordion-text-size`          | `normal`                      |                                                        |
-| `--accordion-content-text-color` | `var(--text-medium-emphasis)` | Text colour in the accordion panel                     |
+| Variable                         | Default Value                       | Description                                            |
+| -------------------------------- | ----------------------------------- | ------------------------------------------------------ |
+| `--accordion-inner-margin`       | `0px`                               | Shared value between trigger and content to align text |
+| `--accordion-inner-padding`      | `1em 1.5em`                         | Shared value between trigger and content to align text |
+| `--accordion-text-size`          | `normal`                            |                                                        |
+| `--accordion-trigger-text-color` | `var(--color-text-medium-emphasis)` | Text colour on the accordion trigger                   |
+| `--accordion-text-size`          | `normal`                            |                                                        |
+| `--accordion-content-text-color` | `var(--color-text-medium-emphasis)` | Text colour in the accordion panel                     |
 
 ### Content Configuration
 
-| Variable                    | Default Value                   | Description                         |
-| --------------------------- | ------------------------------- | ----------------------------------- |
-| `--accordion-text-size`     | `normal`                        | Text size inside an accordion panel |
-| `--acc-panel-border-top`    | `var(--neutral-500) solid 2px;` | Top border of content panel         |
-| `--acc-panel-border-bottom` | `var(--neutral-500) solid 2px;` | Bottom border of content panel      |
+| Variable                    | Default Value                         | Description                         |
+| --------------------------- | ------------------------------------- | ----------------------------------- |
+| `--accordion-text-size`     | `normal`                              | Text size inside an accordion panel |
+| `--acc-panel-border-top`    | `var(--color-neutral-500) solid 2px;` | Top border of content panel         |
+| `--acc-panel-border-bottom` | `var(--color-neutral-500) solid 2px;` | Bottom border of content panel      |
 
 ### Icon Spin Configuration
 
@@ -91,17 +91,17 @@ The accordion system can be customized using CSS variables:
 
 ### Borders and Styling
 
-| Variable                     | Default Value                  | Description                                |
-| ---------------------------- | ------------------------------ | ------------------------------------------ |
-| `--accordion-focus-outline`  | `auto`                         | Accessibiility feature on focussed content |
-| `--accordion-title-weight`   | `normal`                       | Font weight for the triggers               |
-| `--accordion-content-weight` | `normal`                       | Font weight for the content                |
-| `--accordion-trigger-hover`  | `none`                         | Background color on hover                  |
-| `--accordion-radius`         | `none`                         | Rounding on outer borders                  |
-| `--accordion-section-radius` | `none`                         | Rounding on section borders                |
-| `--accordion-border`         | `none`                         | Border around the accordion                |
-| `--accordion-box-shadow`     | `none`                         | Box shadow around the accordion            |
-| `--acc-panel-divider`        | `var(--neutral-200) solid 2px` | Border division between panels             |
+| Variable                     | Default Value                        | Description                                |
+| ---------------------------- | ------------------------------------ | ------------------------------------------ |
+| `--accordion-focus-outline`  | `auto`                               | Accessibiility feature on focussed content |
+| `--accordion-title-weight`   | `normal`                             | Font weight for the triggers               |
+| `--accordion-content-weight` | `normal`                             | Font weight for the content                |
+| `--accordion-trigger-hover`  | `none`                               | Background color on hover                  |
+| `--accordion-radius`         | `none`                               | Rounding on outer borders                  |
+| `--accordion-section-radius` | `none`                               | Rounding on section borders                |
+| `--accordion-border`         | `none`                               | Border around the accordion                |
+| `--accordion-box-shadow`     | `none`                               | Box shadow around the accordion            |
+| `--acc-panel-divider`        | `var(--color-neutral-200) solid 2px` | Border division between panels             |
 
 ## Accessibility
 

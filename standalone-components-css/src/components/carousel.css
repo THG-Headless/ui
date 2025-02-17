@@ -33,27 +33,27 @@
     --carousel-large-banner-image-height: 400px;
     --carousel-large-banner-image-height-mobile: 400px;
 
-    --carousel-surface-image: var(--surface-inactive);
-    --carousel-surface-item: var(--surface-transparent);
+    --carousel-surface-image: var(--color-surface-inactive);
+    --carousel-surface-item: var(--color-surface-transparent);
     --carousel-surface-item-hover: var(--carousel-surface-item);
 
-    --carousel-surface-banner: var(--surface-white);
+    --carousel-surface-banner: var(--color-surface-white);
     --carousel-surface-banner-hover: var(--carousel-surface-banner);
 
     /* Borders */
-    --carousel-border-hover: var(--border-primary);
-    --carousel-border-active: var(--border-primary);
+    --carousel-border-hover: var(--color-border-primary);
+    --carousel-border-active: var(--color-border-primary);
     --carousel-border-width-image: 0px;
 
     /* Focus Outline */
-    --carousel-focus-outline: var(--border-attention);
+    --carousel-focus-outline: var(--color-border-attention);
     --carousel-focus-width: 2px;
     --carousel-focus-offset: 2px;
 
     /* Text Colors */
-    --carousel-text-color: var(--text-black);
-    --carousel-text-title-color: var(--text-high-emphasis);
-    --carousel-text-body-color: var(--text-medium-emphasis);
+    --carousel-text-color: var(--color-text-black);
+    --carousel-text-title-color: var(--color-text-high-emphasis);
+    --carousel-text-body-color: var(--color-text-medium-emphasis);
 
     /* Text Sizes */
     --carousel-text-title-size: var(--text-size-md);
@@ -73,7 +73,7 @@
     --carousel-radius-image: var(--radius-size-none);
 
     /* Animation Speeds */
-    --carousel-animation-speed: var(--animation-speed-default);
+    --carousel-animation-speed: var(--duration-speed-default);
   }
 
   /* Base Carousel Styles */

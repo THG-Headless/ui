@@ -63,31 +63,31 @@ export function parseColourScheme(cssContent: string) {
       };
 
       // Categorization logic remains the same
-      if (name.startsWith('--primary-')) {
+      if (name.startsWith('--color-primary-')) {
         primitiveColours.primary.colours.push(colourVar);
-      } else if (name.startsWith('--secondary-')) {
+      } else if (name.startsWith('--color-secondary-')) {
         primitiveColours.secondary.colours.push(colourVar);
-      } else if (name.startsWith('--tertiary-')) {
+      } else if (name.startsWith('--color-tertiary-')) {
         primitiveColours.tertiary.colours.push(colourVar);
-      } else if (name.startsWith('--neutral-')) {
+      } else if (name.startsWith('--color-neutral-')) {
         primitiveColours.neutral.colours.push(colourVar);
-      } else if (name.startsWith('--attention-')) {
+      } else if (name.startsWith('--color-attention-')) {
         primitiveColours.attention.colours.push(colourVar);
-      } else if (name.startsWith('--success-')) {
+      } else if (name.startsWith('--color-success-')) {
         primitiveColours.success.colours.push(colourVar);
-      } else if (name.startsWith('--error-')) {
+      } else if (name.startsWith('--color-error-')) {
         primitiveColours.error.colours.push(colourVar);
-      } else if (name === '--black' || name === '--white') {
+      } else if (name === '--color-black' || name === '--color-white') {
         primitiveColours.basic.colours.push(colourVar);
-      } else if (name === '--promotion') {
+      } else if (name === '--color-promotion') {
         primitiveColours.promotion.colours.push(colourVar);
       } else if (name.startsWith('--text-')) {
         semanticColours.text.colours.push(colourVar);
-      } else if (name.startsWith('--surface-')) {
+      } else if (name.startsWith('--color-surface-')) {
         semanticColours.surface.colours.push(colourVar);
-      } else if (name.startsWith('--border-')) {
+      } else if (name.startsWith('--color-border-')) {
         semanticColours.border.colours.push(colourVar);
-      } else if (name.startsWith('--icons-')) {
+      } else if (name.startsWith('--color-icons-')) {
         semanticColours.icons.colours.push(colourVar);
       }
     }

@@ -1,45 +1,45 @@
 ---
-import "../../tailwind.css";
-import fs from "node:fs";
-import path from "node:path";
-import { parseAnimationScheme } from "../../utils/animationParser";
-import type { AnimationVariable } from "../../utils/animationParser";
+import '../../tailwind.css';
+import fs from 'node:fs';
+import path from 'node:path';
+import { parseAnimationScheme } from '../../utils/animationParser';
+import type { AnimationVariable } from '../../utils/animationParser';
 
-const cssFilePath = path.resolve("./src/sample-css/animation.css");
-const cssContent = fs.readFileSync(cssFilePath, "utf-8");
+const cssFilePath = path.resolve('./src/sample-css/animation.css');
+const cssContent = fs.readFileSync(cssFilePath, 'utf-8');
 const animationVariables = parseAnimationScheme(cssContent);
 ---
 
 <script>
   function startAnimations() {
-    const bars = document.querySelectorAll<HTMLElement>(".progress-bar");
+    const bars = document.querySelectorAll<HTMLElement>('.progress-bar');
     const maxDuration = Math.max(
       ...Array.from(bars).map((bar) =>
-        parseFloat(bar.getAttribute("data-duration") || "0")
+        parseFloat(bar.getAttribute('data-duration') || '0')
       )
     );
 
     bars.forEach((bar) => {
-      const duration = parseFloat(bar.getAttribute("data-duration") || "0");
+      const duration = parseFloat(bar.getAttribute('data-duration') || '0');
       bar.style.transition = `width ${duration}s linear`;
-      bar.style.width = "100%";
+      bar.style.width = '100%';
     });
 
     setTimeout(
       () => {
         bars.forEach((bar) => {
-          bar.style.transition = "none";
-          bar.style.width = "0%";
+          bar.style.transition = 'none';
+          bar.style.width = '0%';
         });
       },
       maxDuration * 1000 + 100
     );
   }
 
-  document.addEventListener("DOMContentLoaded", () => {
-    const animateButton = document.getElementById("animate-button");
+  document.addEventListener('DOMContentLoaded', () => {
+    const animateButton = document.getElementById('animate-button');
     if (animateButton) {
-      animateButton.addEventListener("click", startAnimations);
+      animateButton.addEventListener('click', startAnimations);
     }
   });
 </script>
@@ -60,7 +60,7 @@ const animationVariables = parseAnimationScheme(cssContent);
                 <div
                   class="progress-bar h-2.5 rounded-full bg-blue-500"
                   style="width: 0%;"
-                  data-duration={variable.value.replace("s", "")}
+                  data-duration={variable.value.replace('s', '')}
                 />
               </div>
             </div>
@@ -74,7 +74,7 @@ const animationVariables = parseAnimationScheme(cssContent);
     <div class="pt-4">
       <button
         id="animate-button"
-        class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+        class="px-4 py-2 bg-surface-primary-default text-white rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
       >
         Play Animations
       </button>

@@ -1,10 +1,10 @@
 @layer components {
   :root {
     --drawer-backdrop-color: rgba(0, 0, 0, 0.3);
-    --drawer-text-color: var(--text-black);
-    --drawer-text-title-color: var(--text-high-emphasis);
-    --drawer-text-body-color: var(--text-medium-emphasis);
-    --drawer-surface: var(--surface-cards);
+    --drawer-text-color: var(--color-text-black);
+    --drawer-text-title-color: var(--color-text-high-emphasis);
+    --drawer-text-body-color: var(--color-text-medium-emphasis);
+    --drawer-surface: var(--color-surface-cards);
     --drawer-backdrop-blur: 4px;
     --drawer-text-title-size: var(--text-size-md);
     --drawer-text-title-weight: var(--font-weight-semi-bold);
@@ -24,7 +24,7 @@
     --drawer-mobile-max-width: 80vw;
     --drawer-hero-width: 18rem;
     --drawer-mobile-hero-height: 150px;
-    --drawer-animation-speed: var(--animation-speed-slow);
+    --drawer-animation-speed: var(--duration-speed-slow);
     --drawer-top-right-radius: var(--radius-size-none);
     --drawer-bottom-right-radius: var(--radius-size-none);
     --drawer-shadow: var(--shadow-2xl);

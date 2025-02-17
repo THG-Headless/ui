@@ -1,10 +1,10 @@
 @layer components {
   :root {
     --modal-backdrop-color: rgba(0, 0, 0, 0.3);
-    --modal-text-color: var(--text-black);
-    --modal-text-title-color: var(--text-high-emphasis);
-    --modal-text-body-color: var(--text-medium-emphasis);
-    --modal-surface: var(--surface-cards);
+    --modal-text-color: var(--color-text-black);
+    --modal-text-title-color: var(--color-text-high-emphasis);
+    --modal-text-body-color: var(--color-text-medium-emphasis);
+    --modal-surface: var(--color-surface-cards);
     --modal-backdrop-blur: 4px;
     --modal-text-title-size: var(--text-size-md);
     --modal-text-title-weight: var(--font-weight-semi-bold);
@@ -24,7 +24,7 @@
     --modal-box-scale: 0.95;
     --modal-mobile-hero-height: 150px;
     --modal-mobile-slide-up-max-height: 90vh;
-    --modal-animation-speed: var(--animation-speed-slow);
+    --modal-animation-speed: var(--duration-speed-slow);
     --modal-radius: var(--radius-size-none);
     --modal-shadow: var(--shadow-2xl);
     --modal-shadow-mobile: var(--shadow-2xl);

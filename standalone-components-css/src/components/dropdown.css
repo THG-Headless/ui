@@ -1,27 +1,27 @@
 @layer components {
   :root {
-    --dropdown-text-label-color: var(--text-high-emphasis);
-    --dropdown-text-summary-color: var(--text-high-emphasis);
-    --dropdown-text-helper-color: var(--text-high-emphasis);
-    --dropdown-text-option-color: var(--text-high-emphasis);
-    --dropdown-text-inactive-color: var(--text-inactive);
-    --dropdown-text-error-color: var(--text-error);
-    --dropdown-text-search-color: var(--text-medium-emphasis);
+    --dropdown-text-label-color: var(--color-text-high-emphasis);
+    --dropdown-text-summary-color: var(--color-text-high-emphasis);
+    --dropdown-text-helper-color: var(--color-text-high-emphasis);
+    --dropdown-text-option-color: var(--color-text-high-emphasis);
+    --dropdown-text-inactive-color: var(--color-text-inactive);
+    --dropdown-text-error-color: var(--color-text-error);
+    --dropdown-text-search-color: var(--color-text-medium-emphasis);
 
-    --dropdown-surface: var(--surface-white);
-    --dropdown-surface-controls-default: var(--surface-controls-default);
-    --dropdown-surface-controls-dark: var(--surface-controls-dark);
-    --dropdown-surface-hover: var(--surface-primary-lightest);
-    --dropdown-surface-inactive: var(--surface-white);
+    --dropdown-surface: var(--color-surface-white);
+    --dropdown-surface-controls-default: var(--color-surface-controls-default);
+    --dropdown-surface-controls-dark: var(--color-surface-controls-dark);
+    --dropdown-surface-hover: var(--color-surface-primary-lightest);
+    --dropdown-surface-inactive: var(--color-surface-white);
 
-    --dropdown-border-color: var(--border-controls);
-    --dropdown-border-color-hover: var(--border-primary);
-    --dropdown-border-color-active: var(--border-primary);
-    --dropdown-border-color-error: var(--border-error);
-    --dropdown-border-color-inactive: var(--border-inactive);
+    --dropdown-border-color: var(--color-border-controls);
+    --dropdown-border-color-hover: var(--color-border-primary);
+    --dropdown-border-color-active: var(--color-border-primary);
+    --dropdown-border-color-error: var(--color-border-error);
+    --dropdown-border-color-inactive: var(--color-border-inactive);
 
-    --dropdown-icon-color: var(--icons-black);
-    --dropdown-icon-error-color: var(--icons-error);
+    --dropdown-icon-color: var(--color-icons-black);
+    --dropdown-icon-error-color: var(--color-icons-error);
 
     --dropdown-text-label-size: var(--text-size-body);
     --dropdown-text-label-line-height: var(--line-height-body);
@@ -51,7 +51,7 @@
     --dropdown-max-items: 5;
     --dropdown-item-height: 2.5rem;
     --dropdown-menu-shadow: var(--shadow-md);
-    --dropdown-focus-ring-color: var(--border-attention);
+    --dropdown-focus-ring-color: var(--color-border-attention);
   }
 
   .dropdown-wrapper {
@@ -97,7 +97,7 @@
   }
 
   .dropdown-summary:hover,
-  .listbox-wrapper[aria-expanded="true"] .dropdown-summary {
+  .listbox-wrapper[aria-expanded='true'] .dropdown-summary {
     box-shadow: inset 0 0 0 var(--dropdown-border-width-active)
       var(--dropdown-border-color-hover);
   }
@@ -107,7 +107,7 @@
   }
 
   .dropdown-summary:focus::after {
-    content: "";
+    content: '';
     position: absolute;
     top: -2px;
     left: -2px;
@@ -225,8 +225,8 @@
     max-height: none;
   }
 
-  .dropdown-list [role="option"],
-  .dropdown-content [role="option"] {
+  .dropdown-list [role='option'],
+  .dropdown-content [role='option'] {
     padding-left: var(--dropdown-padding-x);
     padding-right: var(--dropdown-padding-x);
     cursor: pointer;
@@ -240,8 +240,8 @@
     align-items: center;
   }
 
-  .dropdown-list [role="option"][aria-selected="true"]:hover,
-  .dropdown-list [role="option"][aria-selected="true"]:focus {
+  .dropdown-list [role='option'][aria-selected='true']:hover,
+  .dropdown-list [role='option'][aria-selected='true']:focus {
     background-color: var(--dropdown-surface-controls-default);
   }
 
@@ -257,14 +257,14 @@
     border: 0.25rem solid transparent;
   }
 
-  .dropdown-list [role="option"]:hover,
-  .dropdown-list [role="option"]:focus {
+  .dropdown-list [role='option']:hover,
+  .dropdown-list [role='option']:focus {
     background-color: var(--dropdown-surface-hover);
     outline: none;
   }
 
-  .dropdown-list [role="option"]:focus {
-    outline: 2px solid var(--border-attention);
+  .dropdown-list [role='option']:focus {
+    outline: 2px solid var(--color-border-attention);
     outline-offset: -2px;
   }
 
