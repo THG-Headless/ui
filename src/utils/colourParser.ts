@@ -11,94 +11,83 @@ interface ColourCategory {
 
 export function parseColourScheme(cssContent: string) {
   const primitiveColours: Record<string, ColourCategory> = {
-    primary: { name: 'Primary Colours', colours: [] },
-    secondary: { name: 'Secondary Colours', colours: [] },
-    tertiary: { name: 'Tertiary Colours', colours: [] },
-    neutral: { name: 'Neutral Colours', colours: [] },
-    attention: { name: 'Attention Colours', colours: [] },
-    success: { name: 'Success Colours', colours: [] },
-    error: { name: 'Error Colours', colours: [] },
-    promotion: { name: 'Promotion Colours', colours: [] },
-    basic: { name: 'Basic Colours', colours: [] },
+    primary: { name: 'Primary', colours: [] },
+    secondary: { name: 'Secondary', colours: [] },
+    tertiary: { name: 'Tertiary', colours: [] },
+    neutral: { name: 'Neutral', colours: [] },
+    status: { name: 'Status', colours: [] },
+    textEmphasis: { name: 'Text Emphasis', colours: [] },
+    semantic: {
+      name: 'Core Semantic',
+      colours: [],
+    },
+    semanticPrimary: {
+      name: 'Primary Semantic',
+      colours: [],
+    },
+    semanticSecondary: {
+      name: 'Secondary Semantic',
+      colours: [],
+    },
+    semanticTertiary: {
+      name: 'Tertiary Semantic',
+      colours: [],
+    },
+    utility: { name: 'Utility', colours: [] },
   };
 
-  const semanticColours: Record<string, ColourCategory> = {
-    surface: { name: 'Surface Colours', colours: [] },
-    border: { name: 'Border Colours', colours: [] },
-    text: { name: 'Text Colours', colours: [] },
-    icons: { name: 'Icon Colours', colours: [] },
-  };
-
-  // First, normalize the content
+  // Normalize the content
   const normalizedContent = cssContent
-    // Remove theme wrapper if present
     .replace(/@theme\s*{/, '')
     .replace(/}$/, '')
-    // Fix multi-line var() declarations
     .replace(/var\(\s*\n\s*/g, 'var(')
-    // Join lines that were split by formatting
     .replace(/;\s*\/\*([^*]+?)\*\/\s*$/gm, '/* $1 */;')
-    // Clean up any remaining newlines between variables
     .replace(/([^;])\n\s*(?=--)/g, '$1')
-    // Split into actual lines
     .split(/;(?:\s*\/\*[^*]*\*\/)?\s*/)
     .map((line) => line.trim())
-    .filter((line) => line && line.startsWith('--'));
+    .filter((line) => line && line.startsWith('--color-'));
 
-  // More precise regex for variable matching
   const variableRegex =
-    /^(--[^:]+):\s*([^;/]+?)(?:\s*\/\*\s*([^*]+?)\s*\*\/)?$/;
+    /^(--color-[^:]+):\s*([^;/]+?)(?:\s*\/\*\s*([^*]+?)\s*\*\/)?$/;
 
   for (const line of normalizedContent) {
     const match = line.match(variableRegex);
-    if (match) {
-      const [_, name, value, description] = match;
+    if (!match) continue;
 
-      if (!name || !value) continue;
+    const [_, name, value, description] = match;
+    const colourVar: ColourVariable = {
+      name: name.trim(),
+      value: value.trim(),
+      description: description?.trim(),
+    };
 
-      const colourVar: ColourVariable = {
-        name: name.trim(),
-        value: value.trim(),
-        description: description?.trim(),
-      };
-
-      // Categorization logic remains the same
-      if (name.startsWith('--color-primary-')) {
-        primitiveColours.primary.colours.push(colourVar);
-      } else if (name.startsWith('--color-secondary-')) {
-        primitiveColours.secondary.colours.push(colourVar);
-      } else if (name.startsWith('--color-tertiary-')) {
-        primitiveColours.tertiary.colours.push(colourVar);
-      } else if (name.startsWith('--color-neutral-')) {
-        primitiveColours.neutral.colours.push(colourVar);
-      } else if (name.startsWith('--color-attention-')) {
-        primitiveColours.attention.colours.push(colourVar);
-      } else if (name.startsWith('--color-success-')) {
-        primitiveColours.success.colours.push(colourVar);
-      } else if (name.startsWith('--color-error-')) {
-        primitiveColours.error.colours.push(colourVar);
-      } else if (name === '--color-black' || name === '--color-white') {
-        primitiveColours.basic.colours.push(colourVar);
-      } else if (name === '--color-promotion') {
-        primitiveColours.promotion.colours.push(colourVar);
-      } else if (
-        name.startsWith('--color-text-') ||
-        name.startsWith('--text-') ||
-        name === '--text-color'
-      ) {
-        semanticColours.text.colours.push(colourVar);
-      } else if (name.startsWith('--color-surface-')) {
-        semanticColours.surface.colours.push(colourVar);
-      } else if (name.startsWith('--color-border-')) {
-        semanticColours.border.colours.push(colourVar);
-      } else if (name.startsWith('--color-icons-')) {
-        semanticColours.icons.colours.push(colourVar);
-      }
+    // Updated categorization
+    if (name.match(/^--color-primary-\d/)) {
+      primitiveColours.primary.colours.push(colourVar);
+    } else if (name.match(/^--color-secondary-\d/)) {
+      primitiveColours.secondary.colours.push(colourVar);
+    } else if (name.match(/^--color-tertiary-\d/)) {
+      primitiveColours.tertiary.colours.push(colourVar);
+    } else if (name.match(/^--color-neutral-\d/)) {
+      primitiveColours.neutral.colours.push(colourVar);
+    } else if (name.match(/^--color-(success|error|attention|promotion)/)) {
+      primitiveColours.status.colours.push(colourVar);
+    } else if (name.match(/^--color-text-/)) {
+      primitiveColours.textEmphasis.colours.push(colourVar);
+    } else if (name.match(/^--color-(high|medium)-emphasis/)) {
+      primitiveColours.textEmphasis.colours.push(colourVar);
+    } else if (name.match(/^--color-(black|white)$/)) {
+      primitiveColours.semantic.colours.push(colourVar);
+    } else if (name.match(/^--color-primary(?!-\d)/)) {
+      primitiveColours.semanticPrimary.colours.push(colourVar);
+    } else if (name.match(/^--color-secondary(?!-\d)/)) {
+      primitiveColours.semanticSecondary.colours.push(colourVar);
+    } else if (name.match(/^--color-tertiary(?!-\d)/)) {
+      primitiveColours.semanticTertiary.colours.push(colourVar);
+    } else if (name.match(/^--color-(inactive|border-|surface-)/)) {
+      primitiveColours.utility.colours.push(colourVar);
     }
   }
 
-  return {
-    primitiveColours,
-    semanticColours,
-  };
+  return primitiveColours;
 }

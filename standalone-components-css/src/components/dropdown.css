@@ -10,7 +10,7 @@
 
     --dropdown-surface: var(--color-white);
     --dropdown-surface-controls-default: var(--color-surface-controls-default);
-    --dropdown-surface-controls-dark: var(--color-surface-controls-dark);
+    --dropdown-surface-controls-dark: var(--color-neutral-300);
     --dropdown-surface-hover: var(--color-primary-light);
     --dropdown-surface-inactive: var(--color-white);
 
