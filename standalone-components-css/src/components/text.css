@@ -1,0 +1,75 @@
+@layer components {
+  .txt,
+  [class*='txt-'] {
+    color: var(--text-black);
+  }
+
+  .txt-xl2 {
+    font-size: var(--text-size-xl2);
+    line-height: var(--line-height-xl2);
+  }
+
+  .txt-xl1 {
+    font-size: var(--text-size-xl1);
+    line-height: var(--line-height-xl1);
+  }
+
+  .txt-l2 {
+    font-size: var(--text-size-l2);
+    line-height: var(--line-height-l2);
+  }
+
+  .txt-l1 {
+    font-size: var(--text-size-l1);
+    line-height: var(--line-height-l1);
+  }
+
+  .txt-md {
+    font-size: var(--text-size-md);
+    line-height: var(--line-height-md);
+  }
+
+  .txt-body {
+    font-size: var(--text-size-body);
+    line-height: var(--line-height-body);
+  }
+
+  .txt-sm {
+    font-size: var(--text-size-sm);
+    line-height: var(--line-height-sm);
+  }
+
+  .txt-xs {
+    font-size: var(--text-size-xs);
+    line-height: var(--line-height-xs);
+  }
+
+  /* Font weight variants */
+  .txt-thin {
+    font-weight: var(--font-weight-thin);
+  }
+  .txt-extralight {
+    font-weight: var(--font-weight-extra-light);
+  }
+  .txt-light {
+    font-weight: var(--font-weight-light);
+  }
+  .txt-normal {
+    font-weight: var(--font-weight-normal);
+  }
+  .txt-medium {
+    font-weight: var(--font-weight-medium);
+  }
+  .txt-semibold {
+    font-weight: var(--font-weight-semi-bold);
+  }
+  .txt-bold {
+    font-weight: var(--font-weight-bold);
+  }
+  .txt-extrabold {
+    font-weight: var(--font-weight-extra-bold);
+  }
+  .txt-black {
+    font-weight: var(--font-weight-black);
+  }
+}

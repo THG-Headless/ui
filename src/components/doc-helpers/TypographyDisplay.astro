@@ -1,11 +1,11 @@
 ---
-import "../../tailwind.css";
-import fs from "node:fs";
-import path from "node:path";
-import { parseTypographyScheme } from "../../utils/typographyParser";
+import '../../tailwind.css';
+import fs from 'node:fs';
+import path from 'node:path';
+import { parseTypographyScheme } from '../../utils/typographyParser';
 
-const cssFilePath = path.resolve("./src/sample-css/typography.css");
-const cssContent = fs.readFileSync(cssFilePath, "utf-8");
+const cssFilePath = path.resolve('./src/sample-css/typography.css');
+const cssContent = fs.readFileSync(cssFilePath, 'utf-8');
 const typography = parseTypographyScheme(cssContent);
 
 interface FontSize {
@@ -19,13 +19,13 @@ function groupFontSizes(
   const grouped: Record<string, FontSize> = {};
   variables.forEach((v) => {
     const baseName = v.name
-      .replace("--text-size-", "")
-      .replace("--line-height-", "")
-      .replace("-desktop-", "")
-      .replace("-mobile-", "");
+      .replace('--text-size-', '')
+      .replace('--line-height-', '')
+      .replace('-desktop-', '')
+      .replace('-mobile-', '');
     if (!grouped[baseName]) grouped[baseName] = {};
-    if (v.name.startsWith("--text-size-")) grouped[baseName].size = v.value;
-    if (v.name.startsWith("--line-height-"))
+    if (v.name.startsWith('--text-size-')) grouped[baseName].size = v.value;
+    if (v.name.startsWith('--line-height-'))
       grouped[baseName].lineHeight = v.value;
   });
   return Object.entries(grouped);
@@ -33,14 +33,84 @@ function groupFontSizes(
 
 const groupedDesktopFontSizes = groupFontSizes(typography.sizes.variables);
 const groupedMobileFontSizes = groupFontSizes(typography.mobileSizes.variables);
-const groupedResponsiveFontSizes = groupFontSizes(typography.responsiveSizes.variables);
+const groupedResponsiveFontSizes = groupFontSizes(
+  typography.responsiveSizes.variables
+);
 ---
 
 <div class="max-w-7xl mx-auto p-6">
-  <h2 class="text-2xl font-bold mb-8 text-black">Typography Styles</h2>
+  <h2 class="text-2xl font-bold text-black">Typography Utility Classes</h2>
+  <p class="text-black">
+    The utility classes below can be applied to easily set text style.
+  </p>
+  <section class="mb-12">
+    <h3 class="text-xl font-semibold mb-6 pt-4 text-black">Size Classes</h3>
+    <div class="space-y-8">
+      {
+        ['xl2', 'xl1', 'l2', 'l1', 'md', 'body', 'sm', 'xs'].map((size) => (
+          <div class="grid grid-cols-2 items-center pb-4">
+            <div class="col-span-1">
+              <div class="font-mono text-sm text-black">txt-{size}</div>
+              <div class="font-mono text-sm text-black opacity-60">
+                var(--text-size-{size})
+                <br />
+                var(--line-height-{size})
+              </div>
+            </div>
+            <div class="col-span-1 pl-8">
+              <div class={`border-t border-b border-zinc-300 txt-${size}`}>
+                Altitude
+              </div>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </section>
 
   <section class="mb-12">
-    <h3 class="text-xl font-semibold mb-6 pt-4 text-black">
+    <h3 class="text-xl font-semibold mb-6 pt-4 text-black">Weight Classes</h3>
+    <div class="space-y-4">
+      {
+        [
+          'thin',
+          'extralight',
+          'light',
+          'normal',
+          'medium',
+          'semibold',
+          'bold',
+          'extrabold',
+          'black',
+        ].map((weight) => (
+          <div class="grid grid-cols-2 items-center pb-4">
+            <div class="col-span-1">
+              <div class="font-mono text-sm text-black">txt-{weight}</div>
+              <div class="font-mono text-sm text-black opacity-60">
+                var(--font-weight-{weight.replace('extra', '-extra')})
+              </div>
+            </div>
+            <div class="col-span-1 pl-8">
+              <div
+                class={`txt-body txt-${weight} border-t border-b border-zinc-300`}
+              >
+                Altitude
+              </div>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <h1 class="text-2xl font-bold !mt-8 text-black">Typography Variables</h1>
+  <p class="text-black pb-6">
+    In order to update the appearance of your typography, the primitive
+    typography variables below can be updated
+  </p>
+
+  <section class="mb-12">
+    <h3 class="text-xl font-semibold pb-6 pt-4 text-black">
       Desktop Font Sizes
     </h3>
     <div class="space-y-8">
@@ -68,7 +138,7 @@ const groupedResponsiveFontSizes = groupFontSizes(typography.responsiveSizes.var
   </section>
 
   <section class="mb-12">
-    <h3 class="text-xl font-semibold mb-6 pt-4 text-black">
+    <h3 class="text-xl font-semibold pb-6 pt-4 text-black">
       Mobile Font Sizes
     </h3>
     <div class="space-y-8">
@@ -96,9 +166,12 @@ const groupedResponsiveFontSizes = groupFontSizes(typography.responsiveSizes.var
   </section>
 
   <section class="mb-12">
-    <h3 class="text-xl font-semibold mb-6 pt-4 text-black">
-      Responsive Font Sizes (Set based on screen width)
-    </h3>
+    <h3 class="text-xl font-semibold pt-4 text-black">Responsive Font Sizes</h3>
+    <p class="text-black pb-6">
+      These pull from the above primitives so don't need updating., They
+      responsively switch between desktop and mobile variables based on screen
+      width.
+    </p>
     <div class="space-y-8">
       {
         groupedResponsiveFontSizes.map(([name, values]) => (
@@ -113,9 +186,7 @@ const groupedResponsiveFontSizes = groupFontSizes(typography.responsiveSizes.var
             >
               Altitude
             </div>
-            <div class="col-span-1 text-right font-mono text-sm text-gray-600">
-
-            </div>
+            <div class="col-span-1 text-right font-mono text-sm text-gray-600" />
           </div>
         ))
       }
@@ -123,7 +194,7 @@ const groupedResponsiveFontSizes = groupFontSizes(typography.responsiveSizes.var
   </section>
 
   <section class="mb-12">
-    <h3 class="text-xl font-semibold mb-6 pt-4 text-black">Font Weights</h3>
+    <h3 class="text-xl font-semibold pb-6 pt-4 text-black">Font Weights</h3>
     <div class="space-y-4">
       {
         typography.weights.variables.map((weight) => (
