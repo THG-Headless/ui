@@ -33,35 +33,35 @@
     --carousel-large-banner-image-height: 400px;
     --carousel-large-banner-image-height-mobile: 400px;
 
-    --carousel-surface-image: var(--color-surface-inactive);
+    --carousel-surface-image: var(--color-inactive);
     --carousel-surface-item: var(--color-surface-transparent);
     --carousel-surface-item-hover: var(--carousel-surface-item);
 
-    --carousel-surface-banner: var(--color-surface-white);
+    --carousel-surface-banner: var(--color-white);
     --carousel-surface-banner-hover: var(--carousel-surface-banner);
 
     /* Borders */
-    --carousel-border-hover: var(--color-border-primary);
-    --carousel-border-active: var(--color-border-primary);
+    --carousel-border-hover: var(--color-primary);
+    --carousel-border-active: var(--color-primary);
     --carousel-border-width-image: 0px;
 
     /* Focus Outline */
-    --carousel-focus-outline: var(--color-border-attention);
+    --carousel-focus-outline: var(--color-attention);
     --carousel-focus-width: 2px;
     --carousel-focus-offset: 2px;
 
     /* Text Colors */
-    --carousel-text-color: var(--color-text-black);
-    --carousel-text-title-color: var(--color-text-high-emphasis);
-    --carousel-text-body-color: var(--color-text-medium-emphasis);
+    --carousel-text-color: var(--color-black);
+    --carousel-text-title-color: var(--color-high-emphasis);
+    --carousel-text-body-color: var(--color-medium-emphasis);
 
     /* Text Sizes */
-    --carousel-text-title-size: var(--text-size-md);
-    --carousel-text-title-weight: var(--font-weight-semi-bold);
+    --carousel-text-title-size: var(--text-md);
+    --carousel-text-title-weight: var(--font-semi-bold);
     --carousel-text-title-line-height: var(--line-height-md);
 
-    --carousel-text-body-size: var(--text-size-body);
-    --carousel-text-body-weight: var(--font-weight-normal);
+    --carousel-text-body-size: var(--text-body);
+    --carousel-text-body-weight: var(--font-normal);
     --carousel-text-body-line-height: var(--line-height-body);
 
     /* Shadows */
@@ -70,7 +70,7 @@
     --carousel-image-shadow-active: var(--shadow-none);
 
     /* Border Radius */
-    --carousel-radius-image: var(--radius-size-none);
+    --carousel-radius-image: var(--radius-none);
 
     /* Animation Speeds */
     --carousel-animation-speed: var(--duration-speed-default);

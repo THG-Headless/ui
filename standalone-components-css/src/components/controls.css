@@ -3,10 +3,10 @@
     /* Control Buttons */
     --control-btn-item-gap: 0rem;
     --control-btn-outline-color: var(--color-primary-700);
-    --control-btn-background: var(--color-surface-white);
-    --control-btn-color: var(--color-icons-black);
-    --control-btn-hover-color: var(--color-icons-primary-darker);
-    --control-btn-active-color: var(--color-icons-primary-darker);
+    --control-btn-background: var(--color-white);
+    --control-btn-color: var(--color-black);
+    --control-btn-hover-color: var(--color-primary-darker);
+    --control-btn-active-color: var(--color-primary-darker);
     --control-btn-background-hover: var(--color-neutral-200);
     --control-btn-background-active: var(--color-neutral-300);
     --control-btn-border-width: 1px;
@@ -22,7 +22,7 @@
     --control-pip-wrapper-margin: 0;
     --control-pip-wrapper-min-height: 48px;
     --control-pip-wrapper-background: transparent;
-    --control-pip-wrapper-border-radius: var(--radius-size-none);
+    --control-pip-wrapper-border-radius: var(--radius-none);
 
     --control-pip-size: 12px;
     --control-pip-gap: 8px;
@@ -74,7 +74,7 @@
     height: var(--control-pip-size);
     padding: 0;
     border: none;
-    border-radius: var(--radius-size-full);
+    border-radius: var(--radius-full);
     background-color: var(--control-pip-color);
     cursor: pointer;
     margin: 0;

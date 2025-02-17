@@ -81,7 +81,11 @@ export function parseColourScheme(cssContent: string) {
         primitiveColours.basic.colours.push(colourVar);
       } else if (name === '--color-promotion') {
         primitiveColours.promotion.colours.push(colourVar);
-      } else if (name.startsWith('--text-')) {
+      } else if (
+        name.startsWith('--color-text-') ||
+        name.startsWith('--text-') ||
+        name === '--text-color'
+      ) {
         semanticColours.text.colours.push(colourVar);
       } else if (name.startsWith('--color-surface-')) {
         semanticColours.surface.colours.push(colourVar);

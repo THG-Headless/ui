@@ -1,19 +1,19 @@
 @layer components {
   :root {
     --modal-backdrop-color: rgba(0, 0, 0, 0.3);
-    --modal-text-color: var(--color-text-black);
-    --modal-text-title-color: var(--color-text-high-emphasis);
-    --modal-text-body-color: var(--color-text-medium-emphasis);
+    --modal-text-color: var(--color-black);
+    --modal-text-title-color: var(--color-high-emphasis);
+    --modal-text-body-color: var(--color-medium-emphasis);
     --modal-surface: var(--color-surface-cards);
     --modal-backdrop-blur: 4px;
-    --modal-text-title-size: var(--text-size-md);
-    --modal-text-title-weight: var(--font-weight-semi-bold);
+    --modal-text-title-size: var(--text-md);
+    --modal-text-title-weight: var(--font-semi-bold);
     --modal-text-title-line-height: var(--line-height-md);
-    --modal-text-body-size: var(--text-size-body);
-    --modal-text-body-weight: var(--font-weight-normal);
+    --modal-text-body-size: var(--text-body);
+    --modal-text-body-weight: var(--font-normal);
     --modal-text-body-line-height: var(--line-height-body);
-    --modal-text-close-button-size: var(--text-size-md);
-    --modal-text-close-button-weight: var(--font-weight-normal);
+    --modal-text-close-button-size: var(--text-md);
+    --modal-text-close-button-weight: var(--font-normal);
     --modal-text-close-button-line-height: var(--line-height-md);
     --modal-width-min: 320px;
     --modal-margin: 2rem;
@@ -25,7 +25,7 @@
     --modal-mobile-hero-height: 150px;
     --modal-mobile-slide-up-max-height: 90vh;
     --modal-animation-speed: var(--duration-speed-slow);
-    --modal-radius: var(--radius-size-none);
+    --modal-radius: var(--radius-none);
     --modal-shadow: var(--shadow-2xl);
     --modal-shadow-mobile: var(--shadow-2xl);
   }

@@ -8,10 +8,9 @@
 @import './components/input.css';
 @import './components/dropdown.css';
 @import './components/drawer.css';
-@import './components/text.css';
 
 @theme {
-  --breakpoint-mobile: 640px;
+  --breakpoint-mobile: 1024px;
 
   --color-primary-100: #f8f9fa;
   --color-primary-200: #e9ecef;
@@ -45,171 +44,113 @@
   --color-neutral-600: #333333;
   --color-neutral-700: #000000;
 
-  --color-attention-100: #e6f0f8;
-  --color-attention-400: #0065ad;
+  --color-attention: #0065ad;
+  --color-attention-light: #e6f0f8;
 
-  --color-success-100: #e5f1ea;
-  --color-success-400: #007831;
+  --color-success: #007831;
+  --color-success-light: #e5f1ea;
 
-  --color-error-100: #fae8e6;
-  --color-error-400: #c42c21;
+  --color-error: #c42c21;
+  --color-error-light: #fae8e6;
 
   --color-promotion: #ff0000;
 
-  --color-black: #000000;
-  --color-white: #ffffff;
+  --color-black: var(--color-neutral-700);
+  --color-white: var(--color-neutral-100);
 
-  --color-surface-white: var(--color-white);
-  --color-surface-black: var(--color-black);
+  --color-primary: var(--color-primary-500);
+  --color-primary-light: var(--color-primary-100);
+  --color-primary-dark: var(--color-primary-700);
+  --color-primary-hover: var(--color-primary-600);
+  --color-primary-hover-light: var(--color-primary-300);
 
-  --color-surface-primary-default: var(--color-primary-700);
-  --color-surface-primary-lightest: var(--color-primary-100);
-  --color-surface-primary-darkest: var(--color-primary-700);
-  --color-surface-primary-hover-dark: var(--color-primary-500);
-  --color-surface-primary-hover-light: var(--color-primary-300);
-  --color-surface-primary-active: var(--color-primary-600);
+  --color-secondary: var(--color-secondary-400);
+  --color-secondary-light: var(--color-secondary-100);
+  --color-secondary-dark: var(--color-secondary-700);
+  --color-secondary-hover: var(--color-secondary-500);
+  --color-secondary-hover-light: var(--color-secondary-300);
 
-  --color-surface-secondary-default: var(--color-secondary-400);
-  --color-surface-secondary-lightest: var(--color-secondary-100);
-  --color-surface-secondary-darkest: var(--color-secondary-700);
-  --color-surface-secondary-hover-dark: var(--color-secondary-500);
-  --color-surface-secondary-hover-light: var(--color-secondary-300);
-  --color-surface-secondary-active: var(--color-secondary-600);
+  --color-tertiary: var(--color-tertiary-500);
+  --color-tertiary-light: var(--color-tertiary-100);
+  --color-tertiary-dark: var(--color-tertiary-700);
+  --color-tertiary-hover: var(--color-tertiary-600);
+  --color-tertiary-hover-light: var(--color-tertiary-400);
 
-  --color-surface-tertiary-default: var(--color-tertiary-500);
-  --color-surface-tertiary-lightest: var(--color-tertiary-100);
-  --color-surface-tertiary-darkest: var(--color-tertiary-700);
-  --color-surface-tertiary-hover-dark: var(--color-tertiary-600);
-  --color-surface-tertiary-hover-light: var(--color-tertiary-400);
-  --color-surface-tertiary-active: var(--color-tertiary-700);
+  --color-high-emphasis: var(--color-neutral-600);
+  --color-medium-emphasis: var(--color-neutral-500);
 
-  --color-surface-controls-dark: var(--color-neutral-400);
-  --color-surface-controls-default: var(--color-neutral-300);
-
-  --color-surface-inactive: var(--color-neutral-300);
-  --color-surface-success: var(--color-success-100);
-  --color-surface-error: var(--color-error-100);
-  --color-surface-attention: var(--color-attention-100);
-  --color-surface-cards: var(--color-neutral-200);
-  --color-surface-promotion: var(--color-promotion);
-
-  --color-border-black: var(--color-black);
-  --color-border-white: var(--color-white);
-  --color-border-primary: var(--color-primary-400);
-  --color-border-secondary: var(--color-secondary-400);
-  --color-border-tertiary: var(--color-tertiary-400);
+  --color-inactive: var(--color-neutral-300);
   --color-border-controls: var(--color-neutral-500);
-  --color-border-error: var(--color-error-400);
-  --color-border-success: var(--color-success-400);
-  --color-border-attention: var(--color-attention-400);
-  --color-border-inactive: var(--color-neutral-300);
-  --color-border-promotion: var(--color-promotion);
   --color-border-cards: var(--color-neutral-300);
+  --color-surface-cards: var(--color-neutral-200);
 
-  --color-text-high-emphasis: var(--color-neutral-600);
-  --color-text-medium-emphasis: var(--color-neutral-500);
-  --color-text-black: var(--color-black);
-  --color-text-white: var(--color-white);
+  --radius-none: 0px;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 16px;
+  --radius-xl: 32px;
+  --radius-full: 9999px;
 
-  --color-text-primary-default: var(--color-primary-500);
-  --color-text-primary-hover-dark: var(--color-primary-600);
-  --color-text-primary-hover-light: var(--color-primary-300);
-  --color-text-primary-active: var(--color-primary-600);
-
-  --color-text-secondary-default: var(--color-secondary-400);
-  --color-text-secondary-hover-dark: var(--color-secondary-500);
-  --color-text-secondary-hover-light: var(--color-secondary-400);
-  --color-text-secondary-active: var(--color-secondary-600);
-
-  --color-text-tertiary-default: var(--color-tertiary-500);
-  --color-text-tertiary-hover-dark: var(--color-tertiary-600);
-  --color-text-tertiary-hover-light: var(--color-tertiary-400);
-  --color-text-tertiary-active: var(--color-tertiary-700);
-
-  --color-text-inactive: var(--color-neutral-300);
-  --color-text-success: var(--color-success-400);
-  --color-text-error: var(--color-error-400);
-  --color-text-attention: var(--color-attention-400);
-  --color-text-promotion: var(--color-promotion);
-
-  --color-icons-black: var(--color-black);
-  --color-icons-white: var(--color-white);
-  --color-icons-primary: var(--color-primary-400);
-  --color-icons-primary-darker: var(--color-primary-500);
-  --color-icons-secondary: var(--color-secondary-400);
-  --color-icons-secondary-darker: var(--color-secondary-500);
-  --color-icons-tertiary: var(--color-tertiary-400);
-  --color-icons-tertiary-darker: var(--color-tertiary-500);
-  --color-icons-error: var(--color-error-400);
-  --color-icons-success: var(--color-success-400);
-
-  --radius-size-none: 0px;
-  --radius-size-sm: 4px;
-  --radius-size-md: 8px;
-  --radius-size-lg: 16px;
-  --radius-size-xl: 32px;
-  --radius-size-full: 9999px;
-
-  --text-size-desktop-xl2: 45px;
-  --line-height-desktop-xl2: 56px;
-  --text-size-desktop-xl1: 37px;
-  --line-height-desktop-xl1: 48px;
-  --text-size-desktop-l2: 30px;
-  --line-height-desktop-l2: 40px;
-  --text-size-desktop-l1: 24px;
-  --line-height-desktop-l1: 32px;
-  --text-size-desktop-md: 20px;
+  --text-desktop-2xl: 45px;
+  --line-height-desktop-2xl: 56px;
+  --text-desktop-xl: 37px;
+  --line-height-desktop-xl: 48px;
+  --text-desktop-2lg: 30px;
+  --line-height-desktop-2lg: 40px;
+  --text-desktop-lg: 24px;
+  --line-height-desktop-lg: 32px;
+  --text-desktop-md: 20px;
   --line-height-desktop-md: 28px;
-  --text-size-desktop-body: 16px;
+  --text-desktop-body: 16px;
   --line-height-desktop-body: 24px;
-  --text-size-desktop-sm: 14px;
+  --text-desktop-sm: 14px;
   --line-height-desktop-sm: 20px;
-  --text-size-desktop-xs: 13px;
+  --text-desktop-xs: 13px;
   --line-height-desktop-xs: 20px;
 
-  --text-size-mobile-xl2: 32px;
-  --line-height-mobile-xl2: 40px;
-  --text-size-mobile-xl1: 28px;
-  --line-height-mobile-xl1: 36px;
-  --text-size-mobile-l2: 24px;
-  --line-height-mobile-l2: 32px;
-  --text-size-mobile-l1: 21px;
-  --line-height-mobile-l1: 28px;
-  --text-size-mobile-md: 18px;
+  --text-mobile-2xl: 32px;
+  --line-height-mobile-2xl: 40px;
+  --text-mobile-xl: 28px;
+  --line-height-mobile-xl: 36px;
+  --text-mobile-2lg: 24px;
+  --line-height-mobile-2lg: 32px;
+  --text-mobile-lg: 21px;
+  --line-height-mobile-lg: 28px;
+  --text-mobile-md: 18px;
   --line-height-mobile-md: 24px;
-  --text-size-mobile-body: 16px;
+  --text-mobile-body: 16px;
   --line-height-mobile-body: 24px;
-  --text-size-mobile-sm: 14px;
+  --text-mobile-sm: 14px;
   --line-height-mobile-sm: 20px;
-  --text-size-mobile-xs: 13px;
+  --text-mobile-xs: 13px;
   --line-height-mobile-xs: 20px;
 
-  --text-size-xl2: var(--text-size-mobile-xl2);
-  --line-height-xl2: var(--line-height-mobile-xl2);
-  --text-size-xl1: var(--text-size-mobile-xl1);
-  --line-height-xl1: var(--line-height-mobile-xl1);
-  --text-size-l2: var(--text-size-mobile-l2);
-  --line-height-l2: var(--line-height-mobile-l2);
-  --text-size-l1: var(--text-size-mobile-l1);
-  --line-height-l1: var(--line-height-mobile-l1);
-  --text-size-md: var(--text-size-mobile-md);
+  --text-2xl: var(--text-mobile-2xl);
+  --line-height-2xl: var(--line-height-mobile-2xl);
+  --text-xl: var(--text-mobile-xl);
+  --line-height-xl: var(--line-height-mobile-xl);
+  --text-2lg: var(--text-mobile-2lg);
+  --line-height-2lg: var(--line-height-mobile-2lg);
+  --text-lg: var(--text-mobile-lg);
+  --line-height-lg: var(--line-height-mobile-lg);
+  --text-md: var(--text-mobile-md);
   --line-height-md: var(--line-height-mobile-md);
-  --text-size-body: var(--text-size-mobile-body);
+  --text-body: var(--text-mobile-body);
   --line-height-body: var(--line-height-mobile-body);
-  --text-size-sm: var(--text-size-mobile-sm);
+  --text-sm: var(--text-mobile-sm);
   --line-height-sm: var(--line-height-mobile-sm);
-  --text-size-xs: var(--text-size-mobile-xs);
+  --text-xs: var(--text-mobile-xs);
   --line-height-xs: var(--line-height-mobile-xs);
 
-  --font-weight-thin: 100;
-  --font-weight-extra-light: 200;
-  --font-weight-light: 300;
-  --font-weight-normal: 400;
-  --font-weight-medium: 500;
-  --font-weight-semi-bold: 600;
-  --font-weight-bold: 700;
-  --font-weight-extra-bold: 800;
-  --font-weight-black: 900;
+  --font-thin: 100;
+  --font-extra-light: 200;
+  --font-light: 300;
+  --font-normal: 400;
+  --font-medium: 500;
+  --font-semi-bold: 600;
+  --font-bold: 700;
+  --font-extra-bold: 800;
+  --font-black: 900;
 
   --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05), 0 1px 3px 0 rgba(0, 0, 0, 0.1);
   --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
@@ -235,23 +176,63 @@
 
 @media (min-width: var(--breakpoint-mobile)) {
   @theme {
-    --text-size-xl2: var(--text-size-desktop-xl2);
-    --line-height-xl2: var(--line-height-desktop-xl2);
-    --text-size-xl1: var(--text-size-desktop-xl1);
-    --line-height-xl1: var(--line-height-desktop-xl1);
-    --text-size-l2: var(--text-size-desktop-l2);
-    --line-height-l2: var(--line-height-desktop-l2);
-    --text-size-l1: var(--text-size-desktop-l1);
-    --line-height-l1: var(--line-height-desktop-l1);
-    --text-size-md: var(--text-size-desktop-md);
+    --text-2xl: var(--text-desktop-2xl);
+    --line-height-2xl: var(--line-height-desktop-2xl);
+    --text-xl: var(--text-desktop-xl);
+    --line-height-xl: var(--line-height-desktop-xl);
+    --text-2lg: var(--text-desktop-2lg);
+    --line-height-2lg: var(--line-height-desktop-2lg);
+    --text-lg: var(--text-desktop-lg);
+    --line-height-lg: var(--line-height-desktop-lg);
+    --text-md: var(--text-desktop-md);
     --line-height-md: var(--line-height-desktop-md);
-    --text-size-body: var(--text-size-desktop-body);
+    --text-body: var(--text-desktop-body);
     --line-height-body: var(--line-height-desktop-body);
-    --text-size-sm: var(--text-size-desktop-sm);
+    --text-sm: var(--text-desktop-sm);
     --line-height-sm: var(--line-height-desktop-sm);
-    --text-size-xs: var(--text-size-desktop-xs);
+    --text-xs: var(--text-desktop-xs);
     --line-height-xs: var(--line-height-desktop-xs);
   }
+}
+
+.text-2xl {
+  font-size: var(--text-2xl);
+  line-height: var(--line-height-2xl);
+}
+
+.text-xl {
+  font-size: var(--text-xl);
+  line-height: var(--line-height-xl);
+}
+
+.text-2lg {
+  font-size: var(--text-2lg);
+  line-height: var(--line-height-2lg);
+}
+
+.text-lg {
+  font-size: var(--text-lg);
+  line-height: var(--line-height-lg);
+}
+
+.text-md {
+  font-size: var(--text-md);
+  line-height: var(--line-height-md);
+}
+
+.text-body {
+  font-size: var(--text-body);
+  line-height: var(--line-height-body);
+}
+
+.text-sm {
+  font-size: var(--text-sm);
+  line-height: var(--line-height-sm);
+}
+
+.text-xs {
+  font-size: var(--text-xs);
+  line-height: var(--line-height-xs);
 }
 
 .sr-only {

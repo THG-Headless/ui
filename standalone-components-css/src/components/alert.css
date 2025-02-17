@@ -1,17 +1,17 @@
 @layer components {
   :root {
-    --alert-text-error-color: var(--color-text-error);
-    --alert-text-success-color: var(--color-text-success);
-    --alert-text-info-color: var(--color-text-attention);
+    --alert-text-error-color: var(--color-error);
+    --alert-text-success-color: var(--color-success);
+    --alert-text-info-color: var(--color-attention);
 
-    --alert-background-error-color: var(--color-surface-error);
-    --alert-background-success-color: var(--color-surface-success);
-    --alert-background-info-color: var(--color-surface-attention);
+    --alert-background-error-color: var(--color-error-light);
+    --alert-background-success-color: var(--color-success-light);
+    --alert-background-info-color: var(--color-attention-light);
 
-    --alert-font-weight: var(--font-weight-semi-bold);
+    --alert-font-weight: var(--font-semi-bold);
 
     --alert-border-default: none;
-    --alert-border-radius: var(--radius-size-none);
+    --alert-border-radius: var(--radius-none);
 
     --alert-padding: 0.5em;
     --alert-icon-min-height: 24px;
@@ -45,7 +45,8 @@
   }
 
   .alert-success {
-    color: var(--alert-text-success-color);
+    /* color: var(--alert-text-success-color); */
+    color: var(--color-success);
     background-color: var(--alert-background-success-color);
   }
 

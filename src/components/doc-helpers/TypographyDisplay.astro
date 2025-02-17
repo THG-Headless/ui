@@ -19,12 +19,12 @@ function groupFontSizes(
   const grouped: Record<string, FontSize> = {};
   variables.forEach((v) => {
     const baseName = v.name
-      .replace('--text-size-', '')
+      .replace('--text-', '')
       .replace('--line-height-', '')
       .replace('-desktop-', '')
       .replace('-mobile-', '');
     if (!grouped[baseName]) grouped[baseName] = {};
-    if (v.name.startsWith('--text-size-')) grouped[baseName].size = v.value;
+    if (v.name.startsWith('--text-')) grouped[baseName].size = v.value;
     if (v.name.startsWith('--line-height-'))
       grouped[baseName].lineHeight = v.value;
   });
@@ -39,74 +39,11 @@ const groupedResponsiveFontSizes = groupFontSizes(
 ---
 
 <div class="max-w-7xl mx-auto p-6">
-  <h2 class="text-2xl font-bold text-black">Typography Utility Classes</h2>
-  <p class="text-black text-size-body">
-    The utility classes below can be applied to easily set text style.
-  </p>
-  <section class="mb-12">
-    <h3 class="text-xl font-semibold mb-6 pt-4 text-black">Size Classes</h3>
-    <div class="space-y-8">
-      {
-        ['xl2', 'xl1', 'l2', 'l1', 'md', 'body', 'sm', 'xs'].map((size) => (
-          <div class="grid grid-cols-2 items-center pb-4">
-            <div class="col-span-1">
-              <div class="font-mono text-sm text-black">txt-{size}</div>
-              <div class="font-mono text-sm text-black opacity-60">
-                var(--text-size-{size})
-                <br />
-                var(--line-height-{size})
-              </div>
-            </div>
-            <div class="col-span-1 pl-8">
-              <div class={`border-t border-b border-zinc-300 txt-${size}`}>
-                Altitude
-              </div>
-            </div>
-          </div>
-        ))
-      }
-    </div>
-  </section>
-
-  <section class="mb-12">
-    <h3 class="text-xl font-semibold mb-6 pt-4 text-black">Weight Classes</h3>
-    <div class="space-y-4">
-      {
-        [
-          'thin',
-          'extralight',
-          'light',
-          'normal',
-          'medium',
-          'semibold',
-          'bold',
-          'extrabold',
-          'black',
-        ].map((weight) => (
-          <div class="grid grid-cols-2 items-center pb-4">
-            <div class="col-span-1">
-              <div class="font-mono text-sm text-black">txt-{weight}</div>
-              <div class="font-mono text-sm text-black opacity-60">
-                var(--font-weight-{weight.replace('extra', '-extra')})
-              </div>
-            </div>
-            <div class="col-span-1 pl-8">
-              <div
-                class={`txt-body txt-${weight} border-t border-b border-zinc-300`}
-              >
-                Altitude
-              </div>
-            </div>
-          </div>
-        ))
-      }
-    </div>
-  </section>
-
   <h1 class="text-2xl font-bold !mt-8 text-black">Typography Variables</h1>
   <p class="text-black pb-6">
     In order to update the appearance of your typography, the primitive
-    typography variables below can be updated
+    typography variables below can be updated. Line height and text size are
+    combined when using the classes such as `text-xl`
   </p>
 
   <section class="mb-12">
@@ -118,7 +55,7 @@ const groupedResponsiveFontSizes = groupFontSizes(
         groupedDesktopFontSizes.map(([name, values]) => (
           <div class="grid grid-cols-6 items-center pb-4">
             <div class="col-span-3">
-              <div class="font-mono text-sm text-black">{`--text-size-desktop-${name}`}</div>
+              <div class="font-mono text-sm text-black">{`--text-${name}`}</div>
               <div class="font-mono text-sm text-black">{`--line-height-desktop-${name}`}</div>
             </div>
             <div
@@ -146,7 +83,7 @@ const groupedResponsiveFontSizes = groupFontSizes(
         groupedMobileFontSizes.map(([name, values]) => (
           <div class="grid grid-cols-6 items-center pb-4">
             <div class="col-span-3">
-              <div class="font-mono text-sm text-black">{`--text-size-mobile-${name}`}</div>
+              <div class="font-mono text-sm text-black">{`--text-${name}`}</div>
               <div class="font-mono text-sm text-black">{`--line-height-mobile-${name}`}</div>
             </div>
             <div
@@ -177,12 +114,12 @@ const groupedResponsiveFontSizes = groupFontSizes(
         groupedResponsiveFontSizes.map(([name, values]) => (
           <div class="grid grid-cols-6 items-center pb-4">
             <div class="col-span-3">
-              <div class="font-mono text-sm text-black">{`--text-size-${name}`}</div>
+              <div class="font-mono text-sm text-black">{`--text-${name}`}</div>
               <div class="font-mono text-sm text-black">{`--line-height-${name}`}</div>
             </div>
             <div
               class="col-span-2 text-black pl-8 border-t border-b border-zinc-300"
-              style={`font-size: var(--text-size-${name}); line-height: var(--line-height-${name});`}
+              style={`font-size: var(--text-${name}); line-height: var(--line-height-${name});`}
             >
               Altitude
             </div>

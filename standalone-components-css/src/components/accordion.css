@@ -4,18 +4,18 @@
     --accordion-inner-padding: 1em 1.5em;
     --accordion-width: 20em;
     --accordion-gap: 0em;
-    --accordion-radius: var(--radius-size-sm);
-    --accordion-section-radius: var(--radius-size-none);
+    --accordion-radius: var(--radius-sm);
+    --accordion-section-radius: var(--radius-none);
     --accordion-box-shadow: none;
     --accordion-border: none;
     --accordion-inner-margin: 0px;
 
     --accordion-focus-outline: none;
-    --accordion-text-size: var(--text-size-sm);
-    --accordion-title-weight: var(--font-weight-semi-bold);
-    --accordion-content-weight: var(--font-weight-normal);
-    --accordion-trigger-text-color: var(--color-text-high-emphasis);
-    --accordion-content-text-color: var(--color-text-medium-emphasis);
+    --accordion-text-size: var(--text-sm);
+    --accordion-title-weight: var(--font-semi-bold);
+    --accordion-content-weight: var(--font-normal);
+    --accordion-trigger-text-color: var(--color-high-emphasis);
+    --accordion-content-text-color: var(--color-medium-emphasis);
     --accordion-trigger-hover: none;
 
     --acc-icon-expanded-transform: rotate(180deg);

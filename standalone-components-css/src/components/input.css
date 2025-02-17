@@ -1,50 +1,50 @@
 @layer components {
   :root {
-    --input-label-color: var(--color-text-high-emphasis);
+    --input-label-color: var(--color-high-emphasis);
     --input-label-color-disabled: var(--color-text-inactive);
     --input-label-color-invalid: var(--input-label-color);
-    --input-label-size: var(--text-size-body);
+    --input-label-size: var(--text-body);
     --input-label-line-height: var(--line-height-body);
-    --input-label-weight: var(--font-weight-semi-bold);
+    --input-label-weight: var(--font-semi-bold);
     --input-label-weight-disabled: var(--input-label-weight);
     --input-label-weight-invalid: var(--input-label-weight);
 
-    --input-field-color: var(--color-text-medium-emphasis);
+    --input-field-color: var(--color-medium-emphasis);
     --input-field-color-disabled: var(--color-text-inactive);
     --input-field-color-invalid: var(--input-field-color);
-    --input-field-placeholder: var(--color-text-medium-emphasis);
-    --input-field-size: var(--text-size-body);
+    --input-field-placeholder: var(--color-medium-emphasis);
+    --input-field-size: var(--text-body);
     --input-field-line-height: var(--line-height-body);
-    --input-field-weight: var(--font-weight-normal);
+    --input-field-weight: var(--font-normal);
     --input-field-weight-disabled: var(--input-field-weight);
     --input-field-weight-invalid: var(--input-field-weight);
 
-    --input-field-surface: var(--color-surface-white);
-    --input-field-surface-hover: var (--color-surface-white);
+    --input-field-surface: var(--color-white);
+    --input-field-surface-hover: var (--color-white);
     --input-field-surface-disabled: var(--input-field-surface);
     --input-field-surface-invalid: var(--input-field-surface);
 
     --input-field-border: var(--color-border-controls);
-    --input-field-border-hover: var(--color-border-primary);
-    --input-field-border-active: var(--color-border-primary);
+    --input-field-border-hover: var(--color-primary);
+    --input-field-border-active: var(--color-primary);
     --input-field-border-disabled: var(--color-border-inactive);
-    --input-field-border-invalid: var(--color-border-error);
-    --input-field-border-focus: var(--color-border-attention);
+    --input-field-border-invalid: var(--color-error);
+    --input-field-border-focus: var(--color-attention);
 
-    --input-helper-color: var(--color-text-medium-emphasis);
+    --input-helper-color: var(--color-medium-emphasis);
     --input-helper-color-disabled: var(--color-text-inactive);
-    --input-helper-color-invalid: var(--color-text-error);
-    --input-helper-size: var(--text-size-sm);
+    --input-helper-color-invalid: var(--color-error);
+    --input-helper-size: var(--text-sm);
     --input-helper-line-height: var(--line-height-sm);
-    --input-helper-weight: var(--font-weight-normal);
+    --input-helper-weight: var(--font-normal);
     --input-helper-weight-disabled: var(--input-helper-weight);
-    --input-helper-weight-invalid: var(--font-weight-bold);
+    --input-helper-weight-invalid: var(--font-bold);
     --input-helper-surface: transparent;
-    --input-helper-surface-invalid: var(--color-surface-error);
+    --input-helper-surface-invalid: var(--color-error-light);
 
     --input-clear-surface: var(--color-surface-controls-default);
     --input-clear-surface-hover: var(--color-surface-controls-dark);
-    --input-clear-radius: var(--radius-size-full);
+    --input-clear-radius: var(--radius-full);
     --input-clear-color: var(--color-white);
 
     --input-spacing: 0.25rem;
@@ -53,15 +53,15 @@
     --input-border-width: 1px;
     --input-border-width-active: 2px;
     --input-border-width-invalid: 2px;
-    --input-radius: var(--radius-size-sm);
-    --input-radius-textarea: var(--radius-size-sm);
+    --input-radius: var(--radius-sm);
+    --input-radius-textarea: var(--radius-sm);
 
-    --input-status-color: var(--color-text-medium-emphasis);
+    --input-status-color: var(--color-medium-emphasis);
     --input-status-color-disabled: var(--color-text-inactive);
     --input-status-color-invalid: var(--input-status-color);
-    --input-status-size: var(--text-size-sm);
+    --input-status-size: var(--text-sm);
     --input-status-line-height: var(--line-height-sm);
-    --input-status-weight: var(--font-weight-light);
+    --input-status-weight: var(--font-light);
   }
 
   .input-wrapper {

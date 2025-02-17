@@ -1,93 +1,103 @@
 ---
-import "../../tailwind.css";
-import fs from "node:fs";
-import path from "node:path";
-import { parseColourScheme } from "../../utils/colourParser";
+import '../../tailwind.css';
+import fs from 'node:fs';
+import path from 'node:path';
+import { parseColourScheme } from '../../utils/colourParser';
 
-const cssFilePath = path.resolve("./src/sample-css/colour.css");
-const cssContent = fs.readFileSync(cssFilePath, "utf-8");
-const { primitiveColours, semanticColours } = parseColourScheme(cssContent);
+const cssFilePath = path.resolve('./src/sample-css/colour.css');
+const cssContent = fs.readFileSync(cssFilePath, 'utf-8');
+const colours = parseColourScheme(cssContent);
+
+// Helper function to determine if value is a CSS variable
+const isVarReference = (value: string) => value.startsWith('var(');
+
+// Helper function to resolve nested variables
+const resolveNestedVar = (value: string, cssContent: string) => {
+  if (!isVarReference(value)) return value;
+
+  const varName = value.slice(4, -1);
+  const varRegex = new RegExp(`${varName}:\\s*([^;]+)`);
+  const match = cssContent.match(varRegex);
+  return match ? match[1].trim() : value;
+};
+
+// Updated helper function to get color display value
+const getColorValue = (value: string) => {
+  const resolvedValue = resolveNestedVar(value, cssContent);
+  if (isVarReference(resolvedValue)) {
+    return resolveNestedVar(resolvedValue, cssContent);
+  }
+  return resolvedValue;
+};
+
+// Updated display order with semantic grouping
+const categoryOrder = [
+  // Base colors
+  'primary',
+  'secondary',
+  'tertiary',
+  'neutral',
+  'status',
+  // Semantic colors
+  'semantic',
+  'semanticPrimary',
+  'semanticSecondary',
+  'semanticTertiary',
+  'textEmphasis',
+  'utility',
+];
+
+// Group headers for sections
+const sectionHeaders = {
+  primary: 'Base Colors',
+  semantic: 'Semantic Colors',
+};
+
+const isNewSection = (category: string) =>
+  category === 'primary' || category === 'semantic';
 ---
 
 <div class="max-w-7xl mx-auto p-6">
-  <!-- Primitive Colours -->
-  <section>
-    <h2 class="text-xl font-bold mb-8 text-black">Primitive Colours</h2>
-    <div class="space-y-4">
-      {
-        Object.entries(primitiveColours).map(([key, category]) => (
-          <div class="pt-8">
-            <h3 class="text-lg font-semibold text-zinc-800">{category.name}</h3>
-            <div class="flex flex-wrap gap-4">
-              {category.colours.map((colour) => (
-                <div class="flex flex-col items-center w-[220px] h-[150px] m-2 bg-black rounded-lg shadow-md border-2 border-zinc-700">
-                  <div
-                    class="w-full h-2/3 rounded-t-md"
-                    style={{ backgroundColor: `var(${colour.name})` }}
-                  />
+  <div class="space-y-12">
+    {
+      categoryOrder.map((categoryKey, index) => {
+        const category = colours[categoryKey];
+        if (!category || category.colours.length === 0) return null;
 
-                  <div class="w-full h-1/3 bg-zinc-900 rounded-b-lg p-3 flex flex-col justify-center items-center">
-                    <span class="text-sm font-mono text-white pb-2">
-                      {colour.name}
-                    </span>
-                    <span class="text-sm text-zinc-400 pb-">
-                      {colour.value}
-                    </span>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        ))
-      }
-    </div>
-  </section>
-
-  <!-- Semantic Colours -->
-  <section>
-    <h2 class="text-2xl font-bold mb-8 pt-16 text-black">Semantic Colours</h2>
-    <div class="space-y-8">
-      {
-        Object.entries(semanticColours).map(([key, category]) => (
-          <div>
-            <h3 class="text-lg font-semibold mb-4 pt-4 text-zinc-800">{category.name}</h3>
-            <table class="w-full text-black">
-              <thead>
-                <tr class="border-b">
-                  <th class="text-left py-2 w-16 px-3"><!-- Added px-3 to match cell padding --></th>
-                  <th class="text-left py-2 px-3">Variable Name</th>
-                  <th class="text-left py-2 px-3">Default Value</th>
-                  <th class="text-left py-2 px-3 w-[30%]">Description</th>
-                </tr>
-              </thead>
-              <tbody>
+        return (
+          <>
+            {isNewSection(categoryKey) && (
+              <h1 class="text-xl font-semibold !my-4 text-black">
+                {sectionHeaders[categoryKey]}
+              </h1>
+            )}
+            <section>
+              <h2 class="text-lg font-semibold !my-4 text-black">
+                {category.name}
+              </h2>
+              <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
                 {category.colours.map((colour) => (
-                  <tr class="border-b border-zinc-600">
-                    <td class="py-3 px-3">
-                      <div
-                        class="w-8 h-8 rounded border shadow-sm"
-                        style={{ backgroundColor: `var(${colour.name})` }}
-                      />
-                    </td>
-                    <td class="py-3 px-3">
+                  <div class="bg-white rounded-lg shadow-md border border-gray-200 overflow-hidden">
+                    <div
+                      class="h-24 w-full"
+                      style={{ backgroundColor: getColorValue(colour.value) }}
+                    />
+                    <div class="p-4">
                       <button
-                        class="font-mono text-sm hover:text-blue-400 transition-colors"
+                        class="font-mono text-xs mb-2 text-black hover:text-purple-800 cursor-copy transition-colors"
                         onclick={`navigator.clipboard.writeText('${colour.name}')`}
                       >
                         {colour.name}
                       </button>
-                    </td>
-                    <td class="font-mono text-sm py-3 px-3">{colour.value}</td>
-                    <td class="text-sm py-3 px-3 w-[30%]"><!-- Removed pl-4, added consistent padding -->
-                      {colour.description || "-"}
-                    </td>
-                  </tr>
+                      <div class="text-sm text-gray-500">{colour.value}</div>
+                    </div>
+                  </div>
                 ))}
-              </tbody>
-            </table>
-          </div>
-        ))
-      }
-    </div>
-  </section>
+              </div>
+            </section>
+          </>
+        );
+      })
+    }
+  </div>
 </div>
