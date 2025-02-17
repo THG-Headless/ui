@@ -20,141 +20,209 @@
     --btn-high-emphasis-border-width: 0px;
 
     /* Primary High Emphasis */
-    --btn-primary-high-emphasis-bg-default: var(--surface-primary-default);
-    --btn-primary-high-emphasis-text-default: var(--text-white);
-    --btn-primary-high-emphasis-bg-hover: var(--surface-primary-hover-light);
-    --btn-primary-high-emphasis-text-hover: var(--text-white);
-    --btn-primary-high-emphasis-bg-active: var(--surface-primary-darkest);
-    --btn-primary-high-emphasis-text-active: var(--text-white);
-    --btn-primary-high-emphasis-bg-focus: var(--surface-primary-hover-light);
-    --btn-primary-high-emphasis-text-focus: var(--text-white);
-    --btn-primary-high-emphasis-focus-ring: var(--surface-primary-hover-light);
-    --btn-primary-high-emphasis-bg-inactive: var(--surface-inactive);
-    --btn-primary-high-emphasis-text-inactive: var(--text-white);
+    --btn-primary-high-emphasis-bg-default: var(
+      --color-surface-primary-default
+    );
+    --btn-primary-high-emphasis-text-default: var(--color-text-white);
+    --btn-primary-high-emphasis-bg-hover: var(
+      --color-surface-primary-hover-light
+    );
+    --btn-primary-high-emphasis-text-hover: var(--color-text-white);
+    --btn-primary-high-emphasis-bg-active: var(--color-surface-primary-darkest);
+    --btn-primary-high-emphasis-text-active: var(--color-text-white);
+    --btn-primary-high-emphasis-bg-focus: var(
+      --color-surface-primary-hover-light
+    );
+    --btn-primary-high-emphasis-text-focus: var(--color-text-white);
+    --btn-primary-high-emphasis-focus-ring: var(
+      --color-surface-primary-hover-light
+    );
+    --btn-primary-high-emphasis-bg-inactive: var(--color-surface-inactive);
+    --btn-primary-high-emphasis-text-inactive: var(--color-text-white);
     --btn-primary-high-emphasis-border-default: transparent;
     --btn-primary-high-emphasis-border-hover: transparent;
     --btn-primary-high-emphasis-border-active: transparent;
-    --btn-primary-high-emphasis-border-focus: var(--border-white);
+    --btn-primary-high-emphasis-border-focus: var(--color-border-white);
     --btn-primary-high-emphasis-border-inactive: transparent;
 
     /* Secondary High Emphasis */
-    --btn-secondary-high-emphasis-bg-default: var(--surface-secondary-default);
-    --btn-secondary-high-emphasis-text-default: var(--text-white);
+    --btn-secondary-high-emphasis-bg-default: var(
+      --color-surface-secondary-default
+    );
+    --btn-secondary-high-emphasis-text-default: var(--color-text-white);
     --btn-secondary-high-emphasis-bg-hover: var(
-      --surface-secondary-hover-light
+      --color-surface-secondary-hover-light
     );
-    --btn-secondary-high-emphasis-text-hover: var(--text-white);
-    --btn-secondary-high-emphasis-bg-active: var(--surface-secondary-darkest);
-    --btn-secondary-high-emphasis-text-active: var(--text-white);
+    --btn-secondary-high-emphasis-text-hover: var(--color-text-white);
+    --btn-secondary-high-emphasis-bg-active: var(
+      --color-surface-secondary-darkest
+    );
+    --btn-secondary-high-emphasis-text-active: var(--color-text-white);
     --btn-secondary-high-emphasis-bg-focus: var(
-      --surface-secondary-hover-light
+      --color-surface-secondary-hover-light
     );
-    --btn-secondary-high-emphasis-text-focus: var(--text-white);
+    --btn-secondary-high-emphasis-text-focus: var(--color-text-white);
     --btn-secondary-high-emphasis-focus-ring: var(
-      --surface-secondary-hover-light
+      --color-surface-secondary-hover-light
     );
-    --btn-secondary-high-emphasis-bg-inactive: var(--surface-inactive);
-    --btn-secondary-high-emphasis-text-inactive: var(--text-white);
+    --btn-secondary-high-emphasis-bg-inactive: var(--color-surface-inactive);
+    --btn-secondary-high-emphasis-text-inactive: var(--color-text-white);
     --btn-secondary-high-emphasis-border-default: transparent;
     --btn-secondary-high-emphasis-border-hover: transparent;
     --btn-secondary-high-emphasis-border-active: transparent;
-    --btn-secondary-high-emphasis-border-focus: var(--border-white);
+    --btn-secondary-high-emphasis-border-focus: var(--color-border-white);
     --btn-secondary-high-emphasis-border-inactive: transparent;
 
     /* Tertiary High Emphasis */
-    --btn-tertiary-high-emphasis-bg-default: var(--surface-tertiary-default);
-    --btn-tertiary-high-emphasis-text-default: var(--text-white);
-    --btn-tertiary-high-emphasis-bg-hover: var(--surface-tertiary-hover-light);
-    --btn-tertiary-high-emphasis-text-hover: var(--text-white);
-    --btn-tertiary-high-emphasis-bg-active: var(--surface-tertiary-darkest);
-    --btn-tertiary-high-emphasis-text-active: var(--text-white);
-    --btn-tertiary-high-emphasis-bg-focus: var(--surface-tertiary-hover-light);
-    --btn-tertiary-high-emphasis-text-focus: var(--text-white);
-    --btn-tertiary-high-emphasis-focus-ring: var(
-      --surface-tertiary-hover-light
+    --btn-tertiary-high-emphasis-bg-default: var(
+      --color-surface-tertiary-default
     );
-    --btn-tertiary-high-emphasis-bg-inactive: var(--surface-inactive);
-    --btn-tertiary-high-emphasis-text-inactive: var(--text-white);
+    --btn-tertiary-high-emphasis-text-default: var(--color-text-white);
+    --btn-tertiary-high-emphasis-bg-hover: var(
+      --color-surface-tertiary-hover-light
+    );
+    --btn-tertiary-high-emphasis-text-hover: var(--color-text-white);
+    --btn-tertiary-high-emphasis-bg-active: var(
+      --color-surface-tertiary-darkest
+    );
+    --btn-tertiary-high-emphasis-text-active: var(--color-text-white);
+    --btn-tertiary-high-emphasis-bg-focus: var(
+      --color-surface-tertiary-hover-light
+    );
+    --btn-tertiary-high-emphasis-text-focus: var(--color-text-white);
+    --btn-tertiary-high-emphasis-focus-ring: var(
+      --color-surface-tertiary-hover-light
+    );
+    --btn-tertiary-high-emphasis-bg-inactive: var(--color-surface-inactive);
+    --btn-tertiary-high-emphasis-text-inactive: var(--color-text-white);
     --btn-tertiary-high-emphasis-border-default: transparent;
     --btn-tertiary-high-emphasis-border-hover: transparent;
     --btn-tertiary-high-emphasis-border-active: transparent;
-    --btn-tertiary-high-emphasis-border-focus: var(--border-white);
+    --btn-tertiary-high-emphasis-border-focus: var(--color-border-white);
     --btn-tertiary-high-emphasis-border-inactive: transparent;
 
     /* Medium Emphasis */
     --btn-medium-emphasis-border-width: 2px;
 
     /* Primary Medium Emphasis */
-    --btn-primary-medium-emphasis-bg-default: var(--surface-white);
-    --btn-primary-medium-emphasis-text-default: var(--text-primary-default);
-    --btn-primary-medium-emphasis-bg-hover: var(--surface-primary-lightest);
-    --btn-primary-medium-emphasis-text-hover: var(--text-primary-default);
-    --btn-primary-medium-emphasis-bg-active: var(--surface-primary-darkest);
-    --btn-primary-medium-emphasis-text-active: var(--text-white);
-    --btn-primary-medium-emphasis-bg-focus: var(--surface-primary-lightest);
-    --btn-primary-medium-emphasis-text-focus: var(--text-primary-default);
-    --btn-primary-medium-emphasis-focus-ring: var(--surface-primary-lightest);
-    --btn-primary-medium-emphasis-bg-inactive: var(--text-white);
-    --btn-primary-medium-emphasis-text-inactive: var(--surface-inactive);
-    --btn-primary-medium-emphasis-border-default: var(--border-primary);
-    --btn-primary-medium-emphasis-border-hover: var(--border-primary);
+    --btn-primary-medium-emphasis-bg-default: var(--color-surface-white);
+    --btn-primary-medium-emphasis-text-default: var(
+      --color-text-primary-default
+    );
+    --btn-primary-medium-emphasis-bg-hover: var(
+      --color-surface-primary-lightest
+    );
+    --btn-primary-medium-emphasis-text-hover: var(--color-text-primary-default);
+    --btn-primary-medium-emphasis-bg-active: var(
+      --color-surface-primary-darkest
+    );
+    --btn-primary-medium-emphasis-text-active: var(--color-text-white);
+    --btn-primary-medium-emphasis-bg-focus: var(
+      --color-surface-primary-lightest
+    );
+    --btn-primary-medium-emphasis-text-focus: var(--color-text-primary-default);
+    --btn-primary-medium-emphasis-focus-ring: var(
+      --color-surface-primary-lightest
+    );
+    --btn-primary-medium-emphasis-bg-inactive: var(--color-text-white);
+    --btn-primary-medium-emphasis-text-inactive: var(--color-surface-inactive);
+    --btn-primary-medium-emphasis-border-default: var(--color-border-primary);
+    --btn-primary-medium-emphasis-border-hover: var(--color-border-primary);
     --btn-primary-medium-emphasis-border-active: transparent;
-    --btn-primary-medium-emphasis-border-focus: var(--border-primary);
-    --btn-primary-medium-emphasis-border-inactive: var(--border-inactive);
+    --btn-primary-medium-emphasis-border-focus: var(--color-border-primary);
+    --btn-primary-medium-emphasis-border-inactive: var(--color-border-inactive);
 
     /* Secondary Medium Emphasis */
-    --btn-secondary-medium-emphasis-bg-default: var(--surface-white);
-    --btn-secondary-medium-emphasis-text-default: var(--text-secondary-default);
-    --btn-secondary-medium-emphasis-bg-hover: var(--surface-secondary-lightest);
-    --btn-secondary-medium-emphasis-text-hover: var(--text-secondary-default);
-    --btn-secondary-medium-emphasis-bg-active: var(--surface-secondary-darkest);
-    --btn-secondary-medium-emphasis-text-active: var(--text-white);
-    --btn-secondary-medium-emphasis-bg-focus: var(--surface-secondary-lightest);
-    --btn-secondary-medium-emphasis-text-focus: var(--text-secondary-default);
-    --btn-secondary-medium-emphasis-focus-ring: var(
-      --surface-secondary-lightest
+    --btn-secondary-medium-emphasis-bg-default: var(--color-surface-white);
+    --btn-secondary-medium-emphasis-text-default: var(
+      --color-text-secondary-default
     );
-    --btn-secondary-medium-emphasis-bg-inactive: var(--text-white);
-    --btn-secondary-medium-emphasis-text-inactive: var(--surface-inactive);
-    --btn-secondary-medium-emphasis-border-default: var(--border-secondary);
-    --btn-secondary-medium-emphasis-border-hover: var(--border-secondary);
+    --btn-secondary-medium-emphasis-bg-hover: var(
+      --color-surface-secondary-lightest
+    );
+    --btn-secondary-medium-emphasis-text-hover: var(
+      --color-text-secondary-default
+    );
+    --btn-secondary-medium-emphasis-bg-active: var(
+      --color-surface-secondary-darkest
+    );
+    --btn-secondary-medium-emphasis-text-active: var(--color-text-white);
+    --btn-secondary-medium-emphasis-bg-focus: var(
+      --color-surface-secondary-lightest
+    );
+    --btn-secondary-medium-emphasis-text-focus: var(
+      --color-text-secondary-default
+    );
+    --btn-secondary-medium-emphasis-focus-ring: var(
+      --color-surface-secondary-lightest
+    );
+    --btn-secondary-medium-emphasis-bg-inactive: var(--color-text-white);
+    --btn-secondary-medium-emphasis-text-inactive: var(
+      --color-surface-inactive
+    );
+    --btn-secondary-medium-emphasis-border-default: var(
+      --color-border-secondary
+    );
+    --btn-secondary-medium-emphasis-border-hover: var(--color-border-secondary);
     --btn-secondary-medium-emphasis-border-active: transparent;
-    --btn-secondary-medium-emphasis-border-focus: var(--border-secondary);
-    --btn-secondary-medium-emphasis-border-inactive: var(--border-inactive);
+    --btn-secondary-medium-emphasis-border-focus: var(--color-border-secondary);
+    --btn-secondary-medium-emphasis-border-inactive: var(
+      --color-border-inactive
+    );
 
     /* Tertiary Medium Emphasis */
-    --btn-tertiary-medium-emphasis-bg-default: var(--surface-white);
-    --btn-tertiary-medium-emphasis-text-default: var(--text-tertiary-default);
-    --btn-tertiary-medium-emphasis-bg-hover: var(--surface-tertiary-lightest);
-    --btn-tertiary-medium-emphasis-text-hover: var(--text-tertiary-default);
-    --btn-tertiary-medium-emphasis-bg-active: var(--surface-tertiary-darkest);
-    --btn-tertiary-medium-emphasis-text-active: var(--text-white);
-    --btn-tertiary-medium-emphasis-bg-focus: var(--surface-tertiary-lightest);
-    --btn-tertiary-medium-emphasis-text-focus: var(--text-tertiary-default);
-    --btn-tertiary-medium-emphasis-focus-ring: var(--surface-tertiary-lightest);
-    --btn-tertiary-medium-emphasis-bg-inactive: var(--text-white);
-    --btn-tertiary-medium-emphasis-text-inactive: var(--surface-inactive);
-    --btn-tertiary-medium-emphasis-border-default: var(--border-tertiary);
-    --btn-tertiary-medium-emphasis-border-hover: var(--border-tertiary);
+    --btn-tertiary-medium-emphasis-bg-default: var(--color-surface-white);
+    --btn-tertiary-medium-emphasis-text-default: var(
+      --color-text-tertiary-default
+    );
+    --btn-tertiary-medium-emphasis-bg-hover: var(
+      --color-surface-tertiary-lightest
+    );
+    --btn-tertiary-medium-emphasis-text-hover: var(
+      --color-text-tertiary-default
+    );
+    --btn-tertiary-medium-emphasis-bg-active: var(
+      --color-surface-tertiary-darkest
+    );
+    --btn-tertiary-medium-emphasis-text-active: var(--color-text-white);
+    --btn-tertiary-medium-emphasis-bg-focus: var(
+      --color-surface-tertiary-lightest
+    );
+    --btn-tertiary-medium-emphasis-text-focus: var(
+      --color-text-tertiary-default
+    );
+    --btn-tertiary-medium-emphasis-focus-ring: var(
+      --color-surface-tertiary-lightest
+    );
+    --btn-tertiary-medium-emphasis-bg-inactive: var(--color-text-white);
+    --btn-tertiary-medium-emphasis-text-inactive: var(--color-surface-inactive);
+    --btn-tertiary-medium-emphasis-border-default: var(--color-border-tertiary);
+    --btn-tertiary-medium-emphasis-border-hover: var(--color-border-tertiary);
     --btn-tertiary-medium-emphasis-border-active: transparent;
-    --btn-tertiary-medium-emphasis-border-focus: var(--border-tertiary);
-    --btn-tertiary-medium-emphasis-border-inactive: var(--border-inactive);
+    --btn-tertiary-medium-emphasis-border-focus: var(--color-border-tertiary);
+    --btn-tertiary-medium-emphasis-border-inactive: var(
+      --color-border-inactive
+    );
 
     /* Low Emphasis */
     --btn-low-emphasis-border-width: 0px;
 
     /* Primary Low Emphasis */
     --btn-primary-low-emphasis-bg-default: transparent;
-    --btn-primary-low-emphasis-text-default: var(--text-primary-default);
+    --btn-primary-low-emphasis-text-default: var(--color-text-primary-default);
     --btn-primary-low-emphasis-bg-hover: transparent;
-    --btn-primary-low-emphasis-text-hover: var(--text-primary-hover-light);
+    --btn-primary-low-emphasis-text-hover: var(
+      --color-text-primary-hover-light
+    );
     --btn-primary-low-emphasis-bg-active: transparent;
-    --btn-primary-low-emphasis-text-active: var(--text-primary-active);
+    --btn-primary-low-emphasis-text-active: var(--color-text-primary-active);
     --btn-primary-low-emphasis-bg-focus: transparent;
-    --btn-primary-low-emphasis-text-focus: var(--text-primary-hover-light);
-    --btn-primary-low-emphasis-focus-ring: var(--border-primary);
+    --btn-primary-low-emphasis-text-focus: var(
+      --color-text-primary-hover-light
+    );
+    --btn-primary-low-emphasis-focus-ring: var(--color-border-primary);
     --btn-primary-low-emphasis-bg-inactive: transparent;
-    --btn-primary-low-emphasis-text-inactive: var(--surface-inactive);
+    --btn-primary-low-emphasis-text-inactive: var(--color-surface-inactive);
     --btn-primary-low-emphasis-border-default: transparent;
     --btn-primary-low-emphasis-border-hover: transparent;
     --btn-primary-low-emphasis-border-active: transparent;
@@ -163,16 +231,24 @@
 
     /* Secondary Low Emphasis */
     --btn-secondary-low-emphasis-bg-default: transparent;
-    --btn-secondary-low-emphasis-text-default: var(--text-secondary-default);
+    --btn-secondary-low-emphasis-text-default: var(
+      --color-text-secondary-default
+    );
     --btn-secondary-low-emphasis-bg-hover: transparent;
-    --btn-secondary-low-emphasis-text-hover: var(--text-secondary-hover-light);
+    --btn-secondary-low-emphasis-text-hover: var(
+      --color-text-secondary-hover-light
+    );
     --btn-secondary-low-emphasis-bg-active: transparent;
-    --btn-secondary-low-emphasis-text-active: var(--text-secondary-active);
+    --btn-secondary-low-emphasis-text-active: var(
+      --color-text-secondary-active
+    );
     --btn-secondary-low-emphasis-bg-focus: transparent;
-    --btn-secondary-low-emphasis-text-focus: var(--text-secondary-hover-light);
-    --btn-secondary-low-emphasis-focus-ring: var(--border-secondary);
+    --btn-secondary-low-emphasis-text-focus: var(
+      --color-text-secondary-hover-light
+    );
+    --btn-secondary-low-emphasis-focus-ring: var(--color-border-secondary);
     --btn-secondary-low-emphasis-bg-inactive: transparent;
-    --btn-secondary-low-emphasis-text-inactive: var(--surface-inactive);
+    --btn-secondary-low-emphasis-text-inactive: var(--color-surface-inactive);
     --btn-secondary-low-emphasis-border-default: transparent;
     --btn-secondary-low-emphasis-border-hover: transparent;
     --btn-secondary-low-emphasis-border-active: transparent;
@@ -181,16 +257,22 @@
 
     /* Tertiary Low Emphasis */
     --btn-tertiary-low-emphasis-bg-default: transparent;
-    --btn-tertiary-low-emphasis-text-default: var(--text-tertiary-default);
+    --btn-tertiary-low-emphasis-text-default: var(
+      --color-text-tertiary-default
+    );
     --btn-tertiary-low-emphasis-bg-hover: transparent;
-    --btn-tertiary-low-emphasis-text-hover: var(--text-tertiary-hover-light);
+    --btn-tertiary-low-emphasis-text-hover: var(
+      --color-text-tertiary-hover-light
+    );
     --btn-tertiary-low-emphasis-bg-active: transparent;
-    --btn-tertiary-low-emphasis-text-active: var(--text-tertiary-active);
+    --btn-tertiary-low-emphasis-text-active: var(--color-text-tertiary-active);
     --btn-tertiary-low-emphasis-bg-focus: transparent;
-    --btn-tertiary-low-emphasis-text-focus: var(--text-tertiary-hover-light);
-    --btn-tertiary-low-emphasis-focus-ring: var(--border-tertiary);
+    --btn-tertiary-low-emphasis-text-focus: var(
+      --color-text-tertiary-hover-light
+    );
+    --btn-tertiary-low-emphasis-focus-ring: var(--color-border-tertiary);
     --btn-tertiary-low-emphasis-bg-inactive: transparent;
-    --btn-tertiary-low-emphasis-text-inactive: var(--surface-inactive);
+    --btn-tertiary-low-emphasis-text-inactive: var(--color-surface-inactive);
     --btn-tertiary-low-emphasis-border-default: transparent;
     --btn-tertiary-low-emphasis-border-hover: transparent;
     --btn-tertiary-low-emphasis-border-active: transparent;

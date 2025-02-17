@@ -1,12 +1,12 @@
 @layer components {
   :root {
-    --alert-text-error-color: var(--text-error);
-    --alert-text-success-color: var(--text-success);
-    --alert-text-info-color: var(--text-attention);
+    --alert-text-error-color: var(--color-text-error);
+    --alert-text-success-color: var(--color-text-success);
+    --alert-text-info-color: var(--color-text-attention);
 
-    --alert-background-error-color: var(--surface-error);
-    --alert-background-success-color: var(--surface-success);
-    --alert-background-info-color: var(--surface-attention);
+    --alert-background-error-color: var(--color-surface-error);
+    --alert-background-success-color: var(--color-surface-success);
+    --alert-background-info-color: var(--color-surface-attention);
 
     --alert-font-weight: var(--font-weight-semi-bold);
 

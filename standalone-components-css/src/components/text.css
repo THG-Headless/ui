@@ -1,7 +1,7 @@
 @layer components {
   .txt,
   [class*='txt-'] {
-    color: var(--text-black);
+    color: var(--color-text-black);
   }
 
   .txt-xl2 {

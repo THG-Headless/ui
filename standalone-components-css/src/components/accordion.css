@@ -14,18 +14,18 @@
     --accordion-text-size: var(--text-size-sm);
     --accordion-title-weight: var(--font-weight-semi-bold);
     --accordion-content-weight: var(--font-weight-normal);
-    --accordion-trigger-text-color: var(--text-high-emphasis);
-    --accordion-content-text-color: var(--text-medium-emphasis);
+    --accordion-trigger-text-color: var(--color-text-high-emphasis);
+    --accordion-content-text-color: var(--color-text-medium-emphasis);
     --accordion-trigger-hover: none;
 
     --acc-icon-expanded-transform: rotate(180deg);
-    --acc-icon-expanded-transition: all var(--animation-speed-quick) ease-in;
+    --acc-icon-expanded-transition: all var(--duration-speed-quick) ease-in;
     --acc-icon-collapsed-transform: rotate(0deg);
-    --acc-icon-collapsed-transition: all var(--animation-speed-quick) ease-in;
+    --acc-icon-collapsed-transition: all var(--duration-speed-quick) ease-in;
 
-    --acc-panel-border-top: var(--neutral-500) solid 2px;
-    --acc-panel-border-bottom: var(--neutral-500) solid 2px;
-    --acc-panel-divider: var(--neutral-200) solid 2px;
+    --acc-panel-border-top: var(--color-neutral-500) solid 2px;
+    --acc-panel-border-bottom: var(--color-neutral-500) solid 2px;
+    --acc-panel-divider: var(--color-neutral-200) solid 2px;
   }
 
   .accordion-wrapper {
@@ -49,7 +49,7 @@
   .accordion-section {
     border-radius: var(--accordion-section-radius);
     overflow: hidden;
-    background: var(--white);
+    background: var(--color-white);
     box-shadow: var(--accordion-box-shadow);
   }
 
