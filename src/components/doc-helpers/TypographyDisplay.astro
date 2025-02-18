@@ -103,34 +103,6 @@ const groupedResponsiveFontSizes = groupFontSizes(
   </section>
 
   <section class="mb-12">
-    <h3 class="text-xl font-semibold pt-4 text-black">Responsive Font Sizes</h3>
-    <p class="text-black pb-6">
-      These pull from the above primitives so don't need updating., They
-      responsively switch between desktop and mobile variables based on screen
-      width.
-    </p>
-    <div class="space-y-8">
-      {
-        groupedResponsiveFontSizes.map(([name, values]) => (
-          <div class="grid grid-cols-6 items-center pb-4">
-            <div class="col-span-3">
-              <div class="font-mono text-sm text-black">{`--text-${name}`}</div>
-              <div class="font-mono text-sm text-black">{`--line-height-${name}`}</div>
-            </div>
-            <div
-              class="col-span-2 text-black pl-8 border-t border-b border-zinc-300"
-              style={`font-size: var(--text-${name}); line-height: var(--line-height-${name});`}
-            >
-              Altitude
-            </div>
-            <div class="col-span-1 text-right font-mono text-sm text-gray-600" />
-          </div>
-        ))
-      }
-    </div>
-  </section>
-
-  <section class="mb-12">
     <h3 class="text-xl font-semibold pb-6 pt-4 text-black">Font Weights</h3>
     <div class="space-y-4">
       {

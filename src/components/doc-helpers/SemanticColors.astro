@@ -1,0 +1,159 @@
+---
+import fs from 'node:fs';
+import path from 'node:path';
+import { parseSemanticColors } from '../../utils/SemanticColorParser';
+
+const cssFilePath = path.resolve('./src/sample-css/semanticColours.css');
+const cssContent = fs.readFileSync(cssFilePath, 'utf-8');
+const semanticGroups = parseSemanticColors(cssContent);
+
+// Helper function to get CSS variable value
+const getCssVar = (name: string) => `var(${name})`;
+---
+
+<div style="max-width: 80rem; margin: 0 auto; padding: 1.5rem;">
+  {
+    semanticGroups.map((group) => {
+      const prefix = group.name.toLowerCase();
+      const isDefault = prefix === 'default';
+      const bgBase = isDefault ? 'background' : `${prefix}-background`;
+      const fgBase = isDefault ? 'foreground' : `${prefix}-foreground`;
+      const borderBase = isDefault ? 'border' : `${prefix}-border`;
+
+      return (
+        <section style="margin-bottom: 3rem;">
+          <div style="display: flex; flex-direction: column; gap: 1rem; padding-bottom: 2rem;">
+            <button
+              class="semantic-button"
+              style={{
+                '--bg-base': getCssVar(`--color-${bgBase}`),
+                '--bg-hover': getCssVar(`--color-${bgBase}-hover`),
+                '--bg-focus': getCssVar(`--color-${bgBase}-focus`),
+                '--bg-active': getCssVar(`--color-${bgBase}-active`),
+                '--fg-base': getCssVar(`--color-${fgBase}`),
+                '--fg-hover': getCssVar(`--color-${fgBase}-hover`),
+                '--fg-focus': getCssVar(`--color-${fgBase}-focus`),
+                '--fg-active': getCssVar(`--color-${fgBase}-active`),
+                '--border-base': getCssVar(`--color-${borderBase}`),
+                '--border-hover': getCssVar(`--color-${borderBase}-hover`),
+                '--border-focus': getCssVar(`--color-${borderBase}-focus`),
+                '--border-active': getCssVar(`--color-${borderBase}-active`),
+              }}
+            >
+              {group.name}
+            </button>
+
+            <table style="width: 100%; font-size: 0.875rem; font-family: monospace; color: black;">
+              <thead>
+                <tr style="border-bottom: 1px solid #e5e7eb;">
+                  <th style="text-align: left; padding: 0.5rem 1rem;">State</th>
+                  <th style="text-align: left; padding: 0.5rem 1rem;">
+                    Background
+                  </th>
+                  <th style="text-align: left; padding: 0.5rem 1rem;">
+                    Foreground
+                  </th>
+                  <th style="text-align: left; padding: 0.5rem 1rem;">
+                    Border
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {['Default', 'Hover', 'Focus', 'Active'].map((state) => {
+                  const suffix =
+                    state === 'Default' ? '' : `-${state.toLowerCase()}`;
+                  const bgVar = `--color-${bgBase}${suffix}`;
+                  const fgVar = `--color-${fgBase}${suffix}`;
+                  const borderVar = `--color-${borderBase}${suffix}`;
+                  return (
+                    <tr style="border-bottom: 1px solid #e5e7eb;">
+                      <td style="padding: 0.5rem 1rem;">{state}</td>
+                      <td style="padding: 0.5rem 1rem;">
+                        <div style="color: #6b7280;">
+                          {(state === 'Default'
+                            ? group.background.rawValue
+                            : group.background.states[
+                                state.toLowerCase() as
+                                  | 'hover'
+                                  | 'focus'
+                                  | 'active'
+                                  | 'muted'
+                              ].toLowerCase()
+                          )
+                            .replace('var(', '')
+                            .replace(')', '')}
+                        </div>
+                      </td>
+                      <td style="padding: 0.5rem 1rem;">
+                        <div style="color: #6b7280;">
+                          {(state === 'Default'
+                            ? group.foreground.rawValue
+                            : group.foreground.states[
+                                state.toLowerCase() as
+                                  | 'hover'
+                                  | 'focus'
+                                  | 'active'
+                                  | 'muted'
+                              ].toLowerCase()
+                          )
+                            .replace('var(', '')
+                            .replace(')', '')}
+                        </div>
+                      </td>
+                      <td style="padding: 0.5rem 1rem;">
+                        <div style="color: #6b7280;">
+                          {(state === 'Default'
+                            ? group.border.rawValue
+                            : group.border.states[
+                                state.toLowerCase() as
+                                  | 'hover'
+                                  | 'focus'
+                                  | 'active'
+                                  | 'muted'
+                              ].toLowerCase()
+                          )
+                            .replace('var(', '')
+                            .replace(')', '')}
+                        </div>
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
+        </section>
+      );
+    })
+  }
+</div>
+
+<style>
+  .semantic-button {
+    padding: 0.75rem 1.5rem;
+    font-size: 1.125rem;
+    border-radius: 0.25rem;
+    transition: all 200ms;
+    background-color: var(--bg-base);
+    color: var(--fg-base);
+    border: 2px solid var(--border-base);
+  }
+
+  .semantic-button:hover {
+    background-color: var(--bg-hover);
+    color: var(--fg-hover);
+    border-color: var(--border-hover);
+  }
+
+  .semantic-button:focus {
+    background-color: var(--bg-focus);
+    color: var(--fg-focus);
+    border-color: var(--border-focus);
+  }
+
+  .semantic-button:active {
+    background-color: var(--bg-active);
+    color: var(--fg-active);
+    border-color: var(--border-active);
+  }
+</style>

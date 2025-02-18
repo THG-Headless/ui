@@ -1,0 +1,78 @@
+---
+interface Props {
+  color: {
+    name: string;
+    value: string;
+    rawValue: string;
+    states: {
+      hover: string;
+      focus: string;
+      active: string;
+      muted: string;
+      border: string;
+    };
+  };
+  getColorValue: (value: string) => string;
+}
+
+const { color, getColorValue } = Astro.props;
+---
+
+<button
+  class="group relative w-full h-16 rounded overflow-hidden transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2"
+  style={{
+    backgroundColor: getColorValue(color.value),
+    borderColor: getColorValue(color.states.border),
+    borderWidth: '1px',
+  }}
+  onclick={`navigator.clipboard.writeText('${color.name}')`}
+>
+  <div
+    class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity"
+    style={{
+      backgroundColor: getColorValue(color.states.hover),
+    }}
+  >
+  </div>
+  <div
+    class="absolute inset-0 opacity-0 group-focus:opacity-100 transition-opacity"
+    style={{
+      backgroundColor: getColorValue(color.states.focus),
+    }}
+  >
+  </div>
+  <div
+    class="absolute inset-0 opacity-0 group-active:opacity-100 transition-opacity"
+    style={{
+      backgroundColor: getColorValue(color.states.active),
+    }}
+  >
+  </div>
+
+  <div
+    class="opacity-0 group-hover:opacity-100 absolute bottom-full left-1/2 -translate-x-1/2 mb-2 bg-white p-2 rounded shadow-lg text-xs whitespace-nowrap transition-opacity"
+  >
+    <div class="font-mono">{color.name}</div>
+    <div class="text-gray-500">{color.rawValue}</div>
+    <div class="text-gray-600">Click to copy variable name</div>
+  </div>
+</button>
+
+<script>
+  document.querySelectorAll('button').forEach((button) => {
+    button.addEventListener('click', (e) => {
+      const tooltip = button.querySelector(
+        'div[class*="opacity-0 group-hover:opacity-100"]'
+      );
+      if (tooltip) {
+        const originalText =
+          tooltip.querySelector('.text-gray-600')?.textContent;
+        tooltip.querySelector('.text-gray-600')!.textContent = 'Copied!';
+
+        setTimeout(() => {
+          tooltip.querySelector('.text-gray-600')!.textContent = originalText;
+        }, 2000);
+      }
+    });
+  });
+</script>

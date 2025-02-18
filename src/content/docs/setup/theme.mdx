@@ -5,12 +5,13 @@ sidebar:
   order: 3
 ---
 
-import ColorScheme from "../../../components/doc-helpers/Colorscheme.astro";
-import ShowComponent from "../../../components/doc-helpers/ShowComponent.astro";
-import CornerDisplay from "../../../components/doc-helpers/CornerDisplay.astro";
-import ShadowDisplay from "../../../components/doc-helpers/ShadowDisplay.astro";
-import TypographyDisplay from "../../../components/doc-helpers/TypographyDisplay.astro";
-import AnimationDisplay from "../../../components/doc-helpers/AnimationDisplay.astro";
+import ColorScheme from '../../../components/doc-helpers/Colorscheme.astro';
+import SemanticColors from '../../../components/doc-helpers/SemanticColors.astro';
+import ShowComponent from '../../../components/doc-helpers/ShowComponent.astro';
+import CornerDisplay from '../../../components/doc-helpers/CornerDisplay.astro';
+import ShadowDisplay from '../../../components/doc-helpers/ShadowDisplay.astro';
+import TypographyDisplay from '../../../components/doc-helpers/TypographyDisplay.astro';
+import AnimationDisplay from '../../../components/doc-helpers/AnimationDisplay.astro';
 
 The styling of components is done in 3 layers:
 
@@ -26,9 +27,7 @@ The relationship between primitive, semantic, and component variables allows for
 - [ ] Make minor, yet wide reaching tweaks through the semantic variables
 - [ ] Have full control of each component type through the component variables.
 
-![Variable Map](../../../assets/varMap.svg)
-
-By default, the package will provide all values for a theme that matches this documentation site. Any of these variable values or relationships can be reconfigured by redefining them within your main css file. Primitive and semantic varaibles are defined within this page, and component level variables are defined within their respective pages.
+By default, the package will provide all values for a theme that matches this documentation site. Any of these variable values or relationships can be reconfigured by redefining them within your main css file.
 
 ## Colour Schemes
 
@@ -36,6 +35,21 @@ Below is the default colour scheme for the site. This is already included in the
 
 <ShowComponent filePath="./src/sample-css/colour.css">
   <ColorScheme />
+</ShowComponent>
+
+<ShowComponent filePath="./src/sample-css/semanticColours.css">
+  <SemanticColors />
+</ShowComponent>
+
+## Typography
+
+Below are the primitive typography styles that form the foundation of our text elements.
+
+These styles can be customized to match your brand's typography guidelines. Mobile and desktop sizes can be defined.
+These will automatically get used by the default responsive sizes, which are used within the components.
+
+<ShowComponent filePath="./src/sample-css/typography.css">
+  <TypographyDisplay />
 </ShowComponent>
 
 ## Corners
@@ -54,17 +68,6 @@ Shadows are defined using primitive and semantic variables. The primitive shadow
 
 <ShowComponent filePath="./src/sample-css/shadows.css">
   <ShadowDisplay />
-</ShowComponent>
-
-## Typography
-
-Below are the primitive typography styles that form the foundation of our text elements.
-
-These styles can be customized to match your brand's typography guidelines. Mobile and desktop sizes can be defined.
-These will automatically get used by the default responsive sizes, which are used within the components.
-
-<ShowComponent filePath="./src/sample-css/typography.css">
-  <TypographyDisplay />
 </ShowComponent>
 
 ## Animations

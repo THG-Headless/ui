@@ -3,6 +3,7 @@ import '../../tailwind.css';
 import fs from 'node:fs';
 import path from 'node:path';
 import { parseColourScheme } from '../../utils/colourParser';
+import ColorSwatch from './ColorSwatch.astro';
 
 const cssFilePath = path.resolve('./src/sample-css/colour.css');
 const cssContent = fs.readFileSync(cssFilePath, 'utf-8');
@@ -31,72 +32,223 @@ const getColorValue = (value: string) => {
 };
 
 // Updated display order with semantic grouping
-const categoryOrder = [
-  // Base colors
+const categoryOrder = ['global', 'scales', 'status'];
+
+const semanticLabels: Record<
+  '' | 'light' | 'dark' | 'hover' | 'hover-light',
+  string
+> = {
+  '': 'default',
+  light: 'light',
+  dark: 'dark',
+  hover: 'hover',
+  'hover-light': 'hover-light',
+};
+
+const copyToClipboard = (text: string) => {
+  navigator.clipboard.writeText(text);
+};
+
+const colorFamilies = [
   'primary',
   'secondary',
   'tertiary',
   'neutral',
-  'status',
-  'semantic',
-  'semanticPrimary',
-  'semanticSecondary',
-  'semanticTertiary',
-  'textEmphasis',
-  'utility',
-];
+  'attention',
+  'success',
+  'error',
+  'promotion',
+] as const;
 
-// Group headers for sections
-const sectionHeaders = {
-  primary: 'Base Colors',
-  semantic: 'Semantic Colors',
+type ColorFamily = (typeof colorFamilies)[number];
+
+const semanticMap: Record<ColorFamily, Record<string, string>> = {
+  primary: {
+    '': '--color-primary-500',
+    light: '--color-primary-50',
+    dark: '--color-primary-950',
+    hover: '--color-primary-600',
+    'hover-light': '--color-primary-400',
+  },
+  secondary: {
+    '': '--color-secondary-500',
+    light: '--color-secondary-50',
+    dark: '--color-secondary-950',
+    hover: '--color-secondary-600',
+    'hover-light': '--color-secondary-400',
+  },
+  tertiary: {
+    '': '--color-tertiary-500',
+    light: '--color-tertiary-50',
+    dark: '--color-tertiary-950',
+    hover: '--color-tertiary-600',
+    'hover-light': '--color-tertiary-400',
+  },
+  neutral: {
+    '': '--color-neutral-500',
+    light: '--color-neutral-50',
+    dark: '--color-neutral-950',
+  },
+  attention: {
+    '': '--color-attention-500',
+    light: '--color-attention-50',
+  },
+  success: {
+    '': '--color-success-500',
+    light: '--color-success-50',
+  },
+  error: {
+    '': '--color-error-500',
+    light: '--color-error-50',
+  },
+  promotion: {
+    '': '--color-promotion-500',
+  },
 };
-
-const isNewSection = (category: string) =>
-  category === 'primary' || category === 'semantic';
 ---
 
-<div class="max-w-7xl mx-auto p-6">
-  <div class="space-y-12">
+<div class="max-w-7xl mx-auto p-6 text-black">
+  <div class="space-y-16">
     {
-      categoryOrder.map((categoryKey, index) => {
-        const category = colours[categoryKey];
-        if (!category || category.colours.length === 0) return null;
+      colorFamilies.map((family) => (
+        <section class="pb-6">
+          <h2 class="text-2xl font-semibold capitalize pb-2">{family}</h2>
 
-        return (
-          <>
-            {isNewSection(categoryKey) && (
-              <h1 class="text-xl font-semibold !my-4 text-black">
-                {sectionHeaders[categoryKey]}
-              </h1>
-            )}
-            <section>
-              <h2 class="text-lg font-semibold !my-4 text-black">
-                {category.name}
-              </h2>
-              <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
-                {category.colours.map((colour) => (
-                  <div class="bg-white rounded-lg shadow-md border border-gray-200 overflow-hidden">
-                    <div
-                      class="h-24 w-full"
-                      style={{ backgroundColor: getColorValue(colour.value) }}
-                    />
-                    <div class="p-4">
-                      <button
-                        class="font-mono text-xs mb-2 text-black hover:text-purple-800 cur transition-colors"
-                        onclick={`navigator.clipboard.writeText('${colour.name}')`}
-                      >
-                        {colour.name}
-                      </button>
-                      <div class="text-sm text-gray-500">{colour.value}</div>
+          {/* Global Color */}
+          {colours[family].colours
+            .filter((group) => group.prefix === 'global')
+            .map((global) => (
+              <div class="space-y-2 ">
+                <div class="group relative w-full max-w-xs">
+                  <button
+                    class="w-full text-left space-y-2"
+                    onclick={`navigator.clipboard.writeText('${global.shades[0].name}')`}
+                  >
+                    <div class="flex items-center gap-4">
+                      <div
+                        class="w-24 h-24 rounded-md border border-gray-200 cursor-pointer flex-shrink-0"
+                        style={{
+                          backgroundColor: getColorValue(
+                            global.shades[0].value
+                          ),
+                        }}
+                      />
+                      <div class="flex-1">
+                        <div class="text-sm font-mono">
+                          {global.shades[0].name}
+                        </div>
+                        <div class="text-sm text-gray-500">
+                          {global.shades[0].rawValue || global.shades[0].value}
+                        </div>
+                      </div>
+                    </div>
+                  </button>
+                  {/* Update global color tooltip */}
+                  <div class="opacity-0 group-hover:opacity-100 absolute bottom-full left-1/2 -translate-x-1/2 mb-2 bg-white p-2 rounded shadow-lg text-xs whitespace-nowrap transition-opacity z-10">
+                    <div class="font-mono">{global.shades[0].name}</div>
+                    <div class="text-gray-500">
+                      {global.shades[0].rawValue || global.shades[0].value}
+                    </div>
+                    <div class="flex items-center gap-1">
+                      <div class="text-gray-600 block copied-instruction">
+                        Click to copy to clipboard
+                      </div>
+                      <div class="text-green-600 hidden items-center gap-1 copied-message">
+                        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none">
+                          <path
+                            d="M20 6L9 17L4 12"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          />
+                        </svg>
+                        Copied to clipboard
+                      </div>
                     </div>
                   </div>
-                ))}
+                </div>
               </div>
-            </section>
-          </>
-        );
-      })
+            ))}
+
+          {/* Color Scale */}
+          {colours[family].colours
+            .filter((group) => group.prefix === 'scale')
+            .map((scale) => (
+              <div class="space-y-2 pt-4">
+                <div class="grid grid-cols-11 gap-2">
+                  {scale.shades.map((shade) => {
+                    // Find semantic usage by exact variable name match
+                    const semanticUsage = Object.entries(
+                      semanticMap[family] || {}
+                    ).find(([_, value]) => value === shade.name);
+
+                    const semanticLabel = semanticUsage
+                      ? semanticLabels[
+                          semanticUsage[0] as keyof typeof semanticLabels
+                        ]
+                      : undefined;
+
+                    return (
+                      <ColorSwatch
+                        color={shade}
+                        semantic={!!semanticLabel}
+                        semanticLabel={
+                          semanticLabel ? `${semanticLabel}` : undefined
+                        }
+                        getColorValue={getColorValue}
+                      />
+                    );
+                  })}
+                </div>
+              </div>
+            ))}
+        </section>
+      ))
     }
   </div>
 </div>
+
+<style>
+  .copied-message {
+    opacity: 0;
+    transition: opacity 200ms ease-in-out;
+  }
+
+  .copied-message.flex {
+    display: flex;
+    opacity: 1;
+  }
+
+  .copied-instruction.hidden {
+    display: none;
+  }
+</style>
+
+<script>
+  document.querySelectorAll('button').forEach((button) => {
+    button.addEventListener('click', (e) => {
+      const group = (e.currentTarget as HTMLElement).closest('.group');
+      const copiedMessage = group?.querySelector('.copied-message');
+      const instruction = group?.querySelector('.copied-instruction');
+
+      if (copiedMessage && instruction) {
+        // Hide instruction first
+        instruction.classList.add('hidden');
+
+        // Show copied message
+        copiedMessage.classList.remove('hidden');
+        copiedMessage.classList.add('flex');
+
+        setTimeout(() => {
+          // Hide copied message
+          copiedMessage.classList.remove('flex');
+          copiedMessage.classList.add('hidden');
+
+          // Show instruction again
+          instruction.classList.remove('hidden');
+        }, 2000);
+      }
+    });
+  });
+</script>

@@ -1,22 +1,4 @@
 @theme {
-  /* Responsive Sizes */
-  --text-2xl: var(--text-mobile-2xl);
-  --line-height-2xl: var(--line-height-mobile-2xl);
-  --text-xl: var(--text-mobile-xl);
-  --line-height-xl: var(--line-height-mobile-xl);
-  --text-2lg: var(--text-mobile-2lg);
-  --line-height-2lg: var(--line-height-mobile-2lg);
-  --text-lg: var(--text-mobile-lg);
-  --line-height-lg: var(--line-height-mobile-lg);
-  --text-md: var(--text-mobile-md);
-  --line-height-md: var(--line-height-mobile-md);
-  --text-body: var(--text-mobile-body);
-  --line-height-body: var(--line-height-mobile-body);
-  --text-sm: var(--text-mobile-sm);
-  --line-height-sm: var(--line-height-mobile-sm);
-  --text-xs: var(--text-mobile-xs);
-  --line-height-xs: var(--line-height-mobile-xs);
-
   /* Desktop Sizes */
   --text-desktop-2xl: 45px;
   --line-height-desktop-2xl: 56px;
