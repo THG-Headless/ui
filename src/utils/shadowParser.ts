@@ -1,52 +1,34 @@
 interface ShadowVariable {
   name: string;
   value: string;
-  description?: string;
 }
 
-interface ShadowCategory {
-  name: string;
-  shadows: ShadowVariable[];
-}
+export function parseShadowScheme(cssContent: string): ShadowVariable | null {
+  const lines = cssContent.split('\n');
+  let shadowValue = '';
 
-export function parseShadowScheme(cssContent: string) {
-  const shadows: Record<string, ShadowCategory> = {
-    primitives: { name: "Primitive Shadows", shadows: [] },
-  };
-
-  const lines = cssContent.split("\n");
-  let currentShadow: ShadowVariable | null = null;
-
-  for (let i = 0; i < lines.length; i++) {
-    const line = lines[i].trim();
-
-    if (line.startsWith("--shadow-")) {
-      if (currentShadow) {
-        shadows.primitives.shadows.push(currentShadow);
-      }
-      const [name, ...valueParts] = line.split(":");
-      currentShadow = {
-        name: name.trim(),
-        value: valueParts.join(":").trim(),
-      };
-    } else if (currentShadow && !line.startsWith("/*") && line !== "") {
-      currentShadow.value += " " + line.replace(";", "").trim();
-    } else if (line.startsWith("/*") && currentShadow) {
-      currentShadow.description = line
-        .replace("/*", "")
-        .replace("*/", "")
+  for (const line of lines) {
+    const line_trim = line.trim();
+    if (line_trim.startsWith('--shadow-global:')) {
+      shadowValue = line_trim
+        .substring(line_trim.indexOf(':') + 1)
+        .replace(';', '')
         .trim();
-    }
-
-    if (line.endsWith(";") && currentShadow) {
-      shadows.primitives.shadows.push(currentShadow);
-      currentShadow = null;
+    } else if (
+      shadowValue &&
+      !line_trim.startsWith('@') &&
+      !line_trim.startsWith('/*') &&
+      line_trim !== '}' &&
+      line_trim
+    ) {
+      shadowValue += ' ' + line_trim.replace(';', '').trim();
     }
   }
 
-  if (currentShadow) {
-    shadows.primitives.shadows.push(currentShadow);
-  }
-
-  return shadows;
+  return shadowValue
+    ? {
+        name: '--shadow-global',
+        value: shadowValue,
+      }
+    : null;
 }

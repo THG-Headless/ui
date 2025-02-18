@@ -23,7 +23,16 @@ export function parseSemanticColors(cssContent: string): SemanticGroup[] {
   const groups: SemanticGroup[] = [];
   const semanticPrefixes = [
     'default',
-    'header',
+    'primary',
+    'primary-emphasised',
+    'primary-subtle',
+    'secondary',
+    'secondary-emphasised',
+    'secondary-subtle',
+    'tertiary',
+    'tertiary-emphasised',
+    'tertiary-subtle',
+    'site-header',
     'footer',
     'card',
     'navigation',

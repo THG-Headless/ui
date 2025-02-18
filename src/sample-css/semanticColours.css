@@ -16,21 +16,141 @@
   --color-border-focus: var(--color-neutral-400);
   --color-border-active: var(--color-neutral-500);
 
-  /* Header */
-  --color-header-background: var(--color-white);
-  --color-header-background-hover: var(--color-primary-hover);
-  --color-header-background-focus: var(--color-primary-600);
-  --color-header-background-active: var(--color-primary-700);
+  /* Primary Semantic Sets */
+  --color-primary-emphasised-background: var(--color-primary);
+  --color-primary-emphasised-foreground: var(--color-white);
+  --color-primary-emphasised-border: transparent;
+  --color-primary-emphasised-background-hover: var(--color-primary-600);
+  --color-primary-emphasised-foreground-hover: var(--color-white);
+  --color-primary-emphasised-border-hover: transparent;
+  --color-primary-emphasised-background-focus: var(--color-primary-600);
+  --color-primary-emphasised-foreground-focus: var(--color-white);
+  --color-primary-emphasised-border-focus: transparent;
+  --color-primary-emphasised-background-active: var(--color-primary-700);
+  --color-primary-emphasised-foreground-active: var(--color-white);
+  --color-primary-emphasised-border-active: transparent;
 
-  --color-header-foreground: var(--color-primary);
-  --color-header-foreground-hover: var(--color-primary-100);
-  --color-header-foreground-focus: var(--color-neutral-100);
-  --color-header-foreground-active: var(--color-neutral-50);
+  --color-primary-background: var(--color-white);
+  --color-primary-foreground: var(--color-primary);
+  --color-primary-border: var(--color-primary);
+  --color-primary-background-hover: var(--color-primary-50);
+  --color-primary-foreground-hover: var(--color-primary-600);
+  --color-primary-border-hover: var(--color-primary-600);
+  --color-primary-background-focus: var(--color-primary-50);
+  --color-primary-foreground-focus: var(--color-primary-600);
+  --color-primary-border-focus: var(--color-primary-600);
+  --color-primary-background-active: var(--color-primary-100);
+  --color-primary-foreground-active: var(--color-primary-700);
+  --color-primary-border-active: var(--color-primary-700);
 
-  --color-header-border: var(--color-primary);
-  --color-header-border-hover: var(--color-primary-100);
-  --color-header-border-focus: var(--color-neutral-100);
-  --color-header-border-active: var(--color-neutral-50);
+  --color-primary-subtle-background: transparent;
+  --color-primary-subtle-foreground: var(--color-primary);
+  --color-primary-subtle-border: transparent;
+  --color-primary-subtle-background-hover: var(--color-primary-50);
+  --color-primary-subtle-foreground-hover: var(--color-primary-600);
+  --color-primary-subtle-border-hover: transparent;
+  --color-primary-subtle-background-focus: var(--color-primary-50);
+  --color-primary-subtle-foreground-focus: var(--color-primary-600);
+  --color-primary-subtle-border-focus: transparent;
+  --color-primary-subtle-background-active: var(--color-primary-100);
+  --color-primary-subtle-foreground-active: var(--color-primary-700);
+  --color-primary-subtle-border-active: transparent;
+
+  /* Secondary Semantic Sets */
+  --color-secondary-emphasised-background: var(--color-secondary);
+  --color-secondary-emphasised-foreground: var(--color-white);
+  --color-secondary-emphasised-border: transparent;
+  --color-secondary-emphasised-background-hover: var(--color-secondary-600);
+  --color-secondary-emphasised-foreground-hover: var(--color-white);
+  --color-secondary-emphasised-border-hover: transparent;
+  --color-secondary-emphasised-background-focus: var(--color-secondary-600);
+  --color-secondary-emphasised-foreground-focus: var(--color-white);
+  --color-secondary-emphasised-border-focus: transparent;
+  --color-secondary-emphasised-background-active: var(--color-secondary-700);
+  --color-secondary-emphasised-foreground-active: var(--color-white);
+  --color-secondary-emphasised-border-active: transparent;
+
+  --color-secondary-background: var(--color-white);
+  --color-secondary-foreground: var(--color-secondary);
+  --color-secondary-border: var(--color-secondary);
+  --color-secondary-background-hover: var(--color-secondary-50);
+  --color-secondary-foreground-hover: var(--color-secondary-600);
+  --color-secondary-border-hover: var(--color-secondary-600);
+  --color-secondary-background-focus: var(--color-secondary-50);
+  --color-secondary-foreground-focus: var(--color-secondary-600);
+  --color-secondary-border-focus: var(--color-secondary-600);
+  --color-secondary-background-active: var(--color-secondary-100);
+  --color-secondary-foreground-active: var(--color-secondary-700);
+  --color-secondary-border-active: var(--color-secondary-700);
+
+  --color-secondary-subtle-background: transparent;
+  --color-secondary-subtle-foreground: var(--color-secondary);
+  --color-secondary-subtle-border: transparent;
+  --color-secondary-subtle-background-hover: var(--color-secondary-50);
+  --color-secondary-subtle-foreground-hover: var(--color-secondary-600);
+  --color-secondary-subtle-border-hover: transparent;
+  --color-secondary-subtle-background-focus: var(--color-secondary-50);
+  --color-secondary-subtle-foreground-focus: var(--color-secondary-600);
+  --color-secondary-subtle-border-focus: transparent;
+  --color-secondary-subtle-background-active: var(--color-secondary-100);
+  --color-secondary-subtle-foreground-active: var(--color-secondary-700);
+  --color-secondary-subtle-border-active: transparent;
+
+  /* Tertiary Semantic Sets */
+  --color-tertiary-emphasised-background: var(--color-tertiary);
+  --color-tertiary-emphasised-foreground: var(--color-white);
+  --color-tertiary-emphasised-border: transparent;
+  --color-tertiary-emphasised-background-hover: var(--color-tertiary-600);
+  --color-tertiary-emphasised-foreground-hover: var(--color-white);
+  --color-tertiary-emphasised-border-hover: transparent;
+  --color-tertiary-emphasised-background-focus: var(--color-tertiary-600);
+  --color-tertiary-emphasised-foreground-focus: var(--color-white);
+  --color-tertiary-emphasised-border-focus: transparent;
+  --color-tertiary-emphasised-background-active: var(--color-tertiary-700);
+  --color-tertiary-emphasised-foreground-active: var(--color-white);
+  --color-tertiary-emphasised-border-active: transparent;
+
+  --color-tertiary-background: var(--color-white);
+  --color-tertiary-foreground: var(--color-tertiary);
+  --color-tertiary-border: var(--color-tertiary);
+  --color-tertiary-background-hover: var(--color-tertiary-50);
+  --color-tertiary-foreground-hover: var(--color-tertiary-600);
+  --color-tertiary-border-hover: var(--color-tertiary-600);
+  --color-tertiary-background-focus: var(--color-tertiary-50);
+  --color-tertiary-foreground-focus: var(--color-tertiary-600);
+  --color-tertiary-border-focus: var(--color-tertiary-600);
+  --color-tertiary-background-active: var(--color-tertiary-100);
+  --color-tertiary-foreground-active: var(--color-tertiary-700);
+  --color-tertiary-border-active: var(--color-tertiary-700);
+
+  --color-tertiary-subtle-background: transparent;
+  --color-tertiary-subtle-foreground: var(--color-tertiary);
+  --color-tertiary-subtle-border: transparent;
+  --color-tertiary-subtle-background-hover: var(--color-tertiary-50);
+  --color-tertiary-subtle-foreground-hover: var(--color-tertiary-600);
+  --color-tertiary-subtle-border-hover: transparent;
+  --color-tertiary-subtle-background-focus: var(--color-tertiary-50);
+  --color-tertiary-subtle-foreground-focus: var(--color-tertiary-600);
+  --color-tertiary-subtle-border-focus: transparent;
+  --color-tertiary-subtle-background-active: var(--color-tertiary-100);
+  --color-tertiary-subtle-foreground-active: var(--color-tertiary-700);
+  --color-tertiary-subtle-border-active: transparent;
+
+  /* Site-header */
+  --color-site-header-background: var(--color-white);
+  --color-site-header-background-hover: var(--color-primary-hover);
+  --color-site-header-background-focus: var(--color-primary-600);
+  --color-site-header-background-active: var(--color-primary-700);
+
+  --color-site-header-foreground: var(--color-primary);
+  --color-site-header-foreground-hover: var(--color-primary-100);
+  --color-site-header-foreground-focus: var(--color-neutral-100);
+  --color-site-header-foreground-active: var(--color-neutral-50);
+
+  --color-site-header-border: var(--color-primary);
+  --color-site-header-border-hover: var(--color-primary-100);
+  --color-site-header-border-focus: var(--color-neutral-100);
+  --color-site-header-border-active: var(--color-neutral-50);
 
   /* Footer */
   --color-footer-background: var(--color-neutral-300);
@@ -150,7 +270,7 @@
   --color-success-background-focus: var(--color-success-200);
   --color-success-background-active: var(--color-success-300);
 
-  --color-success-foreground: var(--color-success);
+  --color-success-foreground: var (--color-success);
   --color-success-foreground-hover: var(--color-success-600);
   --color-success-foreground-focus: var(--color-success-700);
   --color-success-foreground-active: var(--color-success-800);

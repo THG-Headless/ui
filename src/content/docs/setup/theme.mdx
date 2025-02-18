@@ -12,6 +12,7 @@ import CornerDisplay from '../../../components/doc-helpers/CornerDisplay.astro';
 import ShadowDisplay from '../../../components/doc-helpers/ShadowDisplay.astro';
 import TypographyDisplay from '../../../components/doc-helpers/TypographyDisplay.astro';
 import AnimationDisplay from '../../../components/doc-helpers/AnimationDisplay.astro';
+import { Aside } from '@astrojs/starlight/components';
 
 The components library provides a theming framework that can be used within these components and beyond on your entire site, helping to maintain a cohesive design system.
 
@@ -27,11 +28,43 @@ The framework acts through a number of layers, where each one feeds down into th
 
 In order to apply your own themes on top of the base styles, simply define the variables you want to change, and they will update across your site where they are used.
 
+## Global Variables
+
+The design system is based off the following global variables. These can be overridden to change the appearance of the entire site.
+
+### Colours
+
+`--color-primary` - The primary or brand colour
+
+<br />
+`--color-secondary` - The secondary colour
+<br />
+`--color-tertiary` - The tertiary colour
+<br />
+`--color-neutral` - The neutral tone, typically a shade of grey
+<br />
+`--color-attention` - The attention colour
+<br />
+`--color-success` - The success colour
+<br />
+`--color-error` - The error colour
+<br />
+`--color-promotion` - The promotion colour, used sparingly to highlight
+important information such as promotional items
+
+### Radius
+
+`--radius-global` - The global radius for all rounded corners
+
+### Shadows
+
+`--shadow-global` - The global shadow for all components
+
 ## Colour Palette
 
-The color scheme of a site is defined using the global variables shown below. From this, CSS calculations will generate a range of primitive shades centered around the global variable. These can be individually changed by overriding their css definitions.
+The color scheme of a site is defined using the global variables shown below. From this, CSS calculations will generate a range of primitive shades centered around the global variable, where the global colour is 500 on a scale of 50 _(lightest)_ to 950 _(darkest)_. These can be individually changed by overriding their css definitions.
 
-Semantic shades have been labeled. Default shades are provided when no suffix is given, such as `--color-primary'. Other semantic shades, such as 'light' are given by using the label as the suffix, e.g. `--color-primary-light`
+Semantic shades have been labeled. Default shades are provided when no suffix is given, such as `--color-primary`. Other semantic shades, such as 'light' are given by using the label as the suffix, e.g. `--color-primary-light`
 
 <ShowComponent filePath="./src/sample-css/colour.css">
   <ColorScheme />
@@ -41,36 +74,32 @@ Semantic shades have been labeled. Default shades are provided when no suffix is
 
 A number of categories of element styles are provided. These should be applied throughout a site to maintain visual consistency, and allow for site wide theming at the css layer - although they can be overridden (for example by tailwind classes) at each use case without effecting other instances.
 
-Each set defines the background, foreground and border colours at both a default state, and in states where there is interaction. For each set, there is a base css class, which will apply only the default state styling, and a interactive class, which includes all interactive and default state styles, applied using appropriate CSS directives.
+Each set defines the background, foreground and border colours at both a default state, and in states where there is interaction.
+
+<Aside type="tip">
+  For each set, the package provides a css class, which will apply only the
+  default state styling, and a interactive class, which includes all interactive
+  and default state styles, applied using appropriate CSS directives.
+
+For example, `card` will apply the default styles, and `card-interactive` will also include the hover, focus and active states.
+
+</Aside>
 
 <ShowComponent filePath="./src/sample-css/semanticColours.css">
   <SemanticColors />
 </ShowComponent>
 
-## Typography
+## Radius
 
-Below are the primitive typography styles that form the foundation of our text elements.
-
-These styles can be customized to match your brand's typography guidelines. Mobile and desktop sizes can be defined.
-These will automatically get used by the default responsive sizes, which are used within the components.
-
-<ShowComponent filePath="./src/sample-css/typography.css">
-  <TypographyDisplay />
-</ShowComponent>
-
-## Corners
-
-As with colours, the corner styles are applied using primitive and semantic fields as shown below. These allow you to set the 'roundness' of your components.
-
-_(If you want to achieve no rounding across all components, simply set all primitive sizes to 0px)_
+By default, the global radius is applied to all rounded corners. This can be overridden using custom CSS or tailwind at a per use case level, but it is advised to use the global radius provided to maintain consistency and allow for easy updates of your theme. If using other radii, it is advised to use a css calculation to calculate the radius from the global radius, to maintain consistency if the global radius is updated.
 
 <ShowComponent filePath="./src/sample-css/corners.css">
   <CornerDisplay />
 </ShowComponent>
 
-## Shadows
+## Shadow
 
-Shadows are defined using primitive and semantic variables. The primitive shadows provide a range of elevation levels, while semantic shadows apply these to specific UI elements.
+Like with the radius, the use of a singular global shadow is promoted in order to maintain consistency and allow for easy updates of your theme. As with the radius, this can be overridden at a per use case level, but it is advised to use the global shadow provided.
 
 <ShowComponent filePath="./src/sample-css/shadows.css">
   <ShadowDisplay />
@@ -78,8 +107,28 @@ Shadows are defined using primitive and semantic variables. The primitive shadow
 
 ## Animations
 
-Animation speeds are defined using CSS variables to maintain consistency across different components. These variables control the duration of various animations throughout your project.
+Primitive animation speeds are provided using CSS variables to maintain consistency across different components. These variables control the duration of various animations throughout your project. As with other values, these can be overridden according to your sites preference.
+
+<Aside type="tip">
+  Animations should relate to the scale of the moving object, such that large
+  objects should move slower than small objects.
+</Aside>
 
 <ShowComponent filePath="./src/sample-css/animation.css">
   <AnimationDisplay />
+</ShowComponent>
+
+## Typography
+
+Below are the primitive typography styles that form the foundation of our text elements.
+
+In order to update the appearance of your typography, the primitive typography variables below can be updated.
+
+<Aside type="tip">
+  Classes have been provided, aligned with these variable names (for example,
+  `text-body` will responsively apply the body text size and line height).
+</Aside>
+
+<ShowComponent filePath="./src/sample-css/typography.css">
+  <TypographyDisplay />
 </ShowComponent>

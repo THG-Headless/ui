@@ -66,7 +66,7 @@ const states = ['Hover', 'Focus', 'Active'] as const;
               '--border-active': getCssVar(`--color-${baseNames.border}-active`),
             }}
           >
-            {group.name}
+            {group.name.replace(/-/g, ' ').replace(/\w\S*/g, (word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())}
           </button>
 
           <!-- Base Class Name -->
@@ -77,6 +77,7 @@ const states = ['Hover', 'Focus', 'Active'] as const;
                 {group.name.toLowerCase()}
               </button>
             </h3>
+            <div class="copy-instruction">Click to copy class name to clipboard</div>
             <div class="copy-message">Copied to clipboard!</div>
           </div>
 
@@ -101,7 +102,7 @@ const states = ['Hover', 'Focus', 'Active'] as const;
           </table>
 
           <!-- Interactive States -->
-          <div class="relative">
+          <div class="relative class-name-wrapper">
             <div class="flex justify-between items-center">
               <h3 class="section-title">
                 Interactive Class Name: {' '}
@@ -114,6 +115,7 @@ const states = ['Hover', 'Focus', 'Active'] as const;
               </h3>
               <span class="italic text-zinc-500">(includes default state)</span>
             </div>
+            <div class="copy-instruction">Click to copy class name to clipboard</div>
             <div class="copy-message">Copied to clipboard!</div>
           </div>
 
@@ -209,17 +211,36 @@ const states = ['Hover', 'Focus', 'Active'] as const;
     color: rgb(24 24 27);
   }
 
+  .copy-instruction {
+    font-size: 0.875rem;
+    color: rgb(75 85 99);
+    margin-top: 0.25rem;
+    display: block;
+  }
+
+  .copy-instruction.hidden {
+    display: none;
+  }
+
   .copy-message {
     display: none;
-    position: absolute;
-    bottom: -1.5rem;
-    left: 140px;
+    left: 0;
     font-size: 0.875rem;
     color: rgb(22 163 74);
+    
   }
 
   .copy-message.visible {
     display: block;
+    animation: fadeInOut 2s ease-in-out;
+    margin-top: 0.25rem;
+  }
+
+  @keyframes fadeInOut {
+    0% { opacity: 0; }
+    15% { opacity: 1; }
+    85% { opacity: 1; }
+    100% { opacity: 0; }
   }
 
   /* Table styles */
@@ -370,11 +391,15 @@ const states = ['Hover', 'Focus', 'Active'] as const;
 
 <script>
   // Unified copy handling function
-  const handleCopy = async (text: string, messageElement?: Element | null) => {
+  const handleCopy = async (text: string, messageElement?: Element | null, instructionElement?: Element | null) => {
     await navigator.clipboard.writeText(text);
-    if (messageElement) {
-      messageElement.classList.remove('hidden');
-      setTimeout(() => messageElement.classList.add('hidden'), 2000);
+    if (messageElement && instructionElement) {
+      instructionElement.classList.add('hidden');
+      messageElement.classList.add('visible');
+      setTimeout(() => {
+        messageElement.classList.remove('visible');
+        instructionElement.classList.remove('hidden');
+      }, 2000);
     }
   };
 
@@ -382,8 +407,10 @@ const states = ['Hover', 'Focus', 'Active'] as const;
   document.querySelectorAll('.copy-trigger').forEach((trigger) => {
     trigger.addEventListener('click', (e) => {
       const button = e.currentTarget as HTMLButtonElement;
-      const message = button.parentElement?.nextElementSibling;
-      handleCopy(button.dataset.copy || '', message);
+      const wrapper = button.closest('.class-name-wrapper');
+      const message = wrapper?.querySelector('.copy-message');
+      const instruction = wrapper?.querySelector('.copy-instruction');
+      handleCopy(button.dataset.copy || '', message, instruction);
     });
   });
 
