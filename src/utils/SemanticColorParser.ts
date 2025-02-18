@@ -1,12 +1,14 @@
 interface SemanticColor {
   name: string;
   value: string;
-  rawValue: string;
+  cssVariable: string; // Add this to store the full CSS variable name
+  category: string;
+  layer: string;
   states: {
-    hover: string;
-    focus: string;
-    active: string;
-    muted: string;
+    hover: { cssVariable: string; value: string };
+    focus: { cssVariable: string; value: string };
+    active: { cssVariable: string; value: string };
+    muted: { cssVariable: string; value: string };
   };
 }
 
@@ -51,9 +53,21 @@ export function parseSemanticColors(cssContent: string): SemanticGroup[] {
       prefix === 'default' ? 'foreground' : `${prefix}-foreground`;
     const borderPrefix = prefix === 'default' ? 'border' : `${prefix}-border`;
 
-    const background = extractColorWithStates(normalizedContent, bgPrefix);
-    const foreground = extractColorWithStates(normalizedContent, fgPrefix);
-    const border = extractColorWithStates(normalizedContent, borderPrefix);
+    const background = extractColorWithStates(
+      normalizedContent,
+      bgPrefix,
+      prefix
+    );
+    const foreground = extractColorWithStates(
+      normalizedContent,
+      fgPrefix,
+      prefix
+    );
+    const border = extractColorWithStates(
+      normalizedContent,
+      borderPrefix,
+      prefix
+    );
 
     if (background && foreground && border) {
       groups.push({
@@ -70,29 +84,60 @@ export function parseSemanticColors(cssContent: string): SemanticGroup[] {
 
 function extractColorWithStates(
   lines: string[],
-  prefix: string
+  prefix: string,
+  category: string
 ): SemanticColor | null {
   const baseVar = `--color-${prefix}`;
   const base = lines.find((line) => line.startsWith(`${baseVar}:`));
 
   if (!base) return null;
 
-  const [name, value] = base.split(':').map((part) => part.trim());
+  const [cssVariable, value] = base.split(':').map((part) => part.trim());
+  const layer = prefix.includes('-') ? prefix.split('-')[1] : prefix;
+
+  // Create the base prefix for states based on category
+  const statePrefix =
+    category === 'default' ? `--color` : `--color-${category}`;
 
   return {
-    name,
+    name: cssVariable,
     value,
-    rawValue: value,
+    cssVariable,
+    category,
+    layer,
     states: {
-      hover: extractValue(lines, `${baseVar}-hover`),
-      focus: extractValue(lines, `${baseVar}-focus`),
-      active: extractValue(lines, `${baseVar}-active`),
-      muted: extractValue(lines, `${baseVar}-muted`),
+      hover: extractVariableAndValue(
+        lines,
+        `${baseVar}-hover`,
+        `${statePrefix}-${layer}-hover`
+      ),
+      focus: extractVariableAndValue(
+        lines,
+        `${baseVar}-focus`,
+        `${statePrefix}-${layer}-focus`
+      ),
+      active: extractVariableAndValue(
+        lines,
+        `${baseVar}-active`,
+        `${statePrefix}-${layer}-active`
+      ),
+      muted: extractVariableAndValue(
+        lines,
+        `${baseVar}-muted`,
+        `${statePrefix}-${layer}-muted`
+      ),
     },
   };
 }
 
-function extractValue(lines: string[], varName: string): string {
+function extractVariableAndValue(
+  lines: string[],
+  varName: string,
+  cssVarName: string
+): { cssVariable: string; value: string } {
   const line = lines.find((l) => l.startsWith(`${varName}:`));
-  return line ? line.split(':')[1].trim() : '';
+  if (!line) return { cssVariable: '', value: '' };
+
+  const [_, value] = line.split(':').map((part) => part.trim());
+  return { cssVariable: cssVarName, value };
 }

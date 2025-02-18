@@ -7,133 +7,323 @@ const cssFilePath = path.resolve('./src/sample-css/semanticColours.css');
 const cssContent = fs.readFileSync(cssFilePath, 'utf-8');
 const semanticGroups = parseSemanticColors(cssContent);
 
-// Helper function to get CSS variable value
 const getCssVar = (name: string) => `var(${name})`;
+
+
+
+// Reusable color variable cell template without tooltip
+const ColorVarCell = ({variable}: {variable: { cssVariable: string; value: string }}) => {
+  // Extract the actual color value by removing var(--color- and closing bracket
+  const colorValue = variable.value.replace('var(--color-', '').replace(')', '');
+  
+  return `
+    <div class="var-wrapper w-full flex items-center">
+      
+      <button 
+      class="var-trigger overflow-wrap-anywhere " 
+      data-variable="${variable.cssVariable}"
+      data-value="${variable.value}"
+      >
+      <div class="color-square h-6 w-6 rounded shrink-0 border  border-gray-200 my-auto" style="background: var(--color-${colorValue})"/>
+      <div class="pl-8">${variable.value.replace('var(', '').replace(')', '')}</div>
+      </button>
+    </div>
+  `;
+};
+
+// States for interactive table
+const states = ['Hover', 'Focus', 'Active'] as const;
 ---
 
-<div style="max-width: 80rem; margin: 0 auto; padding: 1.5rem;">
-  {
-    semanticGroups.map((group) => {
-      const prefix = group.name.toLowerCase();
-      const isDefault = prefix === 'default';
-      const bgBase = isDefault ? 'background' : `${prefix}-background`;
-      const fgBase = isDefault ? 'foreground' : `${prefix}-foreground`;
-      const borderBase = isDefault ? 'border' : `${prefix}-border`;
+<div class="color-docs">
+  {semanticGroups.map((group) => {
+    const prefix = group.name.toLowerCase();
+    const isDefault = prefix === 'default';
+    const baseNames = {
+      bg: isDefault ? 'background' : `${prefix}-background`,
+      fg: isDefault ? 'foreground' : `${prefix}-foreground`,
+      border: isDefault ? 'border' : `${prefix}-border`
+    };
 
-      return (
-        <section style="margin-bottom: 3rem;">
-          <div style="display: flex; flex-direction: column; gap: 1rem; padding-bottom: 2rem;">
-            <button
-              class="semantic-button"
-              style={{
-                '--bg-base': getCssVar(`--color-${bgBase}`),
-                '--bg-hover': getCssVar(`--color-${bgBase}-hover`),
-                '--bg-focus': getCssVar(`--color-${bgBase}-focus`),
-                '--bg-active': getCssVar(`--color-${bgBase}-active`),
-                '--fg-base': getCssVar(`--color-${fgBase}`),
-                '--fg-hover': getCssVar(`--color-${fgBase}-hover`),
-                '--fg-focus': getCssVar(`--color-${fgBase}-focus`),
-                '--fg-active': getCssVar(`--color-${fgBase}-active`),
-                '--border-base': getCssVar(`--color-${borderBase}`),
-                '--border-hover': getCssVar(`--color-${borderBase}-hover`),
-                '--border-focus': getCssVar(`--color-${borderBase}-focus`),
-                '--border-active': getCssVar(`--color-${borderBase}-active`),
-              }}
-            >
-              {group.name}
-            </button>
+    return (
+      <section class="color-section">
+        <div class="color-content">
+          <!-- Semantic Button -->
+          <button
+            class="semantic-button"
+            style={{
+              '--bg-base': getCssVar(`--color-${baseNames.bg}`),
+              '--bg-hover': getCssVar(`--color-${baseNames.bg}-hover`),
+              '--bg-focus': getCssVar(`--color-${baseNames.bg}-focus`),
+              '--bg-active': getCssVar(`--color-${baseNames.bg}-active`),
+              '--fg-base': getCssVar(`--color-${baseNames.fg}`),
+              '--fg-hover': getCssVar(`--color-${baseNames.fg}-hover`),
+              '--fg-focus': getCssVar(`--color-${baseNames.fg}-focus`),
+              '--fg-active': getCssVar(`--color-${baseNames.fg}-active`),
+              '--border-base': getCssVar(`--color-${baseNames.border}`),
+              '--border-hover': getCssVar(`--color-${baseNames.border}-hover`),
+              '--border-focus': getCssVar(`--color-${baseNames.border}-focus`),
+              '--border-active': getCssVar(`--color-${baseNames.border}-active`),
+            }}
+          >
+            {group.name}
+          </button>
 
-            <table style="width: 100%; font-size: 0.875rem; font-family: monospace; color: black;">
-              <thead>
-                <tr style="border-bottom: 1px solid #e5e7eb;">
-                  <th style="text-align: left; padding: 0.5rem 1rem;">State</th>
-                  <th style="text-align: left; padding: 0.5rem 1rem;">
-                    Background
-                  </th>
-                  <th style="text-align: left; padding: 0.5rem 1rem;">
-                    Foreground
-                  </th>
-                  <th style="text-align: left; padding: 0.5rem 1rem;">
-                    Border
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                {['Default', 'Hover', 'Focus', 'Active'].map((state) => {
-                  const suffix =
-                    state === 'Default' ? '' : `-${state.toLowerCase()}`;
-                  const bgVar = `--color-${bgBase}${suffix}`;
-                  const fgVar = `--color-${fgBase}${suffix}`;
-                  const borderVar = `--color-${borderBase}${suffix}`;
-                  return (
-                    <tr style="border-bottom: 1px solid #e5e7eb;">
-                      <td style="padding: 0.5rem 1rem;">{state}</td>
-                      <td style="padding: 0.5rem 1rem;">
-                        <div style="color: #6b7280;">
-                          {(state === 'Default'
-                            ? group.background.rawValue
-                            : group.background.states[
-                                state.toLowerCase() as
-                                  | 'hover'
-                                  | 'focus'
-                                  | 'active'
-                                  | 'muted'
-                              ].toLowerCase()
-                          )
-                            .replace('var(', '')
-                            .replace(')', '')}
-                        </div>
-                      </td>
-                      <td style="padding: 0.5rem 1rem;">
-                        <div style="color: #6b7280;">
-                          {(state === 'Default'
-                            ? group.foreground.rawValue
-                            : group.foreground.states[
-                                state.toLowerCase() as
-                                  | 'hover'
-                                  | 'focus'
-                                  | 'active'
-                                  | 'muted'
-                              ].toLowerCase()
-                          )
-                            .replace('var(', '')
-                            .replace(')', '')}
-                        </div>
-                      </td>
-                      <td style="padding: 0.5rem 1rem;">
-                        <div style="color: #6b7280;">
-                          {(state === 'Default'
-                            ? group.border.rawValue
-                            : group.border.states[
-                                state.toLowerCase() as
-                                  | 'hover'
-                                  | 'focus'
-                                  | 'active'
-                                  | 'muted'
-                              ].toLowerCase()
-                          )
-                            .replace('var(', '')
-                            .replace(')', '')}
-                        </div>
-                      </td>
-                    </tr>
-                  );
-                })}
-              </tbody>
-            </table>
+          <!-- Base Class Name -->
+          <div class="class-name-wrapper">
+            <h3 class="section-title">
+              Base Class Name:{' '}
+              <button class="copy-trigger" data-copy={group.name.toLowerCase()}>
+                {group.name.toLowerCase()}
+              </button>
+            </h3>
+            <div class="copy-message">Copied to clipboard!</div>
           </div>
-        </section>
-      );
-    })
-  }
+
+          <!-- Base States Table -->
+          <table class="semantic-table">
+            <thead>
+              <tr>
+                <th class="w-[15%]">State</th>
+                <th class="w-[28%]">Background</th>
+                <th class="w-[28%]">Foreground</th>
+                <th class="w-[28%]">Border</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Default</td>
+                <td set:html={ColorVarCell({variable: { cssVariable: group.background.cssVariable, value: group.background.value }})} />
+                <td set:html={ColorVarCell({variable: { cssVariable: group.foreground.cssVariable, value: group.foreground.value }})} />
+                <td set:html={ColorVarCell({variable: { cssVariable: group.border.cssVariable, value: group.border.value }})} />
+              </tr>
+            </tbody>
+          </table>
+
+          <!-- Interactive States -->
+          <div class="relative">
+            <div class="flex justify-between items-center">
+              <h3 class="section-title">
+                Interactive Class Name: {' '}
+                <button
+                  class="copy-trigger"
+                  data-copy={`${group.name.toLowerCase()}-interactive`}
+                >
+                  {group.name.toLowerCase()}-interactive
+                </button>
+              </h3>
+              <span class="italic text-zinc-500">(includes default state)</span>
+            </div>
+            <div class="copy-message">Copied to clipboard!</div>
+          </div>
+
+          <!-- Interactive States Table -->
+          <table class="semantic-table">
+            <thead>
+              <tr>
+                <th class="w-[15%]">State</th>
+                <th class="w-[28%]">Background</th>
+                <th class="w-[28%]">Foreground</th>
+                <th class="w-[28%]">Border</th>
+              </tr>
+            </thead>
+            <tbody>
+              {states.map((state) => {
+                const stateKey = state.toLowerCase() as keyof typeof group.background.states;
+                return (
+                  <tr>
+                    <td>{state}</td>
+                    <td set:html={ColorVarCell({variable: group.background.states[stateKey]})} />
+                    <td set:html={ColorVarCell({variable: group.foreground.states[stateKey]})} />
+                    <td set:html={ColorVarCell({variable: group.border.states[stateKey]})} />
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
+      </section>
+    );
+  })}
+</div>
+
+<!-- Floating tooltip -->
+<div id="tooltip" class="tooltip">
+  <div class="text-gray-900 text-body font-mono var-name"></div>
+  <div class="text-gray-500 text-body border-b border-gray-100 pb-1 mb-1 var-value"></div>
+  <div class="flex items-center gap-1">
+    <div class="text-gray-600 block copied-instruction">
+      Click to copy CSS variable name to clipboard
+    </div>
+    <div class="hidden items-center gap-1 copied-message">
+      <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none">
+        <path
+          d="M20 6L9 17L4 12"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
+      Copied to clipboard
+    </div>
+  </div>
 </div>
 
 <style>
-  .semantic-button {
-    padding: 0.75rem 1.5rem;
-    font-size: 1.125rem;
+  .color-docs {
+    max-width: 80rem;
+    margin: 0 auto;
+    padding: 1.5rem;
+  }
+
+  .color-section {
+    margin-bottom: 3rem;
+  }
+
+  .color-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding-bottom: 2rem;
+  }
+
+  .class-name-wrapper {
+    position: relative;
+  }
+
+  .section-title {
+    font-size: var(--text-body);
+    line-height: var(--line-height-body);
+    color: black;
+    padding-top: 0.5rem;
+  }
+
+  .copy-trigger {
+    font-family: monospace;
+    color: rgb(63 63 70);
+    cursor: pointer;
+  }
+
+  .copy-trigger:hover {
+    color: rgb(24 24 27);
+  }
+
+  .copy-message {
+    display: none;
+    position: absolute;
+    bottom: -1.5rem;
+    left: 140px;
+    font-size: 0.875rem;
+    color: rgb(22 163 74);
+  }
+
+  .copy-message.visible {
+    display: block;
+  }
+
+  /* Table styles */
+  .semantic-table {
+    width: 100%;
+    font-size: 0.875rem;
+    font-family: monospace;
+    color: black;
+    border-collapse: collapse;
+  }
+
+  .semantic-table th,
+  .semantic-table td {
+    text-align: left;
+    padding: 1rem;
+    border-bottom: 1px solid rgb(229 231 235);
+  }
+
+  .semantic-table td {
+    width: 1%; /* Force equal width distribution */
+    white-space: nowrap;
+    vertical-align: top;
+    padding: 1rem;
+  }
+
+  .semantic-table td:first-child {
+    width: 15%;
+  }
+
+  .var-wrapper {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    width: 100%;
+  }
+
+  .color-square {
+    width: 1rem;
+    height: 1rem;
+    border: 1px solid black;
+  }
+
+  .var-trigger {
+    position: relative;
+    color: rgb(75 85 99);
+    cursor: pointer;
+    padding: 0.25rem 0.5rem;
     border-radius: 0.25rem;
-    transition: all 200ms;
+    white-space: nowrap;
+    background: white;
+    flex: 1;
+    padding: 0.5rem;
+    text-align: left;
+    min-width: 0; /* Add this to allow text truncation */
+    word-break: break-all;
+    overflow-wrap: anywhere;
+    line-height: 1.2;
+  }
+
+  .var-trigger:hover {
+    color: rgb(17 24 39);
+    background-color: rgb(249 250 251);
+  }
+
+  .tooltip {
+    position: fixed;
+    display: none;
+    background: white;
+    padding: 0.5rem;
+    border-radius: 0.375rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    white-space: nowrap;
+    z-index: 9999;
+    border: 1px solid rgb(229 231 235);
+    pointer-events: none;
+    transition: opacity 150ms ease-in-out;
+  }
+
+  .tooltip.visible {
+    display: block;
+  }
+
+  .tooltip .copied-instruction,
+  .tooltip .copied-message {
+    font-size: 0.75rem;
+  }
+
+  .tooltip .copied-instruction.hidden,
+  .tooltip .copied-message.hidden {
+    opacity: 0;
+    transition: opacity 150ms ease-in-out;
+  }
+
+  .tooltip .copied-message {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+  }
+
+  /* Semantic button states */
+  .semantic-button {
+    padding: 1rem;
+    font-size: 1.125rem;
+    transition: all 150ms ease-in-out;
     background-color: var(--bg-base);
     color: var(--fg-base);
     border: 2px solid var(--border-base);
@@ -156,4 +346,95 @@ const getCssVar = (name: string) => `var(${name})`;
     color: var(--fg-active);
     border-color: var(--border-active);
   }
+
+  /* Tooltip content styles */
+  .tooltip .font-mono {
+    font-family: monospace;
+  }
+
+  .tooltip .text-gray-500 {
+    color: rgb(107 114 128);
+    border-bottom: 1px solid rgb(243 244 246);
+    padding-bottom: 0.25rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .tooltip .copied-instruction {
+    color: rgb(75 85 99);
+  }
+
+  .tooltip .copied-message {
+    color: rgb(22 163 74);
+  }
 </style>
+
+<script>
+  // Unified copy handling function
+  const handleCopy = async (text: string, messageElement?: Element | null) => {
+    await navigator.clipboard.writeText(text);
+    if (messageElement) {
+      messageElement.classList.remove('hidden');
+      setTimeout(() => messageElement.classList.add('hidden'), 2000);
+    }
+  };
+
+  // Handle class name copying
+  document.querySelectorAll('.copy-trigger').forEach((trigger) => {
+    trigger.addEventListener('click', (e) => {
+      const button = e.currentTarget as HTMLButtonElement;
+      const message = button.parentElement?.nextElementSibling;
+      handleCopy(button.dataset.copy || '', message);
+    });
+  });
+
+  const tooltip = document.querySelector('#tooltip') as HTMLElement;
+  let activeButton: HTMLElement | null = null;
+
+  // Handle tooltip positioning and content
+  document.querySelectorAll('.var-trigger').forEach((trigger) => {
+    trigger.addEventListener('mouseenter', (e) => {
+      const button = e.currentTarget as HTMLElement;
+      const varName = button.dataset.variable;
+      const varValue = button.dataset.value;
+      const rect = button.getBoundingClientRect();
+
+      // Update tooltip content
+      tooltip.querySelector('.var-name')!.textContent = varName ?? '';
+      tooltip.querySelector('.var-value')!.textContent = varValue ?? '';
+
+      // Position tooltip above the trigger
+      tooltip.style.left = `${rect.left + rect.width / 2}px`;
+      tooltip.style.top = `${rect.top - 8}px`;
+      tooltip.style.transform = 'translate(-50%, -100%)';
+
+      // Show tooltip
+      tooltip.classList.add('visible');
+      activeButton = button;
+    });
+
+    trigger.addEventListener('mouseleave', () => {
+      tooltip.classList.remove('visible');
+    });
+
+    trigger.addEventListener('click', async (e) => {
+      const button = e.currentTarget as HTMLElement;
+      const varName = button.dataset.variable;
+      await navigator.clipboard.writeText(varName || '');
+
+      const instruction = tooltip.querySelector('.copied-instruction');
+      const copiedMessage = tooltip.querySelector('.copied-message') as HTMLElement;
+
+      if (instruction && copiedMessage) {
+        instruction.classList.add('hidden');
+        copiedMessage.classList.remove('hidden');
+        copiedMessage.style.display = 'flex';
+
+        setTimeout(() => {
+          instruction.classList.remove('hidden');
+          copiedMessage.classList.add('hidden');
+          copiedMessage.style.display = 'none';
+        }, 2000);
+      }
+    });
+  });
+</script>

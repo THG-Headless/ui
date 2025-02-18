@@ -89,6 +89,7 @@
   --color-control-foreground: var(--color-neutral-900);
   --color-control-foreground-hover: var(--color-neutral-800);
   --color-control-foreground-focus: var(--color-neutral-700);
+  --color-control-foreground-active: var(--color-neutral-600);
 
   --color-control-border: var(--color-neutral-300);
   --color-control-border-hover: var(--color-neutral-400);

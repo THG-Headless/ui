@@ -715,3 +715,377 @@
   white-space: nowrap;
   border-width: 0;
 }
+
+/* Default Variants */
+.default {
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+  border-color: var(--color-border);
+}
+
+.header {
+  background-color: var(--color-header-background);
+  color: var(--color-header-foreground);
+  border-color: var(--color-header-border);
+}
+
+.footer {
+  background-color: var(--color-footer-background);
+  color: var(--color-footer-foreground);
+  border-color: var(--color-footer-border);
+}
+
+.card {
+  background-color: var(--color-card-background);
+  color: var(--color-card-foreground);
+  border-color: var(--color-card-border);
+}
+
+.navigation {
+  background-color: var(--color-navigation-background);
+  color: var(--color-navigation-foreground);
+  border-color: var(--color-navigation-border);
+}
+
+.control {
+  background-color: var(--color-control-background);
+  color: var(--color-control-foreground);
+  border-color: var(--color-control-border);
+}
+
+.modal {
+  background-color: var(--color-modal-background);
+  color: var(--color-modal-foreground);
+  border-color: var(--color-modal-border);
+}
+
+.container {
+  background-color: var(--color-container-background);
+  color: var(--color-container-foreground);
+  border-color: var(--color-container-border);
+}
+
+.attention {
+  background-color: var(--color-attention-background);
+  color: var(--color-attention-foreground);
+  border-color: var(--color-attention-border);
+}
+
+.success {
+  background-color: var(--color-success-background);
+  color: var(--color-success-foreground);
+  border-color: var(--color-success-border);
+}
+
+.error {
+  background-color: var(--color-error-background);
+  color: var(--color-error-foreground);
+  border-color: var(--color-error-border);
+}
+
+.inactive {
+  background-color: var(--color-inactive-background);
+  color: var(--color-inactive-foreground);
+  border-color: var(--color-inactive-border);
+}
+
+/* Interactive Variants */
+.default-interactive {
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+  border-color: var(--color-border);
+  transition: all var(--duration-speed-default) ease-in-out;
+}
+
+.default-interactive:hover {
+  background-color: var(--color-background-hover);
+  color: var(--color-foreground-hover);
+  border-color: var(--color-border-hover);
+}
+
+.default-interactive:focus {
+  background-color: var(--color-background-focus);
+  color: var(--color-foreground-focus);
+  border-color: var(--color-border-focus);
+}
+
+.default-interactive:active {
+  background-color: var(--color-background-active);
+  color: var(--color-foreground-active);
+  border-color: var(--color-border-active);
+}
+
+.header-interactive {
+  background-color: var(--color-header-background);
+  color: var(--color-header-foreground);
+  border-color: var(--color-header-border);
+  transition: all var(--duration-speed-default) ease-in-out;
+}
+
+.header-interactive:hover {
+  background-color: var(--color-header-background-hover);
+  color: var(--color-header-foreground-hover);
+  border-color: var(--color-header-border-hover);
+}
+
+.header-interactive:focus {
+  background-color: var(--color-header-background-focus);
+  color: var(--color-header-foreground-focus);
+  border-color: var(--color-header-border-focus);
+}
+
+.header-interactive:active {
+  background-color: var(--color-header-background-active);
+  color: var(--color-header-foreground-active);
+  border-color: var(--color-header-border-active);
+}
+
+.footer-interactive {
+  background-color: var(--color-footer-background);
+  color: var(--color-footer-foreground);
+  border-color: var(--color-footer-border);
+  transition: all var(--duration-speed-default) ease-in-out;
+}
+
+.footer-interactive:hover {
+  background-color: var(--color-footer-background-hover);
+  color: var(--color-footer-foreground-hover);
+  border-color: var(--color-footer-border-hover);
+}
+
+.footer-interactive:focus {
+  background-color: var(--color-footer-background-focus);
+  color: var(--color-footer-foreground-focus);
+  border-color: var(--color-footer-border-focus);
+}
+
+.footer-interactive:active {
+  background-color: var(--color-footer-background-active);
+  color: var(--color-footer-foreground-active);
+  border-color: var(--color-footer-border-active);
+}
+
+.card-interactive {
+  background-color: var(--color-card-background);
+  color: var(--color-card-foreground);
+  border-color: var(--color-card-border);
+  transition: all var(--duration-speed-default) ease-in-out;
+}
+
+.card-interactive:hover {
+  background-color: var(--color-card-background-hover);
+  color: var(--color-card-foreground-hover);
+  border-color: var(--color-card-border-hover);
+}
+
+.card-interactive:focus {
+  background-color: var(--color-card-background-focus);
+  color: var(--color-card-foreground-focus);
+  border-color: var(--color-card-border-focus);
+}
+
+.card-interactive:active {
+  background-color: var(--color-card-background-active);
+  color: var(--color-card-foreground-active);
+  border-color: var(--color-card-border-active);
+}
+
+.navigation-interactive {
+  background-color: var(--color-navigation-background);
+  color: var(--color-navigation-foreground);
+  border-color: var(--color-navigation-border);
+  transition: all var(--duration-speed-default) ease-in-out;
+}
+
+.navigation-interactive:hover {
+  background-color: var(--color-navigation-background-hover);
+  color: var(--color-navigation-foreground-hover);
+  border-color: var(--color-navigation-border-hover);
+}
+
+.navigation-interactive:focus {
+  background-color: var(--color-navigation-background-focus);
+  color: var(--color-navigation-foreground-focus);
+  border-color: var(--color-navigation-border-focus);
+}
+
+.navigation-interactive:active {
+  background-color: var(--color-navigation-background-active);
+  color: var(--color-navigation-foreground-active);
+  border-color: var(--color-navigation-border-active);
+}
+
+.control-interactive {
+  background-color: var(--color-control-background);
+  color: var(--color-control-foreground);
+  border-color: var(--color-control-border);
+  transition: all var(--duration-speed-default) ease-in-out;
+}
+
+.control-interactive:hover {
+  background-color: var(--color-control-background-hover);
+  color: var(--color-control-foreground-hover);
+  border-color: var(--color-control-border-hover);
+}
+
+.control-interactive:focus {
+  background-color: var(--color-control-background-focus);
+  color: var(--color-control-foreground-focus);
+  border-color: var(--color-control-border-focus);
+}
+
+.control-interactive:active {
+  background-color: var(--color-control-background-active);
+  color: var(--color-control-foreground-active);
+  border-color: var(--color-control-border-active);
+}
+
+.modal-interactive {
+  background-color: var(--color-modal-background);
+  color: var(--color-modal-foreground);
+  border-color: var(--color-modal-border);
+  transition: all var(--duration-speed-default) ease-in-out;
+}
+
+.modal-interactive:hover {
+  background-color: var(--color-modal-background-hover);
+  color: var(--color-modal-foreground-hover);
+  border-color: var(--color-modal-border-hover);
+}
+
+.modal-interactive:focus {
+  background-color: var(--color-modal-background-focus);
+  color: var(--color-modal-foreground-focus);
+  border-color: var(--color-modal-border-focus);
+}
+
+.modal-interactive:active {
+  background-color: var(--color-modal-background-active);
+  color: var(--color-modal-foreground-active);
+  border-color: var(--color-modal-border-active);
+}
+
+.container-interactive {
+  background-color: var(--color-container-background);
+  color: var(--color-container-foreground);
+  border-color: var(--color-container-border);
+  transition: all var(--duration-speed-default) ease-in-out;
+}
+
+.container-interactive:hover {
+  background-color: var(--color-container-background-hover);
+  color: var(--color-container-foreground-hover);
+  border-color: var(--color-container-border-hover);
+}
+
+.container-interactive:focus {
+  background-color: var(--color-container-background-focus);
+  color: var(--color-container-foreground-focus);
+  border-color: var(--color-container-border-focus);
+}
+
+.container-interactive:active {
+  background-color: var(--color-container-background-active);
+  color: var(--color-container-foreground-active);
+  border-color: var(--color-container-border-active);
+}
+
+.attention-interactive {
+  background-color: var(--color-attention-background);
+  color: var(--color-attention-foreground);
+  border-color: var(--color-attention-border);
+  transition: all var(--duration-speed-default) ease-in-out;
+}
+
+.attention-interactive:hover {
+  background-color: var(--color-attention-background-hover);
+  color: var(--color-attention-foreground-hover);
+  border-color: var(--color-attention-border-hover);
+}
+
+.attention-interactive:focus {
+  background-color: var(--color-attention-background-focus);
+  color: var(--color-attention-foreground-focus);
+  border-color: var(--color-attention-border-focus);
+}
+
+.attention-interactive:active {
+  background-color: var(--color-attention-background-active);
+  color: var(--color-attention-foreground-active);
+  border-color: var(--color-attention-border-active);
+}
+
+.success-interactive {
+  background-color: var(--color-success-background);
+  color: var(--color-success-foreground);
+  border-color: var(--color-success-border);
+  transition: all var(--duration-speed-default) ease-in-out;
+}
+
+.success-interactive:hover {
+  background-color: var(--color-success-background-hover);
+  color: var(--color-success-foreground-hover);
+  border-color: var(--color-success-border-hover);
+}
+
+.success-interactive:focus {
+  background-color: var(--color-success-background-focus);
+  color: var(--color-success-foreground-focus);
+  border-color: var(--color-success-border-focus);
+}
+
+.success-interactive:active {
+  background-color: var(--color-success-background-active);
+  color: var(--color-success-foreground-active);
+  border-color: var(--color-success-border-active);
+}
+
+.error-interactive {
+  background-color: var(--color-error-background);
+  color: var(--color-error-foreground);
+  border-color: var(--color-error-border);
+  transition: all var(--duration-speed-default) ease-in-out;
+}
+
+.error-interactive:hover {
+  background-color: var(--color-error-background-hover);
+  color: var(--color-error-foreground-hover);
+  border-color: var(--color-error-border-hover);
+}
+
+.error-interactive:focus {
+  background-color: var(--color-error-background-focus);
+  color: var(--color-error-foreground-focus);
+  border-color: var(--color-error-border-focus);
+}
+
+.error-interactive:active {
+  background-color: var(--color-error-background-active);
+  color: var(--color-error-foreground-active);
+  border-color: var(--color-error-border-active);
+}
+
+.inactive-interactive {
+  background-color: var(--color-inactive-background);
+  color: var(--color-inactive-foreground);
+  border-color: var(--color-inactive-border);
+  transition: all var(--duration-speed-default) ease-in-out;
+}
+
+.inactive-interactive:hover {
+  background-color: var(--color-inactive-background-hover);
+  color: var(--color-inactive-foreground-hover);
+  border-color: var(--color-inactive-border-hover);
+}
+
+.inactive-interactive:focus {
+  background-color: var(--color-inactive-background-focus);
+  color: var(--color-inactive-foreground-focus);
+  border-color: var(--color-inactive-border-focus);
+}
+
+.inactive-interactive:active {
+  background-color: var(--color-inactive-background-active);
+  color: var(--color-inactive-foreground-active);
+  border-color: var(--color-inactive-border-active);
+}

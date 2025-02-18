@@ -13,29 +13,35 @@ import ShadowDisplay from '../../../components/doc-helpers/ShadowDisplay.astro';
 import TypographyDisplay from '../../../components/doc-helpers/TypographyDisplay.astro';
 import AnimationDisplay from '../../../components/doc-helpers/AnimationDisplay.astro';
 
-The styling of components is done in 3 layers:
+The components library provides a theming framework that can be used within these components and beyond on your entire site, helping to maintain a cohesive design system.
 
-**Primitive Variables** are core values to your components style. These will often be abstract variables, such as shades of a colour, or measurements of radius.
+The framework acts through a number of layers, where each one feeds down into the next. Its fully customisable implementation allows you to decouple or change these connections at any point, simply by overriding the css variables within your project.
 
-**Semantic Variables** have a many to one relationship with primitive variables, where a primitive variable may define multiple semantic variables. Semantic variables provide contextualised variables, such as a background colour. These aren't component specific, but help to create consistent themeing thoughout.
+1 - **Global** variables are at the top of the style tree, and propagate through to the lower levels. This allows you to re theme a site with only a handful of variable changes.
 
-**Component Variables** are used to directly effect component styles. By default, many component variables will inherit their values from primitive or semantic variables. Other, non generalised properties will be defined uniquely for the component. As these are the only variable actually used by a component, any of its styles can be changed without effecting another type of component.
+2 - **Primitive** variables are computed from global variables, such as shades of a global colour.
 
-The relationship between primitive, semantic, and component variables allows for users to:
+3 - **Semantic** variables apply context to the global and primitive variables. These can exist as a specified primitive, such as default, light or dark shades of a colour. THey can also exist in a broader context, where foreground, background and border styles are given as sets that can be reused throughout. Classes are also provided in these cases to improve the developer experience and promote consistent styling.
 
-- [ ] Style the majority of the site by configuring the primitive variables
-- [ ] Make minor, yet wide reaching tweaks through the semantic variables
-- [ ] Have full control of each component type through the component variables.
+4 - **Component** variables are specific to each component. _These are documented on each components page respectively_
 
-By default, the package will provide all values for a theme that matches this documentation site. Any of these variable values or relationships can be reconfigured by redefining them within your main css file.
+In order to apply your own themes on top of the base styles, simply define the variables you want to change, and they will update across your site where they are used.
 
-## Colour Schemes
+## Colour Palette
 
-Below is the default colour scheme for the site. This is already included in the CSS package and will be applied to the components by default. To start applying your custom theme, simply copy the code below into your projects CSS, and configure the values.
+The color scheme of a site is defined using the global variables shown below. From this, CSS calculations will generate a range of primitive shades centered around the global variable. These can be individually changed by overriding their css definitions.
+
+Semantic shades have been labeled. Default shades are provided when no suffix is given, such as `--color-primary'. Other semantic shades, such as 'light' are given by using the label as the suffix, e.g. `--color-primary-light`
 
 <ShowComponent filePath="./src/sample-css/colour.css">
   <ColorScheme />
 </ShowComponent>
+
+## Semantic Sets
+
+A number of categories of element styles are provided. These should be applied throughout a site to maintain visual consistency, and allow for site wide theming at the css layer - although they can be overridden (for example by tailwind classes) at each use case without effecting other instances.
+
+Each set defines the background, foreground and border colours at both a default state, and in states where there is interaction. For each set, there is a base css class, which will apply only the default state styling, and a interactive class, which includes all interactive and default state styles, applied using appropriate CSS directives.
 
 <ShowComponent filePath="./src/sample-css/semanticColours.css">
   <SemanticColors />
