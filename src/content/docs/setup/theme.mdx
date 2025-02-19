@@ -66,6 +66,23 @@ The color scheme of a site is defined using the global variables shown below. Fr
 
 Semantic shades have been labeled. Default shades are provided when no suffix is given, such as `--color-primary`. Other semantic shades, such as 'light' are given by using the label as the suffix, e.g. `--color-primary-light`
 
+<Aside type="tip">
+  Due to tailwind v4's approach to custom tailwind properties, the `--color-`
+  prefix means that we can access all of these colours within tailwind. However,
+  they can also be accessed as a standard CSS variable. This can be useful if we
+  want to apply any CSS calculations to it, but is generally not advised in
+  order to maintain colour consistency.
+  <br />
+  ```html
+  <button class="bg-primary-500">
+    This button uses our custom tailwind property
+  </button>
+  <button class="bg-[var(--color-primary-500)]">
+    This button uses our CSS variable{' '}
+  </button>
+  ```
+</Aside>
+
 <ShowComponent filePath="./src/sample-css/colour.css">
   <ColorScheme />
 </ShowComponent>

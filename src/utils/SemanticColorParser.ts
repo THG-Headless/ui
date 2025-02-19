@@ -1,14 +1,14 @@
 interface SemanticColor {
   name: string;
   value: string;
-  cssVariable: string; // Add this to store the full CSS variable name
+  cssVariable: string;
   category: string;
   layer: string;
   states: {
     hover: { cssVariable: string; value: string };
     focus: { cssVariable: string; value: string };
     active: { cssVariable: string; value: string };
-    muted: { cssVariable: string; value: string };
+    disabled: { cssVariable: string; value: string };
   };
 }
 
@@ -131,10 +131,10 @@ function extractColorWithStates(
         `${baseVar}-active`,
         `${statePrefix}-${layer}-active`
       ),
-      muted: extractVariableAndValue(
+      disabled: extractVariableAndValue(
         lines,
-        `${baseVar}-muted`,
-        `${statePrefix}-${layer}-muted`
+        `${baseVar}-disabled`,
+        `${statePrefix}-${layer}-disabled`
       ),
     },
   };

@@ -561,6 +561,9 @@
   --color-primary-emphasised-background-active: var(--color-primary-700);
   --color-primary-emphasised-foreground-active: var(--color-white);
   --color-primary-emphasised-border-active: transparent;
+  --color-primary-emphasised-background-disabled: var(--color-primary-200);
+  --color-primary-emphasised-foreground-disabled: var(--color-neutral-400);
+  --color-primary-emphasised-border-disabled: transparent;
 
   --color-primary-background: var(--color-white);
   --color-primary-foreground: var(--color-primary);
@@ -574,6 +577,9 @@
   --color-primary-background-active: var(--color-primary-100);
   --color-primary-foreground-active: var(--color-primary-700);
   --color-primary-border-active: var(--color-primary-700);
+  --color-primary-background-disabled: var(--color-neutral-50);
+  --color-primary-foreground-disabled: var(--color-neutral-400);
+  --color-primary-border-disabled: var(--color-neutral-200);
 
   --color-primary-subtle-background: transparent;
   --color-primary-subtle-foreground: var(--color-primary);
@@ -587,6 +593,9 @@
   --color-primary-subtle-background-active: var(--color-primary-100);
   --color-primary-subtle-foreground-active: var(--color-primary-700);
   --color-primary-subtle-border-active: transparent;
+  --color-primary-subtle-background-disabled: transparent;
+  --color-primary-subtle-foreground-disabled: var(--color-neutral-300);
+  --color-primary-subtle-border-disabled: transparent;
 
   /* Secondary Semantic Sets */
   --color-secondary-emphasised-background: var(--color-secondary);
@@ -601,6 +610,9 @@
   --color-secondary-emphasised-background-active: var(--color-secondary-700);
   --color-secondary-emphasised-foreground-active: var(--color-white);
   --color-secondary-emphasised-border-active: transparent;
+  --color-secondary-emphasised-background-disabled: var(--color-secondary-200);
+  --color-secondary-emphasised-foreground-disabled: var(--color-neutral-400);
+  --color-secondary-emphasised-border-disabled: transparent;
 
   --color-secondary-background: var(--color-white);
   --color-secondary-foreground: var(--color-secondary);
@@ -614,6 +626,9 @@
   --color-secondary-background-active: var(--color-secondary-100);
   --color-secondary-foreground-active: var(--color-secondary-700);
   --color-secondary-border-active: var(--color-secondary-700);
+  --color-secondary-background-disabled: var(--color-neutral-50);
+  --color-secondary-foreground-disabled: var(--color-neutral-400);
+  --color-secondary-border-disabled: var(--color-neutral-200);
 
   --color-secondary-subtle-background: transparent;
   --color-secondary-subtle-foreground: var(--color-secondary);
@@ -627,6 +642,9 @@
   --color-secondary-subtle-background-active: var(--color-secondary-100);
   --color-secondary-subtle-foreground-active: var(--color-secondary-700);
   --color-secondary-subtle-border-active: transparent;
+  --color-secondary-subtle-background-disabled: transparent;
+  --color-secondary-subtle-foreground-disabled: var(--color-neutral-300);
+  --color-secondary-subtle-border-disabled: transparent;
 
   /* Tertiary Semantic Sets */
   --color-tertiary-emphasised-background: var(--color-tertiary);
@@ -641,6 +659,9 @@
   --color-tertiary-emphasised-background-active: var(--color-tertiary-700);
   --color-tertiary-emphasised-foreground-active: var(--color-white);
   --color-tertiary-emphasised-border-active: transparent;
+  --color-tertiary-emphasised-background-disabled: var(--color-tertiary-200);
+  --color-tertiary-emphasised-foreground-disabled: var(--color-neutral-400);
+  --color-tertiary-emphasised-border-disabled: transparent;
 
   --color-tertiary-background: var(--color-white);
   --color-tertiary-foreground: var(--color-tertiary);
@@ -654,6 +675,9 @@
   --color-tertiary-background-active: var(--color-tertiary-100);
   --color-tertiary-foreground-active: var(--color-tertiary-700);
   --color-tertiary-border-active: var(--color-tertiary-700);
+  --color-tertiary-background-disabled: var(--color-neutral-50);
+  --color-tertiary-foreground-disabled: var(--color-neutral-400);
+  --color-tertiary-border-disabled: var(--color-neutral-200);
 
   --color-tertiary-subtle-background: transparent;
   --color-tertiary-subtle-foreground: var(--color-tertiary);
@@ -667,6 +691,9 @@
   --color-tertiary-subtle-background-active: var(--color-tertiary-100);
   --color-tertiary-subtle-foreground-active: var(--color-tertiary-700);
   --color-tertiary-subtle-border-active: transparent;
+  --color-tertiary-subtle-background-disabled: transparent;
+  --color-tertiary-subtle-foreground-disabled: var(--color-neutral-300);
+  --color-tertiary-subtle-border-disabled: transparent;
 
   --text-desktop-2xl: 45px;
   --line-height-desktop-2xl: 56px;

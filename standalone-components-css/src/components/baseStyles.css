@@ -141,7 +141,7 @@
     border-color: var(--color-tertiary-subtle-border);
   }
 
-  .muted-interactive {
+  .muted {
     background-color: var(--color-muted-background);
     color: var(--color-muted-foreground);
     border-color: var(--color-muted-border);
@@ -172,6 +172,12 @@
     border-color: var(--color-border-active);
   }
 
+  .default-interactive:disabled {
+    background-color: var(--color-neutral-50);
+    color: var(--color-neutral-400);
+    border-color: var(--color-neutral-200);
+  }
+
   .site-header-interactive {
     background-color: var(--color-site-header-background);
     color: var(--color-site-header-foreground);
@@ -194,6 +200,12 @@
     background-color: var(--color-site-header-background-active);
     color: var(--color-site-header-foreground-active);
     border-color: var(--color-site-header-border-active);
+  }
+
+  .site-header-interactive:disabled {
+    background-color: var(--color-neutral-50);
+    color: var(--color-neutral-400);
+    border-color: var(--color-neutral-200);
   }
 
   .footer-interactive {
@@ -220,6 +232,12 @@
     border-color: var(--color-footer-border-active);
   }
 
+  .footer-interactive:disabled {
+    background-color: var(--color-neutral-50);
+    color: var(--color-neutral-400);
+    border-color: var(--color-neutral-200);
+  }
+
   .card-interactive {
     background-color: var(--color-card-background);
     color: var(--color-card-foreground);
@@ -242,6 +260,12 @@
     background-color: var(--color-card-background-active);
     color: var(--color-card-foreground-active);
     border-color: var(--color-card-border-active);
+  }
+
+  .card-interactive:disabled {
+    background-color: var(--color-neutral-50);
+    color: var(--color-neutral-400);
+    border-color: var(--color-neutral-200);
   }
 
   .navigation-interactive {
@@ -268,6 +292,12 @@
     border-color: var(--color-navigation-border-active);
   }
 
+  .navigation-interactive:disabled {
+    background-color: var(--color-neutral-50);
+    color: var(--color-neutral-400);
+    border-color: var(--color-neutral-200);
+  }
+
   .control-interactive {
     background-color: var(--color-control-background);
     color: var(--color-control-foreground);
@@ -290,6 +320,12 @@
     background-color: var(--color-control-background-active);
     color: var(--color-control-foreground-active);
     border-color: var(--color-control-border-active);
+  }
+
+  .control-interactive:disabled {
+    background-color: var(--color-neutral-50);
+    color: var(--color-neutral-400);
+    border-color: var(--color-neutral-200);
   }
 
   .modal-interactive {
@@ -316,6 +352,12 @@
     border-color: var(--color-modal-border-active);
   }
 
+  .modal-interactive:disabled {
+    background-color: var(--color-neutral-50);
+    color: var(--color-neutral-400);
+    border-color: var(--color-neutral-200);
+  }
+
   .container-interactive {
     background-color: var(--color-container-background);
     color: var(--color-container-foreground);
@@ -338,6 +380,12 @@
     background-color: var(--color-container-background-active);
     color: var(--color-container-foreground-active);
     border-color: var(--color-container-border-active);
+  }
+
+  .container-interactive:disabled {
+    background-color: var(--color-neutral-50);
+    color: var(--color-neutral-400);
+    border-color: var(--color-neutral-200);
   }
 
   .attention-interactive {
@@ -364,6 +412,12 @@
     border-color: var(--color-attention-border-active);
   }
 
+  .attention-interactive:disabled {
+    background-color: var(--color-attention-50);
+    color: var(--color-neutral-400);
+    border-color: var(--color-attention-200);
+  }
+
   .success-interactive {
     background-color: var(--color-success-background);
     color: var(--color-success-foreground);
@@ -386,6 +440,12 @@
     background-color: var(--color-success-background-active);
     color: var(--color-success-foreground-active);
     border-color: var(--color-success-border-active);
+  }
+
+  .success-interactive:disabled {
+    background-color: var(--color-success-50);
+    color: var(--color-neutral-400);
+    border-color: var(--color-success-200);
   }
 
   .error-interactive {
@@ -412,6 +472,12 @@
     border-color: var(--color-error-border-active);
   }
 
+  .error-interactive:disabled {
+    background-color: var(--color-error-50);
+    color: var(--color-neutral-400);
+    border-color: var(--color-error-200);
+  }
+
   .inactive-interactive {
     background-color: var(--color-inactive-background);
     color: var(--color-inactive-foreground);
@@ -434,6 +500,12 @@
     background-color: var(--color-inactive-background-active);
     color: var(--color-inactive-foreground-active);
     border-color: var(--color-inactive-border-active);
+  }
+
+  .inactive-interactive:disabled {
+    background-color: var(--color-neutral-50);
+    color: var(--color-neutral-400);
+    border-color: var(--color-neutral-200);
   }
 
   .primary-emphasised-interactive {
@@ -460,6 +532,12 @@
     border-color: var(--color-primary-emphasised-border-active);
   }
 
+  .primary-emphasised-interactive:disabled {
+    background-color: var(--color-primary-emphasised-background-disabled);
+    color: var(--color-primary-emphasised-foreground-disabled);
+    border-color: var(--color-primary-emphasised-border-disabled);
+  }
+
   .secondary-emphasised-interactive {
     background-color: var(--color-secondary-emphasised-background);
     color: var(--color-secondary-emphasised-foreground);
@@ -482,6 +560,12 @@
     background-color: var(--color-secondary-emphasised-background-active);
     color: var(--color-secondary-emphasised-foreground-active);
     border-color: var(--color-secondary-emphasised-border-active);
+  }
+
+  .secondary-emphasised-interactive:disabled {
+    background-color: var(--color-secondary-emphasised-background-disabled);
+    color: var (--color-secondary-emphasised-foreground-disabled);
+    border-color: var(--color-secondary-emphasised-border-disabled);
   }
 
   .tertiary-emphasised-interactive {
@@ -508,6 +592,12 @@
     border-color: var(--color-tertiary-emphasised-border-active);
   }
 
+  .tertiary-emphasised-interactive:disabled {
+    background-color: var(--color-tertiary-emphasised-background-disabled);
+    color: var(--color-tertiary-emphasised-foreground-disabled);
+    border-color: var(--color-tertiary-emphasised-border-disabled);
+  }
+
   .muted-interactive {
     background-color: var(--color-muted-background);
     color: var(--color-muted-foreground);
@@ -530,6 +620,12 @@
     background-color: var(--color-muted-background-active);
     color: var(--color-muted-foreground-active);
     border-color: var(--color-muted-border-active);
+  }
+
+  .muted-interactive:disabled {
+    background-color: var(--color-neutral-50);
+    color: var(--color-neutral-400);
+    border-color: transparent;
   }
 
   .text-2xl {
