@@ -141,6 +141,12 @@
     border-color: var(--color-tertiary-subtle-border);
   }
 
+  .muted-interactive {
+    background-color: var(--color-muted-background);
+    color: var(--color-muted-foreground);
+    border-color: var(--color-muted-border);
+  }
+
   /* Interactive Variants */
   .default-interactive {
     background-color: var(--color-background);
@@ -500,6 +506,30 @@
     background-color: var(--color-tertiary-emphasised-background-active);
     color: var(--color-tertiary-emphasised-foreground-active);
     border-color: var(--color-tertiary-emphasised-border-active);
+  }
+
+  .muted-interactive {
+    background-color: var(--color-muted-background);
+    color: var(--color-muted-foreground);
+    border-color: var(--color-muted-border);
+  }
+
+  .muted-interactive:hover {
+    background-color: var(--color-muted-background-hover);
+    color: var(--color-muted-foreground-hover);
+    border-color: var(--color-muted-border-hover);
+  }
+
+  .muted-interactive:focus {
+    background-color: var(--color-muted-background-focus);
+    color: var(--color-muted-foreground-focus);
+    border-color: var(--color-muted-border-focus);
+  }
+
+  .muted-interactive:active {
+    background-color: var(--color-muted-background-active);
+    color: var(--color-muted-foreground-active);
+    border-color: var(--color-muted-border-active);
   }
 
   .text-2xl {

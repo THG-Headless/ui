@@ -357,6 +357,22 @@
   --color-border-focus: var(--color-neutral-400);
   --color-border-active: var(--color-neutral-500);
 
+  /* Muted */
+  --color-muted-background: var(--color-neutral-200);
+  --color-muted-background-hover: var(--color-neutral-300);
+  --color-muted-background-focus: var(--color-neutral-300);
+  --color-muted-background-active: var(--color-neutral-400);
+
+  --color-muted-foreground: var(--color-neutral-700);
+  --color-muted-foreground-hover: var(--color-neutral-700);
+  --color-muted-foreground-focus: var(--color-neutral-700);
+  --color-muted-foreground-active: var(--color-neutral-700);
+
+  --color-muted-border: transparent;
+  --color-muted-border-hover: transparent;
+  --color-muted-border-focus: transparent;
+  --color-muted-border-active: transparent;
+
   /* Site site-header */
   --color-site-header-background: var(--color-white);
   --color-site-header-background-hover: var(--color-primary-hover);
@@ -505,38 +521,32 @@
   --color-error-background-hover: var(--color-error-100);
   --color-error-background-focus: var(--color-error-200);
   --color-error-background-active: var(--color-error-300);
-  --color-error-background-muted: var(--color-error-100);
 
   --color-error-foreground: var(--color-error);
   --color-error-foreground-hover: var(--color-error-600);
   --color-error-foreground-focus: var(--color-error-700);
   --color-error-foreground-active: var(--color-error-800);
-  --color-error-foreground-muted: var(--color-error-400);
 
   --color-error-border: var(--color-error-300);
   --color-error-border-hover: var(--color-error-400);
   --color-error-border-focus: var(--color-error-500);
   --color-error-border-active: var(--color-error-600);
-  --color-error-border-muted: var(--color-error-200);
 
   /* Inactive */
   --color-inactive-background: var(--color-neutral-100);
   --color-inactive-background-hover: var(--color-neutral-200);
   --color-inactive-background-focus: var(--color-neutral-300);
   --color-inactive-background-active: var(--color-neutral-400);
-  --color-inactive-background-muted: var(--color-neutral-200);
 
   --color-inactive-foreground: var(--color-neutral-500);
   --color-inactive-foreground-hover: var(--color-neutral-600);
   --color-inactive-foreground-focus: var(--color-neutral-700);
   --color-inactive-foreground-active: var(--color-neutral-800);
-  --color-inactive-foreground-muted: var(--color-neutral-400);
 
   --color-inactive-border: var(--color-neutral-300);
   --color-inactive-border-hover: var(--color-neutral-400);
   --color-inactive-border-focus: var(--color-neutral-500);
   --color-inactive-border-active: var(--color-neutral-600);
-  --color-inactive-border-muted: var(--color-neutral-200);
 
   /* Primary Semantic Sets */
   --color-primary-emphasised-background: var(--color-primary);
