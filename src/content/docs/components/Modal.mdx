@@ -7,7 +7,6 @@ import { Aside } from '@astrojs/starlight/components';
 import ShowComponent from '../../../components/doc-helpers/ShowComponent.astro';
 import BasicModal from '../../../components/modals/BasicModal.html';
 import NoBackdropModal from '../../../components/modals/NoBackdropModal.html';
-import ContentModal from '../../../components/modals/ContentModal.html';
 import HeroModal from '../../../components/modals/HeroModal.html';
 import ComplexModal from '../../../components/modals/ComplexModal.html';
 import BackdropCloseModal from '../../../components/modals/BackdropCloseModal.html';
@@ -106,25 +105,6 @@ While backdrop click-away can be appropriate for non-critical interactions like 
 Always prefer explicit dismissal method of the close button for important modal interactions.
 
 </Aside>
-
-### Content Structure
-
-To create a structured content layout, use the `modal-title` class for headings and `modal-body` class for content.
-
-<ShowComponent>
-  <ContentModal />
-</ShowComponent>
-
-| Variable                         | Default Value                  | Description                     |
-| -------------------------------- | ------------------------------ | ------------------------------- |
-| `--modal-text-title-size`        | `var(--text-md)`               | Font size for modal title       |
-| `--modal-text-title-line-height` | `var(--line-height-md)`        | Line height for modal title     |
-| `--modal-text-title-line-weight` | `var(--font-semi-bold)`        | Font weight for modal title     |
-| `--modal-text-title-color`       | `var(--color-high-emphasis)`   | Color for modal title text      |
-| `--modal-text-body-size`         | `var(--text-body)`             | Font size for modal body text   |
-| `--modal-text-body-line-height`  | `var(--line-height-body)`      | Line height for modal body text |
-| `--modal-text-body-line-weight`  | `var(--font-normal)`           | Font weight for modal body      |
-| `--modal-text-body-color`        | `var(--color-medium-emphasis)` | Color for modal body text       |
 
 ### Hero Image
 

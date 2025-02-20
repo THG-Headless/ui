@@ -49,20 +49,22 @@ const states = ['Hover', 'Focus', 'Active', 'Disabled'] as const;
         <div class="color-content">
           <!-- Semantic Button -->
           <button
-            class="semantic-button shadow-global"
+            class="semantic-button shadow-site"
             style={{
-              '--bg-base': getCssVar(`--color-${baseNames.bg}`),
-              '--bg-hover': getCssVar(`--color-${baseNames.bg}-hover`),
-              '--bg-focus': getCssVar(`--color-${baseNames.bg}-focus`),
-              '--bg-active': getCssVar(`--color-${baseNames.bg}-active`),
-              '--fg-base': getCssVar(`--color-${baseNames.fg}`),
-              '--fg-hover': getCssVar(`--color-${baseNames.fg}-hover`),
-              '--fg-focus': getCssVar(`--color-${baseNames.fg}-focus`),
-              '--fg-active': getCssVar(`--color-${baseNames.fg}-active`),
-              '--border-base': getCssVar(`--color-${baseNames.border}`),
-              '--border-hover': getCssVar(`--color-${baseNames.border}-hover`),
-              '--border-focus': getCssVar(`--color-${baseNames.border}-focus`),
-              '--border-active': getCssVar(`--color-${baseNames.border}-active`),
+              '--bg-base': group.background.value,
+              '--bg-hover': group.background.states.hover.value,
+              '--bg-focus': group.background.states.focus.value,
+              '--bg-active': group.background.states.active.value,
+              
+              '--fg-base': group.foreground.value,
+              '--fg-hover': group.foreground.states.hover.value,
+              '--fg-focus': group.foreground.states.focus.value,
+              '--fg-active': group.foreground.states.active.value,
+              
+              '--border-base': group.border.value,
+              '--border-hover': group.border.states.hover.value,
+              '--border-focus': group.border.states.focus.value,
+              '--border-active': group.border.states.active.value,
             }}
           >
             {group.name.replace(/-/g, ' ').replace(/\w\S*/g, (word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())}

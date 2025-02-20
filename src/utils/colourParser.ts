@@ -58,7 +58,7 @@ export function parseColourScheme(cssContent: string) {
   // Process each color family
   colorFamilies.forEach((family) => {
     // Get global color - Simpler matching
-    const globalPattern = `--color-global-${family}:`;
+    const globalPattern = `--color-site-${family}:`;
     const globalColor = normalizedContent.find((line) =>
       line.startsWith(globalPattern)
     );

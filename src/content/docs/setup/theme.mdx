@@ -12,57 +12,62 @@ import CornerDisplay from '../../../components/doc-helpers/CornerDisplay.astro';
 import ShadowDisplay from '../../../components/doc-helpers/ShadowDisplay.astro';
 import TypographyDisplay from '../../../components/doc-helpers/TypographyDisplay.astro';
 import AnimationDisplay from '../../../components/doc-helpers/AnimationDisplay.astro';
+import ThemeAnimation from '../../../components/doc-helpers/ThemeAnimation.tsx';
 import { Aside } from '@astrojs/starlight/components';
 
 The components library provides a theming framework that can be used within these components and beyond on your entire site, helping to maintain a cohesive design system.
 
 The framework acts through a number of layers, where each one feeds down into the next. Its fully customisable implementation allows you to decouple or change these connections at any point, simply by overriding the css variables within your project.
 
-1 - **Global** variables are at the top of the style tree, and propagate through to the lower levels. This allows you to re theme a site with only a handful of variable changes.
+1 - **site** variables are at the top of the style tree, and propagate through to the lower levels. This allows you to re theme a site with only a handful of variable changes.
 
-2 - **Primitive** variables are computed from global variables, such as shades of a global colour.
+2 - **Primitive** variables are computed from site variables, such as shades of a site colour.
 
-3 - **Semantic** variables apply context to the global and primitive variables. These can exist as a specified primitive, such as default, light or dark shades of a colour. THey can also exist in a broader context, where foreground, background and border styles are given as sets that can be reused throughout. Classes are also provided in these cases to improve the developer experience and promote consistent styling.
+3 - **Semantic** variables apply context to the site and primitive variables. These can exist as a specified primitive, such as default, light or dark shades of a colour. THey can also exist in a broader context, where foreground, background and border styles are given as sets that can be reused throughout. Classes are also provided in these cases to improve the developer experience and promote consistent styling.
 
 4 - **Component** variables are specific to each component. _These are documented on each components page respectively_
 
 In order to apply your own themes on top of the base styles, simply define the variables you want to change, and they will update across your site where they are used.
 
-## Global Variables
+## Theming System Visualised
 
-The design system is based off the following global variables. These can be overridden to change the appearance of the entire site.
+<ThemeAnimation client:load />
+
+## Site Variables
+
+The design system is based off the following site variables. These can be overridden to change the appearance of the entire site.
 
 ### Colours
 
-`--color-primary` - The primary or brand colour
+`--color-site-primary` - The primary or brand colour
 
 <br />
-`--color-secondary` - The secondary colour
+`--color-site-secondary` - The secondary colour
 <br />
-`--color-tertiary` - The tertiary colour
+`--color--site-tertiary` - The tertiary colour
 <br />
-`--color-neutral` - The neutral tone, typically a shade of grey
+`--color-site-neutral` - The neutral tone, typically a shade of grey
 <br />
-`--color-attention` - The attention colour
+`--color-site-attention` - The attention colour
 <br />
-`--color-success` - The success colour
+`--color-site-success` - The success colour
 <br />
-`--color-error` - The error colour
+`--color-site-error` - The error colour
 <br />
-`--color-promotion` - The promotion colour, used sparingly to highlight
+`--color-site-promotion` - The promotion colour, used sparingly to highlight
 important information such as promotional items
 
 ### Radius
 
-`--radius-global` - The global radius for all rounded corners
+`--radius-site` - The site radius for all rounded corners
 
 ### Shadows
 
-`--shadow-global` - The global shadow for all components
+`--shadow-site` - The site shadow for all components
 
 ## Colour Palette
 
-The color scheme of a site is defined using the global variables shown below. From this, CSS calculations will generate a range of primitive shades centered around the global variable, where the global colour is 500 on a scale of 50 _(lightest)_ to 950 _(darkest)_. These can be individually changed by overriding their css definitions.
+The color scheme of a site is defined using the site variables shown below. From this, CSS calculations will generate a range of primitive shades centered around the site variable, where the site colour is 500 on a scale of 50 _(lightest)_ to 950 _(darkest)_. These can be individually changed by overriding their css definitions.
 
 Semantic shades have been labeled. Default shades are provided when no suffix is given, such as `--color-primary`. Other semantic shades, such as 'light' are given by using the label as the suffix, e.g. `--color-primary-light`
 
@@ -87,7 +92,7 @@ Semantic shades have been labeled. Default shades are provided when no suffix is
   <ColorScheme />
 </ShowComponent>
 
-## Semantic Sets
+## Skins
 
 A number of categories of element styles are provided. These should be applied throughout a site to maintain visual consistency, and allow for site wide theming at the css layer - although they can be overridden (for example by tailwind classes) at each use case without effecting other instances.
 
@@ -113,7 +118,7 @@ For example, `card` will apply the default styles, and `card-interactive` will a
 
 ## Radius
 
-By default, the global radius is applied to all rounded corners. This can be overridden using custom CSS or tailwind at a per use case level, but it is advised to use the global radius provided to maintain consistency and allow for easy updates of your theme. If using other radii, it is advised to use a css calculation to calculate the radius from the global radius, to maintain consistency if the global radius is updated.
+By default, the site radius is applied to all rounded corners. This can be overridden using custom CSS or tailwind at a per use case level, but it is advised to use the site radius provided to maintain consistency and allow for easy updates of your theme. If using other radii, it is advised to use a css calculation to calculate the radius from the site radius, to maintain consistency if the site radius is updated.
 
 <ShowComponent filePath="./src/sample-css/corners.css">
   <CornerDisplay />
@@ -121,7 +126,7 @@ By default, the global radius is applied to all rounded corners. This can be ove
 
 ## Shadow
 
-Like with the radius, the use of a singular global shadow is promoted in order to maintain consistency and allow for easy updates of your theme. As with the radius, this can be overridden at a per use case level, but it is advised to use the global shadow provided.
+Like with the radius, the use of a singular site shadow is promoted in order to maintain consistency and allow for easy updates of your theme. As with the radius, this can be overridden at a per use case level, but it is advised to use the site shadow provided.
 
 <ShowComponent filePath="./src/sample-css/shadows.css">
   <ShadowDisplay />

@@ -1,16 +1,16 @@
 @theme {
   /* Global Colors */
-  --color-global-primary: oklch(0.43 0.0147 248.17);
-  --color-global-secondary: oklch(0.67 0.15 250);
-  --color-global-tertiary: oklch(0.65 0.2 300);
-  --color-global-neutral: oklch(0.64 0 0);
-  --color-global-success: oklch(0.5 0.15 150);
-  --color-global-attention: oklch(0.55 0.12 250);
-  --color-global-error: oklch(0.55 0.2 30);
-  --color-global-promotion: oklch(0.6 0.25 30);
+  --color-primary: oklch(0.43 0.0147 248.17);
+  --color-secondary: oklch(0.67 0.15 250);
+  --color-tertiary: oklch(0.65 0.2 300);
+  --color-neutral: oklch(0.64 0 0);
+  --color-success: oklch(0.5 0.15 150);
+  --color-attention: oklch(0.55 0.12 250);
+  --color-error: oklch(0.55 0.2 30);
+  --color-promotion: oklch(0.6 0.25 30);
 
   /* Primary Colors */
-  --color-primary-500: oklch(from var(--color-global-primary) l c h);
+  --color-primary-500: oklch(from var(--color-primary) l c h);
 
   --color-primary-400: oklch(
     from var(--color-primary-500) calc(1 - (1 - l) * 0.6) calc(c * 0.8) h
@@ -45,7 +45,7 @@
   );
 
   /* Secondary Colors */
-  --color-secondary-500: oklch(from var(--color-global-secondary) l c h);
+  --color-secondary-500: oklch(from var(--color-secondary) l c h);
 
   --color-secondary-400: oklch(
     from var(--color-secondary-500) calc(1 - (1 - l) * 0.6) calc(c * 0.8) h
@@ -80,7 +80,7 @@
   );
 
   /* Tertiary Colors */
-  --color-tertiary-500: oklch(from var(--color-global-tertiary) l c h);
+  --color-tertiary-500: oklch(from var(--color-tertiary) l c h);
 
   --color-tertiary-400: oklch(
     from var(--color-tertiary-500) calc(1 - (1 - l) * 0.6) calc(c * 0.8) h
@@ -115,7 +115,7 @@
   );
 
   /* Neutral Colors */
-  --color-neutral-500: oklch(from var(--color-global-neutral) l c h);
+  --color-neutral-500: oklch(from var(--color-neutral) l c h);
 
   --color-neutral-400: oklch(
     from var(--color-neutral-500) calc(1 - (1 - l) * 0.6) calc(c * 0.8) h
@@ -149,19 +149,19 @@
   );
 
   /* Status Colors */
-  --color-attention: oklch(from var(--color-global-attention) l c h);
+  --color-attention: oklch(from var(--color-attention) l c h);
   --color-attention-light: oklch(from var(--color-attention) 1 calc(c * 0.5) h);
 
-  --color-success: oklch(from var(--color-global-success) l c h);
+  --color-success: oklch(from var(--color-success) l c h);
   --color-success-light: oklch(from var(--color-success) 1 calc(c * 0.5) h);
 
-  --color-error: oklch(from var(--color-global-error) l c h);
+  --color-error: oklch(from var(--color-error) l c h);
   --color-error-light: oklch(from var(--color-error) 1 calc(c * 0.5) h);
 
-  --color-promotion: oklch(from var(--color-global-promotion) l c h);
+  --color-promotion: oklch(from var(--color-promotion) l c h);
 
   /* Status Color Scales */
-  --color-attention-500: oklch(from var(--color-global-attention) l c h);
+  --color-attention-500: oklch(from var(--color-attention) l c h);
   --color-attention-400: oklch(
     from var(--color-attention-500) calc(1 - (1 - l) * 0.6) calc(c * 0.8) h
   );
@@ -193,7 +193,7 @@
     from var(--color-attention-900) calc(l * 0.8) calc(c * 1.1) h
   );
 
-  --color-success-500: oklch(from var(--color-global-success) l c h);
+  --color-success-500: oklch(from var(--color-success) l c h);
   --color-success-400: oklch(
     from var(--color-success-500) calc(1 - (1 - l) * 0.6) calc(c * 0.8) h
   );
@@ -225,7 +225,7 @@
     from var(--color-success-900) calc(l * 0.8) calc(c * 1.1) h
   );
 
-  --color-error-500: oklch(from var(--color-global-error) l c h);
+  --color-error-500: oklch(from var(--color-error) l c h);
   --color-error-400: oklch(
     from var(--color-error-500) calc(1 - (1 - l) * 0.6) calc(c * 0.8) h
   );
@@ -257,7 +257,7 @@
     from var(--color-error-900) calc(l * 0.8) calc(c * 1.1) h
   );
 
-  --color-promotion-500: oklch(from var(--color-global-promotion) l c h);
+  --color-promotion-500: oklch(from var(--color-promotion) l c h);
   --color-promotion-400: oklch(
     from var(--color-promotion-500) calc(1 - (1 - l) * 0.6) calc(c * 0.8) h
   );

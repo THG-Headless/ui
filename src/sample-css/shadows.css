@@ -1,4 +1,4 @@
 @theme {
-  --shadow-global: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+  --shadow-site: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
     0 2px 4px -1px rgba(0, 0, 0, 0.06), 0 2px 8px 0 rgba(0, 0, 0, 0.1);
 }

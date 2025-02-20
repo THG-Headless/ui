@@ -9,7 +9,7 @@ export function parseShadowScheme(cssContent: string): ShadowVariable | null {
 
   for (const line of lines) {
     const line_trim = line.trim();
-    if (line_trim.startsWith('--shadow-global:')) {
+    if (line_trim.startsWith('--shadow-site:')) {
       shadowValue = line_trim
         .substring(line_trim.indexOf(':') + 1)
         .replace(';', '')
@@ -27,7 +27,7 @@ export function parseShadowScheme(cssContent: string): ShadowVariable | null {
 
   return shadowValue
     ? {
-        name: '--shadow-global',
+        name: '--shadow-site',
         value: shadowValue,
       }
     : null;

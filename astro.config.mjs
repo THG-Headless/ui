@@ -2,6 +2,8 @@ import { defineConfig, passthroughImageService } from 'astro/config';
 import starlight from '@astrojs/starlight';
 import tailwindcss from '@tailwindcss/vite';
 
+import react from '@astrojs/react';
+
 export default defineConfig({
   site: 'https://components.thgaltitude.com',
   vite: {
@@ -37,26 +39,24 @@ export default defineConfig({
   image: {
     service: passthroughImageService(),
   },
-  integrations: [
-    starlight({
-      title: 'Altitude Standalone Components',
-      customCss: ['/src/styles.css', '@fontsource-variable/inter'],
-      logo: {
-        replacesTitle: true,
-        light: '/src/assets/logo-long-light.svg',
-        dark: '/src/assets/logo-long.svg',
-        link: 'https://thgaltitude.com/',
+  integrations: [starlight({
+    title: 'Altitude Standalone Components',
+    customCss: ['/src/styles.css', '@fontsource-variable/inter'],
+    logo: {
+      replacesTitle: true,
+      light: '/src/assets/logo-long-light.svg',
+      dark: '/src/assets/logo-long.svg',
+      link: 'https://thgaltitude.com/',
+    },
+    sidebar: [
+      {
+        label: 'Getting Started',
+        autogenerate: { directory: 'setup' },
       },
-      sidebar: [
-        {
-          label: 'Getting Started',
-          autogenerate: { directory: 'setup' },
-        },
-        {
-          label: 'Components',
-          autogenerate: { directory: 'components' },
-        },
-      ],
-    }),
-  ],
+      {
+        label: 'Components',
+        autogenerate: { directory: 'components' },
+      },
+    ],
+  }), react()],
 });
