@@ -1,5 +1,5 @@
 name: Publish to NPM
-run-name: "Create Release Notes and Publish"
+run-name: 'Create Release Notes and Publish'
 
 permissions:
   contents: write
@@ -7,7 +7,7 @@ permissions:
 on:
   push:
     tags:
-      - "v*"
+      - 'v*'
 
 jobs:
   create-release-notes:
@@ -36,7 +36,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 18.15.0
-          cache: "npm"
+          cache: 'npm'
 
       - name: Set Git Config
         run: |
@@ -52,6 +52,7 @@ jobs:
       - name: Install and Build
         run: |
           cd standalone-components-css
+          npm install
           npm ci
           npm run build
 
