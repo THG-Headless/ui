@@ -1,28 +1,30 @@
 <button
-  class="btn btn-primary btn-high"
+  class="skin-primary-emphasised interactive btn"
   onclick="basicModal.showModal()"
   aria-haspopup="dialog"
-  aria-controls="closeBasicModal"
+  aria-controls="basicModal"
 >
-  Open Modal with Close Button
+  Open Basic Modal
 </button>
 
 <dialog
   id="basicModal"
-  class="modal"
+  class="modal-dialog"
   role="dialog"
   aria-modal="true"
-  aria-label="Close Button Modal"
+  aria-label="Basic Modal"
 >
-  <div class="modal-box">
-    <form method="dialog" class="modal-control-bar">
-      <button class="modal-close-button">
+  <div class="skin-modal modal-container">
+    <form method="dialog" class="modal-header">
+      <button class="modal-close interactive-foreground">
         <span>Close</span>
         <span aria-hidden="true">✕</span>
       </button>
     </form>
-    <div id="close-button-modal-content">
-      Click the close button or press ESC to close
+    <div class="modal-content">
+      <div id="basic-modal-content" class="text-body">
+        Click the close button or press ESC to close
+      </div>
     </div>
   </div>
 </dialog>

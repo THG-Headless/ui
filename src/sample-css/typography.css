@@ -1,66 +1,48 @@
 @theme {
-  /* Responsive Sizes */
-  --text-size-xl2: var(--text-size-mobile-xl2);
-  --line-height-xl2: var(--line-height-mobile-xl2);
-  --text-size-xl1: var(--text-size-mobile-xl1);
-  --line-height-xl1: var(--line-height-mobile-xl1);
-  --text-size-l2: var(--text-size-mobile-l2);
-  --line-height-l2: var(--line-height-mobile-l2);
-  --text-size-l1: var(--text-size-mobile-l1);
-  --line-height-l1: var(--line-height-mobile-l1);
-  --text-size-md: var(--text-size-mobile-md);
-  --line-height-md: var(--line-height-mobile-md);
-  --text-size-body: var(--text-size-mobile-body);
-  --line-height-body: var(--line-height-mobile-body);
-  --text-size-sm: var(--text-size-mobile-sm);
-  --line-height-sm: var(--line-height-mobile-sm);
-  --text-size-xs: var(--text-size-mobile-xs);
-  --line-height-xs: var(--line-height-mobile-xs);
-
   /* Desktop Sizes */
-  --text-size-desktop-xl2: 45px;
-  --line-height-desktop-xl2: 56px;
-  --text-size-desktop-xl1: 37px;
-  --line-height-desktop-xl1: 48px;
-  --text-size-desktop-l2: 30px;
-  --line-height-desktop-l2: 40px;
-  --text-size-desktop-l1: 24px;
-  --line-height-desktop-l1: 32px;
-  --text-size-desktop-md: 20px;
+  --text-desktop-2xl: 45px;
+  --line-height-desktop-2xl: 56px;
+  --text-desktop-xl: 37px;
+  --line-height-desktop-xl: 48px;
+  --text-desktop-2lg: 30px;
+  --line-height-desktop-2lg: 40px;
+  --text-desktop-lg: 24px;
+  --line-height-desktop-lg: 32px;
+  --text-desktop-md: 20px;
   --line-height-desktop-md: 28px;
-  --text-size-desktop-body: 16px;
+  --text-desktop-body: 16px;
   --line-height-desktop-body: 24px;
-  --text-size-desktop-sm: 14px;
+  --text-desktop-sm: 14px;
   --line-height-desktop-sm: 20px;
-  --text-size-desktop-xs: 13px;
+  --text-desktop-xs: 13px;
   --line-height-desktop-xs: 20px;
 
   /* Mobile Font Sizes */
-  --text-size-mobile-xl2: 32px;
-  --line-height-mobile-xl2: 40px;
-  --text-size-mobile-xl1: 28px;
-  --line-height-mobile-xl1: 36px;
-  --text-size-mobile-l2: 24px;
-  --line-height-mobile-l2: 32px;
-  --text-size-mobile-l1: 21px;
-  --line-height-mobile-l1: 28px;
-  --text-size-mobile-md: 18px;
+  --text-mobile-2xl: 32px;
+  --line-height-mobile-2xl: 40px;
+  --text-mobile-xl: 28px;
+  --line-height-mobile-xl: 36px;
+  --text-mobile-2lg: 24px;
+  --line-height-mobile-2lg: 32px;
+  --text-mobile-lg: 21px;
+  --line-height-mobile-lg: 28px;
+  --text-mobile-md: 18px;
   --line-height-mobile-md: 24px;
-  --text-size-mobile-body: 16px;
+  --text-mobile-body: 16px;
   --line-height-mobile-body: 24px;
-  --text-size-mobile-sm: 14px;
+  --text-mobile-sm: 14px;
   --line-height-mobile-sm: 20px;
-  --text-size-mobile-xs: 13px;
+  --text-mobile-xs: 13px;
   --line-height-mobile-xs: 20px;
 
   /* Font Weights */
-  --font-weight-thin: 100;
-  --font-weight-extra-light: 200;
-  --font-weight-light: 300;
-  --font-weight-normal: 400;
-  --font-weight-medium: 500;
-  --font-weight-semi-bold: 600;
-  --font-weight-bold: 700;
-  --font-weight-extra-bold: 800;
-  --font-weight-black: 900;
+  --font-thin: 100;
+  --font-extra-light: 200;
+  --font-light: 300;
+  --font-normal: 400;
+  --font-medium: 500;
+  --font-semi-bold: 600;
+  --font-bold: 700;
+  --font-extra-bold: 800;
+  --font-black: 900;
 }

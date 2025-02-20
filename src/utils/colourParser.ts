@@ -1,100 +1,124 @@
 interface ColourVariable {
   name: string;
   value: string;
+  rawValue: string; // Make rawValue required
+  shade?: number;
+  displayName?: string; // Add displayName to interface
   description?: string;
+}
+
+interface ColourShadeGroup {
+  prefix: string;
+  shades: ColourVariable[];
+  semantics: Record<string, string>;
 }
 
 interface ColourCategory {
   name: string;
-  colours: ColourVariable[];
+  colours: ColourShadeGroup[];
 }
 
 export function parseColourScheme(cssContent: string) {
-  const primitiveColours: Record<string, ColourCategory> = {
-    primary: { name: 'Primary Colours', colours: [] },
-    secondary: { name: 'Secondary Colours', colours: [] },
-    tertiary: { name: 'Tertiary Colours', colours: [] },
-    neutral: { name: 'Neutral Colours', colours: [] },
-    attention: { name: 'Attention Colours', colours: [] },
-    success: { name: 'Success Colours', colours: [] },
-    error: { name: 'Error Colours', colours: [] },
-    promotion: { name: 'Promotion Colours', colours: [] },
-    basic: { name: 'Basic Colours', colours: [] },
-  };
+  const colorFamilies = [
+    'primary',
+    'secondary',
+    'tertiary',
+    'neutral',
+    'attention',
+    'success',
+    'error',
+    'promotion',
+  ];
 
-  const semanticColours: Record<string, ColourCategory> = {
-    surface: { name: 'Surface Colours', colours: [] },
-    border: { name: 'Border Colours', colours: [] },
-    text: { name: 'Text Colours', colours: [] },
-    icons: { name: 'Icon Colours', colours: [] },
-  };
+  const primitiveColours: Record<string, ColourCategory> = {};
 
-  // First, normalize the content
+  colorFamilies.forEach((family) => {
+    primitiveColours[family] = {
+      name: family.charAt(0).toUpperCase() + family.slice(1),
+      colours: [],
+    };
+  });
+
+  // Normalize the content - Updated to handle multiline definitions
   const normalizedContent = cssContent
-    // Remove theme wrapper if present
     .replace(/@theme\s*{/, '')
     .replace(/}$/, '')
-    // Fix multi-line var() declarations
-    .replace(/var\(\s*\n\s*/g, 'var(')
-    // Join lines that were split by formatting
-    .replace(/;\s*\/\*([^*]+?)\*\/\s*$/gm, '/* $1 */;')
-    // Clean up any remaining newlines between variables
-    .replace(/([^;])\n\s*(?=--)/g, '$1')
-    // Split into actual lines
-    .split(/;(?:\s*\/\*[^*]*\*\/)?\s*/)
+    // Remove comments
+    .replace(/\/\*[\s\S]*?\*\//g, '')
+    // Join multiline declarations
+    .replace(/(\n\s+)(?=from|calc)/g, ' ')
+    // Clean up extra whitespace
+    .split('\n')
     .map((line) => line.trim())
-    .filter((line) => line && line.startsWith('--'));
+    .filter((line) => line && line.startsWith('--color-'))
+    .map((line) => line.replace(/;$/, ''));
 
-  // More precise regex for variable matching
-  const variableRegex =
-    /^(--[^:]+):\s*([^;/]+?)(?:\s*\/\*\s*([^*]+?)\s*\*\/)?$/;
+  const variableRegex = /^(--color-[^:]+):\s*(.+)$/;
 
-  for (const line of normalizedContent) {
-    const match = line.match(variableRegex);
-    if (match) {
-      const [_, name, value, description] = match;
+  // Process each color family
+  colorFamilies.forEach((family) => {
+    // Get global color - Simpler matching
+    const globalPattern = `--color-site-${family}:`;
+    const globalColor = normalizedContent.find((line) =>
+      line.startsWith(globalPattern)
+    );
 
-      if (!name || !value) continue;
-
-      const colourVar: ColourVariable = {
-        name: name.trim(),
-        value: value.trim(),
-        description: description?.trim(),
-      };
-
-      // Categorization logic remains the same
-      if (name.startsWith('--primary-')) {
-        primitiveColours.primary.colours.push(colourVar);
-      } else if (name.startsWith('--secondary-')) {
-        primitiveColours.secondary.colours.push(colourVar);
-      } else if (name.startsWith('--tertiary-')) {
-        primitiveColours.tertiary.colours.push(colourVar);
-      } else if (name.startsWith('--neutral-')) {
-        primitiveColours.neutral.colours.push(colourVar);
-      } else if (name.startsWith('--attention-')) {
-        primitiveColours.attention.colours.push(colourVar);
-      } else if (name.startsWith('--success-')) {
-        primitiveColours.success.colours.push(colourVar);
-      } else if (name.startsWith('--error-')) {
-        primitiveColours.error.colours.push(colourVar);
-      } else if (name === '--black' || name === '--white') {
-        primitiveColours.basic.colours.push(colourVar);
-      } else if (name === '--promotion') {
-        primitiveColours.promotion.colours.push(colourVar);
-      } else if (name.startsWith('--text-')) {
-        semanticColours.text.colours.push(colourVar);
-      } else if (name.startsWith('--surface-')) {
-        semanticColours.surface.colours.push(colourVar);
-      } else if (name.startsWith('--border-')) {
-        semanticColours.border.colours.push(colourVar);
-      } else if (name.startsWith('--icons-')) {
-        semanticColours.icons.colours.push(colourVar);
+    if (globalColor) {
+      const match = globalColor.match(variableRegex);
+      if (match) {
+        const [_, name, value] = match;
+        primitiveColours[family].colours.push({
+          prefix: 'global',
+          shades: [
+            {
+              name: name.trim(),
+              value: value.trim(),
+              rawValue: value.trim(),
+              displayName: family,
+            },
+          ],
+          semantics: {},
+        });
       }
     }
-  }
 
-  return {
-    primitiveColours,
-    semanticColours,
-  };
+    // Get scales with fixed pattern
+    const scalePattern = new RegExp(`^--color-${family}-(\\d+):`);
+    const scales = normalizedContent
+      .filter((line) => {
+        const match = line.match(scalePattern);
+        if (!match) return false;
+        const shade = parseInt(match[1], 10);
+        return (
+          shade === 50 ||
+          (shade >= 100 && shade <= 900 && shade % 100 === 0) ||
+          shade === 950
+        );
+      })
+      .map((line) => {
+        const match = line.match(variableRegex);
+        if (!match) return null;
+        const [_, name, value] = match;
+        const shadeMatch = name.match(/-(\d+)$/);
+        if (!shadeMatch) return null;
+
+        return {
+          name: name.trim(),
+          value: value.trim(),
+          rawValue: value.trim(),
+          shade: parseInt(shadeMatch[1], 10),
+        } satisfies ColourVariable;
+      })
+      .filter((color): color is ColourVariable => color !== null);
+
+    if (scales.length) {
+      primitiveColours[family].colours.push({
+        prefix: 'scale',
+        shades: scales.sort((a, b) => (a.shade || 0) - (b.shade || 0)),
+        semantics: {},
+      });
+    }
+  });
+
+  return primitiveColours;
 }

@@ -1,30 +1,33 @@
 <button
-  class="btn btn-primary btn-high"
+  class="skin-primary-emphasised interactive btn"
   onclick="backdropModal.showModal()"
   aria-haspopup="dialog"
+  aria-controls="backdropModal"
 >
   Open Modal with Backdrop Click Away
 </button>
 
 <dialog
   id="backdropModal"
-  class="modal"
+  class="modal-dialog"
   role="dialog"
   aria-modal="true"
   aria-labelledby="backdrop-modal-content"
 >
-  <form method="dialog" class="modal-backdrop-click" aria-hidden="true">
+  <form method="dialog" class="modal-backdrop" aria-hidden="true">
     <button aria-hidden="true" tabindex="-1" aria-label="Close Modal"></button>
   </form>
-  <div class="modal-box">
-    <form method="dialog" class="modal-control-bar">
-      <button class="modal-close-button">
+  <div class="skin-modal modal-container">
+    <form method="dialog" class="modal-header">
+      <button class="modal-close">
         <span>Close</span>
         <span aria-hidden="true">✕</span>
       </button>
     </form>
-    <div id="backdrop-modal-content" class="modal-content">
-      This modal can be closed with ESC key or by clicking the background
+    <div class="">
+      <div id="backdrop-modal-content" class="text-body">
+        This modal can be closed with ESC key or by clicking the background
+      </div>
     </div>
   </div>
 </dialog>

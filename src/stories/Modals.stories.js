@@ -1,6 +1,5 @@
 import BackdropModal from '../components/modals/BackdropCloseModal.html';
 import NoBackdropModal from '../components/modals/NoBackdropModal.html';
-import ContentModal from '../components/modals/ContentModal.html';
 import HeroModal from '../components/modals/HeroModal.html';
 import ComplexModal from '../components/modals/ComplexModal.html';
 import FullScreenModal from '../components/modals/FullScreenModal.html';
@@ -28,9 +27,6 @@ BackdropClickaway.storyName = 'Backdrop Click Away';
 
 export const NoBackdrop = () => addOpenAttribute(NoBackdropModal);
 NoBackdrop.storyName = 'No Backdrop';
-
-export const Content = () => addOpenAttribute(ContentModal);
-Content.storyName = 'Content Structure';
 
 export const Hero = () => addOpenAttribute(HeroModal);
 Hero.storyName = 'Hero Image';

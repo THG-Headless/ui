@@ -1,0 +1,105 @@
+---
+interface Props {
+  color: {
+    name: string;
+    value: string;
+    rawValue?: string;
+    shade?: number;
+    displayName?: string;
+  };
+  semantic?: boolean;
+  semanticLabel?: string;
+  showValue?: boolean;
+  getColorValue: (value: string) => string;
+}
+
+const {
+  color,
+  semantic = false,
+  semanticLabel,
+  showValue = false,
+  getColorValue,
+} = Astro.props;
+---
+
+<div class="relative">
+  <div class="h-10 mb-1">
+    {
+      semanticLabel && (
+        <div class="text-xs leading-normal font-mono text-gray-600 px-1 text-center relative">
+          {semanticLabel}
+        </div>
+      )
+    }
+  </div>
+  <div class="w-full text-left px-1">
+    <div
+      class="group relative w-full h-16 rounded-sm cursor-pointer overflow-visible"
+      style={{ backgroundColor: getColorValue(color.value) }}
+    >
+      <button
+        class="absolute inset-0 w-full h-full"
+        onclick={`navigator.clipboard.writeText('${color.name}')`}
+        type="button"
+        aria-label={`Copy ${color.name}`}></button>
+      <div
+        class="opacity-0 group-hover:opacity-100 absolute bottom-[calc(100%+0.5rem)] left-1/2 -translate-x-1/2 bg-white p-2 rounded shadow-lg text-xs whitespace-nowrap transition-opacity z-[100]"
+      >
+        <div class="font-mono">{color.name}</div>
+        <div class="text-gray-500 border-b border-gray-100 pb-1 mb-1">
+          <div>{color.value}</div>
+        </div>
+        <div class="flex items-center gap-1">
+          <div class="text-gray-600 block copied-instruction">
+            Click to copy to clipboard
+          </div>
+          <div class="text-green-600 hidden items-center gap-1 copied-message">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none">
+              <path
+                d="M20 6L9 17L4 12"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"></path>
+            </svg>
+            Copied to clipboard
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="text-xs font-mono text-center pt-2">
+      {color.shade || color.displayName}
+    </div>
+  </div>
+</div>
+
+<style>
+  .copied-message.visible {
+    display: flex;
+  }
+  .copied-message.visible + .copied-instruction {
+    display: none;
+  }
+</style>
+
+<script>
+  document.querySelectorAll('[aria-label^="Copy"]').forEach((button) => {
+    button.addEventListener('click', (e) => {
+      const group = (e.currentTarget as HTMLElement).closest('.group');
+      const copiedMessage = group?.querySelector('.copied-message');
+      const instruction = group?.querySelector('.copied-instruction');
+
+      if (copiedMessage && instruction) {
+        instruction.classList.add('hidden');
+        copiedMessage.classList.remove('hidden');
+        copiedMessage.classList.add('flex');
+
+        setTimeout(() => {
+          copiedMessage.classList.remove('flex');
+          copiedMessage.classList.add('hidden');
+          instruction.classList.remove('hidden');
+        }, 2000);
+      }
+    });
+  });
+</script>

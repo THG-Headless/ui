@@ -1,51 +1,36 @@
 ---
-import "../../tailwind.css";
-import fs from "node:fs";
-import path from "node:path";
-import { parseRadiusScheme } from "../../utils/radiusParser";
+import '../../tailwind.css';
+import '../../sample-css/corners.css';
+import fs from 'node:fs';
+import path from 'node:path';
+import { parseRadiusScheme } from '../../utils/radiusParser';
 
-const cssFilePath = path.resolve("./src/sample-css/corners.css");
-const cssContent = fs.readFileSync(cssFilePath, "utf-8");
-const { primitiveRadii, semanticRadii } = parseRadiusScheme(cssContent);
+const cssFilePath = path.resolve('./src/sample-css/corners.css');
+const cssContent = fs.readFileSync(cssFilePath, 'utf-8');
+const radius = parseRadiusScheme(cssContent);
 ---
 
-<div class="max-w-7xl mx-auto p-6">
-  <!-- Primitive Radii -->
-  <section>
-    <h2 class="text-2xl font-bold pb-6 text-black">Primitive Radii</h2>
+<div class="max-w-7xl mx-auto p-6 theme">
+  <div class="flex flex-col items-center min-w-0">
     <div
-      class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8"
+      class="aspect-square w-full max-w-[120px] bg-zinc-400 mb-3"
+      style={{
+        borderRadius: radius?.value,
+        display: 'block',
+      }}
     >
-      {
-        Object.entries(primitiveRadii).map(([_, category]) =>
-          category.radii.map((radius) => (
-            <div class="flex flex-col items-center min-w-0">
-              {/* Radius Demo Box */}
-              <div
-                class="aspect-square w-full max-w-[120px] bg-zinc-400 mb-3"
-                style={{
-                  borderRadius: `var(${radius.name})`,
-                  display: "block",
-                }}
-              />
-
-              {/* Info Panel */}
-              <div class="w-full text-center min-w-0">
-                <div class="truncate">
-                  <span class="text-sm font-mono whitespace-nowrap text-black">
-                    {radius.name}
-                  </span>
-                </div>
-                <div class="truncate">
-                  <span class="text-sm text-zinc-600 whitespace-nowrap">
-                    {radius.value}
-                  </span>
-                </div>
-              </div>
-            </div>
-          ))
-        )
-      }
     </div>
-  </section>
+    <div class="w-full text-center min-w-0">
+      <div class="truncate">
+        <span class="text-sm font-mono whitespace-nowrap text-black">
+          {radius?.name}
+        </span>
+      </div>
+      <div class="truncate">
+        <span class="text-sm text-zinc-600 whitespace-nowrap">
+          {radius?.value}
+        </span>
+      </div>
+    </div>
+  </div>
 </div>

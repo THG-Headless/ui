@@ -1,21 +1,23 @@
-import { defineConfig, passthroughImageService } from "astro/config";
-import starlight from "@astrojs/starlight";
-import tailwindcss from "@tailwindcss/vite";
+import { defineConfig, passthroughImageService } from 'astro/config';
+import starlight from '@astrojs/starlight';
+import tailwindcss from '@tailwindcss/vite';
+
+import react from '@astrojs/react';
 
 export default defineConfig({
-  site: "https://components.thgaltitude.com",
+  site: 'https://components.thgaltitude.com',
   vite: {
     plugins: [
       tailwindcss(),
       {
-        name: "css-reload",
-        enforce: "post",
+        name: 'css-reload',
+        enforce: 'post',
         handleHotUpdate({ file, server }) {
           if (
-            file.endsWith(".css") &&
-            file.includes("standalone-components-css")
+            file.endsWith('.css') &&
+            file.includes('standalone-components-css')
           ) {
-            server.ws.send({ type: "full-reload" });
+            server.ws.send({ type: 'full-reload' });
             return [];
           }
         },
@@ -23,11 +25,11 @@ export default defineConfig({
     ],
     server: {
       watch: {
-        ignored: ["!**/standalone-components-css/**"],
+        ignored: ['!**/standalone-components-css/**'],
       },
       hmr: {
-        protocol: "ws",
-        host: "localhost",
+        protocol: 'ws',
+        host: 'localhost',
       },
     },
     css: {
@@ -37,26 +39,24 @@ export default defineConfig({
   image: {
     service: passthroughImageService(),
   },
-  integrations: [
-    starlight({
-      title: "Altitude Standalone Components",
-      customCss: ["/src/styles.css", "@fontsource-variable/inter"],
-      logo: {
-        replacesTitle: true,
-        light: "/src/assets/logo-long-light.svg",
-        dark: "/src/assets/logo-long.svg",
-        link: "https://thgaltitude.com/",
+  integrations: [starlight({
+    title: 'Altitude Standalone Components',
+    customCss: ['/src/styles.css', '@fontsource-variable/inter'],
+    logo: {
+      replacesTitle: true,
+      light: '/src/assets/logo-long-light.svg',
+      dark: '/src/assets/logo-long.svg',
+      link: 'https://thgaltitude.com/',
+    },
+    sidebar: [
+      {
+        label: 'Getting Started',
+        autogenerate: { directory: 'setup' },
       },
-      sidebar: [
-        {
-          label: "Getting Started",
-          autogenerate: { directory: "setup" },
-        },
-        {
-          label: "Components",
-          autogenerate: { directory: "components" },
-        },
-      ],
-    }),
-  ],
+      {
+        label: 'Components',
+        autogenerate: { directory: 'components' },
+      },
+    ],
+  }), react()],
 });

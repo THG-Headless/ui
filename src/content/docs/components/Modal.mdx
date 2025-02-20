@@ -7,7 +7,6 @@ import { Aside } from '@astrojs/starlight/components';
 import ShowComponent from '../../../components/doc-helpers/ShowComponent.astro';
 import BasicModal from '../../../components/modals/BasicModal.html';
 import NoBackdropModal from '../../../components/modals/NoBackdropModal.html';
-import ContentModal from '../../../components/modals/ContentModal.html';
 import HeroModal from '../../../components/modals/HeroModal.html';
 import ComplexModal from '../../../components/modals/ComplexModal.html';
 import BackdropCloseModal from '../../../components/modals/BackdropCloseModal.html';
@@ -55,28 +54,28 @@ The simplest implementation of a modal includes basic container styling, a backd
 
 The styling of the base modal is defined by the following variables. As with all components, they will use these default values, but can be redefined within your main css file.
 
-| Variable                                | Default Value                 | Description                               |
-| --------------------------------------- | ----------------------------- | ----------------------------------------- |
-| `--modal-width-min`                     | `320px`                       | Minimum width of the modal container      |
-| `--modal-margin`                        | `2rem`                        | Margin around the modal on desktop        |
-| `--modal-padding`                       | `2rem`                        | Internal padding of the modal content     |
-| `--modal-box-scale`                     | `0.95`                        | Initial scale of modal for animation      |
-| `--modal-shadow`                        | `var(--shadow-2xl)`           | Shadow effect for the modal box           |
-| `--modal-radius`                        | `var(--radius-size-none)`     | Border radius of the modal                |
-| `--modal-animation-speed`               | `var(--animation-speed-slow)` | Duration of modal animations              |
-| `--modal-surface`                       | `var(--surface-cards)`        | Background color for the modal            |
-| `--modal-backdrop-color`                | `rgba(0, 0, 0, 0.3)`          | Color and opacity of the modal backdrop   |
-| `--modal-backdrop-blur`                 | `4px`                         | Blur effect intensity for the backdrop    |
-| `--modal-text-color`                    | `var(--text-black)`           | Default text color for the modal          |
-| `--modal-mobile-padding`                | `1rem`                        | Internal padding on mobile devices        |
-| `--modal-mobile-margin`                 | `0rem`                        | Margin around the modal on mobile         |
-| `--modal-mobile-slide-up-max-height`    | `90vh`                        | Maximum height of modal on mobile         |
-| `--modal-shadow-mobile`                 | `var(--shadow-2xl)`           | Shadow effect for the modal box on mobile |
-| `--modal-text-close-button-size`        | `var(--text-size-md)`         | Font size for close button                |
-| `--modal-text-close-button-weight`      | `var(--font-weight-normal)`   | Font weight for close button              |
-| `--modal-text-close-button-line-height` | `var(--line-height-md)`       | Line height for close button              |
-| `--modal-text-body-color`               | `var(--text-medium-emphasis)` | Color for close button text               |
-| `--modal-text-title-color`              | `var(--text-high-emphasis)`   | Color for close button text on hover      |
+| Variable                                | Default Value                  | Description                               |
+| --------------------------------------- | ------------------------------ | ----------------------------------------- |
+| `--modal-width-min`                     | `320px`                        | Minimum width of the modal container      |
+| `--modal-margin`                        | `2rem`                         | Margin around the modal on desktop        |
+| `--modal-padding`                       | `2rem`                         | Internal padding of the modal content     |
+| `--modal-box-scale`                     | `0.95`                         | Initial scale of modal for animation      |
+| `--modal-shadow`                        | `var(--shadow-2xl)`            | Shadow effect for the modal box           |
+| `--modal-radius`                        | `var(--radius-none)`           | Border radius of the modal                |
+| `--modal-animation-speed`               | `var(--duration-speed-slow)`   | Duration of modal animations              |
+| `--modal-surface`                       | `var(--color-surface-cards)`   | Background color for the modal            |
+| `--modal-backdrop-color`                | `rgba(0, 0, 0, 0.3)`           | Color and opacity of the modal backdrop   |
+| `--modal-backdrop-blur`                 | `4px`                          | Blur effect intensity for the backdrop    |
+| `--modal-text-color`                    | `var(--color-black)`           | Default text color for the modal          |
+| `--modal-mobile-padding`                | `1rem`                         | Internal padding on mobile devices        |
+| `--modal-mobile-margin`                 | `0rem`                         | Margin around the modal on mobile         |
+| `--modal-mobile-slide-up-max-height`    | `90vh`                         | Maximum height of modal on mobile         |
+| `--modal-shadow-mobile`                 | `var(--shadow-2xl)`            | Shadow effect for the modal box on mobile |
+| `--modal-text-close-button-size`        | `var(--text-md)`               | Font size for close button                |
+| `--modal-text-close-button-weight`      | `var(--font-normal)`           | Font weight for close button              |
+| `--modal-text-close-button-line-height` | `var(--line-height-md)`        | Line height for close button              |
+| `--modal-text-body-color`               | `var(--color-medium-emphasis)` | Color for close button text               |
+| `--modal-text-title-color`              | `var(--color-high-emphasis)`   | Color for close button text on hover      |
 
 ### Disable Backdrop
 
@@ -106,25 +105,6 @@ While backdrop click-away can be appropriate for non-critical interactions like 
 Always prefer explicit dismissal method of the close button for important modal interactions.
 
 </Aside>
-
-### Content Structure
-
-To create a structured content layout, use the `modal-title` class for headings and `modal-body` class for content.
-
-<ShowComponent>
-  <ContentModal />
-</ShowComponent>
-
-| Variable                         | Default Value                  | Description                     |
-| -------------------------------- | ------------------------------ | ------------------------------- |
-| `--modal-text-title-size`        | `var(--text-size-md)`          | Font size for modal title       |
-| `--modal-text-title-line-height` | `var(--line-height-md)`        | Line height for modal title     |
-| `--modal-text-title-line-weight` | `var(--font-weight-semi-bold)` | Font weight for modal title     |
-| `--modal-text-title-color`       | `var(--text-high-emphasis)`    | Color for modal title text      |
-| `--modal-text-body-size`         | `var(--text-size-body)`        | Font size for modal body text   |
-| `--modal-text-body-line-height`  | `var(--line-height-body)`      | Line height for modal body text |
-| `--modal-text-body-line-weight`  | `var(--font-weight-normal)`    | Font weight for modal body      |
-| `--modal-text-body-color`        | `var(--text-medium-emphasis)`  | Color for modal body text       |
 
 ### Hero Image
 

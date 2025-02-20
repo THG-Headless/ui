@@ -1,0 +1,468 @@
+---
+import fs from 'node:fs';
+import path from 'node:path';
+import { parseSemanticColors } from '../../utils/SemanticColorParser';
+
+const cssFilePath = path.resolve('./src/sample-css/semanticColours.css');
+const cssContent = fs.readFileSync(cssFilePath, 'utf-8');
+const semanticGroups = parseSemanticColors(cssContent);
+
+const getCssVar = (name: string) => `var(${name})`;
+
+
+
+// Reusable color variable cell template without tooltip
+const ColorVarCell = ({variable}: {variable: { cssVariable: string; value: string }}) => {
+  // Extract the actual color value by removing var(--color- and closing bracket
+  const colorValue = variable.value.replace('var(--color-', '').replace(')', '');
+  
+  return `
+    <div class="var-wrapper w-full flex items-center">
+      
+      <button 
+      class="var-trigger overflow-wrap-anywhere " 
+      data-variable="${variable.cssVariable}"
+      data-value="${variable.value}"
+      >
+      <div class="color-square h-6 w-6 rounded shrink-0 border  border-gray-200 my-auto" style="background: var(--color-${colorValue})"/>
+      <div class="pl-8">${variable.value.replace('var(', '').replace(')', '')}</div>
+      </button>
+    </div>
+  `;
+};
+
+const states = ['Hover', 'Focus', 'Active', 'Disabled'] as const;
+---
+
+<div class="color-docs">
+  {semanticGroups.map((group) => {
+    const prefix = group.name.toLowerCase();
+    const isDefault = prefix === 'default';
+    const baseNames = {
+      bg: isDefault ? 'background' : `${prefix}-background`,
+      fg: isDefault ? 'foreground' : `${prefix}-foreground`,
+      border: isDefault ? 'border' : `${prefix}-border`
+    };
+
+    return (
+      <section class="color-section">
+        <div class="color-content">
+          <!-- Semantic Button -->
+          <button
+            class="semantic-button shadow-site"
+            style={{
+              '--bg-base': group.background.value,
+              '--bg-hover': group.background.states.hover.value,
+              '--bg-focus': group.background.states.focus.value,
+              '--bg-active': group.background.states.active.value,
+              
+              '--fg-base': group.foreground.value,
+              '--fg-hover': group.foreground.states.hover.value,
+              '--fg-focus': group.foreground.states.focus.value,
+              '--fg-active': group.foreground.states.active.value,
+              
+              '--border-base': group.border.value,
+              '--border-hover': group.border.states.hover.value,
+              '--border-focus': group.border.states.focus.value,
+              '--border-active': group.border.states.active.value,
+            }}
+          >
+            {group.name.replace(/-/g, ' ').replace(/\w\S*/g, (word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())}
+          </button>
+
+          <!-- Base Class Name -->
+          <div class="class-name-wrapper">
+            <h3 class="section-title">
+              Base Class Name:{' '}
+              <button class="copy-trigger" data-copy={group.name.toLowerCase()}>
+                {group.name.toLowerCase()}
+              </button>
+            </h3>
+            <div class="copy-instruction">Click to copy class name to clipboard</div>
+            <div class="copy-message">Copied to clipboard!</div>
+          </div>
+
+          <!-- Base States Table -->
+          <table class="semantic-table">
+            <thead>
+              <tr>
+                <th class="w-[15%]">State</th>
+                <th class="w-[28%]">Background</th>
+                <th class="w-[28%]">Foreground</th>
+                <th class="w-[28%]">Border</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Default</td>
+                <td set:html={ColorVarCell({variable: { cssVariable: group.background.cssVariable, value: group.background.value }})} />
+                <td set:html={ColorVarCell({variable: { cssVariable: group.foreground.cssVariable, value: group.foreground.value }})} />
+                <td set:html={ColorVarCell({variable: { cssVariable: group.border.cssVariable, value: group.border.value }})} />
+              </tr>
+            </tbody>
+          </table>
+
+          <!-- Interactive States -->
+          <div class="relative class-name-wrapper">
+            <div class="flex justify-between items-center">
+              <h3 class="section-title">
+                Interactive Class Name: {' '}
+                <button
+                  class="copy-trigger"
+                  data-copy={`${group.name.toLowerCase()}-interactive`}
+                >
+                  {group.name.toLowerCase()}-interactive
+                </button>
+              </h3>
+              <span class="italic text-zinc-500">(includes default state)</span>
+            </div>
+            <div class="copy-instruction">Click to copy class name to clipboard</div>
+            <div class="copy-message">Copied to clipboard!</div>
+          </div>
+
+          <!-- Interactive States Table -->
+          <table class="semantic-table">
+            <thead>
+              <tr>
+                <th class="w-[15%]">State</th>
+                <th class="w-[28%]">Background</th>
+                <th class="w-[28%]">Foreground</th>
+                <th class="w-[28%]">Border</th>
+              </tr>
+            </thead>
+            <tbody>
+              {states.map((state) => {
+                const stateKey = state.toLowerCase() as keyof typeof group.background.states;
+                return (
+                  <tr>
+                    <td>{state}</td>
+                    <td set:html={ColorVarCell({variable: group.background.states[stateKey]})} />
+                    <td set:html={ColorVarCell({variable: group.foreground.states[stateKey]})} />
+                    <td set:html={ColorVarCell({variable: group.border.states[stateKey]})} />
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
+      </section>
+    );
+  })}
+</div>
+
+<!-- Floating tooltip -->
+<div id="tooltip" class="tooltip">
+  <div class="text-gray-900 text-body font-mono var-name"></div>
+  <div class="text-gray-500 text-body border-b border-gray-100 pb-1 mb-1 var-value"></div>
+  <div class="flex items-center gap-1">
+    <div class="text-gray-600 block copied-instruction">
+      Click to copy CSS variable name to clipboard
+    </div>
+    <div class="hidden items-center gap-1 copied-message">
+      <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none">
+        <path
+          d="M20 6L9 17L4 12"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
+      Copied to clipboard
+    </div>
+  </div>
+</div>
+
+<style>
+  .color-docs {
+    max-width: 80rem;
+    margin: 0 auto;
+    padding: 1.5rem;
+  }
+
+  .color-section {
+    margin-bottom: 3rem;
+  }
+
+  .color-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding-bottom: 2rem;
+  }
+
+  .class-name-wrapper {
+    position: relative;
+  }
+
+  .section-title {
+    font-size: var(--text-body);
+    line-height: var(--line-height-body);
+    color: black;
+    padding-top: 0.5rem;
+  }
+
+  .copy-trigger {
+    font-family: monospace;
+    color: rgb(63 63 70);
+    cursor: pointer;
+  }
+
+  .copy-trigger:hover {
+    color: rgb(24 24 27);
+  }
+
+  .copy-instruction {
+    font-size: 0.875rem;
+    color: rgb(75 85 99);
+    margin-top: 0.25rem;
+    display: block;
+  }
+
+  .copy-instruction.hidden {
+    display: none;
+  }
+
+  .copy-message {
+    display: none;
+    left: 0;
+    font-size: 0.875rem;
+    color: rgb(22 163 74);
+    
+  }
+
+  .copy-message.visible {
+    display: block;
+    animation: fadeInOut 2s ease-in-out;
+    margin-top: 0.25rem;
+  }
+
+  @keyframes fadeInOut {
+    0% { opacity: 0; }
+    15% { opacity: 1; }
+    85% { opacity: 1; }
+    100% { opacity: 0; }
+  }
+
+  /* Table styles */
+  .semantic-table {
+    width: 100%;
+    font-size: 0.875rem;
+    font-family: monospace;
+    color: black;
+    border-collapse: collapse;
+  }
+
+  .semantic-table th,
+  .semantic-table td {
+    text-align: left;
+    padding: 1rem;
+    border-bottom: 1px solid rgb(229 231 235);
+  }
+
+  .semantic-table td {
+    width: 1%; /* Force equal width distribution */
+    white-space: nowrap;
+    vertical-align: top;
+    padding: 1rem;
+  }
+
+  .semantic-table td:first-child {
+    width: 15%;
+  }
+
+  .var-wrapper {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    width: 100%;
+  }
+
+  .color-square {
+    width: 1rem;
+    height: 1rem;
+    border: 1px solid black;
+  }
+
+  .var-trigger {
+    position: relative;
+    color: rgb(75 85 99);
+    cursor: pointer;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+    white-space: nowrap;
+    background: white;
+    flex: 1;
+    padding: 0.5rem;
+    text-align: left;
+    min-width: 0; /* Add this to allow text truncation */
+    word-break: break-all;
+    overflow-wrap: anywhere;
+    line-height: 1.2;
+  }
+
+  .var-trigger:hover {
+    color: rgb(17 24 39);
+    background-color: rgb(249 250 251);
+  }
+
+  .tooltip {
+    position: fixed;
+    display: none;
+    background: white;
+    padding: 0.5rem;
+    border-radius: 0.375rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    white-space: nowrap;
+    z-index: 9999;
+    border: 1px solid rgb(229 231 235);
+    pointer-events: none;
+    transition: opacity 150ms ease-in-out;
+  }
+
+  .tooltip.visible {
+    display: block;
+  }
+
+  .tooltip .copied-instruction,
+  .tooltip .copied-message {
+    font-size: 0.75rem;
+  }
+
+  .tooltip .copied-instruction.hidden,
+  .tooltip .copied-message.hidden {
+    opacity: 0;
+    transition: opacity 150ms ease-in-out;
+  }
+
+  .tooltip .copied-message {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+  }
+
+  /* Semantic button states */
+  .semantic-button {
+    padding: 1rem;
+    font-size: 1.125rem;
+    transition: all 150ms ease-in-out;
+    background-color: var(--bg-base);
+    color: var(--fg-base);
+    border: 2px solid var(--border-base);
+  }
+
+  .semantic-button:hover {
+    background-color: var(--bg-hover);
+    color: var(--fg-hover);
+    border-color: var(--border-hover);
+  }
+
+  .semantic-button:focus {
+    background-color: var(--bg-focus);
+    color: var(--fg-focus);
+    border-color: var(--border-focus);
+  }
+
+  .semantic-button:active {
+    background-color: var(--bg-active);
+    color: var(--fg-active);
+    border-color: var(--border-active);
+  }
+
+  /* Tooltip content styles */
+  .tooltip .font-mono {
+    font-family: monospace;
+  }
+
+  .tooltip .text-gray-500 {
+    color: rgb(107 114 128);
+    border-bottom: 1px solid rgb(243 244 246);
+    padding-bottom: 0.25rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .tooltip .copied-instruction {
+    color: rgb(75 85 99);
+  }
+
+  .tooltip .copied-message {
+    color: rgb(22 163 74);
+  }
+</style>
+
+<script>
+  // Unified copy handling function
+  const handleCopy = async (text: string, messageElement?: Element | null, instructionElement?: Element | null) => {
+    await navigator.clipboard.writeText(text);
+    if (messageElement && instructionElement) {
+      instructionElement.classList.add('hidden');
+      messageElement.classList.add('visible');
+      setTimeout(() => {
+        messageElement.classList.remove('visible');
+        instructionElement.classList.remove('hidden');
+      }, 2000);
+    }
+  };
+
+  // Handle class name copying
+  document.querySelectorAll('.copy-trigger').forEach((trigger) => {
+    trigger.addEventListener('click', (e) => {
+      const button = e.currentTarget as HTMLButtonElement;
+      const wrapper = button.closest('.class-name-wrapper');
+      const message = wrapper?.querySelector('.copy-message');
+      const instruction = wrapper?.querySelector('.copy-instruction');
+      handleCopy(button.dataset.copy || '', message, instruction);
+    });
+  });
+
+  const tooltip = document.querySelector('#tooltip') as HTMLElement;
+  let activeButton: HTMLElement | null = null;
+
+  // Handle tooltip positioning and content
+  document.querySelectorAll('.var-trigger').forEach((trigger) => {
+    trigger.addEventListener('mouseenter', (e) => {
+      const button = e.currentTarget as HTMLElement;
+      const varName = button.dataset.variable;
+      const varValue = button.dataset.value;
+      const rect = button.getBoundingClientRect();
+
+      // Update tooltip content
+      tooltip.querySelector('.var-name')!.textContent = varName ?? '';
+      tooltip.querySelector('.var-value')!.textContent = varValue ?? '';
+
+      // Position tooltip above the trigger
+      tooltip.style.left = `${rect.left + rect.width / 2}px`;
+      tooltip.style.top = `${rect.top - 8}px`;
+      tooltip.style.transform = 'translate(-50%, -100%)';
+
+      // Show tooltip
+      tooltip.classList.add('visible');
+      activeButton = button;
+    });
+
+    trigger.addEventListener('mouseleave', () => {
+      tooltip.classList.remove('visible');
+    });
+
+    trigger.addEventListener('click', async (e) => {
+      const button = e.currentTarget as HTMLElement;
+      const varName = button.dataset.variable;
+      await navigator.clipboard.writeText(varName || '');
+
+      const instruction = tooltip.querySelector('.copied-instruction');
+      const copiedMessage = tooltip.querySelector('.copied-message') as HTMLElement;
+
+      if (instruction && copiedMessage) {
+        instruction.classList.add('hidden');
+        copiedMessage.classList.remove('hidden');
+        copiedMessage.style.display = 'flex';
+
+        setTimeout(() => {
+          instruction.classList.remove('hidden');
+          copiedMessage.classList.add('hidden');
+          copiedMessage.style.display = 'none';
+        }, 2000);
+      }
+    });
+  });
+</script>

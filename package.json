@@ -15,18 +15,24 @@
     "test-storybook": "test-storybook"
   },
   "dependencies": {
+    "@astrojs/react": "^4.2.0",
     "@astrojs/starlight": "^0.29.2",
     "@fontsource-variable/inter": "^5.1.0",
     "@fontsource/inter": "^5.1.0",
     "@swc/core": "^1.9.3",
     "@tailwindcss/vite": "^4.0.0-beta.2",
     "@thg-altitude/standalone-components-css": "latest",
+    "@types/react": "^19.0.10",
+    "@types/react-dom": "^19.0.4",
     "astro": "^4.16.14",
+    "lottie-react": "^2.4.1",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
     "remark": "^15.0.1",
     "remark-html": "^16.0.1",
     "rollup": "^4.28.0",
     "shiki": "^1.23.1",
-    "tailwindcss": "^4.0.0-beta.2",
+    "tailwindcss": "^4.0.1",
     "unist-util-visit": "^5.0.0"
   },
   "devDependencies": {
