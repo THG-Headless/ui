@@ -1,15 +1,5 @@
 @layer components {
   :root {
-    --alert-text-error-color: var(--color-error);
-    --alert-text-success-color: var(--color-success);
-    --alert-text-info-color: var(--color-attention);
-
-    --alert-background-error-color: var(--color-error-light);
-    --alert-background-success-color: var(--color-success-light);
-    --alert-background-info-color: var(--color-attention-light);
-
-    --alert-font-weight: var(--font-semi-bold);
-
     --alert-border-default: none;
     --alert-border-radius: var(--radius-none);
 
@@ -38,25 +28,6 @@
     width: var(--alert-icon--width);
     min-width: var(--alert-icon-min-width);
     min-height: var(--alert-icon-min-height);
-  }
-
-  .alert-text {
-    padding-left: var(--alert-padding);
-  }
-
-  .alert-success {
-    /* color: var(--alert-text-success-color); */
-    color: var(--color-success);
-    background-color: var(--alert-background-success-color);
-  }
-
-  .alert-error {
-    color: var(--alert-text-error-color);
-    background-color: var(--alert-background-error-color);
-  }
-
-  .alert-info {
-    color: var(--alert-text-info-color);
-    background-color: var(--alert-background-info-color);
+    margin-right: var(--alert-padding) !important;
   }
 }
