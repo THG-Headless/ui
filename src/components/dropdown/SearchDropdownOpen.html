@@ -1,23 +1,23 @@
-<div class="dropdown-wrapper">
+<div class="skin-form dropdown-wrapper group dropdown-open">
   <label
     for="search-dropdown-trigger"
     id="search-dropdown-label"
-    class="dropdown-label"
+    class="dropdown-label text-body font-semi-bold"
     >Label</label
   >
-  <div class="dropdown dropdown-open">
+  <div class="dropdown">
     <div
-      class="listbox-wrapper"
+      class="wrapper"
       role="combobox"
-      aria-expanded="true"
+      aria-expanded="false"
       aria-controls="search-dropdown-list"
       aria-labelledby="search-dropdown-label"
     >
       <button
         id="search-dropdown-trigger"
-        class="dropdown-summary"
+        class="dropdown-summary interactive"
         aria-haspopup="listbox"
-        aria-expanded="true"
+        aria-expanded="false"
         aria-controls="search-dropdown-list"
       >
         <div class="dropdown-summary-content">
@@ -52,7 +52,7 @@
       </button>
     </div>
     <div class="dropdown-content-wrapper">
-      <div class="search-wrapper">
+      <div class="dropdown-search-wrapper wrapper interactive">
         <label for="dropdown-search" class="sr-only">Search options</label>
         <div class="search-input-wrapper">
           <svg
@@ -70,7 +70,7 @@
           <input
             type="search"
             id="dropdown-search"
-            class="dropdown-search-input"
+            class="dropdown-search-input text-body placeholder:soft"
             placeholder="Search..."
             aria-controls="search-dropdown-list"
             aria-autocomplete="list"
@@ -88,7 +88,7 @@
         <li
           role="option"
           id="search-option-1"
-          tabindex="-1"
+          class="text-body interactive"
           aria-selected="false"
         >
           Item 1
@@ -96,7 +96,7 @@
         <li
           role="option"
           id="search-option-2"
-          tabindex="-1"
+          class="text-body interactive"
           aria-selected="false"
         >
           Item 2
@@ -104,7 +104,7 @@
         <li
           role="option"
           id="search-option-3"
-          tabindex="-1"
+          class="text-body interactive"
           aria-selected="false"
         >
           Item 3
@@ -112,7 +112,7 @@
         <li
           role="option"
           id="search-option-4"
-          tabindex="-1"
+          class="text-body interactive"
           aria-selected="false"
         >
           Item 4
@@ -120,7 +120,7 @@
         <li
           role="option"
           id="search-option-5"
-          tabindex="-1"
+          class="text-body interactive"
           aria-selected="false"
         >
           Item 5
@@ -128,7 +128,7 @@
         <li
           role="option"
           id="search-option-6"
-          tabindex="-1"
+          class="text-body interactive"
           aria-selected="false"
         >
           Item 6
@@ -136,7 +136,7 @@
         <li
           role="option"
           id="search-option-7"
-          tabindex="-1"
+          class="text-body interactive"
           aria-selected="false"
         >
           Item 7
@@ -144,7 +144,7 @@
         <li
           role="option"
           id="search-option-8"
-          tabindex="-1"
+          class="text-body interactive"
           aria-selected="false"
         >
           Item 8
@@ -152,5 +152,25 @@
       </ul>
     </div>
   </div>
-  <p id="helper-text" class="dropdown-helper" aria-live="polite">Helper Text</p>
+  <div class="dropdown-helper-wrapper">
+    <p class="dropdown-helper text-sm soft" id="basic-helper">Helper text</p>
+    <div class="skin-error dropdown-error-content">
+      <svg
+        class="dropdown-icon"
+        viewBox="0 0 20 20"
+        fill="currentColor"
+        aria-hidden="true"
+        focusable="false"
+      >
+        <path
+          fill-rule="evenodd"
+          d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z"
+          clip-rule="evenodd"
+        />
+      </svg>
+      <p class="text-sm font-medium" id="error-dropdown-message" role="alert">
+        Error Message
+      </p>
+    </div>
+  </div>
 </div>
