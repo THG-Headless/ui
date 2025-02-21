@@ -55,6 +55,11 @@
       var(--skin-border-hover);
   }
 
+  .dropdown-summary:disabled {
+    box-shadow: inset 0 0 0 var(--dropdown-border-width) var(--skin-border);
+    cursor: default;
+  }
+
   .dropdown-wrapper.dropdown-error .dropdown-summary {
     box-shadow: inset 0 0 0 var(--dropdown-border-width-active)
       var(--dropdown-error-border-color);
