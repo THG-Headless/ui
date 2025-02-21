@@ -11,7 +11,7 @@
   --color-error: oklch(0.55 0.2 30);
   --color-promotion: oklch(0.6 0.25 30);
 
-  --radius-site: 1rem;
+  --radius-site: 0.5rem;
 
   --shadow-site: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
     0 2px 4px -1px rgba(0, 0, 0, 0.06), 0 2px 8px 0 rgba(0, 0, 0, 0.1);
@@ -407,6 +407,7 @@
     }
   }
 }
+
 @layer components {
   @import './components/accordion.css';
   @import './components/alert.css';
@@ -418,4 +419,199 @@
   @import './components/dropdown.css';
   @import './components/drawer.css';
   @import './skins.css';
+
+  [class*='skin'] {
+    background-color: var(--skin-background);
+    color: var(--skin-foreground);
+    border-color: var(--skin-border);
+  }
+
+  .wrapper {
+    background-color: transparent !important;
+    border-color: transparent !important;
+    color: transparent !important;
+
+    /* Base styles for all children */
+    & > * {
+      background-color: var(--skin-background) !important;
+      border-color: var(--skin-border) !important;
+      color: var(--skin-foreground) !important;
+    }
+
+    /* Interactive states for interactive children */
+    & .interactive {
+      &:hover:not(:disabled):not([disabled]) {
+        background-color: var(--skin-background-hover) !important;
+        border-color: var(--skin-border-hover) !important;
+        color: var(--skin-foreground-hover) !important;
+      }
+
+      &:focus:not(:disabled):not([disabled]) {
+        background-color: var(--skin-background-focus) !important;
+        border-color: var(--skin-border-focus) !important;
+        color: var(--skin-foreground-focus) !important;
+      }
+
+      &:active:not(:disabled):not([disabled]) {
+        background-color: var(--skin-background-active) !important;
+        border-color: var(--skin-border-active) !important;
+        color: var(--skin-foreground-active) !important;
+      }
+    }
+
+    /* Group disabled states */
+    &.group:has(:disabled),
+    &.group:has([disabled]) {
+      & > *,
+      & .interactive {
+        background-color: var(--skin-background-disabled) !important;
+        border-color: var(--skin-border-disabled) !important;
+        color: var(--skin-foreground-disabled) !important;
+
+        &:hover,
+        &:focus,
+        &:active {
+          background-color: var(--skin-background-disabled) !important;
+          border-color: var(--skin-border-disabled) !important;
+          color: var(--skin-foreground-disabled) !important;
+        }
+      }
+    }
+  }
+
+  .soft {
+    color: color-mix(
+      in oklch,
+      var(--skin-foreground) 60%,
+      var(--skin-background)
+    );
+
+    &.interactive:hover:not(:disabled):not([disabled]) {
+      color: color-mix(
+        in oklch,
+        var(--skin-foreground-hover) 60%,
+        var(--skin-background-hover)
+      );
+    }
+
+    &.interactive:focus:not(:disabled):not([disabled]) {
+      color: color-mix(
+        in oklch,
+        var(--skin-foreground-focus) 60%,
+        var(--skin-background-focus)
+      );
+    }
+
+    &.interactive:active:not(:disabled):not([disabled]) {
+      color: color-mix(
+        in oklch,
+        var(--skin-foreground-active) 60%,
+        var(--skin-background-active)
+      );
+    }
+
+    &:disabled,
+    &:has(:disabled),
+    .group:has(:disabled) & {
+      color: color-mix(
+        in oklch,
+        var(--skin-foreground-disabled) 60%,
+        var(--skin-background-disabled)
+      ) !important;
+    }
+  }
+
+  .interactive:hover {
+    background-color: var(--skin-background-hover);
+    color: var(--skin-foreground-hover);
+    border-color: var(--skin-border-hover);
+  }
+
+  .interactive:focus {
+    background-color: var(--skin-background-focus);
+    color: var(--skin-foreground-focus);
+    border-color: var(--skin-border-focus);
+  }
+
+  .interactive:active {
+    background-color: var(--skin-background-active);
+    color: var(--skin-foreground-active);
+    border-color: var(--skin-border-active);
+  }
+
+  .interactive:disabled,
+  .interactive:has(:disabled) {
+    background-color: var(--skin-background-disabled);
+    color: var(--skin-foreground-disabled);
+    border-color: var(--skin-border-disabled);
+
+    & * {
+      color: inherit;
+      border-color: inherit;
+      background-color: inherit;
+    }
+  }
+
+  .interactive-background:hover {
+    background-color: var(--skin-background-hover);
+  }
+
+  .interactive-background:focus {
+    background-color: var(--skin-background-focus);
+  }
+
+  .interactive-background:active {
+    background-color: var(--skin-background-active);
+  }
+
+  .interactive-background:disabled,
+  .interactive-background:has(:disabled) {
+    background-color: var(--skin-background-disabled);
+
+    & * {
+      background-color: inherit;
+    }
+  }
+
+  .interactive-foreground:hover {
+    color: var(--skin-foreground-hover);
+  }
+
+  .interactive-foreground:focus {
+    color: var(--skin-foreground-focus);
+  }
+
+  .interactive-foreground:active {
+    color: var(--skin-foreground-active);
+  }
+
+  .interactive-foreground:disabled,
+  .interactive-foreground:has(:disabled) {
+    color: var(--skin-foreground-disabled);
+
+    & * {
+      color: inherit;
+    }
+  }
+
+  .interactive-border:hover {
+    border-color: var(--skin-border-hover);
+  }
+
+  .interactive-border:focus {
+    border-color: var(--skin-border-focus);
+  }
+
+  .interactive-border:active {
+    border-color: var(--skin-border-active);
+  }
+
+  .interactive-border:disabled,
+  .interactive-border:has(:disabled) {
+    border-color: var(--skin-border-disabled);
+
+    & * {
+      border-color: inherit;
+    }
+  }
 }

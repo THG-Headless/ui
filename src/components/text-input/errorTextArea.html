@@ -1,23 +1,26 @@
-<div class="input-wrapper">
+<div class="skin-form input-wrapper w-120 wrapper group">
   <div class="input-label-wrapper">
-    <label class="input-label" for="error-textarea">Label</label>
-    <span class="input-status" aria-hidden="true">(Optional status)</span>
+    <label class="input-label text-body font-semi-bold" for="basic-textarea"
+      >Label</label
+    >
+    <span class="input-status text-sm font-light soft" aria-hidden="true"
+      >(Optional status)</span
+    >
   </div>
   <div class="input-field-wrapper">
     <textarea
-      class="input-field"
-      id="error-textarea"
-      name="error-textarea"
+      class="input-field !text-body placeholder:soft interactive"
+      id="basic-textarea"
+      name="basic-textarea"
       placeholder="Placeholder text"
       aria-invalid="true"
-      aria-describedby="error-textarea-error error-textarea-char-limit"
-      aria-errormessage="error-textarea-error"
+      aria-describedby="basic-textarea-error basic-textarea-char-limit"
+      aria-errormessage="basic-textarea-error"
       autocomplete="off"
       spellcheck="true"
       minlength="0"
       maxlength="500"
-      rows="4"
-      style="resize: vertical"
+      rows="3"
     ></textarea>
     <svg class="resize-handle" viewBox="0 0 16 16" fill="currentColor">
       <path
@@ -35,27 +38,33 @@
     </svg>
   </div>
   <div class="input-helper-wrapper">
-    <div class="input-error-content">
-      <svg
-        class="input-error-icon"
-        viewBox="0 0 20 20"
-        fill="currentColor"
-        aria-hidden="true"
-        focusable="false"
-      >
-        <path
-          fill-rule="evenodd"
-          d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z"
-          clip-rule="evenodd"
-        />
-      </svg>
-      <p class="input-error" id="error-textarea-error" role="alert">
-        Error message
-      </p>
+    <div class="input-helper-content">
+      <div class="skin-error input-error-content">
+        <svg
+          class="input-error-icon"
+          viewBox="0 0 20 20"
+          fill="currentColor"
+          aria-hidden="true"
+          focusable="false"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z"
+            clip-rule="evenodd"
+          />
+        </svg>
+        <p
+          class="input-error text-sm font-bold"
+          id="basic-textarea-error"
+          role="alert"
+        >
+          Error message
+        </p>
+      </div>
     </div>
     <p
-      class="input-char-limit"
-      id="error-textarea-char-limit"
+      class="input-char-limit text-sm soft"
+      id="basic-textarea-char-limit"
       aria-hidden="true"
     >
       0/500
