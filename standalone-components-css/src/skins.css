@@ -1,82 +1,4 @@
 @layer components {
-  [class^='skin'] {
-    background-color: var(--skin-background);
-    color: var(--skin-foreground);
-    border-color: var(--skin-border);
-  }
-
-  .interactive:hover {
-    background-color: var(--skin-background-hover);
-    color: var(--skin-foreground-hover);
-    border-color: var(--skin-border-hover);
-  }
-
-  .interactive:focus {
-    background-color: var(--skin-background-focus);
-    color: var(--skin-foreground-focus);
-    border-color: var(--skin-border-focus);
-  }
-
-  .interactive:active {
-    background-color: var(--skin-background-active);
-    color: var(--skin-foreground-active);
-    border-color: var(--skin-border-active);
-  }
-
-  .interactive:disabled {
-    background-color: var(--skin-background-disabled);
-    color: var(--skin-foreground-disabled);
-    border-color: var(--skin-border-disabled);
-  }
-
-  .interactive-background:hover {
-    background-color: var(--skin-background-hover);
-  }
-
-  .interactive-background:focus {
-    background-color: var(--skin-background-focus);
-  }
-
-  .interactive-background:active {
-    background-color: var(--skin-background-active);
-  }
-
-  .interactive-background:disabled {
-    background-color: var(--skin-background-disabled);
-  }
-
-  .interactive-foreground:hover {
-    color: var(--skin-foreground-hover);
-  }
-
-  .interactive-foreground:focus {
-    color: var(--skin-foreground-focus);
-  }
-
-  .interactive-foreground:active {
-    color: var(--skin-foreground-active);
-  }
-
-  .interactive-foreground:disabled {
-    color: var(--skin-foreground-disabled);
-  }
-
-  .interactive-border:hover {
-    border-color: var(--skin-border-hover);
-  }
-
-  .interactive-border:focus {
-    border-color: var(--skin-border-focus);
-  }
-
-  .interactive-border:active {
-    border-color: var(--skin-border-active);
-  }
-
-  .interactive-border:disabled {
-    border-color: var(--skin-border-disabled);
-  }
-
   .skin {
     --skin-background: var(--color-white);
     --skin-background-hover: var(--color-neutral-50);
@@ -137,7 +59,7 @@
     --skin-foreground: var(--color-black);
     --skin-foreground-hover: var(--color-neutral-800);
     --skin-foreground-focus: var(--color-neutral-800);
-    --skin-foreground-active: var(--color-neutral-700);
+    --skin-foreground-active: var (--color-neutral-700);
 
     --skin-border: var(--color-neutral-700);
     --skin-border-hover: var(--color-neutral-800);
@@ -390,7 +312,7 @@
     --skin-background: var(--color-white);
     --skin-background-hover: var(--color-tertiary-50);
     --skin-background-focus: var(--color-tertiary-50);
-    --skin-background-active: var(--color-tertiary-100);
+    --skin-background-active: var (--color-tertiary-100);
     --skin-background-disabled: var(--color-neutral-50);
 
     --skin-foreground: var(--color-tertiary);
@@ -432,13 +354,13 @@
     --skin-background-focus: var(--color-success-200);
     --skin-background-active: var(--color-success-300);
 
-    --skin-foreground: var(--color-success);
+    --skin-foreground: var (--color-success);
     --skin-foreground-hover: var(--color-success-600);
     --skin-foreground-focus: var(--color-success-700);
     --skin-foreground-active: var(--color-success-800);
 
     --skin-border: var(--color-success-300);
-    --skin-border-hover: var(--color-success-400);
+    --skin-border-hover: var (--color-success-400);
     --skin-border-focus: var(--color-success-500);
     --skin-border-active: var(--color-success-600);
   }
@@ -475,5 +397,25 @@
     --skin-border-hover: var(--color-neutral-400);
     --skin-border-focus: var(--color-neutral-500);
     --skin-border-active: var(--color-neutral-600);
+  }
+
+  .skin-form {
+    --skin-background: var(--color-white);
+    --skin-background-hover: var(--color-neutral-100);
+    --skin-background-focus: var(--color-neutral-50);
+    --skin-background-active: var(--color-neutral-50);
+    --skin-background-disabled: var(--color-white);
+
+    --skin-foreground: var(--color-black);
+    --skin-foreground-hover: var(--color-black);
+    --skin-foreground-focus: var(--color-black);
+    --skin-foreground-active: var(--color-black);
+    --skin-foreground-disabled: var(--color-neutral-400);
+
+    --skin-border: var(--color-neutral-300);
+    --skin-border-hover: var(--color-primary-700);
+    --skin-border-focus: var(--color-primary-700);
+    --skin-border-active: var(--color-primary-800);
+    --skin-border-disabled: var(--color-neutral-400);
   }
 }

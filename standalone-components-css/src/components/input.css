@@ -1,67 +1,14 @@
 @layer components {
   :root {
-    --input-label-color: var(--color-high-emphasis);
-    --input-label-color-disabled: var(--color-text-inactive);
-    --input-label-color-invalid: var(--input-label-color);
-    --input-label-size: var(--text-body);
-    --input-label-line-height: var(--line-height-body);
-    --input-label-weight: var(--font-semi-bold);
-    --input-label-weight-disabled: var(--input-label-weight);
-    --input-label-weight-invalid: var(--input-label-weight);
-
-    --input-field-color: var(--color-medium-emphasis);
-    --input-field-color-disabled: var(--color-text-inactive);
-    --input-field-color-invalid: var(--input-field-color);
-    --input-field-placeholder: var(--color-medium-emphasis);
-    --input-field-size: var(--text-body);
-    --input-field-line-height: var(--line-height-body);
-    --input-field-weight: var(--font-normal);
-    --input-field-weight-disabled: var(--input-field-weight);
-    --input-field-weight-invalid: var(--input-field-weight);
-
-    --input-field-surface: var(--color-white);
-    --input-field-surface-hover: var (--color-white);
-    --input-field-surface-disabled: var(--input-field-surface);
-    --input-field-surface-invalid: var(--input-field-surface);
-
-    --input-field-border: var(--color-border-controls);
-    --input-field-border-hover: var(--color-primary);
-    --input-field-border-active: var(--color-primary);
-    --input-field-border-disabled: var(--color-border-inactive);
-    --input-field-border-invalid: var(--color-error);
-    --input-field-border-focus: var(--color-attention);
-
-    --input-helper-color: var(--color-medium-emphasis);
-    --input-helper-color-disabled: var(--color-text-inactive);
-    --input-helper-color-invalid: var(--color-error);
-    --input-helper-size: var(--text-sm);
-    --input-helper-line-height: var(--line-height-sm);
-    --input-helper-weight: var(--font-normal);
-    --input-helper-weight-disabled: var(--input-helper-weight);
-    --input-helper-weight-invalid: var(--font-bold);
-    --input-helper-surface: transparent;
-    --input-helper-surface-invalid: var(--color-error-light);
-
-    --input-clear-surface: var(--color-surface-controls-default);
-    --input-clear-surface-hover: var(--color-surface-controls-dark);
-    --input-clear-radius: var(--radius-full);
-    --input-clear-color: var(--color-white);
-
     --input-spacing: 0.25rem;
     --input-padding-x: 0.5rem;
     --input-padding-y: 0.75rem;
     --input-border-width: 1px;
     --input-border-width-active: 2px;
     --input-border-width-invalid: 2px;
-    --input-radius: var(--radius-sm);
-    --input-radius-textarea: var(--radius-sm);
-
-    --input-status-color: var(--color-medium-emphasis);
-    --input-status-color-disabled: var(--color-text-inactive);
-    --input-status-color-invalid: var(--input-status-color);
-    --input-status-size: var(--text-sm);
-    --input-status-line-height: var(--line-height-sm);
-    --input-status-weight: var(--font-light);
+    --input-error-border-color: var(--color-error);
+    --input-radius: var(--radius-site);
+    --input-radius-textarea: var(--radius-site);
   }
 
   .input-wrapper {
@@ -76,20 +23,10 @@
     align-items: baseline;
     gap: 0.5rem;
     padding-left: var(--input-padding-x);
-  }
-
-  .input-status {
-    color: var(--input-status-color);
-    font-size: var(--input-status-size);
-    line-height: var(--input-status-line-height);
-    font-weight: var(--input-status-weight);
+    background-color: transparent !important;
   }
 
   .input-label {
-    color: var(--input-label-color);
-    font-size: var(--input-label-size);
-    line-height: var(--input-label-line-height);
-    font-weight: var(--input-label-weight);
     margin: 0;
   }
 
@@ -97,148 +34,82 @@
     position: relative;
     display: flex;
     align-items: center;
+    border-radius: var(--input-radius);
   }
 
   .input-field {
     width: 100%;
     padding: var(--input-padding-y) var(--input-padding-x);
-    background-color: var(--input-field-surface);
-    box-shadow: inset 0 0 0 var(--input-border-width) var(--input-field-border);
+    box-shadow: inset 0 0 0 var(--input-border-width) var(--skin-border);
     border-radius: var(--input-radius);
     border: none;
-    color: var(--input-field-color);
-    font-size: var(--input-field-size);
-    line-height: var(--input-field-line-height);
-    font-weight: var(--input-field-weight);
-    height: calc(var(--input-field-line-height) + 2 * var(--input-padding-y));
+    outline-color: transparent;
   }
 
-  .input-field:hover {
-    background-color: var(--input-field-surface-hover);
-    box-shadow: inset 0 0 0 var(--input-border-width-active)
-      var(--input-field-border-hover);
-  }
-
-  .input-field:focus {
-    outline: none;
-    box-shadow: inset 0 0 0 var(--input-border-width-active)
-      var(--input-field-border-active);
-  }
-
-  .input-field:focus-visible {
-    outline: 2px solid var(--input-field-border-focus);
-    outline-offset: 1px;
-  }
-
-  .input-field::placeholder {
-    color: var(--input-field-placeholder);
+  .input-field[aria-invalid='true'] {
+    box-shadow: inset 0 0 0 var(--input-border-width-invalid)
+      var(--input-error-border-color);
   }
 
   .input-helper-wrapper {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding-left: var(--input-padding-x);
-    background: var(--input-helper-surface);
-  }
-
-  .input-helper,
-  .input-error {
-    font-size: var(--input-helper-size);
-    line-height: var(--input-helper-line-height);
-    font-weight: var(--input-helper-weight);
-    margin: 0;
+    flex-direction: column;
+    width: 100%;
+    padding: 0;
+    background-color: transparent !important;
   }
 
   .input-helper {
-    color: var(--input-helper-color);
+    padding-left: var(--input-padding-x);
   }
 
   .input-error {
     display: none;
-    color: var(--input-helper-color-invalid);
-    font-weight: var(--input-helper-weight-invalid);
+    width: 100%;
   }
 
   .input-error-content {
-    display: flex;
+    display: none;
     align-items: center;
     gap: var(--input-spacing);
+    width: 100%;
+    padding: var(--input-padding-y) var(--input-padding-x);
+    border-radius: var(--input-radius);
   }
 
   .input-error-icon {
-    height: var(--input-helper-line-height);
-    width: var(--input-helper-line-height);
-    color: var(--input-helper-color-invalid);
+    width: 1.2em;
+    height: 1.2em;
     display: none;
     flex-shrink: 0;
   }
 
-  .input-char-limit {
-    font-size: var(--input-helper-size);
-    line-height: var(--input-helper-line-height);
-    font-weight: var(--input-helper-weight);
-    color: var(--input-helper-color);
-    margin: 0;
-  }
-
   .input-wrapper:has(input:disabled),
   .input-wrapper:has(textarea:disabled) {
-    cursor: not-allowed;
-    opacity: 0.7;
-
-    & .input-status {
-      color: var(--input-status-color-disabled);
-    }
-
-    & .input-label {
-      color: var(--input-label-color-disabled);
-      font-weight: var(--input-label-weight-disabled);
-    }
-
-    & .input-field {
-      cursor: not-allowed;
-      background-color: var(--input-field-surface-disabled);
-      color: var(--input-field-color-disabled);
-      font-weight: var(--input-field-weight-disabled);
+    .input-field {
       box-shadow: inset 0 0 0 var(--input-border-width)
-        var(--input-field-border-disabled);
+        var(--skin-border-disabled) !important;
     }
 
-    & .input-field:hover {
-      box-shadow: inset 0 0 0 var(--input-border-width)
-        var(--input-field-border-disabled);
+    .input-helper,
+    .input-error,
+    .input-error-content {
+      display: none !important;
     }
 
-    & .input-helper-wrapper {
-      color: var(--input-helper-color-disabled);
-      font-weight: var(--input-helper-weight-disabled);
-    }
+    .resize-handle {
+      color: var(--skin-border-disabled);
 
-    & .input-char-limit {
-      color: var(--input-helper-color-disabled);
-    }
-    & .input-helper {
-      display: none;
+      path {
+        fill: currentColor;
+      }
     }
   }
 
-  .input-wrapper:has(.input-field[aria-invalid='true']) {
-    & .input-label {
-      color: var(--input-label-color-invalid);
-      font-weight: var(--input-label-weight-invalid);
-    }
-
-    & .input-status {
-      color: var(--input-status-color-invalid);
-    }
-
-    & .input-field {
-      background-color: var(--input-field-surface-invalid);
-      color: var(--input-field-color-invalid);
-      font-weight: var (--input-field-weight-invalid);
+  .input-wrapper:has(.input-field[aria-invalid='true']:not(:disabled)) {
+    .input-field {
       box-shadow: inset 0 0 0 var(--input-border-width-invalid)
-        var(--input-field-border-invalid);
+        var(--input-error-border-color);
     }
 
     & .input-helper {
@@ -252,13 +123,9 @@
     & .input-error-icon {
       display: block;
     }
-  }
 
-  .input-wrapper:has(input[type='text'][aria-invalid='true']) {
-    & .input-helper-wrapper {
-      background: var(--input-helper-surface-invalid);
-      padding-top: var(--input-padding-y);
-      padding-bottom: var(--input-padding-y);
+    & .input-error-content {
+      display: flex;
     }
   }
 
@@ -271,6 +138,38 @@
 
     & .input-label-wrapper {
       padding-left: var(--input-padding-x);
+    }
+
+    & .input-error-content {
+      padding-top: 0;
+      padding-bottom: 0;
+      background: transparent !important;
+    }
+
+    & .input-char-limit {
+      text-align: right;
+    }
+
+    & .input-helper-wrapper {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: var(--input-spacing);
+    }
+
+    & .input-helper-content {
+      flex: 1;
+    }
+
+    & .input-char-limit {
+      flex-shrink: 0;
+      text-align: right;
+    }
+
+    & .input-error-content {
+      padding-top: 0;
+      padding-bottom: 0;
+      background: transparent !important;
     }
   }
 
@@ -286,7 +185,6 @@
       pointer-events: none;
       width: 16px;
       height: 16px;
-      color: var(--input-field-border);
     }
   }
 
@@ -298,16 +196,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 0.125rem;
-    background-color: var(--input-clear-surface);
-    border-radius: var(--input-clear-radius);
-    color: var (--input-clear-color);
+    padding: 0.25rem;
     cursor: pointer;
     z-index: 1;
-  }
-
-  .input-clear:hover {
-    background-color: var(--input-clear-surface-hover);
+    border-radius: var(--input-radius-textarea);
   }
 
   .input-clear svg {
