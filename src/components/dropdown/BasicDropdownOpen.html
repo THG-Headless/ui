@@ -1,7 +1,7 @@
 <div class="skin-form dropdown-wrapper group dropdown-open">
   <label
-    for="basic-dropdown-trigger"
-    id="basic-dropdown-label"
+    for="basic-dropdown-open-trigger"
+    id="basic-dropdown-open-label"
     class="dropdown-label text-body font-semi-bold"
     >Label</label
   >
@@ -10,17 +10,17 @@
       class="wrapper"
       role="combobox"
       aria-expanded="false"
-      aria-owns="basic-dropdown-list"
-      aria-controls="basic-dropdown-list"
-      aria-labelledby="basic-dropdown-label"
+      aria-owns="basic-dropdown-open-list"
+      aria-controls="basic-dropdown-open-list"
+      aria-labelledby="basic-dropdown-open-label"
     >
       <button
-        id="basic-dropdown-trigger "
+        id="basic-dropdown-open-trigger "
         class="dropdown-summary interactive"
         aria-haspopup="listbox"
         aria-expanded="false"
-        aria-controls="basic-dropdown-list"
-        aria-labelledby="basic-dropdown-label"
+        aria-controls="basic-dropdown-open-list"
+        aria-labelledby="basic-dropdown-open-label"
       >
         <div class="dropdown-summary-content">
           <svg
@@ -55,10 +55,10 @@
     </div>
     <div class="dropdown-content-wrapper">
       <ul
-        id="basic-dropdown-list"
+        id="basic-dropdown-open-list"
         class="dropdown-list"
         role="listbox"
-        aria-labelledby="basic-dropdown-label"
+        aria-labelledby="basic-dropdown-open-label"
         tabindex="-1"
       >
         <li
@@ -129,7 +129,9 @@
     </div>
   </div>
   <div class="dropdown-helper-wrapper">
-    <p class="dropdown-helper text-sm soft" id="basic-helper">Helper text</p>
+    <p class="dropdown-helper text-sm soft" id="basic-open-helper">
+      Helper text
+    </p>
     <div class="skin-error dropdown-error-content">
       <svg
         class="dropdown-icon"

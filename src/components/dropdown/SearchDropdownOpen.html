@@ -1,7 +1,7 @@
 <div class="skin-form dropdown-wrapper group dropdown-open">
   <label
-    for="search-dropdown-trigger"
-    id="search-dropdown-label"
+    for="search-open-dropdown-trigger"
+    id="search-open-dropdown-label"
     class="dropdown-label text-body font-semi-bold"
     >Label</label
   >
@@ -10,15 +10,17 @@
       class="wrapper"
       role="combobox"
       aria-expanded="false"
-      aria-controls="search-dropdown-list"
-      aria-labelledby="search-dropdown-label"
+      aria-owns="search-open-dropdown-list"
+      aria-controls="search-open-dropdown-list"
+      aria-labelledby="search-open-dropdown-label"
     >
       <button
-        id="search-dropdown-trigger"
+        id="search-open-dropdown-trigger "
         class="dropdown-summary interactive"
         aria-haspopup="listbox"
         aria-expanded="false"
-        aria-controls="search-dropdown-list"
+        aria-controls="search-open-dropdown-list"
+        aria-labelledby="search-open-dropdown-label"
       >
         <div class="dropdown-summary-content">
           <svg
@@ -34,7 +36,7 @@
               clip-rule="evenodd"
             />
           </svg>
-          <span id="selected-value">Placeholder Text</span>
+          <span id="selected-value" class="text-body">Placeholder Text</span>
           <svg
             class="dropdown-icon chevron"
             viewBox="0 0 20 20"
@@ -52,11 +54,13 @@
       </button>
     </div>
     <div class="dropdown-content-wrapper">
-      <div class="dropdown-search-wrapper wrapper interactive">
-        <label for="dropdown-search" class="sr-only">Search options</label>
+      <div class="dropdown-search-wrapper wrapper">
+        <label for="dropdown-search-open-open" class="sr-only">
+          Search options
+        </label>
         <div class="search-input-wrapper">
           <svg
-            class="search-icon"
+            class="dropdown-search-icon"
             viewBox="0 0 20 20"
             fill="currentColor"
             aria-hidden="true"
@@ -69,25 +73,25 @@
           </svg>
           <input
             type="search"
-            id="dropdown-search"
+            id="dropdown-search-input"
             class="dropdown-search-input text-body placeholder:soft"
             placeholder="Search..."
-            aria-controls="search-dropdown-list"
+            aria-controls="search-open-dropdown-list"
             aria-autocomplete="list"
             autocomplete="off"
           />
         </div>
       </div>
       <ul
-        id="search-dropdown-list"
+        id="search-open-dropdown-list"
         class="dropdown-list"
         role="listbox"
-        aria-labelledby="search-dropdown-label"
+        aria-labelledby="search-open-dropdown-label"
         tabindex="-1"
       >
         <li
           role="option"
-          id="search-option-1"
+          id="search-open-option-1"
           class="text-body interactive"
           aria-selected="false"
         >
@@ -95,7 +99,7 @@
         </li>
         <li
           role="option"
-          id="search-option-2"
+          id="search-open-option-2"
           class="text-body interactive"
           aria-selected="false"
         >
@@ -103,7 +107,7 @@
         </li>
         <li
           role="option"
-          id="search-option-3"
+          id="search-open-option-3"
           class="text-body interactive"
           aria-selected="false"
         >
@@ -111,7 +115,7 @@
         </li>
         <li
           role="option"
-          id="search-option-4"
+          id="search-open-option-4"
           class="text-body interactive"
           aria-selected="false"
         >
@@ -119,7 +123,7 @@
         </li>
         <li
           role="option"
-          id="search-option-5"
+          id="search-open-option-5"
           class="text-body interactive"
           aria-selected="false"
         >
@@ -127,7 +131,7 @@
         </li>
         <li
           role="option"
-          id="search-option-6"
+          id="search-open-option-6"
           class="text-body interactive"
           aria-selected="false"
         >
@@ -135,7 +139,7 @@
         </li>
         <li
           role="option"
-          id="search-option-7"
+          id="search-open-option-7"
           class="text-body interactive"
           aria-selected="false"
         >
@@ -143,7 +147,7 @@
         </li>
         <li
           role="option"
-          id="search-option-8"
+          id="search-open-option-8"
           class="text-body interactive"
           aria-selected="false"
         >
@@ -153,7 +157,9 @@
     </div>
   </div>
   <div class="dropdown-helper-wrapper">
-    <p class="dropdown-helper text-sm soft" id="basic-helper">Helper text</p>
+    <p class="dropdown-helper text-sm soft" id="search-open-helper">
+      Helper text
+    </p>
     <div class="skin-error dropdown-error-content">
       <svg
         class="dropdown-icon"
