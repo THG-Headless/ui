@@ -3,14 +3,16 @@ title: Input
 description: Input components provide various text input fields for collecting user data, including single-line inputs and text areas.
 ---
 
-import ShowComponent from '../../../components/doc-helpers/ShowComponent.astro';
-import BasicTextInput from '../../../components/text-input/basicTextInput.html';
-import ErrorTextInput from '../../../components/text-input/errorTextInput.html';
-import DisabledTextInput from '../../../components/text-input/disabledTextInput.html';
-import ClearTextInput from '../../../components/text-input/clearTextInput.html';
-import BasicTextArea from '../../../components/text-input/basicTextArea.html';
-import ErrorTextArea from '../../../components/text-input/errorTextArea.html';
-import DisabledTextArea from '../../../components/text-input/disabledTextArea.html';
+import ShowComponent from '../../../components/doc-helpers/ShowComponent.astro'
+import BasicTextInput from '../../../components/text-input/basicTextInput.html'
+import ErrorTextInput from '../../../components/text-input/errorTextInput.html'
+import DisabledTextInput from '../../../components/text-input/disabledTextInput.html'
+import ClearTextInput from '../../../components/text-input/clearTextInput.html'
+import BasicTextArea from '../../../components/text-input/basicTextArea.html'
+import ErrorTextArea from '../../../components/text-input/errorTextArea.html'
+import InputWithButton from '../../../components/text-input/inputWithButton.html'
+
+import DisabledTextArea from '../../../components/text-input/disabledTextArea.html'
 
 Input components are essential UI elements that allow users to enter and edit text. They come in two main variants: single-line text inputs and multi-line text areas. Each type supports various states including basic, error, custom error messages, and disabled states.
 
@@ -46,6 +48,14 @@ Inputs can include a clear button to quickly remove entered text, although the f
 
 <ShowComponent>
   <ClearTextInput />
+</ShowComponent>
+
+### Input with Button
+
+We can add a submit button next to the input field for a common UI pattern:
+
+<ShowComponent>
+  <InputWithButton />
 </ShowComponent>
 
 ## Text Areas
