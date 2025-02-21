@@ -152,20 +152,20 @@
   }
 
   .skin-attention {
-    --skin-background: var(--color-light);
-    --skin-background-hover: var(--color-100);
-    --skin-background-focus: var(--color-200);
-    --skin-background-active: var(--color-300);
+    --skin-background: var(--color-attention-50);
+    --skin-background-hover: var(--color-attention-100);
+    --skin-background-focus: var(--color-attention-200);
+    --skin-background-active: var(--color-attention-300);
 
-    --skin-foreground: var(--color-attention);
-    --skin-foreground-hover: var(--color-600);
-    --skin-foreground-focus: var(--color-700);
-    --skin-foreground-active: var(--color-800);
+    --skin-foreground: var(--color-attention-500);
+    --skin-foreground-hover: var(--color-attention-600);
+    --skin-foreground-focus: var(--color-attention-700);
+    --skin-foreground-active: var(--color-attention-800);
 
-    --skin-border: var(--color-300);
-    --skin-border-hover: var(--color-400);
-    --skin-border-focus: var(--color-500);
-    --skin-border-active: var(--color-600);
+    --skin-border: var(--color-attention-300);
+    --skin-border-hover: var(--color-attention-400);
+    --skin-border-focus: var(--color-attention-500);
+    --skin-border-active: var(--color-attention-600);
   }
 
   .skin-primary-emphasised {
@@ -354,7 +354,7 @@
     --skin-background-focus: var(--color-success-200);
     --skin-background-active: var(--color-success-300);
 
-    --skin-foreground: var (--color-success);
+    --skin-foreground: var(--color-success);
     --skin-foreground-hover: var(--color-success-600);
     --skin-foreground-focus: var(--color-success-700);
     --skin-foreground-active: var(--color-success-800);
