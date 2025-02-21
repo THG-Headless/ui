@@ -1,7 +1,7 @@
 <div class="skin-form dropdown-wrapper dropdown-error group">
   <label
-    for="basic-dropdown-trigger"
-    id="basic-dropdown-label"
+    for="error-dropdown-trigger"
+    id="error-dropdown-label"
     class="dropdown-label text-body font-semi-bold"
     >Label</label
   >
@@ -10,16 +10,17 @@
       class="wrapper"
       role="combobox"
       aria-expanded="false"
-      aria-controls="basic-dropdown-list"
-      aria-labelledby="basic-dropdown-label"
+      aria-owns="error-dropdown-list"
+      aria-controls="error-dropdown-list"
+      aria-labelledby="error-dropdown-label"
     >
       <button
-        id="basic-dropdown-trigger"
+        id="error-dropdown-trigger "
         class="dropdown-summary interactive"
         aria-haspopup="listbox"
         aria-expanded="false"
-        aria-controls="basic-dropdown-list"
-        aria-invalid="true"
+        aria-controls="error-dropdown-list"
+        aria-labelledby="error-dropdown-label"
       >
         <div class="dropdown-summary-content">
           <svg
@@ -35,9 +36,8 @@
               clip-rule="evenodd"
             />
           </svg>
-          <span id="selected-value">Placeholder Text</span>
+          <span id="selected-value" class="text-body">Placeholder Text</span>
           <svg
-            xmlns="http://www.w3.org/2000/svg"
             class="dropdown-icon chevron"
             viewBox="0 0 20 20"
             fill="currentColor"
@@ -55,10 +55,10 @@
     </div>
     <div class="dropdown-content-wrapper">
       <ul
-        id="basic-dropdown-list"
+        id="error-dropdown-list"
         class="dropdown-list"
         role="listbox"
-        aria-labelledby="basic-dropdown-label"
+        aria-labelledby="error-dropdown-label"
         tabindex="-1"
       >
         <li
@@ -69,13 +69,62 @@
         >
           Item 1
         </li>
-        <li role="option" id="basic-option-2" aria-selected="false">Item 2</li>
-        <li role="option" id="basic-option-3" aria-selected="false">Item 3</li>
-        <li role="option" id="basic-option-4" aria-selected="false">Item 4</li>
-        <li role="option" id="basic-option-5" aria-selected="false">Item 5</li>
-        <li role="option" id="basic-option-6" aria-selected="false">Item 6</li>
-        <li role="option" id="basic-option-7" aria-selected="false">Item 7</li>
-        <li role="option" id="basic-option-8" aria-selected="false">Item 8</li>
+        <li
+          role="option"
+          id="basic-option-2"
+          class="text-body interactive"
+          aria-selected="false"
+        >
+          Item 2
+        </li>
+        <li
+          role="option"
+          id="basic-option-3"
+          class="text-body interactive"
+          aria-selected="false"
+        >
+          Item 3
+        </li>
+        <li
+          role="option"
+          id="basic-option-4"
+          class="text-body interactive"
+          aria-selected="false"
+        >
+          Item 4
+        </li>
+        <li
+          role="option"
+          id="basic-option-5"
+          class="text-body interactive"
+          aria-selected="false"
+        >
+          Item 5
+        </li>
+        <li
+          role="option"
+          id="basic-option-6"
+          class="text-body interactive"
+          aria-selected="false"
+        >
+          Item 6
+        </li>
+        <li
+          role="option"
+          id="basic-option-7"
+          class="text-body interactive"
+          aria-selected="false"
+        >
+          Item 7
+        </li>
+        <li
+          role="option"
+          id="basic-option-8"
+          class="text-body interactive"
+          aria-selected="false"
+        >
+          Item 8
+        </li>
       </ul>
     </div>
   </div>

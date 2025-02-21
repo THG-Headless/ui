@@ -10,15 +10,17 @@
       class="wrapper"
       role="combobox"
       aria-expanded="false"
+      aria-owns="search-dropdown-list"
       aria-controls="search-dropdown-list"
       aria-labelledby="search-dropdown-label"
     >
       <button
-        id="search-dropdown-trigger"
+        id="search-dropdown-trigger "
         class="dropdown-summary interactive"
         aria-haspopup="listbox"
         aria-expanded="false"
         aria-controls="search-dropdown-list"
+        aria-labelledby="search-dropdown-label"
       >
         <div class="dropdown-summary-content">
           <svg
@@ -34,7 +36,7 @@
               clip-rule="evenodd"
             />
           </svg>
-          <span id="selected-value">Placeholder Text</span>
+          <span id="selected-value" class="text-body">Placeholder Text</span>
           <svg
             class="dropdown-icon chevron"
             viewBox="0 0 20 20"
