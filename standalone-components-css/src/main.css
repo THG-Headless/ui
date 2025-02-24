@@ -487,7 +487,7 @@
     );
     border-color: color-mix(
       in oklch,
-      var(--skin-border) 60%,
+      var(--skin-border) 20%,
       var(--skin-background)
     );
 
@@ -499,8 +499,8 @@
       );
       border-color: color-mix(
         in oklch,
-        var(--skin-border-hover) 60%,
-        var(--skin-background-hover)
+        var(--skin-border-hover) 20%,
+        var (--skin-background-hover)
       );
     }
 
@@ -512,7 +512,7 @@
       );
       border-color: color-mix(
         in oklch,
-        var(--skin-border-focus) 60%,
+        var(--skin-border-focus) 20%,
         var(--skin-background-focus)
       );
     }
@@ -525,7 +525,7 @@
       );
       border-color: color-mix(
         in oklch,
-        var(--skin-border-active) 60%,
+        var(--skin-border-active) 20%,
         var(--skin-background-active)
       );
     }
@@ -540,7 +540,7 @@
       ) !important;
       border-color: color-mix(
         in oklch,
-        var(--skin-border-disabled) 60%,
+        var(--skin-border-disabled) 20%,
         var(--skin-background-disabled)
       ) !important;
     }
