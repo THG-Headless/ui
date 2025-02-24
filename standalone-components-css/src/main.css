@@ -307,16 +307,35 @@
   --color-tertiary-hover: var(--color-tertiary-600);
   --color-tertiary-hover-light: var(--color-tertiary-400);
 
+  --color-neutral-default: var(--color-neutral-500);
+  --color-neutral-light: var(--color-neutral-50);
+  --color-neutral-dark: var(--color-neutral-950);
+  --color-neutral-hover: var(--color-neutral-600);
+  --color-neutral-hover-light: var(--color-neutral-400);
+
   --color-attention-default: var(--color-attention-500);
   --color-attention-light: var(--color-attention-50);
+  --color-attention-dark: var(--color-attention-950);
+  --color-attention-hover: var(--color-attention-600);
+  --color-attention-hover-light: var(--color-attention-400);
 
   --color-success-default: var(--color-success-500);
   --color-success-light: var(--color-success-50);
+  --color-success-dark: var(--color-success-950);
+  --color-success-hover: var(--color-success-600);
+  --color-success-hover-light: var(--color-success-400);
 
   --color-error-default: var(--color-error-500);
   --color-error-light: var(--color-error-50);
+  --color-error-dark: var(--color-error-950);
+  --color-error-hover: var(--color-error-600);
+  --color-error-hover-light: var(--color-error-400);
 
   --color-promotion-default: var(--color-promotion-500);
+  --color-promotion-light: var(--color-promotion-50);
+  --color-promotion-dark: var(--color-promotion-950);
+  --color-promotion-hover: var(--color-promotion-600);
+  --color-promotion-hover-light: var(--color-promotion-400);
 
   --text-desktop-2xl: 45px;
   --line-height-desktop-2xl: 56px;
