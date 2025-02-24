@@ -485,11 +485,21 @@
       var(--skin-foreground) 60%,
       var(--skin-background)
     );
+    border-color: color-mix(
+      in oklch,
+      var(--skin-border) 60%,
+      var(--skin-background)
+    );
 
     &.interactive:hover:not(:disabled):not([disabled]) {
       color: color-mix(
         in oklch,
         var(--skin-foreground-hover) 60%,
+        var(--skin-background-hover)
+      );
+      border-color: color-mix(
+        in oklch,
+        var(--skin-border-hover) 60%,
         var(--skin-background-hover)
       );
     }
@@ -500,12 +510,22 @@
         var(--skin-foreground-focus) 60%,
         var(--skin-background-focus)
       );
+      border-color: color-mix(
+        in oklch,
+        var(--skin-border-focus) 60%,
+        var(--skin-background-focus)
+      );
     }
 
     &.interactive:active:not(:disabled):not([disabled]) {
       color: color-mix(
         in oklch,
         var(--skin-foreground-active) 60%,
+        var(--skin-background-active)
+      );
+      border-color: color-mix(
+        in oklch,
+        var(--skin-border-active) 60%,
         var(--skin-background-active)
       );
     }
@@ -516,6 +536,11 @@
       color: color-mix(
         in oklch,
         var(--skin-foreground-disabled) 60%,
+        var(--skin-background-disabled)
+      ) !important;
+      border-color: color-mix(
+        in oklch,
+        var(--skin-border-disabled) 60%,
         var(--skin-background-disabled)
       ) !important;
     }
