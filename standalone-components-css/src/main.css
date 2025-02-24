@@ -546,6 +546,33 @@
     }
   }
 
+  .soft-end {
+    color: var(--skin-foreground);
+    border-color: var(--skin-border);
+
+    &.interactive:hover:not(:disabled):not([disabled]) {
+      color: var(--skin-foreground-hover);
+      border-color: var(--skin-border-hover);
+    }
+
+    &.interactive:focus:not(:disabled):not([disabled]) {
+      color: var(--skin-foreground-focus);
+      border-color: var(--skin-border-focus);
+    }
+
+    &.interactive:active:not(:disabled):not([disabled]) {
+      color: var(--skin-foreground-active);
+      border-color: var(--skin-border-active);
+    }
+
+    &:disabled,
+    &:has(:disabled),
+    .group:has(:disabled) & {
+      color: var(--skin-foreground-disabled) !important;
+      border-color: var(--skin-border-disabled) !important;
+    }
+  }
+
   .interactive:hover {
     background-color: var(--skin-background-hover);
     color: var(--skin-foreground-hover);
