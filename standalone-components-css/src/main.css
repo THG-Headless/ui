@@ -307,16 +307,35 @@
   --color-tertiary-hover: var(--color-tertiary-600);
   --color-tertiary-hover-light: var(--color-tertiary-400);
 
+  --color-neutral-default: var(--color-neutral-500);
+  --color-neutral-light: var(--color-neutral-50);
+  --color-neutral-dark: var(--color-neutral-950);
+  --color-neutral-hover: var(--color-neutral-600);
+  --color-neutral-hover-light: var(--color-neutral-400);
+
   --color-attention-default: var(--color-attention-500);
   --color-attention-light: var(--color-attention-50);
+  --color-attention-dark: var(--color-attention-950);
+  --color-attention-hover: var(--color-attention-600);
+  --color-attention-hover-light: var(--color-attention-400);
 
   --color-success-default: var(--color-success-500);
   --color-success-light: var(--color-success-50);
+  --color-success-dark: var(--color-success-950);
+  --color-success-hover: var(--color-success-600);
+  --color-success-hover-light: var(--color-success-400);
 
   --color-error-default: var(--color-error-500);
   --color-error-light: var(--color-error-50);
+  --color-error-dark: var(--color-error-950);
+  --color-error-hover: var(--color-error-600);
+  --color-error-hover-light: var(--color-error-400);
 
   --color-promotion-default: var(--color-promotion-500);
+  --color-promotion-light: var(--color-promotion-50);
+  --color-promotion-dark: var(--color-promotion-950);
+  --color-promotion-hover: var(--color-promotion-600);
+  --color-promotion-hover-light: var(--color-promotion-400);
 
   --text-desktop-2xl: 45px;
   --line-height-desktop-2xl: 56px;
@@ -421,9 +440,9 @@
   @import './skins.css';
 
   [class*='skin'] {
-    background-color: var(--skin-background);
-    color: var(--skin-foreground);
-    border-color: var(--skin-border);
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    border-color: var(--color-border);
   }
 
   .wrapper {
@@ -433,29 +452,29 @@
 
     /* Base styles for all children */
     & > * {
-      background-color: var(--skin-background) !important;
-      border-color: var(--skin-border) !important;
-      color: var(--skin-foreground) !important;
+      background-color: var(--color-background) !important;
+      border-color: var(--color-border) !important;
+      color: var(--color-foreground) !important;
     }
 
     /* Interactive states for interactive children */
     & .interactive {
       &:hover:not(:disabled):not([disabled]) {
-        background-color: var(--skin-background-hover) !important;
-        border-color: var(--skin-border-hover) !important;
-        color: var(--skin-foreground-hover) !important;
+        background-color: var(--color-background-hover) !important;
+        border-color: var(--color-border-hover) !important;
+        color: var(--color-foreground-hover) !important;
       }
 
       &:focus:not(:disabled):not([disabled]) {
-        background-color: var(--skin-background-focus) !important;
-        border-color: var(--skin-border-focus) !important;
-        color: var(--skin-foreground-focus) !important;
+        background-color: var(--color-background-focus) !important;
+        border-color: var(--color-border-focus) !important;
+        color: var(--color-foreground-focus) !important;
       }
 
       &:active:not(:disabled):not([disabled]) {
-        background-color: var(--skin-background-active) !important;
-        border-color: var(--skin-border-active) !important;
-        color: var(--skin-foreground-active) !important;
+        background-color: var(--color-background-active) !important;
+        border-color: var(--color-border-active) !important;
+        color: var(--color-foreground-active) !important;
       }
     }
 
@@ -464,16 +483,16 @@
     &.group:has([disabled]) {
       & > *,
       & .interactive {
-        background-color: var(--skin-background-disabled) !important;
-        border-color: var(--skin-border-disabled) !important;
-        color: var(--skin-foreground-disabled) !important;
+        background-color: var(--color-background-disabled) !important;
+        border-color: var(--color-border-disabled) !important;
+        color: var(--color-foreground-disabled) !important;
 
         &:hover,
         &:focus,
         &:active {
-          background-color: var(--skin-background-disabled) !important;
-          border-color: var(--skin-border-disabled) !important;
-          color: var(--skin-foreground-disabled) !important;
+          background-color: var(--color-background-disabled) !important;
+          border-color: var(--color-border-disabled) !important;
+          color: var(--color-foreground-disabled) !important;
         }
       }
     }
@@ -482,51 +501,51 @@
   .soft {
     color: color-mix(
       in oklch,
-      var(--skin-foreground) 60%,
-      var(--skin-background)
+      var(--color-foreground) 60%,
+      var(--color-background)
     );
     border-color: color-mix(
       in oklch,
-      var(--skin-border) 20%,
-      var(--skin-background)
+      var(--color-border) 20%,
+      var(--color-background)
     );
 
     &.interactive:hover:not(:disabled):not([disabled]) {
       color: color-mix(
         in oklch,
-        var(--skin-foreground-hover) 60%,
-        var(--skin-background-hover)
+        var(--color-foreground-hover) 60%,
+        var(--color-background-hover)
       );
       border-color: color-mix(
         in oklch,
-        var(--skin-border-hover) 20%,
-        var (--skin-background-hover)
+        var(--color-border-hover) 20%,
+        var (--color-background-hover)
       );
     }
 
     &.interactive:focus:not(:disabled):not([disabled]) {
       color: color-mix(
         in oklch,
-        var(--skin-foreground-focus) 60%,
-        var(--skin-background-focus)
+        var(--color-foreground-focus) 60%,
+        var(--color-background-focus)
       );
       border-color: color-mix(
         in oklch,
-        var(--skin-border-focus) 20%,
-        var(--skin-background-focus)
+        var(--color-border-focus) 20%,
+        var(--color-background-focus)
       );
     }
 
     &.interactive:active:not(:disabled):not([disabled]) {
       color: color-mix(
         in oklch,
-        var(--skin-foreground-active) 60%,
-        var(--skin-background-active)
+        var(--color-foreground-active) 60%,
+        var(--color-background-active)
       );
       border-color: color-mix(
         in oklch,
-        var(--skin-border-active) 20%,
-        var(--skin-background-active)
+        var(--color-border-active) 20%,
+        var(--color-background-active)
       );
     }
 
@@ -535,67 +554,67 @@
     .group:has(:disabled) & {
       color: color-mix(
         in oklch,
-        var(--skin-foreground-disabled) 60%,
-        var(--skin-background-disabled)
+        var(--color-foreground-disabled) 60%,
+        var(--color-background-disabled)
       ) !important;
       border-color: color-mix(
         in oklch,
-        var(--skin-border-disabled) 20%,
-        var(--skin-background-disabled)
+        var(--color-border-disabled) 20%,
+        var(--color-background-disabled)
       ) !important;
     }
   }
 
   .soft-end {
-    color: var(--skin-foreground);
-    border-color: var(--skin-border);
+    color: var(--color-foreground);
+    border-color: var(--color-border);
 
     &.interactive:hover:not(:disabled):not([disabled]) {
-      color: var(--skin-foreground-hover);
-      border-color: var(--skin-border-hover);
+      color: var(--color-foreground-hover);
+      border-color: var(--color-border-hover);
     }
 
     &.interactive:focus:not(:disabled):not([disabled]) {
-      color: var(--skin-foreground-focus);
-      border-color: var(--skin-border-focus);
+      color: var(--color-foreground-focus);
+      border-color: var(--color-border-focus);
     }
 
     &.interactive:active:not(:disabled):not([disabled]) {
-      color: var(--skin-foreground-active);
-      border-color: var(--skin-border-active);
+      color: var(--color-foreground-active);
+      border-color: var(--color-border-active);
     }
 
     &:disabled,
     &:has(:disabled),
     .group:has(:disabled) & {
-      color: var(--skin-foreground-disabled) !important;
-      border-color: var(--skin-border-disabled) !important;
+      color: var(--color-foreground-disabled) !important;
+      border-color: var(--color-border-disabled) !important;
     }
   }
 
   .interactive:hover {
-    background-color: var(--skin-background-hover);
-    color: var(--skin-foreground-hover);
-    border-color: var(--skin-border-hover);
+    background-color: var(--color-background-hover);
+    color: var(--color-foreground-hover);
+    border-color: var(--color-border-hover);
   }
 
   .interactive:focus {
-    background-color: var(--skin-background-focus);
-    color: var(--skin-foreground-focus);
-    border-color: var(--skin-border-focus);
+    background-color: var(--color-background-focus);
+    color: var(--color-foreground-focus);
+    border-color: var(--color-border-focus);
   }
 
   .interactive:active {
-    background-color: var(--skin-background-active);
-    color: var(--skin-foreground-active);
-    border-color: var(--skin-border-active);
+    background-color: var(--color-background-active);
+    color: var(--color-foreground-active);
+    border-color: var(--color-border-active);
   }
 
   .interactive:disabled,
   .interactive:has(:disabled) {
-    background-color: var(--skin-background-disabled);
-    color: var(--skin-foreground-disabled);
-    border-color: var(--skin-border-disabled);
+    background-color: var(--color-background-disabled);
+    color: var(--color-foreground-disabled);
+    border-color: var(--color-border-disabled);
 
     & * {
       color: inherit;
@@ -605,20 +624,20 @@
   }
 
   .interactive-background:hover {
-    background-color: var(--skin-background-hover);
+    background-color: var(--color-background-hover);
   }
 
   .interactive-background:focus {
-    background-color: var(--skin-background-focus);
+    background-color: var(--color-background-focus);
   }
 
   .interactive-background:active {
-    background-color: var(--skin-background-active);
+    background-color: var(--color-background-active);
   }
 
   .interactive-background:disabled,
   .interactive-background:has(:disabled) {
-    background-color: var(--skin-background-disabled);
+    background-color: var(--color-background-disabled);
 
     & * {
       background-color: inherit;
@@ -626,20 +645,20 @@
   }
 
   .interactive-foreground:hover {
-    color: var(--skin-foreground-hover);
+    color: var(--color-foreground-hover);
   }
 
   .interactive-foreground:focus {
-    color: var(--skin-foreground-focus);
+    color: var(--color-foreground-focus);
   }
 
   .interactive-foreground:active {
-    color: var(--skin-foreground-active);
+    color: var(--color-foreground-active);
   }
 
   .interactive-foreground:disabled,
   .interactive-foreground:has(:disabled) {
-    color: var(--skin-foreground-disabled);
+    color: var(--color-foreground-disabled);
 
     & * {
       color: inherit;
@@ -647,20 +666,20 @@
   }
 
   .interactive-border:hover {
-    border-color: var(--skin-border-hover);
+    border-color: var(--color-border-hover);
   }
 
   .interactive-border:focus {
-    border-color: var(--skin-border-focus);
+    border-color: var(--color-border-focus);
   }
 
   .interactive-border:active {
-    border-color: var(--skin-border-active);
+    border-color: var(--color-border-active);
   }
 
   .interactive-border:disabled,
   .interactive-border:has(:disabled) {
-    border-color: var(--skin-border-disabled);
+    border-color: var(--color-border-disabled);
 
     & * {
       border-color: inherit;
