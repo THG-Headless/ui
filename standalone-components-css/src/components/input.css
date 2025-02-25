@@ -40,7 +40,7 @@
   .input-field {
     width: 100%;
     padding: var(--input-padding-y) var(--input-padding-x);
-    box-shadow: inset 0 0 0 var(--input-border-width) var(--skin-border);
+    box-shadow: inset 0 0 0 var(--input-border-width) var(--color-border);
     border-radius: var(--input-radius);
     border: none;
     outline-color: transparent;
@@ -88,7 +88,7 @@
   .input-wrapper:has(textarea:disabled) {
     .input-field {
       box-shadow: inset 0 0 0 var(--input-border-width)
-        var(--skin-border-disabled) !important;
+        var(--color-border-disabled) !important;
     }
 
     .input-helper,
@@ -98,7 +98,7 @@
     }
 
     .resize-handle {
-      color: var(--skin-border-disabled);
+      color: var(--color-border-disabled);
 
       path {
         fill: currentColor;

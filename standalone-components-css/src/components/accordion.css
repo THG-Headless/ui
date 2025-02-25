@@ -45,7 +45,7 @@
     overflow: hidden;
     box-shadow: var(--accordion-box-shadow);
     position: relative;
-    background: var(--skin-background);
+    background: var(--color-background);
   }
 
   .accordion-trigger {
@@ -96,11 +96,11 @@
 
   .accordion-section:not(:first-child) {
     border-top: var(--accordion-divider-width) solid
-      color-mix(in srgb, var(--skin-border) 50%, transparent);
+      color-mix(in srgb, var(--color-border) 50%, transparent);
   }
 
   .accordion-section[open] {
-    border-top-color: var(--skin-border);
+    border-top-color: var(--color-border);
     opacity: 1;
     z-index: 2;
   }
@@ -114,8 +114,8 @@
     z-index: 1;
     margin: var(--accordion-inner-margin);
     padding: var(--accordion-inner-padding);
-    border-top: var(--accordion-divider-width) solid var(--skin-border);
-    border-bottom: var(--accordion-divider-width) solid var(--skin-border);
+    border-top: var(--accordion-divider-width) solid var(--color-border);
+    border-bottom: var(--accordion-divider-width) solid var(--color-border);
     background: inherit;
   }
 
