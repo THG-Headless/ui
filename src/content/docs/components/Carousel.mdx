@@ -3,19 +3,20 @@ title: Carousel
 description: Carousel
 ---
 
-import { Aside } from '@astrojs/starlight/components';
-import ShowComponent from '@components/doc-helpers/ShowComponent.astro';
-import BasicCarousel from '@components/carousel/BasicCarousel.html';
-import Small from '@components/carousel/CarouselSmall.html';
-import Large from '@components/carousel/CarouselLarge.html';
-import Tight from '@components/carousel/CarouselTight.html';
-import SnapStart from '@components/carousel/CarouselSnapStart.html';
-import SnapEnd from '@components/carousel/CarouselSnapEnd.html';
-import SnapCenter from '@components/carousel/CarouselSnapCenter.html';
-import SnapPad from '@components/carousel/CarouselSnapPad.html';
-import CarouselContent from '@components/carousel/CarouselContent.html';
-import CarouselInteractive from '@components/carousel/CarouselInteractive.html';
-import CarouselBanner from '@components/carousel/CarouselBanner.html';
+import { Aside } from '@astrojs/starlight/components'
+import ShowComponent from '@components/doc-helpers/ShowComponent.astro'
+import BasicCarousel from '@components/carousel/BasicCarousel.html'
+import Small from '@components/carousel/CarouselSmall.html'
+import Large from '@components/carousel/CarouselLarge.html'
+import Tight from '@components/carousel/CarouselTight.html'
+import SnapStart from '@components/carousel/CarouselSnapStart.html'
+import SnapEnd from '@components/carousel/CarouselSnapEnd.html'
+import SnapCenter from '@components/carousel/CarouselSnapCenter.html'
+import SnapPad from '@components/carousel/CarouselSnapPad.html'
+import CarouselContent from '@components/carousel/CarouselContent.html'
+import CarouselInteractive from '@components/carousel/CarouselInteractive.html'
+import CarouselBanner from '@components/carousel/CarouselBanner.html'
+import ProductCarousel from '@components/carousel/ProductCarousel.html'
 
 The carousel is used to display a set of images or content in a neat way.
 
@@ -145,6 +146,12 @@ Note that due to the nature of this, banner style carousels are unaffected by sn
 
 <ShowComponent>
   <CarouselBanner />
+</ShowComponent>
+
+## Product Carousel
+
+<ShowComponent>
+  <ProductCarousel />
 </ShowComponent>
 
 ## Variables
