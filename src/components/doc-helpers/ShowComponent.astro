@@ -1,9 +1,9 @@
 ---
-import fs from "node:fs";
-import path from "node:path";
-import type { Highlighter } from "shiki";
-import { getHighlighter } from "shiki";
-import "../../tailwind.css";
+import fs from 'node:fs';
+import path from 'node:path';
+import type { Highlighter } from 'shiki';
+import { getHighlighter } from 'shiki';
+import '../../tailwind.css';
 
 interface Props {
   filePath?: string;
@@ -26,7 +26,7 @@ if (!global.__shikiHighlighter) {
 }
 
 if (import.meta.hot) {
-  import.meta.hot.on("beforeUpdate", async () => {
+  import.meta.hot.on('beforeUpdate', async () => {
     if (global.__shikiHighlighter.instance) {
       global.__shikiHighlighter.instance.dispose();
       global.__shikiHighlighter.instance = null;
@@ -39,21 +39,20 @@ function getFileExtension(filepath: string): string {
   return filepath.split('.').pop()?.toLowerCase() || '';
 }
 
-
 async function getHighlighterInstance(): Promise<Highlighter> {
   if (!global.__shikiHighlighter.promise) {
     global.__shikiHighlighter.promise = getHighlighter({
-      themes: ["github-dark", "github-light"],
+      themes: ['github-dark', 'github-light'],
       langs: [
-        "astro",
-        "typescript",
-        "javascript",
-        "tsx",
-        "jsx",
-        "html",
-        "css",
-        "markdown",
-        "md",
+        'astro',
+        'typescript',
+        'javascript',
+        'tsx',
+        'jsx',
+        'html',
+        'css',
+        'markdown',
+        'md',
       ],
     }).then((highlighter) => {
       global.__shikiHighlighter.instance = highlighter;
@@ -63,15 +62,19 @@ async function getHighlighterInstance(): Promise<Highlighter> {
   return global.__shikiHighlighter.promise;
 }
 
-async function getCodeContent(content: string, highlighter: Highlighter, language: string = 'html'): Promise<string> {
+async function getCodeContent(
+  content: string,
+  highlighter: Highlighter,
+  language: string = 'html'
+): Promise<string> {
   const darkHTML = highlighter.codeToHtml(content, {
     lang: language,
-    theme: "github-dark",
+    theme: 'github-dark',
   });
 
   const lightHTML = highlighter.codeToHtml(content, {
-    lang: "html",
-    theme: "github-light",
+    lang: 'html',
+    theme: 'github-light',
   });
 
   return `
@@ -83,9 +86,9 @@ async function getCodeContent(content: string, highlighter: Highlighter, languag
 async function getFileContent(filepath: string): Promise<string> {
   try {
     const absolutePath = path.resolve(process.cwd(), filepath);
-    const content = fs.readFileSync(absolutePath, "utf-8");
-    const processedContent = content.replace(/---[\s\S]*?---/, "").trim();
-    
+    const content = fs.readFileSync(absolutePath, 'utf-8');
+    const processedContent = content.replace(/---[\s\S]*?---/, '').trim();
+
     const fileExt = getFileExtension(filepath);
     const languageMap: { [key: string]: string } = {
       css: 'css',
@@ -96,19 +99,19 @@ async function getFileContent(filepath: string): Promise<string> {
       tsx: 'tsx',
       astro: 'astro',
       md: 'markdown',
-      mdx: 'markdown'
+      mdx: 'markdown',
     };
     const language = languageMap[fileExt] || 'html';
 
     const highlighter = await getHighlighterInstance();
     const darkHTML = highlighter.codeToHtml(processedContent, {
       lang: language,
-      theme: "github-dark",
+      theme: 'github-dark',
     });
 
     const lightHTML = highlighter.codeToHtml(processedContent, {
       lang: language,
-      theme: "github-light",
+      theme: 'github-light',
     });
 
     return `
@@ -127,41 +130,42 @@ const slotContent = await Astro.slots.render('default');
 
 const previewContent = slotContent;
 
-const htmlContent = slotContent.replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '')
-                              .replace(/<style\b[^<]*(?:(?!<\/style>)<[^<]*)*<\/style>/gi, '')
-                              .trim();
+const htmlContent = slotContent
+  .replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '')
+  .replace(/<style\b[^<]*(?:(?!<\/style>)<[^<]*)*<\/style>/gi, '')
+  .trim();
 
 const highlighter = await getHighlighterInstance();
-const codeContent = filePath 
+const codeContent = filePath
   ? await getFileContent(filePath)
   : await getCodeContent(htmlContent, highlighter, 'html');
 ---
 
 <div class="not-content rounded-lg border border-zinc-700 shadow-sm">
-  <div class="bg-zinc-100 rounded-lg ">
+  <div class="bg-white rounded-lg">
     <div
       class="flex justify-between items-center bg-zinc-800 rounded-t-lg border-b border-zinc-700"
     >
       <div class="flex">
-      <button
-        id={`previewTab-${componentId}`}
-        class="relative px-4 py-2 text-sm transition-all duration-200 ease-in-out border-0 rounded-tl-md"
-        style="color: #e1e4e8;" 
-        aria-selected="true"
-        role="tab"
-      >
-        Preview
-      </button>
-      <button
-        id={`codeTab-${componentId}`}
-        class="relative px-4 py-2 text-sm transition-all duration-200 ease-in-out border-0"
-        style="color: #e1e4e8;" 
-        aria-selected="false"
-        role="tab"
-      >
-        Code
-      </button>
-    </div>
+        <button
+          id={`previewTab-${componentId}`}
+          class="relative px-4 py-2 text-sm transition-all duration-200 ease-in-out border-0 rounded-tl-md"
+          style="color: #e1e4e8;"
+          aria-selected="true"
+          role="tab"
+        >
+          Preview
+        </button>
+        <button
+          id={`codeTab-${componentId}`}
+          class="relative px-4 py-2 text-sm transition-all duration-200 ease-in-out border-0"
+          style="color: #e1e4e8;"
+          aria-selected="false"
+          role="tab"
+        >
+          Code
+        </button>
+      </div>
       <button
         id={`copyButton-${componentId}`}
         class="px-4 py-2 text-sm text-gray-400 hover:text-accent-400 flex items-center gap-1 transition-colors duration-200 cursor-pointer"
@@ -188,7 +192,7 @@ const codeContent = filePath
 
     <div
       id={`previewPanel-${componentId}`}
-      class="bg-zinc-100 !mx-4 !mt-4 !pb-4 rounded-b-lg"
+      class="bg-white !mx-4 !mt-4 !pb-4 rounded-b-lg"
       role="tabpanel"
     >
       <Fragment set:html={previewContent} />
@@ -215,43 +219,43 @@ const codeContent = filePath
     if (!previewTab || !codeTab || !previewPanel || !codePanel) return;
 
     const switchTab = (selectedTab, otherTab, selectedPanel, otherPanel) => {
-      selectedTab.setAttribute("aria-selected", "true");
+      selectedTab.setAttribute('aria-selected', 'true');
       selectedTab.classList.add(
-        "border-accent-500",
-        "text-accent-500",
-        "font-bold",
-        "border-b-2"
+        'border-accent-500',
+        'text-accent-500',
+        'font-bold',
+        'border-b-2'
       );
       selectedTab.classList.remove(
-        "text-gray-400",
-        "border-transparent",
-        "font-normal"
+        'text-gray-400',
+        'border-transparent',
+        'font-normal'
       );
 
-      otherTab.setAttribute("aria-selected", "false");
+      otherTab.setAttribute('aria-selected', 'false');
       otherTab.classList.remove(
-        "border-accent-500",
-        "text-accent-500",
-        "font-bold",
-        "border-b-2"
+        'border-accent-500',
+        'text-accent-500',
+        'font-bold',
+        'border-b-2'
       );
       otherTab.classList.add(
-        "text-gray-400",
-        "border-transparent",
-        "font-normal"
+        'text-gray-400',
+        'border-transparent',
+        'font-normal'
       );
 
-      selectedPanel.classList.remove("hidden");
-      otherPanel.classList.add("hidden");
+      selectedPanel.classList.remove('hidden');
+      otherPanel.classList.add('hidden');
     };
 
     switchTab(previewTab, codeTab, previewPanel, codePanel);
 
-    previewTab.addEventListener("click", () => {
+    previewTab.addEventListener('click', () => {
       switchTab(previewTab, codeTab, previewPanel, codePanel);
     });
 
-    codeTab.addEventListener("click", () => {
+    codeTab.addEventListener('click', () => {
       switchTab(codeTab, previewTab, codePanel, previewPanel);
     });
   }
@@ -260,15 +264,15 @@ const codeContent = filePath
     const copyButton = document.getElementById(`copyButton-${componentId}`);
     if (!copyButton || copyButton.dataset.initialized) return;
 
-    copyButton.dataset.initialized = "true";
+    copyButton.dataset.initialized = 'true';
 
-    copyButton.addEventListener("click", async () => {
+    copyButton.addEventListener('click', async () => {
       const codePanel = document.getElementById(`codePanel-${componentId}`);
       if (!codePanel) return;
 
       try {
-        const preElement = codePanel.querySelector("pre");
-        const codeText = preElement ? preElement.textContent : "";
+        const preElement = codePanel.querySelector('pre');
+        const codeText = preElement ? preElement.textContent : '';
 
         await navigator.clipboard.writeText(codeText);
 
@@ -279,14 +283,14 @@ const codeContent = filePath
         </svg>
         <span>Copied!</span>
       `;
-        copyButton.classList.add("text-green-500", "dark:text-green-400");
+        copyButton.classList.add('text-green-500', 'dark:text-green-400');
 
         setTimeout(() => {
           copyButton.innerHTML = originalContent;
-          copyButton.classList.remove("text-green-500", "dark:text-green-400");
+          copyButton.classList.remove('text-green-500', 'dark:text-green-400');
         }, 2000);
       } catch (err) {
-        console.error("Failed to copy text: ", err);
+        console.error('Failed to copy text: ', err);
       }
     });
   }
@@ -337,21 +341,22 @@ const codeContent = filePath
   }
 
   /* Override any theme-based colors in the component */
-  [id^="copyButton-"] {
+  [id^='copyButton-'] {
     color: #9ca3af !important; /* text-gray-400 */
   }
 
-  [id^="copyButton-"]:hover {
+  [id^='copyButton-']:hover {
     color: var(--accent-400) !important;
   }
 
-  [id^="previewTab-"][aria-selected="true"],
-  [id^="codeTab-"][aria-selected="true"] {
+  [id^='previewTab-'][aria-selected='true'],
+  [id^='codeTab-'][aria-selected='true'] {
     color: #ffffff !important;
     font-weight: bold !important;
   }
 
-  [id^="previewTab-"][aria-selected="false"],
-  [id^="codeTab-"][aria-selected="false"] {
+  [id^='previewTab-'][aria-selected='false'],
+  [id^='codeTab-'][aria-selected='false'] {
     color: #9ca3af !important; /* text-gray-400 */
   }
+</style>
