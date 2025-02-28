@@ -2,23 +2,16 @@
   :root {
     --accordion-wrapper-padding: 0px;
     --accordion-inner-padding: 1em 1.5em;
-    --accordion-width: 20em;
     --accordion-gap: 0em;
     --accordion-radius: none;
     --accordion-section-radius: none;
-    --accordion-box-shadow: none;
     --accordion-border: none;
     --accordion-inner-margin: 0px;
-    --accordion-focus-outline: none;
     --accordion-divider-width: 2px;
-
     --accordion-icon-expanded-transform: rotate(180deg);
-    --accordion-icon-expanded-transition: all var(--duration-speed-quick)
-      ease-in;
+    --accordion-icon-transition: all var(--duration-speed-quick) ease-in;
     --accordion-icon-collapsed-transform: rotate(0deg);
-    --accordion-icon-collapsed-transition: all var(--duration-speed-quick)
-      ease-in;
-    --accordion-closed-divider-opacity: 0.3;
+    --accordion-closed-divider-lightness: 20%;
   }
 
   .accordion-wrapper {
@@ -43,9 +36,7 @@
   .accordion-section {
     border-radius: var(--accordion-section-radius);
     overflow: hidden;
-    box-shadow: var(--accordion-box-shadow);
     position: relative;
-    background: var(--color-background);
   }
 
   .accordion-trigger {
@@ -58,7 +49,6 @@
     border-style: none;
     margin: var(--accordion-inner-margin);
     padding: var(--accordion-inner-padding);
-    background: inherit;
   }
 
   .accordion-wrapper .accordion-section .accordion-trigger:not(:last-child) {
@@ -73,34 +63,29 @@
     border-bottom: none;
   }
 
-  .accordion-trigger:focus,
-  .accordion-trigger:hover {
-    background: var(--accordion-trigger-hover);
-  }
-  .accordion-section:focus-within {
-    outline: var(--accordion-focus-outline);
-  }
   .accordion-title {
     display: block;
   }
 
-  .accordion-section[open] .accordion-trigger .accordion-icon {
-    transform: var(--accordion-icon-expanded-transform);
-    transition: var(--accordion-icon-expanded-transition);
-  }
-
   .accordion-icon {
     transform: var(--accordion-icon-collapsed-transform);
-    transition: var(--accordion-icon-collapsed-transition);
+    transition: var(--accordion-icon-transition);
+  }
+
+  .accordion-section[open] .accordion-trigger .accordion-icon {
+    transform: var(--accordion-icon-expanded-transform);
   }
 
   .accordion-section:not(:first-child) {
     border-top: var(--accordion-divider-width) solid
-      color-mix(in srgb, var(--color-border) 50%, transparent);
+      color-mix(
+        in srgb,
+        var(--color-border) var(--accordion-closed-divider-lightness),
+        var(--color-background)
+      );
   }
 
   .accordion-section[open] {
-    border-top-color: var(--color-border);
     opacity: 1;
     z-index: 2;
   }
@@ -116,20 +101,19 @@
     padding: var(--accordion-inner-padding);
     border-top: var(--accordion-divider-width) solid var(--color-border);
     border-bottom: var(--accordion-divider-width) solid var(--color-border);
-    background: inherit;
   }
 
   .accordion-panel.panel-hidden {
     display: none;
   }
 
-  .set-width {
-    width: var(--accordion-width);
-  }
-
   .accordion-section[open]:not(:last-child) {
     margin-bottom: calc(-1 * var(--accordion-divider-width));
     position: relative;
     z-index: 1;
+  }
+
+  .accordion-wrapper .accordion-section:last-child .accordion-panel {
+    border-bottom: none;
   }
 }
