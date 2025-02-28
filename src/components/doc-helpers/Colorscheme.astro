@@ -1,93 +1,254 @@
 ---
-import "../../tailwind.css";
-import fs from "node:fs";
-import path from "node:path";
-import { parseColourScheme } from "../../utils/colourParser";
+import '../../tailwind.css';
+import fs from 'node:fs';
+import path from 'node:path';
+import { parseColourScheme } from '../../utils/colourParser';
+import ColorSwatch from './ColorSwatch.astro';
 
-const cssFilePath = path.resolve("./src/sample-css/colour.css");
-const cssContent = fs.readFileSync(cssFilePath, "utf-8");
-const { primitiveColours, semanticColours } = parseColourScheme(cssContent);
+const cssFilePath = path.resolve('./src/sample-css/colour.css');
+const cssContent = fs.readFileSync(cssFilePath, 'utf-8');
+const colours = parseColourScheme(cssContent);
+
+// Helper function to determine if value is a CSS variable
+const isVarReference = (value: string) => value.startsWith('var(');
+
+// Helper function to resolve nested variables
+const resolveNestedVar = (value: string, cssContent: string) => {
+  if (!isVarReference(value)) return value;
+
+  const varName = value.slice(4, -1);
+  const varRegex = new RegExp(`${varName}:\\s*([^;]+)`);
+  const match = cssContent.match(varRegex);
+  return match ? match[1].trim() : value;
+};
+
+// Updated helper function to get color display value
+const getColorValue = (value: string) => {
+  const resolvedValue = resolveNestedVar(value, cssContent);
+  if (isVarReference(resolvedValue)) {
+    return resolveNestedVar(resolvedValue, cssContent);
+  }
+  return resolvedValue;
+};
+
+// Updated display order with semantic grouping
+const categoryOrder = ['global', 'scales', 'status'];
+
+const semanticLabels: Record<
+  '' | 'light' | 'dark' | 'hover' | 'hover-light',
+  string
+> = {
+  '': 'default',
+  light: 'light',
+  dark: 'dark',
+  hover: 'hover',
+  'hover-light': 'hover-light',
+};
+
+const copyToClipboard = (text: string) => {
+  navigator.clipboard.writeText(text);
+};
+
+const colorFamilies = [
+  'primary',
+  'secondary',
+  'tertiary',
+  'neutral',
+  'attention',
+  'success',
+  'error',
+  'promotion',
+] as const;
+
+type ColorFamily = (typeof colorFamilies)[number];
+
+const semanticMap: Record<ColorFamily, Record<string, string>> = {
+  primary: {
+    '': '--color-primary-500',
+    light: '--color-primary-50',
+    dark: '--color-primary-950',
+    hover: '--color-primary-600',
+    'hover-light': '--color-primary-400',
+  },
+  secondary: {
+    '': '--color-secondary-500',
+    light: '--color-secondary-50',
+    dark: '--color-secondary-950',
+    hover: '--color-secondary-600',
+    'hover-light': '--color-secondary-400',
+  },
+  tertiary: {
+    '': '--color-tertiary-500',
+    light: '--color-tertiary-50',
+    dark: '--color-tertiary-950',
+    hover: '--color-tertiary-600',
+    'hover-light': '--color-tertiary-400',
+  },
+  neutral: {
+    '': '--color-neutral-500',
+    light: '--color-neutral-50',
+    dark: '--color-neutral-950',
+  },
+  attention: {
+    '': '--color-attention-500',
+    light: '--color-attention-50',
+  },
+  success: {
+    '': '--color-success-500',
+    light: '--color-success-50',
+  },
+  error: {
+    '': '--color-error-500',
+    light: '--color-error-50',
+  },
+  promotion: {
+    '': '--color-promotion-500',
+  },
+};
 ---
 
-<div class="max-w-7xl mx-auto p-6">
-  <!-- Primitive Colours -->
-  <section>
-    <h2 class="text-xl font-bold mb-8 text-black">Primitive Colours</h2>
-    <div class="space-y-4">
-      {
-        Object.entries(primitiveColours).map(([key, category]) => (
-          <div class="pt-8">
-            <h3 class="text-lg font-semibold text-zinc-800">{category.name}</h3>
-            <div class="flex flex-wrap gap-4">
-              {category.colours.map((colour) => (
-                <div class="flex flex-col items-center w-[180px] h-[180px] m-2 bg-black rounded-lg shadow-md border-2 border-zinc-700">
-                  <div
-                    class="w-full h-2/3 rounded-t-md"
-                    style={{ backgroundColor: `var(${colour.name})` }}
-                  />
+<div class="max-w-7xl mx-auto p-6 text-black">
+  <div class="space-y-16">
+    {
+      colorFamilies.map((family) => (
+        <section class="pb-6">
+          <h2 class="text-2xl font-semibold capitalize pb-2">{family}</h2>
 
-                  <div class="w-full h-1/3 bg-zinc-900 rounded-b-lg p-3 flex flex-col justify-center items-center">
-                    <span class="text-sm font-mono text-white pb-2">
-                      {colour.name}
-                    </span>
-                    <span class="text-sm text-zinc-400 pb-">
-                      {colour.value}
-                    </span>
+          {/* Global Color */}
+          {colours[family].colours
+            .filter((group) => group.prefix === 'global')
+            .map((global) => (
+              <div class="space-y-2 ">
+                <div class="group relative w-full max-w-xs">
+                  <button
+                    class="w-full text-left space-y-2"
+                    onclick={`navigator.clipboard.writeText('${global.shades[0].name}')`}
+                  >
+                    <div class="flex items-center gap-4">
+                      <div
+                        class="w-24 h-24 rounded-md border border-gray-200 cursor-pointer flex-shrink-0"
+                        style={{
+                          backgroundColor: getColorValue(
+                            global.shades[0].value
+                          ),
+                        }}
+                      />
+                      <div class="flex-1">
+                        <div class="text-sm font-mono">
+                          {global.shades[0].name}
+                        </div>
+                        <div class="text-sm text-gray-500">
+                          {global.shades[0].rawValue || global.shades[0].value}
+                        </div>
+                      </div>
+                    </div>
+                  </button>
+                  {/* Update global color tooltip */}
+                  <div class="opacity-0 group-hover:opacity-100 absolute bottom-full left-1/2 -translate-x-1/2 mb-2 bg-white p-2 rounded shadow-lg text-xs whitespace-nowrap transition-opacity z-10">
+                    <div class="font-mono">{global.shades[0].name}</div>
+                    <div class="text-gray-500">
+                      {global.shades[0].rawValue || global.shades[0].value}
+                    </div>
+                    <div class="flex items-center gap-1">
+                      <div class="text-gray-600 block copied-instruction">
+                        Click to copy to clipboard
+                      </div>
+                      <div class="text-green-600 hidden items-center gap-1 copied-message">
+                        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none">
+                          <path
+                            d="M20 6L9 17L4 12"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          />
+                        </svg>
+                        Copied to clipboard
+                      </div>
+                    </div>
                   </div>
                 </div>
-              ))}
-            </div>
-          </div>
-        ))
-      }
-    </div>
-  </section>
+              </div>
+            ))}
 
-  <!-- Semantic Colours -->
-  <section>
-    <h2 class="text-2xl font-bold mb-8 pt-16 text-black">Semantic Colours</h2>
-    <div class="space-y-8">
-      {
-        Object.entries(semanticColours).map(([key, category]) => (
-          <div>
-            <h3 class="text-lg font-semibold mb-4 pt-4 text-zinc-800">{category.name}</h3>
-            <table class="w-full text-black">
-              <thead>
-                <tr class="border-b">
-                  <th class="text-left py-2 w-16 px-3"><!-- Added px-3 to match cell padding --></th>
-                  <th class="text-left py-2 px-3">Variable Name</th>
-                  <th class="text-left py-2 px-3">Default Value</th>
-                  <th class="text-left py-2 px-3 w-[30%]">Description</th>
-                </tr>
-              </thead>
-              <tbody>
-                {category.colours.map((colour) => (
-                  <tr class="border-b border-zinc-600">
-                    <td class="py-3 px-3">
-                      <div
-                        class="w-8 h-8 rounded border shadow-sm"
-                        style={{ backgroundColor: `var(${colour.name})` }}
+          {/* Color Scale */}
+          {colours[family].colours
+            .filter((group) => group.prefix === 'scale')
+            .map((scale) => (
+              <div class="space-y-2 pt-4">
+                <div class="grid grid-cols-11 gap-2">
+                  {scale.shades.map((shade) => {
+                    // Find semantic usage by exact variable name match
+                    const semanticUsage = Object.entries(
+                      semanticMap[family] || {}
+                    ).find(([_, value]) => value === shade.name);
+
+                    const semanticLabel = semanticUsage
+                      ? semanticLabels[
+                          semanticUsage[0] as keyof typeof semanticLabels
+                        ]
+                      : undefined;
+
+                    return (
+                      <ColorSwatch
+                        color={shade}
+                        semantic={!!semanticLabel}
+                        semanticLabel={
+                          semanticLabel ? `${semanticLabel}` : undefined
+                        }
+                        getColorValue={getColorValue}
                       />
-                    </td>
-                    <td class="py-3 px-3">
-                      <button
-                        class="font-mono text-sm hover:text-blue-400 transition-colors"
-                        onclick={`navigator.clipboard.writeText('${colour.name}')`}
-                      >
-                        {colour.name}
-                      </button>
-                    </td>
-                    <td class="font-mono text-sm py-3 px-3">{colour.value}</td>
-                    <td class="text-sm py-3 px-3 w-[30%]"><!-- Removed pl-4, added consistent padding -->
-                      {colour.description || "-"}
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        ))
-      }
-    </div>
-  </section>
+                    );
+                  })}
+                </div>
+              </div>
+            ))}
+        </section>
+      ))
+    }
+  </div>
 </div>
+
+<style>
+  .copied-message {
+    opacity: 0;
+    transition: opacity 200ms ease-in-out;
+  }
+
+  .copied-message.flex {
+    display: flex;
+    opacity: 1;
+  }
+
+  .copied-instruction.hidden {
+    display: none;
+  }
+</style>
+
+<script>
+  document.querySelectorAll('button').forEach((button) => {
+    button.addEventListener('click', (e) => {
+      const group = (e.currentTarget as HTMLElement).closest('.group');
+      const copiedMessage = group?.querySelector('.copied-message');
+      const instruction = group?.querySelector('.copied-instruction');
+
+      if (copiedMessage && instruction) {
+        // Hide instruction first
+        instruction.classList.add('hidden');
+
+        // Show copied message
+        copiedMessage.classList.remove('hidden');
+        copiedMessage.classList.add('flex');
+
+        setTimeout(() => {
+          // Hide copied message
+          copiedMessage.classList.remove('flex');
+          copiedMessage.classList.add('hidden');
+
+          // Show instruction again
+          instruction.classList.remove('hidden');
+        }, 2000);
+      }
+    });
+  });
+</script>

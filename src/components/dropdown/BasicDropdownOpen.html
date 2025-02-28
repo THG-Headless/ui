@@ -1,24 +1,26 @@
-<div class="dropdown-wrapper dropdown-open">
+<div class="skin-form dropdown-wrapper wrapper group dropdown-open">
   <label
-    for="basic-dropdown-trigger"
-    id="basic-dropdown-label"
-    class="dropdown-label"
+    for="basic-dropdown-open-trigger"
+    id="basic-dropdown-open-label"
+    class="dropdown-label text-body font-semi-bold"
     >Label</label
   >
   <div class="dropdown">
     <div
-      class="listbox-wrapper"
+      class="wrapper"
       role="combobox"
-      aria-expanded="true"
-      aria-controls="basic-dropdown-list"
-      aria-labelledby="basic-dropdown-label"
+      aria-expanded="false"
+      aria-owns="basic-dropdown-open-list"
+      aria-controls="basic-dropdown-open-list"
+      aria-labelledby="basic-dropdown-open-label"
     >
       <button
-        id="basic-dropdown-trigger"
-        class="dropdown-summary"
+        id="basic-dropdown-open-trigger "
+        class="dropdown-summary interactive"
         aria-haspopup="listbox"
-        aria-expanded="true"
-        aria-controls="basic-dropdown-list"
+        aria-expanded="false"
+        aria-controls="basic-dropdown-open-list"
+        aria-labelledby="basic-dropdown-open-label"
       >
         <div class="dropdown-summary-content">
           <svg
@@ -34,9 +36,8 @@
               clip-rule="evenodd"
             />
           </svg>
-          <span id="selected-value">Placeholder Text</span>
+          <span id="selected-value" class="text-body">Placeholder Text</span>
           <svg
-            xmlns="http://www.w3.org/2000/svg"
             class="dropdown-icon chevron"
             viewBox="0 0 20 20"
             fill="currentColor"
@@ -54,22 +55,100 @@
     </div>
     <div class="dropdown-content-wrapper">
       <ul
-        id="basic-dropdown-list"
+        id="basic-dropdown-open-list"
         class="dropdown-list"
         role="listbox"
-        aria-labelledby="basic-dropdown-label"
+        aria-labelledby="basic-dropdown-open-label"
         tabindex="-1"
       >
-        <li role="option" id="basic-option-1" aria-selected="false">Item 1</li>
-        <li role="option" id="basic-option-2" aria-selected="false">Item 2</li>
-        <li role="option" id="basic-option-3" aria-selected="false">Item 3</li>
-        <li role="option" id="basic-option-4" aria-selected="false">Item 4</li>
-        <li role="option" id="basic-option-5" aria-selected="false">Item 5</li>
-        <li role="option" id="basic-option-6" aria-selected="false">Item 6</li>
-        <li role="option" id="basic-option-7" aria-selected="false">Item 7</li>
-        <li role="option" id="basic-option-8" aria-selected="false">Item 8</li>
+        <li
+          role="option"
+          id="basic-option-1"
+          class="text-body interactive"
+          aria-selected="false"
+        >
+          Item 1
+        </li>
+        <li
+          role="option"
+          id="basic-option-2"
+          class="text-body interactive"
+          aria-selected="false"
+        >
+          Item 2
+        </li>
+        <li
+          role="option"
+          id="basic-option-3"
+          class="text-body interactive"
+          aria-selected="false"
+        >
+          Item 3
+        </li>
+        <li
+          role="option"
+          id="basic-option-4"
+          class="text-body interactive"
+          aria-selected="false"
+        >
+          Item 4
+        </li>
+        <li
+          role="option"
+          id="basic-option-5"
+          class="text-body interactive"
+          aria-selected="false"
+        >
+          Item 5
+        </li>
+        <li
+          role="option"
+          id="basic-option-6"
+          class="text-body interactive"
+          aria-selected="false"
+        >
+          Item 6
+        </li>
+        <li
+          role="option"
+          id="basic-option-7"
+          class="text-body interactive"
+          aria-selected="false"
+        >
+          Item 7
+        </li>
+        <li
+          role="option"
+          id="basic-option-8"
+          class="text-body interactive"
+          aria-selected="false"
+        >
+          Item 8
+        </li>
       </ul>
     </div>
   </div>
-  <p id="helper-text" class="dropdown-helper" aria-live="polite">Helper Text</p>
+  <div class="dropdown-helper-wrapper">
+    <p class="dropdown-helper text-sm soft" id="basic-open-helper">
+      Helper text
+    </p>
+    <div class="skin-error dropdown-error-content">
+      <svg
+        class="dropdown-icon"
+        viewBox="0 0 20 20"
+        fill="currentColor"
+        aria-hidden="true"
+        focusable="false"
+      >
+        <path
+          fill-rule="evenodd"
+          d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z"
+          clip-rule="evenodd"
+        />
+      </svg>
+      <p class="text-sm font-medium" id="error-dropdown-message" role="alert">
+        Error Message
+      </p>
+    </div>
+  </div>
 </div>

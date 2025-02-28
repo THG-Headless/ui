@@ -1,17 +1,7 @@
 @layer components {
   :root {
-    --alert-text-error-color: var(--text-error);
-    --alert-text-success-color: var(--text-success);
-    --alert-text-info-color: var(--text-attention);
-
-    --alert-background-error-color: var(--surface-error);
-    --alert-background-success-color: var(--surface-success);
-    --alert-background-info-color: var(--surface-attention);
-
-    --alert-font-weight: var(--font-weight-semi-bold);
-
     --alert-border-default: none;
-    --alert-border-radius: var(--radius-size-none);
+    --alert-border-radius: var(--radius-none);
 
     --alert-padding: 0.5em;
     --alert-icon-min-height: 24px;
@@ -32,30 +22,19 @@
     border-radius: var(--alert-border-radius);
   }
 
+  .alert a {
+    font-weight: var(--font-weight-bold);
+  }
+  .alert a:hover {
+    text-decoration: underline;
+  }
+
   .alert-icon {
     padding: var(--alert-icon-padding-x), var(--alert-icon-padding-y);
     height: var(--alert-icon-height);
     width: var(--alert-icon--width);
     min-width: var(--alert-icon-min-width);
     min-height: var(--alert-icon-min-height);
-  }
-
-  .alert-text {
-    padding-left: var(--alert-padding);
-  }
-
-  .alert-success {
-    color: var(--alert-text-success-color);
-    background-color: var(--alert-background-success-color);
-  }
-
-  .alert-error {
-    color: var(--alert-text-error-color);
-    background-color: var(--alert-background-error-color);
-  }
-
-  .alert-info {
-    color: var(--alert-text-info-color);
-    background-color: var(--alert-background-info-color);
+    margin-right: var(--alert-padding) !important;
   }
 }

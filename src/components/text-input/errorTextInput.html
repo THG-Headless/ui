@@ -1,25 +1,29 @@
-<div class="input-wrapper w-64">
+<div class="skin-form input-wrapper w-64 !mt-6 wrapper group">
   <div class="input-label-wrapper">
-    <label class="input-label" for="error-input-1">Label</label>
-    <span class="input-status" aria-hidden="true">(Optional status)</span>
+    <label class="input-label text-body font-semi-bold" for="basic-input"
+      >Label</label
+    >
+    <span class="input-status text-sm font-light soft" aria-hidden="true"
+      >(Optional status)</span
+    >
   </div>
   <div class="input-field-wrapper">
     <input
       type="text"
-      class="input-field"
-      id="error-input-1"
-      name="error-input"
+      class="input-field !text-body placeholder:soft interactive"
+      id="basic-input"
+      name="basic-input"
       placeholder="Placeholder text"
       aria-invalid="true"
-      aria-describedby="error-helper-1"
-      aria-errormessage="error-message-1"
+      aria-describedby="basic-helper basic-status"
+      aria-errormessage="basic-message"
       autocomplete="off"
       spellcheck="true"
     />
   </div>
-  <div class="input-helper-wrapper">
-    <p class="input-helper" id="error-helper-1">Helper text</p>
-    <div class="input-error-content">
+  <div class="input-helper-wrapper wrapper">
+    <p class="input-helper text-sm soft" id="basic-helper">Helper text</p>
+    <div class="skin-error input-error-content">
       <svg
         class="input-error-icon"
         viewBox="0 0 20 20"
@@ -33,7 +37,9 @@
           clip-rule="evenodd"
         />
       </svg>
-      <p class="input-error" id="error-message-1" role="alert">Error message</p>
+      <p class="input-error text-sm font-bold" id="basic-message" role="alert">
+        Error message
+      </p>
     </div>
   </div>
 </div>

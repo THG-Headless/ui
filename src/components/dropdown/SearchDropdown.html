@@ -1,24 +1,26 @@
-<div class="dropdown-wrapper">
+<div class="skin-form dropdown-wrapper wrapper group">
   <label
     for="search-dropdown-trigger"
     id="search-dropdown-label"
-    class="dropdown-label"
+    class="dropdown-label text-body font-semi-bold"
     >Label</label
   >
   <div class="dropdown">
     <div
-      class="listbox-wrapper"
+      class="wrapper"
       role="combobox"
       aria-expanded="false"
+      aria-owns="search-dropdown-list"
       aria-controls="search-dropdown-list"
       aria-labelledby="search-dropdown-label"
     >
       <button
-        id="search-dropdown-trigger"
-        class="dropdown-summary"
+        id="search-dropdown-trigger "
+        class="dropdown-summary interactive"
         aria-haspopup="listbox"
         aria-expanded="false"
         aria-controls="search-dropdown-list"
+        aria-labelledby="search-dropdown-label"
       >
         <div class="dropdown-summary-content">
           <svg
@@ -34,7 +36,7 @@
               clip-rule="evenodd"
             />
           </svg>
-          <span id="selected-value">Placeholder Text</span>
+          <span id="selected-value" class="text-body">Placeholder Text</span>
           <svg
             class="dropdown-icon chevron"
             viewBox="0 0 20 20"
@@ -52,7 +54,7 @@
       </button>
     </div>
     <div class="dropdown-content-wrapper">
-      <div class="search-wrapper">
+      <div class="dropdown-search-wrapper wrapper interactive">
         <label for="dropdown-search" class="sr-only">Search options</label>
         <div class="search-input-wrapper">
           <svg
@@ -70,7 +72,7 @@
           <input
             type="search"
             id="dropdown-search"
-            class="dropdown-search-input"
+            class="dropdown-search-input text-body placeholder:soft"
             placeholder="Search..."
             aria-controls="search-dropdown-list"
             aria-autocomplete="list"
@@ -85,16 +87,92 @@
         aria-labelledby="search-dropdown-label"
         tabindex="-1"
       >
-        <li role="option" id="search-option-1" aria-selected="false">Item 1</li>
-        <li role="option" id="search-option-2" aria-selected="false">Item 2</li>
-        <li role="option" id="search-option-3" aria-selected="false">Item 3</li>
-        <li role="option" id="search-option-4" aria-selected="false">Item 4</li>
-        <li role="option" id="search-option-5" aria-selected="false">Item 5</li>
-        <li role="option" id="search-option-6" aria-selected="false">Item 6</li>
-        <li role="option" id="search-option-7" aria-selected="false">Item 7</li>
-        <li role="option" id="search-option-8" aria-selected="false">Item 8</li>
+        <li
+          role="option"
+          id="search-option-1"
+          class="text-body interactive"
+          aria-selected="false"
+        >
+          Item 1
+        </li>
+        <li
+          role="option"
+          id="search-option-2"
+          class="text-body interactive"
+          aria-selected="false"
+        >
+          Item 2
+        </li>
+        <li
+          role="option"
+          id="search-option-3"
+          class="text-body interactive"
+          aria-selected="false"
+        >
+          Item 3
+        </li>
+        <li
+          role="option"
+          id="search-option-4"
+          class="text-body interactive"
+          aria-selected="false"
+        >
+          Item 4
+        </li>
+        <li
+          role="option"
+          id="search-option-5"
+          class="text-body interactive"
+          aria-selected="false"
+        >
+          Item 5
+        </li>
+        <li
+          role="option"
+          id="search-option-6"
+          class="text-body interactive"
+          aria-selected="false"
+        >
+          Item 6
+        </li>
+        <li
+          role="option"
+          id="search-option-7"
+          class="text-body interactive"
+          aria-selected="false"
+        >
+          Item 7
+        </li>
+        <li
+          role="option"
+          id="search-option-8"
+          class="text-body interactive"
+          aria-selected="false"
+        >
+          Item 8
+        </li>
       </ul>
     </div>
+    <div class="dropdown-helper-wrapper">
+      <p class="dropdown-helper text-sm soft" id="basic-helper">Helper text</p>
+      <div class="skin-error dropdown-error-content">
+        <svg
+          class="dropdown-icon"
+          viewBox="0 0 20 20"
+          fill="currentColor"
+          aria-hidden="true"
+          focusable="false"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z"
+            clip-rule="evenodd"
+          />
+        </svg>
+        <p class="text-sm font-medium" id="error-dropdown-message" role="alert">
+          Error Message
+        </p>
+      </div>
+    </div>
   </div>
-  <p id="helper-text" class="dropdown-helper" aria-live="polite">Helper Text</p>
 </div>

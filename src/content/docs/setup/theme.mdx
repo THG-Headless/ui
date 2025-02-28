@@ -5,72 +5,157 @@ sidebar:
   order: 3
 ---
 
-import ColorScheme from "../../../components/doc-helpers/Colorscheme.astro";
-import ShowComponent from "../../../components/doc-helpers/ShowComponent.astro";
-import CornerDisplay from "../../../components/doc-helpers/CornerDisplay.astro";
-import ShadowDisplay from "../../../components/doc-helpers/ShadowDisplay.astro";
-import TypographyDisplay from "../../../components/doc-helpers/TypographyDisplay.astro";
-import AnimationDisplay from "../../../components/doc-helpers/AnimationDisplay.astro";
+import ColorScheme from '../../../components/doc-helpers/Colorscheme.astro';
+import SemanticColors from '../../../components/doc-helpers/SemanticColors.astro';
+import ShowComponent from '../../../components/doc-helpers/ShowComponent.astro';
+import CornerDisplay from '../../../components/doc-helpers/CornerDisplay.astro';
+import ShadowDisplay from '../../../components/doc-helpers/ShadowDisplay.astro';
+import TypographyDisplay from '../../../components/doc-helpers/TypographyDisplay.astro';
+import AnimationDisplay from '../../../components/doc-helpers/AnimationDisplay.astro';
+import ThemeAnimation from '../../../components/doc-helpers/ThemeAnimation.tsx';
+import { Aside } from '@astrojs/starlight/components';
 
-The styling of components is done in 3 layers:
+The components library provides a theming framework that can be used within these components and beyond on your entire site, helping to maintain a cohesive design system.
 
-**Primitive Variables** are core values to your components style. These will often be abstract variables, such as shades of a colour, or measurements of radius.
+The framework acts through a number of layers, where each one feeds down into the next. Its fully customisable implementation allows you to decouple or change these connections at any point, simply by overriding the css variables within your project.
 
-**Semantic Variables** have a many to one relationship with primitive variables, where a primitive variable may define multiple semantic variables. Semantic variables provide contextualised variables, such as a background colour. These aren't component specific, but help to create consistent themeing thoughout.
+1 - **site** variables are at the top of the style tree, and propagate through to the lower levels. This allows you to re theme a site with only a handful of variable changes.
 
-**Component Variables** are used to directly effect component styles. By default, many component variables will inherit their values from primitive or semantic variables. Other, non generalised properties will be defined uniquely for the component. As these are the only variable actually used by a component, any of its styles can be changed without effecting another type of component.
+2 - **Primitive** variables are computed from site variables, such as shades of a site colour.
 
-The relationship between primitive, semantic, and component variables allows for users to:
+3 - **Semantic** variables apply context to the site and primitive variables. These can exist as a specified primitive, such as default, light or dark shades of a colour. THey can also exist in a broader context, where foreground, background and border styles are given as sets that can be reused throughout. Classes are also provided in these cases to improve the developer experience and promote consistent styling.
 
-- [ ] Style the majority of the site by configuring the primitive variables
-- [ ] Make minor, yet wide reaching tweaks through the semantic variables
-- [ ] Have full control of each component type through the component variables.
+4 - **Component** variables are specific to each component. _These are documented on each components page respectively_
 
-![Variable Map](../../../assets/varMap.svg)
+In order to apply your own themes on top of the base styles, simply define the variables you want to change, and they will update across your site where they are used.
 
-By default, the package will provide all values for a theme that matches this documentation site. Any of these variable values or relationships can be reconfigured by redefining them within your main css file. Primitive and semantic varaibles are defined within this page, and component level variables are defined within their respective pages.
+## Theming System Visualised
 
-## Colour Schemes
+<ThemeAnimation client:load />
 
-Below is the default colour scheme for the site. This is already included in the CSS package and will be applied to the components by default. To start applying your custom theme, simply copy the code below into your projects CSS, and configure the values.
+## Site Variables
+
+The design system is based off the following site variables. These can be overridden to change the appearance of the entire site.
+
+### Colours
+
+`--color-site-primary` - The primary or brand colour
+
+<br />
+`--color-site-secondary` - The secondary colour
+<br />
+`--color--site-tertiary` - The tertiary colour
+<br />
+`--color-site-neutral` - The neutral tone, typically a shade of grey
+<br />
+`--color-site-attention` - The attention colour
+<br />
+`--color-site-success` - The success colour
+<br />
+`--color-site-error` - The error colour
+<br />
+`--color-site-promotion` - The promotion colour, used sparingly to highlight
+important information such as promotional items
+
+### Radius
+
+`--radius-site` - The site radius for all rounded corners
+
+### Shadows
+
+`--shadow-site` - The site shadow for all components
+
+## Colour Palette
+
+The color scheme of a site is defined using the site variables shown below. From this, CSS calculations will generate a range of primitive shades centered around the site variable, where the site colour is 500 on a scale of 50 _(lightest)_ to 950 _(darkest)_. These can be individually changed by overriding their css definitions.
+
+Semantic shades have been labeled. Default shades are provided when no suffix is given, such as `--color-primary`. Other semantic shades, such as 'light' are given by using the label as the suffix, e.g. `--color-primary-light`
+
+<Aside type="tip">
+  Due to tailwind v4's approach to custom tailwind properties, the `--color-`
+  prefix means that we can access all of these colours within tailwind. However,
+  they can also be accessed as a standard CSS variable. This can be useful if we
+  want to apply any CSS calculations to it, but is generally not advised in
+  order to maintain colour consistency.
+  <br />
+  ```html
+  <button class="bg-primary-500">
+    This button uses our custom tailwind property
+  </button>
+  <button class="bg-[var(--color-primary-500)]">
+    This button uses our CSS variable{' '}
+  </button>
+  ```
+</Aside>
 
 <ShowComponent filePath="./src/sample-css/colour.css">
   <ColorScheme />
 </ShowComponent>
 
-## Corners
+## Skins
 
-As with colours, the corner styles are applied using primitive and semantic fields as shown below. These allow you to set the 'roundness' of your components.
+A number of categories of element styles are provided. These should be applied throughout a site to maintain visual consistency, and allow for site wide theming at the css layer - although they can be overridden (for example by tailwind classes) at each use case without effecting other instances.
 
-_(If you want to achieve no rounding across all components, simply set all primitive sizes to 0px)_
+Each set defines the background, foreground and border colours at both a default state, and in states where there is interaction.
+
+<Aside type="tip">
+  For each set, the package provides a css class, which will apply only the
+  default state styling, and a interactive class, which includes all interactive
+  and default state styles, applied using appropriate CSS directives.
+
+For example, `card` will apply the default styles, and `card-interactive` will also include the hover, focus and active states.
+
+</Aside>
+
+<Aside type="caution" title="Accessibility Warning">
+  By default, these pairings of foreground and background will meet the 4.5:1 contrast ratio, the minimum for [WCAG 2.0 AA](https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html). If you override these colours, ensure that the contrast ratio is maintained.
+
+</Aside>
+
+<ShowComponent filePath="./src/sample-css/semanticColours.css">
+  <SemanticColors />
+</ShowComponent>
+
+## Radius
+
+By default, the site radius is applied to all rounded corners. This can be overridden using custom CSS or tailwind at a per use case level, but it is advised to use the site radius provided to maintain consistency and allow for easy updates of your theme. If using other radii, it is advised to use a css calculation to calculate the radius from the site radius, to maintain consistency if the site radius is updated.
 
 <ShowComponent filePath="./src/sample-css/corners.css">
   <CornerDisplay />
 </ShowComponent>
 
-## Shadows
+## Shadow
 
-Shadows are defined using primitive and semantic variables. The primitive shadows provide a range of elevation levels, while semantic shadows apply these to specific UI elements.
+Like with the radius, the use of a singular site shadow is promoted in order to maintain consistency and allow for easy updates of your theme. As with the radius, this can be overridden at a per use case level, but it is advised to use the site shadow provided.
 
 <ShowComponent filePath="./src/sample-css/shadows.css">
   <ShadowDisplay />
+</ShowComponent>
+
+## Animations
+
+Primitive animation speeds are provided using CSS variables to maintain consistency across different components. These variables control the duration of various animations throughout your project. As with other values, these can be overridden according to your sites preference.
+
+<Aside type="tip">
+  Animations should relate to the scale of the moving object, such that large
+  objects should move slower than small objects.
+</Aside>
+
+<ShowComponent filePath="./src/sample-css/animation.css">
+  <AnimationDisplay />
 </ShowComponent>
 
 ## Typography
 
 Below are the primitive typography styles that form the foundation of our text elements.
 
-These styles can be customized to match your brand's typography guidelines. Mobile and desktop sizes can be defined.
-These will automatically get used by the default responsive sizes, which are used within the components.
+In order to update the appearance of your typography, the primitive typography variables below can be updated.
+
+<Aside type="tip">
+  Classes have been provided, aligned with these variable names (for example,
+  `text-body` will responsively apply the body text size and line height).
+</Aside>
 
 <ShowComponent filePath="./src/sample-css/typography.css">
   <TypographyDisplay />
-</ShowComponent>
-
-## Animations
-
-Animation speeds are defined using CSS variables to maintain consistency across different components. These variables control the duration of various animations throughout your project.
-
-<ShowComponent filePath="./src/sample-css/animation.css">
-  <AnimationDisplay />
 </ShowComponent>

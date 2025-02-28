@@ -1,5 +1,5 @@
 <button
-  class="btn btn-primary btn-high"
+  class="skin-primary-emphasised interactive btn"
   onclick="complexModal.showModal()"
   aria-haspopup="dialog"
   aria-controls="complexModal"
@@ -9,24 +9,26 @@
 
 <dialog
   id="complexModal"
-  class="modal"
+  class="modal-dialog"
   role="dialog"
   aria-modal="true"
   aria-labelledby="complex-modal-title"
   aria-describedby="complex-modal-body"
 >
-  <form method="dialog" class="modal-backdrop-click" aria-hidden="true">
+  <form method="dialog" class="modal-backdrop" aria-hidden="true">
     <button aria-hidden="true" aria-label="Close Modal" tabindex="-1"></button>
   </form>
 
-  <div class="modal-box modal-box--with-hero">
-    <form method="dialog" class="modal-control-bar">
-      <button class="modal-close-button">
+  <div
+    class="skin-secondary-emphasised modal-container modal-container--with-hero"
+  >
+    <form method="dialog" class="modal-header">
+      <button class="modal-close">
         <span>Close</span>
         <span aria-hidden="true">✕</span>
       </button>
     </form>
-    <div>
+    <div class="modal-hero">
       <img
         class="modal-hero-image"
         src="https://picsum.photos/id/558/1920/1080"
@@ -34,20 +36,18 @@
       />
     </div>
     <div>
-      <h3 id="complex-modal-title" class="modal-title">
-        Modal with Hero Image
-      </h3>
-      <div id="complex-modal-body" class="modal-body">
+      <h3 id="complex-modal-title" class="text-lg">Modal with Hero Image</h3>
+      <div id="complex-modal-body" class="text-body py-4">
         <p>
           This modal features a hero image on the left side, content, and a
           backdrop click away
         </p>
       </div>
-      <button type="button" class="btn btn-primary btn-high full-width">
+      <button
+        type="button"
+        class="skin-primary-emphasised interactive btn full-width"
+      >
         Primary CTA
-      </button>
-      <button type="button" class="btn btn-primary btn-low full-width">
-        Secondary CTA
       </button>
     </div>
   </div>

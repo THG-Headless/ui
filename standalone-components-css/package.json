@@ -16,5 +16,8 @@
       "production": "./dist/main.css",
       "default": "./dist/main.css"
     }
+  },
+  "dependencies": {
+    "tailwindcss": "^4.0.1"
   }
 }

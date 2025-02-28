@@ -2,13 +2,13 @@
   :root {
     /* Control Buttons */
     --control-btn-item-gap: 0rem;
-    --control-btn-outline-color: var(--primary-700);
-    --control-btn-background: var(--surface-white);
-    --control-btn-color: var(--icons-primary);
-    --control-btn-hover-color: var(--icons-primary-darker);
-    --control-btn-active-color: var(--icons-primary-darker);
-    --control-btn-background-hover: var(--neutral-200);
-    --control-btn-background-active: var(--neutral-300);
+    --control-btn-outline-color: var(--color-primary-700);
+    --control-btn-background: var(--color-white);
+    --control-btn-color: var(--color-black);
+    --control-btn-hover-color: var(--color-primary-darker);
+    --control-btn-active-color: var(--color-primary-darker);
+    --control-btn-background-hover: var(--color-neutral-200);
+    --control-btn-background-active: var(--color-neutral-300);
     --control-btn-border-width: 1px;
 
     --control-btn-size: 48px;
@@ -22,26 +22,26 @@
     --control-pip-wrapper-margin: 0;
     --control-pip-wrapper-min-height: 48px;
     --control-pip-wrapper-background: transparent;
-    --control-pip-wrapper-border-radius: var(--radius-size-none);
+    --control-pip-wrapper-border-radius: var(--radius-none);
 
     --control-pip-size: 12px;
     --control-pip-gap: 8px;
     --control-pip-active-width: 36px;
-    --control-pip-color: var(--neutral-300);
-    --control-pip-active-color: var(--primary-700);
-    --control-pip-hover-color: var(--primary-700);
+    --control-pip-color: var(--color-neutral-300);
+    --control-pip-active-color: var(--color-primary-700);
+    --control-pip-hover-color: var(--color-primary-700);
     --control-pip-focus-ring-width: 2px;
     --control-pip-focus-ring-offset: 2px;
 
-    --control-pip-focus-ring-color: var(--primary-700);
+    --control-pip-focus-ring-color: var(--color-primary-700);
     --control-pip-focus-ring-style: solid;
-    --control-pip-disabled-background: var(--neutral-300);
+    --control-pip-disabled-background: var(--color-neutral-300);
     --control-pip-hover-scale: 1.1;
     --control-pip-disabled-opacity: 0.5;
 
-    --control-pip-active-transition: width var(--animation-speed-quick) ease,
-      background-color var(--animation-speed-quick) ease;
-    --control-pip-hover-transition: transform var(--animation-speed-quick) ease;
+    --control-pip-active-transition: width var(--duration-speed-quick) ease,
+      background-color var(--duration-speed-quick) ease;
+    --control-pip-hover-transition: transform var(--duration-speed-quick) ease;
 
     --control-pip-wrapper-mobile-padding: 0.5rem;
     --control-pip-mobile-size: 10px;
@@ -74,7 +74,7 @@
     height: var(--control-pip-size);
     padding: 0;
     border: none;
-    border-radius: var(--radius-size-full);
+    border-radius: var(--radius-full);
     background-color: var(--control-pip-color);
     cursor: pointer;
     margin: 0;
