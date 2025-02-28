@@ -1,94 +1,67 @@
 @layer components {
   :root {
-    --btn-radius: var(--radius-md);
+    --btn-radius: var(--radius-site);
     --btn-animation-speed: var(--animation-speed-quick);
     --btn-hover-scale: 1.005;
     --btn-active-scale: 0.995;
-    --btn-icon-size: 20px;
     --btn-icon-scale-hover: 1.15;
     --btn-icon-scale-active: 1.3;
     --btn-icon-stroke-width: 3;
     --btn-padding-x: 1rem;
     --btn-padding-y: 0.5rem;
+    --btn-gap: 0.5rem;
+    --btn-line-height: var(--line-height-body);
+    --btn-height: calc(var(--btn-line-height) + 2 * var(--btn-padding-y));
     --btn-text-size: var(--text-body);
-    --btn-text-line-height: var(--line-height-body);
-    --btn-text-weight: var(--font-medium);
-
-    --btn-height: calc(var(--btn-text-line-height) + 2 * var(--btn-padding-y));
-
-    /* High Emphasis */
-    --btn-high-emphasis-border-width: 0px;
-
-    /* Medium Emphasis */
-    --btn-medium-emphasis-border-width: 2px;
-
-    /* Low Emphasis */
-    --btn-low-emphasis-border-width: 0px;
+    --btn-icon-size: calc(var(--btn-height) - (2 * var(--btn-padding-y)));
+    --btn-text-weight: var(--font-weight-semi-bold);
   }
 
   .btn {
     border-radius: var(--btn-radius);
-    padding: var(--btn-padding-y) var(--btn-padding-x);
     transition: all var(--btn-animation-speed);
-    font-size: var(--btn-text-size);
-    line-height: var(--btn-text-line-height);
-    font-weight: var(--btn-text-weight);
     display: inline-flex;
     align-items: center;
     justify-content: center;
     vertical-align: middle;
-    gap: 0.5rem;
-    height: var(--btn-height);
+    gap: var(--btn-gap);
     box-sizing: border-box;
     cursor: pointer;
     animation-timing-function: ease-in-out;
+    height: var(--btn-height);
+    line-height: var(--btn-line-height);
+    font-size: var(--text-body);
+    font-weight: var(--btn-text-weight);
+    font-family: inherit;
+    text-align: center;
+  }
+
+  button.btn,
+  a.btn {
+    font-weight: var(--btn-text-weight) !important;
+  }
+
+  .btn span,
+  .btn p,
+  .btn div:not(.icon-container) {
+    font-weight: var(--btn-text-weight);
+  }
+
+  .btn::before,
+  .btn::after {
+    font-weight: var(--btn-text-weight);
+  }
+
+  .btn:not(.icon-only) {
+    padding: var(--btn-padding-y) var(--btn-padding-x);
+  }
+
+  .btn.icon-only {
+    padding: var(--btn-padding-y) var(--btn-padding-y);
   }
 
   .btn:disabled {
     cursor: default;
-  }
-
-  /* btn emphasis styles */
-  .btn-high {
-    border-width: var(--btn-high-emphasis-border-width);
-  }
-
-  .btn-high:focus-visible:not(:active):not(:disabled) {
-    outline-offset: 2px;
-  }
-
-  .btn-medium {
-    border-width: var(--btn-medium-emphasis-border-width);
-  }
-
-  .btn-medium:hover:not(:disabled):not(:active) {
-    text-decoration: underline;
-  }
-
-  .btn-medium:focus-visible:not(:active):not(:disabled) {
-    outline-offset: 0px;
-  }
-
-  .btn-medium:active:not(:disabled) {
-    text-decoration: none;
-  }
-
-  .btn-low {
-    border-width: var(--btn-low-emphasis-border-width);
-    text-decoration: underline;
-  }
-
-  .btn-low:disabled {
-    text-decoration: none;
-  }
-
-  .btn-low:hover:not(:disabled) {
-    text-decoration: none;
-  }
-
-  btn-low:focus-visible:not(:active):not(:disabled) {
-    outline-offset: 0px;
-    text-decoration: none;
   }
 
   /* Icon styles */
@@ -108,38 +81,21 @@
     transition: all var(--btn-animation-speed);
   }
 
-  .btn.icon-only {
-    width: var(--btn-height);
-  }
-
-  /* Hover state for all btns */
+  .btn:not(:disabled):focus-visible,
   .btn:not(:disabled):hover {
     transform: scale(var(--btn-hover-scale));
   }
 
-  /* Focus state for all btns */
-  .btn:not(:disabled):focus-visible {
-    transform: scale(var(--btn-hover-scale));
-  }
-
-  /* Active state for all btns */
   .btn:not(:disabled):active {
     transform: scale(var(--btn-active-scale));
   }
 
-  /* Icon hover state */
   .btn:not(:disabled):hover .icon-container svg,
   .btn:not(:disabled):focus-visible .icon-container svg {
     transform: scale(var(--btn-icon-scale-hover));
   }
 
-  /* Icon active state */
   .btn:not(:disabled):active .icon-container svg {
     transform: scale(var(--btn-icon-scale-active));
-  }
-
-  /* Full width btn */
-  .btn.full-width {
-    width: 100%;
   }
 }
