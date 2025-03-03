@@ -79,7 +79,7 @@
   .accordion-section:not(:first-child) {
     border-top: var(--accordion-divider-width) solid
       color-mix(
-        in srgb,
+        in oklch,
         var(--color-border) var(--accordion-closed-divider-lightness),
         var(--color-background)
       );

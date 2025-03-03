@@ -10,8 +10,13 @@
     --btn-padding-x: 1rem;
     --btn-padding-y: 0.5rem;
     --btn-gap: 0.5rem;
+    --btn-border-width: 0px;
+    --btn-bordered-border-width: 3px;
     --btn-line-height: var(--line-height-body);
-    --btn-height: calc(var(--btn-line-height) + 2 * var(--btn-padding-y));
+    --btn-height: calc(
+      var(--btn-line-height) + 2 * var(--btn-padding-y) + 2 *
+        var(--btn-border-width)
+    );
     --btn-text-size: var(--text-body);
     --btn-icon-size: calc(var(--btn-height) - (2 * var(--btn-padding-y)));
     --btn-text-weight: var(--font-weight-semi-bold);
@@ -19,6 +24,7 @@
 
   .btn {
     border-radius: var(--btn-radius);
+    border: var(--btn-border-width) solid;
     transition: all var(--btn-animation-speed);
     display: inline-flex;
     align-items: center;
@@ -34,6 +40,11 @@
     font-weight: var(--btn-text-weight);
     font-family: inherit;
     text-align: center;
+    padding: var(--btn-padding-y) var(--btn-padding-x);
+  }
+
+  .btn-bordered {
+    --btn-border-width: var(--btn-bordered-border-width);
   }
 
   button.btn,
@@ -52,12 +63,10 @@
     font-weight: var(--btn-text-weight);
   }
 
-  .btn:not(.icon-only) {
-    padding: var(--btn-padding-y) var(--btn-padding-x);
-  }
-
   .btn.icon-only {
-    padding: var(--btn-padding-y) var(--btn-padding-y);
+    min-width: var(--btn-height);
+    max-width: var(--btn-height);
+    padding: 0px 0px;
   }
 
   .btn:disabled {
@@ -97,5 +106,93 @@
 
   .btn:not(:disabled):active .icon-container svg {
     transform: scale(var(--btn-icon-scale-active));
+  }
+
+  .btn-bar {
+    display: inline-flex;
+    align-items: center;
+    transition: all var(--btn-animation-speed);
+  }
+
+  .btn-bar .btn {
+    border-radius: 0;
+    position: relative;
+    z-index: 1;
+  }
+
+  .btn-bar .btn + .btn {
+    margin-left: calc(-1 * var(--btn-border-width)) !important;
+  }
+
+  .btn-bar .btn:not(:disabled):focus-visible,
+  .btn-bar .btn:not(:disabled):hover,
+  .btn-bar .btn:not(:disabled):active {
+    transform: none;
+  }
+
+  /* Fix hover/active z-index priority */
+  .btn-bar .btn:focus-visible,
+  .btn-bar .btn:hover {
+    z-index: 2;
+  }
+
+  /* Stronger selector to ensure active always overrides hover */
+  .btn-bar .btn:active,
+  .btn-bar .btn:focus {
+    z-index: 3;
+  }
+
+  .btn-bar .btn:first-child {
+    border-top-left-radius: var(--btn-radius);
+    border-bottom-left-radius: var(--btn-radius);
+  }
+
+  .btn-bar .btn:last-child {
+    border-top-right-radius: var(--btn-radius);
+    border-bottom-right-radius: var(--btn-radius);
+  }
+
+  .btn-bar-vertical {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    transition: all var(--btn-animation-speed);
+  }
+
+  .btn-bar-vertical .btn {
+    border-radius: 0;
+    position: relative;
+    z-index: 1;
+  }
+
+  .btn-bar-vertical .btn + .btn {
+    margin-top: calc(-1 * var(--btn-border-width)) !important;
+    margin-left: 0 !important;
+  }
+
+  .btn-bar-vertical .btn:not(:disabled):focus-visible,
+  .btn-bar-vertical .btn:not(:disabled):hover,
+  .btn-bar-vertical .btn:not(:disabled):active {
+    transform: none;
+  }
+
+  .btn-bar-vertical .btn:focus-visible,
+  .btn-bar-vertical .btn:hover {
+    z-index: 2;
+  }
+
+  .btn-bar-vertical .btn:active,
+  .btn-bar-vertical .btn:focus {
+    z-index: 3;
+  }
+
+  .btn-bar-vertical .btn:first-child {
+    border-top-left-radius: var(--btn-radius);
+    border-top-right-radius: var(--btn-radius);
+  }
+
+  .btn-bar-vertical .btn:last-child {
+    border-bottom-left-radius: var(--btn-radius);
+    border-bottom-right-radius: var(--btn-radius);
   }
 }

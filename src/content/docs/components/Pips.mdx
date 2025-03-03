@@ -1,0 +1,58 @@
+---
+title: Pips
+description: Pips
+---
+
+import ShowComponent from '@components/doc-helpers/ShowComponent.astro';
+import Pips from '@components/controls/Pips.html';
+
+## Pips
+
+Pip indicators provide an accessible way to navigate between items in a carousel or similar component. They use native radio inputs styled to provide a visual indicator of the current selection.
+
+The pip indicators are built using native HTML radio inputs, providing built-in accessibility and state management without JavaScript. Each pip expands when selected and includes proper ARIA labels for screen readers.
+
+<ShowComponent>
+  <Pips />
+</ShowComponent>
+
+### CSS Variables
+
+| Variable                            | Default Value                   | Description                                      |
+| ----------------------------------- | ------------------------------- | ------------------------------------------------ |
+| `--control-pip-size`                | `12px`                          | Size (width/height) of individual pip indicators |
+| `--control-pip-active-width`        | `36px`                          | Width of the active/selected pip                 |
+| `--control-pip-gap`                 | `8px`                           | Space between pip indicators                     |
+| `--control-pip-ring-width`          | `2px`                           | Width of the outline/focus ring around pips      |
+| `--control-pip-ring-offset`         | `2px`                           | Offset distance of the outline/focus ring        |
+| `--control-pip-scale`               | `1.1`                           | Scale factor for pip hover/focus effect          |
+| `--control-pip-mobile-size`         | `10px`                          | Size of pip indicators on mobile devices         |
+| `--control-pip-mobile-active-width` | `30px`                          | Width of active/selected pip on mobile devices   |
+| `--control-pip-transition`          | `var(--duration-speed-default)` | Transition timing for standard pip state changes |
+| `--control-pip-swap-transition`     | `var(--duration-speed-slow)`    | Transition timing for pip selection changes      |
+
+### Accessibility
+
+#### Implemented Accessibility Features
+
+- [x] Complete keyboard navigation support through native radio controls
+- [x] Semantic structure using `radiogroup` role
+- [x] Clear descriptive labels for navigation ("Show item X of Y")
+- [x] Purpose description via `aria-description` for keyboard usage
+- [x] Screen reader context through `sr-only` class
+- [x] Visual focus indicators through native radio states
+- [x] Proper use of semantic HTML with `<label>` elements
+- [x] Current state indication through native radio checked state
+- [x] Content relationships via `aria-controls`
+- [x] Touch-friendly target sizes through label wrapping
+- [x] Motion-respecting animations using `prefers-reduced-motion`
+- [x] Consistent naming patterns across all controls
+
+#### Accessibility Considerations when Implementing
+
+- [ ] Ensure radio input names are unique per instance
+- [ ] Match `aria-controls` values with corresponding content IDs
+- [ ] Maintain proper tab order matching visual presentation
+- [ ] Consider auto-advance pause on focus/hover
+- [ ] Handle dynamic content updates appropriately
+- [ ] Maintain state synchronization between controls and content
