@@ -194,6 +194,38 @@
   border-bottom-right-radius: var(--carousel-radius);
 }
 
+.carousel-align.carousel-snap-center .carousel {
+  padding-left: calc((100% - var(--carousel-item-width)) / 2);
+  padding-right: calc((100% - var(--carousel-item-width)) / 2);
+  width: calc(100% + ((100% - var(--carousel-item-width))));
+  min-width: max-content;
+}
+
+.carousel-align.carousel-snap-end .carousel {
+  padding-left: calc(100% - var(--carousel-item-width));
+  width: calc(100% + (100% - var(--carousel-item-width)));
+  min-width: max-content;
+}
+
+.carousel-align.carousel-snap-start .carousel {
+  padding-right: 100%;
+  width: calc(100% + (100% - var(--carousel-item-width)));
+  min-width: max-content;
+}
+
+/* Single child handling for carousel banner items */
+.carousel-banner .carousel-item > *:only-child {
+  width: 100%;
+  height: var(--carousel-banner-image-height);
+  object-fit: cover;
+}
+
+/* Preserve standard layout for carousel banner items with multiple children */
+.carousel-banner .carousel-item:not(:has(> *:only-child)) .carousel-image {
+  width: var(--carousel-banner-image-width);
+  height: var(--carousel-banner-image-height);
+}
+
 /* Mobile Styles */
 @media (max-width: 768px) {
   .carousel-banner .carousel-item {
@@ -202,6 +234,10 @@
 
   .carousel-banner .carousel-image {
     width: 100%;
+    height: var(--carousel-banner-image-height-mobile);
+  }
+
+  .carousel-banner .carousel-item > *:only-child {
     height: var(--carousel-banner-image-height-mobile);
   }
 }

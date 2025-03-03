@@ -14,6 +14,7 @@ import SnapPad from '@components/carousel/CarouselSnapPad.html';
 import CarouselContent from '@components/carousel/CarouselContent.html';
 import CarouselInteractive from '@components/carousel/CarouselInteractive.html';
 import CarouselBanner from '@components/carousel/CarouselBanner.html';
+import CarouselBannerImageOnly from '@components/carousel/CarouselBannerImageOnly.html';
 
 The carousel is used to display a set of images or content in a neat way.
 
@@ -34,7 +35,7 @@ The basic html structure of the carousel is seen below, applying the base styles
   <BasicCarousel />
 </ShowComponent>
 
-### Tight
+### Alternate Layout : Tight
 
 Applying the `carousel-tight` class will remove the gap between the items.
 
@@ -114,10 +115,14 @@ If the user is on a item within the carousel, they should be able to:
 
 By adding the `carousel-banner` class, the items will become full width, with the content and image placed next to each other.
 
-Note that due to the nature of this, banner style carousels are unaffected by snapping or tight properties. The small and large classes are still applicable, but have separate size variables for banner layouts.
-
 <ShowComponent>
   <CarouselBanner />
+</ShowComponent>
+
+If a carousel item contains only one child, it will be full width regardless of the banner image width variable.
+
+<ShowComponent>
+  <CarouselBannerImageOnly />
 </ShowComponent>
 
 ## Variables
