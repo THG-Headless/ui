@@ -1,20 +1,7 @@
 @layer components {
   :root {
     --drawer-backdrop-color: rgba(0, 0, 0, 0.3);
-    --drawer-text-color: var(--color-black);
-    --drawer-text-title-color: var(--color-high-emphasis);
-    --drawer-text-body-color: var(--color-medium-emphasis);
-    --drawer-surface: var(--color-surface-cards);
     --drawer-backdrop-blur: 4px;
-    --drawer-text-title-size: var(--text-md);
-    --drawer-text-title-weight: var(--font-semi-bold);
-    --drawer-text-title-line-height: var(--line-height-md);
-    --drawer-text-body-size: var(--text-body);
-    --drawer-text-body-weight: var(--font-normal);
-    --drawer-text-body-line-height: var(--line-height-body);
-    --drawer-text-close-button-size: var(--text-md);
-    --drawer-text-close-button-weight: var(--font-normal);
-    --drawer-text-close-button-line-height: var(--line-height-md);
     --drawer-width-min: 320px;
     --drawer-width-max: 80vw;
     --drawer-margin: 2rem;
@@ -25,10 +12,9 @@
     --drawer-hero-width: 18rem;
     --drawer-mobile-hero-height: 150px;
     --drawer-animation-speed: var(--duration-speed-slow);
-    --drawer-top-right-radius: var(--radius-none);
-    --drawer-bottom-right-radius: var(--radius-none);
-    --drawer-shadow: var(--shadow-2xl);
-    --drawer-shadow-mobile: var(--shadow-2xl);
+    --drawer-radius: var(--radius-site);
+    --drawer-shadow: var(--shadow-site);
+    --drawer-shadow-mobile: var(--shadow-site);
   }
 
   .drawer {
@@ -41,18 +27,23 @@
     justify-content: center;
     opacity: 0;
     visibility: hidden;
-    background-color: transparent;
     padding: 0;
     border: none;
     margin: 0;
     overflow: hidden;
     will-change: opacity;
     transition: opacity var(--drawer-animation-speed) ease;
-    color: var(--drawer-text-color);
+    background-color: transparent !important;
+
+    & > * {
+      background-color: var(--color-background);
+      border-color: var(--color-border);
+      color: var(--color-foreground);
+    }
   }
 
   .drawer::backdrop {
-    background-color: var(--drawer-backdrop-color);
+    background-color: var(--drawer-backdrop-color) !important;
     -webkit-backdrop-filter: blur(var(--drawer-backdrop-blur));
     backdrop-filter: blur(var(--drawer-backdrop-blur));
     opacity: 0;
@@ -79,10 +70,9 @@
   .drawer-box {
     width: min(fit-content, calc(100vw - (var(--drawer-margin, 2rem) * 2)));
     min-height: 100vh;
-    background: var(--drawer-surface);
     padding: var(--drawer-padding);
-    border-top-right-radius: var(--drawer-top-right-radius);
-    border-bottom-right-radius: var(--drawer-bottom-right-radius);
+    border-top-right-radius: var(--drawer-radius);
+    border-bottom-right-radius: var(--drawer-radius);
     box-shadow: var(--drawer-shadow);
     max-height: calc(100vh - 2 * var(--drawer-margin));
     overflow-y: auto;
@@ -103,14 +93,6 @@
     margin-top: -0.5rem;
   }
 
-  .drawer-title {
-    color: var(--modal-text-title-color);
-    font-size: var(--modal-text-title-size);
-    line-height: var(--modal-text-title-line-height);
-    font-weight: var(--modal-text-title-weight);
-    margin-bottom: 1rem;
-  }
-
   .drawer-backdrop-click {
     position: fixed;
     inset: 0;
@@ -121,6 +103,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: transparent !important;
   }
 
   .drawer-backdrop-click button {
@@ -134,26 +117,6 @@
     margin: 0;
     background: transparent;
     cursor: default;
-  }
-
-  .drawer-close-button {
-    background: none;
-    border: none;
-    padding: 0;
-    cursor: pointer;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    color: var(--drawer-text-body-color);
-    font-size: var(--drawer-text-close-button-size);
-    font-weight: var(--drawer-text-close-button-weight);
-    line-height: var(--drawer-text-close-button-line-height);
-    height: var(--drawer-text-close-button-line-height);
-    transition: color var(--drawer-animation-speed) ease;
-  }
-
-  .drawer-close-button:hover {
-    color: var(--drawer-text-title-color);
   }
 
   .drawer-disable-entrance .drawer-box {
@@ -179,15 +142,15 @@
 
     .drawer-box {
       display: flex;
-      width: 80vw !important;
-      max-width: 80vw;
+      width: var(--drawer-mobile-max-width) !important;
+      max-width: var(--drawer-mobile-max-width);
       margin: 0 var(--drawer-mobile-margin) !important;
       min-height: 100vh !important;
       max-height: 100vh !important;
       border-radius: 0 var(--drawer-radius) var(--drawer-radius) 0;
       transform: translateX(-100%);
       transition: transform var(--drawer-animation-speed) ease;
-      box-shadow: var(--drawer-shadow-mobile) !important;
+      box-shadow: var(--drawer-shadow-mobile);
       padding: var(--drawer-mobile-padding);
     }
 
