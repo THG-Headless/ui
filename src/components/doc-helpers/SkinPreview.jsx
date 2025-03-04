@@ -23,6 +23,7 @@ const SkinPreview = () => {
   const regularDivRef = useRef(null);
   const interactiveBtnRef = useRef(null);
   const disabledBtnRef = useRef(null);
+  const softBtnRef = useRef(null);
   const skinDisplayRef = useRef(null);
 
   useEffect(() => {
@@ -80,6 +81,10 @@ const SkinPreview = () => {
 
     if (disabledBtnRef.current) {
       disabledBtnRef.current.className = `interactive btn bordered w-full h-full ${skinClass}`;
+    }
+
+    if (softBtnRef.current) {
+      softBtnRef.current.className = `interactive btn bordered soft w-full h-full ${skinClass}`;
     }
 
     if (skinDisplayRef.current) {
@@ -270,7 +275,7 @@ const SkinPreview = () => {
               </h3>
             </div>
 
-            <div className="grid grid-cols-3 gap-4 p-6 my-0!">
+            <div className="grid grid-cols-4 gap-4 p-6 my-0!">
               <div className="!mt-0">
                 <div
                   ref={regularDivRef}
@@ -294,6 +299,14 @@ const SkinPreview = () => {
                   disabled
                 >
                   Disabled
+                </button>
+              </div>
+              <div className="!mt-0">
+                <button
+                  ref={softBtnRef}
+                  className={`interactive btn bordered soft w-full h-full ${currentSkin}`}
+                >
+                  Soft
                 </button>
               </div>
             </div>
