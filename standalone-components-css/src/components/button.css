@@ -18,7 +18,6 @@
     );
     --btn-text-size: var(--text-body);
     --btn-icon-size: calc(var(--btn-height) - (2 * var(--btn-padding-y)));
-    --btn-text-weight: var(--font-weight-semi-bold);
   }
 
   .btn {
@@ -36,30 +35,15 @@
     height: var(--btn-height);
     line-height: var(--btn-line-height);
     font-size: var(--text-body);
-    font-weight: var(--btn-text-weight);
     font-family: inherit;
     text-align: center;
     padding: var(--btn-padding-y) var(--btn-padding-x);
+    display: inline-flex;
+    align-items: center;
   }
 
   .btn-bordered {
     --btn-border-width: var(--btn-bordered-border-width);
-  }
-
-  button.btn,
-  a.btn {
-    font-weight: var(--btn-text-weight) !important;
-  }
-
-  .btn span,
-  .btn p,
-  .btn div:not(.icon-container) {
-    font-weight: var(--btn-text-weight);
-  }
-
-  .btn::before,
-  .btn::after {
-    font-weight: var(--btn-text-weight);
   }
 
   .btn.icon-only {
