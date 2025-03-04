@@ -1,10 +1,10 @@
-import BackdropModal from '../components/modals/BackdropCloseModal.html';
+import BasicModal from '../components/modals/BasicModal.html';
 import NoBackdropModal from '../components/modals/NoBackdropModal.html';
 import HeroModal from '../components/modals/HeroModal.html';
 import ComplexModal from '../components/modals/ComplexModal.html';
+import BackdropCloseModal from '../components/modals/BackdropCloseModal.html';
 import FullScreenModal from '../components/modals/FullScreenModal.html';
 import NoEntranceModal from '../components/modals/NoEntrance.html';
-import BasicModal from '../components/modals/BasicModal.html';
 
 const addOpenAttribute = (htmlString) => {
   return htmlString.replace('<dialog', '<dialog open');
@@ -39,3 +39,6 @@ Fullscreen.storyName = 'Fullscreen Modal';
 
 export const NoEntrance = () => addOpenAttribute(NoEntranceModal);
 NoEntrance.storyName = 'No Entrance Animation Modal';
+
+export const BackdropClose = () => addOpenAttribute(BackdropCloseModal);
+BackdropClose.storyName = 'No Entrance Animation Modal';
