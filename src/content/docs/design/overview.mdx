@@ -1,0 +1,256 @@
+---
+title: Layers Of Abstraction
+description: A overview of how the different layers of abstraction are used to create a unified yet highly configurable and extensible design system
+sidebar:
+  order: 2
+---
+
+import LottieTimelineNavigator from '../../../components/doc-helpers/LottieTimelineNavigator.tsx';
+import ThemeAnimation from '../../../components/doc-helpers/animations/theming.json';
+
+export const timestamps = [
+  {
+    time: 1.5,
+    label: 'Site Variables',
+    description:
+      'Define your site variables, which will form the foundation of your design system. Undefined values will fall back to the package defaults.',
+    codeBlock: `:root{
+    --color-primary: oklch(0.43 0.0147 248.17);
+    --color-secondary: oklch(0.67 0.15 250);
+    --color-tertiary: oklch(0.65 0.2 300);
+    --color-neutral: oklch(0.64 0 0);
+    --color-success: oklch(0.5 0.15 150);
+    --color-attention: oklch(0.55 0.12 250);
+    --color-error: oklch(0.55 0.2 30);
+    --color-promotion: oklch(0.6 0.25 30);
+}`,
+    codeLanguage: 'css',
+  },
+  {
+    time: 3.4,
+    label: 'Generate Shades',
+    description:
+      '11 shades are automatically generated from each of the site colours.',
+    codeBlock: `--color-secondary-500: oklch(from var(--color-secondary) l c h);
+
+--color-secondary-400: oklch(
+from var(--color-secondary-500) calc(1 - (1 - l) _ 0.6) calc(c _ 0.8) h
+);
+--color-secondary-300: oklch(
+from var(--color-secondary-400) calc(1 - (1 - l) _ 0.6) calc(c _ 0.8) h
+);
+--color-secondary-200: oklch(
+from var(--color-secondary-300) calc(1 - (1 - l) _ 0.6) calc(c _ 0.8) h
+);
+--color-secondary-100: oklch(
+from var(--color-secondary-200) calc(1 - (1 - l) _ 0.6) calc(c _ 0.8) h
+);
+--color-secondary-50: oklch(
+from var(--color-secondary-100) calc(1 - (1 - l) _ 0.6) calc(c _ 0.8) h
+);
+
+--color-secondary-600: oklch(
+from var(--color-secondary-500) calc(l _ 0.8) calc(c _ 1.1) h
+);
+--color-secondary-700: oklch(
+from var(--color-secondary-600) calc(l _ 0.8) calc(c _ 1.1) h
+);
+--color-secondary-800: oklch(
+from var(--color-secondary-700) calc(l _ 0.8) calc(c _ 1.1) h
+);
+--color-secondary-900: oklch(
+from var(--color-secondary-800) calc(l _ 0.8) calc(c _ 1.1) h
+);
+--color-secondary-950: oklch(
+from var(--color-secondary-900) calc(l _ 0.8) calc(c _ 1.1) h
+);`,
+    codeLanguage: 'css',
+  },
+  {
+    time: 5.2,
+    label: 'Alias Variables',
+    description:
+      'Alias values let us easily reference specific shades of a colour, without needing to remember the exact value.',
+    codeBlock: `--color-secondary-default: var(--color-secondary-500);
+--color-secondary-light: var(--color-secondary-50);
+--color-secondary-dark: var(--color-secondary-950);
+--color-secondary-hover: var(--color-secondary-600);
+--color-secondary-hover-light: var(--color-secondary-400);;`,
+    codeLanguage: 'css',
+  },
+  {
+    time: 9.1,
+    label: 'Defining Skins',
+    description: 'Skins are defined, which combine multiple colours into a single class. This lets us apply it semantically to components, keeping consistent styles without needing to think about which colours to pick each time we create a new component.',
+    codeBlock: `.skin-secondary {
+--color-background: var(--color-white);
+--color-background-hover: var(--color-secondary-50);
+--color-background-focus: var(--color-secondary-50);
+--color-background-active: var(--color-secondary-100);
+--color-background-disabled: var(--color-neutral-50);
+
+--color-foreground: var(--color-secondary);
+--color-foreground-hover: var (--color-secondary-600);
+--color-foreground-focus: var(--color-secondary-600);
+--color-foreground-active: var(--color-secondary-700);
+--color-foreground-disabled: var(--color-neutral-400);
+
+--color-border: var(--color-secondary);
+--color-border-hover: var(--color-secondary-600);
+--color-border-focus: var(--color-secondary-600);
+--color-border-active: var(--color-secondary-700);
+--color-border-disabled: var(--color-neutral-200);
+
+}`,
+    codeLanguage: 'css',
+  },
+  {
+    time: 11,
+    label: 'Interactive Skins',
+    description: 'Skins can be applied to your elements in order to theme them. In order to apply the hover, focus, active and disabled colours,the element should explicitly define this by including the `interactive`class',
+    codeBlock:`[class*='skin'] {
+background-color: var(--color-background);
+color: var(--color-foreground);
+border-color: var(--color-border);
+}
+
+.interactive:hover {
+background-color: var(--color-background-hover);
+color: var(--color-foreground-hover);
+border-color: var(--color-border-hover);
+}
+
+.interactive:focus {
+background-color: var(--color-background-focus);
+color: var(--color-foreground-focus);
+border-color: var(--color-border-focus);
+}
+
+.interactive:active {
+background-color: var(--color-background-active);
+color: var(--color-foreground-active);
+border-color: var(--color-border-active);
+}
+
+.interactive:disabled,
+.interactive:has(:disabled) {
+background-color: var(--color-background-disabled);
+color: var(--color-foreground-disabled);
+border-color: var(--color-border-disabled);
+
+    & * {
+      color: inherit;
+      border-color: inherit;
+      background-color: inherit;
+    }
+
+}
+`,
+    codeLanguage: 'css',
+  },
+  {
+    time: 13.5,
+    label: 'Applying Skins To Components',
+    description:
+      "To style a component, we simply apply the relevant skin class, such as `skin-secondary`.",
+    codeBlock:`/_ This button is interactive _/
+
+/_ This div doesn't include the interactive class, as we don't want it to have hover, focus, active or disabled colours _/
+
+<div class="skin-secondary"> Just a plain old div </div>
+`,
+    codeLanguage: 'html',
+  },
+  {
+    time: 15.6,
+    label: 'Applying different skins to a component',
+    description:
+      'Any component is able to use any skin, allowing you to create infinite variations of each component.',
+    codeBlock: `<button class="skin-primary interactive btn">Default</button>
+<button class="skin-secondary interactive btn">Default</button>
+<button class="skin-tertiary interactive btn">Default</button>`,
+    codeLanguage: 'html',
+  },
+  {
+    time: 22,
+    label: 'Cascading variables',
+    description:
+      'Looking back over the way the styles have been defined, we can see how the inheritance of values creates a cascading structure for the secondary-emphasised skins border colour'
+},
+{
+time: 23.4,
+label: 'Cascading themes',
+description:
+'This same principle applies to all styles in the design system, creating a cohesive theme that all originates from a small selection of site wide variables.',
+},
+{
+time: 25.5,
+label: 'Updating site variables',
+description:
+'Due to the cascading nature of the system, we simply need to update the site variables, and this will propagate through the layers of abstraction, updating all cases where the colour has been applied',
+},
+];
+
+The Altitude Design System is made up of multiple layers of abstraction. This allows us to change all the themes from a handful of variables, while also giving us complete control of the styles at a more granular level.
+
+## Layers
+
+The Altitude Design System can be broken down into a site, extended, alias and semantic level, as detailed below.
+
+### Site
+
+These are the only variables that need explicitly defining by the user, although if none are provided, the package defaults will be use as a fallback.
+
+These include:
+
+- **Colours**
+  - Primary Colour _`--color-primary`_
+  - Secondary Colour _`--color-secondary`_
+  - Tertiary Colour _`--color-tertiary`_
+  - Neutral Colour _`--color_neutral`_
+  - Success Colour _`--color-success`_
+  - Attention Colour _`--color-attention`_
+  - Error Colour _`--color-error`_
+  - Promotion Colour _`--color-promotion`_
+  - White _`--color-white`_
+  - Black _`--color-black`_
+- **Radius** _`--radius-site`_
+- **Shadow** _`--shadow-site`_
+- [**Typography**](/NEEDSLINK)
+
+### Extended
+
+From the site variables, a range of extended variables are generated. These are unlikely to need to be overwritten by the user, but as is the nature of the purely CSS based implementation of the package, they can be over written if desired.
+
+- **Colour Shades**
+  - Each site colour will generate 11 shades through OKLCH colour calculations
+- **Responsive Typography**
+  - Mobile or Desktop typography are responsively used based on screen resolution
+
+### Alias
+
+For the colour shades, alias values are assigned to make it easier to consistently reference a shade. For example, from the primary shades, alias values include `--primary-light`, `--primary-dark`, `--primary-default`, `--primary-hover` and `--primary-hover-dark`
+
+### Semantic
+
+Styles are applied semantically to the components. In the current implementation, semantic colours are only provided for colours, through the [**skin**](/NEEDSLINK) system. **Colours should only ever reference these semantic skins** in order to avoid visually similar, yet semantically different styles becoming coupled.
+
+### Component
+
+Each component has a number of CSS variables that are used to style it, detailed in their respective pages within the documentation. Where applicable, these reference variables from the above layers of abstraction, such as the site radius. Additional variables that control the contents layout are also provided.
+
+_(These do not form part of the Altitude Design System, but more details of this can be found in the [component overview](/NEEDSLINK))_
+
+## Interactive Explainer
+
+Click through the interactive explainer below to understand how the layers of abstraction work together with the colour palette and skin system to create a unified design system.
+
+<LottieTimelineNavigator
+  animationData={ThemeAnimation}
+  timestamps={timestamps}
+  client:load
+/>
+
+## Theme Playground
+
+Explore the way that themes are applied, and build your own in the Altitude Design System playground. **Coming Soon**

@@ -1,0 +1,179 @@
+---
+title: Advanced CSS Crash Course
+description: A crash course on CSS's most powerful features
+sidebar:
+  order: 3
+---
+
+## Variables
+
+If you are not already familiar with how CSS variables can be used, it is recommended to build a basic understanding of them before jumping into the Altitude Browser Components package, as both the Design System and Components rely heavily on the functionality that they provide, and will be needed in order to customise your site. As such, this page will provide a brief crash course on them, and how they are used within the package.
+
+### Introduction
+
+CSS Custom Properties, more commonly known as CSS Variables, were introduced as part of the CSS3 specification and have enjoyed widespread browser support since 2016. They allow you to define reusable values throughout your stylesheets, making maintenance and theming significantly easier.
+
+CSS Variables are defined with a double hyphen prefix (`--`) and accessed using the `var()` function:
+
+```css
+.button {
+  background-color: var(--primary-color, #0044cc);
+}
+```
+
+The power of CSS Variables lies in their ability to be dynamically changed through JavaScript or media queries, and their inheritance through the DOM tree.
+
+### C is for Cascading
+
+One of the most powerful aspects of CSS Variables is how they cascade through your styles, just like how CSS can cascade through the DOM. In the Altitude Browser Components package, this cascade happens in two important contexts:
+
+1. **Site Variables → Design Palette:** Your top-level site variables are used to generate a complete design palette.
+
+2. **Design Palette → Semantic Styling:** This palette then cascades into semantic styling for components and UI elements.
+
+For example, you might define a primary brand color:
+
+```css
+:root {
+  --color-primary: oklch(0.43 0.0147 248.17);
+}
+```
+
+This value cascades into a comprehensive color palette with shades and variations:
+
+```css
+:root {
+  --color-primary-500: oklch(from var(--color-primary) l c h);
+  --color-primary-400: oklch(
+    from var(--color-primary-500) calc(1 - (1 - l) * 0.6) calc(c * 0.8) h
+  );
+  /* Additional variants... */
+}
+```
+
+Then these palette colors cascade further into semantic applications or alias names for common shades of a colour:
+
+```css
+:root {
+  --color-primary-default: var(--color-primary-500);
+  --color-primary-hover: var(--color-primary-600);
+  /* More semantic applications... */
+}
+```
+
+This cascading approach means you can change a single root variable and have that change propagate through your entire design system.
+
+### Top Level Customisation of CSS Variables
+
+To customize the Altitude Browser Components package for your site, you can define your key variables at the top level of your CSS:
+
+```css
+:root {
+  /* Site Variables */
+  --color-primary: oklch(0.43 0.0147 248.17);
+  --color-secondary: oklch(0.67 0.15 250);
+  --color-tertiary: oklch(0.65 0.2 300);
+
+  /* Design System Parameters */
+  --radius-site: 0.5rem;
+  --shadow-site: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+```
+
+By setting these key variables, you customize the entire system without needing to touch individual component styles.
+
+### Component Level Customisation
+
+While global variables provide consistent styling across your site, you may want to customize specific components. CSS Variables allow for this through scoping:
+
+```html
+<div
+  class="btn skin-primary interactive"
+  style="--btn-border-width:2px; --btn-radius:12px"
+>
+  <!-- Card content -->
+</div>
+```
+
+Components within the Altitude system are designed to respect both global variables and locally scoped overrides:
+
+```css
+.btn {
+  border-radius: var(--btn-radius);
+  border: var(--btn-border-width) solid;
+  transition: all var(--btn-animation-speed);
+  gap: var(--btn-gap);
+  height: var(--btn-height);
+  line-height: var(--btn-line-height);
+  font-size: var(--text-body);
+  font-weight: var(--btn-text-weight);
+  padding: var(--btn-padding-y) var(--btn-padding-x);
+  ...
+}
+```
+
+Note that these styles can also be overwritten using your own additional CSS classes or utilities like Tailwind, but the [specificity](https://www.w3schools.com/css/css_specificity.asp) must be taken into account when doing so.
+
+## Calculations
+
+CSS calculations enable dynamic value computation, enhancing the power of your stylesheets by allowing mathematical operations and responsive designs.
+
+### Introduction
+
+The `calc()` function in CSS allows you to perform calculations to determine CSS property values. Introduced in CSS3, it enjoys excellent browser support and works with all numeric CSS values.
+
+#### Basic Syntax
+
+```css
+.element {
+  width: calc(100% - 20px);
+}
+```
+
+calc() can perform addition, subtraction, multiplication, and division, and can mix different units:
+
+```css
+.element {
+  font-size: calc(1rem + 0.5vw);
+  margin: calc(var(--spacing-unit) * 2);
+  height: calc(100vh - var(--header-height));
+}
+```
+
+These calculations happen at runtime, meaning they adjust as viewport dimensions change or variables are updated.
+
+### Example Usage Within The Package
+
+#### OKLCH Colour Shifting
+
+The Altitude Browser Components package uses calculations extensively for generating color palettes. OKLCH (Lightness, Chroma, Hue) color values paired with calculations create sophisticated color systems:
+
+```css
+:root {
+  --color-primary-500: oklch(from var(--color-primary) l c h);
+  --color-primary-600: oklch(
+    from var(--color-primary-500) calc(l * 0.8) calc(c * 1.1) h
+  );
+}
+```
+
+This technique automates the creation of lighter and darker shades by mathematically adjusting the lightness and chroma values of your base colors. The calculations ensure that color relationships remain harmonious regardless of the base colors you choose.
+
+#### Colour Mixing
+
+Another powerful technique used in the package is color mixing through calculations:
+
+```css
+.soft {
+  color: color-mix(
+    in oklch,
+    var(--color-foreground) 60%,
+    var(--color-background)
+  );
+}
+```
+
+_The `soft` class and other utility classes provided by the Altitude Browser Components are explored further in the Utility Classes documentation NEEDS LINK._
+
+By mastering CSS Variables and calculations, you'll be able to take full advantage of the Altitude Browser Components package's customization capabilities, allowing you to create unique, consistent, and maintainable design systems.

@@ -6,8 +6,6 @@ description: Carousel
 import { Aside } from '@astrojs/starlight/components';
 import ShowComponent from '@components/doc-helpers/ShowComponent.astro';
 import BasicCarousel from '@components/carousel/BasicCarousel.html';
-import Small from '@components/carousel/CarouselSmall.html';
-import Large from '@components/carousel/CarouselLarge.html';
 import Tight from '@components/carousel/CarouselTight.html';
 import SnapStart from '@components/carousel/CarouselSnapStart.html';
 import SnapEnd from '@components/carousel/CarouselSnapEnd.html';
@@ -16,20 +14,16 @@ import SnapPad from '@components/carousel/CarouselSnapPad.html';
 import CarouselContent from '@components/carousel/CarouselContent.html';
 import CarouselInteractive from '@components/carousel/CarouselInteractive.html';
 import CarouselBanner from '@components/carousel/CarouselBanner.html';
+import CarouselBannerImageOnly from '@components/carousel/CarouselBannerImageOnly.html';
 
 The carousel is used to display a set of images or content in a neat way.
 
-These carousels have can be scrolled by holding `SHIFT` and scrolling the mouse wheel, or setting the focus on the carousel by clicking it or navigating to it using keyboard navigation and using the arrow keys to navigate through the carousel.
+These carousels have can be scrolled by holding `SHIFT` and scrolling the mouse wheel, vertically scrolling with a track pad, setting the focus on the carousel by clicking it or navigating to it using keyboard navigation and using the arrow keys to navigate through the carousel.
 
 <Aside type="tip" title="Accessibility & UX">
 #### Related components
 
-For the best user experience, and best accessibility it is recommended to implement buttons to control the carousel. For these purposes, the following components can be used:
-
-- [x] [Bullet Selector](/components/controls/#bullets)
-- [x] [Control Buttons](/components/controls/#control-buttons)
-
-The [Intersection Observer API](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API) can be used to add this interactivity.
+For the best user experience, and best accessibility it is recommended to implement buttons to control the carousel. For these purposes, [Control Buttons](/components/button) or [Pips](/components/pips)
 
 </Aside>
 
@@ -41,27 +35,7 @@ The basic html structure of the carousel is seen below, applying the base styles
   <BasicCarousel />
 </ShowComponent>
 
-### Size
-
-On top of the default size, small and large styles exist to provide a range of carousel sizes.
-
-#### Small
-
-The `carousel-small` class can be used to create a small carousel.
-
-<ShowComponent>
-  <Small />
-</ShowComponent>
-
-#### Large
-
-The `carousel-large` class can be used to create a large carousel.
-
-<ShowComponent>
-  <Large />
-</ShowComponent>
-
-### Tight
+### Alternate Layout : Tight
 
 Applying the `carousel-tight` class will remove the gap between the items.
 
@@ -141,10 +115,14 @@ If the user is on a item within the carousel, they should be able to:
 
 By adding the `carousel-banner` class, the items will become full width, with the content and image placed next to each other.
 
-Note that due to the nature of this, banner style carousels are unaffected by snapping or tight properties. The small and large classes are still applicable, but have separate size variables for banner layouts.
-
 <ShowComponent>
   <CarouselBanner />
+</ShowComponent>
+
+If a carousel item contains only one child, it will be full width regardless of the banner image width variable.
+
+<ShowComponent>
+  <CarouselBannerImageOnly />
 </ShowComponent>
 
 ## Variables
@@ -155,88 +133,27 @@ The carousel can be customized with the following variables:
 
 | Variable                                | Default Value | Description                       |
 | --------------------------------------- | ------------- | --------------------------------- |
-| `--carousel-width`                      | `100%`        | Width of the carousel wrapper     |
 | `--carousel-item-gap`                   | `1rem`        | Gap between carousel items        |
 | `--carousel-content-padding`            | `0rem`        | Padding around content            |
-| `--carousel-content-gap`                | `0.5rem`      | Gap between content elements      |
 | `--carousel-image-height`               | `300px`       | Height of carousel images         |
 | `--carousel-item-width`                 | `300px`       | Width of carousel items           |
 | `--carousel-banner-image-width`         | `50%`         | Width of banner images            |
 | `--carousel-banner-image-height`        | `400px`       | Height of banner images           |
 | `--carousel-banner-image-height-mobile` | `300px`       | Height of banner images on mobile |
 
-### Small Size Variables
-
-| Variable                                      | Default Value | Description                                    |
-| --------------------------------------------- | ------------- | ---------------------------------------------- |
-| `--carousel-small-item-gap`                   | `0.5rem`      | Gap between carousel items (small size)        |
-| `--carousel-small-content-padding`            | `0rem`        | Padding around content (small size)            |
-| `--carousel-small-banner-content-padding`     | `1rem`        | Padding around banner content (small size)     |
-| `--carousel-small-content-gap`                | `0.5rem`      | Gap between content elements (small size)      |
-| `--carousel-small-image-height`               | `200px`       | Height of carousel images (small size)         |
-| `--carousel-small-item-width`                 | `200px`       | Width of carousel images (small size)          |
-| `--carousel-small-banner-image-width`         | `50%`         | Width of banner images (small size)            |
-| `--carousel-small-banner-image-height`        | `200px`       | Height of banner images (small size)           |
-| `--carousel-small-banner-image-height-mobile` | `200px`       | Height of banner images on mobile (small size) |
-
-### Large Size Variables
-
-| Variable                                      | Default Value | Description                                    |
-| --------------------------------------------- | ------------- | ---------------------------------------------- |
-| `--carousel-large-item-gap`                   | `1rem`        | Gap between carousel items (large size)        |
-| `--carousel-large-content-padding`            | `0rem`        | Padding around content (large size)            |
-| `--carousel-large-banner-content-padding`     | `1rem`        | Padding around banner content (large size)     |
-| `--carousel-large-content-gap`                | `0.5rem`      | Gap between content elements (large size)      |
-| `--carousel-large-image-height`               | `400px`       | Height of carousel images (large size)         |
-| `--carousel-large-item-width`                 | `400px`       | Width of carousel images (large size)          |
-| `--carousel-large-banner-image-width`         | `50%`         | Width of banner images (large size)            |
-| `--carousel-large-banner-image-height`        | `400px`       | Height of banner images (large size)           |
-| `--carousel-large-banner-image-height-mobile` | `400px`       | Height of banner images on mobile (large size) |
-
-### Surface and Border Variables
-
-| Variable                          | Default Value                      | Description                                  |
-| --------------------------------- | ---------------------------------- | -------------------------------------------- |
-| `--carousel-surface-image`        | `var(--color-inactive)`            | Background color for carousel images         |
-| `--carousel-surface-item`         | `var(--color-surface-transparent)` | Background color for carousel items          |
-| `--carousel-surface-item-hover`   | `var(--carousel-surface-item)`     | Background color for carousel items on hover |
-| `--carousel-surface-banner`       | `var(--color-white)`               | Background color for banner items            |
-| `--carousel-surface-banner-hover` | `var(--carousel-surface-banner)`   | Background color for banner items on hover   |
-| `--carousel-border-hover`         | `var(--color-primary)`             | Border color on hover                        |
-| `--carousel-border-active`        | `var(--color-primary)`             | Border color when active                     |
-| `--carousel-border-width-image`   | `0px`                              | Border width for images                      |
-
-### Text Variables
-
-| Variable                            | Default Value                  | Description               |
-| ----------------------------------- | ------------------------------ | ------------------------- |
-| `--carousel-text-color`             | `var(--color-black)`           | Default text color        |
-| `--carousel-text-title-color`       | `var(--color-high-emphasis)`   | Color for titles          |
-| `--carousel-text-body-color`        | `var(--color-medium-emphasis)` | Color for body text       |
-| `--carousel-text-title-size`        | `var(--text-md)`               | Font size for titles      |
-| `--carousel-text-title-weight`      | `var(--font-semi-bold)`        | Font weight for titles    |
-| `--carousel-text-title-line-height` | `var(--line-height-md)`        | Line height for titles    |
-| `--carousel-text-body-size`         | `var(--text-body)`             | Font size for body text   |
-| `--carousel-text-body-weight`       | `var(--font-normal)`           | Font weight for body text |
-| `--carousel-text-body-line-height`  | `var(--line-height-body)`      | Line height for body text |
-
 ### Visual Effects Variables
 
-| Variable                          | Default Value                   | Description                   |
-| --------------------------------- | ------------------------------- | ----------------------------- |
-| `--carousel-image-shadow-default` | `var(--shadow-none)`            | Default shadow for images     |
-| `--carousel-image-shadow-hover`   | `var(--shadow-none)`            | Shadow for images on hover    |
-| `--carousel-image-shadow-active`  | `var(--shadow-none)`            | Shadow for images when active |
-| `--carousel-radius-image`         | `var(--radius-none)`            | Border radius for images      |
-| `--carousel-animation-speed`      | `var(--duration-speed-default)` | Speed of animations           |
+| Variable                     | Default Value                   | Description                      |
+| ---------------------------- | ------------------------------- | -------------------------------- |
+| `--carousel-radius`          | `var(--radius-site)`            | Border radius for carousel items |
+| `--carousel-animation-speed` | `var(--duration-speed-default)` | Speed of animations              |
 
 ### Focus Variables
 
-| Variable                   | Default Value            | Description                          |
-| -------------------------- | ------------------------ | ------------------------------------ |
-| `--carousel-focus-width`   | `2px`                    | Width of the focus outline           |
-| `--carousel-focus-offset`  | `2px`                    | Offset distance of the focus outline |
-| `--carousel-focus-outline` | `var(--color-attention)` | Color of the focus outline           |
+| Variable                  | Default Value | Description                          |
+| ------------------------- | ------------- | ------------------------------------ |
+| `--carousel-focus-width`  | `2px`         | Width of the focus outline           |
+| `--carousel-focus-offset` | `2px`         | Offset distance of the focus outline |
 
 ## Accessibility
 

@@ -1,8 +1,10 @@
 ---
-import '../../tailwind.css';
 import fs from 'node:fs';
 import path from 'node:path';
 import { parseTypographyScheme } from '../../utils/typographyParser';
+import DesktopFontSizes from './DesktopFontSizes.astro';
+import MobileFontSizes from './MobileFontSizes.astro';
+import FontWeights from './FontWeights.astro';
 
 const cssFilePath = path.resolve('./src/sample-css/typography.css');
 const cssContent = fs.readFileSync(cssFilePath, 'utf-8');
@@ -38,84 +40,4 @@ const groupedResponsiveFontSizes = groupFontSizes(
 );
 ---
 
-<div class="max-w-7xl mx-auto p-6">
-  <section class="mb-12">
-    <h3 class="text-xl font-semibold pb-6 pt-4 text-black">
-      Desktop Font Sizes
-    </h3>
-    <div class="space-y-8">
-      {
-        groupedDesktopFontSizes.map(([name, values]) => (
-          <div class="grid grid-cols-6 items-center pb-4">
-            <div class="col-span-3">
-              <div class="font-mono text-sm text-black">{`--text-${name}`}</div>
-              <div class="font-mono text-sm text-black">{`--line-height-desktop-${name}`}</div>
-            </div>
-            <div
-              class="col-span-2 text-black pl-8 border-t border-b border-zinc-300"
-              style={`font-size: ${values.size}; line-height: ${values.lineHeight};`}
-            >
-              Altitude
-            </div>
-            <div class="col-span-1 text-right font-mono text-sm text-gray-600">
-              <div>{values.size}</div>
-              <div>{values.lineHeight}</div>
-            </div>
-          </div>
-        ))
-      }
-    </div>
-  </section>
-
-  <section class="mb-12">
-    <h3 class="text-xl font-semibold pb-6 pt-4 text-black">
-      Mobile Font Sizes
-    </h3>
-    <div class="space-y-8">
-      {
-        groupedMobileFontSizes.map(([name, values]) => (
-          <div class="grid grid-cols-6 items-center pb-4">
-            <div class="col-span-3">
-              <div class="font-mono text-sm text-black">{`--text-${name}`}</div>
-              <div class="font-mono text-sm text-black">{`--line-height-mobile-${name}`}</div>
-            </div>
-            <div
-              class="col-span-2 text-black pl-8 border-t border-b border-zinc-300"
-              style={`font-size: ${values.size}; line-height: ${values.lineHeight};`}
-            >
-              Altitude
-            </div>
-            <div class="col-span-1 text-right font-mono text-sm text-gray-600">
-              <div>{values.size}</div>
-              <div>{values.lineHeight}</div>
-            </div>
-          </div>
-        ))
-      }
-    </div>
-  </section>
-
-  <section class="mb-12">
-    <h3 class="text-xl font-semibold pb-6 pt-4 text-black">Font Weights</h3>
-    <div class="space-y-4">
-      {
-        typography.weights.variables.map((weight) => (
-          <div class="grid grid-cols-6 items-center pb-2">
-            <div class="col-span-3 font-mono text-sm text-black">
-              {weight.name}
-            </div>
-            <div
-              class="col-span-2 text-lg text-black pl-8"
-              style={`font-weight: ${weight.value};`}
-            >
-              Altitude
-            </div>
-            <div class="col-span-1 text-right font-mono text-sm text-gray-600">
-              {weight.value}
-            </div>
-          </div>
-        ))
-      }
-    </div>
-  </section>
-</div>
+<div class="max-w-7xl mx-auto p-6"></div>

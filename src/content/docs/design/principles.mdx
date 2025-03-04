@@ -1,0 +1,38 @@
+---
+title: Core Principles
+description: A top level introduction to the Altitude Design System
+sidebar:
+  order: 1
+---
+
+So first things first, what is the Altitude Design System, why did we implement it across the Browser Components Library, and why should you consider adopting it for your entire site.
+
+The Altitude Design System was built around the following core principles:
+
+## Rapid Theming
+
+We should be able to get most of the way to the finished theme with as little code, and with as few decisions to make as possible, in order to enable rapid development that can be fine tuned or completely changed at any point in the development cycle.
+
+- Through only 10 core site wide variables, we can completely change the appearance of a site to suit our needs.
+- All other variables _(such as shades of a colour)_ are defined by referencing these variables, or variables that ultimately are generated from them, creating a fully synchronized design system.
+
+## Zero Limit CSS
+
+Anything that can be done with CSS, you can do within the Altitude Design System.
+
+- As the design system is in pure CSS, anything can be built upon, customised or overwritten by Developers.
+- The layered model of abstraction within the design system lets us mix and match our styles however we please, while still keeping them tied to our site wide styles.
+
+## Semantic Driven Styling
+
+Styling should maintain consistency across semantically equivalent elements while ensuring distinct styling for semantically different ones to prevent unwanted theme update side effects.
+
+- Through the use of the skins system _(see SKINS ADD LINK for a detailed overview)_ styles are referenced semantically.
+- This means that when editing a skin:
+  - It is easy to know what it will effect from its name
+  - We wont accidentally change something that shared the same or colours, but is semantically independent
+- This has the added bonus of significantly reducing decision fatigue, while ensuring design consistency. Creating a form? Use 'skin-form' to make sure it looks the same as all your others, without needing to keep your styles the same across multiple files.
+
+## From 1 to 1,000 Tenants
+
+- While many existing front end design frameworks were built with single tenancy in mind, the Altitude Design System has been built from the ground up to make managing multiple tenants a breeze by not limiting you to a restricted set of styles.

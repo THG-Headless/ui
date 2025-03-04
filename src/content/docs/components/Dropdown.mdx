@@ -67,64 +67,35 @@ For an inactive dropdown, add the `disabled` property to the `dropdown-wrapper` 
 
 The dropdown system can be customized using CSS variables:
 
-### Colors and Styling
-
-| Variable                              | Default Value                           | Description                           |
-| ------------------------------------- | --------------------------------------- | ------------------------------------- |
-| `--dropdown-text-label-color`         | `var(--color-high-emphasis)`            | Color of the dropdown label           |
-| `--dropdown-text-summary-color`       | `var(--color-high-emphasis)`            | Color of the dropdown summary text    |
-| `--dropdown-text-helper-color`        | `var(--color-high-emphasis)`            | Color of the helper text              |
-| `--dropdown-text-option-color`        | `var(--color-high-emphasis)`            | Color of the dropdown options         |
-| `--dropdown-text-inactive-color`      | `var(--color-text-inactive)`            | Color for inactive dropdown text      |
-| `--dropdown-text-error-color`         | `var(--color-error)`                    | Color for error text                  |
-| `--dropdown-text-search-color`        | `var(--color-medium-emphasis)`          | Color for search input placeholder    |
-| `--dropdown-surface`                  | `var(--color-white)`                    | Background color of the dropdown      |
-| `--dropdown-surface-controls-default` | `var(--color-surface-controls-default)` | Default background color for controls |
-| `--dropdown-surface-controls-dark`    | `var(--color-surface-controls-dark)`    | Dark background color for controls    |
-| `--dropdown-surface-hover`            | `var(--color-primary-light)`            | Background color on hover             |
-| `--dropdown-surface-inactive`         | `var(--color-white)`                    | Background color for inactive state   |
-| `--dropdown-border-color`             | `var(--color-border-controls)`          | Border color for the dropdown         |
-| `--dropdown-border-color-hover`       | `var(--color-primary)`                  | Border color on hover                 |
-| `--dropdown-border-color-active`      | `var(--color-primary)`                  | Border color when active              |
-| `--dropdown-border-color-error`       | `var(--color-error)`                    | Border color for error state          |
-| `--dropdown-border-color-inactive`    | `var(--color-border-inactive)`          | Border color for inactive state       |
-| `--dropdown-icon-color`               | `var(--color-black)`                    | Color of the dropdown icons           |
-| `--dropdown-icon-error-color`         | `var(--color-error)`                    | Color of the error icon               |
-
-### Typography
-
-| Variable                              | Default Value             | Description                         |
-| ------------------------------------- | ------------------------- | ----------------------------------- |
-| `--dropdown-text-label-size`          | `var(--text-body)`        | Font size of the dropdown label     |
-| `--dropdown-text-label-line-height`   | `var(--line-height-body)` | Line height of the dropdown label   |
-| `--dropdown-text-summary-size`        | `var(--text-body)`        | Font size of the dropdown summary   |
-| `--dropdown-text-summary-line-height` | `var(--line-height-body)` | Line height of the dropdown summary |
-| `--dropdown-text-helper-size`         | `var(--text-sm)`          | Font size of the helper text        |
-| `--dropdown-text-helper-line-height`  | `var(--line-height-sm)`   | Line height of the helper text      |
-| `--dropdown-text-option-size`         | `var(--text-body)`        | Font size of the dropdown options   |
-| `--dropdown-text-option-line-height`  | `var(--line-height-body)` | Line height of the dropdown options |
-| `--dropdown-font-weight-label`        | `var(--font-semi-bold)`   | Font weight of the dropdown label   |
-| `--dropdown-font-weight-summary`      | `var(--font-normal)`      | Font weight of the dropdown summary |
-| `--dropdown-font-weight-helper`       | `var(--font-normal)`      | Font weight of the helper text      |
-| `--dropdown-font-weight-option`       | `var(--font-normal)`      | Font weight of the dropdown options |
-
 ### Layout and Sizing
 
-| Variable                             | Default Value            | Description                          |
-| ------------------------------------ | ------------------------ | ------------------------------------ |
-| `--dropdown-border-radius`           | `var(--radius-none)`     | Border radius of the dropdown        |
-| `--dropdown-width`                   | `16rem`                  | Width of the dropdown                |
-| `--dropdown-gap`                     | `0.25rem`                | Gap between dropdown elements        |
-| `--dropdown-padding-y`               | `0.5rem`                 | Vertical padding of the dropdown     |
-| `--dropdown-padding-x`               | `1rem`                   | Horizontal padding of the dropdown   |
-| `--dropdown-menu-margin-top`         | `0.25rem`                | Top margin of the dropdown menu      |
-| `--dropdown-border-width-default`    | `1px`                    | Default border width                 |
-| `--dropdown-border-width-active`     | `2px`                    | Border width when active             |
-| `--dropdown-max-items`               | `5`                      | Maximum number of visible items      |
-| `--dropdown-item-height`             | `2.5rem`                 | Height of each dropdown item         |
-| `--dropdown-menu-shadow`             | `var(--shadow-md)`       | Shadow of the dropdown menu          |
-| `--dropdown-focus-ring-color`        | `var(--color-attention)` | Color of the focus ring              |
-| `--dropdown-scrollbar-border-radius` | `var(--radius-full)`     | Border radius of the scrollbar thumb |
+| Variable                     | Default Value | Description                        |
+| ---------------------------- | ------------- | ---------------------------------- |
+| `--dropdown-width`           | `16rem`       | Width of the dropdown              |
+| `--dropdown-gap`             | `0.25rem`     | Gap between dropdown elements      |
+| `--dropdown-padding-y`       | `0.5rem`      | Vertical padding of the dropdown   |
+| `--dropdown-padding-x`       | `1rem`        | Horizontal padding of the dropdown |
+| `--dropdown-menu-margin-top` | `0.25rem`     | Top margin of the dropdown menu    |
+| `--dropdown-max-items`       | `5`           | Maximum number of visible items    |
+| `--dropdown-item-height`     | `2.5rem`      | Height of each dropdown item       |
+
+### Borders and Styling
+
+| Variable                          | Default Value        | Description                                 |
+| --------------------------------- | -------------------- | ------------------------------------------- |
+| `--dropdown-border-width`         | `1px`                | Default border width                        |
+| `--dropdown-border-width-active`  | `2px`                | Border width when active                    |
+| `--dropdown-radius`               | `var(--radius-site)` | Border radius of the dropdown               |
+| `--dropdown-error-border-color`   | `var(--color-error)` | Border color for error state                |
+| `--dropdown-search-divider-width` | `1px`                | Width of the divider below the search input |
+
+### Scrollbar Customization
+
+| Variable                      | Default Value        | Description                    |
+| ----------------------------- | -------------------- | ------------------------------ |
+| `--dropdown-scroll-padding`   | `0.25em`             | Padding around the scrollbar   |
+| `--dropdown-scrollbar-radius` | `var(--radius-site)` | Border radius of the scrollbar |
+| `--dropdown-scrollbar-width`  | `8px`                | Width of the scrollbar         |
 
 ### Scrolling Behavior
 

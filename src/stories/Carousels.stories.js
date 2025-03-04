@@ -1,6 +1,4 @@
 import BasicCarousel from '../components/carousel/BasicCarousel.html';
-import CarouselSmall from '../components/carousel/CarouselSmall.html';
-import CarouselLarge from '../components/carousel/CarouselLarge.html';
 import CarouselTight from '../components/carousel/CarouselTight.html';
 import CarouselSnapStart from '../components/carousel/CarouselSnapStart.html';
 import CarouselSnapEnd from '../components/carousel/CarouselSnapEnd.html';
@@ -9,6 +7,7 @@ import CarouselSnapPad from '../components/carousel/CarouselSnapPad.html';
 import CarouselContent from '../components/carousel/CarouselContent.html';
 import CarouselInteractive from '../components/carousel/CarouselInteractive.html';
 import CarouselBanner from '../components/carousel/CarouselBanner.html';
+import CarouselBannerImageOnly from '../components/carousel/CarouselBannerImageOnly.html';
 
 export default {
   title: 'Carousels',
@@ -21,12 +20,6 @@ export default {
 
 export const Basic = () => BasicCarousel;
 Basic.storyName = 'Basic Carousel';
-
-export const Small = () => CarouselSmall;
-Small.storyName = 'Small Carousel';
-
-export const Large = () => CarouselLarge;
-Large.storyName = 'Large Carousel';
 
 export const Tight = () => CarouselTight;
 Tight.storyName = 'Tight Carousel';
@@ -51,3 +44,6 @@ Interactive.storyName = 'Interactive Carousel';
 
 export const Banner = () => CarouselBanner;
 Banner.storyName = 'Banner Carousel';
+
+export const BannerImage = () => CarouselBannerImageOnly;
+BannerImage.storyName = 'Banner Image Carousel';

@@ -1,94 +1,59 @@
 @layer components {
   :root {
-    --btn-radius: var(--radius-md);
-    --btn-animation-speed: var(--animation-speed-quick);
-    --btn-hover-scale: 1.005;
+    --btn-radius: var(--radius-site);
+    --btn-animation-speed: var(--animation-speed-default);
+    --btn-hover-scale: 1.01;
     --btn-active-scale: 0.995;
-    --btn-icon-size: 20px;
     --btn-icon-scale-hover: 1.15;
     --btn-icon-scale-active: 1.3;
-    --btn-icon-stroke-width: 3;
     --btn-padding-x: 1rem;
     --btn-padding-y: 0.5rem;
+    --btn-gap: 0.5rem;
+    --btn-border-width: 0px;
+    --btn-bordered-border-width: 3px;
+    --btn-line-height: var(--line-height-body);
+    --btn-height: calc(
+      var(--btn-line-height) + 2 * var(--btn-padding-y) + 2 *
+        var(--btn-border-width)
+    );
     --btn-text-size: var(--text-body);
-    --btn-text-line-height: var(--line-height-body);
-    --btn-text-weight: var(--font-medium);
-
-    --btn-height: calc(var(--btn-text-line-height) + 2 * var(--btn-padding-y));
-
-    /* High Emphasis */
-    --btn-high-emphasis-border-width: 0px;
-
-    /* Medium Emphasis */
-    --btn-medium-emphasis-border-width: 2px;
-
-    /* Low Emphasis */
-    --btn-low-emphasis-border-width: 0px;
+    --btn-icon-size: calc(var(--btn-height) - (2 * var(--btn-padding-y)));
   }
 
   .btn {
     border-radius: var(--btn-radius);
-    padding: var(--btn-padding-y) var(--btn-padding-x);
+    border: var(--btn-border-width) solid;
     transition: all var(--btn-animation-speed);
-    font-size: var(--btn-text-size);
-    line-height: var(--btn-text-line-height);
-    font-weight: var(--btn-text-weight);
     display: inline-flex;
     align-items: center;
     justify-content: center;
     vertical-align: middle;
-    gap: 0.5rem;
-    height: var(--btn-height);
+    gap: var(--btn-gap);
     box-sizing: border-box;
     cursor: pointer;
     animation-timing-function: ease-in-out;
+    height: var(--btn-height);
+    line-height: var(--btn-line-height);
+    font-size: var(--text-body);
+    font-family: inherit;
+    text-align: center;
+    padding: var(--btn-padding-y) var(--btn-padding-x);
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .btn-bordered {
+    --btn-border-width: var(--btn-bordered-border-width);
+  }
+
+  .btn.icon-only {
+    min-width: var(--btn-height);
+    max-width: var(--btn-height);
+    padding: 0px 0px;
   }
 
   .btn:disabled {
     cursor: default;
-  }
-
-  /* btn emphasis styles */
-  .btn-high {
-    border-width: var(--btn-high-emphasis-border-width);
-  }
-
-  .btn-high:focus-visible:not(:active):not(:disabled) {
-    outline-offset: 2px;
-  }
-
-  .btn-medium {
-    border-width: var(--btn-medium-emphasis-border-width);
-  }
-
-  .btn-medium:hover:not(:disabled):not(:active) {
-    text-decoration: underline;
-  }
-
-  .btn-medium:focus-visible:not(:active):not(:disabled) {
-    outline-offset: 0px;
-  }
-
-  .btn-medium:active:not(:disabled) {
-    text-decoration: none;
-  }
-
-  .btn-low {
-    border-width: var(--btn-low-emphasis-border-width);
-    text-decoration: underline;
-  }
-
-  .btn-low:disabled {
-    text-decoration: none;
-  }
-
-  .btn-low:hover:not(:disabled) {
-    text-decoration: none;
-  }
-
-  btn-low:focus-visible:not(:active):not(:disabled) {
-    outline-offset: 0px;
-    text-decoration: none;
   }
 
   /* Icon styles */
@@ -104,42 +69,112 @@
   .btn .icon-container svg {
     fill: none;
     stroke: currentColor;
-    stroke-width: var(--btn-icon-stroke-width);
     transition: all var(--btn-animation-speed);
   }
 
-  .btn.icon-only {
-    width: var(--btn-height);
-  }
-
-  /* Hover state for all btns */
+  .btn:not(:disabled):focus-visible,
   .btn:not(:disabled):hover {
     transform: scale(var(--btn-hover-scale));
   }
 
-  /* Focus state for all btns */
-  .btn:not(:disabled):focus-visible {
-    transform: scale(var(--btn-hover-scale));
-  }
-
-  /* Active state for all btns */
   .btn:not(:disabled):active {
     transform: scale(var(--btn-active-scale));
   }
 
-  /* Icon hover state */
   .btn:not(:disabled):hover .icon-container svg,
   .btn:not(:disabled):focus-visible .icon-container svg {
     transform: scale(var(--btn-icon-scale-hover));
   }
 
-  /* Icon active state */
   .btn:not(:disabled):active .icon-container svg {
     transform: scale(var(--btn-icon-scale-active));
   }
 
-  /* Full width btn */
-  .btn.full-width {
-    width: 100%;
+  .btn-bar {
+    display: inline-flex;
+    align-items: center;
+    transition: all var(--btn-animation-speed);
+  }
+
+  .btn-bar .btn {
+    border-radius: 0;
+    position: relative;
+    z-index: 1;
+  }
+
+  .btn-bar .btn + .btn {
+    margin-left: calc(-1 * var(--btn-border-width)) !important;
+  }
+
+  .btn-bar .btn:not(:disabled):focus-visible,
+  .btn-bar .btn:not(:disabled):hover,
+  .btn-bar .btn:not(:disabled):active {
+    transform: none;
+  }
+
+  /* Fix hover/active z-index priority */
+  .btn-bar .btn:focus-visible,
+  .btn-bar .btn:hover {
+    z-index: 2;
+  }
+
+  /* Stronger selector to ensure active always overrides hover */
+  .btn-bar .btn:active,
+  .btn-bar .btn:focus {
+    z-index: 3;
+  }
+
+  .btn-bar .btn:first-child {
+    border-top-left-radius: var(--btn-radius);
+    border-bottom-left-radius: var(--btn-radius);
+  }
+
+  .btn-bar .btn:last-child {
+    border-top-right-radius: var(--btn-radius);
+    border-bottom-right-radius: var(--btn-radius);
+  }
+
+  .btn-bar-vertical {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    transition: all var(--btn-animation-speed);
+  }
+
+  .btn-bar-vertical .btn {
+    border-radius: 0;
+    position: relative;
+    z-index: 1;
+  }
+
+  .btn-bar-vertical .btn + .btn {
+    margin-top: calc(-1 * var(--btn-border-width)) !important;
+    margin-left: 0 !important;
+  }
+
+  .btn-bar-vertical .btn:not(:disabled):focus-visible,
+  .btn-bar-vertical .btn:not(:disabled):hover,
+  .btn-bar-vertical .btn:not(:disabled):active {
+    transform: none;
+  }
+
+  .btn-bar-vertical .btn:focus-visible,
+  .btn-bar-vertical .btn:hover {
+    z-index: 2;
+  }
+
+  .btn-bar-vertical .btn:active,
+  .btn-bar-vertical .btn:focus {
+    z-index: 3;
+  }
+
+  .btn-bar-vertical .btn:first-child {
+    border-top-left-radius: var(--btn-radius);
+    border-top-right-radius: var(--btn-radius);
+  }
+
+  .btn-bar-vertical .btn:last-child {
+    border-bottom-left-radius: var(--btn-radius);
+    border-bottom-right-radius: var(--btn-radius);
   }
 }

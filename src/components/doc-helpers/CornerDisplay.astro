@@ -1,5 +1,4 @@
 ---
-import '../../tailwind.css';
 import '../../sample-css/corners.css';
 import fs from 'node:fs';
 import path from 'node:path';
@@ -10,26 +9,26 @@ const cssContent = fs.readFileSync(cssFilePath, 'utf-8');
 const radius = parseRadiusScheme(cssContent);
 ---
 
-<div class="max-w-7xl mx-auto p-6 theme">
-  <div class="flex flex-col items-center min-w-0">
+<div class="pt-6 flex justify-center w-full">
+  <div class="flex gap-4 items-center">
     <div
-      class="aspect-square w-full max-w-[120px] bg-zinc-400 mb-3"
+      class="aspect-square w-[120px] bg-zinc-400 mb-3"
       style={{
         borderRadius: radius?.value,
         display: 'block',
       }}
     >
     </div>
-    <div class="w-full text-center min-w-0">
-      <div class="truncate">
-        <span class="text-sm font-mono whitespace-nowrap text-black">
+    <div>
+      <div>
+        <strong>
           {radius?.name}
-        </span>
+        </strong>
       </div>
-      <div class="truncate">
-        <span class="text-sm text-zinc-600 whitespace-nowrap">
+      <div>
+        <p>
           {radius?.value}
-        </span>
+        </p>
       </div>
     </div>
   </div>

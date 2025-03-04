@@ -4,344 +4,75 @@ description: A versatile button component with multiple styles and emphasis leve
 ---
 
 import ShowComponent from '../../../components/doc-helpers/ShowComponent.astro';
-import PrimaryButtonHighEmphasis from '../../../components/buttons/PrimaryButtonHighEmphasis.html';
-import PrimaryButtonMediumEmphasis from '../../../components/buttons/PrimaryButtonMediumEmphasis.html';
-import PrimaryButtonLowEmphasis from '../../../components/buttons/PrimaryButtonLowEmphasis.html';
-import SecondaryButtonHighEmphasis from '../../../components/buttons/SecondaryButtonHighEmphasis.html';
-import SecondaryButtonMediumEmphasis from '../../../components/buttons/SecondaryButtonMediumEmphasis.html';
-import SecondaryButtonLowEmphasis from '../../../components/buttons/SecondaryButtonLowEmphasis.html';
-import TertiaryButtonHighEmphasis from '../../../components/buttons/TertiaryButtonHighEmphasis.html';
-import TertiaryButtonMediumEmphasis from '../../../components/buttons/TertiaryButtonMediumEmphasis.html';
-import TertiaryButtonLowEmphasis from '../../../components/buttons/TertiaryButtonLowEmphasis.html';
+import Buttons from '../../../components/buttons/Buttons.html';
+import ControlButton from '../../../components/buttons/ControlButton.html';
+import ControlBar from '../../../components/buttons/ControlBar.html';
+import ControlBarVertical from '../../../components/buttons/ControlBarVertical.html';
 
 The button system provides a flexible and consistent way to create interactive elements across your application. It offers three main button types (**Primary, Secondary, and Tertiary**) with three emphasis levels (**High, Medium, and Low**) for each type. This system allows for a wide range of visual hierarchies and use cases.
 
 All buttons can be styled using the documented variables, with any provided values over-riding the provided defaults.
 
-## Button Types and Emphasis Levels
+## Button Implementation
 
-### Primary Buttons
+Buttons use the `btn` class, along with your chosen skin, e.g. `skin-primary-emphasised`
 
-Primary buttons are used for the most important actions on a page or in a component. They have the highest visual prominence.
-
-#### High Emphasis
-
-High emphasis primary buttons are used for the most critical actions. They have a solid background color and white text.
+Don't forget to also include the `interactive` class so that the button receives the skins hover, active, focus and disabled
 
 <ShowComponent>
-  <PrimaryButtonHighEmphasis />
+  <Buttons />
 </ShowComponent>
-
-#### Medium Emphasis
-
-Medium emphasis primary buttons are used for important, but not critical actions. They have a white background with a colored border and text.
-
-<ShowComponent>
-  <PrimaryButtonMediumEmphasis />
-</ShowComponent>
-
-#### Low Emphasis
-
-Low emphasis primary buttons are used for less important actions. They appear as text links with no background or border.
-
-<ShowComponent>
-  <PrimaryButtonLowEmphasis />
-</ShowComponent>
-
-### Secondary Buttons
-
-Secondary buttons are used for actions that are important but not the primary focus of a page or component.
-
-#### High Emphasis
-
-<ShowComponent>
-  <SecondaryButtonHighEmphasis />
-</ShowComponent>
-
-#### Medium Emphasis
-
-<ShowComponent>
-  <SecondaryButtonMediumEmphasis />
-</ShowComponent>
-
-#### Low Emphasis
-
-<ShowComponent>
-  <SecondaryButtonLowEmphasis />
-</ShowComponent>
-
-### Tertiary Buttons
-
-Tertiary buttons are used for the least important actions or in contexts where a subtle action is needed.
-
-#### High Emphasis
-
-<ShowComponent>
-  <TertiaryButtonHighEmphasis />
-</ShowComponent>
-
-#### Medium Emphasis
-
-<ShowComponent>
-  <TertiaryButtonMediumEmphasis />
-</ShowComponent>
-
-#### Low Emphasis
-
-<ShowComponent>
-  <TertiaryButtonLowEmphasis />
-</ShowComponent>
-
-## Button Features
 
 ### Icon Support
 
 Buttons can include icons on the left or right side of the text, or as standalone icon buttons. Use the `icon-container` class to wrap your SVG icons.
 
-### Full Width Option
-
-Add the `full-width` class to make a button span the full width of its container.
-
 ### Disabled State
 
 Add the `disabled` attribute to a button to indicate that it's not interactive.
 
-## CSS Variables
+### Bordered Buttons
 
-The button system can be extensively customized using CSS variables. Here's a comprehensive list of all available variables:
+We may want to have our borders have a low, or no border by default, but also have consistent widths on our buttons with emphasised borders. For this reason, the `bordered` class can be used to specify the button should have an emphasised border. The height is adjusted, ensuring that both bordered and non bordered buttons are a consistent width.
+
+<ShowComponent>
+  <ControlButton />
+</ShowComponent>
+
+## Button Bars
+
+Placing buttons together as a bar can be made easy using the `btn-bar` class applied to a parent div. Vertical button bars can also be created, using the `btn-bar-vertical` class.
+
+<ShowComponent>
+  <ControlBar />
+</ShowComponent>
+
+<ShowComponent>
+  <ControlBarVertical />
+</ShowComponent>
+
+## CSS Variables
 
 ### General Button Variables
 
-| Variable                  | Default Value                 | Description                   |
-| ------------------------- | ----------------------------- | ----------------------------- |
-| `--btn-radius`            | `var(--radius-md)`            | Border radius of the button   |
-| `--btn-animation-speed`   | `var(--duration-speed-quick)` | Speed of button animations    |
-| `--btn-hover-scale`       | `1.02`                        | Scale factor on hover         |
-| `--btn-active-scale`      | `0.98`                        | Scale factor when active      |
-| `--btn-icon-size`         | `20px`                        | Size of button icons          |
-| `--btn-icon-scale-hover`  | `1.15`                        | Icon scale factor on hover    |
-| `--btn-icon-scale-active` | `1.3`                         | Icon scale factor when active |
-| `--btn-icon-stroke-width` | `3`                           | Stroke width of icon SVGs     |
-| `--btn-padding-x`         | `1rem`                        | Horizontal padding            |
-| `--btn-padding-y`         | `0.5rem`                      | Vertical padding              |
-| `--btn-text-size`         | `var(--text-body)`            | Font size of button text      |
-| `--btn-text-line-height`  | `var(--line-height-body)`     | Line height of button text    |
-| `--btn-text-weight`       | `var(--font-medium)`          | Font weight of button text    |
-
-### Emphasis Button Styles
-
-#### High Emphasis Button Variables
-
-| Variable                           | Default Value | Description                    |
-| ---------------------------------- | ------------- | ------------------------------ |
-| `--btn-high-emphasis-border-width` | `0px`         | Border width for high emphasis |
-
-#### Medium Emphasis Button Variables
-
-| Variable                             | Default Value | Description                      |
-| ------------------------------------ | ------------- | -------------------------------- |
-| `--btn-medium-emphasis-border-width` | `2px`         | Border width for medium emphasis |
-
-#### Low Emphasis Button Variables
-
-| Variable                          | Default Value | Description                   |
-| --------------------------------- | ------------- | ----------------------------- |
-| `--btn-low-emphasis-border-width` | `0px`         | Border width for low emphasis |
-
-### Primary Button Styles
-
-#### Primary High Emphasis Button Variables
-
-| Variable                                      | Default Value                      | Description                    |
-| --------------------------------------------- | ---------------------------------- | ------------------------------ |
-| `--btn-primary-high-emphasis-bg-default`      | `var(--color-primary)`             | Default background color       |
-| `--btn-primary-high-emphasis-text-default`    | `var(--color-white)`               | Default text color             |
-| `--btn-primary-high-emphasis-bg-hover`        | `var(--color-primary-hover-light)` | Background color on hover      |
-| `--btn-primary-high-emphasis-text-hover`      | `var(--color-white)`               | Text color on hover            |
-| `--btn-primary-high-emphasis-bg-active`       | `var(--color-primary-dark)`        | Background color when active   |
-| `--btn-primary-high-emphasis-text-active`     | `var(--color-white)`               | Text color when active         |
-| `--btn-primary-high-emphasis-bg-focus`        | `var(--color-primary-hover-light)` | Background color on focus      |
-| `--btn-primary-high-emphasis-text-focus`      | `var(--color-white)`               | Text color on focus            |
-| `--btn-primary-high-emphasis-focus-ring`      | `var(--color-primary-hover-light)` | Focus ring color               |
-| `--btn-primary-high-emphasis-bg-inactive`     | `var(--color-inactive)`            | Background color when inactive |
-| `--btn-primary-high-emphasis-text-inactive`   | `var(--color-white)`               | Text color when inactive       |
-| `--btn-primary-high-emphasis-border-default`  | `transparent`                      | Default border color           |
-| `--btn-primary-high-emphasis-border-hover`    | `transparent`                      | Border color on hover          |
-| `--btn-primary-high-emphasis-border-active`   | `transparent`                      | Border color when active       |
-| `--btn-primary-high-emphasis-border-focus`    | `var(--color-white)`               | Border color on focus          |
-| `--btn-primary-high-emphasis-border-inactive` | `transparent`                      | Border color when inactive     |
-
-#### Primary Medium Emphasis Button Variables
-
-| Variable                                        | Default Value                  | Description                    |
-| ----------------------------------------------- | ------------------------------ | ------------------------------ |
-| `--btn-primary-medium-emphasis-bg-default`      | `var(--color-white)`           | Default background color       |
-| `--btn-primary-medium-emphasis-text-default`    | `var(--color-primary)`         | Default text color             |
-| `--btn-primary-medium-emphasis-bg-hover`        | `var(--color-primary-light)`   | Background color on hover      |
-| `--btn-primary-medium-emphasis-text-hover`      | `var(--color-primary)`         | Text color on hover            |
-| `--btn-primary-medium-emphasis-bg-active`       | `var(--color-primary-dark)`    | Background color when active   |
-| `--btn-primary-medium-emphasis-text-active`     | `var(--color-white)`           | Text color when active         |
-| `--btn-primary-medium-emphasis-bg-focus`        | `var(--color-primary-light)`   | Background color on focus      |
-| `--btn-primary-medium-emphasis-text-focus`      | `var(--color-primary)`         | Text color on focus            |
-| `--btn-primary-medium-emphasis-focus-ring`      | `var(--color-primary-light)`   | Focus ring color               |
-| `--btn-primary-medium-emphasis-bg-inactive`     | `var(--color-white)`           | Background color when inactive |
-| `--btn-primary-medium-emphasis-text-inactive`   | `var(--color-inactive)`        | Text color when inactive       |
-| `--btn-primary-medium-emphasis-border-default`  | `var(--color-primary)`         | Default border color           |
-| `--btn-primary-medium-emphasis-border-hover`    | `var(--color-primary)`         | Border color on hover          |
-| `--btn-primary-medium-emphasis-border-active`   | `transparent`                  | Border color when active       |
-| `--btn-primary-medium-emphasis-border-focus`    | `var(--color-primary)`         | Border color on focus          |
-| `--btn-primary-medium-emphasis-border-inactive` | `var(--color-border-inactive)` | Border color when inactive     |
-
-#### Primary Low Emphasis Button Variables
-
-| Variable                                     | Default Value                      | Description                    |
-| -------------------------------------------- | ---------------------------------- | ------------------------------ |
-| `--btn-primary-low-emphasis-bg-default`      | `transparent`                      | Default background color       |
-| `--btn-primary-low-emphasis-text-default`    | `var(--color-primary)`             | Default text color             |
-| `--btn-primary-low-emphasis-bg-hover`        | `transparent`                      | Background color on hover      |
-| `--btn-primary-low-emphasis-text-hover`      | `var(--color-primary-hover-light)` | Text color on hover            |
-| `--btn-primary-low-emphasis-bg-active`       | `transparent`                      | Background color when active   |
-| `--btn-primary-low-emphasis-text-active`     | `var(--color-primary-hover)`       | Text color when active         |
-| `--btn-primary-low-emphasis-bg-focus`        | `transparent`                      | Background color on focus      |
-| `--btn-primary-low-emphasis-text-focus`      | `var(--color-primary-hover-light)` | Text color on focus            |
-| `--btn-primary-low-emphasis-focus-ring`      | `var(--color-primary)`             | Focus ring color               |
-| `--btn-primary-low-emphasis-bg-inactive`     | `transparent`                      | Background color when inactive |
-| `--btn-primary-low-emphasis-text-inactive`   | `var(--color-inactive)`            | Text color when inactive       |
-| `--btn-primary-low-emphasis-border-default`  | `transparent`                      | Default border color           |
-| `--btn-primary-low-emphasis-border-hover`    | `transparent`                      | Border color on hover          |
-| `--btn-primary-low-emphasis-border-active`   | `transparent`                      | Border color when active       |
-| `--btn-primary-low-emphasis-border-focus`    | `transparent`                      | Border color on focus          |
-| `--btn-primary-low-emphasis-border-inactive` | `transparent`                      | Border color when inactive     |
-
-### Secondary Button Styles
-
-#### Secondary High Emphasis Button Variables
-
-| Variable                                        | Default Value                        | Description                    |
-| ----------------------------------------------- | ------------------------------------ | ------------------------------ |
-| `--btn-secondary-high-emphasis-bg-default`      | `var(--color-secondary)`             | Default background color       |
-| `--btn-secondary-high-emphasis-text-default`    | `var(--color-white)`                 | Default text color             |
-| `--btn-secondary-high-emphasis-bg-hover`        | `var(--color-secondary-hover-light)` | Background color on hover      |
-| `--btn-secondary-high-emphasis-text-hover`      | `var(--color-white)`                 | Text color on hover            |
-| `--btn-secondary-high-emphasis-bg-active`       | `var(--color-secondary-dark)`        | Background color when active   |
-| `--btn-secondary-high-emphasis-text-active`     | `var(--color-white)`                 | Text color when active         |
-| `--btn-secondary-high-emphasis-bg-focus`        | `var(--color-secondary-hover-light)` | Background color on focus      |
-| `--btn-secondary-high-emphasis-text-focus`      | `var(--color-white)`                 | Text color on focus            |
-| `--btn-secondary-high-emphasis-focus-ring`      | `var(--color-secondary-hover-light)` | Focus ring color               |
-| `--btn-secondary-high-emphasis-bg-inactive`     | `var(--color-inactive)`              | Background color when inactive |
-| `--btn-secondary-high-emphasis-text-inactive`   | `var(--color-white)`                 | Text color when inactive       |
-| `--btn-secondary-high-emphasis-border-default`  | `transparent`                        | Default border color           |
-| `--btn-secondary-high-emphasis-border-hover`    | `transparent`                        | Border color on hover          |
-| `--btn-secondary-high-emphasis-border-active`   | `transparent`                        | Border color when active       |
-| `--btn-secondary-high-emphasis-border-focus`    | `var(--color-white)`                 | Border color on focus          |
-| `--btn-secondary-high-emphasis-border-inactive` | `transparent`                        | Border color when inactive     |
-
-#### Secondary Medium Emphasis Button Variables
-
-| Variable                                          | Default Value                  | Description                    |
-| ------------------------------------------------- | ------------------------------ | ------------------------------ |
-| `--btn-secondary-medium-emphasis-bg-default`      | `var(--color-white)`           | Default background color       |
-| `--btn-secondary-medium-emphasis-text-default`    | `var(--color-secondary)`       | Default text color             |
-| `--btn-secondary-medium-emphasis-bg-hover`        | `var(--color-secondary-light)` | Background color on hover      |
-| `--btn-secondary-medium-emphasis-text-hover`      | `var(--color-secondary)`       | Text color on hover            |
-| `--btn-secondary-medium-emphasis-bg-active`       | `var(--color-secondary-dark)`  | Background color when active   |
-| `--btn-secondary-medium-emphasis-text-active`     | `var(--color-white)`           | Text color when active         |
-| `--btn-secondary-medium-emphasis-bg-focus`        | `var(--color-secondary-light)` | Background color on focus      |
-| `--btn-secondary-medium-emphasis-text-focus`      | `var(--color-secondary)`       | Text color on focus            |
-| `--btn-secondary-medium-emphasis-focus-ring`      | `var(--color-secondary-light)` | Focus ring color               |
-| `--btn-secondary-medium-emphasis-bg-inactive`     | `var(--color-white)`           | Background color when inactive |
-| `--btn-secondary-medium-emphasis-text-inactive`   | `var(--color-inactive)`        | Text color when inactive       |
-| `--btn-secondary-medium-emphasis-border-default`  | `var(--color-secondary)`       | Default border color           |
-| `--btn-secondary-medium-emphasis-border-hover`    | `var(--color-secondary)`       | Border color on hover          |
-| `--btn-secondary-medium-emphasis-border-active`   | `transparent`                  | Border color when active       |
-| `--btn-secondary-medium-emphasis-border-focus`    | `var(--color-secondary)`       | Border color on focus          |
-| `--btn-secondary-medium-emphasis-border-inactive` | `var(--color-border-inactive)` | Border color when inactive     |
-
-#### Secondary Low Emphasis Button Variables
-
-| Variable                                       | Default Value                        | Description                    |
-| ---------------------------------------------- | ------------------------------------ | ------------------------------ |
-| `--btn-secondary-low-emphasis-bg-default`      | `transparent`                        | Default background color       |
-| `--btn-secondary-low-emphasis-text-default`    | `var(--color-secondary)`             | Default text color             |
-| `--btn-secondary-low-emphasis-bg-hover`        | `transparent`                        | Background color on hover      |
-| `--btn-secondary-low-emphasis-text-hover`      | `var(--color-secondary-hover-light)` | Text color on hover            |
-| `--btn-secondary-low-emphasis-bg-active`       | `transparent`                        | Background color when active   |
-| `--btn-secondary-low-emphasis-text-active`     | `var(--color-secondary-hover)`       | Text color when active         |
-| `--btn-secondary-low-emphasis-bg-focus`        | `transparent`                        | Background color on focus      |
-| `--btn-secondary-low-emphasis-text-focus`      | `var(--color-secondary-hover-light)` | Text color on focus            |
-| `--btn-secondary-low-emphasis-focus-ring`      | `var(--color-secondary)`             | Focus ring color               |
-| `--btn-secondary-low-emphasis-bg-inactive`     | `transparent`                        | Background color when inactive |
-| `--btn-secondary-low-emphasis-text-inactive`   | `var(--color-inactive)`              | Text color when inactive       |
-| `--btn-secondary-low-emphasis-border-default`  | `transparent`                        | Default border color           |
-| `--btn-secondary-low-emphasis-border-hover`    | `transparent`                        | Border color on hover          |
-| `--btn-secondary-low-emphasis-border-active`   | `transparent`                        | Border color when active       |
-| `--btn-secondary-low-emphasis-border-focus`    | `transparent`                        | Border color on focus          |
-| `--btn-secondary-low-emphasis-border-inactive` | `transparent`                        | Border color when inactive     |
-
-### Tertiary Button Styles
-
-#### Tertiary High Emphasis Button Variables
-
-| Variable                                       | Default Value                       | Description                    |
-| ---------------------------------------------- | ----------------------------------- | ------------------------------ |
-| `--btn-tertiary-high-emphasis-bg-default`      | `var(--color-tertiary)`             | Default background color       |
-| `--btn-tertiary-high-emphasis-text-default`    | `var(--color-white)`                | Default text color             |
-| `--btn-tertiary-high-emphasis-bg-hover`        | `var(--color-tertiary-hover-light)` | Background color on hover      |
-| `--btn-tertiary-high-emphasis-text-hover`      | `var(--color-white)`                | Text color on hover            |
-| `--btn-tertiary-high-emphasis-bg-active`       | `var(--color-tertiary-dark)`        | Background color when active   |
-| `--btn-tertiary-high-emphasis-text-active`     | `var(--color-white)`                | Text color when active         |
-| `--btn-tertiary-high-emphasis-bg-focus`        | `var(--color-tertiary-hover-light)` | Background color on focus      |
-| `--btn-tertiary-high-emphasis-text-focus`      | `var(--color-white)`                | Text color on focus            |
-| `--btn-tertiary-high-emphasis-focus-ring`      | `var(--color-tertiary-hover-light)` | Focus ring color               |
-| `--btn-tertiary-high-emphasis-bg-inactive`     | `var(--color-inactive)`             | Background color when inactive |
-| `--btn-tertiary-high-emphasis-text-inactive`   | `var(--color-white)`                | Text color when inactive       |
-| `--btn-tertiary-high-emphasis-border-default`  | `transparent`                       | Default border color           |
-| `--btn-tertiary-high-emphasis-border-hover`    | `transparent`                       | Border color on hover          |
-| `--btn-tertiary-high-emphasis-border-active`   | `transparent`                       | Border color when active       |
-| `--btn-tertiary-high-emphasis-border-focus`    | `var(--color-white)`                | Border color on focus          |
-| `--btn-tertiary-high-emphasis-border-inactive` | `transparent`                       | Border color when inactive     |
-
-#### Tertiary Medium Emphasis Button Variables
-
-| Variable                                         | Default Value                  | Description                    |
-| ------------------------------------------------ | ------------------------------ | ------------------------------ |
-| `--btn-tertiary-medium-emphasis-bg-default`      | `var(--color-white)`           | Default background color       |
-| `--btn-tertiary-medium-emphasis-text-default`    | `var(--color-tertiary)`        | Default text color             |
-| `--btn-tertiary-medium-emphasis-bg-hover`        | `var(--color-tertiary-light)`  | Background color on hover      |
-| `--btn-tertiary-medium-emphasis-text-hover`      | `var(--color-tertiary)`        | Text color on hover            |
-| `--btn-tertiary-medium-emphasis-bg-active`       | `var(--color-tertiary-dark)`   | Background color when active   |
-| `--btn-tertiary-medium-emphasis-text-active`     | `var(--color-white)`           | Text color when active         |
-| `--btn-tertiary-medium-emphasis-bg-focus`        | `var(--color-tertiary-light)`  | Background color on focus      |
-| `--btn-tertiary-medium-emphasis-text-focus`      | `var(--color-tertiary)`        | Text color on focus            |
-| `--btn-tertiary-medium-emphasis-focus-ring`      | `var(--color-tertiary-light)`  | Focus ring color               |
-| `--btn-tertiary-medium-emphasis-bg-inactive`     | `var(--color-white)`           | Background color when inactive |
-| `--btn-tertiary-medium-emphasis-text-inactive`   | `var(--color-inactive)`        | Text color when inactive       |
-| `--btn-tertiary-medium-emphasis-border-default`  | `var(--color-tertiary)`        | Default border color           |
-| `--btn-tertiary-medium-emphasis-border-hover`    | `var(--color-tertiary)`        | Border color on hover          |
-| `--btn-tertiary-medium-emphasis-border-active`   | `transparent`                  | Border color when active       |
-| `--btn-tertiary-medium-emphasis-border-focus`    | `var(--color-tertiary)`        | Border color on focus          |
-| `--btn-tertiary-medium-emphasis-border-inactive` | `var(--color-border-inactive)` | Border color when inactive     |
-
-#### Tertiary Low Emphasis Button Variables
-
-| Variable                                      | Default Value                       | Description                    |
-| --------------------------------------------- | ----------------------------------- | ------------------------------ |
-| `--btn-tertiary-low-emphasis-bg-default`      | `transparent`                       | Default background color       |
-| `--btn-tertiary-low-emphasis-text-default`    | `var(--color-tertiary)`             | Default text color             |
-| `--btn-tertiary-low-emphasis-bg-hover`        | `transparent`                       | Background color on hover      |
-| `--btn-tertiary-low-emphasis-text-hover`      | `var(--color-tertiary-hover-light)` | Text color on hover            |
-| `--btn-tertiary-low-emphasis-bg-active`       | `transparent`                       | Background color when active   |
-| `--btn-tertiary-low-emphasis-text-active`     | `var(--color-tertiary-hover)`       | Text color when active         |
-| `--btn-tertiary-low-emphasis-bg-focus`        | `transparent`                       | Background color on focus      |
-| `--btn-tertiary-low-emphasis-text-focus`      | `var(--color-tertiary-hover-light)` | Text color on focus            |
-| `--btn-tertiary-low-emphasis-focus-ring`      | `var(--color-tertiary)`             | Focus ring color               |
-| `--btn-tertiary-low-emphasis-bg-inactive`     | `transparent`                       | Background color when inactive |
-| `--btn-tertiary-low-emphasis-text-inactive`   | `var(--color-inactive)`             | Text color when inactive       |
-| `--btn-tertiary-low-emphasis-border-default`  | `transparent`                       | Default border color           |
-| `--btn-tertiary-low-emphasis-border-hover`    | `transparent`                       | Border color on hover          |
-| `--btn-tertiary-low-emphasis-border-active`   | `transparent`                       | Border color when active       |
-| `--btn-tertiary-low-emphasis-border-focus`    | `transparent`                       | Border color on focus          |
-| `--btn-tertiary-low-emphasis-border-inactive` | `transparent`                       | Border color when inactive     |
+| Variable                      | Default Value                                          | Description                       |
+| ----------------------------- | ------------------------------------------------------ | --------------------------------- |
+| `--btn-radius`                | `var(--radius-site)`                                   | Border radius of the button       |
+| `--btn-animation-speed`       | `var(--animation-speed-quick)`                         | Speed of button animations        |
+| `--btn-hover-scale`           | `1.005`                                                | Scale factor on hover             |
+| `--btn-active-scale`          | `0.995`                                                | Scale factor when active          |
+| `--btn-gap`                   | `0.5rem`                                               | Gap between button elements       |
+| `--btn-icon-scale-hover`      | `1.15`                                                 | Icon scale factor on hover        |
+| `--btn-icon-scale-active`     | `1.3`                                                  | Icon scale factor when active     |
+| `--btn-icon-stroke-width`     | `3`                                                    | Stroke width of icon SVGs         |
+| `--btn-padding-x`             | `1rem`                                                 | Horizontal padding                |
+| `--btn-padding-y`             | `0.5rem`                                               | Vertical padding                  |
+| `--btn-border-width`          | `0px`                                                  | Default border width              |
+| `--btn-bordered-border-width` | `3px`                                                  | Border width for bordered buttons |
+| `--btn-line-height`           | `var(--line-height-body)`                              | Line height of button text        |
+| `--btn-height`                | `calc(var(--line-height) + 2 * var(--btn-padding-y))`  | Total button height               |
+| `--btn-text-size`             | `var(--text-body)`                                     | Font size of button text          |
+| `--btn-icon-size`             | `calc(var(--btn-height) - (2 * var(--btn-padding-y)))` | Size of button icons              |
 
 ## Accessibility
 

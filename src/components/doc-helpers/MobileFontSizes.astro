@@ -1,0 +1,59 @@
+---
+import fs from 'node:fs';
+import path from 'node:path';
+import { parseTypographyScheme } from '../../utils/typographyParser';
+
+const cssFilePath = path.resolve('./src/sample-css/typography.css');
+const cssContent = fs.readFileSync(cssFilePath, 'utf-8');
+const typography = parseTypographyScheme(cssContent);
+
+interface FontSize {
+  size?: string;
+  lineHeight?: string;
+}
+
+function groupFontSizes(
+  variables: Array<{ name: string; value: string }>
+): [string, FontSize][] {
+  const grouped: Record<string, FontSize> = {};
+  variables.forEach((v) => {
+    const baseName = v.name
+      .replace('--text-', '')
+      .replace('--line-height-', '')
+      .replace('-desktop-', '')
+      .replace('-mobile-', '');
+    if (!grouped[baseName]) grouped[baseName] = {};
+    if (v.name.startsWith('--text-')) grouped[baseName].size = v.value;
+    if (v.name.startsWith('--line-height-'))
+      grouped[baseName].lineHeight = v.value;
+  });
+  return Object.entries(grouped);
+}
+
+const groupedMobileFontSizes = groupFontSizes(typography.mobileSizes.variables);
+---
+
+<section class="mb-12">
+  <div class="space-y-8">
+    {
+      groupedMobileFontSizes.map(([name, values]) => (
+        <div class="grid grid-cols-6 items-center pb-4">
+          <div class="col-span-3">
+            <div class="font-mono text-sm ">{`--text-${name}`}</div>
+            <div class="font-mono text-sm ">{`--line-height-mobile-${name}`}</div>
+          </div>
+          <div
+            class="col-span-2 pl-8 border-t border-b border-zinc-300"
+            style={`font-size: ${values.size}; line-height: ${values.lineHeight};`}
+          >
+            Altitude
+          </div>
+          <div class="col-span-1 text-right font-mono text-sm ">
+            <div>{values.size}</div>
+            <div>{values.lineHeight}</div>
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</section>

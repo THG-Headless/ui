@@ -54,28 +54,23 @@ The simplest implementation of a modal includes basic container styling, a backd
 
 The styling of the base modal is defined by the following variables. As with all components, they will use these default values, but can be redefined within your main css file.
 
-| Variable                                | Default Value                  | Description                               |
-| --------------------------------------- | ------------------------------ | ----------------------------------------- |
-| `--modal-width-min`                     | `320px`                        | Minimum width of the modal container      |
-| `--modal-margin`                        | `2rem`                         | Margin around the modal on desktop        |
-| `--modal-padding`                       | `2rem`                         | Internal padding of the modal content     |
-| `--modal-box-scale`                     | `0.95`                         | Initial scale of modal for animation      |
-| `--modal-shadow`                        | `var(--shadow-2xl)`            | Shadow effect for the modal box           |
-| `--modal-radius`                        | `var(--radius-none)`           | Border radius of the modal                |
-| `--modal-animation-speed`               | `var(--duration-speed-slow)`   | Duration of modal animations              |
-| `--modal-surface`                       | `var(--color-surface-cards)`   | Background color for the modal            |
-| `--modal-backdrop-color`                | `rgba(0, 0, 0, 0.3)`           | Color and opacity of the modal backdrop   |
-| `--modal-backdrop-blur`                 | `4px`                          | Blur effect intensity for the backdrop    |
-| `--modal-text-color`                    | `var(--color-black)`           | Default text color for the modal          |
-| `--modal-mobile-padding`                | `1rem`                         | Internal padding on mobile devices        |
-| `--modal-mobile-margin`                 | `0rem`                         | Margin around the modal on mobile         |
-| `--modal-mobile-slide-up-max-height`    | `90vh`                         | Maximum height of modal on mobile         |
-| `--modal-shadow-mobile`                 | `var(--shadow-2xl)`            | Shadow effect for the modal box on mobile |
-| `--modal-text-close-button-size`        | `var(--text-md)`               | Font size for close button                |
-| `--modal-text-close-button-weight`      | `var(--font-normal)`           | Font weight for close button              |
-| `--modal-text-close-button-line-height` | `var(--line-height-md)`        | Line height for close button              |
-| `--modal-text-body-color`               | `var(--color-medium-emphasis)` | Color for close button text               |
-| `--modal-text-title-color`              | `var(--color-high-emphasis)`   | Color for close button text on hover      |
+| Variable                     | Default Value                | Description                               |
+| ---------------------------- | ---------------------------- | ----------------------------------------- |
+| `--modal-min-width`          | `320px`                      | Minimum width of the modal container      |
+| `--modal-margin`             | `2rem`                       | Margin around the modal on desktop        |
+| `--modal-padding`            | `2rem`                       | Internal padding of the modal content     |
+| `--modal-mobile-padding`     | `1rem`                       | Internal padding on mobile devices        |
+| `--modal-mobile-margin`      | `0rem`                       | Margin around the modal on mobile         |
+| `--modal-hero-width`         | `18rem`                      | Width of hero image section on desktop    |
+| `--modal-scale`              | `0.95`                       | Initial scale of modal for animation      |
+| `--modal-mobile-hero-height` | `150px`                      | Height of hero image on mobile devices    |
+| `--modal-mobile-max-height`  | `90vh`                       | Maximum height of modal on mobile         |
+| `--modal-backdrop-blur`      | `4px`                        | Blur effect intensity for the backdrop    |
+| `--modal-backdrop-color`     | `rgba(0, 0, 0, 0.3)`         | Color and opacity of the modal backdrop   |
+| `--modal-animation-duration` | `var(--duration-speed-slow)` | Duration of modal animations              |
+| `--modal-radius`             | `var(--radius-site)`         | Border radius of the modal                |
+| `--modal-box-shadow`         | `var(--shadow-site)`         | Shadow effect for the modal box           |
+| `--modal-mobile-shadow`      | `var(--shadow-site)`         | Shadow effect for the modal box on mobile |
 
 ### Disable Backdrop
 
@@ -108,13 +103,13 @@ Always prefer explicit dismissal method of the close button for important modal 
 
 ### Hero Image
 
-To create a modal with a hero image, add the `modal-box--with-hero` class to your modal box. Place your image with the `modal-hero-image` class in a separate `div` before your content. The layout will automatically adjust between desktop (left-aligned) and mobile (top-aligned).
+To create a modal with a hero image, add the `modal-container--with-hero` class to your modal container. Place your image with the `modal-hero-image` class in a separate `div` before your content. The layout will automatically adjust between desktop (left-aligned) and mobile (top-aligned).
 
 <ShowComponent>
   <HeroModal />
 </ShowComponent>
 
-The hero image is effected by the following variables:
+The hero image is affected by the following variables:
 
 | Variable                     | Default Value | Description                            |
 | ---------------------------- | ------------- | -------------------------------------- |

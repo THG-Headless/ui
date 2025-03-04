@@ -78,12 +78,12 @@
     left: 0;
     right: 0;
     top: 100%;
-    z-index: 101; /* Increased z-index to ensure it's higher than the helper text */
+    z-index: 101;
     margin-top: var(--dropdown-menu-margin-top);
     border-radius: var(--dropdown-radius);
     box-shadow: var(--shadow-site);
     display: none;
-    overflow: hidden; /* Add this to contain the list's corners */
+    overflow: hidden;
   }
 
   .dropdown-open .dropdown-content-wrapper {

@@ -38,7 +38,7 @@ Building on the initial Summary accordion, the use of the name attribute on the 
 <ShowComponent filePath="./src/components/accordion/NamedSummaryAccordion.html">
   <NamedSummaryAccordion />
 </ShowComponent>
-
+{/* 
 ### Style Override Example
 
 This is identical in functionality to the previous accordion, but demonstrates the styling flexibility of the accordion css variables
@@ -58,7 +58,7 @@ This is identical in functionality to the previous accordion, but demonstrates t
     <NamedSummaryAccordion />
 
   </div>
-</ShowComponent>
+</ShowComponent> */}
 
 ## CSS Variables
 
@@ -68,51 +68,33 @@ The accordion system can be customized using CSS variables:
 
 | Variable                      | Default Value | Description                                                            |
 | ----------------------------- | ------------- | ---------------------------------------------------------------------- |
-| `--accordion-width`           | `20rem`       | Width of the accordion                                                 |
-| `--accordion-gap`             | `0.5em`       | Horizonal space between                                                |
-| `--accordion-wrapper-padding` | `5px`         | Horizontal padding between the border of the accordion and its content |
+| `--accordion-gap`             | `0em`         | Horizontal space between sections                                      |
+| `--accordion-wrapper-padding` | `0px`         | Horizontal padding between the border of the accordion and its content |
 
 ### Trigger Configuration
 
-| Variable                         | Default Value                  | Description                                            |
-| -------------------------------- | ------------------------------ | ------------------------------------------------------ |
-| `--accordion-inner-margin`       | `0px`                          | Shared value between trigger and content to align text |
-| `--accordion-inner-padding`      | `1em 1.5em`                    | Shared value between trigger and content to align text |
-| `--accordion-text-size`          | `normal`                       |                                                        |
-| `--accordion-trigger-text-color` | `var(--color-medium-emphasis)` | Text colour on the accordion trigger                   |
-| `--accordion-text-size`          | `normal`                       |                                                        |
-| `--accordion-content-text-color` | `var(--color-medium-emphasis)` | Text colour in the accordion panel                     |
+| Variable                    | Default Value | Description                                            |
+| --------------------------- | ------------- | ------------------------------------------------------ |
+| `--accordion-inner-margin`  | `0px`         | Shared value between trigger and content to align text |
+| `--accordion-inner-padding` | `1em 1.5em`   | Shared value between trigger and content to align text |
 
-### Content Configuration
+### Icon Configuration
 
-| Variable                    | Default Value                         | Description                         |
-| --------------------------- | ------------------------------------- | ----------------------------------- |
-| `--accordion-text-size`     | `normal`                              | Text size inside an accordion panel |
-| `--acc-panel-border-top`    | `var(--color-neutral-500) solid 2px;` | Top border of content panel         |
-| `--acc-panel-border-bottom` | `var(--color-neutral-500) solid 2px;` | Bottom border of content panel      |
-
-### Icon Spin Configuration
-
-| Variable                          | Default Value      | Description                                     |
-| --------------------------------- | ------------------ | ----------------------------------------------- |
-| `--acc-icon-expanded-transform`   | `rotate(180deg)`   | Transformation to apply when panel is expanded  |
-| `--acc-icon-expanded-transition`  | `all 0.1s ease-in` | Transition to apply when panel is expanded      |
-| `--acc-icon-collapsed-transform`  | `rotate(0deg)`     | Transformation to apply when panel is collapsed |
-| `--acc-icon-collapsed-transition` | `all 0.1s ease-in` | Transition to apply when panel is collapsed     |
+| Variable                               | Default Value                             | Description                                     |
+| -------------------------------------- | ----------------------------------------- | ----------------------------------------------- |
+| `--accordion-icon-expanded-transform`  | `rotate(180deg)`                          | Transformation to apply when panel is expanded  |
+| `--accordion-icon-transition`          | `all var(--duration-speed-quick) ease-in` | Transition to apply for icon animations         |
+| `--accordion-icon-collapsed-transform` | `rotate(0deg)`                            | Transformation to apply when panel is collapsed |
 
 ### Borders and Styling
 
-| Variable                     | Default Value                        | Description                                |
-| ---------------------------- | ------------------------------------ | ------------------------------------------ |
-| `--accordion-focus-outline`  | `auto`                               | Accessibiility feature on focussed content |
-| `--accordion-title-weight`   | `normal`                             | Font weight for the triggers               |
-| `--accordion-content-weight` | `normal`                             | Font weight for the content                |
-| `--accordion-trigger-hover`  | `none`                               | Background color on hover                  |
-| `--accordion-radius`         | `none`                               | Rounding on outer borders                  |
-| `--accordion-section-radius` | `none`                               | Rounding on section borders                |
-| `--accordion-border`         | `none`                               | Border around the accordion                |
-| `--accordion-box-shadow`     | `none`                               | Box shadow around the accordion            |
-| `--acc-panel-divider`        | `var(--color-neutral-200) solid 2px` | Border division between panels             |
+| Variable                               | Default Value | Description                                                                                                                            |
+| -------------------------------------- | ------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
+| `--accordion-radius`                   | `none`        | Rounding on outer borders                                                                                                              |
+| `--accordion-section-radius`           | `none`        | Rounding on section borders                                                                                                            |
+| `--accordion-border`                   | `none`        | Border thickness around the accordion                                                                                                  |
+| `--accordion-divider-width`            | `2px`         | Width of divider lines between accordion sections                                                                                      |
+| `--accordion-closed-divider-lightness` | `20%`         | Lightness of dividers between closed accordion sections, as a percentage of the skins border colour blended with its background colour |
 
 ## Accessibility
 

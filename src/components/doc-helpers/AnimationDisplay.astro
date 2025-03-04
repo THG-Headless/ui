@@ -1,5 +1,4 @@
 ---
-import '../../tailwind.css';
 import fs from 'node:fs';
 import path from 'node:path';
 import { parseAnimationScheme } from '../../utils/animationParser';
@@ -50,13 +49,11 @@ const animationVariables = parseAnimationScheme(cssContent);
       {
         animationVariables.map((variable: AnimationVariable) => (
           <div class="grid grid-cols-6 items-center">
-            <div class="col-span-3 font-mono text-sm text-black">
-              {variable.name}
-            </div>
+            <div class="col-span-3 font-mono text-sm ">{variable.name}</div>
             <div class="col-span-2">
               <div class="w-full bg-gray-400 rounded-full h-2.5">
                 <div
-                  class="progress-bar h-2.5 rounded-full bg-blue-500"
+                  class="progress-bar h-2.5 rounded-full bg-tertiary"
                   style="width: 0%;"
                   data-duration={variable.value.replace('s', '')}
                 />
@@ -72,7 +69,7 @@ const animationVariables = parseAnimationScheme(cssContent);
     <div class="pt-4">
       <button
         id="animate-button"
-        class="btn btn-primary btn-high inline-flex items-center gap-2"
+        class="btn skin-tertiary-emphasised interactive inline-flex items-center gap-2"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"

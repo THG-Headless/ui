@@ -8,17 +8,15 @@ import SuccessAlert from '../../../components/alerts/SuccessAlert.html';
 import InfoAlert from '../../../components/alerts/InfoAlert.html';
 import ErrorAlert from '../../../components/alerts/ErrorAlert.html';
 
-### Success Alert
+Alerts can be used to highlight information to the user. Through the use of the skin system, we can achieve any number of styles of alert. Below are examples using the success, attention and error skins.
 
-The colour scheme on this alert box indicates a success state message
+### Success Alert
 
 <ShowComponent>
   <SuccessAlert />
 </ShowComponent>
 
-### Info Alert
-
-The colour scheme on this alert box indicates an informational message
+### Attention Alert
 
 <ShowComponent>
   <InfoAlert />
@@ -26,20 +24,17 @@ The colour scheme on this alert box indicates an informational message
 
 ### Error Alert
 
-The colour scheme on this alert box indicates a error state message
-
 <ShowComponent>
   <ErrorAlert />
 </ShowComponent>
 
 ### General Alert Variables
 
-| Variable                 | Default Value           | Description                         |
-| ------------------------ | ----------------------- | ----------------------------------- |
-| `--alert-padding`        | `0.5em`                 | Padding around the content          |
-| `--alert-font-weight`    | `var(--font-semi-bold)` | Weight of the font                  |
-| `--alert-border-default` | `none`                  | Allow a border, deafult none        |
-| `--alert-border-default` | `0`                     | Allow a border radius, default none |
+| Variable                 | Default Value        | Description                  |
+| ------------------------ | -------------------- | ---------------------------- |
+| `--alert-padding`        | `0.5em`              | Padding around the content   |
+| `--alert-border-default` | `none`               | Allow a border, deafult none |
+| `--alert-border-radius`  | `var(--radius-site)` | Border radius                |
 
 ### Alert Icon Variables
 
@@ -51,27 +46,6 @@ The colour scheme on this alert box indicates a error state message
 | `--alert-icon-min-height` | `24px`        | Prevent shrinking of icon            |
 | `--alert-icon-width`      | `24px`        | Default icon width                   |
 | `--alert-icon-min-width`  | `24px`        | Prevent shrinking of icon            |
-
-#### Success Alert Variables
-
-| Variable                           | Default Value                | Description               |
-| ---------------------------------- | ---------------------------- | ------------------------- |
-| `--alert-text-success-color`       | `var(--color-success)`       | Text content colour       |
-| `--alert-background-success-color` | `var(--color-success-light)` | Background content colour |
-
-#### Info Alert Variables
-
-| Variable                        | Default Value                  | Description               |
-| ------------------------------- | ------------------------------ | ------------------------- |
-| `--alert-text-info-color`       | `var(--color-attention)`       | Text content colour       |
-| `--alert-background-info-color` | `var(--color-attention-light)` | Background content colour |
-
-#### Error Alert Variables
-
-| Variable                         | Default Value              | Description               |
-| -------------------------------- | -------------------------- | ------------------------- |
-| `--alert-text-error-color`       | `var(--color-error)`       | Text content colour       |
-| `--alert-background-error-color` | `var(--color-error-light)` | Background content colour |
 
 #### Accessibility
 
