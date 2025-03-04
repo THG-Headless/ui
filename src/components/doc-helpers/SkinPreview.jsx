@@ -1,11 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './SkinPreview.css';
-// Update import to use the .js file instead of .ts
-import {
-  extractSkinClasses,
-  formatCSSDefinition,
-} from './utils/parseCssModule.js';
-// Import the CSS directly - this ensures we have access to the raw CSS
+import { extractSkinClasses } from './utils/parseCssModule.js';
 import { rawSkins } from './utils/rawCssImport';
 
 const SkinPreview = () => {
@@ -220,32 +215,34 @@ const SkinPreview = () => {
   return (
     <div className="flex flex-col border border-neutral-800 rounded-lg overflow-hidden my-8! h-[600px]">
       <div className="flex h-[600px]">
-        {/* Skin List (Left Side) */}
-        <div className="border-r border-neutral-800 flex flex-col min-w-[260px]  ">
+        <div className="border-r border-neutral-800 flex flex-col w-[260px] ">
           <div className="flex flex-col h-full">
             <div className="p-4  flex-grow scrollbar-left h-fill">
               <div className="mb-4">
-                <div className="mb-2">
-                  <strong>Skin Classes ({skinClasses.length})</strong>
-                </div>
                 <ul className="list-none p-0 m-0" ref={skinListRef}>
-                  {skinClasses.map((skinClass) => (
-                    <li
-                      key={skinClass}
-                      className="preview-list-item mb-2"
-                      data-skin={skinClass}
-                      data-selected={
-                        skinClass === currentSkin ? 'true' : 'false'
-                      }
-                    >
-                      <button
-                        className={`${skinClass} btn interactive w-full text-left`}
-                        onClick={() => selectSkin(skinClass)}
+                  {skinClasses.map((skinClass) => {
+                    const displayClass =
+                      skinClass === 'skin'
+                        ? 'default'
+                        : skinClass.replace('skin-', '');
+                    return (
+                      <li
+                        key={skinClass}
+                        className="preview-list-item mb-2"
+                        data-skin={skinClass}
+                        data-selected={
+                          skinClass === currentSkin ? 'true' : 'false'
+                        }
                       >
-                        <span>{skinClass}</span>
-                      </button>
-                    </li>
-                  ))}
+                        <button
+                          className={`${skinClass} btn interactive w-full text-left`}
+                          onClick={() => selectSkin(skinClass)}
+                        >
+                          <span>{displayClass}</span>
+                        </button>
+                      </li>
+                    );
+                  })}
                 </ul>
                 {skinClasses.length === 0 && (
                   <div className="text-error p-2 border border-error rounded bg-error-light">
@@ -313,43 +310,42 @@ const SkinPreview = () => {
           </div>
 
           {/* Color Values Table */}
-          <div className="p-4 overflow-x-auto p-4">
-            <h4 className="text-md font-semibold mb-3">Variables</h4>
+          <div className="px-4 py-2 overflow-x-auto mt-0!">
             <table className="w-full border-collapse">
               <thead>
                 <tr className="">
-                  <th className="p-2 text-left border-b border-neutral-300">
+                  <th className="p-1 text-left border-b border-neutral-300">
                     State
                   </th>
-                  <th className="p-2 text-left border-b border-neutral-300">
+                  <th className="p-1 text-left border-b border-neutral-300">
                     Background
                   </th>
-                  <th className="p-2 text-left border-b border-neutral-300">
+                  <th className="p-1 text-left border-b border-neutral-300">
                     Foreground
                   </th>
-                  <th className="p-2 text-left border-b border-neutral-300">
+                  <th className="p-1 text-left border-b border-neutral-300">
                     Border
                   </th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td className="p-2 font-medium border-b border-neutral-300">
+                  <td className="p-1 font-medium border-b border-neutral-300">
                     Default
                   </td>
-                  <td className="p-2 border-b border-neutral-300">
+                  <td className="p-1 border-b border-neutral-300">
                     {renderColorCell(
                       colorValues.background.default,
                       colorValues.computed?.background.default
                     )}
                   </td>
-                  <td className="p-2 border-b border-neutral-300">
+                  <td className="p-1 border-b border-neutral-300">
                     {renderColorCell(
                       colorValues.foreground.default,
                       colorValues.computed?.foreground.default
                     )}
                   </td>
-                  <td className="p-2 border-b border-neutral-300">
+                  <td className="p-1 border-b border-neutral-300">
                     {renderColorCell(
                       colorValues.border.default,
                       colorValues.computed?.border.default
@@ -357,22 +353,22 @@ const SkinPreview = () => {
                   </td>
                 </tr>
                 <tr>
-                  <td className="p-2 font-medium border-b border-neutral-300">
+                  <td className="p-1 font-medium border-b border-neutral-300">
                     Hover
                   </td>
-                  <td className="p-2 border-b border-neutral-300">
+                  <td className="p-1 border-b border-neutral-300">
                     {renderColorCell(
                       colorValues.background.hover,
                       colorValues.computed?.background.hover
                     )}
                   </td>
-                  <td className="p-2 border-b border-neutral-300">
+                  <td className="p-1 border-b border-neutral-300">
                     {renderColorCell(
                       colorValues.foreground.hover,
                       colorValues.computed?.foreground.hover
                     )}
                   </td>
-                  <td className="p-2 border-b border-neutral-300">
+                  <td className="p-1 border-b border-neutral-300">
                     {renderColorCell(
                       colorValues.border.hover,
                       colorValues.computed?.border.hover
@@ -380,22 +376,22 @@ const SkinPreview = () => {
                   </td>
                 </tr>
                 <tr>
-                  <td className="p-2 font-medium border-b border-neutral-300">
+                  <td className="p-1 font-medium border-b border-neutral-300">
                     Focus
                   </td>
-                  <td className="p-2 border-b border-neutral-300">
+                  <td className="p-1 border-b border-neutral-300">
                     {renderColorCell(
                       colorValues.background.focus,
                       colorValues.computed?.background.focus
                     )}
                   </td>
-                  <td className="p-2 border-b border-neutral-300">
+                  <td className="p-1 border-b border-neutral-300">
                     {renderColorCell(
                       colorValues.foreground.focus,
                       colorValues.computed?.foreground.focus
                     )}
                   </td>
-                  <td className="p-2 border-b border-neutral-300">
+                  <td className="p-1 border-b border-neutral-300">
                     {renderColorCell(
                       colorValues.border.focus,
                       colorValues.computed?.border.focus
@@ -403,22 +399,22 @@ const SkinPreview = () => {
                   </td>
                 </tr>
                 <tr>
-                  <td className="p-2 font-medium border-b border-neutral-300">
+                  <td className="p-1 font-medium border-b border-neutral-300">
                     Active
                   </td>
-                  <td className="p-2 border-b border-neutral-300">
+                  <td className="p-1 border-b border-neutral-300">
                     {renderColorCell(
                       colorValues.background.active,
                       colorValues.computed?.background.active
                     )}
                   </td>
-                  <td className="p-2 border-b border-neutral-300">
+                  <td className="p-1 border-b border-neutral-300">
                     {renderColorCell(
                       colorValues.foreground.active,
                       colorValues.computed?.foreground.active
                     )}
                   </td>
-                  <td className="p-2 border-b border-neutral-300">
+                  <td className="p-1 border-b border-neutral-300">
                     {renderColorCell(
                       colorValues.border.active,
                       colorValues.computed?.border.active
@@ -426,20 +422,20 @@ const SkinPreview = () => {
                   </td>
                 </tr>
                 <tr>
-                  <td className="p-2 font-medium">Disabled</td>
-                  <td className="p-2">
+                  <td className="p-1 font-medium">Disabled</td>
+                  <td className="p-1">
                     {renderColorCell(
                       colorValues.background.disabled,
                       colorValues.computed?.background.disabled
                     )}
                   </td>
-                  <td className="p-2">
+                  <td className="p-1">
                     {renderColorCell(
                       colorValues.foreground.disabled,
                       colorValues.computed?.foreground.disabled
                     )}
                   </td>
-                  <td className="p-2">
+                  <td className="p-1">
                     {renderColorCell(
                       colorValues.border.disabled,
                       colorValues.computed?.border.disabled
