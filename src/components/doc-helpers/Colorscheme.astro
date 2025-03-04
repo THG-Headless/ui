@@ -1,5 +1,4 @@
 ---
-import '../../tailwind.css';
 import fs from 'node:fs';
 import path from 'node:path';
 import { parseColourScheme } from '../../utils/colourParser';
@@ -30,9 +29,6 @@ const getColorValue = (value: string) => {
   }
   return resolvedValue;
 };
-
-// Updated display order with semantic grouping
-const categoryOrder = ['global', 'scales', 'status'];
 
 const semanticLabels: Record<
   '' | 'light' | 'dark' | 'hover' | 'hover-light',
@@ -88,95 +84,53 @@ const semanticMap: Record<ColorFamily, Record<string, string>> = {
     '': '--color-neutral-500',
     light: '--color-neutral-50',
     dark: '--color-neutral-950',
+    hover: '--color-neutral-600',
+    'hover-light': '--color-neutral-400',
   },
   attention: {
     '': '--color-attention-500',
     light: '--color-attention-50',
+    dark: '--color-attention-950',
+    hover: '--color-attention-600',
+    'hover-light': '--color-attention-400',
   },
   success: {
     '': '--color-success-500',
     light: '--color-success-50',
+    dark: '--color-success-950',
+    hover: '--color-success-600',
+    'hover-light': '--color-success-400',
   },
   error: {
     '': '--color-error-500',
     light: '--color-error-50',
+    dark: '--color-error-950',
+    hover: '--color-error-600',
+    'hover-light': '--color-error-400',
   },
   promotion: {
     '': '--color-promotion-500',
+    light: '--color-promotion-50',
+    dark: '--color-promotion-950',
+    hover: '--color-promotion-600',
+    'hover-light': '--color-promotion-400',
   },
 };
 ---
 
-<div class="max-w-7xl mx-auto p-6 text-black">
+<div class="max-w-7xl mx-auto pt-16">
   <div class="space-y-16">
     {
       colorFamilies.map((family) => (
         <section class="pb-6">
-          <h2 class="text-2xl font-semibold capitalize pb-2">{family}</h2>
-
-          {/* Global Color */}
-          {colours[family].colours
-            .filter((group) => group.prefix === 'global')
-            .map((global) => (
-              <div class="space-y-2 ">
-                <div class="group relative w-full max-w-xs">
-                  <button
-                    class="w-full text-left space-y-2"
-                    onclick={`navigator.clipboard.writeText('${global.shades[0].name}')`}
-                  >
-                    <div class="flex items-center gap-4">
-                      <div
-                        class="w-24 h-24 rounded-md border border-gray-200 cursor-pointer flex-shrink-0"
-                        style={{
-                          backgroundColor: getColorValue(
-                            global.shades[0].value
-                          ),
-                        }}
-                      />
-                      <div class="flex-1">
-                        <div class="text-sm font-mono">
-                          {global.shades[0].name}
-                        </div>
-                        <div class="text-sm text-gray-500">
-                          {global.shades[0].rawValue || global.shades[0].value}
-                        </div>
-                      </div>
-                    </div>
-                  </button>
-                  {/* Update global color tooltip */}
-                  <div class="opacity-0 group-hover:opacity-100 absolute bottom-full left-1/2 -translate-x-1/2 mb-2 bg-white p-2 rounded shadow-lg text-xs whitespace-nowrap transition-opacity z-10">
-                    <div class="font-mono">{global.shades[0].name}</div>
-                    <div class="text-gray-500">
-                      {global.shades[0].rawValue || global.shades[0].value}
-                    </div>
-                    <div class="flex items-center gap-1">
-                      <div class="text-gray-600 block copied-instruction">
-                        Click to copy to clipboard
-                      </div>
-                      <div class="text-green-600 hidden items-center gap-1 copied-message">
-                        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none">
-                          <path
-                            d="M20 6L9 17L4 12"
-                            stroke="currentColor"
-                            stroke-width="2"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                          />
-                        </svg>
-                        Copied to clipboard
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ))}
+          <h4 class=" font-semibold capitalize ">{family}</h4>
 
           {/* Color Scale */}
           {colours[family].colours
             .filter((group) => group.prefix === 'scale')
             .map((scale) => (
               <div class="space-y-2 pt-4">
-                <div class="grid grid-cols-11 gap-2">
+                <div class="grid grid-cols-11 gap-2 items-end">
                   {scale.shades.map((shade) => {
                     // Find semantic usage by exact variable name match
                     const semanticUsage = Object.entries(
@@ -190,14 +144,16 @@ const semanticMap: Record<ColorFamily, Record<string, string>> = {
                       : undefined;
 
                     return (
-                      <ColorSwatch
-                        color={shade}
-                        semantic={!!semanticLabel}
-                        semanticLabel={
-                          semanticLabel ? `${semanticLabel}` : undefined
-                        }
-                        getColorValue={getColorValue}
-                      />
+                      <div class="swatch-container">
+                        <ColorSwatch
+                          color={shade}
+                          semantic={!!semanticLabel}
+                          semanticLabel={
+                            semanticLabel ? `${semanticLabel}` : undefined
+                          }
+                          getColorValue={getColorValue}
+                        />
+                      </div>
                     );
                   })}
                 </div>
@@ -222,6 +178,18 @@ const semanticMap: Record<ColorFamily, Record<string, string>> = {
 
   .copied-instruction.hidden {
     display: none;
+  }
+
+  .swatch-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    height: 100%;
+  }
+
+  /* Ensure grid items are aligned at the bottom */
+  .grid.items-end > * {
+    align-self: end;
   }
 </style>
 

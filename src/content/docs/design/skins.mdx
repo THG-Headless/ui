@@ -1,0 +1,183 @@
+---
+title: Skins
+description: An in depth look at how skins are handled within the Altitude Design System
+sidebar:
+  order: 4
+---
+
+import SkinPreview from '../../../components/doc-helpers/SkinPreview.jsx';
+
+## Introduction
+
+Skins are a fundamental part of the Altitude Design System that control the visual appearance of components. They provide a consistent way to apply colors and styling across different components while maintaining design coherence.
+
+## How Skins Work
+
+Skins use CSS custom properties (variables) to define colors for different element states:
+
+- **Background colors**: Control the fill color of elements
+- **Foreground colors**: Control text and icon colors
+- **Border colors**: Control the outline/border colors
+
+Each of these properties has variants for different interactive states:
+
+- Default state
+- Hover state
+- Focus state
+- Active state
+- Disabled state
+
+When a skin class is applied to an element, it inherits all these color variables which can then be used by components.
+
+## Default Skins
+
+The Altitude Design System includes multiple skin variants for different purposes, as shown below. As with anything else in the package, these themes can all be redefined within your codebase, and additional skins can be added to extend the functionality of the skin system.
+
+<SkinPreview client:load />
+
+## Applying Skins
+
+To apply a skin to an element, add the appropriate skin class:
+
+```html
+<!-- Primary emphasized button -->
+<button class="skin-primary-emphasised interactive btn">Default</button>
+
+<!-- Secondary button -->
+<button class="skin-secondary interactive btn">Secondary</button>
+
+<!-- Tertiary subtle button -->
+<button class="skin-tertiary-subtle interactive btn">Subtle</button>
+```
+
+### Interactive States
+
+For elements that have interactive states, add the `interactive` class along with the skin class:
+
+```html
+<button class="skin-primary-emphasised interactive btn">Click Me</button>
+```
+
+This enables hover, focus, active, and disabled states to work properly.
+
+See the extended documentation of the `interactive` utility class [below](#interactive)
+
+## Creating New Skins
+
+To create new skins, simply define the skin as shown below in your main css file.
+
+```css
+.skin-name {
+  /* Background colors */
+  --color-background: #value;
+  --color-background-hover: #value;
+  --color-background-focus: #value;
+  --color-background-active: #value;
+  --color-background-disabled: #value;
+
+  /* Foreground colors */
+  --color-foreground: #value;
+  --color-foreground-hover: #value;
+  --color-foreground-focus: #value;
+  --color-foreground-active: #value;
+  --color-foreground-disabled: #value;
+
+  /* Border colors */
+  --color-border: #value;
+  --color-border-hover: #value;
+  --color-border-focus: #value;
+  --color-border-active: #value;
+  --color-border-disabled: #value;
+}
+```
+
+## Utility Classes
+
+### Interactive
+
+For more granular control, you can use specific interactive classes:
+
+- `.interactive` - Applies all interactive states
+- `.interactive-background` - Only applies interactive states to the background
+- `.interactive-foreground` - Only applies interactive states to the text/foreground
+- `.interactive-border` - Only applies interactive states to the border
+
+### Soft
+
+The `.soft` modifier can be added to reduce the intensity of colors by applying a blend of the foreground and background colours in a ratio of 3:2. This provides a preferable way of creating visually de-emphasised elements than using opacity, which can cause patterns or images below an element to become visible.
+
+```html
+<button class="skin-primary-emphasised interactive soft btn">
+  Soft Button
+</button>
+```
+
+The `.soft-end` modifier stops applying the soft effect to the current element, and its children
+
+```html
+<div class="skin-primary soft">
+  <span>Soft text</span>
+  <span class="soft-end">Normal strength text</span>
+</div>
+```
+
+The `.soft` class works as shown below:
+
+```css
+.soft {
+  color: color-mix(
+    in oklch,
+    var(--color-foreground) 60%,
+    var(--color-background)
+  );
+  border-color: color-mix(
+    in oklch,
+    var(--color-border) 20%,
+    var(--color-background)
+  );
+}
+```
+
+### Wrapper
+
+The `.wrapper` class provides a convenient way to apply skin styles groups of child elements while making the wrapper element transparent:
+
+```html
+<div class="wrapper skin-primary">
+  <button>This button gets the skin styling</button>
+  <span>This text gets the skin styling too</span>
+</div>
+```
+
+Key features:
+
+- Makes the container itself transparent
+- Applies skin colors to all direct children
+- Handles interactive states when combined with `.interactive` class
+- Supports group disabled states with the `.group` class
+
+Example with disabled states:
+
+```html
+<div class="wrapper group skin-primary">
+  <button disabled>Disabled button</button>
+  <span>This text also appears disabled</span>
+</div>
+```
+
+The `.wrapper` class is defined as shown below:
+
+```css
+.wrapper {
+  background-color: transparent !important;
+  border-color: transparent !important;
+  color: transparent !important;
+
+  /* Base styles for all children */
+  & > * {
+    background-color: var(--color-background) !important;
+    border-color: var(--color-border) !important;
+    color: var(--color-foreground) !important;
+  }
+}
+```

@@ -1,0 +1,16 @@
+---
+title: Radius
+description: Site level radius variable
+sidebar:
+  order: 6
+---
+
+import CornerDisplay from '../../../components/doc-helpers/CornerDisplay.astro';
+
+## Site Variable
+
+By default, the site radius is applied to all rounded corners. This can be overridden using custom CSS or tailwind at a per use case level, but it is advised to use the site radius provided to maintain consistency and allow for easy updates of your theme. If using other radii, it is advised to use a css calculation to calculate the radius from the site radius, to maintain consistency if the site radius is updated.
+
+The site radius is defined using the CSS variable `--radius-site`
+
+<CornerDisplay />

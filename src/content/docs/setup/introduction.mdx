@@ -7,9 +7,50 @@ sidebar:
 
 Welcome to the documentation for the Altitude Browser Components library.
 
-The Altitude Browser Components CSS library consists of two parts:
+The Altitude Browser Components library provides a comprehensive set of web components and design elements. This library aims to deliver consistent, accessibility focused, and high-quality user interfaces while maintaining flexibility for customization across various implementation scenarios.
 
-1. The **[css package](https://www.npmjs.com/package/@thg-altitude/standalone-components-css)**
-2. HTML templates of components
+## Browser Components Design Philosophy
 
-This pure html and css approach provides a fully customisable, lightweight and framework-agnostic approach to implementing components.
+Our HTML and CSS first approach offers several key benefits:
+
+- **Framework Agnostic**: By focusing on core web technologies, our components work seamlessly regardless of your JavaScript framework choice. Use them with React, Vue, Angular, or pure JavaScript.
+- **High Performance**: Zero JavaScript means faster load times and better core web vitals.
+- **Fully Configurable**: Every aspect of the components can be customized to match your specific requirements, while helping you maintain consistent styles site wide.
+- **Simplified Implementation**: Copy and paste HTML directly from our documentation into your project for immediate results, that are yours to customise as you want.
+- **Progressive Enhancement**: We provide the HTML and CSS, along with a checklist of additional functional and accessibility requirements for you to implement in a way that best suits your tech stack.
+- **Multi-Tenant Friendly**: Designed specifically to work in both single-tenant and multi-tenant environments.
+
+## Tailwind Optimised, Framework Agnostic
+
+- CSS variables follow Tailwind naming conventions, but are fundamentally just CSS variables (e.g., `--color-primary` can be used within Tailwind as `bg-primary`)
+- Import our standalone CSS to get identical styling without any framework dependencies
+- Easily integrate with existing design systems by mapping variables to your naming conventions
+- No JavaScript framework dependencies or complex build requirements
+
+Note that while the package does not depend on Tailwind, we recommend using it, or an alternative tool that will provide CSS tree shaking in order to remove any unused styles from your final build.
+
+## Browser Component Library Features
+
+### Design System
+
+The Browser Component Library provides two key features. The first is the Altitude Design System, an infinitely extensible approach to site theming built to let you design without constraints, all while helping you maintain consistent styling that can be entirely managed from your main CSS file. Wether you are building a site for one or a hundred tenants, the Altitude Design System is built to work seamlessly.
+
+The Altitude Design System ships with defaults for the following, but as it is just CSS, it's all yours to customise, expand on, and customise.
+
+- Automatically generate your entire colour palette from a handful of key brand colours.
+- A comprehensive yet effortless approach to theming through a skin based system
+- Responsive Typography
+- Unified rounding and shadows
+- Site wide animation speeds
+
+_Detailed documentation on the design system is available in the Design System section._
+
+### Components
+
+The library also includes a wide range of ready-to-use components that follow consistent patterns and accessibility best practices. Each component is thoroughly documented with examples, usage guidelines, and customization options. Simply copy and paste them into your code, and have complete control of every last pixel.
+
+_Browse the components in the sidebar to learn more about each one._
+
+---
+
+Ready to get started? The next page covers installation and basic setup.

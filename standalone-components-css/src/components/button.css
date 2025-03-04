@@ -1,12 +1,11 @@
 @layer components {
   :root {
     --btn-radius: var(--radius-site);
-    --btn-animation-speed: var(--animation-speed-quick);
-    --btn-hover-scale: 1.005;
+    --btn-animation-speed: var(--animation-speed-default);
+    --btn-hover-scale: 1.01;
     --btn-active-scale: 0.995;
     --btn-icon-scale-hover: 1.15;
     --btn-icon-scale-active: 1.3;
-    --btn-icon-stroke-width: 3;
     --btn-padding-x: 1rem;
     --btn-padding-y: 0.5rem;
     --btn-gap: 0.5rem;
@@ -86,7 +85,6 @@
   .btn .icon-container svg {
     fill: none;
     stroke: currentColor;
-    stroke-width: var(--btn-icon-stroke-width);
     transition: all var(--btn-animation-speed);
   }
 

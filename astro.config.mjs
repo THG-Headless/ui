@@ -39,24 +39,31 @@ export default defineConfig({
   image: {
     service: passthroughImageService(),
   },
-  integrations: [starlight({
-    title: 'Altitude Standalone Components',
-    customCss: ['/src/styles.css', '@fontsource-variable/inter'],
-    logo: {
-      replacesTitle: true,
-      light: '/src/assets/logo-long-light.svg',
-      dark: '/src/assets/logo-long.svg',
-      link: 'https://thgaltitude.com/',
-    },
-    sidebar: [
-      {
-        label: 'Getting Started',
-        autogenerate: { directory: 'setup' },
+  integrations: [
+    starlight({
+      title: 'Altitude Standalone Components',
+      customCss: ['/src/styles.css', '@fontsource-variable/inter'],
+      logo: {
+        replacesTitle: true,
+        light: '/src/assets/logo-long-light.svg',
+        dark: '/src/assets/logo-long.svg',
+        link: 'https://thgaltitude.com/',
       },
-      {
-        label: 'Components',
-        autogenerate: { directory: 'components' },
-      },
-    ],
-  }), react()],
+      sidebar: [
+        {
+          label: 'Getting Started',
+          autogenerate: { directory: 'setup' },
+        },
+        {
+          label: 'Altitude Design System',
+          autogenerate: { directory: 'design' },
+        },
+        {
+          label: 'Browser Components',
+          autogenerate: { directory: 'components' },
+        },
+      ],
+    }),
+    react(),
+  ],
 });

@@ -5,15 +5,12 @@ sidebar:
   order: 2
 ---
 
-import ShowComponent from "../../../components/doc-helpers/ShowComponent.astro";
-import PrimaryButton from "../../../components/doc-helpers/PrimaryButton.html";
-import PrimaryButtonCustom from "../../../components/doc-helpers/PrimaryButtonCustom.html";
+import ShowComponent from '../../../components/doc-helpers/ShowComponent.astro';
+import DemoComponent from '../../../components/doc-helpers/DemoComponent.html';
 
-## Steps
+## Installing the package
 
-### 1. Installing the package
-
-The package can be installed using npm, using the command shown below. This package provides the custom css classes used to achieve the styling shown in this documentation.
+The package can be installed through npm, using the command shown below. This brings with it all the CSS we need for our components and design system.
 
 ```bash
 npm install @thg-altitude/standalone-components-css
@@ -21,24 +18,28 @@ npm install @thg-altitude/standalone-components-css
 
 The npm page for the package can be found **[here](https://www.npmjs.com/package/@thg-altitude/standalone-components-css)**.
 
-### 2. Importing the package
+## Importing the package
 
-Within your main application file, giving all subsequent files access to these custom css classes.
+Within your main/global CSS file, import the package. This way subsequent CSS files, components and pages will have access to the libraries classes and variables.
 
 ```js
-import "@thg-altitude/standalone-components-css";
+import '@thg-altitude/standalone-components-css';
 ```
 
-### 3. Creating components
+## Time For A Test Run
 
-This documentation provides examples of components that make use of these custom css classes. To create a component, such as a [button](/components/button), simply copy the provided code example into your codebase. This approach allows you to use this as a starting point, and build any additional functionality you may need ontop of this component, giving you full control over its appearance and functionality.
+Test the installation by adding a component such as the one below into your project:
 
-<ShowComponent filePath="./src/components/doc-helpers/PrimaryButton.html">
-  <PrimaryButton />
+<ShowComponent filePath="./src/components/doc-helpers/DemoComponent.html">
+  <DemoComponent />
 </ShowComponent>
 
-**[Tailwind CSS](https://tailwindcss.com/)** allows for easy editing of the styles beyond your **[configured theming](/setup/theme)**. Below is an example fo using it to alter the buttons appearance.
+## Start Using It!
 
-<ShowComponent filePath="./src/components/doc-helpers/PrimaryButtonCustom.html">
-  <PrimaryButtonCustom />
-</ShowComponent>{" "}
+Your all set! From here its up to you to use as little or as much of the package as you like, and by using a tool like Tailwind, any unused CSS will be pruned from your project at build time keeping your pages quick and lightweight.
+
+_**So, whats next?**_
+
+If you want to explore how to take our default themes and make them your own, then go ahead and get familiar with the Altitude Design System. Wether you need to get our styles inline with our current sites, or want to use the Altitude Design System as the basis for styling your site, we explain it all within the Design System Section of these docs. Click here to get started! **ADD LINK HERE**
+
+Like what we have and want to get straight into integrating our components into your site, check out any of the component specific documentation examples to get the code, or click here for an overview of how component level customisation works **ADD LINK HERE**

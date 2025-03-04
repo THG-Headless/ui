@@ -1,0 +1,30 @@
+---
+import fs from 'node:fs';
+import path from 'node:path';
+import { parseTypographyScheme } from '../../utils/typographyParser';
+
+const cssFilePath = path.resolve('./src/sample-css/typography.css');
+const cssContent = fs.readFileSync(cssFilePath, 'utf-8');
+const typography = parseTypographyScheme(cssContent);
+---
+
+<section class="mb-12">
+  <div class="space-y-4">
+    {
+      typography.weights.variables.map((weight) => (
+        <div class="grid grid-cols-6 items-center pb-2">
+          <div class="col-span-3 font-mono text-sm ">{weight.name}</div>
+          <div
+            class="col-span-2 text-lg pl-8"
+            style={`font-weight: ${weight.value};`}
+          >
+            Altitude
+          </div>
+          <div class="col-span-1 text-right font-mono text-sm ">
+            {weight.value}
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</section>

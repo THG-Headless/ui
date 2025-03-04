@@ -1,0 +1,23 @@
+---
+title: Colour Palette
+description: How Colours are handled within the Altitude Design System
+sidebar:
+  order: 3
+---
+
+import SiteColours from '../../../components/doc-helpers/SiteColours.astro';
+import ColorScheme from '../../../components/doc-helpers/Colorscheme.astro';
+
+## Site Variable Colours
+
+The design systems colour palette is derived from the following site variables. These can be overridden to change the appearance of the entire site.
+
+<SiteColours />
+
+## Extended Colour Palette
+
+The color scheme of a site is defined using the site variables shown below. From this, CSS calculations will generate a range of primitive shades centered around the site variable, where the site colour is 500 on a scale of 50 _(lightest)_ to 950 _(darkest)_. These can be individually changed by overriding their css definitions.
+
+Semantic shades have been labeled. Default shades are provided when no suffix is given, such as `--color-primary`. Other semantic shades, such as 'light' are given by using the label as the suffix, e.g. `--color-primary-light`
+
+<ColorScheme />
