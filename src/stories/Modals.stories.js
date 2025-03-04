@@ -22,7 +22,7 @@ export default {
 export const Basic = () => addOpenAttribute(BasicModal);
 Basic.storyName = 'Basic Modal';
 
-export const BackdropClickaway = () => addOpenAttribute(BackdropModal);
+export const BackdropClickaway = () => addOpenAttribute(BackdropCloseModal);
 BackdropClickaway.storyName = 'Backdrop Click Away';
 
 export const NoBackdrop = () => addOpenAttribute(NoBackdropModal);
@@ -39,6 +39,3 @@ Fullscreen.storyName = 'Fullscreen Modal';
 
 export const NoEntrance = () => addOpenAttribute(NoEntranceModal);
 NoEntrance.storyName = 'No Entrance Animation Modal';
-
-export const BackdropClose = () => addOpenAttribute(BackdropCloseModal);
-BackdropClose.storyName = 'No Entrance Animation Modal';
