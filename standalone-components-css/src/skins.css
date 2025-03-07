@@ -189,10 +189,10 @@
   }
 
   .skin-primary {
-    --color-background: var(--color-white);
-    --color-background-hover: var(--color-primary-50);
-    --color-background-focus: var(--color-primary-50);
-    --color-background-active: var(--color-primary-100);
+    --color-background: var(--color-primary-50);
+    --color-background-hover: var(--color-primary-100);
+    --color-background-focus: var(--color-primary-100);
+    --color-background-active: var(--color-primary-200);
     --color-background-disabled: var(--color-neutral-50);
 
     --color-foreground: var(--color-primary);
@@ -249,14 +249,14 @@
   }
 
   .skin-secondary {
-    --color-background: var(--color-white);
-    --color-background-hover: var(--color-secondary-50);
-    --color-background-focus: var(--color-secondary-50);
-    --color-background-active: var(--color-secondary-100);
+    --color-background: var(--color-secondary-50);
+    --color-background-hover: var(--color-secondary-100);
+    --color-background-focus: var(--color-secondary-100);
+    --color-background-active: var(--color-secondary-200);
     --color-background-disabled: var(--color-neutral-50);
 
     --color-foreground: var(--color-secondary);
-    --color-foreground-hover: var (--color-secondary-600);
+    --color-foreground-hover: var(--color-secondary-600);
     --color-foreground-focus: var(--color-secondary-600);
     --color-foreground-active: var(--color-secondary-700);
     --color-foreground-disabled: var(--color-neutral-400);
@@ -309,10 +309,10 @@
   }
 
   .skin-tertiary {
-    --color-background: var(--color-white);
-    --color-background-hover: var(--color-tertiary-50);
-    --color-background-focus: var(--color-tertiary-50);
-    --color-background-active: var (--color-tertiary-100);
+    --color-background: var(--color-tertiary-50);
+    --color-background-hover: var(--color-tertiary-100);
+    --color-background-focus: var(--color-tertiary-100);
+    --color-background-active: var(--color-tertiary-200);
     --color-background-disabled: var(--color-neutral-50);
 
     --color-foreground: var(--color-tertiary);
