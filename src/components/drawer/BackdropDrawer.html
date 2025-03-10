@@ -8,16 +8,20 @@
 
 <dialog
   id="backdropDrawer"
-  class="skin drawer"
+  class="drawer"
   role="dialog"
   aria-modal="true"
   aria-labelledby="simple-drawer-title"
   aria-describedby="backdrop-drawer-content"
 >
-  <form method="dialog" class="drawer-backdrop-click" aria-hidden="true">
+  <form
+    method="dialog"
+    class="drawer-backdrop-click wrapper"
+    aria-hidden="true"
+  >
     <button aria-hidden="true" tabindex="-1" aria-label="Close Drawer"></button>
   </form>
-  <div class="drawer-box">
+  <div class="drawer-box skin">
     <form method="dialog" class="drawer-control-bar">
       <button class="drawer-close-button">
         <span>Close</span>

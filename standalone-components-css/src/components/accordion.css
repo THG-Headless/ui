@@ -25,12 +25,6 @@
     border: var(--accordion-border);
     border-radius: var(--accordion-radius);
     overflow: hidden;
-    background: transparent !important;
-  }
-
-  .accordion-wrapper h3 {
-    margin: 0;
-    padding: 0;
   }
 
   .accordion-section {

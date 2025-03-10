@@ -138,6 +138,9 @@ const highlighter = await getHighlighterInstance();
 const codeContent = filePath
   ? await getFileContent(filePath)
   : await getCodeContent(htmlContent, highlighter, 'html');
+
+// CSS file path for shadow DOM
+const styleFilePath = '/src/previewStyles.css';
 ---
 
 <div class="not-content rounded-lg border border-zinc-700 shadow-sm">
@@ -182,7 +185,7 @@ const codeContent = filePath
             d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"
           ></path>
           <path
-            d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"
+            d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5.5 0 0 0 5 1.5v1A1.5.5 0 0 0 6.5 4h3A1.5.5 0 0 0 11 2.5v-1A1.5.5 0 0 0 9.5 0h-3z"
           ></path>
         </svg>
         <span>Copy</span>
@@ -194,7 +197,11 @@ const codeContent = filePath
       class="bg-white !mx-4 !mt-4 !pb-4 rounded-b-lg"
       role="tabpanel"
     >
-      <Fragment set:html={previewContent} />
+      <!-- This wrapper div will become our shadow DOM host -->
+      <div id={`shadow-host-${componentId}`}>
+        <!-- The fragment content will be moved into shadow DOM -->
+        <Fragment set:html={previewContent} />
+      </div>
     </div>
     <div
       id={`codePanel-${componentId}`}
@@ -208,7 +215,7 @@ const codeContent = filePath
   </div>
 </div>
 
-<script define:vars={{ componentId }}>
+<script define:vars={{ componentId, styleFilePath }}>
   function setupTabs() {
     const previewTab = document.getElementById(`previewTab-${componentId}`);
     const codeTab = document.getElementById(`codeTab-${componentId}`);
@@ -294,8 +301,129 @@ const codeContent = filePath
     });
   }
 
+  function setupShadowDOM() {
+    const shadowHost = document.getElementById(`shadow-host-${componentId}`);
+    if (!shadowHost) return;
+
+    // Store the original content
+    const originalContent = shadowHost.innerHTML;
+
+    // Create shadow DOM
+    const shadowRoot = shadowHost.attachShadow({ mode: 'open' });
+
+    // Create a style element to reset styles properly
+    const resetStyle = document.createElement('style');
+    resetStyle.textContent = `
+      /* Remove the problematic margin reset and use specific resets */
+      .component-preview {
+        padding: 1rem;
+      }
+      
+      /* Ensure button margins work correctly */
+      .btn {
+        margin: 0;
+      }
+      
+      /* Reset specific styles for button bars */
+      .btn-bar .btn + .btn {
+        margin-left: calc(-1 * var(--btn-border-width, 3px));
+      }
+      
+      .btn-bar-vertical .btn + .btn {
+        margin-top: calc(-1 * var(--btn-border-width, 3px));
+        margin-left: 0;
+      }
+      
+      /* Make dialogs visible in document */
+      ::backdrop {
+        position: fixed;
+        inset: 0px;
+        background: rgba(0, 0, 0, 0.5);
+      }
+      
+      dialog {
+        z-index: 9999;
+      }
+    `;
+
+    // Create a style element for the CSS
+    const styleElement = document.createElement('link');
+    styleElement.rel = 'stylesheet';
+    styleElement.href = styleFilePath;
+
+    // Create container for component content
+    const contentContainer = document.createElement('div');
+    contentContainer.className = 'component-preview';
+    contentContainer.innerHTML = originalContent;
+
+    // Special handling for dialog elements
+    const tempDiv = document.createElement('div');
+    tempDiv.innerHTML = originalContent;
+    const dialogs = tempDiv.querySelectorAll('dialog');
+
+    if (dialogs.length > 0) {
+      // Extract all dialogs from the shadow DOM and move them to the light DOM
+      dialogs.forEach((dialog) => {
+        // Generate a unique ID for this dialog if it doesn't have one
+        if (!dialog.id) {
+          dialog.id = `dialog-${componentId}-${Math.random().toString(36).substr(2, 9)}`;
+        }
+
+        // Store the original ID to connect the button to this dialog
+        const dialogId = dialog.id;
+
+        // Clone the dialog to place in the light DOM
+        const dialogClone = dialog.cloneNode(true);
+
+        // Find buttons that would trigger this dialog
+        const buttonSelectors = `button[onclick*="${dialogId}.showModal()"], [aria-controls="${dialogId}"]`;
+        const triggerButtons = tempDiv.querySelectorAll(buttonSelectors);
+
+        // Update the buttons in the shadow DOM to work with externalized dialogs
+        triggerButtons.forEach((btn) => {
+          if (
+            btn.getAttribute('onclick') &&
+            btn.getAttribute('onclick').includes(`${dialogId}.showModal()`)
+          ) {
+            btn.setAttribute(
+              'onclick',
+              `document.getElementById('${dialogId}-external').showModal()`
+            );
+          }
+          if (btn.getAttribute('aria-controls') === dialogId) {
+            btn.setAttribute('aria-controls', `${dialogId}-external`);
+          }
+        });
+
+        // Set the ID for the externalized dialog
+        dialogClone.id = `${dialogId}-external`;
+
+        // Remove the dialog from the original content
+        dialog.remove();
+
+        // Add the dialog to the document body (outside shadow DOM)
+        document.body.appendChild(dialogClone);
+
+        // Ensure the dialog is properly styled
+        const dialogStyleLink = document.createElement('link');
+        dialogStyleLink.rel = 'stylesheet';
+        dialogStyleLink.href = styleFilePath;
+        document.head.appendChild(dialogStyleLink);
+      });
+
+      // Update the content without the dialogs
+      contentContainer.innerHTML = tempDiv.innerHTML;
+    }
+
+    // Append to shadow DOM
+    shadowRoot.appendChild(resetStyle);
+    shadowRoot.appendChild(styleElement);
+    shadowRoot.appendChild(contentContainer);
+  }
+
   setupTabs();
   setupCopyButton();
+  setupShadowDOM();
 </script>
 
 <style is:global>
