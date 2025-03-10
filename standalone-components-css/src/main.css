@@ -446,29 +446,24 @@
     border-color: var(--color-border);
   }
 
-  /* Wrapper class using opacity approach */
   .wrapper {
-    /* Maintain layout and position */
     background-color: transparent;
     border-color: transparent;
     color: transparent;
   }
 
-  /* Make direct children fully visible */
   .wrapper > * {
     background-color: var(--color-background);
     border-color: var(--color-border);
     color: var(--color-foreground);
   }
 
-  /* Base styles for all children with higher specificity */
   .wrapper > * {
     background-color: var(--color-background);
     border-color: var(--color-border);
     color: var(--color-foreground);
   }
 
-  /* Interactive states with specific selectors */
   .wrapper .interactive:hover:not(:disabled):not([disabled]) {
     background-color: var(--color-background-hover);
     border-color: var(--color-border-hover);
@@ -497,7 +492,6 @@
     color: var(--color-foreground-disabled);
   }
 
-  /* Prevent hover/focus/active states when parent has disabled elements */
   .wrapper.group:has(:disabled) .interactive:hover,
   .wrapper.group:has([disabled]) .interactive:hover,
   .wrapper.group:has(:disabled) .interactive:focus,

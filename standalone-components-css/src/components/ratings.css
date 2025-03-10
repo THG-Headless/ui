@@ -7,14 +7,10 @@
   }
 
   .rating {
-    display: flex;
-    background-color: transparent !important;
     position: relative;
     display: inline-block;
     width: calc(var(--rating-icon-count) * var(--rating-icon-size));
     height: var(--rating-icon-size);
-    font-size: var(--rating-icon-size);
-    line-height: 1;
   }
 
   .rating::before,
@@ -40,6 +36,5 @@
   .rating::after {
     background-color: var(--color-foreground);
     width: calc(var(--rating-percentage) * 100%);
-    overflow: hidden;
   }
 }
