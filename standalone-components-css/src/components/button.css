@@ -56,7 +56,6 @@
     cursor: default;
   }
 
-  /* Icon styles */
   .btn .icon-container {
     width: var(--btn-icon-size);
     height: var(--btn-icon-size);
@@ -112,13 +111,11 @@
     transform: none;
   }
 
-  /* Fix hover/active z-index priority */
   .btn-bar .btn:focus-visible,
   .btn-bar .btn:hover {
     z-index: 2;
   }
 
-  /* Stronger selector to ensure active always overrides hover */
   .btn-bar .btn:active,
   .btn-bar .btn:focus {
     z-index: 3;

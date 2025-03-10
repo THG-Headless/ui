@@ -1,6 +1,5 @@
 @layer components {
   :root {
-    /* Control Pips */
     --control-pip-size: 12px;
     --control-pip-active-width: 36px;
     --control-pip-gap: 8px;
@@ -13,7 +12,6 @@
     --control-pip-swap-transition: var(--duration-speed-slow);
   }
 
-  /* Control Pip Styles */
   .control-pip-wrapper {
     display: flex;
     gap: var(--control-pip-gap);
