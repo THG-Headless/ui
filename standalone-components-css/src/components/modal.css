@@ -1,6 +1,5 @@
 @layer components {
   :root {
-    /* Layout */
     --modal-min-width: 320px;
     --modal-margin: 2rem;
     --modal-padding: 2rem;
@@ -13,10 +12,8 @@
     --modal-backdrop-blur: 4px;
     --modal-backdrop-color: rgba(0, 0, 0, 0.3);
 
-    /* Animation */
     --modal-animation-duration: var(--duration-speed-slow);
 
-    /* Shape */
     --modal-radius: var(--radius-site);
     --modal-box-shadow: var(--shadow-site);
     --modal-mobile-shadow: var(--shadow-site);
@@ -293,7 +290,6 @@
       border-radius: 0px;
     }
 
-    /* Match the desktop selector's specificity for the hero image */
     dialog .modal-container--with-hero .modal-hero-image {
       width: 100%;
       height: var(--modal-mobile-hero-height);

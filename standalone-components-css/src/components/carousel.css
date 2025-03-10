@@ -13,7 +13,6 @@
     --carousel-animation-speed: var(--duration-speed-slow);
   }
 
-  /* Base Carousel Styles */
   .carousel-wrapper {
     position: relative;
     flex-direction: column;
@@ -45,7 +44,6 @@
     background-color: transparent;
   }
 
-  /* Carousel Item Styles */
   .carousel-item {
     flex: 0 0 auto;
     width: min(var(--carousel-item-width), 100%);
@@ -61,7 +59,6 @@
     transition: transform var(--carousel-animation-speed) ease;
   }
 
-  /* Content Styles */
   .carousel-content {
     padding: var(--carousel-content-padding);
     display: flex;
@@ -70,7 +67,6 @@
     width: 100%;
   }
 
-  /* Image Styles */
   .carousel-image {
     width: 100%;
     max-width: 100%;
@@ -121,7 +117,6 @@
     text-align: center;
   }
 
-  /* Snap  Styles */
   .carousel-snap-start {
     scroll-snap-type: x mandatory;
   }
@@ -152,8 +147,6 @@
     scroll-snap-align: end;
   }
 
-  /* Alignment */
-
   .carousel-align.carousel-snap-center .carousel {
     padding-left: calc((100% - var(--carousel-item-width)) / 2);
     padding-right: calc((100% - var(--carousel-item-width)) / 2);
@@ -181,7 +174,7 @@
 .carousel-tight .carousel-item {
   margin: 0;
   padding: 0;
-  border-radius: 0; /* Reset border-radius for all items in tight carousel */
+  border-radius: 0;
 }
 
 .carousel-tight .carousel-item:first-child {
@@ -213,20 +206,17 @@
   min-width: max-content;
 }
 
-/* Single child handling for carousel banner items */
 .carousel-banner .carousel-item > *:only-child {
   width: 100%;
   height: var(--carousel-banner-image-height);
   object-fit: cover;
 }
 
-/* Preserve standard layout for carousel banner items with multiple children */
 .carousel-banner .carousel-item:not(:has(> *:only-child)) .carousel-image {
   width: var(--carousel-banner-image-width);
   height: var(--carousel-banner-image-height);
 }
 
-/* Mobile Styles */
 @media (max-width: 768px) {
   .carousel-banner .carousel-item {
     flex-direction: column;

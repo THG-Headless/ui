@@ -482,7 +482,6 @@
     color: var(--color-foreground-active);
   }
 
-  /* Group disabled states with :has() selector */
   .wrapper.group:has(:disabled) > *,
   .wrapper.group:has([disabled]) > *,
   .wrapper.group:has(:disabled) .interactive,
