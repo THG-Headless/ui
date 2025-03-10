@@ -3,23 +3,20 @@ title: Accordion
 description: A primitive accordion
 ---
 
-
 import { Aside } from '@astrojs/starlight/components';
 import ShowComponent from '../../../components/doc-helpers/ShowComponent.astro';
 import SummaryAccordion from '../../../components/accordion/SummaryAccordion.html';
 import NamedSummaryAccordion from '../../../components/accordion/NamedSummaryAccordion.html';
 
-
 <Aside type="caution">
 
-There are two HTML templates laid out for the accordion, (Named) Summary Accordion and WCAG Accordion. 
+There are two HTML templates laid out for the accordion, (Named) Summary Accordion and WCAG Accordion.
 
 The summary accordions using the details and summary tags have some CSS powered functionality, but we cannot gaurantee that this pattern matches WCAG2.1 criteria.
 
 If using the Altitude Commerce starter kits, there is a Javascript based solution for the Accordion also provided, that confirms to WCAG best practises.
 
 </Aside>
-
 
 ## Example Usage
 
@@ -99,7 +96,6 @@ The accordion system can be customized using CSS variables:
 ## Accessibility
 
 Using the pattern of the html details and summary tags allows the open/close interactivity of the accordion. To make it WCAG compliant and to activate some css based on aria changes, some Javascript will need to be implemented in the final version.
-
 
 ### Current Implementation Features
 

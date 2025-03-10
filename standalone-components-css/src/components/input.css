@@ -23,7 +23,7 @@
     align-items: baseline;
     gap: 0.5rem;
     padding-left: var(--input-padding-x);
-    background-color: transparent !important;
+    background-color: transparent;
   }
 
   .input-label {
@@ -56,7 +56,7 @@
     flex-direction: column;
     width: 100%;
     padding: 0;
-    background-color: transparent !important;
+    background-color: transparent;
   }
 
   .input-helper {
@@ -88,13 +88,13 @@
   .input-wrapper:has(textarea:disabled) {
     .input-field {
       box-shadow: inset 0 0 0 var(--input-border-width)
-        var(--color-border-disabled) !important;
+        var(--color-border-disabled);
     }
 
     .input-helper,
     .input-error,
     .input-error-content {
-      display: none !important;
+      display: none;
     }
 
     .resize-handle {
@@ -143,7 +143,6 @@
     & .input-error-content {
       padding-top: 0;
       padding-bottom: 0;
-      background: transparent !important;
     }
 
     & .input-char-limit {
@@ -169,7 +168,6 @@
     & .input-error-content {
       padding-top: 0;
       padding-bottom: 0;
-      background: transparent !important;
     }
   }
 

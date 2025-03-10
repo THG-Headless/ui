@@ -132,8 +132,8 @@
 
   .carousel-snap-start .carousel-item:last-child {
     scroll-snap-align: start;
-    scroll-snap-stop: always !important;
-    margin-right: calc(100% - var(--carousel-item-width)) !important;
+    scroll-snap-stop: always;
+    margin-right: calc(100% - var(--carousel-item-width));
   }
 
   .carousel-snap-center {
