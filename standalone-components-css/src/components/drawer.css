@@ -19,31 +19,22 @@
 
   .drawer {
     position: fixed;
-    left: 0% !important;
+    left: 0%;
     min-height: 100vh;
     max-height: 100vh;
     max-width: var(--drawer-width-max);
     display: flex;
     justify-content: center;
-    opacity: 0;
     visibility: hidden;
     padding: 0;
     border: none;
     margin: 0;
     overflow: hidden;
-    will-change: opacity;
-    transition: opacity var(--drawer-animation-speed) ease;
-    background-color: transparent !important;
-
-    & > * {
-      background-color: var(--color-background);
-      border-color: var(--color-border);
-      color: var(--color-foreground);
-    }
+    background-color: transparent;
   }
 
   .drawer::backdrop {
-    background-color: var(--drawer-backdrop-color) !important;
+    background-color: var(--drawer-backdrop-color);
     -webkit-backdrop-filter: blur(var(--drawer-backdrop-blur));
     backdrop-filter: blur(var(--drawer-backdrop-blur));
     opacity: 0;
@@ -51,7 +42,6 @@
   }
 
   .drawer[open] {
-    opacity: 1;
     visibility: visible;
   }
 
@@ -84,6 +74,7 @@
     flex-direction: column;
     margin: 0;
     will-change: transform;
+    opacity: 1;
   }
 
   .drawer-control-bar {
@@ -103,7 +94,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: transparent !important;
+    background-color: transparent;
   }
 
   .drawer-backdrop-click button {
@@ -120,38 +111,40 @@
   }
 
   .drawer-disable-entrance .drawer-box {
-    transform: none !important;
+    transform: none;
   }
 
   .drawer-disable-entrance[open] .drawer-box {
-    transform: none !important;
+    transform: none;
   }
 
   @media screen and (max-width: 640px) {
-    .drawer {
-      position: fixed !important;
-      transform: none !important;
+    .drawer.drawer {
+      position: fixed;
+      transform: none;
       align-items: flex-end;
       padding: 0;
-      width: 100vw !important;
-      max-width: var(--drawer-mobile-max-width) !important;
-      min-height: 100vh !important;
+      width: 100vw;
+      max-width: var(--drawer-mobile-max-width);
+      min-height: 100vh;
       max-height: 100vh;
-      margin: 0 !important;
+      margin: 0;
     }
 
-    .drawer-box {
-      display: flex;
-      width: var(--drawer-mobile-max-width) !important;
-      max-width: var(--drawer-mobile-max-width);
-      margin: 0 var(--drawer-mobile-margin) !important;
-      min-height: 100vh !important;
-      max-height: 100vh !important;
-      border-radius: 0 var(--drawer-radius) var(--drawer-radius) 0;
-      transform: translateX(-100%);
-      transition: transform var(--drawer-animation-speed) ease;
-      box-shadow: var(--drawer-shadow-mobile);
-      padding: var(--drawer-mobile-padding);
+    @layer components {
+      .drawer .drawer-box {
+        display: flex;
+        width: var(--drawer-mobile-max-width);
+        max-width: var(--drawer-mobile-max-width);
+        margin: 0 var(--drawer-mobile-margin);
+        min-height: 100vh;
+        max-height: 100vh;
+        border-radius: 0 var(--drawer-radius) var(--drawer-radius) 0;
+        transform: translateX(-100%);
+        transition: transform var(--drawer-animation-speed) ease;
+        box-shadow: var(--drawer-shadow-mobile);
+        padding: var(--drawer-mobile-padding);
+      }
     }
 
     .drawer:not([open]) {

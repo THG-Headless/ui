@@ -436,64 +436,76 @@
   @import './components/dropdown.css';
   @import './components/drawer.css';
   @import './skins.css';
+}
 
+@layer utilities {
   [class*='skin'] {
     background-color: var(--color-background);
     color: var(--color-foreground);
     border-color: var(--color-border);
   }
 
+  /* Wrapper class using opacity approach */
   .wrapper {
-    background-color: transparent !important;
-    border-color: transparent !important;
-    color: transparent !important;
+    /* Maintain layout and position */
+    background-color: transparent;
+    border-color: transparent;
+    color: transparent;
+  }
 
-    /* Base styles for all children */
-    & > * {
-      background-color: var(--color-background) !important;
-      border-color: var(--color-border) !important;
-      color: var(--color-foreground) !important;
-    }
+  /* Make direct children fully visible */
+  .wrapper > * {
+    background-color: var(--color-background);
+    border-color: var(--color-border);
+    color: var(--color-foreground);
+  }
 
-    /* Interactive states for interactive children */
-    & .interactive {
-      &:hover:not(:disabled):not([disabled]) {
-        background-color: var(--color-background-hover) !important;
-        border-color: var(--color-border-hover) !important;
-        color: var(--color-foreground-hover) !important;
-      }
+  /* Base styles for all children with higher specificity */
+  .wrapper > * {
+    background-color: var(--color-background);
+    border-color: var(--color-border);
+    color: var(--color-foreground);
+  }
 
-      &:focus:not(:disabled):not([disabled]) {
-        background-color: var(--color-background-focus) !important;
-        border-color: var(--color-border-focus) !important;
-        color: var(--color-foreground-focus) !important;
-      }
+  /* Interactive states with specific selectors */
+  .wrapper .interactive:hover:not(:disabled):not([disabled]) {
+    background-color: var(--color-background-hover);
+    border-color: var(--color-border-hover);
+    color: var(--color-foreground-hover);
+  }
 
-      &:active:not(:disabled):not([disabled]) {
-        background-color: var(--color-background-active) !important;
-        border-color: var(--color-border-active) !important;
-        color: var(--color-foreground-active) !important;
-      }
-    }
+  .wrapper .interactive:focus:not(:disabled):not([disabled]) {
+    background-color: var(--color-background-focus);
+    border-color: var(--color-border-focus);
+    color: var(--color-foreground-focus);
+  }
 
-    /* Group disabled states */
-    &.group:has(:disabled),
-    &.group:has([disabled]) {
-      & > *,
-      & .interactive {
-        background-color: var(--color-background-disabled) !important;
-        border-color: var(--color-border-disabled) !important;
-        color: var(--color-foreground-disabled) !important;
+  .wrapper .interactive:active:not(:disabled):not([disabled]) {
+    background-color: var(--color-background-active);
+    border-color: var(--color-border-active);
+    color: var(--color-foreground-active);
+  }
 
-        &:hover,
-        &:focus,
-        &:active {
-          background-color: var(--color-background-disabled) !important;
-          border-color: var(--color-border-disabled) !important;
-          color: var(--color-foreground-disabled) !important;
-        }
-      }
-    }
+  /* Group disabled states with :has() selector */
+  .wrapper.group:has(:disabled) > *,
+  .wrapper.group:has([disabled]) > *,
+  .wrapper.group:has(:disabled) .interactive,
+  .wrapper.group:has([disabled]) .interactive {
+    background-color: var(--color-background-disabled);
+    border-color: var(--color-border-disabled);
+    color: var(--color-foreground-disabled);
+  }
+
+  /* Prevent hover/focus/active states when parent has disabled elements */
+  .wrapper.group:has(:disabled) .interactive:hover,
+  .wrapper.group:has([disabled]) .interactive:hover,
+  .wrapper.group:has(:disabled) .interactive:focus,
+  .wrapper.group:has([disabled]) .interactive:focus,
+  .wrapper.group:has(:disabled) .interactive:active,
+  .wrapper.group:has([disabled]) .interactive:active {
+    background-color: var(--color-background-disabled);
+    border-color: var(--color-border-disabled);
+    color: var(--color-foreground-disabled);
   }
 
   .soft {
@@ -517,7 +529,7 @@
       border-color: color-mix(
         in oklch,
         var(--color-border-hover) 20%,
-        var (--color-background-hover)
+        var(--color-background-hover)
       );
     }
 
@@ -554,12 +566,12 @@
         in oklch,
         var(--color-foreground-disabled) 60%,
         var(--color-background-disabled)
-      ) !important;
+      );
       border-color: color-mix(
         in oklch,
         var(--color-border-disabled) 20%,
         var(--color-background-disabled)
-      ) !important;
+      );
     }
   }
 
@@ -585,8 +597,8 @@
     &:disabled,
     &:has(:disabled),
     .group:has(:disabled) & {
-      color: var(--color-foreground-disabled) !important;
-      border-color: var(--color-border-disabled) !important;
+      color: var(--color-foreground-disabled);
+      border-color: var(--color-border-disabled);
     }
   }
 

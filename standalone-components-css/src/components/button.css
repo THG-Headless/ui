@@ -103,7 +103,7 @@
   }
 
   .btn-bar .btn + .btn {
-    margin-left: calc(-1 * var(--btn-border-width)) !important;
+    margin-left: calc(-1 * var(--btn-border-width));
   }
 
   .btn-bar .btn:not(:disabled):focus-visible,
@@ -148,8 +148,8 @@
   }
 
   .btn-bar-vertical .btn + .btn {
-    margin-top: calc(-1 * var(--btn-border-width)) !important;
-    margin-left: 0 !important;
+    margin-top: calc(-1 * var(--btn-border-width));
+    margin-left: 0;
   }
 
   .btn-bar-vertical .btn:not(:disabled):focus-visible,
