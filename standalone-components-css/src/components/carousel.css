@@ -15,6 +15,7 @@
 
   .carousel-wrapper {
     position: relative;
+    display: flex;
     flex-direction: column;
     overflow-x: auto;
     scrollbar-width: none;
@@ -23,6 +24,7 @@
     width: 100%;
     border-radius: var(--carousel-radius);
     background-color: transparent;
+    height: auto;
   }
 
   .carousel-wrapper:focus-visible {
@@ -35,13 +37,14 @@
   }
 
   .carousel {
-    display: flex;
+    display: inline-flex;
     gap: var(--carousel-item-gap);
     align-items: stretch;
+    min-width: auto;
     width: 100%;
     scroll-behavior: smooth;
-    min-width: min-content;
     background-color: transparent;
+    overflow-y: clip;
   }
 
   .carousel-item {
@@ -225,9 +228,17 @@
   .carousel-banner .carousel-image {
     width: 100%;
     height: var(--carousel-banner-image-height-mobile);
+    max-width: 100%;
+  }
+
+  .carousel-banner .carousel-item:not(:has(> *:only-child)) .carousel-image {
+    width: 100%;
+    max-width: 100%;
+    height: var(--carousel-banner-image-height-mobile);
   }
 
   .carousel-banner .carousel-item > *:only-child {
     height: var(--carousel-banner-image-height-mobile);
+    width: 100%;
   }
 }
