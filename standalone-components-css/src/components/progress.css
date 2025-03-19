@@ -1,0 +1,35 @@
+@layer components {
+  :root {
+    --progress-value: 0;
+    --progress-height: 1rem;
+    --progress-rounding: var(--radius-site);
+  }
+
+  .progress {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    height: var(--progress-height);
+    border-radius: var(--progress-rounding);
+  }
+
+  .progress::before,
+  .progress::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: var(--progress-rounding);
+  }
+
+  .progress::before {
+    background-color: var(--color-background);
+  }
+
+  .progress::after {
+    background-color: var(--color-foreground);
+    width: calc(var(--progress-value) * 100%);
+  }
+}
