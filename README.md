@@ -1,4 +1,6 @@
-# Standalone components library
+# Altitude UI
+
+Browser Native UI Components.
 
 ## Adding/modifying components:
 
