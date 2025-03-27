@@ -1,0 +1,26 @@
+---
+title: Breadcrumbs
+description: Breadcrumbs
+---
+
+import ShowComponent from '../../../components/doc-helpers/ShowComponent.astro';
+import Breadcrumbs from '../../../components/breadcrumbs/Breadcrumbs.html';
+
+Breadcrumbs help users understand their position on a website and navigate to previous pages by showing a breadcrumb trail back to the homepage.
+
+<ShowComponent>
+  <Breadcrumbs />
+</ShowComponent>
+
+### Accessibility
+
+#### Implemented Accessibility Features
+
+- [x] Focus outline visible enclosing the whole element on keyboard navigation
+- [x] `aria-current` label included on last breadcrumb
+- [x] Proper use of semantic HTML with `<nav>` element
+
+
+#### Accessibility Considerations when Implementing
+
+- [ ] Handle dynamic content changes by adding `aria-current` to the last breadcrumb
