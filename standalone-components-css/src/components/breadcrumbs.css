@@ -12,11 +12,17 @@
         padding: var(--breadcrumb-padding);
         font-size: var(--breadcrumb-font-size);
         font-weight: var(--breadcrumb-font-weight);
+        overflow-x: auto;
+    }
+
+    .breadcrumb::-webkit-scrollbar {
+        display: none;
     }
 
     .breadcrumb ol {
         display: flex;
-        flex-wrap: wrap;
+        flex-wrap: nowrap;
+        white-space: nowrap;
         list-style: none;
         margin: 0;
         padding: 0;
