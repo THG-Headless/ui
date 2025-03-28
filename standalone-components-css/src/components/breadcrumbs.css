@@ -1,11 +1,17 @@
 @layer components {
-    :root{
+    :root {
         --breadcrumb-padding: 0 0.5rem;
-        --breadcrumb-item-margin: 0 0.75rem;
+        --breadcrumb-font-size: 0.875rem;
+        --breadcrumb-font-weight: 300;
+        --breadcrumb-arrow-size: 0.5rem;
+        --breadcrumb-arrow-weight: 1px;
+        --breadcrumb-gap: 0.5rem;
     }
 
     .breadcrumb {
-        padding: var(--breadcrumb-padding)
+        padding: var(--breadcrumb-padding);
+        font-size: var(--breadcrumb-font-size);
+        font-weight: var(--breadcrumb-font-weight);
     }
 
     .breadcrumb ol {
@@ -14,10 +20,14 @@
         list-style: none;
         margin: 0;
         padding: 0;
-        align-items: end;
+        align-items: center;
     }
 
     .breadcrumb li:not(:last-child) {
+        text-decoration: none;
+    }
+
+    .breadcrumb li:not(:last-child) a {
         text-decoration: underline;
     }
 
@@ -25,9 +35,17 @@
         font-weight: var(--font-weight-semi-bold);
     }
 
-    .breadcrumb li:not(:last-child)::after {
-        display: inline-block;
-        margin: var(--breadcrumb-item-margin);
-        content: '›';
+    .breadcrumb ol > li + *:before {
+        content: '';
+        margin-left: calc(var(--breadcrumb-gap) + (var(--breadcrumb-arrow-size) * 0.5));
+        margin-right: calc(var(--breadcrumb-gap) + (var(--breadcrumb-arrow-size) * 0.75));
+        display: inline-block;  
+        height: var(--breadcrumb-arrow-size);
+        width: var(--breadcrumb-arrow-size);
+        transform: rotate(45deg);
+        border-top: var(--breadcrumb-arrow-weight) solid;
+        border-right: var(--breadcrumb-arrow-weight) solid;
+        background-color: transparent;
+        vertical-align: middle;
     }
 }
