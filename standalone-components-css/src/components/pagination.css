@@ -65,6 +65,12 @@
     outline-offset: 1px;
   }
 
+  .pagination-select:disabled {
+    background-color: var(--pagination-disabled);
+    color: var(--pagination-disabled-text);
+    cursor: not-allowed;
+  }
+
   .pagination-total {
     color: var(--pagination-color);
   }

@@ -6,10 +6,14 @@ description: Basic markup for a pagination component
 import ShowComponent from '../../../components/doc-helpers/ShowComponent.astro'
 import { Aside } from '@astrojs/starlight/components'
 import Pagination from '../../../components/pagination/Pagination.html'
-import PaginationDisabled from '../../../components/pagination/PaginationDisabled.html'
+import PaginationNextDisabled from '../../../components/pagination/PaginationNextDisabled.html'
+import PaginationSelectDisabled from '../../../components/pagination/PaginationSelectDisabled.html'
 
 
 # Basic Usage
+
+The basic markup for a pagination component comes with sensible defaults for `:hover`, `:focus`, `:active` pseudoclasses. 
+
 <ShowComponent filePath="./src/components/pagination/Pagination.html">
   <Pagination />
 </ShowComponent>
@@ -17,8 +21,14 @@ import PaginationDisabled from '../../../components/pagination/PaginationDisable
 
 # Disabled
 
-Use the 'disabled' directive to apply disabled styles to the next/prev buttons or to the select
+Use the `disabled` directive to apply disabled styles to the next/prev buttons or to the select
 
-<ShowComponent filePath="./src/components/pagination/Pagination.html">
-  <PaginationDisabled />
+<ShowComponent filePath="./src/components/pagination/PaginationNextDisabled.html">
+  <PaginationNextDisabled />
+</ShowComponent>
+
+You can similarly disable the 'select':
+
+<ShowComponent filePath="./src/components/pagination/PaginationSelectDisabled.html">
+  <PaginationSelectDisabled />
 </ShowComponent>
