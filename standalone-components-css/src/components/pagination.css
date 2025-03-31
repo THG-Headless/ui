@@ -20,18 +20,16 @@
   .pagination-nav {
     display: inline-flex;
     align-items: center;
+    gap: 0.25rem;
     padding: 0.5rem 0.75rem;
-    border: 1px solid var(--pagination-border);
-    border-radius: 0.25rem;
-    background-color: var(--pagination-background);
+    background-color: transparent;
     color: var(--pagination-color);
     font-weight: 500;
     cursor: pointer;
+    border: none;
   }
 
-  .pagination-nav:hover {
-    background-color: var(--pagination-hover);
-  }
+  /* Removed hover state */
 
   .pagination-nav:focus {
     outline: 2px solid var(--pagination-active);
@@ -39,7 +37,6 @@
   }
 
   .pagination-nav:disabled {
-    background-color: var(--pagination-disabled);
     color: var(--pagination-disabled-text);
     cursor: not-allowed;
   }
