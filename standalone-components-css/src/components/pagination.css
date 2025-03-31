@@ -1,5 +1,5 @@
 @layer components {
-  .pagination {
+  :root {
     --pagination-color: #333;
     --pagination-background: #fff;
     --pagination-border: #ddd;
@@ -27,7 +27,6 @@
     color: var(--pagination-color);
     font-weight: 500;
     cursor: pointer;
-    transition: all 0.2s ease;
   }
 
   .pagination-nav:hover {
