@@ -10,9 +10,9 @@ import PaginationNextDisabled from '../../../components/pagination/PaginationNex
 import PaginationSelectDisabled from '../../../components/pagination/PaginationSelectDisabled.html'
 
 
-# Basic Usage
+## Basic Usage
 
-The basic markup for a pagination component comes with sensible defaults for the `:focus` and `:active` pseudoclasses 
+The basic markup for a pagination component comes with sensible defaults for the `:focus` and `:active` pseudoclasses, which provide user feedback when tabbing through the elements.
 
 <ShowComponent filePath="./src/components/pagination/Pagination.html">
   <Pagination />
@@ -22,7 +22,7 @@ You can overwrite the border color for the `:focus` states by assigning a custom
 
 
 
-# Disabled
+## Disabled
 
 Use the `disabled` directive to apply disabled styles to the next/prev buttons or to the select
 
@@ -35,3 +35,32 @@ You can similarly disable the 'select':
 <ShowComponent filePath="./src/components/pagination/PaginationSelectDisabled.html">
   <PaginationSelectDisabled />
 </ShowComponent>
+
+## CSS Variables
+
+Customize the appearance of pagination components using these CSS variables:
+
+| Variable                               | Default Value | Description                                      |
+| -------------------------------------- | ------------- | ------------------------------------------------ |
+| `--pagination-text-color`              | `#333`        | Text color for pagination elements               |
+| `--pagination-background`              | `#fff`        | Background color for select dropdown             |
+| `--pagination-border-color`            | `#ddd`        | Border color for select element                  |
+| `--pagination-active-color`            | `black`       | Color for focus outlines and active states       |
+| `--pagination-active-text`             | `white`       | Text color for active pagination elements        |
+| `--pagination-disabled-background-color` | `#eee`      | Background color for disabled pagination elements |
+| `--pagination-disabled-text-color`     | `#999`        | Text color for disabled pagination elements      |
+
+## Accessibility
+
+The pagination component is designed with accessibility in mind:
+
+- Includes proper `aria-label` attributes for navigation buttons
+- Provides visible focus indicators for keyboard navigation
+- Uses semantic HTML elements for better screen reader support
+- Includes a visually hidden label for the page select dropdown
+
+### Keyboard Interaction
+
+- Tab key navigates between pagination controls
+- Arrow keys change values in the select dropdown
+- Disabled controls are properly excluded from tab order

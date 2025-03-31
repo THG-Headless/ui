@@ -5,8 +5,8 @@
     --pagination-border-color: #ddd;
     --pagination-active-color: black;
     --pagination-active-text: white;
-    --pagination-disabled: #eee;
-    --pagination-disabled-text: #999;
+    --pagination-disabled-background-color: #eee;
+    --pagination-disabled-text-color: #999;
   }
 
   .pagination-container {
@@ -34,7 +34,7 @@
   }
 
   .pagination-nav:disabled {
-    color: var(--pagination-disabled-text);
+    color: var(--pagination-disabled-text-color);
     cursor: not-allowed;
   }
 
@@ -63,8 +63,8 @@
   }
 
   .pagination-select:disabled {
-    background-color: var(--pagination-disabled);
-    color: var(--pagination-disabled-text);
+    background-color: var(--pagination-disabled-background-color);
+    color: var(--pagination-disabled-text-color);
     cursor: not-allowed;
   }
 
