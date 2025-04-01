@@ -38,17 +38,14 @@ You can similarly disable the 'select':
 
 ## CSS Variables
 
-Customize the appearance of pagination components using these CSS variables:
+Customize the colours by overwriting the `skin-pagination` class, for example:
 
-| Variable                               | Default Value | Description                                      |
-| -------------------------------------- | ------------- | ------------------------------------------------ |
-| `--pagination-text-color`              | `#333`        | Text color for pagination elements               |
-| `--pagination-background`              | `#fff`        | Background color for select dropdown             |
-| `--pagination-border-color`            | `#ddd`        | Border color for select element                  |
-| `--pagination-active-color`            | `black`       | Color for focus outlines and active states       |
-| `--pagination-active-text`             | `white`       | Text color for active pagination elements        |
-| `--pagination-disabled-background-color` | `#eee`      | Background color for disabled pagination elements |
-| `--pagination-disabled-text-color`     | `#999`        | Text color for disabled pagination elements      |
+```css
+.skin-pagination {
+    --color-foreground: purple;
+}
+```
+
 
 ## Accessibility
 
