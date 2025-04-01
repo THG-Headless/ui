@@ -1,9 +1,5 @@
 @layer components {
-  :root {
-    --pagination-active-color: black;
-    --pagination-active-text: white;
-  }
-
+ 
   .pagination-container {
     display: flex;
     align-items: center;
