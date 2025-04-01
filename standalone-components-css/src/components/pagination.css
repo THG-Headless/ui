@@ -1,6 +1,5 @@
 @layer components {
   :root {
-    --pagination-border-color: #ddd;
     --pagination-active-color: black;
     --pagination-active-text: white;
   }
