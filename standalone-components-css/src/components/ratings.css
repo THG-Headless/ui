@@ -37,4 +37,54 @@
     background-color: var(--color-foreground);
     width: calc(var(--rating-percentage) * 100%);
   }
+
+  .rating-input {
+    display: inline-flex;
+    position: relative;
+    background-color: transparent !important;
+  }
+
+  .rating-input.wrapper,
+  .rating-input.wrapper * {
+    background-color: transparent !important;
+  }
+
+  .rating-input input[type='radio'] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: var(--rating-icon-size);
+    height: var(--rating-icon-size);
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+    position: relative;
+    z-index: 1;
+    background-color: transparent;
+  }
+
+  .rating-input input[type='radio']::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    -webkit-mask-image: var(--rating-icon);
+    mask-image: var(--rating-icon);
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-size: contain;
+    mask-size: contain;
+    background-color: var(--color-foreground);
+  }
+
+  .rating-input input[type='radio']:checked ~ input[type='radio']::before {
+    background-color: var(--color-background);
+  }
+
+  .rating-input input[type='radio']:focus-visible {
+    outline: 2px solid var(--color-foreground);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
 }
