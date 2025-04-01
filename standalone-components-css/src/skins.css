@@ -302,6 +302,7 @@
 
   .skin-pagination {
     --color-foreground: black;
+    --color-border-active: black;
   }
 
   .skin-navigation {

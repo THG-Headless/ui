@@ -27,7 +27,7 @@
   }
 
   .pagination-nav:focus {
-    outline: 2px solid var(--pagination-active-color);
+    outline: 2px solid var(--color-border-active);
     outline-offset: 1px;
   }
 
@@ -55,7 +55,7 @@
   }
 
   .pagination-select:focus {
-    outline: 2px solid var(--pagination-active-color);
+    outline: 2px solid var(--color-border-active);
     outline-offset: 1px;
   }
 
