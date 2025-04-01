@@ -4,7 +4,6 @@
     --pagination-border-color: #ddd;
     --pagination-active-color: black;
     --pagination-active-text: white;
-    --pagination-disabled-background-color: #eee;
   }
 
   .pagination-container {
@@ -59,7 +58,7 @@
   }
 
   .pagination-select:disabled {
-    background-color: var(--pagination-disabled-background-color);
+    background-color: var(--color-background-disabled);
     color: var(--color-foreground-disabled);
     cursor: not-allowed;
   }
