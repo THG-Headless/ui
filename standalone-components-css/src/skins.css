@@ -302,6 +302,7 @@
 
   .skin-pagination {
     --color-foreground: black;
+    --color-border: #ddd;
     --color-border-active: black;
     --color-foreground-disabled: #999;
     --color-background-disabled: #eee;
