@@ -300,6 +300,10 @@
     );
   }
 
+  .skin-pagination {
+    --color-foreground: black;
+  }
+
   .skin-navigation {
     --color-background: var(
       --tenant-skin-navigation-background,
