@@ -305,7 +305,6 @@
       --tenant-skin-pagination-foreground,
       var(--color-black)
     );
-    --color-foreground: purple;
     --color-border: var(
       --tenant-skin-pagination-border,
       var(--color-neutral-200)
