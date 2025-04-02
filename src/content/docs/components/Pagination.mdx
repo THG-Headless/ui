@@ -36,9 +36,22 @@ You can similarly disable the 'select':
   <PaginationSelectDisabled />
 </ShowComponent>
 
-## CSS Variables
+## Colours
 
-Customize the colours by overwriting the `skin-pagination` class, for example:
+The colours are all encapsulated in skin-pagination, which has a default of:
+
+```css
+  .skin-pagination {
+    --color-foreground: var(
+      --tenant-skin-default-foreground,
+      var(--color-black)
+    );
+    --color-border: var(--color-neutral-200);
+    --color-border-active: var(--color-black);
+    --color-foreground-disabled: var(--color-neutral-400);
+    --color-background-disabled: var(--color-neutral-200);
+}
+```
 
 ```css
 .skin-pagination {
