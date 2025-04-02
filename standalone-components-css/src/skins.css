@@ -308,7 +308,7 @@
     --color-border: var(--color-neutral-200);
     --color-border-active: var(--color-black);
     --color-foreground-disabled: var(--color-neutral-400);
-    --color-background-disabled: #eee;
+    --color-background-disabled: var(--color-neutral-200);
   }
 
   .skin-navigation {
