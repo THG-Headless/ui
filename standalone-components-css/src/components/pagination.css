@@ -10,6 +10,7 @@
     display: inline-flex;
     align-items: center;
     gap: 0.25rem;
+    font-size: var(--text-desktop-sm);
     padding: 0.5rem 0.75rem;
     cursor: pointer;
     border: none;

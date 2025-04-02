@@ -34,40 +34,27 @@ You can similarly disable the 'select':
 
 ## Colours
 
-The colours are all encapsulated in `skin-pagination`, which has a default of:
+The colours are all encapsulated in `skin-pagination`, which has a default set of CSS variables:
 
 ```css
-  .skin-pagination {
-    --color-foreground: var(
-      --tenant-skin-pagination-foreground,
-      var(--color-black)
-    );
-    --color-border: var(
-      --tenant-skin-pagination-border,
-      var(--color-neutral-200)
-    );
-    --color-border-active: var(
-      --tenant-skin-pagination-border-active,
-      var(--color-black)
-    );
-    --color-foreground-disabled: var(
-        --tenant-skin-pagination-foreground-disabled,
-      var(--color-neutral-400));
-    --color-background-disabled: var(
-      --tenant-skin-pagination-background-disabled,
-      var(--color-neutral-200)
-    );
-  }
+.skin-pagination {
+  --color-foreground: var(--tenant-skin-pagination-foreground, var(--color-black));
+  --color-border: var(--tenant-skin-pagination-border, var(--color-neutral-200));
+  --color-border-active: var(--tenant-skin-pagination-border-active, var(--color-black));
+  --color-foreground-disabled: var(--tenant-skin-pagination-foreground-disabled, var(--color-neutral-400));
+  --color-background-disabled: var(--tenant-skin-pagination-background-disabled, var(--color-neutral-200));
+}
 ```
 
-Therefore, you can control the colors completely by overriding the following conventional variables:
+You can customize pagination colors by overriding these variables:
 
-  --tenant-skin-pagination-foreground,
-  --tenant-skin-pagination-border,
-  --tenant-skin-pagination-border-active,
-  --tenant-skin-pagination-foreground-disabled,
-  --tenant-skin-pagination-background-disabled,
-
+| Variable | Default | Description |
+|----------|---------|-------------|
+| `--tenant-skin-pagination-foreground` | `var(--color-black)` | Text color for pagination elements |
+| `--tenant-skin-pagination-border` | `var(--color-neutral-200)` | Border color for select element |
+| `--tenant-skin-pagination-border-active` | `var(--color-black)` | Color for focus outlines and active states |
+| `--tenant-skin-pagination-foreground-disabled` | `var(--color-neutral-400)` | Text color for disabled elements |
+| `--tenant-skin-pagination-background-disabled` | `var(--color-neutral-200)` | Background color for disabled elements |
 
 
 ## Accessibility
