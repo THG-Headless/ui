@@ -1,0 +1,60 @@
+---
+title: Breadcrumbs
+description: Breadcrumbs
+---
+
+import ShowComponent from "../../../components/doc-helpers/ShowComponent.astro";
+import Breadcrumbs from "../../../components/breadcrumbs/Breadcrumbs.html";
+
+Breadcrumbs help users understand their position on a website and navigate to previous pages by showing a breadcrumb trail back to the homepage.
+
+<ShowComponent>
+  <Breadcrumbs />
+</ShowComponent>
+
+### Style Override Example
+The separators between breadcrumb items are created using CSS styling and can be customized to create different visual styles using the CSS variables provided.
+<ShowComponent>
+  <div style={
+    {
+      '--breadcrumb-icon-border-top': '1px',
+      '--breadcrumb-icon-height': '1rem',
+      '--breadcrumb-icon-width': '0',
+      '--breadcrumb-icon-rotate': '0',
+      '--breadcrumb-icon-border-top:': '0',
+      '--breadcrumb-gap-left': '0.75rem',
+      '--breadcrumb-gap-right': '0.75rem'
+    }
+  }>
+    <Breadcrumbs />
+  </div>
+</ShowComponent>
+
+<ShowComponent>
+  <div style={
+    {
+      '--breadcrumb-icon-border-top': '1px',
+      '--breadcrumb-icon-height': '1rem',
+      '--breadcrumb-icon-width': '0.25rem',
+      '--breadcrumb-icon-rotate': '15deg',
+      '--breadcrumb-icon-border-top:': '0',
+      '--breadcrumb-gap-left': '0.25rem',
+      '--breadcrumb-gap-right': '0.4rem',
+      '--breadcrumb-font-weight-last': 'var(--font-weight-normal)'
+    }
+  }>
+    <Breadcrumbs />
+  </div>
+</ShowComponent>
+
+### Accessibility
+
+#### Implemented Accessibility Features
+
+- [x] Focus outline visible enclosing the whole element on keyboard navigation
+- [x] `aria-current` label included on last breadcrumb
+- [x] Proper use of semantic HTML with `<nav>` element
+
+#### Accessibility Considerations when Implementing
+
+- [ ] Handle dynamic content changes by adding `aria-current` to the last breadcrumb

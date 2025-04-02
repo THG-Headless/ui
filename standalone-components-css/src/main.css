@@ -437,6 +437,7 @@
   @import './components/drawer.css';
   @import './components/ratings.css';
   @import './components/progress.css';
+  @import './components/breadcrumbs.css';
   @import './skins.css';
 }
 
