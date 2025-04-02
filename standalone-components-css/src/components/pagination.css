@@ -1,13 +1,13 @@
 @layer components {
  :root {
-  --pagination-padding-nav: 0.5rem 0.75rem;
   --pagination-font-size: var(--text-desktop-sm);
   --pagination-font-size-nav: var(--text-desktop-sm);
   --pagination-font-weight-page: var(--font-weight-semi-bold);
   --pagination-font-weight-nav: var(--font-weight-semi-bold);
   --pagination-gap-nav: 0.25rem;
   --pagination-select-wrapper-gap: 0.5rem;
-  --pagination-select-padding: 0.5rem 1.5rem 0.5rem 0.75rem;
+  --pagination-nav-padding: 0.5rem 0.75rem;
+  --pagination-select-padding: 0.25rem 1.5rem 0.25rem 0.75rem;
  }
  
   .pagination-container {
@@ -21,7 +21,7 @@
     align-items: center;
     gap: var(--pagination-gap-nav);
     font-size: var(--pagination-font-size-nav);
-    padding: var(--pagination-padding-nav);
+    padding: var(--pagination-nav-padding);
     cursor: pointer;
     border: none;
   }
