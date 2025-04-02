@@ -301,10 +301,10 @@
   }
 
   .skin-pagination {
-    /* --color-foreground: var(
+    --color-foreground: var(
       --tenant-skin-pagination-foreground,
       var(--color-black)
-    ); */
+    );
     --color-foreground: purple;
     --color-border: var(
       --tenant-skin-pagination-border,
