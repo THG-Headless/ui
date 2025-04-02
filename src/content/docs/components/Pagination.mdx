@@ -39,21 +39,35 @@ The colours are all encapsulated in `skin-pagination`, which has a default of:
 ```css
   .skin-pagination {
     --color-foreground: var(
-      --tenant-skin-default-foreground,
+      --tenant-skin-pagination-foreground,
       var(--color-black)
     );
-    --color-border: var(--color-neutral-200);
-    --color-border-active: var(--color-black);
-    --color-foreground-disabled: var(--color-neutral-400);
-    --color-background-disabled: var(--color-neutral-200);
-}
+    --color-border: var(
+      --tenant-skin-pagination-border,
+      var(--color-neutral-200)
+    );
+    --color-border-active: var(
+      --tenant-skin-pagination-border-active,
+      var(--color-black)
+    );
+    --color-foreground-disabled: var(
+        --tenant-skin-pagination-foreground-disabled,
+      var(--color-neutral-400));
+    --color-background-disabled: var(
+      --tenant-skin-pagination-background-disabled,
+      var(--color-neutral-200)
+    );
+  }
 ```
 
-```css
-.skin-pagination {
-    --color-foreground: purple;
-}
-```
+Therefore, you can control the colors completely by overriding the following conventional variables:
+
+  --tenant-skin-pagination-foreground,
+  --tenant-skin-pagination-border,
+  --tenant-skin-pagination-border-active,
+  --tenant-skin-pagination-foreground-disabled,
+  --tenant-skin-pagination-background-disabled,
+
 
 
 ## Accessibility

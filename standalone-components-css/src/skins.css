@@ -314,9 +314,8 @@
       var(--color-black)
     );
     --color-foreground-disabled: var(
-        --tenant-skin-pagination-foreground-disabled
-      ),
-      var(--color-neutral-400);
+        --tenant-skin-pagination-foreground-disabled,
+      var(--color-neutral-400));
     --color-background-disabled: var(
       --tenant-skin-pagination-background-disabled,
       var(--color-neutral-200)
