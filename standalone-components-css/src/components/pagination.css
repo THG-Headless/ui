@@ -1,4 +1,14 @@
 @layer components {
+ :root {
+  --pagination-padding-nav: 0.5rem 0.75rem;
+  --pagination-font-size: var(--text-desktop-sm);
+  --pagination-font-size-nav: var(--text-desktop-sm);
+  --pagination-font-weight-page: var(--font-weight-semi-bold);
+  --pagination-font-weight-nav: var(--font-weight-semi-bold);
+  --pagination-gap-nav: 0.25rem;
+  --pagination-select-wrapper-gap: 0.5rem;
+  --pagination-select-padding: 0.5rem 1.5rem 0.5rem 0.75rem;
+ }
  
   .pagination-container {
     display: flex;
@@ -9,9 +19,9 @@
   .pagination-nav {
     display: inline-flex;
     align-items: center;
-    gap: 0.25rem;
-    font-size: var(--text-desktop-sm);
-    padding: 0.5rem 0.75rem;
+    gap: var(--pagination-gap-nav);
+    font-size: var(--pagination-font-size-nav);
+    padding: var(--pagination-padding-nav);
     cursor: pointer;
     border: none;
   }
@@ -29,15 +39,16 @@
   .pagination-select-wrapper {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: var(--pagination-select-wrapper-gap);
   }
 
   .pagination-select {
     appearance: none;
     position: relative;
   }
+
   .pagination-select {
-    padding: 0.5rem 1.5rem 0.5rem 0.75rem;
+    padding: var(--pagination-select-padding);
     border: 1px solid var(--color-border);
     border-radius: 0.25rem;
     background-color: transparent;
