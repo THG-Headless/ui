@@ -1,0 +1,81 @@
+@layer components {
+ :root {
+  --pagination-font-size: var(--text-desktop-sm);
+  --pagination-font-size-nav: var(--text-desktop-sm);
+  --pagination-font-weight-page: var(--font-weight-semi-bold);
+  --pagination-font-weight-nav: var(--font-weight-semi-bold);
+  --pagination-gap-nav: 0.25rem;
+  --pagination-select-wrapper-gap: 0.5rem;
+  --pagination-nav-padding: 0.5rem 0.75rem;
+  --pagination-select-padding: 0.25rem 1.5rem 0.25rem 0.75rem;
+ }
+ 
+  .pagination-container {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .pagination-nav {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--pagination-gap-nav);
+    font-size: var(--pagination-font-size-nav);
+    padding: var(--pagination-nav-padding);
+    cursor: pointer;
+    border: none;
+  }
+
+  .pagination-nav:focus {
+    outline: 2px solid var(--color-border-active);
+    outline-offset: 1px;
+  }
+
+  .pagination-nav:disabled {
+    color: var(--color-foreground-disabled);
+    cursor: not-allowed;
+  }
+
+  .pagination-select-wrapper {
+    display: flex;
+    align-items: center;
+    gap: var(--pagination-select-wrapper-gap);
+  }
+
+  .pagination-select {
+    appearance: none;
+    position: relative;
+  }
+
+  .pagination-select {
+    padding: var(--pagination-select-padding);
+    border: 1px solid var(--color-border);
+    border-radius: 0.25rem;
+    background-color: transparent;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.25rem center;
+    background-size: 1rem;
+  }
+
+  .pagination-select:focus {
+    outline: 2px solid var(--color-border-active);
+    outline-offset: 1px;
+  }
+
+  .pagination-select:disabled {
+    background-color: var(--color-background-disabled);
+    color: var(--color-foreground-disabled);
+    cursor: not-allowed;
+  }
+
+
+  /* Responsive adjustments */
+  @media (max-width: 640px) {
+    .pagination-container {
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+  }
+}

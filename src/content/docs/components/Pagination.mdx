@@ -1,0 +1,90 @@
+---
+title: Pagination
+description: Basic markup for a pagination component
+---
+
+import ShowComponent from '../../../components/doc-helpers/ShowComponent.astro'
+import { Aside } from '@astrojs/starlight/components'
+import Pagination from '../../../components/pagination/Pagination.html'
+import PaginationNextDisabled from '../../../components/pagination/PaginationNextDisabled.html'
+import PaginationSelectDisabled from '../../../components/pagination/PaginationSelectDisabled.html'
+
+
+## Basic Usage
+
+
+<ShowComponent filePath="./src/components/pagination/Pagination.html">
+  <Pagination />
+</ShowComponent>
+
+
+## Disabled
+
+Use the `disabled` directive to apply disabled styles to the next/prev buttons or to the select
+
+<ShowComponent filePath="./src/components/pagination/PaginationNextDisabled.html">
+  <PaginationNextDisabled />
+</ShowComponent>
+
+You can similarly disable the 'select':
+
+<ShowComponent filePath="./src/components/pagination/PaginationSelectDisabled.html">
+  <PaginationSelectDisabled />
+</ShowComponent>
+
+## Colours
+
+The colours are all encapsulated in `skin-pagination`, which has a default set of CSS variables:
+
+```css
+.skin-pagination {
+  --color-foreground: var(--tenant-skin-pagination-foreground, var(--color-black));
+  --color-border: var(--tenant-skin-pagination-border, var(--color-neutral-200));
+  --color-border-active: var(--tenant-skin-pagination-border-active, var(--color-black));
+  --color-foreground-disabled: var(--tenant-skin-pagination-foreground-disabled, var(--color-neutral-400));
+  --color-background-disabled: var(--tenant-skin-pagination-background-disabled, var(--color-neutral-200));
+}
+```
+
+You can customize pagination colors by overriding these variables:
+
+| Variable | Default | Description |
+|----------|---------|-------------|
+| `--tenant-skin-pagination-foreground` | `var(--color-black)` | Text color for pagination elements |
+| `--tenant-skin-pagination-border` | `var(--color-neutral-200)` | Border color for select element |
+| `--tenant-skin-pagination-border-active` | `var(--color-black)` | Color for focus outlines and active states |
+| `--tenant-skin-pagination-foreground-disabled` | `var(--color-neutral-400)` | Text color for disabled elements |
+| `--tenant-skin-pagination-background-disabled` | `var(--color-neutral-200)` | Background color for disabled elements |
+
+## Typography
+
+| Variable | Default | Description |
+|----------|---------|-------------|
+| `--pagination-font-size` | `var(--text-desktop-sm)` | Base font size for pagination |
+| `--pagination-font-size-nav` | `var(--text-desktop-sm)` | Font size for navigation buttons |
+| `--pagination-font-weight-page` | `var(--font-weight-semi-bold)` | Font weight for page numbers |
+| `--pagination-font-weight-nav` | `var(--font-weight-semi-bold)` | Font weight for navigation buttons |
+
+## Spacing
+
+| Variable | Default | Description |
+|----------|---------|-------------|
+| `--pagination-padding-nav` | `0.5rem 0.75rem` | Padding for navigation buttons |
+| `--pagination-gap-nav` | `0.25rem` | Gap between icon and text in nav buttons |
+| `--pagination-select-wrapper-gap` | `0.5rem` | Gap between select and total text |
+| `--pagination-select-padding` | `0.5rem 1.5rem 0.5rem 0.75rem` | Padding for select dropdown |
+
+## Accessibility
+
+The pagination component is designed with accessibility in mind:
+
+- Includes proper `aria-label` attributes for navigation buttons
+- Provides visible focus indicators for keyboard navigation
+- Uses semantic HTML elements for better screen reader support
+- Includes a visually hidden label for the page select dropdown
+
+### Keyboard Interaction
+
+- Tab key navigates between pagination controls
+- Arrow keys change values in the select dropdown
+- Disabled controls are properly excluded from tab order
