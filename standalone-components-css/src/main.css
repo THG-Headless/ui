@@ -438,6 +438,7 @@
   @import './components/ratings.css';
   @import './components/progress.css';
   @import './components/pagination.css';
+  @import './components/breadcrumbs.css';
   @import './skins.css';
 }
 
