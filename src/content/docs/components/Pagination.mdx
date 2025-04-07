@@ -8,10 +8,13 @@ import { Aside } from '@astrojs/starlight/components'
 import Pagination_1of3 from '../../../components/pagination/Pagination_1_of_3.html'
 import Pagination_2of3 from '../../../components/pagination/Pagination_2_of_3.html'
 import Pagination_3of3 from '../../../components/pagination/Pagination_3_of_3.html'
+import Pagination_Disabled from
+'../../../components/pagination/Pagination_Disabled.html'
 
 ## Basic Usage
 
-Custom styling is encapsulated in the `styled-select` - the rest is simple tailwind.
+The markup for this pagination component uses tailwind and one custom class
+called `styled-select` applied to the `select` element.
 
 <ShowComponent filePath="./src/components/pagination/Pagination_1_of_3.html">
   <Pagination_1of3 />
@@ -25,4 +28,12 @@ Custom styling is encapsulated in the `styled-select` - the rest is simple tailw
   <Pagination_3of3 />
 </ShowComponent>
 
+## Disabled
+
+Disabled styling applies when you add the `disabled` directive to the `select`
+element
+
+<ShowComponent filePath="./src/components/pagination/Pagination_Disabled.html">
+  <Pagination_Disabled />
+</ShowComponent>
 
