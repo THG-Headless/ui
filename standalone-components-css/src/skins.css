@@ -612,6 +612,11 @@
     );
   }
 
+
+  .skin-pagination-select {
+    --color-border: var(--color-neutral-300);
+  }
+
   .skin-primary-emphasised {
     --color-background: var(
       --tenant-skin-primary-emphasised-background,

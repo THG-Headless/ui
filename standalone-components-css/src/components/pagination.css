@@ -1,4 +1,4 @@
-.styled-select {
+.pagination-select {
     appearance: none;
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -10,9 +10,10 @@
     padding-top: 0.25rem;
     padding-bottom: 0.25rem;
     padding-left: 0.75rem;
+    border: 1px solid var(--color-border);
   }
   
-  .styled-select:disabled {
+  .pagination-select:disabled {
     border: 2px solid var(--color-border-disabled);
     --color-foreground: var(--color-foreground-disabled);
     background-image:
