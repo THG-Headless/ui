@@ -13,6 +13,8 @@
   }
   
   .styled-select:disabled {
+    border: 2px solid var(--color-border-disabled);
+    --color-foreground: var(--color-foreground-disabled);
     background-image:
         linear-gradient(
             color-mix(in oklch, var(--color-background), transparent 30%)
