@@ -613,6 +613,28 @@
   }
 
 
+  .skin-pagination {
+    --color-foreground: var(
+      --tenant-skin-pagination-foreground,
+      var(--color-black)
+    );
+    --color-border: var(
+      --tenant-skin-pagination-border,
+      var(--color-neutral-200)
+    );
+    --color-border-active: var(
+      --tenant-skin-pagination-border-active,
+      var(--color-black)
+    );
+    --color-foreground-disabled: var(
+        --tenant-skin-pagination-foreground-disabled,
+      var(--color-neutral-400));
+    --color-background-disabled: var(
+      --tenant-skin-pagination-background-disabled,
+      var(--color-neutral-200)
+    );
+  }
+  
   .skin-pagination-select {
     --color-border: var(--color-neutral-300);
   }
