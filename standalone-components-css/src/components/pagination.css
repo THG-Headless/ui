@@ -8,6 +8,7 @@
     --pagination-select-border-width-disabled: 2px;
     --pagination-select-background-size: 1rem 1rem;
     --pagination-select-background-position: right 0.5rem center;
+    --pagination-select-border-radius: var(--radius-site);
   }
 
   .pagination-select {
@@ -23,6 +24,7 @@
     padding-bottom: var(--pagination-select-padding-bottom);
     padding-left: var(--pagination-select-padding-left);
     border: var(--pagination-select-border-width) solid var(--color-border);
+    border-radius: var(--pagination-select-border-radius);
   }
   
   .pagination-select:disabled {
