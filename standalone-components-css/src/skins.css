@@ -618,6 +618,10 @@
       --tenant-skin-pagination-foreground,
       var(--color-black)
     );
+    --color-border-disabled: var(
+      --tenant-skin-pagination-border-disabled,
+      var(--color-neutral-200)
+    );
     --color-border: var(
       --tenant-skin-pagination-border,
       var(--color-neutral-200)
