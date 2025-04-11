@@ -1,0 +1,48 @@
+@layer components {
+  :root {
+    --pagination-select-padding-top: 0.25rem;
+    --pagination-select-padding-bottom: 0.25rem;
+    --pagination-select-padding-left: 0.75rem;
+    --pagination-select-padding-right: 2rem;
+    --pagination-select-border-width: 1px;
+    --pagination-select-border-width-disabled: 2px;
+    --pagination-select-background-size: 1rem 1rem;
+    --pagination-select-background-position: right 0.5rem center;
+    --pagination-select-border-radius: var(--radius-site);
+    --pagination-font-size: var(--text-sm);
+    --pagination-font-weight: var(--font-weight-medium);
+    --pagination-gap: 0.5rem;
+  }
+
+  .pagination-container {
+    font-size: var(--pagination-font-size);
+    font-weight: var(--pagination-font-weight);
+    gap: var(--pagination-gap);
+  }
+
+  .pagination-select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: var(--pagination-select-background-position);
+    background-size: var(--pagination-select-background-size);
+    padding-right: var(--pagination-select-padding-right);
+    padding-top: var(--pagination-select-padding-top);
+    padding-bottom: var(--pagination-select-padding-bottom);
+    padding-left: var(--pagination-select-padding-left);
+    border: var(--pagination-select-border-width) solid var(--color-border);
+    border-radius: var(--pagination-select-border-radius);
+  }
+  
+  .pagination-select:disabled {
+    border: var(--pagination-select-border-width-disabled) solid var(--color-border-disabled);
+    --color-foreground: var(--color-foreground-disabled);
+    background-image:
+        linear-gradient(
+            color-mix(in oklch, var(--color-background), transparent 30%)
+        ),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  }
+}
