@@ -5,27 +5,29 @@ description: Basic markup for a pagination component
 
 import ShowComponent from '../../../components/doc-helpers/ShowComponent.astro'
 import { Aside } from '@astrojs/starlight/components'
-import Pagination_1of3 from '../../../components/pagination/Pagination_1_of_3.html'
-import Pagination_2of3 from '../../../components/pagination/Pagination_2_of_3.html'
-import Pagination_3of3 from '../../../components/pagination/Pagination_3_of_3.html'
-import Pagination_Disabled from
+import PaginationStart from '../../../components/pagination/Pagination_Start.html'
+import Pagination from '../../../components/pagination/Pagination.html'
+import PaginationEnd from '../../../components/pagination/Pagination_End.html'
+import PaginationDisabled from
 '../../../components/pagination/Pagination_Disabled.html'
 
 ## Basic Usage
 
-The markup for this pagination component uses tailwind and one custom class
-called `pagination-select` applied to the `select` element. We encourage you to hide the "prev" and "next" buttons if they are not clickable. 
 
-<ShowComponent filePath="./src/components/pagination/Pagination_1_of_3.html">
-  <Pagination_1of3 />
+<ShowComponent filePath="./src/components/pagination/Pagination.html">
+  <Pagination />
 </ShowComponent>
 
-<ShowComponent filePath="./src/components/pagination/Pagination_2_of_3.html">
-  <Pagination_2of3 />
+## First and Last Pages
+
+We encourage you to hide the "prev" and "next" buttons if they are not clickable. 
+
+<ShowComponent filePath="./src/components/pagination/Pagination_Start.html">
+  <PaginationStart />
 </ShowComponent>
 
-<ShowComponent filePath="./src/components/pagination/Pagination_3_of_3.html">
-  <Pagination_3of3 />
+<ShowComponent filePath="./src/components/pagination/Pagination_End.html">
+  <PaginationEnd />
 </ShowComponent>
 
 ## Disabled
@@ -34,6 +36,6 @@ Disabled styling applies when you add the `disabled` directive to the `select`
 element
 
 <ShowComponent filePath="./src/components/pagination/Pagination_Disabled.html">
-  <Pagination_Disabled />
+  <PaginationDisabled />
 </ShowComponent>
 
