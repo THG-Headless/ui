@@ -9,6 +9,15 @@
     --pagination-select-background-size: 1rem 1rem;
     --pagination-select-background-position: right 0.5rem center;
     --pagination-select-border-radius: var(--radius-site);
+    --pagination-font-size: var(--text-sm);
+    --pagination-font-weight: var(--font-weight-medium);
+    --pagination-gap: 0.5rem;
+  }
+
+  .pagination-container {
+    font-size: var(--pagination-font-size);
+    font-weight: var(--pagination-font-weight);
+    gap: var(--pagination-gap);
   }
 
   .pagination-select {

@@ -5,37 +5,51 @@ description: Basic markup for a pagination component
 
 import ShowComponent from '../../../components/doc-helpers/ShowComponent.astro'
 import { Aside } from '@astrojs/starlight/components'
-import PaginationStart from '../../../components/pagination/Pagination_Start.html'
 import Pagination from '../../../components/pagination/Pagination.html'
 import PaginationEnd from '../../../components/pagination/Pagination_End.html'
 import PaginationDisabled from
 '../../../components/pagination/Pagination_Disabled.html'
 
-## Basic Usage
+## Basic Example
 
+The basic `Pagination` component includes navigation buttons and a page selector.
 
 <ShowComponent filePath="./src/components/pagination/Pagination.html">
   <Pagination />
 </ShowComponent>
 
-## First and Last Pages
-
-We encourage you to hide the "prev" and "next" buttons if they are not clickable. 
-
-<ShowComponent filePath="./src/components/pagination/Pagination_Start.html">
-  <PaginationStart />
-</ShowComponent>
-
-<ShowComponent filePath="./src/components/pagination/Pagination_End.html">
-  <PaginationEnd />
-</ShowComponent>
 
 ## Disabled
 
-Disabled styling applies when you add the `disabled` directive to the `select`
-element
+The `Pagination` component supports a disabled state for the page selector, by applying a `disabled` attribute. 
 
 <ShowComponent filePath="./src/components/pagination/Pagination_Disabled.html">
   <PaginationDisabled />
 </ShowComponent>
 
+## CSS Variables
+
+The `Pagination` component uses the following CSS variables for customization:
+
+| Variable                              | Default Value       | Description                                   |
+|---------------------------------------|---------------------|-----------------------------------------------|
+| `--pagination-select-padding-top`     | `0.25rem`           | Top padding for the page selector.           |
+| `--pagination-select-padding-bottom`  | `0.25rem`           | Bottom padding for the page selector.        |
+| `--pagination-select-padding-left`    | `0.75rem`           | Left padding for the page selector.          |
+| `--pagination-select-padding-right`   | `2rem`              | Right padding for the page selector.         |
+| `--pagination-select-border-width`    | `1px`               | Border width for the page selector.          |
+| `--pagination-select-border-width-disabled` | `2px`         | Border width for the disabled page selector. |
+| `--pagination-select-background-size` | `1rem 1rem`         | Background size for the dropdown arrow.      |
+| `--pagination-select-background-position` | `right 0.5rem center` | Background position for the dropdown arrow. |
+
+
+## Accessibility
+
+## First and Last Pages
+
+We recommend removing buttons that aren't clickable with JavaScript, for the first and last pages. This would look like this:
+
+
+<ShowComponent filePath="./src/components/pagination/Pagination_End.html">
+  <PaginationEnd />
+</ShowComponent>

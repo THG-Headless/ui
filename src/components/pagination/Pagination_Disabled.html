@@ -1,14 +1,67 @@
-  <nav class="skin-pagination flex gap-6" aria-label="Pagination">
-    <div class="flex items-center justify-center gap-2">
-      <select
-        id="page-selector"
-        name="page-selector"
-        class="pagination-select skin-pagination-select"
-        aria-label="1 of 1"
-        disabled
-      >
-        <option value="1" aria-label="Page 1 of 1">1</option>
-      </select>
-      <p class="text-body" aria-hidden="true">of 1</p>
-    </div>
-  </nav>
+<nav class="skin-pagination flex gap-6 pagination-container" aria-label="Pagination">
+  <a
+    id="previous-page"
+    href="?pageNumber=1"
+    class="flex cursor-pointer items-center"
+    aria-label="Previous page"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      strokeWidth="2"
+      stroke="currentColor"
+      class="pointer-events-none h-5 w-5"
+      height="25"
+      width="25"
+      aria-hidden="true"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M15.75 19.5L8.25 12l7.5-7.5"
+      ></path>
+    </svg>
+    <span>Prev</span>
+  </a>
+  <div class="flex items-center justify-center gap-2">
+    <select
+      id="page-selector"
+      name="page-selector"
+      class="pagination-select skin-pagination-select"
+      aria-label="1 of 3"
+      disabled
+    >
+      <option value="1" aria-label="Page 1 of 3">1</option>
+      <option value="2" aria-label="Page 2 of 3" selected>2</option>
+      <option value="3" aria-label="Page 3 of 3">3</option>
+    </select>
+    <p class="text-body" aria-hidden="true">of 3</p>
+  </div>
+  <a
+    id="next-page"
+    class="flex cursor-pointer items-center"
+    href="?pageNumber=3"
+    aria-label="Next page"
+  >
+    <span>Next</span>
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      strokeWidth="2"
+      stroke="currentColor"
+      class="pointer-events-none h-5 w-5"
+      height="25"
+      width="25"
+      aria-hidden="true"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M15.75 19.5L8.25 12l7.5-7.5"
+        transform="rotate(180 12 12)"
+      ></path>
+    </svg>
+  </a>
+</nav>
