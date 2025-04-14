@@ -1,7 +1,7 @@
 @layer components {
   :root {
-    --pagination-select-padding-top: 0.25rem;
-    --pagination-select-padding-bottom: 0.25rem;
+    --pagination-select-padding-top: 0.5rem;
+    --pagination-select-padding-bottom: 0.5rem;
     --pagination-select-padding-left: 0.75rem;
     --pagination-select-padding-right: 2rem;
     --pagination-select-border-width: 1px;
@@ -11,13 +11,19 @@
     --pagination-select-border-radius: var(--radius-site);
     --pagination-font-size: var(--text-sm);
     --pagination-font-weight: var(--font-weight-medium);
-    --pagination-gap: 0.5rem;
+    --pagination-horizontal-gap: 1rem;
+  }
+
+  .pagination-container > a:disabled {
+    color: var(--color-foreground-disabled);
+    cursor: not-allowed;
   }
 
   .pagination-container {
+    display: flex;
     font-size: var(--pagination-font-size);
     font-weight: var(--pagination-font-weight);
-    gap: var(--pagination-gap);
+    gap: var(--pagination-horizontal-gap);
   }
 
   .pagination-select {

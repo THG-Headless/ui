@@ -23,6 +23,8 @@ The basic `Pagination` component includes navigation buttons and a page selector
 
 The `Pagination` component supports a disabled state for the page selector, by applying a `disabled` attribute. 
 
+Note: If the "select" is disabled it is best to either hide or disable the prev/next buttons. 
+
 <ShowComponent filePath="./src/components/pagination/Pagination_Disabled.html">
   <PaginationDisabled />
 </ShowComponent>
@@ -43,13 +45,24 @@ The `Pagination` component uses the following CSS variables for customization:
 | `--pagination-select-background-position` | `right 0.5rem center` | Background position for the dropdown arrow. |
 
 
-## Accessibility
 
-## First and Last Pages
+### Accessibility
+#### Implemented Accessibility Features
 
-We recommend removing buttons that aren't clickable with JavaScript, for the first and last pages. This would look like this:
+- [ ] Includes proper `aria-label` attributes for navigation buttons
+- [ ] Provides visible focus indicators for keyboard navigation
+- [ ] Use of semantic HTML elements `<nav>` and `<select>` 
+- [ ] Tab key navigates between pagination controls
+- [ ] Arrow keys change values in the select dropdown
+- [ ] Disabled controls are properly excluded from tab order
 
+#### Accessibility- Implementation Notes
+
+We recommend removing buttons that aren't clickable with JavaScript, for the first and last pages, e.g:
 
 <ShowComponent filePath="./src/components/pagination/Pagination_End.html">
   <PaginationEnd />
 </ShowComponent>
+
+
+
