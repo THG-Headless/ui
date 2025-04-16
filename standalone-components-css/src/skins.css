@@ -614,6 +614,7 @@
 
 
   .skin-pagination {
+    --color-background: var(--color-white);
     --color-foreground: var(
       --tenant-skin-pagination-foreground,
       var(--color-black)
