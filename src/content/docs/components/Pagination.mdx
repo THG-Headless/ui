@@ -1,0 +1,61 @@
+---
+title: Pagination
+description: Basic markup for a pagination component
+---
+
+import ShowComponent from '../../../components/doc-helpers/ShowComponent.astro'
+import { Aside } from '@astrojs/starlight/components'
+import Pagination from '../../../components/pagination/Pagination.html'
+import PaginationEnd from '../../../components/pagination/Pagination_End.html'
+
+## Basic Example
+
+The basic `Pagination` component includes navigation buttons and a page selector.
+
+<ShowComponent filePath="./src/components/pagination/Pagination.html">
+  <Pagination />
+</ShowComponent>
+
+The 'previous' and 'next' buttons should be removed for the first and last pages, i.e :
+
+<ShowComponent filePath="./src/components/pagination/Pagination_End.html">
+  <PaginationEnd />
+</ShowComponent>
+
+
+## CSS Variables
+
+The following CSS variables are available for customizing the `Pagination` component:
+
+| Variable                              | Default Value               | Description                                   |
+|---------------------------------------|-----------------------------|-----------------------------------------------|
+| `--pagination-select-padding-top`     | `0.5rem`                    | Top padding for the page selector.           |
+| `--pagination-select-padding-bottom`  | `0.5rem`                    | Bottom padding for the page selector.        |
+| `--pagination-select-padding-left`    | `0.75rem`                   | Left padding for the page selector.          |
+| `--pagination-select-padding-right`   | `2rem`                      | Right padding for the page selector.         |
+| `--pagination-select-border-width`    | `1px`                       | Border width for the page selector.          |
+| `--pagination-select-border-width-disabled` | `2px`                 | Border width for the disabled page selector. |
+| `--pagination-select-background-size` | `1rem 1rem`                 | Background size for the dropdown arrow.      |
+| `--pagination-select-background-position` | `right 0.5rem center`     | Background position for the dropdown arrow.  |
+| `--pagination-select-border-radius`   | `var(--radius-site)`        | Border radius for the page selector.         |
+| `--pagination-font-size`              | `var(--text-sm)`            | Font size for pagination elements.           |
+| `--pagination-font-weight`            | `var(--font-weight-medium)` | Font weight for pagination elements.         |
+| `--pagination-horizontal-gap`         | `1rem`                      | Horizontal gap between pagination elements.  |
+| `--pagination-select-svg`         |     `url(path/to/svg) `               | Downward chevron |
+
+
+### Accessibility
+
+#### Implemented Accessibility Features
+
+- [ ] Includes `aria-label` attributes for navigation buttons
+- [ ] Includes `aria-label` attributes for options. 
+- [ ] Provides visible focus indicators for keyboard navigation
+- [ ] Use of semantic HTML elements `<nav>` and `<select>` 
+- [ ] Tab key navigates between pagination controls
+- [ ] Arrow keys change values in the select dropdown
+- [ ] Disabled controls are properly excluded from tab order
+
+
+
+
