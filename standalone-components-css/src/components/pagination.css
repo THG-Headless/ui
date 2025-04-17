@@ -14,6 +14,12 @@
     --pagination-horizontal-gap: 1rem;
   }
 
+  .pagination-button {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+  }
+  
   .pagination-container > a:disabled {
     color: var(--color-foreground-disabled);
     cursor: not-allowed;
