@@ -9,7 +9,7 @@
     --pagination-select-background-size: 1rem 1rem;
     --pagination-select-background-position: right 0.5rem center;
     --pagination-select-border-radius: var(--radius-site);
-    --pagination-font-size: var(--text-sm);
+    --pagination-font-size: var(--text-body);
     --pagination-font-weight: var(--font-weight-medium);
     --pagination-horizontal-gap: 1rem;
   }
@@ -25,14 +25,19 @@
     cursor: not-allowed;
   }
 
+  .pagination-select-wrapper {
+    display: flex; 
+    gap: 0.5rem; 
+    justify-content: center; 
+    align-items: center; 
+  }
+
   .pagination-container {
     display: flex;
     font-size: var(--pagination-font-size);
     font-weight: var(--pagination-font-weight);
     gap: var(--pagination-horizontal-gap);
   }
-
-  
 
   .pagination-select {
     appearance: none;
