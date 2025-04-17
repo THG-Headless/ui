@@ -7,8 +7,6 @@ import ShowComponent from '../../../components/doc-helpers/ShowComponent.astro'
 import { Aside } from '@astrojs/starlight/components'
 import Pagination from '../../../components/pagination/Pagination.html'
 import PaginationEnd from '../../../components/pagination/Pagination_End.html'
-import PaginationDisabled from
-'../../../components/pagination/Pagination_Disabled.html'
 
 ## Basic Example
 
@@ -18,16 +16,12 @@ The basic `Pagination` component includes navigation buttons and a page selector
   <Pagination />
 </ShowComponent>
 
+The 'previous' and 'next' buttons should be removed for the first and last pages, i.e :
 
-## Disabled
-
-The `Pagination` component supports a disabled state for the page selector, by applying a `disabled` attribute. 
-
-Note: If the "select" is disabled it is best to either hide or disable the prev/next buttons. 
-
-<ShowComponent filePath="./src/components/pagination/Pagination_Disabled.html">
-  <PaginationDisabled />
+<ShowComponent filePath="./src/components/pagination/Pagination_End.html">
+  <PaginationEnd />
 </ShowComponent>
+
 
 ## CSS Variables
 
@@ -50,6 +44,7 @@ The following CSS variables are available for customizing the `Pagination` compo
 
 
 ### Accessibility
+
 #### Implemented Accessibility Features
 
 - [ ] Includes `aria-label` attributes for navigation buttons
@@ -60,13 +55,6 @@ The following CSS variables are available for customizing the `Pagination` compo
 - [ ] Arrow keys change values in the select dropdown
 - [ ] Disabled controls are properly excluded from tab order
 
-#### Accessibility- Implementation Notes
-
-We recommend removing buttons that aren't clickable with JavaScript, for the first and last pages, e.g:
-
-<ShowComponent filePath="./src/components/pagination/Pagination_End.html">
-  <PaginationEnd />
-</ShowComponent>
 
 
 
