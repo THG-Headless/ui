@@ -19,7 +19,7 @@
     align-items: center;
     cursor: pointer;
   }
-  
+
   .pagination-container > a:disabled {
     color: var(--color-foreground-disabled);
     cursor: not-allowed;
@@ -32,8 +32,11 @@
     gap: var(--pagination-horizontal-gap);
   }
 
+  
+
   .pagination-select {
     appearance: none;
+    cursor: pointer;
     -webkit-appearance: none;
     -moz-appearance: none;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
@@ -48,13 +51,4 @@
     border-radius: var(--pagination-select-border-radius);
   }
   
-  .pagination-select:disabled {
-    border: var(--pagination-select-border-width-disabled) solid var(--color-border-disabled);
-    --color-foreground: var(--color-foreground-disabled);
-    background-image:
-        linear-gradient(
-            color-mix(in oklch, var(--color-background), transparent 30%)
-        ),
-        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
-  }
 }
