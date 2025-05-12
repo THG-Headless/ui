@@ -1,0 +1,117 @@
+---
+title: Field Wrapper
+description: >-
+  A wrapper component for form fields providing consistent layout, labeling, and
+  error handling
+sidebar:
+  order: 2
+name: field-wrapper
+meta: {}
+categories: []
+registryDependencies: {}
+files:
+  - registry/react/component/field-wrapper.tsx
+dependencies:
+  react: ^19.0.0
+  '@thg-altitude/standalone-components-css': latest
+devDependencies: {}
+docsUrl: 'https://components.thgaltitude.com/react/component/field-wrapper'
+---
+
+import ShowComponent from "../../../../../components/doc-helpers/ShowComponent.astro";
+import FieldWrapper from "../../../../../../registry/react/component/field-wrapper";
+import TextInput from "../../../../../../registry/react/ui/text-input";
+
+## Field Wrapper Component
+
+The Field Wrapper component provides a consistent container for form fields with built-in support for labels, helper text, error messages, character counting, and accessibility attributes.
+
+### Example
+
+<ShowComponent>
+  <div style={{ maxWidth: "400px" }}>
+    <FieldWrapper
+      id="example-field"
+      label="Email Address"
+      helperText="We'll never share your email"
+      required={true}
+    >
+      <TextInput />
+    </FieldWrapper>
+  </div>
+</ShowComponent>
+
+<ShowComponent>
+  <div style={{ maxWidth: "400px", marginTop: "20px" }}>
+    <FieldWrapper
+      id="example-error"
+      label="Username"
+      errorMessage="This username is already taken"
+      aria-invalid={true}
+    >
+      <TextInput />
+    </FieldWrapper>
+  </div>
+</ShowComponent>
+
+<ShowComponent>
+  <div style={{ maxWidth: "400px", marginTop: "20px" }}>
+    <FieldWrapper
+      id="example-char-count"
+      label="Short Bio"
+      maxlength={100}
+      helperText="Tell us about yourself"
+      required={false}
+    >
+      <TextInput />
+    </FieldWrapper>
+  </div>
+</ShowComponent>
+
+### Usage
+
+The Field Wrapper is typically used by form field components internally, but you can also use it directly to wrap custom inputs:
+
+```tsx
+import FieldWrapper from "@altitude/ui/react/components/field-wrapper";
+import TextInput from "@altitude/ui/react/ui/text-input";
+
+export default function CustomField() {
+  return (
+    <FieldWrapper
+      id="email"
+      name="email"
+      label="Email Address"
+      helperText="We'll never share your email"
+      errorMessage="Please enter a valid email"
+      required={true}
+    >
+      <TextInput />
+    </FieldWrapper>
+  );
+}
+```
+
+### Props
+
+| Prop         | Type      | Required | Description                                       |
+| ------------ | --------- | -------- | ------------------------------------------------- |
+| id           | string    | No       | HTML ID for the field                             |
+| name         | string    | No       | HTML name attribute for the field                 |
+| label        | string    | No       | Label text for the field                          |
+| helperText   | string    | No       | Helper text displayed below the field             |
+| errorMessage | string    | No       | Error message displayed when aria-invalid is true |
+| placeholder  | string    | No       | Placeholder text for the input                    |
+| required     | boolean   | No       | Whether the field is required (default: false)    |
+| aria-invalid | boolean   | No       | Whether the field has an error (default: false)   |
+| disabled     | boolean   | No       | Whether the field is disabled (default: false)    |
+| maxlength    | number    | No       | Maximum character count for the field             |
+| children     | ReactNode | Yes      | The input component to wrap                       |
+
+### Features
+
+- Automatically sets appropriate aria attributes for accessibility
+- Displays "Required" or "Optional" indicators based on the required prop
+- Shows character count for fields with maxlength
+- Handles error states with error messaging
+- Maintains consistent styling and layout for all form fields

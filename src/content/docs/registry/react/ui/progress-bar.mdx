@@ -1,0 +1,139 @@
+---
+title: Progress Bar
+description: A visual component for displaying progress or completion status
+sidebar:
+  order: 6
+name: progress-bar
+meta: {}
+categories: []
+registryDependencies: {}
+files:
+  - registry/react/ui/progress-bar.tsx
+dependencies:
+  react: ^19.0.0
+  '@thg-altitude/standalone-components-css': latest
+devDependencies: {}
+docsUrl: 'https://components.thgaltitude.com/react/ui/progress-bar'
+---
+
+import ShowComponent from "../../../../../components/doc-helpers/ShowComponent.astro";
+import ProgressBar from "../../../../../../registry/react/ui/progress-bar";
+
+## Progress Bar Component
+
+The Progress Bar component provides a visual representation of progress, completion status, or relative value.
+
+### Example
+
+<ShowComponent>
+  <div
+    style={{
+      display: "flex",
+      flexDirection: "column",
+      gap: "16px",
+      maxWidth: "300px",
+    }}
+  >
+    <ProgressBar
+      value={25}
+      maxValue={100}
+      label="25% Complete"
+      className="skin-primary"
+    />
+    <ProgressBar
+      value={50}
+      maxValue={100}
+      label="50% Complete"
+      className="skin-primary"
+    />
+    <ProgressBar
+      value={75}
+      maxValue={100}
+      label="75% Complete"
+      className="skin-primary"
+    />
+    <ProgressBar
+      value={100}
+      maxValue={100}
+      label="100% Complete"
+      className="skin-primary"
+    />
+  </div>
+</ShowComponent>
+
+### Usage
+
+```tsx
+import ProgressBar from "@altitude/ui/react/ui/progress-bar";
+
+export default function ProgressExample() {
+  // For static progress
+  return (
+    <div>
+      <ProgressBar
+        value={65}
+        maxValue={100}
+        label="Download progress"
+        className="skin-primary"
+      />
+    </div>
+  );
+
+  // For dynamic progress
+  const [progress, setProgress] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setProgress((prev) => {
+        if (prev >= 100) {
+          clearInterval(timer);
+          return 100;
+        }
+        return prev + 5;
+      });
+    }, 500);
+
+    return () => clearInterval(timer);
+  }, []);
+
+  return (
+    <div>
+      <p>Loading: {progress}%</p>
+      <ProgressBar
+        value={progress}
+        maxValue={100}
+        label="Loading progress"
+        className="skin-primary"
+      />
+    </div>
+  );
+}
+```
+
+### Props
+
+| Prop      | Type   | Required | Description                                                    |
+| --------- | ------ | -------- | -------------------------------------------------------------- |
+| value     | number | No       | Current progress value (default: 50)                           |
+| maxValue  | number | No       | Maximum progress value (default: 100)                          |
+| label     | string | No       | Accessible label describing the progress (default: "Progress") |
+| className | string | No       | Additional CSS classes for styling                             |
+
+### Features
+
+- **Accessible**: Includes proper ARIA attributes for screen readers
+- **Customizable**: Supports custom skin classes for different visual styles
+- **Normalized**: Automatically calculates and constrains progress percentage
+- **Flexible**: Can be used for various types of progress indicators
+
+### CSS Integration
+
+The Progress Bar component uses CSS custom properties:
+
+- `--progress-value`: Set internally based on value/maxValue ratio
+
+You can style the progress bar using skin classes:
+
+- `skin-primary`: Primary theme color
+- `skin-secondary`: Secondary theme color
+- `skin-success`: Success/completion indicator

@@ -1,0 +1,95 @@
+---
+title: Button
+description: A flexible button component that supports various styles and states
+sidebar:
+  order: 1
+name: button
+meta: {}
+categories: []
+registryDependencies: {}
+files:
+  - registry/react/ui/button.tsx
+dependencies:
+  react: ^19.0.0
+  '@thg-altitude/standalone-components-css': latest
+devDependencies: {}
+docsUrl: 'https://components.thgaltitude.com/react/ui/button'
+---
+
+import ShowComponent from "../../../../../components/doc-helpers/ShowComponent.astro";
+import { Button } from "../../../../../../registry/react/ui/button";
+
+## Button Component
+
+The Button component provides a foundational button element with support for various styles, states, and behaviors.
+
+### Example
+
+<ShowComponent>
+  <div style={{ display: "flex", gap: "12px", flexWrap: "wrap" }}>
+    <Button className="skin-primary">Primary Button</Button>
+    <Button className="skin-secondary">Secondary Button</Button>
+    <Button className="skin-primary-emphasised">Emphasised Button</Button>
+    <Button className="skin-secondary" disabled>
+      Disabled Button
+    </Button>
+  </div>
+</ShowComponent>
+
+### Usage
+
+```tsx
+import Button from "@altitude/ui/react/ui/button";
+
+export default function ButtonExample() {
+  const handleClick = () => {
+    console.log("Button clicked");
+  };
+
+  return (
+    <div>
+      <Button className="skin-primary" onClick={handleClick}>
+        Click Me
+      </Button>
+
+      <Button className="skin-secondary" type="submit">
+        Submit Form
+      </Button>
+
+      <Button className="skin-primary-emphasised" disabled={isLoading}>
+        {isLoading ? "Loading..." : "Save Changes"}
+      </Button>
+    </div>
+  );
+}
+```
+
+### Props
+
+| Prop      | Type      | Required | Description                                                       |
+| --------- | --------- | -------- | ----------------------------------------------------------------- |
+| children  | ReactNode | Yes      | Content to be displayed inside the button                         |
+| className | string    | No       | CSS class names to apply custom styling                           |
+| type      | string    | No       | HTML button type ("button", "submit", "reset"). Default: "button" |
+| disabled  | boolean   | No       | Whether the button is disabled. Default: false                    |
+| onClick   | function  | No       | Event handler for button click                                    |
+
+All other standard HTML button attributes are also supported and passed through to the underlying button element.
+
+### Skin Classes
+
+The Button component accepts various skin classes to change its appearance:
+
+- `skin-primary`: Standard primary button style
+- `skin-secondary`: Less prominent button style
+- `skin-primary-emphasised`: Emphasized primary button for important actions
+- `interactive`: Applied by default for proper hover/active states
+
+### Accessibility
+
+The Button component follows accessibility best practices:
+
+- Uses native HTML button element
+- Preserves proper focus states
+- Handles disabled states correctly
+- Supports keyboard navigation

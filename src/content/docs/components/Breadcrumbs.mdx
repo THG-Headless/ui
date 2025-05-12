@@ -1,51 +1,81 @@
 ---
 title: Breadcrumbs
-description: Breadcrumbs
+description: Navigation breadcrumbs
 ---
 
 import ShowComponent from "../../../components/doc-helpers/ShowComponent.astro";
 import Breadcrumbs from "../../../components/breadcrumbs/Breadcrumbs.html";
 
-Breadcrumbs help users understand their position on a website and navigate to previous pages by showing a breadcrumb trail back to the homepage.
+# Breadcrumbs
+
+## Overview
+
+Breadcrumbs help users understand their position on a website and navigate to previous pages by showing a hierarchical trail back to the homepage.
+
+## Example Usage
+
+The breadcrumbs component uses semantic HTML and CSS styled separators. Each breadcrumb item is clickable except for the current page, which is marked with `aria-current`. The component supports customization through CSS variables for spacing, typography, and arrow styling.
 
 <ShowComponent>
   <Breadcrumbs />
 </ShowComponent>
 
-### Style Override Example
-The separators between breadcrumb items are created using CSS styling and can be customized to create different visual styles using the CSS variables provided.
+### Style Override Examples
+
+The separators between breadcrumb items are created using CSS styling of a single div and can be customised to create different visual styles using the CSS variables provided.
+
+```css
+.breadcrumb-line-separator {
+  --breadcrumb-icon-border-top: 1px;
+  --breadcrumb-icon-height: 1rem;
+  --breadcrumb-icon-width: 0;
+  --breadcrumb-icon-rotate: 0;
+  --breadcrumb-icon-border-top: 0;
+  --breadcrumb-gap-left: 0.75rem;
+  --breadcrumb-gap-right: 0.75rem;
+}
+```
+
 <ShowComponent>
-  <div style={
-    {
-      '--breadcrumb-icon-border-top': '1px',
-      '--breadcrumb-icon-height': '1rem',
-      '--breadcrumb-icon-width': '0',
-      '--breadcrumb-icon-rotate': '0',
-      '--breadcrumb-icon-border-top:': '0',
-      '--breadcrumb-gap-left': '0.75rem',
-      '--breadcrumb-gap-right': '0.75rem'
-    }
-  }>
+  <div class="breadcrumb-line-separator">
     <Breadcrumbs />
   </div>
 </ShowComponent>
 
+```css
+.breadcrumb-slash-separator {
+  --breadcrumb-icon-border-top: 1px;
+  --breadcrumb-icon-height: 1rem;
+  --breadcrumb-icon-width: 0.25rem;
+  --breadcrumb-icon-rotate: 15deg;
+  --breadcrumb-icon-border-top: 0;
+  --breadcrumb-gap-left: 0.25rem;
+  --breadcrumb-gap-right: 0.4rem;
+  --breadcrumb-font-weight-last: var(--font-weight-normal);
+}
+```
+
 <ShowComponent>
-  <div style={
-    {
-      '--breadcrumb-icon-border-top': '1px',
-      '--breadcrumb-icon-height': '1rem',
-      '--breadcrumb-icon-width': '0.25rem',
-      '--breadcrumb-icon-rotate': '15deg',
-      '--breadcrumb-icon-border-top:': '0',
-      '--breadcrumb-gap-left': '0.25rem',
-      '--breadcrumb-gap-right': '0.4rem',
-      '--breadcrumb-font-weight-last': 'var(--font-weight-normal)'
-    }
-  }>
+  <div class="breadcrumb-slash-separator">
     <Breadcrumbs />
   </div>
 </ShowComponent>
+
+## CSS Variables
+
+| Variable                         | Default Value                  | Description                                             |
+| -------------------------------- | ------------------------------ | ------------------------------------------------------- |
+| `--breadcrumb-padding`           | `0 0.5rem`                     | Padding around the content                              |
+| `--breadcrumb-font-size`         | `var(--text-sm)`               | Font size for text                                      |
+| `--breadcrumb-font-weight`       | `var(--font-weight-light)`     | Font weight for all text apart from the last breadcrumb |
+| `--breadcrumb-font-weight-last`  | `var(--font-weight-semi-bold)` | Font weight for last breadcrumb text                    |
+| `--breadcrumb-icon-height`       | `0.375rem`                     | Height of breadcrumb separators                         |
+| `--breadcrumb-icon-width`        | `0.375rem`                     | Width of breadcrumb separators                          |
+| `--breadcrumb-icon-border-top`   | `1px`                          | Width of top border of separator                        |
+| `--breadcrumb-icon-border-right` | `1px`                          | Width of right border of separator                      |
+| `--breadcrumb-gap-left`          | `0.5rem`                       | Gap between left side of separator and breadcrumb text  |
+| `--breadcrumb-gap-right`         | `0.75rem`                      | Gap between right side of separator and breadcrumb text |
+| `--breadcrumb-icon-rotate`       | `45deg`                        | Rotation of breadcrumb separator                        |
 
 ### Accessibility
 
@@ -53,8 +83,9 @@ The separators between breadcrumb items are created using CSS styling and can be
 
 - [x] Focus outline visible enclosing the whole element on keyboard navigation
 - [x] `aria-current` label included on last breadcrumb
-- [x] Proper use of semantic HTML with `<nav>` element
+- [x] Use of semantic HTML with `<nav>` element
 
 #### Accessibility Considerations when Implementing
 
 - [ ] Handle dynamic content changes by adding `aria-current` to the last breadcrumb
+- [ ] Replace `href='#'` with the correct path described by the breadcrumb section

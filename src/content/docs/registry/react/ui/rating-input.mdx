@@ -1,0 +1,134 @@
+---
+title: Rating Input
+description: An interactive star rating input component for collecting user feedback
+sidebar:
+  order: 7
+name: rating-input
+meta: {}
+categories: []
+registryDependencies: {}
+files:
+  - registry/react/ui/rating-input.tsx
+dependencies:
+  react: ^19.0.0
+  '@thg-altitude/standalone-components-css': latest
+devDependencies: {}
+docsUrl: 'https://components.thgaltitude.com/react/ui/rating-input'
+---
+
+import ShowComponent from "../../../../../components/doc-helpers/ShowComponent.astro";
+import RatingInput from "../../../../../../registry/react/ui/rating-input";
+
+## Rating Input Component
+
+The Rating Input component provides an interactive star rating interface that allows users to select a rating from a predefined number of options.
+
+### Example
+
+<ShowComponent>
+  <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
+    <div>
+      <p>Default 5-star rating:</p>
+      <RatingInput id="default-rating" name="default-rating" />
+    </div>
+
+    <div>
+      <p>10-star rating with default value:</p>
+      <RatingInput
+        id="ten-star-rating"
+        name="ten-star-rating"
+        numberOfOptions={10}
+        defaultValue={7}
+      />
+    </div>
+
+    <div>
+      <p>Required rating (with validation):</p>
+      <RatingInput id="required-rating" name="required-rating" required={true} />
+    </div>
+
+    <div>
+      <p>Disabled rating:</p>
+      <RatingInput
+        id="disabled-rating"
+        name="disabled-rating"
+        defaultValue={3}
+        disabled={true}
+      />
+    </div>
+
+  </div>
+</ShowComponent>
+
+### Usage
+
+```tsx
+import RatingInput from "@altitude/ui/react/ui/rating-input";
+
+export default function RatingExample() {
+  // Uncontrolled component example
+  return (
+    <div>
+      <label htmlFor="product-rating">Rate this product:</label>
+      <RatingInput
+        id="product-rating"
+        name="product-rating"
+        defaultValue={4}
+        required={true}
+      />
+    </div>
+  );
+
+  // Controlled component example
+  const [rating, setRating] = useState<number | null>(null);
+
+  const handleRatingChange = (value: number | null) => {
+    setRating(value);
+    console.log(`Selected rating: ${value}`);
+  };
+
+  return (
+    <div>
+      <label htmlFor="service-rating">Rate our service:</label>
+      <RatingInput
+        id="service-rating"
+        name="service-rating"
+        value={rating}
+        onChange={handleRatingChange}
+      />
+      <p>You selected: {rating || "No rating"}</p>
+    </div>
+  );
+}
+```
+
+### Props
+
+| Prop            | Type           | Required | Description                                                     |
+| --------------- | -------------- | -------- | --------------------------------------------------------------- |
+| numberOfOptions | number         | No       | Number of rating options/stars (default: 5)                     |
+| defaultValue    | number \| null | No       | Default rating value (uncontrolled component)                   |
+| value           | number \| null | No       | Current rating value (controlled component)                     |
+| onChange        | function       | No       | Callback when rating changes: `(value: number \| null) => void` |
+| id              | string         | No       | HTML ID for the input (default: "rating-input")                 |
+| name            | string         | No       | Form field name (default: "rating")                             |
+| disabled        | boolean        | No       | Whether the rating input is disabled (default: false)           |
+| required        | boolean        | No       | Whether a rating selection is required                          |
+| className       | string         | No       | Additional CSS classes for styling                              |
+
+### Features
+
+- **Flexible Rating Scale**: Supports any number of rating options via the `numberOfOptions` prop
+- **Controlled & Uncontrolled**: Works with both component patterns
+- **Accessible**: Implemented as a radio group with proper ARIA attributes
+- **Form Integration**: Works seamlessly in forms with proper value handling and validation
+- **Visual Feedback**: Clear visual indication of selected rating
+
+### Accessibility
+
+The Rating Input component is built with accessibility in mind:
+
+- Uses a radio group pattern for keyboard navigation
+- Provides appropriate ARIA labels for each rating option
+- Supports required attribute for form validation
+- Maintains focus properly during interaction

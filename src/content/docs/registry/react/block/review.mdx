@@ -1,0 +1,81 @@
+---
+title: Review
+description: A component for displaying product reviews with rating and interactive votes
+sidebar:
+  order: 2
+name: review
+meta: {}
+categories: []
+registryDependencies: {}
+files:
+  - registry/react/block/review.tsx
+dependencies:
+  react: ^19.0.0
+  '@thg-altitude/standalone-components-css': latest
+devDependencies: {}
+docsUrl: 'https://components.thgaltitude.com/react/block/review'
+---
+
+import ShowComponent from "../../../../../components/doc-helpers/ShowComponent.astro";
+import { Review } from "../../../../../../registry/react/block/review";
+
+## Review Component
+
+The Review component displays a product review including a headline, rating, comments, and voting options.
+
+### Example
+
+<ShowComponent>
+  <div style={{ maxWidth: "500px" }}>
+    <Review
+      headline="Great product, highly recommend!"
+      rating={4}
+      comments="This product exceeded my expectations. The quality is excellent and it works perfectly for my needs."
+      date="May 5, 2025"
+      author="John Doe"
+      upVoteCount={12}
+      downVoteCount={2}
+      onVote={(voteType) => console.log(`Vote: ${voteType}`)}
+    />
+  </div>
+</ShowComponent>
+
+### Usage
+
+```tsx
+import Review, { VoteType } from "@altitude/ui/react/blocks/review";
+
+export default function MyPage() {
+  const handleVote = (voteType: VoteType) => {
+    console.log(`User voted: ${voteType}`);
+    // Handle the vote
+  };
+
+  return (
+    <Review
+      headline="Great product, highly recommend!"
+      rating={4}
+      comments="This product exceeded my expectations."
+      date="May 5, 2025"
+      author="John Doe"
+      upVoteCount={12}
+      downVoteCount={2}
+      onVote={handleVote}
+    />
+  );
+}
+```
+
+### Props
+
+| Prop          | Type     | Required | Description                       |
+| ------------- | -------- | -------- | --------------------------------- |
+| headline      | string   | Yes      | Title of the review               |
+| rating        | number   | Yes      | Rating value                      |
+| comments      | string   | Yes      | Review content                    |
+| maxRating     | number   | No       | Maximum rating value (default: 5) |
+| date          | string   | No       | Date of the review                |
+| author        | string   | No       | Name of the reviewer              |
+| onVote        | function | No       | Callback for vote actions         |
+| upVoteCount   | number   | No       | Number of upvotes                 |
+| downVoteCount | number   | No       | Number of downvotes               |

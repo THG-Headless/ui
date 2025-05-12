@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "text-area-field",
+  "type": "registry:component",
+  "title": "Text Area Field",
+  "description": "Field component for multiline text inputs with validation and error handling",
+  "dependencies": [
+    "react",
+    ".."
+  ],
+  "registryDependencies": [
+    "https://components.thgaltitude.com/r/react/field-wrapper",
+    "https://components.thgaltitude.com/r/react/text-area"
+  ],
+  "files": [
+    {
+      "path": "registry/react/component/fields/text-area-field.tsx",
+      "content": "import React from \"react\";\nimport type { TextareaHTMLAttributes } from \"react\";\nimport TextArea from \"../../ui/text-area\";\nimport InputWrapper from \"../field-wrapper\";\nimport type { FieldProps } from \"../field-wrapper\";\n\ntype TextAreaFieldProps = FieldProps &\n  Omit<\n    TextareaHTMLAttributes<HTMLTextAreaElement>,\n    \"id\" | \"name\" | \"placeholder\" | \"disabled\" | \"required\" | \"aria-invalid\"\n  >;\n\nconst TextAreaField: React.FC<TextAreaFieldProps> = ({\n  id,\n  name,\n  label,\n  helperText,\n  errorMessage,\n  placeholder,\n  required = false,\n  \"aria-invalid\": ariaInvalid = false,\n  disabled = false,\n  maxlength,\n  ...restProps\n}) => {\n  return (\n    <div className=\"w-full\">\n      <InputWrapper\n        id={id}\n        name={name}\n        label={label}\n        helperText={helperText}\n        errorMessage={errorMessage}\n        placeholder={placeholder}\n        required={required}\n        aria-invalid={ariaInvalid}\n        disabled={disabled}\n        maxlength={maxlength}\n      >\n        <TextArea {...restProps} />\n      </InputWrapper>\n    </div>\n  );\n};\n\nexport default TextAreaField;\n",
+      "type": "registry:component",
+      "target": "react/component/fields/text-area-field.tsx"
+    }
+  ]
+}

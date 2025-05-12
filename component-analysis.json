@@ -1,0 +1,149 @@
+{
+  "components": {
+    "block": [
+      {
+        "name": "review-form",
+        "file": "registry/react/block/review-form.tsx",
+        "description": "A complete review submission form with rating, text inputs, and dropdowns for user information collection",
+        "dependencies": ["react"],
+        "registryDependencies": [
+          "form",
+          "text-input-field",
+          "rating-input-field",
+          "text-area-field",
+          "dropdown-field"
+        ]
+      },
+      {
+        "name": "review",
+        "file": "registry/react/block/review.tsx",
+        "description": "Displays a review with headline, rating, comments, author info, and interactive voting functionality",
+        "dependencies": ["react"],
+        "registryDependencies": ["ratings", "button"]
+      }
+    ],
+    "component": [
+      {
+        "name": "field-wrapper",
+        "file": "registry/react/component/field-wrapper.tsx",
+        "description": "Wrapper component for form fields providing consistent layout with labels, error messages, and helper text",
+        "dependencies": ["react"],
+        "registryDependencies": ["alert"]
+      },
+      {
+        "name": "form",
+        "file": "registry/react/component/form.tsx",
+        "description": "Comprehensive form component with validation, submission handling, and success messaging",
+        "dependencies": ["react"],
+        "registryDependencies": ["button", "alert"]
+      },
+      {
+        "name": "review-list",
+        "file": "registry/react/component/review-list.tsx",
+        "description": "Container component for displaying a list of reviews with title and subtitle",
+        "dependencies": ["react"],
+        "registryDependencies": []
+      },
+      {
+        "name": "review-overview",
+        "file": "registry/react/component/review-overview.tsx",
+        "description": "Displays an overview of review statistics including average rating, rating distribution bars, and review counts",
+        "dependencies": ["react"],
+        "registryDependencies": ["ratings", "progress-bar", "button"]
+      },
+      {
+        "name": "dropdown-field",
+        "file": "registry/react/component/fields/dropdown-field.tsx",
+        "description": "Field component for dropdown selection inputs with validation and error handling",
+        "dependencies": ["react"],
+        "registryDependencies": ["field-wrapper", "dropdown"]
+      },
+      {
+        "name": "rating-input-field",
+        "file": "registry/react/component/fields/rating-input-field.tsx",
+        "description": "Field component for star rating inputs with validation and error handling",
+        "dependencies": ["react"],
+        "registryDependencies": ["field-wrapper", "rating-input"]
+      },
+      {
+        "name": "text-area-field",
+        "file": "registry/react/component/fields/text-area-field.tsx",
+        "description": "Field component for multiline text inputs with validation and error handling",
+        "dependencies": ["react"],
+        "registryDependencies": ["field-wrapper", "text-area"]
+      },
+      {
+        "name": "text-input-field",
+        "file": "registry/react/component/fields/text-input-field.tsx",
+        "description": "Field component for single-line text inputs with validation and error handling",
+        "dependencies": ["react"],
+        "registryDependencies": ["field-wrapper", "text-input"]
+      }
+    ],
+    "ui": [
+      {
+        "name": "alert",
+        "file": "registry/react/ui/alert.tsx",
+        "description": "Displays alert messages with different types (info, success, error) and appropriate icons",
+        "dependencies": ["react"],
+        "registryDependencies": []
+      },
+      {
+        "name": "button",
+        "file": "registry/react/ui/button.tsx",
+        "description": "Basic button component with customizable styles and event handling",
+        "dependencies": ["react"],
+        "registryDependencies": []
+      },
+      {
+        "name": "progress-bar",
+        "file": "registry/react/ui/progress-bar.tsx",
+        "description": "Visual indicator for showing progress or proportional values with accessibility attributes",
+        "dependencies": ["react"],
+        "registryDependencies": []
+      },
+      {
+        "name": "rating-input",
+        "file": "registry/react/ui/rating-input.tsx",
+        "description": "Interactive star rating input that allows users to select a rating level",
+        "dependencies": ["react"],
+        "registryDependencies": []
+      },
+      {
+        "name": "ratings",
+        "file": "registry/react/ui/ratings.tsx",
+        "description": "Displays a static rating visualization with customizable stars and styling",
+        "dependencies": ["react"],
+        "registryDependencies": []
+      },
+      {
+        "name": "text-area",
+        "file": "registry/react/ui/text-area.tsx",
+        "description": "Enhanced textarea input with consistent styling and a resize handle",
+        "dependencies": ["react"],
+        "registryDependencies": []
+      },
+      {
+        "name": "text-input",
+        "file": "registry/react/ui/text-input.tsx",
+        "description": "Styled text input field with consistent appearance and behavior",
+        "dependencies": ["react"],
+        "registryDependencies": []
+      },
+      {
+        "name": "dropdown",
+        "file": "registry/react/ui/dropdown/dropdown.tsx",
+        "description": "Comprehensive dropdown component with search functionality, keyboard navigation, and accessibility features",
+        "dependencies": ["react"],
+        "registryDependencies": [],
+        "tailwindClasses": [
+          "skin-form",
+          "dropdown-wrapper",
+          "dropdown-open",
+          "dropdown-summary",
+          "dropdown-icon"
+        ]
+      }
+    ]
+  }
+}

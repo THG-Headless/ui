@@ -1,0 +1,105 @@
+---
+title: Review Overview
+description: A component for displaying review statistics and rating distribution
+sidebar:
+  order: 3
+name: review-overview
+meta: {}
+categories: []
+registryDependencies: {}
+files:
+  - registry/react/component/review-overview.tsx
+dependencies:
+  react: ^19.0.0
+  '@thg-altitude/standalone-components-css': latest
+devDependencies: {}
+docsUrl: 'https://components.thgaltitude.com/react/component/review-overview'
+---
+
+import ShowComponent from "../../../../../components/doc-helpers/ShowComponent.astro";
+import { ReviewOverview } from "../../../../../../registry/react/component/review-overview";
+
+## Review Overview Component
+
+The Review Overview component displays a summary of product reviews, including average rating, total count, and a breakdown of ratings by score.
+
+### Example
+
+<ShowComponent>
+  <div style={{ maxWidth: "500px" }}>
+    <ReviewOverview
+      averageRating={4.2}
+      reviewCount={42}
+      maxRating={5}
+      minRating={1}
+      ratings={{
+        5: 20,
+        4: 15,
+        3: 5,
+        2: 1,
+        1: 1,
+      }}
+      onCreate={() => alert("Create Review clicked")}
+    />
+  </div>
+</ShowComponent>
+
+### Usage
+
+```tsx
+import ReviewOverview from "@altitude/ui/react/components/review-overview";
+
+export default function ProductPage() {
+  const reviewData = {
+    averageRating: 4.2,
+    reviewCount: 42,
+    ratings: {
+      5: 20,
+      4: 15,
+      3: 5,
+      2: 1,
+      1: 1,
+    },
+  };
+
+  const handleCreateReview = () => {
+    // Open review form or navigate to review creation page
+    console.log("Create review clicked");
+  };
+
+  return (
+    <div className="product-page">
+      <h1>Product Name</h1>
+      <div className="product-details">{/* Product details here */}</div>
+      <div className="reviews-section">
+        <ReviewOverview
+          averageRating={reviewData.averageRating}
+          reviewCount={reviewData.reviewCount}
+          ratings={reviewData.ratings}
+          onCreate={handleCreateReview}
+        />
+      </div>
+    </div>
+  );
+}
+```
+
+### Props
+
+| Prop          | Type     | Required | Description                                                    |
+| ------------- | -------- | -------- | -------------------------------------------------------------- |
+| averageRating | number   | No       | Average rating value (default: 2.5)                            |
+| reviewCount   | number   | No       | Total number of reviews (default: 1)                           |
+| maxRating     | number   | No       | Maximum possible rating value (default: 5)                     |
+| minRating     | number   | No       | Minimum possible rating value (default: 1)                     |
+| ratings       | object   | No       | Object mapping rating values to counts (e.g., `{5: 10, 4: 5}`) |
+| onCreate      | function | No       | Callback function when "Create Review" button is clicked       |
+
+### Features
+
+- Displays average rating with star visualization
+- Shows total review count
+- Visualizes rating distribution with progress bars
+- Includes optional "Create Review" button
+- Fully responsive layout
+- Customizable rating range

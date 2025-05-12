@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "text-input",
+  "type": "registry:ui",
+  "title": "Text Input",
+  "description": "Styled text input field with consistent appearance and behavior",
+  "dependencies": [
+    "react"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "registry/react/ui/text-input.tsx",
+      "content": "import React from \"react\";\nimport type { InputHTMLAttributes } from \"react\";\n\nexport const TextInput: React.FC<InputHTMLAttributes<HTMLInputElement>> = (\n  props\n) => {\n  return (\n    <input\n      {...props}\n      className={`input-field skin-form !text-body placeholder:soft interactive ${\n        props.className || \"\"\n      }`}\n    />\n  );\n};\n\nexport default TextInput;\n",
+      "type": "registry:ui",
+      "target": "react/ui/text-input.tsx"
+    }
+  ]
+}

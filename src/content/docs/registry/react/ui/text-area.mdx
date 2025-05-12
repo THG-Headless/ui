@@ -1,0 +1,117 @@
+---
+title: Text Area
+description: >-
+  A multi-line text input component with consistent styling and resize
+  functionality
+sidebar:
+  order: 5
+name: text-area
+meta: {}
+categories: []
+registryDependencies: {}
+files:
+  - registry/react/ui/text-area.tsx
+dependencies:
+  react: ^19.0.0
+  '@thg-altitude/standalone-components-css': latest
+devDependencies: {}
+docsUrl: 'https://components.thgaltitude.com/react/ui/text-area'
+---
+
+import ShowComponent from "../../../../../components/doc-helpers/ShowComponent.astro";
+import TextArea from "../../../../../../registry/react/ui/text-area";
+
+## Text Area Component
+
+The Text Area component provides a styled multi-line text input with a consistent appearance and built-in resize handle.
+
+### Example
+
+<ShowComponent>
+  <div style={{ maxWidth: "300px" }}>
+    <TextArea placeholder="Enter your comments" rows={3} />
+  </div>
+</ShowComponent>
+
+<ShowComponent>
+  <div style={{ maxWidth: "300px", marginTop: "12px" }}>
+    <TextArea
+      placeholder="Tell us about yourself"
+      rows={4}
+      aria-invalid={true}
+    />
+  </div>
+</ShowComponent>
+
+<ShowComponent>
+  <div style={{ maxWidth: "300px", marginTop: "12px" }}>
+    <TextArea placeholder="This area is disabled" rows={2} disabled />
+  </div>
+</ShowComponent>
+
+### Usage
+
+```tsx
+import TextArea from "@altitude/ui/react/ui/text-area";
+
+export default function TextAreaExample() {
+  const [value, setValue] = React.useState("");
+
+  const handleChange = (e) => {
+    setValue(e.target.value);
+  };
+
+  return (
+    <div>
+      {/* Basic text area */}
+      <TextArea placeholder="Enter your comments" rows={4} />
+
+      {/* Text area with validation */}
+      <TextArea
+        placeholder="Tell us about yourself"
+        rows={4}
+        required
+        maxLength={500}
+      />
+
+      {/* Controlled text area */}
+      <TextArea
+        value={value}
+        onChange={handleChange}
+        placeholder="Type something..."
+        rows={6}
+      />
+    </div>
+  );
+}
+```
+
+### Props
+
+The Text Area component accepts all standard HTML textarea attributes:
+
+| Prop         | Type     | Required | Description                             |
+| ------------ | -------- | -------- | --------------------------------------- |
+| placeholder  | string   | No       | Placeholder text                        |
+| rows         | number   | No       | Number of visible text lines            |
+| cols         | number   | No       | Number of visible character columns     |
+| value        | string   | No       | Controlled textarea value               |
+| defaultValue | string   | No       | Default value for uncontrolled textarea |
+| disabled     | boolean  | No       | Whether the textarea is disabled        |
+| required     | boolean  | No       | Whether the textarea is required        |
+| aria-invalid | boolean  | No       | Whether the textarea has an error       |
+| className    | string   | No       | Additional CSS classes                  |
+| onChange     | function | No       | Handler for text changes                |
+| maxLength    | number   | No       | Maximum character count                 |
+
+All other standard HTML textarea attributes are also supported.
+
+### Features
+
+- **Resizable**: Includes a visual resize handle in the bottom-right corner
+- **Consistent Styling**: Matches the design system's form control appearance
+- **Accessibility**: Supports all standard accessibility attributes for textareas
+
+### Notes
+
+This is a base UI component that provides styling but no built-in validation or labeling. For a complete form field with label, helper text, and validation, consider using the [Text Area Field](/registry/react/components/fields/text-area-field) component.

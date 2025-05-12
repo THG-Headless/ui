@@ -1,0 +1,128 @@
+---
+title: Rating Input Field
+description: A form field component for collecting star ratings with validation support
+sidebar:
+  order: 3
+name: rating-input-field
+meta: {}
+categories: []
+registryDependencies: {}
+files:
+  - registry/react/component/rating-input-field.tsx
+dependencies: {}
+devDependencies: {}
+docsUrl: 'https://components.thgaltitude.com/react/component/fields/rating-input-field'
+---
+
+import ShowComponent from "../../../../../../components/doc-helpers/ShowComponent.astro";
+import RatingInputField from "../../../../../../../registry/react/component/fields/rating-input-field";
+
+## Rating Input Field Component
+
+The Rating Input Field component provides a complete form field for collecting star ratings with built-in label, validation, and error handling.
+
+### Example
+
+<ShowComponent>
+  <div style={{ maxWidth: "400px" }}>
+    <RatingInputField
+      id="product-rating"
+      name="product-rating"
+      label="Rate this product"
+      helperText="How would you rate your experience with this product?"
+      required={true}
+      numberOfOptions={5}
+    />
+  </div>
+</ShowComponent>
+
+<ShowComponent>
+  <div style={{ maxWidth: "400px", marginTop: "20px" }}>
+    <RatingInputField
+      id="customer-satisfaction"
+      name="customer-satisfaction"
+      label="Customer Satisfaction"
+      helperText="Rate your overall satisfaction with our service"
+      numberOfOptions={10}
+      defaultValue={8}
+    />
+  </div>
+</ShowComponent>
+
+<ShowComponent>
+  <div style={{ maxWidth: "400px", marginTop: "20px" }}>
+    <RatingInputField
+      id="rating-error"
+      name="rating-error"
+      label="Your Rating"
+      required={true}
+      aria-invalid={true}
+      errorMessage="Please provide a rating"
+      numberOfOptions={5}
+    />
+  </div>
+</ShowComponent>
+
+### Usage
+
+```tsx
+import RatingInputField from "@altitude/ui/react/components/fields/rating-input-field";
+
+export default function ReviewForm() {
+  const [rating, setRating] = React.useState<number | null>(null);
+
+  return (
+    <form>
+      {/* Uncontrolled component */}
+      <RatingInputField
+        id="product-rating"
+        name="product-rating"
+        label="Rate this product"
+        helperText="How would you rate your experience with this product?"
+        required={true}
+        numberOfOptions={5}
+        defaultValue={3}
+      />
+
+      {/* Controlled component */}
+      <RatingInputField
+        id="service-rating"
+        name="service-rating"
+        label="Rate our service"
+        value={rating}
+        onChange={setRating}
+        numberOfOptions={5}
+      />
+
+      {/* More form fields */}
+      <button type="submit">Submit Review</button>
+    </form>
+  );
+}
+```
+
+### Props
+
+| Prop            | Type           | Required | Description                                                  |
+| --------------- | -------------- | -------- | ------------------------------------------------------------ |
+| id              | string         | No       | HTML ID for the field                                        |
+| name            | string         | No       | HTML name attribute for the field                            |
+| label           | string         | No       | Label text for the field                                     |
+| helperText      | string         | No       | Helper text displayed below the field                        |
+| errorMessage    | string         | No       | Error message displayed when aria-invalid is true            |
+| required        | boolean        | No       | Whether the field is required (default: false)               |
+| aria-invalid    | boolean        | No       | Whether the field has an error (default: false)              |
+| disabled        | boolean        | No       | Whether the field is disabled (default: false)               |
+| numberOfOptions | number         | No       | Number of rating options/stars (default: 5)                  |
+| defaultValue    | number \| null | No       | Default rating value (uncontrolled component)                |
+| value           | number \| null | No       | Current rating value (controlled component)                  |
+| onChange        | function       | No       | Callback when rating changes (value: number \| null) => void |
+
+### Implementation Details
+
+The Rating Input Field component combines a field wrapper and a rating input component:
+
+- Uses `FieldWrapper` to handle labels, error states, and helper text
+- Uses the base `RatingInput` UI component for the star rating interaction
+- Supports both controlled and uncontrolled component patterns
+- Automatically handles validation states and error messaging

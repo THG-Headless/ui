@@ -1,1480 +1,480 @@
 @layer components {
   .skin {
-    --color-background: var(
-      --tenant-skin-default-background,
-      var(--color-white)
-    );
-    --color-background-hover: var(
-      --tenant-skin-default-background-hover,
-      var(--color-neutral-50)
-    );
-    --color-background-focus: var(
-      --tenant-skin-default-background-focus,
-      var(--color-neutral-50)
-    );
-    --color-background-active: var(
-      --tenant-skin-default-background-active,
-      var(--color-neutral-200)
-    );
-    --color-background-disabled: var(
-      --tenant-skin-default-background-disabled,
-      var(--color-neutral-50)
-    );
+    --color-background: var(--color-white);
+    --color-background-hover: var(--color-neutral-50);
+    --color-background-focus: var(--color-neutral-50);
+    --color-background-active: var(--color-neutral-200);
+    --color-background-disabled: var(--color-neutral-50);
 
-    --color-foreground: var(
-      --tenant-skin-default-foreground,
-      var(--color-black)
-    );
-    --color-foreground-hover: var(
-      --tenant-skin-default-foreground-hover,
-      var(--color-neutral-700)
-    );
-    --color-foreground-focus: var(
-      --tenant-skin-default-foreground-focus,
-      var(--color-neutral-700)
-    );
-    --color-foreground-active: var(
-      --tenant-skin-default-foreground-active,
-      var(--color-neutral-600)
-    );
-    --color-foreground-disabled: var(
-      --tenant-skin-default-foreground-disabled,
-      var(--color-neutral-400)
-    );
+    --color-foreground: var(--color-black);
+    --color-foreground-hover: var(--color-neutral-700);
+    --color-foreground-focus: var(--color-neutral-700);
+    --color-foreground-active: var(--color-neutral-600);
+    --color-foreground-disabled: var(--color-neutral-400);
 
-    --color-border: var(--tenant-skin-default-border, var(--color-black));
-    --color-border-hover: var(
-      --tenant-skin-default-border-hover,
-      var(--color-neutral-300)
-    );
-    --color-border-focus: var(
-      --tenant-skin-default-border-focus,
-      var(--color-neutral-400)
-    );
-    --color-border-active: var(
-      --tenant-skin-default-border-active,
-      var(--color-neutral-500)
-    );
-    --color-border-disabled: var(
-      --tenant-skin-default-border-disabled,
-      var(--color-neutral-200)
-    );
+    --color-border: var(--color-black);
+    --color-border-hover: var(--color-neutral-300);
+    --color-border-focus: var(--color-neutral-400);
+    --color-border-active: var(--color-neutral-500);
+    --color-border-disabled: var(--color-neutral-200);
   }
 
   .skin-muted {
-    --color-background: var(
-      --tenant-skin-muted-background,
-      var(--color-neutral-200)
-    );
-    --color-background-hover: var(
-      --tenant-skin-muted-background-hover,
-      var(--color-neutral-300)
-    );
-    --color-background-focus: var(
-      --tenant-skin-muted-background-focus,
-      var(--color-neutral-300)
-    );
-    --color-background-active: var(
-      --tenant-skin-muted-background-active,
-      var(--color-neutral-400)
-    );
-    --color-background-disabled: var(
-      --tenant-skin-muted-background-disabled,
-      var(--color-neutral-100)
-    );
+    --color-background: var(--color-neutral-200);
+    --color-background-hover: var(--color-neutral-300);
+    --color-background-focus: var(--color-neutral-300);
+    --color-background-active: var(--color-neutral-400);
+    --color-background-disabled: var(--color-neutral-100);
 
-    --color-foreground: var(
-      --tenant-skin-muted-foreground,
-      var(--color-neutral-700)
-    );
-    --color-foreground-hover: var(
-      --tenant-skin-muted-foreground-hover,
-      var(--color-neutral-700)
-    );
-    --color-foreground-focus: var(
-      --tenant-skin-muted-foreground-focus,
-      var(--color-neutral-700)
-    );
-    --color-foreground-active: var(
-      --tenant-skin-muted-foreground-active,
-      var(--color-neutral-700)
-    );
-    --color-foreground-disabled: var(
-      --tenant-skin-muted-foreground-disabled,
-      var(--color-neutral-400)
-    );
+    --color-foreground: var(--color-neutral-700);
+    --color-foreground-hover: var(--color-neutral-700);
+    --color-foreground-focus: var(--color-neutral-700);
+    --color-foreground-active: var(--color-neutral-700);
+    --color-foreground-disabled: var(--color-neutral-400);
 
-    --color-border: var(--tenant-skin-muted-border, transparent);
-    --color-border-hover: var(--tenant-skin-muted-border-hover, transparent);
-    --color-border-focus: var(--tenant-skin-muted-border-focus, transparent);
-    --color-border-active: var(--tenant-skin-muted-border-active, transparent);
-    --color-border-disabled: var(
-      --tenant-skin-muted-border-disabled,
-      transparent
-    );
+    --color-border: transparent;
+    --color-border-hover: transparent;
+    --color-border-focus: transparent;
+    --color-border-active: transparent;
+    --color-border-disabled: transparent;
   }
 
   .skin-header {
-    --color-background: var(
-      --tenant-skin-header-background,
-      var(--color-white)
-    );
-    --color-background-hover: var(
-      --tenant-skin-header-background-hover,
-      var(--color-primary-hover)
-    );
-    --color-background-focus: var(
-      --tenant-skin-header-background-focus,
-      var(--color-primary-600)
-    );
-    --color-background-active: var(
-      --tenant-skin-header-background-active,
-      var(--color-primary-700)
-    );
-    --color-background-disabled: var(
-      --tenant-skin-header-background-disabled,
-      var(--color-neutral-50)
-    );
+    --color-background: var(--color-white);
+    --color-background-hover: var(--color-primary-hover);
+    --color-background-focus: var(--color-primary-600);
+    --color-background-active: var(--color-primary-700);
+    --color-background-disabled: var(--color-neutral-50);
 
-    --color-foreground: var(
-      --tenant-skin-header-foreground,
-      var(--color-primary)
-    );
-    --color-foreground-hover: var(
-      --tenant-skin-header-foreground-hover,
-      var(--color-primary-100)
-    );
-    --color-foreground-focus: var(
-      --tenant-skin-header-foreground-focus,
-      var(--color-neutral-100)
-    );
-    --color-foreground-active: var(
-      --tenant-skin-header-foreground-active,
-      var(--color-neutral-50)
-    );
-    --color-foreground-disabled: var(
-      --tenant-skin-header-foreground-disabled,
-      var(--color-neutral-400)
-    );
+    --color-foreground: var(--color-primary);
+    --color-foreground-hover: var(--color-primary-100);
+    --color-foreground-focus: var(--color-neutral-100);
+    --color-foreground-active: var(--color-neutral-50);
+    --color-foreground-disabled: var(--color-neutral-400);
 
-    --color-border: var(--tenant-skin-header-border, var(--color-primary));
-    --color-border-hover: var(
-      --tenant-skin-header-border-hover,
-      var(--color-primary-100)
-    );
-    --color-border-focus: var(
-      --tenant-skin-header-border-focus,
-      var(--color-neutral-100)
-    );
-    --color-border-active: var(
-      --tenant-skin-header-border-active,
-      var(--color-neutral-50)
-    );
-    --color-border-disabled: var(
-      --tenant-skin-header-border-disabled,
-      var(--color-neutral-200)
-    );
+    --color-border: var(--color-primary);
+    --color-border-hover: var(--color-primary-100);
+    --color-border-focus: var(--color-neutral-100);
+    --color-border-active: var(--color-neutral-50);
+    --color-border-disabled: var(--color-neutral-200);
   }
 
   .skin-footer {
-    --color-background: var(
-      --tenant-skin-footer-background,
-      var(--color-neutral-300)
-    );
-    --color-background-hover: var(
-      --tenant-skin-footer-background-hover,
-      var(--color-neutral-400)
-    );
-    --color-background-focus: var(
-      --tenant-skin-footer-background-focus,
-      var(--color-neutral-400)
-    );
-    --color-background-active: var(
-      --tenant-skin-footer-background-active,
-      var(--color-neutral-500)
-    );
-    --color-background-disabled: var(
-      --tenant-skin-footer-background-disabled,
-      var(--color-neutral-200)
-    );
+    --color-background: var(--color-neutral-300);
+    --color-background-hover: var(--color-neutral-400);
+    --color-background-focus: var(--color-neutral-400);
+    --color-background-active: var(--color-neutral-500);
+    --color-background-disabled: var(--color-neutral-200);
 
-    --color-foreground: var(
-      --tenant-skin-footer-foreground,
-      var(--color-black)
-    );
-    --color-foreground-hover: var(
-      --tenant-skin-footer-foreground-hover,
-      var(--color-neutral-800)
-    );
-    --color-foreground-focus: var(
-      --tenant-skin-footer-foreground-focus,
-      var(--color-neutral-800)
-    );
-    --color-foreground-active: var(
-      --tenant-skin-footer-foreground-active,
-      var(--color-neutral-700)
-    );
-    --color-foreground-disabled: var(
-      --tenant-skin-footer-foreground-disabled,
-      var(--color-neutral-400)
-    );
+    --color-foreground: var(--color-black);
+    --color-foreground-hover: var(--color-neutral-800);
+    --color-foreground-focus: var(--color-neutral-800);
+    --color-foreground-active: var(--color-neutral-700);
+    --color-foreground-disabled: var(--color-neutral-400);
 
-    --color-border: var(--tenant-skin-footer-border, var(--color-neutral-700));
-    --color-border-hover: var(
-      --tenant-skin-footer-border-hover,
-      var(--color-neutral-800)
-    );
-    --color-border-focus: var(
-      --tenant-skin-footer-border-focus,
-      var(--color-neutral-900)
-    );
-    --color-border-active: var(
-      --tenant-skin-footer-border-active,
-      var(--color-neutral-1000)
-    );
-    --color-border-disabled: var(
-      --tenant-skin-footer-border-disabled,
-      var(--color-neutral-500)
-    );
+    --color-border: var(--color-neutral-700);
+    --color-border-hover: var(--color-neutral-800);
+    --color-border-focus: var(--color-neutral-900);
+    --color-border-active: var(--color-neutral-1000);
+    --color-border-disabled: var(--color-neutral-500);
   }
 
   .skin-card {
-    --color-background: var(
-      --tenant-skin-card-background,
-      var(--color-neutral-100)
-    );
-    --color-background-hover: var(
-      --tenant-skin-card-background-hover,
-      var(--color-neutral-200)
-    );
-    --color-background-focus: var(
-      --tenant-skin-card-background-focus,
-      var(--color-neutral-200)
-    );
-    --color-background-active: var(
-      --tenant-skin-card-background-active,
-      var(--color-primary-300)
-    );
-    --color-background-disabled: var(
-      --tenant-skin-card-background-disabled,
-      var(--color-neutral-50)
-    );
+    --color-background: var(--color-neutral-100);
+    --color-background-hover: var(--color-neutral-200);
+    --color-background-focus: var(--color-neutral-200);
+    --color-background-active: var(--color-primary-300);
+    --color-background-disabled: var(--color-neutral-50);
 
-    --color-foreground: var(
-      --tenant-skin-card-foreground,
-      var(--color-neutral-900)
-    );
-    --color-foreground-hover: var(
-      --tenant-skin-card-foreground-hover,
-      var(--color-primary-700)
-    );
-    --color-foreground-focus: var(
-      --tenant-skin-card-foreground-focus,
-      var(--color-primary-700)
-    );
-    --color-foreground-active: var(
-      --tenant-skin-card-foreground-active,
-      var(--color-primary-500)
-    );
-    --color-foreground-disabled: var(
-      --tenant-skin-card-foreground-disabled,
-      var(--color-neutral-400)
-    );
+    --color-foreground: var(--color-neutral-900);
+    --color-foreground-hover: var(--color-primary-700);
+    --color-foreground-focus: var(--color-primary-700);
+    --color-foreground-active: var(--color-primary-500);
+    --color-foreground-disabled: var(--color-neutral-400);
 
-    --color-border: var(--tenant-skin-card-border, var(--color-neutral-200));
-    --color-border-hover: var(
-      --tenant-skin-card-border-hover,
-      var(--color-neutral-300)
-    );
-    --color-border-focus: var(
-      --tenant-skin-card-border-focus,
-      var(--color-neutral-300)
-    );
-    --color-border-active: var(
-      --tenant-skin-card-border-active,
-      var(--color-primary-500)
-    );
-    --color-border-disabled: var(
-      --tenant-skin-card-border-disabled,
-      var(--color-neutral-100)
-    );
+    --color-border: var(--color-neutral-200);
+    --color-border-hover: var(--color-neutral-300);
+    --color-border-focus: var(--color-neutral-300);
+    --color-border-active: var(--color-primary-500);
+    --color-border-disabled: var(--color-neutral-100);
   }
 
   .skin-navigation {
-    --color-background: var(
-      --tenant-skin-navigation-background,
-      var(--color-primary-900)
-    );
-    --color-background-hover: var(
-      --tenant-skin-navigation-background-hover,
-      var(--color-primary-100)
-    );
-    --color-background-focus: var(
-      --tenant-skin-navigation-background-focus,
-      var(--color-primary-100)
-    );
-    --color-background-active: var(
-      --tenant-skin-navigation-background-active,
-      var(--color-primary-300)
-    );
-    --color-background-disabled: var(
-      --tenant-skin-navigation-background-disabled,
-      var(--color-primary-100)
-    );
+    --color-background: var(--color-primary-900);
+    --color-background-hover: var(--color-primary-100);
+    --color-background-focus: var(--color-primary-100);
+    --color-background-active: var(--color-primary-300);
+    --color-background-disabled: var(--color-primary-100);
 
-    --color-foreground: var(
-      --tenant-skin-navigation-foreground,
-      var(--color-white)
-    );
-    --color-foreground-hover: var(
-      --tenant-skin-navigation-foreground-hover,
-      var(--color-neutral-50)
-    );
-    --color-foreground-focus: var(
-      --tenant-skin-navigation-foreground-focus,
-      var(--color-neutral-100)
-    );
-    --color-foreground-active: var(
-      --tenant-skin-navigation-foreground-active,
-      var(--color-neutral-200)
-    );
-    --color-foreground-disabled: var(
-      --tenant-skin-navigation-foreground-disabled,
-      var(--color-neutral-400)
-    );
+    --color-foreground: var(--color-white);
+    --color-foreground-hover: var(--color-neutral-50);
+    --color-foreground-focus: var(--color-neutral-100);
+    --color-foreground-active: var(--color-neutral-200);
+    --color-foreground-disabled: var(--color-neutral-400);
 
-    --color-border: var(
-      --tenant-skin-navigation-border,
-      var(--color-primary-600)
-    );
-    --color-border-hover: var(
-      --tenant-skin-navigation-border-hover,
-      var(--color-primary-700)
-    );
-    --color-border-focus: var(
-      --tenant-skin-navigation-border-focus,
-      var(--color-primary-800)
-    );
-    --color-border-active: var(
-      --tenant-skin-navigation-border-active,
-      var(--color-primary-900)
-    );
-    --color-border-disabled: var(
-      --tenant-skin-navigation-border-disabled,
-      var(--color-primary-300)
-    );
+    --color-border: var(--color-primary-600);
+    --color-border-hover: var(--color-primary-700);
+    --color-border-focus: var(--color-primary-800);
+    --color-border-active: var(--color-primary-900);
+    --color-border-disabled: var(--color-primary-300);
   }
 
   .skin-control {
-    --color-background: var(
-      --tenant-skin-control-background,
-      var(--color-white)
-    );
-    --color-background-hover: var(
-      --tenant-skin-control-background-hover,
-      var(--color-neutral-50)
-    );
-    --color-background-focus: var(
-      --tenant-skin-control-background-focus,
-      var(--color-neutral-100)
-    );
-    --color-background-active: var(
-      --tenant-skin-control-background-active,
-      var(--color-neutral-200)
-    );
-    --color-background-disabled: var(
-      --tenant-skin-control-background-disabled,
-      var(--color-neutral-50)
-    );
+    --color-background: var(--color-white);
+    --color-background-hover: var(--color-neutral-50);
+    --color-background-focus: var(--color-neutral-100);
+    --color-background-active: var(--color-neutral-200);
+    --color-background-disabled: var(--color-neutral-50);
 
-    --color-foreground: var(
-      --tenant-skin-control-foreground,
-      var(--color-neutral-900)
-    );
-    --color-foreground-hover: var(
-      --tenant-skin-control-foreground-hover,
-      var(--color-neutral-800)
-    );
-    --color-foreground-focus: var(
-      --tenant-skin-control-foreground-focus,
-      var(--color-neutral-700)
-    );
-    --color-foreground-disabled: var(
-      --tenant-skin-control-foreground-disabled,
-      var(--color-neutral-400)
-    );
+    --color-foreground: var(--color-neutral-900);
+    --color-foreground-hover: var(--color-neutral-800);
+    --color-foreground-focus: var(--color-neutral-700);
+    --color-foreground-disabled: var(--color-neutral-400);
 
-    --color-border: var(--tenant-skin-control-border, var(--color-neutral-300));
-    --color-border-hover: var(
-      --tenant-skin-control-border-hover,
-      var(--color-neutral-400)
-    );
-    --color-border-focus: var(
-      --tenant-skin-control-border-focus,
-      var(--color-neutral-500)
-    );
-    --color-border-active: var(
-      --tenant-skin-control-border-active,
-      var(--color-neutral-600)
-    );
-    --color-border-disabled: var(
-      --tenant-skin-control-border-disabled,
-      var(--color-neutral-200)
-    );
+    --color-border: var(--color-neutral-300);
+    --color-border-hover: var(--color-neutral-400);
+    --color-border-focus: var(--color-neutral-500);
+    --color-border-active: var(--color-neutral-600);
+    --color-border-disabled: var(--color-neutral-200);
   }
 
   .skin-modal {
-    --color-background: var(--tenant-skin-modal-background, var(--color-white));
-    --color-background-hover: var(
-      --tenant-skin-modal-background-hover,
-      var(--color-neutral-50)
-    );
-    --color-background-focus: var(
-      --tenant-skin-modal-background-focus,
-      var(--color-neutral-100)
-    );
-    --color-background-active: var(
-      --tenant-skin-modal-background-active,
-      var(--color-neutral-200)
-    );
-    --color-background-disabled: var(
-      --tenant-skin-modal-background-disabled,
-      var(--color-neutral-50)
-    );
+    --color-background: var(--color-white);
+    --color-background-hover: var(--color-neutral-50);
+    --color-background-focus: var(--color-neutral-100);
+    --color-background-active: var(--color-neutral-200);
+    --color-background-disabled: var(--color-neutral-50);
 
-    --color-foreground: var(
-      --tenant-skin-modal-foreground,
-      var(--color-neutral-900)
-    );
-    --color-foreground-hover: var(
-      --tenant-skin-modal-foreground-hover,
-      var(--color-neutral-700)
-    );
-    --color-foreground-focus: var(
-      --tenant-skin-modal-foreground-focus,
-      var(--color-neutral-700)
-    );
-    --color-foreground-active: var(
-      --tenant-skin-modal-foreground-active,
-      var(--color-neutral-600)
-    );
-    --color-foreground-disabled: var(
-      --tenant-skin-modal-foreground-disabled,
-      var(--color-neutral-400)
-    );
+    --color-foreground: var(--color-neutral-900);
+    --color-foreground-hover: var(--color-neutral-700);
+    --color-foreground-focus: var(--color-neutral-700);
+    --color-foreground-active: var(--color-neutral-600);
+    --color-foreground-disabled: var(--color-neutral-400);
 
-    --color-border: var(--tenant-skin-modal-border, var(--color-neutral-200));
-    --color-border-hover: var(
-      --tenant-skin-modal-border-hover,
-      var(--color-neutral-300)
-    );
-    --color-border-focus: var(
-      --tenant-skin-modal-border-focus,
-      var(--color-neutral-400)
-    );
-    --color-border-active: var(
-      --tenant-skin-modal-border-active,
-      var(--color-neutral-500)
-    );
-    --color-border-disabled: var(
-      --tenant-skin-modal-border-disabled,
-      var(--color-neutral-200)
-    );
+    --color-border: var(--color-neutral-200);
+    --color-border-hover: var(--color-neutral-300);
+    --color-border-focus: var(--color-neutral-400);
+    --color-border-active: var(--color-neutral-500);
+    --color-border-disabled: var(--color-neutral-200);
   }
 
   .skin-container {
-    --color-background: var(
-      --tenant-skin-container-background,
-      var(--color-neutral-50)
-    );
-    --color-background-hover: var(
-      --tenant-skin-container-background-hover,
-      var(--color-neutral-100)
-    );
-    --color-background-focus: var(
-      --tenant-skin-container-background-focus,
-      var(--color-neutral-200)
-    );
-    --color-background-active: var(
-      --tenant-skin-container-background-active,
-      var(--color-neutral-300)
-    );
-    --color-background-disabled: var(
-      --tenant-skin-container-background-disabled,
-      var(--color-neutral-25)
-    );
+    --color-background: var(--color-neutral-50);
+    --color-background-hover: var(--color-neutral-100);
+    --color-background-focus: var(--color-neutral-200);
+    --color-background-active: var(--color-neutral-300);
+    --color-background-disabled: var(--color-neutral-25);
 
-    --color-foreground: var(
-      --tenant-skin-container-foreground,
-      var(--color-neutral-900)
-    );
-    --color-foreground-hover: var(
-      --tenant-skin-container-foreground-hover,
-      var(--color-neutral-800)
-    );
-    --color-foreground-focus: var(
-      --tenant-skin-container-foreground-focus,
-      var(--color-neutral-700)
-    );
-    --color-foreground-active: var(
-      --tenant-skin-container-foreground-active,
-      var(--color-neutral-600)
-    );
-    --color-foreground-disabled: var(
-      --tenant-skin-container-foreground-disabled,
-      var(--color-neutral-400)
-    );
+    --color-foreground: var(--color-neutral-900);
+    --color-foreground-hover: var(--color-neutral-800);
+    --color-foreground-focus: var(--color-neutral-700);
+    --color-foreground-active: var(--color-neutral-600);
+    --color-foreground-disabled: var(--color-neutral-400);
 
-    --color-border: var(
-      --tenant-skin-container-border,
-      var(--color-neutral-200)
-    );
-    --color-border-hover: var(
-      --tenant-skin-container-border-hover,
-      var(--color-neutral-300)
-    );
-    --color-border-focus: var(
-      --tenant-skin-container-border-focus,
-      var(--color-neutral-400)
-    );
-    --color-border-active: var(
-      --tenant-skin-container-border-active,
-      var(--color-neutral-500)
-    );
-    --color-border-disabled: var(
-      --tenant-skin-container-border-disabled,
-      var(--color-neutral-100)
-    );
+    --color-border: var(--color-neutral-200);
+    --color-border-hover: var(--color-neutral-300);
+    --color-border-focus: var(--color-neutral-400);
+    --color-border-active: var(--color-neutral-500);
+    --color-border-disabled: var(--color-neutral-100);
   }
 
   .skin-attention {
-    --color-background: var(
-      --tenant-skin-attention-background,
-      var(--color-attention-50)
-    );
-    --color-background-hover: var(
-      --tenant-skin-attention-background-hover,
-      var(--color-attention-100)
-    );
-    --color-background-focus: var(
-      --tenant-skin-attention-background-focus,
-      var(--color-attention-200)
-    );
-    --color-background-active: var(
-      --tenant-skin-attention-background-active,
-      var(--color-attention-300)
-    );
-    --color-background-disabled: var(
-      --tenant-skin-attention-background-disabled,
-      var(--color-attention-25)
-    );
+    --color-background: var(--color-attention-50);
+    --color-background-hover: var(--color-attention-100);
+    --color-background-focus: var(--color-attention-200);
+    --color-background-active: var(--color-attention-300);
+    --color-background-disabled: var(--color-attention-25);
 
-    --color-foreground: var(
-      --tenant-skin-attention-foreground,
-      var(--color-attention-500)
-    );
-    --color-foreground-hover: var(
-      --tenant-skin-attention-foreground-hover,
-      var(--color-attention-600)
-    );
-    --color-foreground-focus: var(
-      --tenant-skin-attention-foreground-focus,
-      var(--color-attention-700)
-    );
-    --color-foreground-active: var(
-      --tenant-skin-attention-foreground-active,
-      var(--color-attention-800)
-    );
-    --color-foreground-disabled: var(
-      --tenant-skin-attention-foreground-disabled,
-      var(--color-neutral-400)
-    );
+    --color-foreground: var(--color-attention-500);
+    --color-foreground-hover: var(--color-attention-600);
+    --color-foreground-focus: var(--color-attention-700);
+    --color-foreground-active: var(--color-attention-800);
+    --color-foreground-disabled: var(--color-neutral-400);
 
-    --color-border: var(
-      --tenant-skin-attention-border,
-      var(--color-attention-300)
-    );
-    --color-border-hover: var(
-      --tenant-skin-attention-border-hover,
-      var(--color-attention-400)
-    );
-    --color-border-focus: var(
-      --tenant-skin-attention-border-focus,
-      var(--color-attention-500)
-    );
-    --color-border-active: var(
-      --tenant-skin-attention-border-active,
-      var(--color-attention-600)
-    );
-    --color-border-disabled: var(
-      --tenant-skin-attention-border-disabled,
-      var(--color-attention-100)
-    );
+    --color-border: var(--color-attention-300);
+    --color-border-hover: var(--color-attention-400);
+    --color-border-focus: var(--color-attention-500);
+    --color-border-active: var(--color-attention-600);
+    --color-border-disabled: var(--color-attention-100);
   }
 
-
   .skin-pagination {
-    --color-background: var(
-      --tenant-skin-pagination-background,
-      var(--color-white)
-    );
-    --color-background-hover: var(
-      --tenant-skin-pagination-background-hover,
-      var(--color-neutral-50)
-    );
-    --color-background-focus: var(
-      --tenant-skin-pagination-background-focus,
-      var(--color-neutral-100)
-    );
-    --color-background-active: var(
-      --tenant-skin-pagination-background-active,
-      var(--color-neutral-200)
-    );
-    --color-background-disabled: var(
-      --tenant-skin-pagination-background-disabled,
-      var(--color-neutral-200)
-    );
+    --color-background: var(--color-white);
+    --color-background-hover: var(--color-neutral-50);
+    --color-background-focus: var(--color-neutral-100);
+    --color-background-active: var(--color-neutral-200);
+    --color-background-disabled: var(--color-neutral-200);
 
-    --color-foreground: var(
-      --tenant-skin-pagination-foreground,
-      var(--color-black)
-    );
-    --color-foreground-hover: var(
-      --tenant-skin-pagination-foreground-hover,
-      var(--color-neutral-800)
-    );
-    --color-foreground-focus: var(
-      --tenant-skin-pagination-foreground-focus,
-      var(--color-neutral-700)
-    );
-    --color-foreground-active: var(
-      --tenant-skin-pagination-foreground-active,
-      var(--color-neutral-600)
-    );
-    --color-foreground-disabled: var(
-      --tenant-skin-pagination-foreground-disabled,
-      var(--color-neutral-400)
-    );
+    --color-foreground: var(--color-black);
+    --color-foreground-hover: var(--color-neutral-800);
+    --color-foreground-focus: var(--color-neutral-700);
+    --color-foreground-active: var(--color-neutral-600);
+    --color-foreground-disabled: var(--color-neutral-400);
 
-    --color-border: var(
-      --tenant-skin-pagination-border,
-      var(--color-neutral-200)
-    );
-    --color-border-hover: var(
-      --tenant-skin-pagination-border-hover,
-      var(--color-neutral-300)
-    );
-    --color-border-focus: var(
-      --tenant-skin-pagination-border-focus,
-      var(--color-neutral-400)
-    );
-    --color-border-active: var(
-      --tenant-skin-pagination-border-active,
-      var(--color-black)
-    );
-    --color-border-disabled: var(
-      --tenant-skin-pagination-border-disabled,
-      var(--color-neutral-200)
-    );
+    --color-border: var(--color-neutral-200);
+    --color-border-hover: var(--color-neutral-300);
+    --color-border-focus: var(--color-neutral-400);
+    --color-border-active: var(--color-black);
+    --color-border-disabled: var(--color-neutral-200);
   }
 
   .skin-primary-emphasised {
-    --color-background: var(
-      --tenant-skin-primary-emphasised-background,
-      var(--color-primary)
-    );
-    --color-background-hover: var(
-      --tenant-skin-primary-emphasised-background-hover,
-      var(--color-primary-600)
-    );
-    --color-background-focus: var(
-      --tenant-skin-primary-emphasised-background-focus,
-      var(--color-primary-600)
-    );
-    --color-background-active: var(
-      --tenant-skin-primary-emphasised-background-active,
-      var(--color-primary-700)
-    );
-    --color-background-disabled: var(
-      --tenant-skin-primary-emphasised-background-disabled,
-      var(--color-primary-200)
-    );
+    --color-background: var(--color-primary);
+    --color-background-hover: var(--color-primary-600);
+    --color-background-focus: var(--color-primary-600);
+    --color-background-active: var(--color-primary-700);
+    --color-background-disabled: var(--color-primary-200);
 
-    --color-foreground: var(
-      --tenant-skin-primary-emphasised-foreground,
-      var(--color-white)
-    );
-    --color-foreground-hover: var(
-      --tenant-skin-primary-emphasised-foreground-hover,
-      var(--color-white)
-    );
-    --color-foreground-focus: var(
-      --tenant-skin-primary-emphasised-foreground-focus,
-      var(--color-white)
-    );
-    --color-foreground-active: var(
-      --tenant-skin-primary-emphasised-foreground-active,
-      var(--color-white)
-    );
-    --color-foreground-disabled: var(
-      --tenant-skin-primary-emphasised-foreground-disabled,
-      var(--color-neutral-400)
-    );
+    --color-foreground: var(--color-white);
+    --color-foreground-hover: var(--color-white);
+    --color-foreground-focus: var(--color-white);
+    --color-foreground-active: var(--color-white);
+    --color-foreground-disabled: var(--color-neutral-400);
 
-    --color-border: var(--tenant-skin-primary-emphasised-border, transparent);
-    --color-border-hover: var(
-      --tenant-skin-primary-emphasised-border-hover,
-      transparent
-    );
-    --color-border-focus: var(
-      --tenant-skin-primary-emphasised-border-focus,
-      transparent
-    );
-    --color-border-active: var(
-      --tenant-skin-primary-emphasised-border-active,
-      transparent
-    );
-    --color-border-disabled: var(
-      --tenant-skin-primary-emphasised-border-disabled,
-      transparent
-    );
+    --color-border: transparent;
+    --color-border-hover: transparent;
+    --color-border-focus: transparent;
+    --color-border-active: transparent;
+    --color-border-disabled: transparent;
   }
 
   .skin-primary {
-    --color-background: var(
-      --tenant-skin-primary-background,
-      var(--color-primary-50)
-    );
-    --color-background-hover: var(
-      --tenant-skin-primary-background-hover,
-      var(--color-primary-100)
-    );
-    --color-background-focus: var(
-      --tenant-skin-primary-background-focus,
-      var(--color-primary-100)
-    );
-    --color-background-active: var(
-      --tenant-skin-primary-background-active,
-      var(--color-primary-200)
-    );
-    --color-background-disabled: var(
-      --tenant-skin-primary-background-disabled,
-      var(--color-neutral-50)
-    );
+    --color-background: var(--color-primary-50);
+    --color-background-hover: var(--color-primary-100);
+    --color-background-focus: var(--color-primary-100);
+    --color-background-active: var(--color-primary-200);
+    --color-background-disabled: var(--color-neutral-50);
 
-    --color-foreground: var(
-      --tenant-skin-primary-foreground,
-      var(--color-primary)
-    );
-    --color-foreground-hover: var(
-      --tenant-skin-primary-foreground-hover,
-      var(--color-primary-600)
-    );
-    --color-foreground-focus: var(
-      --tenant-skin-primary-foreground-focus,
-      var(--color-primary-600)
-    );
-    --color-foreground-active: var(
-      --tenant-skin-primary-foreground-active,
-      var(--color-primary-700)
-    );
-    --color-foreground-disabled: var(
-      --tenant-skin-primary-foreground-disabled,
-      var(--color-neutral-400)
-    );
+    --color-foreground: var(--color-primary);
+    --color-foreground-hover: var(--color-primary-600);
+    --color-foreground-focus: var(--color-primary-600);
+    --color-foreground-active: var(--color-primary-700);
+    --color-foreground-disabled: var(--color-neutral-400);
 
-    --color-border: var(--tenant-skin-primary-border, var(--color-primary));
-    --color-border-hover: var(
-      --tenant-skin-primary-border-hover,
-      var(--color-primary-600)
-    );
-    --color-border-focus: var(
-      --tenant-skin-primary-border-focus,
-      var(--color-primary-600)
-    );
-    --color-border-active: var(
-      --tenant-skin-primary-border-active,
-      var(--color-primary-700)
-    );
-    --color-border-disabled: var(
-      --tenant-skin-primary-border-disabled,
-      var(--color-neutral-200)
-    );
+    --color-border: var(--color-primary);
+    --color-border-hover: var(--color-primary-600);
+    --color-border-focus: var(--color-primary-600);
+    --color-border-active: var(--color-primary-700);
+    --color-border-disabled: var(--color-neutral-200);
   }
 
   .skin-primary-subtle {
-    --color-background: var(
-      --tenant-skin-primary-subtle-background,
-      transparent
-    );
-    --color-background-hover: var(
-      --tenant-skin-primary-subtle-background-hover,
-      var(--color-primary-50)
-    );
-    --color-background-focus: var(
-      --tenant-skin-primary-subtle-background-focus,
-      var(--color-primary-50)
-    );
-    --color-background-active: var(
-      --tenant-skin-primary-subtle-background-active,
-      var(--color-primary-100)
-    );
-    --color-background-disabled: var(
-      --tenant-skin-primary-subtle-background-disabled,
-      transparent
-    );
+    --color-background: transparent;
+    --color-background-hover: var(--color-primary-50);
+    --color-background-focus: var(--color-primary-50);
+    --color-background-active: var(--color-primary-100);
+    --color-background-disabled: transparent;
 
-    --color-foreground: var(
-      --tenant-skin-primary-subtle-foreground,
-      var(--color-primary)
-    );
-    --color-foreground-hover: var(
-      --tenant-skin-primary-subtle-foreground-hover,
-      var(--color-primary-600)
-    );
-    --color-foreground-focus: var(
-      --tenant-skin-primary-subtle-foreground-focus,
-      var(--color-primary-600)
-    );
-    --color-foreground-active: var(
-      --tenant-skin-primary-subtle-foreground-active,
-      var(--color-primary-700)
-    );
-    --color-foreground-disabled: var(
-      --tenant-skin-primary-subtle-foreground-disabled,
-      var(--color-neutral-300)
-    );
+    --color-foreground: var(--color-primary);
+    --color-foreground-hover: var(--color-primary-600);
+    --color-foreground-focus: var(--color-primary-600);
+    --color-foreground-active: var(--color-primary-700);
+    --color-foreground-disabled: var(--color-neutral-300);
 
-    --color-border: var(--tenant-skin-primary-subtle-border, transparent);
-    --color-border-hover: var(
-      --tenant-skin-primary-subtle-border-hover,
-      transparent
-    );
-    --color-border-focus: var(
-      --tenant-skin-primary-subtle-border-focus,
-      transparent
-    );
-    --color-border-active: var(
-      --tenant-skin-primary-subtle-border-active,
-      transparent
-    );
-    --color-border-disabled: var(
-      --tenant-skin-primary-subtle-border-disabled,
-      transparent
-    );
+    --color-border: transparent;
+    --color-border-hover: transparent;
+    --color-border-focus: transparent;
+    --color-border-active: transparent;
+    --color-border-disabled: transparent;
   }
 
   .skin-secondary-emphasised {
-    --color-background: var(
-      --tenant-skin-secondary-emphasised-background,
-      var(--color-secondary)
-    );
-    --color-background-hover: var(
-      --tenant-skin-secondary-emphasised-background-hover,
-      var(--color-secondary-600)
-    );
-    --color-background-focus: var(
-      --tenant-skin-secondary-emphasised-background-focus,
-      var(--color-secondary-600)
-    );
-    --color-background-active: var(
-      --tenant-skin-secondary-emphasised-background-active,
-      var(--color-secondary-700)
-    );
-    --color-background-disabled: var(
-      --tenant-skin-secondary-emphasised-background-disabled,
-      var(--color-secondary-200)
-    );
+    --color-background: var(--color-secondary);
+    --color-background-hover: var(--color-secondary-600);
+    --color-background-focus: var(--color-secondary-600);
+    --color-background-active: var(--color-secondary-700);
+    --color-background-disabled: var(--color-secondary-200);
 
-    --color-foreground: var(
-      --tenant-skin-secondary-emphasised-foreground,
-      var(--color-white)
-    );
-    --color-foreground-hover: var(
-      --tenant-skin-secondary-emphasised-foreground-hover,
-      var(--color-white)
-    );
-    --color-foreground-focus: var(
-      --tenant-skin-secondary-emphasised-foreground-focus,
-      var(--color-white)
-    );
-    --color-foreground-active: var(
-      --tenant-skin-secondary-emphasised-foreground-active,
-      var(--color-white)
-    );
-    --color-foreground-disabled: var(
-      --tenant-skin-secondary-emphasised-foreground-disabled,
-      var(--color-neutral-400)
-    );
+    --color-foreground: var(--color-white);
+    --color-foreground-hover: var(--color-white);
+    --color-foreground-focus: var(--color-white);
+    --color-foreground-active: var(--color-white);
+    --color-foreground-disabled: var(--color-neutral-400);
 
-    --color-border: var(--tenant-skin-secondary-emphasised-border, transparent);
-    --color-border-hover: var(
-      --tenant-skin-secondary-emphasised-border-hover,
-      transparent
-    );
-    --color-border-focus: var(
-      --tenant-skin-secondary-emphasised-border-focus,
-      transparent
-    );
-    --color-border-active: var(
-      --tenant-skin-secondary-emphasised-border-active,
-      transparent
-    );
-    --color-border-disabled: var(
-      --tenant-skin-secondary-emphasised-border-disabled,
-      transparent
-    );
+    --color-border: transparent;
+    --color-border-hover: transparent;
+    --color-border-focus: transparent;
+    --color-border-active: transparent;
+    --color-border-disabled: transparent;
   }
 
   .skin-secondary {
-    --color-background: var(
-      --tenant-skin-secondary-background,
-      var(--color-secondary-50)
-    );
-    --color-background-hover: var(
-      --tenant-skin-secondary-background-hover,
-      var(--color-secondary-100)
-    );
-    --color-background-focus: var(
-      --tenant-skin-secondary-background-focus,
-      var(--color-secondary-100)
-    );
-    --color-background-active: var(
-      --tenant-skin-secondary-background-active,
-      var(--color-secondary-200)
-    );
-    --color-background-disabled: var(
-      --tenant-skin-secondary-background-disabled,
-      var(--color-neutral-50)
-    );
+    --color-background: var(--color-secondary-50);
+    --color-background-hover: var(--color-secondary-100);
+    --color-background-focus: var(--color-secondary-100);
+    --color-background-active: var(--color-secondary-200);
+    --color-background-disabled: var(--color-neutral-50);
 
-    --color-foreground: var(
-      --tenant-skin-secondary-foreground,
-      var(--color-secondary)
-    );
-    --color-foreground-hover: var(
-      --tenant-skin-secondary-foreground-hover,
-      var(--color-secondary-600)
-    );
-    --color-foreground-focus: var(
-      --tenant-skin-secondary-foreground-focus,
-      var(--color-secondary-600)
-    );
-    --color-foreground-active: var(
-      --tenant-skin-secondary-foreground-active,
-      var(--color-secondary-700)
-    );
-    --color-foreground-disabled: var(
-      --tenant-skin-secondary-foreground-disabled,
-      var(--color-neutral-400)
-    );
+    --color-foreground: var(--color-secondary);
+    --color-foreground-hover: var(--color-secondary-600);
+    --color-foreground-focus: var(--color-secondary-600);
+    --color-foreground-active: var(--color-secondary-700);
+    --color-foreground-disabled: var(--color-neutral-400);
 
-    --color-border: var(--tenant-skin-secondary-border, var(--color-secondary));
-    --color-border-hover: var(
-      --tenant-skin-secondary-border-hover,
-      var(--color-secondary-600)
-    );
-    --color-border-focus: var(
-      --tenant-skin-secondary-border-focus,
-      var(--color-secondary-600)
-    );
-    --color-border-active: var(
-      --tenant-skin-secondary-border-active,
-      var(--color-secondary-700)
-    );
-    --color-border-disabled: var(
-      --tenant-skin-secondary-border-disabled,
-      var(--color-neutral-200)
-    );
+    --color-border: var(--color-secondary);
+    --color-border-hover: var(--color-secondary-600);
+    --color-border-focus: var(--color-secondary-600);
+    --color-border-active: var(--color-secondary-700);
+    --color-border-disabled: var(--color-neutral-200);
   }
 
   .skin-secondary-subtle {
-    --color-background: var(
-      --tenant-skin-secondary-subtle-background,
-      transparent
-    );
-    --color-background-hover: var(
-      --tenant-skin-secondary-subtle-background-hover,
-      var(--color-secondary-50)
-    );
-    --color-background-focus: var(
-      --tenant-skin-secondary-subtle-background-focus,
-      var(--color-secondary-50)
-    );
-    --color-background-active: var(
-      --tenant-skin-secondary-subtle-background-active,
-      var(--color-secondary-100)
-    );
-    --color-background-disabled: var(
-      --tenant-skin-secondary-subtle-background-disabled,
-      transparent
-    );
+    --color-background: transparent;
+    --color-background-hover: var(--color-secondary-50);
+    --color-background-focus: var(--color-secondary-50);
+    --color-background-active: var(--color-secondary-100);
+    --color-background-disabled: transparent;
 
-    --color-foreground: var(
-      --tenant-skin-secondary-subtle-foreground,
-      var(--color-secondary)
-    );
-    --color-foreground-hover: var(
-      --tenant-skin-secondary-subtle-foreground-hover,
-      var(--color-secondary-600)
-    );
-    --color-foreground-focus: var(
-      --tenant-skin-secondary-subtle-foreground-focus,
-      var(--color-secondary-600)
-    );
-    --color-foreground-active: var(
-      --tenant-skin-secondary-subtle-foreground-active,
-      var(--color-secondary-700)
-    );
-    --color-foreground-disabled: var(
-      --tenant-skin-secondary-subtle-foreground-disabled,
-      var(--color-neutral-300)
-    );
+    --color-foreground: var(--color-secondary);
+    --color-foreground-hover: var(--color-secondary-600);
+    --color-foreground-focus: var(--color-secondary-600);
+    --color-foreground-active: var(--color-secondary-700);
+    --color-foreground-disabled: var(--color-neutral-300);
 
-    --color-border: var(--tenant-skin-secondary-subtle-border, transparent);
-    --color-border-hover: var(
-      --tenant-skin-secondary-subtle-border-hover,
-      transparent
-    );
-    --color-border-focus: var(
-      --tenant-skin-secondary-subtle-border-focus,
-      transparent
-    );
-    --color-border-active: var(
-      --tenant-skin-secondary-subtle-border-active,
-      transparent
-    );
-    --color-border-disabled: var(
-      --tenant-skin-secondary-subtle-border-disabled,
-      transparent
-    );
+    --color-border: transparent;
+    --color-border-hover: transparent;
+    --color-border-focus: transparent;
+    --color-border-active: transparent;
+    --color-border-disabled: transparent;
   }
 
   .skin-tertiary-emphasised {
-    --color-background: var(
-      --tenant-skin-tertiary-emphasised-background,
-      var(--color-tertiary)
-    );
-    --color-background-hover: var(
-      --tenant-skin-tertiary-emphasised-background-hover,
-      var(--color-tertiary-600)
-    );
-    --color-background-focus: var(
-      --tenant-skin-tertiary-emphasised-background-focus,
-      var(--color-tertiary-600)
-    );
-    --color-background-active: var(
-      --tenant-skin-tertiary-emphasised-background-active,
-      var(--color-tertiary-700)
-    );
-    --color-background-disabled: var(
-      --tenant-skin-tertiary-emphasised-background-disabled,
-      var(--color-tertiary-200)
-    );
+    --color-background: var(--color-tertiary);
+    --color-background-hover: var(--color-tertiary-600);
+    --color-background-focus: var(--color-tertiary-600);
+    --color-background-active: var(--color-tertiary-700);
+    --color-background-disabled: var(--color-tertiary-200);
 
-    --color-foreground: var(
-      --tenant-skin-tertiary-emphasised-foreground,
-      var(--color-white)
-    );
-    --color-foreground-hover: var(
-      --tenant-skin-tertiary-emphasised-foreground-hover,
-      var(--color-white)
-    );
-    --color-foreground-focus: var(
-      --tenant-skin-tertiary-emphasised-foreground-focus,
-      var(--color-white)
-    );
-    --color-foreground-active: var(
-      --tenant-skin-tertiary-emphasised-foreground-active,
-      var(--color-white)
-    );
-    --color-foreground-disabled: var(
-      --tenant-skin-tertiary-emphasised-foreground-disabled,
-      var(--color-neutral-400)
-    );
+    --color-foreground: var(--color-white);
+    --color-foreground-hover: var(--color-white);
+    --color-foreground-focus: var(--color-white);
+    --color-foreground-active: var(--color-white);
+    --color-foreground-disabled: var(--color-neutral-400);
 
-    --color-border: var(--tenant-skin-tertiary-emphasised-border, transparent);
-    --color-border-hover: var(
-      --tenant-skin-tertiary-emphasised-border-hover,
-      transparent
-    );
-    --color-border-focus: var(
-      --tenant-skin-tertiary-emphasised-border-focus,
-      transparent
-    );
-    --color-border-active: var(
-      --tenant-skin-tertiary-emphasised-border-active,
-      transparent
-    );
-    --color-border-disabled: var(
-      --tenant-skin-tertiary-emphasised-border-disabled,
-      transparent
-    );
+    --color-border: transparent;
+    --color-border-hover: transparent;
+    --color-border-focus: transparent;
+    --color-border-active: transparent;
+    --color-border-disabled: transparent;
   }
 
   .skin-tertiary {
-    --color-background: var(
-      --tenant-skin-tertiary-background,
-      var(--color-tertiary-50)
-    );
-    --color-background-hover: var(
-      --tenant-skin-tertiary-background-hover,
-      var(--color-tertiary-100)
-    );
-    --color-background-focus: var(
-      --tenant-skin-tertiary-background-focus,
-      var(--color-tertiary-100)
-    );
-    --color-background-active: var(
-      --tenant-skin-tertiary-background-active,
-      var(--color-tertiary-200)
-    );
-    --color-background-disabled: var(
-      --tenant-skin-tertiary-background-disabled,
-      var(--color-neutral-50)
-    );
+    --color-background: var(--color-tertiary-50);
+    --color-background-hover: var(--color-tertiary-100);
+    --color-background-focus: var(--color-tertiary-100);
+    --color-background-active: var(--color-tertiary-200);
+    --color-background-disabled: var(--color-neutral-50);
 
-    --color-foreground: var(
-      --tenant-skin-tertiary-foreground,
-      var(--color-tertiary)
-    );
-    --color-foreground-hover: var(
-      --tenant-skin-tertiary-foreground-hover,
-      var(--color-tertiary-600)
-    );
-    --color-foreground-focus: var(
-      --tenant-skin-tertiary-foreground-focus,
-      var(--color-tertiary-600)
-    );
-    --color-foreground-active: var(
-      --tenant-skin-tertiary-foreground-active,
-      var(--color-tertiary-700)
-    );
-    --color-foreground-disabled: var(
-      --tenant-skin-tertiary-foreground-disabled,
-      var(--color-neutral-400)
-    );
+    --color-foreground: var(--color-tertiary);
+    --color-foreground-hover: var(--color-tertiary-600);
+    --color-foreground-focus: var(--color-tertiary-600);
+    --color-foreground-active: var(--color-tertiary-700);
+    --color-foreground-disabled: var(--color-neutral-400);
 
-    --color-border: var(--tenant-skin-tertiary-border, var(--color-tertiary));
-    --color-border-hover: var(
-      --tenant-skin-tertiary-border-hover,
-      var(--color-tertiary-600)
-    );
-    --color-border-focus: var(
-      --tenant-skin-tertiary-border-focus,
-      var(--color-tertiary-600)
-    );
-    --color-border-active: var(
-      --tenant-skin-tertiary-border-active,
-      var(--color-tertiary-700)
-    );
-    --color-border-disabled: var(
-      --tenant-skin-tertiary-border-disabled,
-      var(--color-neutral-200)
-    );
+    --color-border: var(--color-tertiary);
+    --color-border-hover: var(--color-tertiary-600);
+    --color-border-focus: var(--color-tertiary-600);
+    --color-border-active: var(--color-tertiary-700);
+    --color-border-disabled: var(--color-neutral-200);
   }
 
   .skin-tertiary-subtle {
-    --color-background: var(
-      --tenant-skin-tertiary-subtle-background,
-      transparent
-    );
-    --color-background-hover: var(
-      --tenant-skin-tertiary-subtle-background-hover,
-      var(--color-tertiary-50)
-    );
-    --color-background-focus: var(
-      --tenant-skin-tertiary-subtle-background-focus,
-      var(--color-tertiary-50)
-    );
-    --color-background-active: var(
-      --tenant-skin-tertiary-subtle-background-active,
-      var(--color-tertiary-100)
-    );
-    --color-background-disabled: var(
-      --tenant-skin-tertiary-subtle-background-disabled,
-      transparent
-    );
+    --color-background: transparent;
+    --color-background-hover: var(--color-tertiary-50);
+    --color-background-focus: var(--color-tertiary-50);
+    --color-background-active: var(--color-tertiary-100);
+    --color-background-disabled: transparent;
 
-    --color-foreground: var(
-      --tenant-skin-tertiary-subtle-foreground,
-      var(--color-tertiary)
-    );
-    --color-foreground-hover: var(
-      --tenant-skin-tertiary-subtle-foreground-hover,
-      var(--color-tertiary-600)
-    );
-    --color-foreground-focus: var(
-      --tenant-skin-tertiary-subtle-foreground-focus,
-      var(--color-tertiary-600)
-    );
-    --color-foreground-active: var(
-      --tenant-skin-tertiary-subtle-foreground-active,
-      var(--color-tertiary-700)
-    );
-    --color-foreground-disabled: var(
-      --tenant-skin-tertiary-subtle-foreground-disabled,
-      var(--color-neutral-300)
-    );
+    --color-foreground: var(--color-tertiary);
+    --color-foreground-hover: var(--color-tertiary-600);
+    --color-foreground-focus: var(--color-tertiary-600);
+    --color-foreground-active: var(--color-tertiary-700);
+    --color-foreground-disabled: var(--color-neutral-300);
 
-    --color-border: var(--tenant-skin-tertiary-subtle-border, transparent);
-    --color-border-hover: var(
-      --tenant-skin-tertiary-subtle-border-hover,
-      transparent
-    );
-    --color-border-focus: var(
-      --tenant-skin-tertiary-subtle-border-focus,
-      transparent
-    );
-    --color-border-active: var(
-      --tenant-skin-tertiary-subtle-border-active,
-      transparent
-    );
-    --color-border-disabled: var(
-      --tenant-skin-tertiary-subtle-border-disabled,
-      transparent
-    );
+    --color-border: transparent;
+    --color-border-hover: transparent;
+    --color-border-focus: transparent;
+    --color-border-active: transparent;
+    --color-border-disabled: transparent;
   }
 
   .skin-success {
-    --color-background: var(
-      --tenant-skin-success-background,
-      var(--color-success-light)
-    );
-    --color-background-hover: var(
-      --tenant-skin-success-background-hover,
-      var(--color-success-100)
-    );
-    --color-background-focus: var(
-      --tenant-skin-success-background-focus,
-      var(--color-success-200)
-    );
-    --color-background-active: var(
-      --tenant-skin-success-background-active,
-      var(--color-success-300)
-    );
-    --color-background-disabled: var(
-      --tenant-skin-success-background-disabled,
-      var(--color-success-50)
-    );
+    --color-background: var(--color-success-light);
+    --color-background-hover: var(--color-success-100);
+    --color-background-focus: var(--color-success-200);
+    --color-background-active: var(--color-success-300);
+    --color-background-disabled: var(--color-success-50);
 
-    --color-foreground: var(
-      --tenant-skin-success-foreground,
-      var(--color-success)
-    );
-    --color-foreground-hover: var(
-      --tenant-skin-success-foreground-hover,
-      var(--color-success-600)
-    );
-    --color-foreground-focus: var(
-      --tenant-skin-success-foreground-focus,
-      var(--color-success-700)
-    );
-    --color-foreground-active: var(
-      --tenant-skin-success-foreground-active,
-      var(--color-success-800)
-    );
-    --color-foreground-disabled: var(
-      --tenant-skin-success-foreground-disabled,
-      var(--color-neutral-400)
-    );
+    --color-foreground: var(--color-success);
+    --color-foreground-hover: var(--color-success-600);
+    --color-foreground-focus: var(--color-success-700);
+    --color-foreground-active: var(--color-success-800);
+    --color-foreground-disabled: var(--color-neutral-400);
 
-    --color-border: var(--tenant-skin-success-border, var(--color-success-300));
-    --color-border-hover: var(
-      --tenant-skin-success-border-hover,
-      var(--color-success-400)
-    );
-    --color-border-focus: var(
-      --tenant-skin-success-border-focus,
-      var(--color-success-500)
-    );
-    --color-border-active: var(
-      --tenant-skin-success-border-active,
-      var(--color-success-600)
-    );
-    --color-border-disabled: var(
-      --tenant-skin-success-border-disabled,
-      var(--color-success-100)
-    );
+    --color-border: var(--color-success-300);
+    --color-border-hover: var(--color-success-400);
+    --color-border-focus: var(--color-success-500);
+    --color-border-active: var(--color-success-600);
+    --color-border-disabled: var(--color-success-100);
   }
 
   .skin-error {
-    --color-background: var(
-      --tenant-skin-error-background,
-      var(--color-error-light)
-    );
-    --color-background-hover: var(
-      --tenant-skin-error-background-hover,
-      var(--color-error-100)
-    );
-    --color-background-focus: var(
-      --tenant-skin-error-background-focus,
-      var(--color-error-200)
-    );
-    --color-background-active: var(
-      --tenant-skin-error-background-active,
-      var(--color-error-300)
-    );
-    --color-background-disabled: var(
-      --tenant-skin-error-background-disabled,
-      var(--color-error-50)
-    );
+    --color-background: var(--color-error-light);
+    --color-background-hover: var(--color-error-100);
+    --color-background-focus: var(--color-error-200);
+    --color-background-active: var(--color-error-300);
+    --color-background-disabled: var(--color-error-50);
 
-    --color-foreground: var(--tenant-skin-error-foreground, var(--color-error));
-    --color-foreground-hover: var(
-      --tenant-skin-error-foreground-hover,
-      var(--color-error-600)
-    );
-    --color-foreground-focus: var(
-      --tenant-skin-error-foreground-focus,
-      var(--color-error-700)
-    );
-    --color-foreground-active: var(
-      --tenant-skin-error-foreground-active,
-      var(--color-error-800)
-    );
-    --color-foreground-disabled: var(
-      --tenant-skin-error-foreground-disabled,
-      var(--color-neutral-400)
-    );
+    --color-foreground: var(--color-error);
+    --color-foreground-hover: var(--color-error-600);
+    --color-foreground-focus: var(--color-error-700);
+    --color-foreground-active: var(--color-error-800);
+    --color-foreground-disabled: var(--color-neutral-400);
 
-    --color-border: var(--tenant-skin-error-border, var(--color-error-300));
-    --color-border-hover: var(
-      --tenant-skin-error-border-hover,
-      var(--color-error-400)
-    );
-    --color-border-focus: var(
-      --tenant-skin-error-border-focus,
-      var(--color-error-500)
-    );
-    --color-border-active: var(
-      --tenant-skin-error-border-active,
-      var(--color-error-600)
-    );
-    --color-border-disabled: var(
-      --tenant-skin-error-border-disabled,
-      var(--color-error-100)
-    );
+    --color-border: var(--color-error-300);
+    --color-border-hover: var(--color-error-400);
+    --color-border-focus: var(--color-error-500);
+    --color-border-active: var(--color-error-600);
+    --color-border-disabled: var(--color-error-100);
   }
 
   .skin-inactive {
-    --color-background: var(
-      --tenant-skin-inactive-background,
-      var(--color-neutral-100)
-    );
-    --color-background-hover: var(
-      --tenant-skin-inactive-background-hover,
-      var(--color-neutral-200)
-    );
-    --color-background-focus: var(
-      --tenant-skin-inactive-background-focus,
-      var(--color-neutral-300)
-    );
-    --color-background-active: var(
-      --tenant-skin-inactive-background-active,
-      var(--color-neutral-400)
-    );
-    --color-background-disabled: var(
-      --tenant-skin-inactive-background-disabled,
-      var(--color-neutral-50)
-    );
+    --color-background: var(--color-neutral-100);
+    --color-background-hover: var(--color-neutral-200);
+    --color-background-focus: var(--color-neutral-300);
+    --color-background-active: var(--color-neutral-400);
+    --color-background-disabled: var(--color-neutral-50);
 
-    --color-foreground: var(
-      --tenant-skin-inactive-foreground,
-      var(--color-neutral-500)
-    );
-    --color-foreground-hover: var(
-      --tenant-skin-inactive-foreground-hover,
-      var(--color-neutral-600)
-    );
-    --color-foreground-focus: var(
-      --tenant-skin-inactive-foreground-focus,
-      var(--color-neutral-700)
-    );
-    --color-foreground-active: var(
-      --tenant-skin-inactive-foreground-active,
-      var(--color-neutral-800)
-    );
-    --color-foreground-disabled: var(
-      --tenant-skin-inactive-foreground-disabled,
-      var(--color-neutral-300)
-    );
+    --color-foreground: var(--color-neutral-500);
+    --color-foreground-hover: var(--color-neutral-600);
+    --color-foreground-focus: var(--color-neutral-700);
+    --color-foreground-active: var(--color-neutral-800);
+    --color-foreground-disabled: var(--color-neutral-300);
 
-    --color-border: var(
-      --tenant-skin-inactive-border,
-      var(--color-neutral-300)
-    );
-    --color-border-hover: var(
-      --tenant-skin-inactive-border-hover,
-      var(--color-neutral-400)
-    );
-    --color-border-focus: var(
-      --tenant-skin-inactive-border-focus,
-      var(--color-neutral-500)
-    );
-    --color-border-active: var(
-      --tenant-skin-inactive-border-active,
-      var(--color-neutral-600)
-    );
-    --color-border-disabled: var(
-      --tenant-skin-inactive-border-disabled,
-      var(--color-neutral-200)
-    );
+    --color-border: var(--color-neutral-300);
+    --color-border-hover: var(--color-neutral-400);
+    --color-border-focus: var(--color-neutral-500);
+    --color-border-active: var(--color-neutral-600);
+    --color-border-disabled: var(--color-neutral-200);
   }
 
   .skin-form {
-    --color-background: var(--tenant-skin-form-background, var(--color-white));
-    --color-background-hover: var(
-      --tenant-skin-form-background-hover,
-      var(--color-neutral-100)
-    );
-    --color-background-focus: var(
-      --tenant-skin-form-background-focus,
-      var(--color-neutral-50)
-    );
-    --color-background-active: var(
-      --tenant-skin-form-background-active,
-      var(--color-neutral-50)
-    );
-    --color-background-disabled: var(
-      --tenant-skin-form-background-disabled,
-      var(--color-white)
-    );
+    --color-background: var(--color-white);
+    --color-background-hover: var(--color-neutral-100);
+    --color-background-focus: var(--color-neutral-50);
+    --color-background-active: var(--color-neutral-50);
+    --color-background-disabled: var(--color-white);
 
-    --color-foreground: var(--tenant-skin-form-foreground, var(--color-black));
-    --color-foreground-hover: var(
-      --tenant-skin-form-foreground-hover,
-      var(--color-black)
-    );
-    --color-foreground-focus: var(
-      --tenant-skin-form-foreground-focus,
-      var(--color-black)
-    );
-    --color-foreground-active: var(
-      --tenant-skin-form-foreground-active,
-      var(--color-black)
-    );
-    --color-foreground-disabled: var(
-      --tenant-skin-form-foreground-disabled,
-      var(--color-neutral-400)
-    );
+    --color-foreground: var(--color-black);
+    --color-foreground-hover: var(--color-black);
+    --color-foreground-focus: var(--color-black);
+    --color-foreground-active: var(--color-black);
+    --color-foreground-disabled: var(--color-neutral-400);
 
-    --color-border: var(--tenant-skin-form-border, var(--color-neutral-300));
-    --color-border-hover: var(
-      --tenant-skin-form-border-hover,
-      var(--color-primary-700)
-    );
-    --color-border-focus: var(
-      --tenant-skin-form-border-focus,
-      var(--color-primary-700)
-    );
-    --color-border-active: var(
-      --tenant-skin-form-border-active,
-      var(--color-primary-800)
-    );
-    --color-border-disabled: var(
-      --tenant-skin-form-border-disabled,
-      var(--color-neutral-400)
-    );
+    --color-border: var(--color-neutral-300);
+    --color-border-hover: var(--color-primary-700);
+    --color-border-focus: var(--color-primary-700);
+    --color-border-active: var(--color-primary-800);
+    --color-border-disabled: var(--color-neutral-400);
   }
 }

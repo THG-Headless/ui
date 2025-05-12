@@ -1,11 +1,74 @@
 ---
 title: Progress Bar
-description: Progress Bar
+description: Visual indicator for showing progress or proportional values with accessibility attributes
 ---
 
-import ShowComponent from '@components/doc-helpers/ShowComponent.astro';
-import ProgressBar from '@components/progress/ProgressBar.html';
+import ShowComponent from "@components/doc-helpers/ShowComponent.astro";
+import ProgressBar from "@components/progress/ProgressBar.html";
+
+## Progress Bar
+
+The Progress Bar component provides a visual indicator for showing progress, loading states, or proportional values. It supports customization through CSS variables and is fully accessible with proper ARIA attributes.
 
 <ShowComponent>
   <ProgressBar />
 </ShowComponent>
+
+### Overview
+
+Progress bars communicate the status of processes that take time to complete, such as loading content, uploading files, or indicating the completion level of multi-step processes. The component uses a simple percentage-based system ranging from 0% to 100% and can be styled with different skins to match your design requirements.
+
+### Usage
+
+The progress bar component is implemented with a single HTML element and uses CSS pseudo-elements to create the visual indicator. The progress value is controlled through the `--progress-value` CSS variable, which accepts values from 0 (empty) to 1 (full).
+
+#### HTML
+
+```html
+<div
+  class="skin-primary progress"
+  style="--progress-value: 0.5"
+  role="progressbar"
+  aria-valuemin="0"
+  aria-valuemax="100"
+  aria-valuenow="50"
+  aria-label="Loading progress: 50%"
+></div>
+```
+
+### CSS Variables
+
+| Variable              | Default Value        | Description                       |
+| --------------------- | -------------------- | --------------------------------- |
+| `--progress-value`    | `0`                  | Progress fill value (0 to 1)      |
+| `--progress-height`   | `1rem`               | Height of the progress bar        |
+| `--progress-rounding` | `var(--radius-site)` | Border radius of the progress bar |
+
+The component uses two key colors that should be set in your skin or theme:
+
+| Variable             | Description                                        |
+| -------------------- | -------------------------------------------------- |
+| `--color-foreground` | Color for the filled portion of the progress bar   |
+| `--color-background` | Color for the unfilled portion of the progress bar |
+
+### Accessibility
+
+#### Implemented Accessibility Features
+
+- [x] Semantic structure with appropriate ARIA role (`progressbar`)
+- [x] Clear representation of current state using `aria-valuenow`
+- [x] Proper range definition through `aria-valuemin` and `aria-valuemax`
+- [x] Descriptive labels using either `aria-label` or `aria-labelledby`
+- [x] Visual indication of progress that doesn't rely solely on color
+- [x] Consistent styling and behavior across different progress states
+- [x] Support for different color themes while maintaining adequate contrast
+
+#### Accessibility Considerations when Implementing
+
+- [ ] Ensure the progress bar has sufficient color contrast between filled and unfilled portions
+- [ ] Provide additional text descriptions for critical processes when appropriate
+- [ ] Consider adding supplementary text for screen readers for important milestones
+- [ ] For processes that take longer than a few seconds, consider adding estimated time remaining
+- [ ] Update the `aria-valuenow` attribute dynamically when progress changes
+- [ ] If using custom labels, ensure they clearly describe the purpose of the progress indicator
+- [ ] For non-standard ranges, make sure `aria-valuemin` and `aria-valuemax` reflect the actual range

@@ -1,0 +1,354 @@
+{
+  "name": "Altitude ShadCN Registry",
+  "homepage": "https://components.thgaltitude.com/",
+  "items": [
+    {
+      "name": "review-form",
+      "type": "registry:block",
+      "description": "A complete review submission form with rating, text inputs, and dropdowns for user information collection",
+      "title": "Review Form",
+      "dependencies": ["react"],
+      "registryDependencies": [
+        "https://components.thgaltitude.com/r/react/form",
+        "https://components.thgaltitude.com/r/react/text-input-field",
+        "https://components.thgaltitude.com/r/react/rating-input-field",
+        "https://components.thgaltitude.com/r/react/text-area-field",
+        "https://components.thgaltitude.com/r/react/dropdown-field"
+      ],
+      "files": [
+        {
+          "path": "registry/react/block/review-form.tsx",
+          "content": "",
+          "type": "registry:block",
+          "target": "react/block/review-form.tsx"
+        }
+      ]
+    },
+    {
+      "name": "review",
+      "type": "registry:block",
+      "description": "Displays a review with headline, rating, comments, author info, and interactive voting functionality",
+      "title": "Review",
+      "dependencies": ["react"],
+      "registryDependencies": [
+        "https://components.thgaltitude.com/r/react/ratings",
+        "https://components.thgaltitude.com/r/react/button"
+      ],
+      "files": [
+        {
+          "path": "registry/react/block/review.tsx",
+          "content": "",
+          "type": "registry:block",
+          "target": "react/block/review.tsx"
+        }
+      ]
+    },
+    {
+      "name": "field-wrapper",
+      "type": "registry:component",
+      "description": "Wrapper component for form fields providing consistent layout with labels, error messages, and helper text",
+      "title": "Field Wrapper",
+      "dependencies": ["react"],
+      "registryDependencies": [
+        "https://components.thgaltitude.com/r/react/alert"
+      ],
+      "files": [
+        {
+          "path": "registry/react/component/field-wrapper.tsx",
+          "content": "",
+          "type": "registry:component",
+          "target": "react/component/field-wrapper.tsx"
+        }
+      ]
+    },
+    {
+      "name": "form",
+      "type": "registry:component",
+      "description": "Comprehensive form component with validation, submission handling, and success messaging",
+      "title": "Form",
+      "dependencies": ["react"],
+      "registryDependencies": [
+        "https://components.thgaltitude.com/r/react/button",
+        "https://components.thgaltitude.com/r/react/alert"
+      ],
+      "files": [
+        {
+          "path": "registry/react/component/form.tsx",
+          "content": "",
+          "type": "registry:component",
+          "target": "react/component/form.tsx"
+        }
+      ]
+    },
+    {
+      "name": "review-list",
+      "type": "registry:component",
+      "description": "Container component for displaying a list of reviews with title and subtitle",
+      "title": "Review List",
+      "dependencies": ["react"],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/react/component/review-list.tsx",
+          "content": "",
+          "type": "registry:component",
+          "target": "react/component/review-list.tsx"
+        }
+      ]
+    },
+    {
+      "name": "review-overview",
+      "type": "registry:component",
+      "description": "Displays an overview of review statistics including average rating, rating distribution bars, and review counts",
+      "title": "Review Overview",
+      "dependencies": ["react"],
+      "registryDependencies": [
+        "https://components.thgaltitude.com/r/react/ratings",
+        "https://components.thgaltitude.com/r/react/progress-bar",
+        "https://components.thgaltitude.com/r/react/button"
+      ],
+      "files": [
+        {
+          "path": "registry/react/component/review-overview.tsx",
+          "content": "",
+          "type": "registry:component",
+          "target": "react/component/review-overview.tsx"
+        }
+      ]
+    },
+    {
+      "name": "dropdown-field",
+      "type": "registry:component",
+      "description": "Field component for dropdown selection inputs with validation and error handling",
+      "title": "Dropdown Field",
+      "dependencies": ["react"],
+      "registryDependencies": [
+        "https://components.thgaltitude.com/r/react/field-wrapper",
+        "https://components.thgaltitude.com/r/react/dropdown"
+      ],
+      "files": [
+        {
+          "path": "registry/react/component/fields/dropdown-field.tsx",
+          "content": "",
+          "type": "registry:component",
+          "target": "react/component/fields/dropdown-field.tsx"
+        }
+      ]
+    },
+    {
+      "name": "rating-input-field",
+      "type": "registry:component",
+      "description": "Field component for star rating inputs with validation and error handling",
+      "title": "Rating Input Field",
+      "dependencies": ["react"],
+      "registryDependencies": [
+        "https://components.thgaltitude.com/r/react/field-wrapper",
+        "https://components.thgaltitude.com/r/react/rating-input"
+      ],
+      "files": [
+        {
+          "path": "registry/react/component/fields/rating-input-field.tsx",
+          "content": "",
+          "type": "registry:component",
+          "target": "react/component/fields/rating-input-field.tsx"
+        }
+      ]
+    },
+    {
+      "name": "text-area-field",
+      "type": "registry:component",
+      "description": "Field component for multiline text inputs with validation and error handling",
+      "title": "Text Area Field",
+      "dependencies": ["react"],
+      "registryDependencies": [
+        "https://components.thgaltitude.com/r/react/field-wrapper",
+        "https://components.thgaltitude.com/r/react/text-area"
+      ],
+      "files": [
+        {
+          "path": "registry/react/component/fields/text-area-field.tsx",
+          "content": "",
+          "type": "registry:component",
+          "target": "react/component/fields/text-area-field.tsx"
+        }
+      ]
+    },
+    {
+      "name": "text-input-field",
+      "type": "registry:component",
+      "description": "Field component for single-line text inputs with validation and error handling",
+      "title": "Text Input Field",
+      "dependencies": ["react"],
+      "registryDependencies": [
+        "https://components.thgaltitude.com/r/react/field-wrapper",
+        "https://components.thgaltitude.com/r/react/text-input"
+      ],
+      "files": [
+        {
+          "path": "registry/react/component/fields/text-input-field.tsx",
+          "content": "",
+          "type": "registry:component",
+          "target": "react/component/fields/text-input-field.tsx"
+        }
+      ]
+    },
+    {
+      "name": "alert",
+      "type": "registry:ui",
+      "description": "Displays alert messages with different types (info, success, error) and appropriate icons",
+      "title": "Alert",
+      "dependencies": ["react"],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/react/ui/alert.tsx",
+          "content": "",
+          "type": "registry:ui",
+          "target": "react/ui/alert.tsx"
+        }
+      ]
+    },
+    {
+      "name": "button",
+      "type": "registry:ui",
+      "description": "Basic button component with customizable styles and event handling",
+      "title": "Button",
+      "dependencies": ["react"],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/react/ui/button.tsx",
+          "content": "",
+          "type": "registry:ui",
+          "target": "react/ui/button.tsx"
+        }
+      ]
+    },
+    {
+      "name": "progress-bar",
+      "type": "registry:ui",
+      "description": "Visual indicator for showing progress or proportional values with accessibility attributes",
+      "title": "Progress Bar",
+      "dependencies": ["react"],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/react/ui/progress-bar.tsx",
+          "content": "",
+          "type": "registry:ui",
+          "target": "react/ui/progress-bar.tsx"
+        }
+      ]
+    },
+    {
+      "name": "rating-input",
+      "type": "registry:ui",
+      "description": "Interactive star rating input that allows users to select a rating level",
+      "title": "Rating Input",
+      "dependencies": ["react"],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/react/ui/rating-input.tsx",
+          "content": "",
+          "type": "registry:ui",
+          "target": "react/ui/rating-input.tsx"
+        }
+      ]
+    },
+    {
+      "name": "ratings",
+      "type": "registry:ui",
+      "description": "Displays a static rating visualization with customizable stars and styling",
+      "title": "Ratings",
+      "dependencies": ["react"],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/react/ui/ratings.tsx",
+          "content": "",
+          "type": "registry:ui",
+          "target": "react/ui/ratings.tsx"
+        }
+      ]
+    },
+    {
+      "name": "text-area",
+      "type": "registry:ui",
+      "description": "Enhanced textarea input with consistent styling and a resize handle",
+      "title": "Text Area",
+      "dependencies": ["react"],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/react/ui/text-area.tsx",
+          "content": "",
+          "type": "registry:ui",
+          "target": "react/ui/text-area.tsx"
+        }
+      ]
+    },
+    {
+      "name": "text-input",
+      "type": "registry:ui",
+      "description": "Styled text input field with consistent appearance and behavior",
+      "title": "Text Input",
+      "dependencies": ["react"],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/react/ui/text-input.tsx",
+          "content": "",
+          "type": "registry:ui",
+          "target": "react/ui/text-input.tsx"
+        }
+      ]
+    },
+    {
+      "name": "dropdown",
+      "type": "registry:ui",
+      "description": "Comprehensive dropdown component with search functionality, keyboard navigation, and accessibility features",
+      "title": "Dropdown",
+      "dependencies": ["react"],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/react/ui/dropdown/dropdown.tsx",
+          "content": "",
+          "type": "registry:ui",
+          "target": "react/ui/dropdown/dropdown.tsx"
+        },
+        {
+          "path": "registry/react/ui/dropdown/focusManagement.ts",
+          "content": "",
+          "type": "registry:ui",
+          "target": "react/ui/dropdown/focusManagement.ts"
+        },
+        {
+          "path": "registry/react/ui/dropdown/keyboardNavigation.ts",
+          "content": "",
+          "type": "registry:ui",
+          "target": "react/ui/dropdown/keyboardNavigation.ts"
+        },
+        {
+          "path": "registry/react/ui/dropdown/types.ts",
+          "content": "",
+          "type": "registry:ui",
+          "target": "react/ui/dropdown/types.ts"
+        },
+        {
+          "path": "registry/react/ui/dropdown/useDropdown.ts",
+          "content": "",
+          "type": "registry:ui",
+          "target": "react/ui/dropdown/useDropdown.ts"
+        },
+        {
+          "path": "registry/react/ui/dropdown/utils.ts",
+          "content": "",
+          "type": "registry:ui",
+          "target": "react/ui/dropdown/utils.ts"
+        }
+      ]
+    }
+  ]
+}

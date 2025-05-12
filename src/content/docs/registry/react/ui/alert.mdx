@@ -1,0 +1,82 @@
+---
+title: Alert
+description: A component for displaying status messages with different severity levels
+sidebar:
+  order: 3
+name: alert
+meta: {}
+categories: []
+registryDependencies: {}
+files:
+  - registry/react/ui/alert.tsx
+dependencies:
+  react: ^19.0.0
+  '@thg-altitude/standalone-components-css': latest
+devDependencies: {}
+docsUrl: 'https://components.thgaltitude.com/react/ui/alert'
+---
+
+import ShowComponent from "../../../../../components/doc-helpers/ShowComponent.astro";
+import Alert from "../../../../../../registry/react/ui/alert";
+
+## Alert Component
+
+The Alert component provides a standardized way to display status messages to users with appropriate visual cues based on the message type.
+
+### Example
+
+<ShowComponent>
+  <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
+    <Alert type="info" message="This is an informational message" />
+    <Alert type="success" message="Your changes have been saved successfully" />
+    <Alert type="error" message="There was an error processing your request" />
+  </div>
+</ShowComponent>
+
+### Usage
+
+```tsx
+import Alert from "@altitude/ui/react/ui/alert";
+
+export default function AlertExample() {
+  return (
+    <div>
+      <Alert type="info" message="This is an informational message" />
+
+      <Alert
+        type="success"
+        message="Your changes have been saved successfully"
+      />
+
+      <Alert
+        type="error"
+        message="There was an error processing your request"
+      />
+    </div>
+  );
+}
+```
+
+### Props
+
+| Prop    | Type   | Required | Description                                   |
+| ------- | ------ | -------- | --------------------------------------------- |
+| type    | string | Yes      | The alert type: "info", "success", or "error" |
+| message | string | Yes      | The message to display in the alert           |
+
+### Alert Types
+
+The Alert component supports three types, each with its own visual styling:
+
+- **info**: Used for general information messages that don't require immediate action
+- **success**: Used to confirm successful actions or operations
+- **error**: Used to highlight errors or issues that may require user attention
+
+### Accessibility
+
+The Alert component is built with accessibility in mind:
+
+- Uses appropriate contrast for each alert type
+- Includes semantic icons with `aria-hidden="true"` to prevent screen readers from announcing them
+- Uses `aria-live="polite"` for the message to ensure screen readers announce changes
+- Maintains readable text contrast regardless of alert type

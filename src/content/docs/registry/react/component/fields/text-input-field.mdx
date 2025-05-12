@@ -1,0 +1,126 @@
+---
+title: Text Input Field
+description: >-
+  A complete text input field component with label, validation, and error
+  handling
+sidebar:
+  order: 1
+name: text-input-field
+meta: {}
+categories: []
+registryDependencies: {}
+files:
+  - registry/react/component/text-input-field.tsx
+dependencies: {}
+devDependencies: {}
+docsUrl: 'https://components.thgaltitude.com/react/component/fields/text-input-field'
+---
+
+import ShowComponent from "../../../../../../components/doc-helpers/ShowComponent.astro";
+import TextInputField from "../../../../../../../registry/react/component/fields/text-input-field";
+
+## Text Input Field Component
+
+The Text Input Field component provides a complete form field for single-line text input with built-in label, validation, error handling, and accessibility support.
+
+### Example
+
+<ShowComponent>
+  <div style={{ maxWidth: "400px" }}>
+    <TextInputField
+      id="name"
+      name="name"
+      label="Full Name"
+      helperText="Enter your full name as it appears on your ID"
+      placeholder="John Doe"
+      required={true}
+    />
+  </div>
+</ShowComponent>
+
+<ShowComponent>
+  <div style={{ maxWidth: "400px", marginTop: "20px" }}>
+    <TextInputField
+      id="email"
+      name="email"
+      label="Email Address"
+      helperText="We'll never share your email"
+      placeholder="example@email.com"
+      required={true}
+      aria-invalid={true}
+      errorMessage="Please enter a valid email address"
+    />
+  </div>
+</ShowComponent>
+
+<ShowComponent>
+  <div style={{ maxWidth: "400px", marginTop: "20px" }}>
+    <TextInputField
+      id="username"
+      name="username"
+      label="Username"
+      placeholder="Choose a username"
+      maxlength={20}
+      required={false}
+    />
+  </div>
+</ShowComponent>
+
+### Usage
+
+```tsx
+import TextInputField from "@altitude/ui/react/components/fields/text-input-field";
+
+export default function SignupForm() {
+  return (
+    <form>
+      <TextInputField
+        id="email"
+        name="email"
+        label="Email Address"
+        helperText="We'll never share your email"
+        placeholder="example@email.com"
+        required={true}
+      />
+
+      <TextInputField
+        id="password"
+        name="password"
+        label="Password"
+        type="password"
+        helperText="At least 8 characters"
+        required={true}
+      />
+
+      {/* More form fields */}
+      <button type="submit">Sign Up</button>
+    </form>
+  );
+}
+```
+
+### Props
+
+| Prop         | Type    | Required | Description                                       |
+| ------------ | ------- | -------- | ------------------------------------------------- |
+| id           | string  | No       | HTML ID for the field                             |
+| name         | string  | No       | HTML name attribute for the field                 |
+| label        | string  | No       | Label text for the field                          |
+| helperText   | string  | No       | Helper text displayed below the field             |
+| errorMessage | string  | No       | Error message displayed when aria-invalid is true |
+| placeholder  | string  | No       | Placeholder text for the input                    |
+| required     | boolean | No       | Whether the field is required (default: false)    |
+| aria-invalid | boolean | No       | Whether the field has an error (default: false)   |
+| disabled     | boolean | No       | Whether the field is disabled (default: false)    |
+| maxlength    | number  | No       | Maximum character count for the field             |
+| type         | string  | No       | Input type (e.g., "text", "email", "password")    |
+
+Additional HTML input attributes can also be passed and will be forwarded to the underlying input element.
+
+### Implementation Details
+
+The Text Input Field component combines an input wrapper and a text input component:
+
+- Uses `FieldWrapper` to handle labels, error states, and helper text
+- Uses the base `TextInput` UI component for the actual input element
+- Automatically handles validation states and error messaging
