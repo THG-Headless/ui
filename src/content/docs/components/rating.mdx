@@ -1,16 +1,128 @@
 ---
 title: Ratings
-description: Ratings
+description: Static and interactive star rating components for displaying and capturing user feedback
 ---
 
-import ShowComponent from '@components/doc-helpers/ShowComponent.astro';
-import StaticRating from '@components/ratings/StaticRating.html';
-import InputRating from '@components/ratings/InputRating.html';
+import ShowComponent from "@components/doc-helpers/ShowComponent.astro";
+import StaticRating from "@components/ratings/StaticRating.html";
+import InputRating from "@components/ratings/InputRating.html";
+
+## Ratings
+
+The Ratings component offers two distinct variants for displaying and collecting rating feedback:
+
+1. **Static Rating** - A read-only display of rating values with support for fractional ratings
+2. **Rating Input** - An interactive form control that allows users to select a rating value
+
+Both components support customization options including different icons, sizes, and counts.
+
+### Static Rating
+
+The Static Rating component displays a visual representation of a rating value using star icons (or custom icons). It supports fractional values, making it ideal for displaying average ratings or review scores.
 
 <ShowComponent>
   <StaticRating />
 </ShowComponent>
 
+### Rating Input
+
+The Rating Input component provides an interactive way for users to select a rating. It uses radio inputs styled to display as star icons, offering a familiar and accessible pattern for user feedback.
+
 <ShowComponent>
   <InputRating />
 </ShowComponent>
+
+### Customization
+
+Both rating components support customization through CSS variables:
+
+#### Custom Icons
+
+You can replace the default star icon with any SVG by setting the `--rating-icon` CSS variable:
+
+```html
+<div
+  class="rating wrapper"
+  style="
+    --rating-icon: url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='2 2 20 20'%3E%3Cpath d='M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z'/%3E%3C/svg%3E&quot;);
+    --rating-percentage: 0.5;
+  "
+  role="meter"
+  aria-label="Heart Rating: 2.5 out of 5"
+  aria-valuemin="0"
+  aria-valuemax="5"
+  aria-valuenow="2.5"
+></div>
+```
+
+#### Custom Number of Icons
+
+You can adjust the number of icons displayed by changing the `--rating-icon-count` variable:
+
+```html
+<div
+  class="rating wrapper"
+  style="--rating-icon-count: 10; --rating-percentage: 0.5"
+  role="meter"
+  aria-label="Rating: 5 out of 10"
+  aria-valuemin="0"
+  aria-valuemax="10"
+  aria-valuenow="5"
+></div>
+```
+
+#### Custom Icon Size
+
+You can change the size of the icons by setting the `--rating-icon-size` variable:
+
+```html
+<div
+  class="rating wrapper"
+  style="--rating-icon-size: 48px; --rating-percentage: 0.5"
+  role="meter"
+  aria-label="Rating: 2.5 out of 5"
+  aria-valuemin="0"
+  aria-valuemax="5"
+  aria-valuenow="2.5"
+></div>
+```
+
+### CSS Variables
+
+| Variable              | Default Value | Description                                     |
+| --------------------- | ------------- | ----------------------------------------------- |
+| `--rating-icon-count` | `5`           | Number of rating icons to display               |
+| `--rating-icon-size`  | `24px`        | Size of each rating icon                        |
+| `--rating-percentage` | `0`           | Percentage fill for static ratings (0.0 to 1.0) |
+| `--rating-icon-gap`   | `4px`         | Gap between rating icons in the input variant   |
+| `--rating-icon`       | `url(...)`    | SVG icon used for ratings (default is a star)   |
+
+The component uses two key colors that should be set in your skin or theme:
+
+| Variable             | Description                                           |
+| -------------------- | ----------------------------------------------------- |
+| `--color-foreground` | Color for the filled/active portion of the rating     |
+| `--color-background` | Color for the unfilled/inactive portion of the rating |
+
+### Accessibility
+
+#### Implemented Accessibility Features
+
+- [x] Semantic structure with appropriate ARIA roles (`meter` for static, `radiogroup` for input)
+- [x] Clear descriptive labels through `aria-label` attributes
+- [x] Proper value representation using `aria-valuemin`, `aria-valuemax`, and `aria-valuenow`
+- [x] Keyboard navigation support through native radio inputs in the interactive variant
+- [x] Visual focus indicators for interactive ratings
+- [x] Interactive rating state indication through native radio checked state
+- [x] Touch-friendly target sizes
+- [x] Consistent naming patterns across all controls
+
+#### Accessibility Considerations when Implementing
+
+- [ ] Ensure radio input names are unique per form context
+- [ ] Provide clear instructions for users on what the rating represents
+- [ ] Consider adding labels or tooltips to explain rating values
+- [ ] Ensure color contrast between filled and unfilled states meets WCAG guidelines
+- [ ] Match rating visualization with any adjacent text description
+- [ ] Consider adding additional context for screen readers when appropriate
+- [ ] For critical rating inputs, consider confirming the selection before submission

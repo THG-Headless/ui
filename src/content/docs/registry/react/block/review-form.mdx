@@ -1,0 +1,46 @@
+---
+title: Review Form
+description: A form component for submitting product reviews
+sidebar:
+  order: 1
+name: review-form
+meta: {}
+categories: []
+registryDependencies: {}
+files:
+  - registry/react/block/review-form.tsx
+dependencies:
+  "@thg-altitude/standalone-components-css": latest
+devDependencies: {}
+docsUrl: "https://components.thgaltitude.com/react/block/review-form"
+---
+
+import ShowComponent from "../../../../../components/doc-helpers/ShowComponent.astro";
+import { SampleForm } from "../../../../../../registry/react/block/review-form";
+
+## Review Form Component
+
+The Review Form component provides a complete form for collecting product reviews from users. It includes various field types such as ratings, text input, text area, and dropdown selection.
+
+### Example
+
+<ShowComponent>
+  <SampleForm />
+</ShowComponent>
+
+### Usage
+
+```tsx
+import SampleForm from "@altitude/ui/react/blocks/review-form";
+
+export default function MyPage() {
+  return <SampleForm />;
+}
+```
+
+### Key Features
+
+- Complete form with validation
+- Multiple field types
+- Customizable submission handling
+- Success state handling

@@ -1,0 +1,117 @@
+---
+title: Text Area Field
+description: A component for multi-line text input with built-in label and validation
+sidebar:
+  order: 2
+name: text-area-field
+meta: {}
+categories: []
+registryDependencies: {}
+files:
+  - registry/react/component/text-area-field.tsx
+dependencies: {}
+devDependencies: {}
+docsUrl: 'https://components.thgaltitude.com/react/component/fields/text-area-field'
+---
+
+import ShowComponent from "../../../../../../components/doc-helpers/ShowComponent.astro";
+import TextAreaField from "../../../../../../../registry/react/component/fields/text-area-field";
+
+## Text Area Field Component
+
+The Text Area Field component provides a complete form field for multi-line text input with built-in label, validation, error handling, and character counting.
+
+### Example
+
+<ShowComponent>
+  <div style={{ maxWidth: "400px" }}>
+    <TextAreaField
+      id="feedback"
+      name="feedback"
+      label="Your Feedback"
+      helperText="Tell us what you think about our product"
+      placeholder="Type your feedback here..."
+      required={true}
+    />
+  </div>
+</ShowComponent>
+
+<ShowComponent>
+  <div style={{ maxWidth: "400px", marginTop: "20px" }}>
+    <TextAreaField
+      id="bio"
+      name="bio"
+      label="Biography"
+      helperText="A short description about yourself"
+      maxlength={500}
+      required={false}
+    />
+  </div>
+</ShowComponent>
+
+<ShowComponent>
+  <div style={{ maxWidth: "400px", marginTop: "20px" }}>
+    <TextAreaField
+      id="description-error"
+      name="description"
+      label="Description"
+      placeholder="Describe your issue"
+      required={true}
+      aria-invalid={true}
+      errorMessage="Please provide a description"
+    />
+  </div>
+</ShowComponent>
+
+### Usage
+
+```tsx
+import TextAreaField from "@altitude/ui/react/components/fields/text-area-field";
+
+export default function FeedbackForm() {
+  return (
+    <form>
+      <TextAreaField
+        id="feedback"
+        name="feedback"
+        label="Your Feedback"
+        helperText="Tell us what you think about our product"
+        placeholder="Type your feedback here..."
+        required={true}
+        maxlength={1000}
+      />
+
+      {/* More form fields */}
+      <button type="submit">Submit Feedback</button>
+    </form>
+  );
+}
+```
+
+### Props
+
+| Prop         | Type    | Required | Description                                       |
+| ------------ | ------- | -------- | ------------------------------------------------- |
+| id           | string  | No       | HTML ID for the field                             |
+| name         | string  | No       | HTML name attribute for the field                 |
+| label        | string  | No       | Label text for the field                          |
+| helperText   | string  | No       | Helper text displayed below the field             |
+| errorMessage | string  | No       | Error message displayed when aria-invalid is true |
+| placeholder  | string  | No       | Placeholder text for the textarea                 |
+| required     | boolean | No       | Whether the field is required (default: false)    |
+| aria-invalid | boolean | No       | Whether the field has an error (default: false)   |
+| disabled     | boolean | No       | Whether the field is disabled (default: false)    |
+| maxlength    | number  | No       | Maximum character count for the field             |
+| rows         | number  | No       | Number of visible text lines                      |
+| cols         | number  | No       | Number of visible character columns               |
+
+Additional HTML textarea attributes can also be passed and will be forwarded to the underlying textarea element.
+
+### Implementation Details
+
+The Text Area Field component combines an input wrapper and a textarea component:
+
+- Uses `FieldWrapper` to handle labels, error states, and helper text
+- Uses the base `TextArea` UI component for the actual textarea element
+- Automatically handles validation states and error messaging
+- Includes character counting when maxlength is specified

@@ -1,0 +1,117 @@
+---
+title: Form
+description: A flexible form component with built-in validation and submission handling
+sidebar:
+  order: 1
+name: form
+meta: {}
+categories: []
+registryDependencies: {}
+files:
+  - registry/react/component/form.tsx
+dependencies:
+  react: ^19.0.0
+  '@thg-altitude/standalone-components-css': latest
+devDependencies: {}
+docsUrl: 'https://components.thgaltitude.com/react/component/form'
+---
+
+import ShowComponent from "../../../../../components/doc-helpers/ShowComponent.astro";
+import Form from "../../../../../../registry/react/component/form";
+import TextInputField from "../../../../../../registry/react/component/fields/text-input-field";
+import TextAreaField from "../../../../../../registry/react/component/fields/text-area-field";
+
+## Form Component
+
+The Form component provides a complete solution for creating forms with built-in validation, submission handling, and responsive layouts.
+
+### Example
+
+<ShowComponent>
+  <div style={{ maxWidth: "600px" }}>
+    <Form
+      title="Contact Form"
+      description="Fill out this form to get in touch with our team."
+      onSubmit={(data) => console.log("Form data:", data)}
+      submitText="Send Message"
+      submittedText="Message Sent Successfully!"
+    >
+      <TextInputField
+        id="name"
+        name="name"
+        label="Your Name"
+        errorMessage="Name is required"
+        required={true}
+      />
+      <TextAreaField
+        id="message"
+        name="message"
+        label="Your Message"
+        errorMessage="Please provide a message"
+        required={true}
+      />
+    </Form>
+  </div>
+</ShowComponent>
+
+### Usage
+
+```tsx
+import Form from "@altitude/ui/react/components/form";
+import TextInputField from "@altitude/ui/react/components/fields/text-input-field";
+import TextAreaField from "@altitude/ui/react/components/fields/text-area-field";
+
+export default function ContactPage() {
+  const handleSubmit = (data) => {
+    console.log("Form submitted:", data);
+    // Process form data
+  };
+
+  return (
+    <Form
+      title="Contact Form"
+      description="Fill out this form to get in touch with our team."
+      onSubmit={handleSubmit}
+      submitText="Send Message"
+      submittedText="Message Sent Successfully!"
+      splitLayout={true}
+    >
+      <TextInputField
+        id="name"
+        name="name"
+        label="Your Name"
+        errorMessage="Name is required"
+        required={true}
+      />
+      <TextAreaField
+        id="message"
+        name="message"
+        label="Your Message"
+        errorMessage="Please provide a message"
+        required={true}
+      />
+    </Form>
+  );
+}
+```
+
+### Props
+
+| Prop          | Type      | Required | Description                                                              |
+| ------------- | --------- | -------- | ------------------------------------------------------------------------ |
+| title         | string    | Yes      | Form title displayed at the top                                          |
+| description   | string    | No       | Form description text                                                    |
+| onSubmit      | function  | Yes      | Handler function that receives form data                                 |
+| submitText    | string    | Yes      | Text for the submit button                                               |
+| submittedText | string    | No       | Success message shown after form submission                              |
+| children      | ReactNode | No       | Form field components                                                    |
+| className     | string    | No       | Additional CSS classes                                                   |
+| splitLayout   | boolean   | No       | Whether to use a split layout (title/description on left, form on right) |
+
+### Features
+
+- Automatic form validation with error handling
+- Support for various field types
+- Responsive layout options
+- Success state management
+- Form state tracking (submitting, submitted)

@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "review",
+  "type": "registry:block",
+  "title": "Review",
+  "description": "Displays a review with headline, rating, comments, author info, and interactive voting functionality",
+  "dependencies": [
+    "react",
+    ".."
+  ],
+  "registryDependencies": [
+    "https://components.thgaltitude.com/r/react/ratings",
+    "https://components.thgaltitude.com/r/react/button"
+  ],
+  "files": [
+    {
+      "path": "registry/react/block/review.tsx",
+      "content": "import React from \"react\";\nimport Ratings from \"../ui/ratings\";\nimport { Button } from \"../ui/button\";\n\nexport enum VoteType {\n  UPVOTE = \"UPVOTE\",\n  DOWNVOTE = \"DOWNVOTE\",\n  REPORT = \"REPORT\",\n}\n\ninterface ReviewProps {\n  headline: string;\n  rating: number;\n  comments: string;\n  maxRating?: number;\n  date?: string;\n  author?: string;\n  onVote?: (voteType: VoteType) => void;\n  upVoteCount?: number;\n  downVoteCount?: number;\n}\n\nexport const Review: React.FC<ReviewProps> = ({\n  headline,\n  rating,\n  maxRating = 5,\n  comments,\n  date,\n  author,\n  onVote,\n  upVoteCount,\n  downVoteCount,\n}) => {\n  return (\n    <div className=\"flex flex-col gap-4 w-full\">\n      <h4 className=\"text-md font-medium\">{headline}</h4>\n      {rating && maxRating && (\n        <Ratings\n          rating={rating}\n          maxRating={maxRating}\n          className=\"skin-primary\"\n        />\n      )}\n      <p className=\"text-body\">{comments}</p>\n      {(date || author) && (\n        <div className=\"flex items-center text-body font-bold gap-1\">\n          <span>{date}</span>\n          <span>by {author}</span>\n        </div>\n      )}\n      {onVote && (\n        <div className=\"flex flex-col gap-2\">\n          <p>Was this review helpful?</p>\n          <div className=\"flex gap-2\">\n            <Button\n              className=\"skin-secondary\"\n              onClick={() => onVote(VoteType.UPVOTE)}\n            >\n              Yes {typeof upVoteCount === \"number\" ? `(${upVoteCount})` : ``}\n            </Button>\n            <Button\n              className=\"skin-secondary\"\n              onClick={() => onVote(VoteType.DOWNVOTE)}\n            >\n              No {typeof downVoteCount === \"number\" ? `(${downVoteCount})` : ``}\n            </Button>\n            <Button\n              className=\"skin-secondary\"\n              onClick={() => onVote(VoteType.REPORT)}\n            >\n              Report this review\n            </Button>\n          </div>\n        </div>\n      )}\n    </div>\n  );\n};\n\nexport default Review;\n",
+      "type": "registry:block",
+      "target": "react/block/review.tsx"
+    }
+  ]
+}

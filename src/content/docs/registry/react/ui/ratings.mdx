@@ -1,0 +1,133 @@
+---
+title: Ratings
+description: A component for displaying star ratings with customizable appearance
+sidebar:
+  order: 8
+name: ratings
+meta: {}
+categories: []
+registryDependencies: {}
+files:
+  - registry/react/ui/ratings.tsx
+dependencies:
+  react: ^19.0.0
+  '@thg-altitude/standalone-components-css': latest
+devDependencies: {}
+docsUrl: 'https://components.thgaltitude.com/react/ui/ratings'
+---
+
+import ShowComponent from "../../../../../components/doc-helpers/ShowComponent.astro";
+import Ratings from "../../../../../../registry/react/ui/ratings";
+
+## Ratings Component
+
+The Ratings component provides a visual display of star ratings with customizable appearance. Unlike the Rating Input component, this is for display purposes only and is not interactive.
+
+### Example
+
+<ShowComponent>
+  <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
+    <div>
+      <p>Default rating (2.5/5):</p>
+      <Ratings className="skin-primary" />
+    </div>
+
+    <div>
+      <p>4-star rating (out of 5):</p>
+      <Ratings rating={4} maxRating={5} className="skin-primary" />
+    </div>
+
+    <div>
+      <p>3.8 out of 5 stars:</p>
+      <Ratings rating={3.8} maxRating={5} className="skin-primary" />
+    </div>
+
+    <div>
+      <p>Custom size rating:</p>
+      <Ratings
+        rating={4.5}
+        maxRating={5}
+        iconSize="36px"
+        className="skin-primary"
+      />
+    </div>
+
+    <div>
+      <p>10-scale rating with 10 icons:</p>
+      <Ratings
+        rating={7.5}
+        maxRating={10}
+        iconCount={10}
+        className="skin-primary"
+      />
+    </div>
+
+  </div>
+</ShowComponent>
+
+### Usage
+
+```tsx
+import Ratings from "@altitude/ui/react/ui/ratings";
+
+export default function ProductRating() {
+  return (
+    <div>
+      <h3>Customer Rating</h3>
+
+      {/* Basic usage with defaults */}
+      <Ratings rating={4.2} maxRating={5} className="skin-primary" />
+
+      {/* Custom icon count and size */}
+      <Ratings
+        rating={8.5}
+        maxRating={10}
+        iconCount={10}
+        iconSize="18px"
+        className="skin-primary"
+      />
+
+      {/* With custom aria label */}
+      <Ratings
+        rating={3.5}
+        maxRating={5}
+        ariaLabel="Product rated 3.5 out of 5 stars"
+        className="skin-primary"
+      />
+    </div>
+  );
+}
+```
+
+### Props
+
+| Prop      | Type   | Required | Description                                                   |
+| --------- | ------ | -------- | ------------------------------------------------------------- |
+| rating    | number | No       | The rating value to display (default: 2.5)                    |
+| maxRating | number | No       | The maximum possible rating value (default: 5)                |
+| iconCount | number | No       | Number of star icons to display (default: 5)                  |
+| iconSize  | string | No       | Size of each star icon (default: "24px")                      |
+| icon      | string | No       | Custom icon URL (defaults to a star SVG)                      |
+| className | string | No       | Additional CSS classes for styling                            |
+| ariaLabel | string | No       | Custom accessibility label (defaults to "Rating: X out of Y") |
+
+### Features
+
+- **Fractional Ratings**: Accurately displays partial/decimal ratings
+- **Customizable**: Adjustable icon count, size, and appearance
+- **Accessible**: Proper ARIA attributes for screen readers
+- **Flexible Scale**: Can represent any rating scale (e.g., 5-star, 10-star)
+
+### CSS Integration
+
+The Ratings component uses CSS custom properties:
+
+- `--rating-icon-count`: Number of icons to display
+- `--rating-icon-size`: Size of each icon
+- `--rating-percentage`: Calculated percentage of the rating
+- `--rating-icon`: URL of the icon to use
+
+You can style the ratings using skin classes:
+
+- `skin-primary`: Primary theme color
+- `skin-secondary`: Secondary theme color

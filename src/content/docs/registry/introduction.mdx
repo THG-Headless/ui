@@ -1,0 +1,37 @@
+---
+title: Introduction
+description: Introduction to the Altitude Components Registry
+sidebar:
+  order: 0
+---
+
+## Overview
+
+The Altitude Component Registry provides a comprehensive collection of reusable UI components designed to help you build consistent, accessible, and visually appealing interfaces. The registry follows a modular architecture that allows you to integrate components at various levels of abstraction, from basic UI elements to complete pre-built features.
+
+Each component in the registry is carefully crafted to meet accessibility standards, ensure responsive behavior, and maintain consistent styling across your application. Components are built using modern web technologies and follow best practices for performance and user experience.
+
+## Installation
+
+You can easily add Altitude components to your project using the Altitude CLI:
+
+```bash
+altitude add [component-name]
+```
+
+This command will install the component and its dependencies directly into your project. For example, to add the Button component:
+
+```bash
+altitude add button
+```
+
+## Registry Pattern
+
+The Altitude component registry follows the [shadcn registry pattern](https://ui.shadcn.com/docs/registry), which emphasizes a copy-and-own approach rather than importing components from an external package. This approach provides several benefits:
+
+- Full control over the components and their implementation
+- Ability to customize components to fit your specific needs
+- No external dependencies that could introduce breaking changes
+- Better performance as you only include the components you need
+
+By adhering to this pattern, Altitude components are not installed as dependencies but rather copied directly into your project, allowing for maximum flexibility and customization.

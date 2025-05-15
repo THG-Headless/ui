@@ -1,0 +1,150 @@
+---
+title: Dropdown
+description: A customizable dropdown select component with optional search functionality
+sidebar:
+  order: 2
+name: dropdown
+meta: {}
+categories: []
+registryDependencies: {}
+files:
+  - registry/react/ui/dropdown/dropdown.tsx
+  - registry/react/ui/dropdown/focusManagement.ts
+  - registry/react/ui/dropdown/keyboardNavigation.ts
+  - registry/react/ui/dropdown/types.ts
+  - registry/react/ui/dropdown/useDropdown.ts
+  - registry/react/ui/dropdown/utils.ts
+dependencies:
+  react: ^19.0.0
+  '@thg-altitude/standalone-components-css': latest
+devDependencies: {}
+docsUrl: 'https://components.thgaltitude.com/react/ui/dropdown'
+---
+
+import ShowComponent from "../../../../../components/doc-helpers/ShowComponent.astro";
+import Dropdown from "../../../../../../registry/react/ui/dropdown/dropdown";
+
+## Dropdown Component
+
+The Dropdown component provides a customizable select menu with support for searching, keyboard navigation, and accessibility features.
+
+### Example
+
+<ShowComponent>
+  <div style={{ maxWidth: "300px" }}>
+    <Dropdown
+      options={["Apple", "Banana", "Cherry", "Date", "Elderberry", "Fig"]}
+      placeholder="Select a fruit"
+    />
+  </div>
+</ShowComponent>
+
+<ShowComponent>
+  <div style={{ maxWidth: "300px", marginTop: "20px" }}>
+    <Dropdown
+      options={[
+        "United States",
+        "United Kingdom",
+        "Canada",
+        "Australia",
+        "Germany",
+        "France",
+        "Japan",
+      ]}
+      placeholder="Select a country"
+      enableSearch={true}
+      searchPlaceholder="Search countries..."
+    />
+  </div>
+</ShowComponent>
+
+<ShowComponent>
+  <div style={{ maxWidth: "300px", marginTop: "20px" }}>
+    <Dropdown
+      options={["Red", "Green", "Blue", "Yellow"]}
+      placeholder="Select a color"
+      error={true}
+      errorMessage="Please select a color"
+    />
+  </div>
+</ShowComponent>
+
+### Usage
+
+```tsx
+import Dropdown from "@altitude/ui/react/ui/dropdown/dropdown";
+
+export default function DropdownExample() {
+  const [selectedValue, setSelectedValue] = React.useState("");
+
+  const handleChange = (e) => {
+    setSelectedValue(e.target.value);
+  };
+
+  return (
+    <div>
+      {/* Basic dropdown */}
+      <Dropdown
+        options={["Option 1", "Option 2", "Option 3"]}
+        placeholder="Select an option"
+      />
+
+      {/* Dropdown with search */}
+      <Dropdown
+        options={["Apple", "Banana", "Cherry", "Date", "Elderberry", "Fig"]}
+        placeholder="Select a fruit"
+        enableSearch={true}
+        searchPlaceholder="Search fruits..."
+      />
+
+      {/* Controlled dropdown */}
+      <Dropdown
+        options={["Red", "Green", "Blue", "Yellow"]}
+        placeholder="Select a color"
+        value={selectedValue}
+        onChange={handleChange}
+        required={true}
+      />
+    </div>
+  );
+}
+```
+
+### Props
+
+| Prop              | Type     | Required | Description                                                            |
+| ----------------- | -------- | -------- | ---------------------------------------------------------------------- |
+| options           | string[] | Yes      | Array of options to display in the dropdown                            |
+| placeholder       | string   | No       | Placeholder text when no option is selected                            |
+| disabled          | boolean  | No       | Whether the dropdown is disabled                                       |
+| enableSearch      | boolean  | No       | Enable search functionality (default: false)                           |
+| required          | boolean  | No       | Whether a selection is required                                        |
+| error             | boolean  | No       | Whether to show error styling                                          |
+| errorMessage      | string   | No       | Error message to display when in error state                           |
+| noOptionsMessage  | string   | No       | Message when no options match search (default: "No options available") |
+| searchPlaceholder | string   | No       | Placeholder for search input (default: "Search...")                    |
+| className         | string   | No       | Additional CSS classes for styling                                     |
+| onChange          | function | No       | Handler for value changes: `(e: {target: {name, value}}) => void`      |
+| value             | string   | No       | Current selected value (controlled component)                          |
+| name              | string   | No       | Form field name                                                        |
+| id                | string   | No       | HTML ID attribute                                                      |
+
+### Features
+
+- **Search Functionality**: Easily filter through options with the built-in search
+- **Keyboard Navigation**: Full keyboard support for accessibility
+- **Form Integration**: Works seamlessly in forms with proper value handling
+- **Customizable**: Supports custom styling and placeholders
+- **Accessibility**: ARIA attributes and keyboard interactions for accessibility compliance
+
+### Implementation Details
+
+The Dropdown component is built using several supporting modules:
+
+- **useDropdown**: Custom hook for managing dropdown state and behavior
+- **focusManagement**: Utilities for keyboard focus handling
+- **keyboardNavigation**: Support for keyboard interaction
+- **types**: TypeScript type definitions
+- **utils**: Helper functions
+
+The component provides a robust implementation with consideration for accessibility, keyboard navigation, and user experience best practices.

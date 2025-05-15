@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "review-list",
+  "type": "registry:component",
+  "title": "Review List",
+  "description": "Container component for displaying a list of reviews with title and subtitle",
+  "dependencies": [
+    "react"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "registry/react/component/review-list.tsx",
+      "content": "import React from \"react\"\n\ninterface ReviewListProps {\n    title?: string;\n    subtitle?: string;\n    children?: React.ReactNode;\n}\n\nexport const ReviewList: React.FC<ReviewListProps> = ({title = \"Top Customer Reviews\", subtitle = \"\", children}) => {\n    return (\n        <div className=\"flex flex-col w-full gap-6\">\n            <h3 className=\"text-2lg font-medium\">{title}</h3>\n            <p className=\"text-body\">{subtitle}</p>\n            {children}\n        </div>\n    )\n}\n\nexport default ReviewList",
+      "type": "registry:component",
+      "target": "react/component/review-list.tsx"
+    }
+  ]
+}

@@ -1,0 +1,160 @@
+---
+title: Dropdown Field
+description: >-
+  A form field component for selecting options from a dropdown menu with search
+  capabilities
+sidebar:
+  order: 4
+name: dropdown-field
+meta: {}
+categories: []
+registryDependencies: {}
+files:
+  - registry/react/component/dropdown-field.tsx
+dependencies: {}
+devDependencies: {}
+docsUrl: 'https://components.thgaltitude.com/react/component/fields/dropdown-field'
+---
+
+import ShowComponent from "../../../../../../components/doc-helpers/ShowComponent.astro";
+import DropdownField from "../../../../../../../registry/react/component/fields/dropdown-field";
+
+## Dropdown Field Component
+
+The Dropdown Field component provides a complete form field for selecting options from a dropdown menu with built-in label, validation, search functionality, and error handling.
+
+### Example
+
+<ShowComponent>
+  <div style={{ maxWidth: "400px" }}>
+    <DropdownField
+      id="category"
+      name="category"
+      label="Category"
+      helperText="Select a product category"
+      options={["Electronics", "Clothing", "Home & Garden", "Sports", "Books"]}
+      placeholder="Select a category"
+      required={true}
+    />
+  </div>
+</ShowComponent>
+
+<ShowComponent>
+  <div style={{ maxWidth: "400px", marginTop: "20px" }}>
+    <DropdownField
+      id="country"
+      name="country"
+      label="Country"
+      options={[
+        "United States",
+        "United Kingdom",
+        "Canada",
+        "Australia",
+        "Germany",
+        "France",
+        "Japan",
+        "Brazil",
+        "India",
+      ]}
+      enableSearch={true}
+      searchPlaceholder="Search for a country"
+      placeholder="Select your country"
+    />
+  </div>
+</ShowComponent>
+
+<ShowComponent>
+  <div style={{ maxWidth: "400px", marginTop: "20px" }}>
+    <DropdownField
+      id="dropdown-error"
+      name="dropdown-error"
+      label="State/Province"
+      options={["Alabama", "Alaska", "Arizona", "Arkansas", "California"]}
+      placeholder="Select your state"
+      required={true}
+      aria-invalid={true}
+      errorMessage="Please select a state"
+    />
+  </div>
+</ShowComponent>
+
+### Usage
+
+```tsx
+import DropdownField from "@altitude/ui/react/components/fields/dropdown-field";
+
+export default function ProfileForm() {
+  const [country, setCountry] = React.useState("");
+
+  const handleCountryChange = (e) => {
+    setCountry(e.target.value);
+  };
+
+  return (
+    <form>
+      {/* Uncontrolled dropdown */}
+      <DropdownField
+        id="gender"
+        name="gender"
+        label="Gender"
+        options={["Male", "Female", "Non-binary", "Prefer not to say"]}
+        placeholder="Select your gender"
+        required={false}
+      />
+
+      {/* Controlled dropdown with search */}
+      <DropdownField
+        id="country"
+        name="country"
+        label="Country"
+        options={[
+          "United States",
+          "United Kingdom",
+          "Canada",
+          "Australia",
+          "Germany",
+        ]}
+        enableSearch={true}
+        searchPlaceholder="Search for a country"
+        placeholder="Select your country"
+        value={country}
+        onChange={handleCountryChange}
+        required={true}
+      />
+
+      {/* More form fields */}
+      <button type="submit">Save Profile</button>
+    </form>
+  );
+}
+```
+
+### Props
+
+| Prop              | Type     | Required | Description                                                                        |
+| ----------------- | -------- | -------- | ---------------------------------------------------------------------------------- |
+| id                | string   | No       | HTML ID for the field                                                              |
+| name              | string   | No       | HTML name attribute for the field                                                  |
+| label             | string   | No       | Label text for the field                                                           |
+| helperText        | string   | No       | Helper text displayed below the field                                              |
+| errorMessage      | string   | No       | Error message displayed when aria-invalid is true                                  |
+| placeholder       | string   | No       | Placeholder text for the dropdown                                                  |
+| required          | boolean  | No       | Whether the field is required (default: false)                                     |
+| aria-invalid      | boolean  | No       | Whether the field has an error (default: false)                                    |
+| disabled          | boolean  | No       | Whether the field is disabled (default: false)                                     |
+| options           | string[] | No       | Array of option strings to display in the dropdown                                 |
+| enableSearch      | boolean  | No       | Enable search functionality in the dropdown (default: false)                       |
+| noOptionsMessage  | string   | No       | Message to display when no options are available (default: "No options available") |
+| searchPlaceholder | string   | No       | Placeholder text for the search input (default: "Search...")                       |
+| value             | string   | No       | Current selected value (for controlled component)                                  |
+| onChange          | function | No       | Callback when selection changes (e) => void                                        |
+
+### Implementation Details
+
+The Dropdown Field component combines a field wrapper and a dropdown component:
+
+- Uses `FieldWrapper` to handle labels, error states, and helper text
+- Uses the base `Dropdown` UI component from the dropdown directory
+- Supports both standard and searchable dropdown patterns
+- Automatically handles validation states and error messaging
+- Can be used as both controlled and uncontrolled component
