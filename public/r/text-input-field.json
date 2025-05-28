@@ -6,7 +6,7 @@
   "description": "Field component for single-line text inputs with validation and error handling",
   "dependencies": [
     "react",
-    ".."
+    "@registry/react"
   ],
   "registryDependencies": [
     "https://components.thgaltitude.com/r/react/field-wrapper",
@@ -15,7 +15,7 @@
   "files": [
     {
       "path": "registry/react/component/fields/text-input-field.tsx",
-      "content": "import React from \"react\";\nimport type { InputHTMLAttributes } from \"react\";\nimport TextInput from \"../../ui/text-input\";\nimport InputWrapper from \"../field-wrapper\";\nimport type { FieldProps } from \"../field-wrapper\";\n\ntype TextInputFieldProps = FieldProps &\n  Omit<\n    InputHTMLAttributes<HTMLInputElement>,\n    \"id\" | \"name\" | \"placeholder\" | \"disabled\" | \"required\" | \"aria-invalid\"\n  >;\n\nconst TextInputField: React.FC<TextInputFieldProps> = ({\n  id,\n  name,\n  label,\n  helperText,\n  errorMessage,\n  placeholder,\n  required = false,\n  \"aria-invalid\": ariaInvalid = false,\n  disabled = false,\n  maxlength,\n  ...restProps\n}) => {\n  return (\n    <div className=\"w-full\">\n      <InputWrapper\n        id={id}\n        name={name}\n        label={label}\n        helperText={helperText}\n        errorMessage={errorMessage}\n        placeholder={placeholder}\n        required={required}\n        aria-invalid={ariaInvalid}\n        disabled={disabled}\n        maxlength={maxlength}\n      >\n        <TextInput {...restProps} />\n      </InputWrapper>\n    </div>\n  );\n};\n\nexport default TextInputField;\n",
+      "content": "import React from \"react\";\nimport type { InputHTMLAttributes } from \"react\";\nimport TextInput from \"@registry/react/ui/text-input\";\nimport InputWrapper from \"@registry/react/component/field-wrapper\";\nimport type { FieldProps } from \"@registry/react/component/field-wrapper\";\n\ntype TextInputFieldProps = FieldProps &\n  Omit<\n    InputHTMLAttributes<HTMLInputElement>,\n    \"id\" | \"name\" | \"placeholder\" | \"disabled\" | \"required\" | \"aria-invalid\"\n  >;\n\nconst TextInputField: React.FC<TextInputFieldProps> = ({\n  id,\n  name,\n  label,\n  helperText,\n  errorMessage,\n  placeholder,\n  required = false,\n  \"aria-invalid\": ariaInvalid = false,\n  disabled = false,\n  maxlength,\n  ...restProps\n}) => {\n  return (\n    <div className=\"w-full\">\n      <InputWrapper\n        id={id}\n        name={name}\n        label={label}\n        helperText={helperText}\n        errorMessage={errorMessage}\n        placeholder={placeholder}\n        required={required}\n        aria-invalid={ariaInvalid}\n        disabled={disabled}\n        maxlength={maxlength}\n      >\n        <TextInput {...restProps} />\n      </InputWrapper>\n    </div>\n  );\n};\n\nexport default TextInputField;\n",
       "type": "registry:component",
       "target": "react/component/fields/text-input-field.tsx"
     }
