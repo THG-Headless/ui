@@ -1,6 +1,6 @@
 import React from "react";
-import Ratings from "../ui/ratings";
-import { Button } from "../ui/button";
+import Ratings from "@registry/react/ui/ratings";
+import { Button } from "@registry/react/ui/button";
 
 export enum VoteType {
   UPVOTE = "UPVOTE",
