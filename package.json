@@ -4,8 +4,10 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",
+    "start": "astro dev",
     "build": "npm run build:polyfill && npm run build:css && astro build",
     "preview": "astro preview",
+    "astro": "astro",
     
     "build:polyfill": "rollup -c rollup.polyfill.config.js",
     "build:css": "cd standalone-components-css && npm run build",
