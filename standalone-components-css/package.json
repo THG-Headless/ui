@@ -3,11 +3,12 @@
   "version": "1.0.0",
   "description": "Reusable pure CSS styling for components",
   "main": "dist/main.css",
+  "type": "module",
   "scripts": {
-    "build": "mkdir -p dist && cp -r src/* dist/",
+    "build": "mkdir -p dist && cp -r src/* dist/ && cd .. && npm run build:polyfill && cp public/oklch-polyfill.min.js standalone-components-css/dist/",
     "prepare": "npm run build"
   },
-  "keywords": [],
+  "keywords": ["css", "components", "oklch", "design-system"],
   "author": "",
   "license": "ISC",
   "exports": {
@@ -17,5 +18,9 @@
       "default": "./dist/main.css"
     }
   },
+  "files": [
+    "dist/",
+    "README.md"
+  ],
   "dependencies": {}
 }
