@@ -1,7 +1,7 @@
 {
   "name": "@thg-altitude/standalone-components-css",
-  "version": "1.1.0",
-  "description": "Reusable pure CSS styling for components with OKLCH fallback support",
+  "version": "1.0.0",
+  "description": "Reusable pure CSS styling for components",
   "main": "dist/main.css",
   "type": "module",
   "scripts": {
@@ -20,7 +20,6 @@
   },
   "files": [
     "dist/",
-    "src/",
     "README.md"
   ],
   "dependencies": {}
