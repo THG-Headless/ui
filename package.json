@@ -4,19 +4,26 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",
-    "start": "astro dev",
-    "build": "astro build",
+    "build": "npm run build:polyfill && npm run build:css && astro build",
     "preview": "astro preview",
-    "astro": "astro",
+    
+    "build:polyfill": "rollup -c rollup.polyfill.config.js",
     "build:css": "cd standalone-components-css && npm run build",
-    "publish:css": "cd standalone-components-css && npm publish --access public",
-    "generate-registry": "node scripts/createRegistry/index.js",
-    "generate-registry-default": "node scripts/createRegistry/index.js --apply-defaults",
-    "test-schema": "node scripts/test-schema.js",
+    "build:all": "npm run build:polyfill && npm run build:css && astro build",
+    
+    "publish:css": "npm run build:css && cd standalone-components-css && npm publish --access public",
+    
+    "registry:generate": "node scripts/createRegistry/index.js",
+    "registry:generate:defaults": "node scripts/createRegistry/index.js --apply-defaults", 
+    "registry:build": "shadcn registry:build",
+    "registry:validate": "node scripts/test-schema.js",
+    
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build",
-    "test-storybook": "test-storybook",
-    "registry:build": "shadcn registry:build"
+    "storybook:build": "storybook build",
+    "storybook:test": "test-storybook",
+    
+    "clean": "rm -rf dist .astro public/oklch-polyfill.min.js standalone-components-css/dist",
+    "clean:build": "npm run clean && npm run build"
   },
   "dependencies": {
     "@astrojs/react": "^4.2.0",
@@ -49,6 +56,7 @@
     "@babel/parser": "^7.27.2",
     "@babel/traverse": "^7.27.1",
     "@chromatic-com/storybook": "^3.2.3",
+    "@rollup/plugin-terser": "^0.4.4",
     "@storybook/addon-a11y": "^8.4.7",
     "@storybook/addon-essentials": "^8.4.7",
     "@storybook/addon-interactions": "^8.4.7",
