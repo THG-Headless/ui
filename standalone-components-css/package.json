@@ -5,7 +5,7 @@
   "main": "dist/main.css",
   "type": "module",
   "scripts": {
-    "build": "mkdir -p dist && cp -r src/* dist/ && cd .. && npm install && npm run build:polyfill && cp public/oklch-polyfill.min.js standalone-components-css/dist/",
+    "build": "mkdir -p dist && cp -r src/* dist/ && (test -f ../public/oklch-polyfill.min.js && cp ../public/oklch-polyfill.min.js dist/ || echo 'Polyfill not found, skipping copy')",
     "prepare": "npm run build"
   },
   "keywords": ["css", "components", "oklch", "design-system"],
