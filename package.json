@@ -23,6 +23,7 @@
     "storybook": "storybook dev -p 6006",
     "storybook:build": "storybook build",
     "storybook:test": "test-storybook",
+    "test-storybook": "test-storybook",
     
     "clean": "rm -rf dist .astro public/oklch-polyfill.min.js standalone-components-css/dist",
     "clean:build": "npm run clean && npm run build"
