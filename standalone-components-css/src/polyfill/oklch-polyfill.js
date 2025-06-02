@@ -40,10 +40,8 @@ class AltitudeOklchPolyfill {
   init() {
     if (this.initialized) return;
     
-    console.debug('Altitude OKLCH Polyfill v' + this.version + ' - Native support:', this.supported);
-    
     if (!this.supported) {
-      console.debug('Initializing OKLCH polyfill...');
+      console.log('Altitude OKLCH Polyfill v' + this.version + ' activated');
       this.isPolyfilled = true;
       
       // Wait for DOM to be ready
@@ -64,7 +62,6 @@ class AltitudeOklchPolyfill {
     try {
       this.processOklchColors();
       this.setupMutationObserver();
-      console.debug('OKLCH polyfill activated successfully');
     } catch (error) {
       console.error('Failed to activate OKLCH polyfill:', error);
     }
@@ -76,10 +73,8 @@ class AltitudeOklchPolyfill {
   processOklchColors() {
     // Extract all OKLCH properties from CSS
     const oklchProperties = CSSParser.extractOklchProperties();
-    console.debug(`Found ${oklchProperties.size} OKLCH properties`);
 
     if (oklchProperties.size === 0) {
-      console.debug('No OKLCH properties found in CSS');
       return;
     }
 
@@ -91,8 +86,6 @@ class AltitudeOklchPolyfill {
     
     // Apply RGB fallbacks to CSS custom properties
     this.applyRgbFallbacks(rgbColors);
-    
-    console.debug(`Applied ${rgbColors.size} RGB fallbacks`);
   }
 
   /**

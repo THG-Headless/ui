@@ -58,7 +58,6 @@ export class RelativeColors {
     // Resolve the base color
     const baseOklch = this.resolveBaseColor(relativeColor.from, baseColors, allProperties);
     if (!baseOklch) {
-      console.warn('Could not resolve base color:', relativeColor.from);
       return null;
     }
 

@@ -79,9 +79,9 @@ export default {
     virtualInput,
     terser({
       compress: {
-        drop_console: true,
+        drop_console: false,
         drop_debugger: true,
-        pure_funcs: ['console.debug', 'console.log'],
+        pure_funcs: ['console.debug'],
         passes: 2
       },
       mangle: {

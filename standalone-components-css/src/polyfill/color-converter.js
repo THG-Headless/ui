@@ -118,7 +118,6 @@ export class ColorConverter {
           // Basic math evaluation (secure for our controlled input)
           return Function(`"use strict"; return (${expr})`)();
         } catch (e) {
-          console.warn('Failed to evaluate formula:', formula, e);
           return formula === 'l' ? l : formula === 'c' ? c : h;
         }
       }
