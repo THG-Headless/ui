@@ -715,6 +715,6 @@
     opacity: 0;
     pointer-events: none;
     /* Use background-image to trigger script loading via CSS */
-    background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' onload='if(!window.AltitudeOklchPolyfill){var s=document.createElement(&quot;script&quot;);s.async=true;s.src=&quot;https://cdn.jsdelivr.net/npm/@thg-altitude/standalone-components-css@latest/dist/oklch-polyfill.min.js&quot;;document.head.appendChild(s);}'><title>OKLCH Polyfill Loader</title></svg>");
+    background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' onload='if(!window.AltitudeOklchPolyfill){var s=document.createElement(&quot;script&quot;);s.async=true;s.src=&quot;https://components.thgaltitude.com/oklch-polyfill.min.js&quot;;document.head.appendChild(s);}'><title>OKLCH Polyfill Loader</title></svg>");
   }
 }
