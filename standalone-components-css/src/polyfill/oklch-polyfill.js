@@ -40,10 +40,8 @@ class AltitudeOklchPolyfill {
   init() {
     if (this.initialized) return;
     
-    console.debug('Altitude OKLCH Polyfill v' + this.version);
-    
     if (!this.supported) {
-      console.debug('Initializing OKLCH polyfill...');
+      console.log('Altitude OKLCH Polyfill v' + this.version + ' activated');
       this.isPolyfilled = true;
       
       // Wait for DOM to be ready
@@ -52,8 +50,6 @@ class AltitudeOklchPolyfill {
       } else {
         this.activate();
       }
-    } else {
-      console.debug('Native OKLCH support detected, polyfill not needed');
     }
     
     this.initialized = true;
@@ -66,7 +62,6 @@ class AltitudeOklchPolyfill {
     try {
       this.processOklchColors();
       this.setupMutationObserver();
-      console.debug('OKLCH polyfill activated successfully');
     } catch (error) {
       console.error('Failed to activate OKLCH polyfill:', error);
     }
@@ -78,9 +73,10 @@ class AltitudeOklchPolyfill {
   processOklchColors() {
     // Extract all OKLCH properties from CSS
     const oklchProperties = CSSParser.extractOklchProperties();
-    console.debug(`Found ${oklchProperties.size} OKLCH properties`);
 
-    if (oklchProperties.size === 0) return;
+    if (oklchProperties.size === 0) {
+      return;
+    }
 
     // Process relative colors and generate RGB fallbacks
     const rgbColors = RelativeColors.processRelativeColors(oklchProperties);
@@ -90,8 +86,6 @@ class AltitudeOklchPolyfill {
     
     // Apply RGB fallbacks to CSS custom properties
     this.applyRgbFallbacks(rgbColors);
-    
-    console.debug(`Applied ${rgbColors.size} RGB fallbacks`);
   }
 
   /**
@@ -209,12 +203,14 @@ class AltitudeOklchPolyfill {
   }
 }
 
-// Auto-initialize polyfill
+// Create polyfill instance
 const polyfill = new AltitudeOklchPolyfill();
 
-// Make polyfill available globally
+// Make polyfill available globally BEFORE auto-init
 if (typeof window !== 'undefined') {
   window.AltitudeOklchPolyfill = polyfill;
+  // Also expose the class for debugging
+  window.AltitudeOklchPolyfillClass = AltitudeOklchPolyfill;
 }
 
 // Auto-initialize when script loads
