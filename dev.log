@@ -1,0 +1,13 @@
+
+> astro-starlight@0.0.1 dev
+> astro dev
+
+16:26:32 [types] Generated 1ms
+16:26:32 [vite] Port 4321 is in use, trying another one...
+
+ astro  v4.16.18 ready in 515 ms
+
+┃ Local    http://localhost:4322/
+┃ Network  use --host to expose
+
+16:26:32 watching for file changes...

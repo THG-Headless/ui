@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Altitude Color Inheritance Model</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="./standalone-components-css/dist/main.css">
+    <style>
+        .connection-line {
+            stroke: #94a3b8;
+            stroke-width: 1;
+            stroke-dasharray: 4,4;
+            fill: none;
+        }
+        .connection-line.highlighted {
+            stroke: #ef4444;
+            stroke-width: 2;
+            stroke-dasharray: 6,6;
+        }
+        .color-node {
+            cursor: pointer;
+            transition: stroke-width 0.2s ease, stroke 0.2s ease;
+        }
+        .color-node:hover {
+            /* Remove transform to prevent jittering */
+        }
+        .node-group {
+            border: 1px dashed #cbd5e1;
+            border-radius: 8px;
+            background: rgba(255,255,255,0.7);
+        }
+        .layer-background {
+            border-radius: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+    
+    <script type="text/babel">
+        const { useState, useEffect, useMemo } = React;
+        
+        const ColorInheritanceVisualization = () => {
+            const [hoveredPath, setHoveredPath] = useState(null);
+            const [zoom, setZoom] = useState(0.3); // Start zoomed out to see everything
+            const [pan, setPan] = useState({ x: -2000, y: 0 }); // Start centered
+            const [isDragging, setIsDragging] = useState(false);
+            const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
+            
+            // Get actual CSS color values
+            const getComputedColor = (cssVar) => {
+                try {
+                    // Create a temporary element to test the CSS variable
+                    const testEl = document.createElement('div');
+                    testEl.style.color = `var(${cssVar})`;
+                    document.body.appendChild(testEl);
+                    
+                    const computedStyle = window.getComputedStyle(testEl);
+                    const color = computedStyle.color;
+                    
+                    document.body.removeChild(testEl);
+                    
+                    // Convert rgb to hex for better display
+                    if (color && color.startsWith('rgb')) {
+                        const rgbMatch = color.match(/\d+/g);
+                        if (rgbMatch && rgbMatch.length >= 3) {
+                            const hex = '#' + rgbMatch.slice(0, 3)
+                                .map(x => parseInt(x).toString(16).padStart(2, '0'))
+                                .join('');
+                            return hex;
+                        }
+                    }
+                    
+                    return color || '#64748b';
+                } catch (e) {
+                    console.warn(`Failed to get color for ${cssVar}:`, e);
+                    return '#64748b';
+                }
+            };
+            
+            // Color system data structure
+            const colorSystem = useMemo(() => {
+                const siteColors = ['primary', 'secondary', 'tertiary', 'neutral', 'success', 'attention', 'error', 'promotion'];
+                const shades = ['50', '100', '200', '300', '400', '500', '600', '700', '800', '900', '950'];
+                const aliases = ['default', 'light', 'dark', 'hover', 'hover-light'];
+                const skins = [
+                    { name: 'primary', base: 'primary' },
+                    { name: 'primary-emphasised', base: 'primary' },
+                    { name: 'primary-subtle', base: 'primary' },
+                    { name: 'secondary', base: 'secondary' },
+                    { name: 'secondary-emphasised', base: 'secondary' },
+                    { name: 'tertiary', base: 'tertiary' },
+                    { name: 'success', base: 'success' },
+                    { name: 'error', base: 'error' },
+                    { name: 'attention', base: 'attention' },
+                    { name: 'form', base: 'neutral' },
+                    { name: 'muted', base: 'neutral' }
+                ];
+                const properties = ['background', 'foreground', 'border'];
+                const states = ['default', 'hover', 'focus', 'active', 'disabled'];
+                
+                return { siteColors, shades, aliases, skins, properties, states };
+            }, []);
+            
+            // Layout configuration
+            const layout = {
+                containerWidth: 8000,
+                containerHeight: 1200,
+                viewBox: "0 0 8000 1200",
+                layers: {
+                    siteColors: { y: 80, height: 100 },
+                    shades: { y: 220, height: 140 },
+                    aliases: { y: 400, height: 120 },
+                    skins: { y: 560, height: 160 },
+                    properties: { y: 760, height: 140 },
+                    states: { y: 940, height: 120 }
+                },
+                spacing: {
+                    siteColors: 800,
+                    shades: 60,
+                    aliases: 50,
+                    skins: 600,
+                    properties: 160,
+                    states: 45
+                }
+            };
+            
+            // Build inheritance paths
+            const buildPaths = () => {
+                const paths = [];
+                const { siteColors, shades, aliases, skins, properties, states } = colorSystem;
+                
+                // Site colors to shades
+                siteColors.forEach((color, colorIndex) => {
+                    shades.forEach((shade, shadeIndex) => {
+                        paths.push({
+                            id: `${color}-to-${color}-${shade}`,
+                            from: { type: 'site', color, index: colorIndex },
+                            to: { type: 'shade', color, shade, index: shadeIndex },
+                            color: getComputedColor(`--color-${color}-${shade}`)
+                        });
+                    });
+                });
+                
+                // Shades to aliases
+                siteColors.forEach((color, colorIndex) => {
+                    aliases.forEach((alias, aliasIndex) => {
+                        const shadeMap = { 'default': '500', 'light': '50', 'dark': '950', 'hover': '600', 'hover-light': '300' };
+                        const shade = shadeMap[alias];
+                        paths.push({
+                            id: `${color}-${shade}-to-${color}-${alias}`,
+                            from: { type: 'shade', color, shade },
+                            to: { type: 'alias', color, alias, index: aliasIndex },
+                            color: getComputedColor(`--color-${color}-${shade}`)
+                        });
+                    });
+                });
+                
+                // Aliases to skins
+                skins.forEach((skin, skinIndex) => {
+                    paths.push({
+                        id: `${skin.base}-default-to-skin-${skin.name}`,
+                        from: { type: 'alias', color: skin.base, alias: 'default' },
+                        to: { type: 'skin', name: skin.name, index: skinIndex },
+                        color: getComputedColor(`--color-${skin.base}-500`)
+                    });
+                });
+                
+                // Skins to properties to states
+                skins.forEach((skin, skinIndex) => {
+                    properties.forEach((property, propIndex) => {
+                        paths.push({
+                            id: `skin-${skin.name}-to-${property}`,
+                            from: { type: 'skin', name: skin.name, index: skinIndex },
+                            to: { type: 'property', skin: skin.name, property, index: propIndex },
+                            color: getComputedColor(`--color-${skin.base}-500`)
+                        });
+                        
+                        states.forEach((state, stateIndex) => {
+                            const stateShadeMap = { 'default': '500', 'hover': '600', 'focus': '600', 'active': '600', 'disabled': '50' };
+                            const shade = stateShadeMap[state];
+                            paths.push({
+                                id: `${property}-${skin.name}-to-${property}-${state}`,
+                                from: { type: 'property', skin: skin.name, property, index: propIndex },
+                                to: { type: 'state', skin: skin.name, property, state, index: stateIndex },
+                                color: getComputedColor(`--color-${skin.base}-${shade}`)
+                            });
+                        });
+                    });
+                });
+                
+                return paths;
+            };
+            
+            const getNodePosition = (nodeType, data) => {
+                const centerX = layout.containerWidth / 2;
+                
+                switch (nodeType) {
+                    case 'site':
+                        const siteIndex = colorSystem.siteColors.indexOf(data.color);
+                        const siteStartX = centerX - ((colorSystem.siteColors.length - 1) * layout.spacing.siteColors / 2);
+                        return {
+                            x: siteStartX + siteIndex * layout.spacing.siteColors,
+                            y: layout.layers.siteColors.y + 40
+                        };
+                        
+                    case 'shade':
+                        const shadeColorIndex = colorSystem.siteColors.indexOf(data.color);
+                        const shadeIndex = colorSystem.shades.indexOf(data.shade);
+                        const shadeColorStartX = centerX - ((colorSystem.siteColors.length - 1) * layout.spacing.siteColors / 2);
+                        const shadeColorX = shadeColorStartX + shadeColorIndex * layout.spacing.siteColors;
+                        const shadeStartX = shadeColorX - ((colorSystem.shades.length - 1) * layout.spacing.shades / 2);
+                        return {
+                            x: shadeStartX + shadeIndex * layout.spacing.shades,
+                            y: layout.layers.shades.y + 60
+                        };
+                        
+                    case 'alias':
+                        const aliasColorIndex = colorSystem.siteColors.indexOf(data.color);
+                        const aliasIndex = colorSystem.aliases.indexOf(data.alias);
+                        const aliasColorStartX = centerX - ((colorSystem.siteColors.length - 1) * layout.spacing.siteColors / 2);
+                        const aliasColorX = aliasColorStartX + aliasColorIndex * layout.spacing.siteColors;
+                        const aliasStartX = aliasColorX - ((colorSystem.aliases.length - 1) * layout.spacing.aliases / 2);
+                        return {
+                            x: aliasStartX + aliasIndex * layout.spacing.aliases,
+                            y: layout.layers.aliases.y + 50
+                        };
+                        
+                    case 'skin':
+                        const skinIndex = colorSystem.skins.findIndex(s => s.name === data.name);
+                        const skinStartX = centerX - ((colorSystem.skins.length - 1) * layout.spacing.skins / 2);
+                        return {
+                            x: skinStartX + skinIndex * layout.spacing.skins,
+                            y: layout.layers.skins.y + 75
+                        };
+                        
+                    case 'property':
+                        const propSkinIndex = colorSystem.skins.findIndex(s => s.name === data.skin);
+                        const propIndex = colorSystem.properties.indexOf(data.property);
+                        const propSkinStartX = centerX - ((colorSystem.skins.length - 1) * layout.spacing.skins / 2);
+                        const propSkinX = propSkinStartX + propSkinIndex * layout.spacing.skins;
+                        const propStartX = propSkinX - ((colorSystem.properties.length - 1) * layout.spacing.properties / 2);
+                        return {
+                            x: propStartX + propIndex * layout.spacing.properties,
+                            y: layout.layers.properties.y + 60
+                        };
+                        
+                    case 'state':
+                        const stateSkinIndex = colorSystem.skins.findIndex(s => s.name === data.skin);
+                        const statePropIndex = colorSystem.properties.indexOf(data.property);
+                        const stateIndex = colorSystem.states.indexOf(data.state);
+                        const stateSkinStartX = centerX - ((colorSystem.skins.length - 1) * layout.spacing.skins / 2);
+                        const stateSkinX = stateSkinStartX + stateSkinIndex * layout.spacing.skins;
+                        const statePropStartX = stateSkinX - ((colorSystem.properties.length - 1) * layout.spacing.properties / 2);
+                        const statePropX = statePropStartX + statePropIndex * layout.spacing.properties;
+                        const stateStartX = statePropX - ((colorSystem.states.length - 1) * layout.spacing.states / 2);
+                        return {
+                            x: stateStartX + stateIndex * layout.spacing.states,
+                            y: layout.layers.states.y + 50
+                        };
+                        
+                    default:
+                        return { x: 0, y: 0 };
+                }
+            };
+            
+            const getPathsForNode = (nodeType, data) => {
+                const paths = buildPaths();
+                return paths.filter(path => {
+                    const matchesFrom = JSON.stringify(path.from) === JSON.stringify({ type: nodeType, ...data });
+                    const matchesTo = JSON.stringify(path.to) === JSON.stringify({ type: nodeType, ...data });
+                    return matchesFrom || matchesTo;
+                });
+            };
+            
+            const findUpstreamPaths = (nodeType, data) => {
+                const paths = buildPaths();
+                const upstream = [];
+                const visited = new Set();
+                
+                const traverse = (currentType, currentData) => {
+                    const key = `${currentType}-${JSON.stringify(currentData)}`;
+                    if (visited.has(key)) return;
+                    visited.add(key);
+                    
+                    const incomingPaths = paths.filter(path => 
+                        JSON.stringify(path.to) === JSON.stringify({ type: currentType, ...currentData })
+                    );
+                    
+                    incomingPaths.forEach(path => {
+                        upstream.push(path);
+                        traverse(path.from.type, path.from);
+                    });
+                };
+                
+                traverse(nodeType, data);
+                return upstream;
+            };
+            
+            const handleNodeHover = (nodeType, data) => {
+                const upstreamPaths = findUpstreamPaths(nodeType, data);
+                setHoveredPath(upstreamPaths);
+            };
+            
+            const handleMouseDown = (e) => {
+                setIsDragging(true);
+                setDragStart({ x: e.clientX - pan.x, y: e.clientY - pan.y });
+            };
+            
+            const handleMouseMove = (e) => {
+                if (isDragging) {
+                    setPan({
+                        x: e.clientX - dragStart.x,
+                        y: e.clientY - dragStart.y
+                    });
+                }
+            };
+            
+            const handleMouseUp = () => {
+                setIsDragging(false);
+            };
+            
+            const handleWheel = (e) => {
+                e.preventDefault();
+                const delta = e.deltaY > 0 ? 0.9 : 1.1;
+                setZoom(prev => Math.max(0.1, Math.min(3, prev * delta)));
+            };
+            
+            const renderNode = (nodeType, data, label, color) => {
+                const pos = getNodePosition(nodeType, data);
+                const isHighlighted = hoveredPath && hoveredPath.some(path => 
+                    JSON.stringify(path.from) === JSON.stringify({ type: nodeType, ...data }) ||
+                    JSON.stringify(path.to) === JSON.stringify({ type: nodeType, ...data })
+                );
+                
+                return (
+                    <g key={`${nodeType}-${JSON.stringify(data)}`}>
+                        <circle
+                            cx={pos.x}
+                            cy={pos.y}
+                            r={nodeType === 'site' ? 12 : nodeType === 'shade' ? 10 : 8}
+                            fill={color}
+                            stroke={isHighlighted ? "#ef4444" : "#ffffff"}
+                            strokeWidth={isHighlighted ? 3 : 2}
+                            className="color-node"
+                            onMouseEnter={() => handleNodeHover(nodeType, data)}
+                            onMouseLeave={() => setHoveredPath(null)}
+                        />
+                        <text
+                            x={pos.x}
+                            y={pos.y + (nodeType === 'site' ? 25 : nodeType === 'shade' ? 23 : 20)}
+                            textAnchor="middle"
+                            fontSize={nodeType === 'site' ? 12 : 10}
+                            fontWeight={nodeType === 'site' ? 'bold' : 'normal'}
+                            fill="#1e293b"
+                        >
+                            {label}
+                        </text>
+                    </g>
+                );
+            };
+            
+            const renderPath = (path) => {
+                const fromPos = getNodePosition(path.from.type, path.from);
+                const toPos = getNodePosition(path.to.type, path.to);
+                const isHighlighted = hoveredPath && hoveredPath.includes(path);
+                
+                const midY = (fromPos.y + toPos.y) / 2;
+                const pathD = `M ${fromPos.x} ${fromPos.y} Q ${fromPos.x} ${midY} ${toPos.x} ${toPos.y}`;
+                
+                return (
+                    <path
+                        key={path.id}
+                        d={pathD}
+                        className={`connection-line ${isHighlighted ? 'highlighted' : ''}`}
+                    />
+                );
+            };
+            
+            return (
+                <div className="w-full h-screen bg-gray-50 overflow-hidden">
+                    {/* Header */}
+                    <div className="bg-white border-b border-gray-200 p-4 relative z-10">
+                        <h1 className="text-2xl font-bold text-gray-900">Altitude Color Inheritance Model</h1>
+                        <p className="text-gray-600 text-sm mt-1">
+                            Hover over nodes to see inheritance paths. Drag to pan, scroll to zoom.
+                        </p>
+                    </div>
+                    
+                    {/* Controls */}
+                    <div className="absolute top-20 right-4 bg-white p-4 rounded-lg shadow-lg z-10 text-sm space-y-4">
+                        <div>
+                            <h3 className="font-semibold mb-2">Controls</h3>
+                            <button 
+                                onClick={() => {
+                                    setZoom(0.3);
+                                    setPan({ x: -2000, y: 0 });
+                                }}
+                                className="px-3 py-1 bg-blue-500 text-white rounded text-xs hover:bg-blue-600 transition-colors"
+                            >
+                                Reset View
+                            </button>
+                        </div>
+                        
+                        <div>
+                            <h3 className="font-semibold mb-2">Legend</h3>
+                            <div className="space-y-1">
+                                <div><span className="inline-block w-3 h-3 bg-blue-500 rounded-full mr-2"></span>Site Colors</div>
+                                <div><span className="inline-block w-3 h-3 bg-purple-500 rounded-full mr-2"></span>Generated Shades</div>
+                                <div><span className="inline-block w-3 h-3 bg-green-500 rounded-full mr-2"></span>Semantic Aliases</div>
+                                <div><span className="inline-block w-3 h-3 bg-orange-500 rounded-full mr-2"></span>Skins</div>
+                                <div><span className="inline-block w-3 h-3 bg-red-500 rounded-full mr-2"></span>Properties</div>
+                                <div><span className="inline-block w-3 h-3 bg-pink-500 rounded-full mr-2"></span>States</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    {/* Main visualization */}
+                    <div 
+                        className="w-full h-full cursor-grab active:cursor-grabbing"
+                        onMouseDown={handleMouseDown}
+                        onMouseMove={handleMouseMove}
+                        onMouseUp={handleMouseUp}
+                        onMouseLeave={handleMouseUp}
+                        onWheel={handleWheel}
+                    >
+                        <svg 
+                            width="100%" 
+                            height="100%"
+                            viewBox={layout.viewBox}
+                            preserveAspectRatio="xMidYMid meet"
+                            style={{
+                                transform: `translate(${pan.x}px, ${pan.y}px) scale(${zoom})`
+                            }}
+                        >
+                            {/* Layer backgrounds */}
+                            <rect x="0" y={layout.layers.siteColors.y - 20} width={layout.containerWidth} height={layout.layers.siteColors.height} fill="#f0f8ff" className="layer-background" />
+                            <rect x="0" y={layout.layers.shades.y - 20} width={layout.containerWidth} height={layout.layers.shades.height} fill="#f8f0ff" className="layer-background" />
+                            <rect x="0" y={layout.layers.aliases.y - 20} width={layout.containerWidth} height={layout.layers.aliases.height} fill="#f0fff8" className="layer-background" />
+                            <rect x="0" y={layout.layers.skins.y - 20} width={layout.containerWidth} height={layout.containerHeight - layout.layers.skins.y + 20} fill="#fff8f0" className="layer-background" />
+                            
+                            {/* Layer labels */}
+                            <text x="40" y={layout.layers.siteColors.y} fontSize="16" fontWeight="bold" fill="#64748b">Site Colors</text>
+                            <text x="40" y={layout.layers.shades.y} fontSize="16" fontWeight="bold" fill="#64748b">Generated Shades</text>
+                            <text x="40" y={layout.layers.aliases.y} fontSize="16" fontWeight="bold" fill="#64748b">Semantic Aliases</text>
+                            <text x="40" y={layout.layers.skins.y} fontSize="16" fontWeight="bold" fill="#64748b">Skins & Properties</text>
+                            
+                            {/* Connection paths */}
+                            {buildPaths().map(renderPath)}
+                            
+                            {/* Site color nodes */}
+                            {colorSystem.siteColors.map((color, index) => 
+                                renderNode('site', { color, index }, color, getComputedColor(`--color-${color}`))
+                            )}
+                            
+                            {/* Shade nodes */}
+                            {colorSystem.siteColors.map(color =>
+                                colorSystem.shades.map((shade, index) =>
+                                    renderNode('shade', { color, shade, index }, shade, getComputedColor(`--color-${color}-${shade}`))
+                                )
+                            )}
+                            
+                            {/* Alias nodes */}
+                            {colorSystem.siteColors.map(color =>
+                                colorSystem.aliases.map((alias, index) =>
+                                    renderNode('alias', { color, alias, index }, alias, getComputedColor(`--color-${color}-500`))
+                                )
+                            )}
+                            
+                            {/* Skin nodes */}
+                            {colorSystem.skins.map((skin, index) =>
+                                renderNode('skin', { name: skin.name, index }, skin.name, getComputedColor(`--color-${skin.base}-500`))
+                            )}
+                            
+                            {/* Property nodes */}
+                            {colorSystem.skins.map(skin =>
+                                colorSystem.properties.map((property, index) =>
+                                    renderNode('property', { skin: skin.name, property, index }, property, getComputedColor(`--color-${skin.base}-500`))
+                                )
+                            )}
+                            
+                            {/* State nodes */}
+                            {colorSystem.skins.map(skin =>
+                                colorSystem.properties.map(property =>
+                                    colorSystem.states.map((state, index) => {
+                                        const stateShadeMap = { 'default': '500', 'hover': '600', 'focus': '600', 'active': '600', 'disabled': '50' };
+                                        const shade = stateShadeMap[state];
+                                        return renderNode('state', { skin: skin.name, property, state, index }, state, getComputedColor(`--color-${skin.base}-${shade}`));
+                                    })
+                                )
+                            )}
+                        </svg>
+                    </div>
+                </div>
+            );
+        };
+        
+        ReactDOM.render(<ColorInheritanceVisualization />, document.getElementById('root'));
+    </script>
+</body>
+</html>

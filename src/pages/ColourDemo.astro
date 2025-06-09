@@ -1,0 +1,499 @@
+---
+// Simple color demo page
+---
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Inheritance Demo - Altitude Components</title>
+    <link rel="stylesheet" href="/standalone-components-css/dist/main.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: system-ui, -apple-system, sans-serif;
+            background: #f8fafc;
+        }
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        .header {
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #1e293b;
+            margin: 0 0 8px 0;
+        }
+        .header p {
+            color: #64748b;
+            margin: 0;
+            font-size: 1.1rem;
+        }
+        
+        .layer {
+            margin-bottom: 40px;
+            padding: 20px;
+            border-radius: 12px;
+            background: white;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        
+        .layer-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #1e293b;
+        }
+        
+        .site-colors {
+            background: linear-gradient(135deg, #f0f8ff 0%, #e6f3ff 100%);
+        }
+        
+        .shades {
+            background: linear-gradient(135deg, #f8f0ff 0%, #f0e6ff 100%);
+        }
+        
+        .aliases {
+            background: linear-gradient(135deg, #f0fff8 0%, #e6ffe9 100%);
+        }
+        
+        .skins {
+            background: linear-gradient(135deg, #fff8f0 0%, #fff0e6 100%);
+        }
+        
+        .color-grid {
+            display: grid;
+            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        }
+        
+        .color-family {
+            background: white;
+            border-radius: 8px;
+            padding: 15px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        
+        .family-name {
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            color: #374151;
+            text-transform: capitalize;
+        }
+        
+        .shade-row, .alias-row {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 8px;
+        }
+        
+        .color-swatch {
+            width: 40px;
+            height: 40px;
+            border-radius: 6px;
+            border: 2px solid white;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            font-weight: bold;
+            color: white;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+        
+        .color-swatch:hover {
+            transform: scale(1.1);
+        }
+        
+        .color-swatch.light {
+            color: #1e293b;
+            text-shadow: none;
+        }
+        
+        .alias-swatch {
+            width: 60px;
+            height: 30px;
+            font-size: 9px;
+            padding: 2px;
+        }
+        
+        .skin-grid {
+            display: grid;
+            gap: 15px;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        }
+        
+        .skin-card {
+            background: white;
+            border-radius: 8px;
+            padding: 15px;
+            border: 2px solid #e5e7eb;
+        }
+        
+        .skin-name {
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #374151;
+        }
+        
+        .property-demo {
+            margin-bottom: 8px;
+            padding: 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            text-align: center;
+        }
+        
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #64748b;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Altitude Color Inheritance Model</h1>
+            <p>Visual demonstration of how colors flow through the design system</p>
+        </div>
+        
+        <div class="layer site-colors">
+            <div class="layer-title">🎨 Site Colors</div>
+            <div class="color-grid" id="site-colors-grid">
+                <div class="loading">Loading colors...</div>
+            </div>
+        </div>
+        
+        <div class="layer shades">
+            <div class="layer-title">🌈 Generated Shades</div>
+            <div class="color-grid" id="shades-grid">
+                <div class="loading">Loading shades...</div>
+            </div>
+        </div>
+        
+        <div class="layer aliases">
+            <div class="layer-title">🏷️ Semantic Aliases</div>
+            <div class="color-grid" id="aliases-grid">
+                <div class="loading">Loading aliases...</div>
+            </div>
+        </div>
+        
+        <div class="layer skins">
+            <div class="layer-title">🎭 Skins & Properties</div>
+            <div class="skin-grid" id="skins-grid">
+                <div class="loading">Loading skins...</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Get actual CSS color values
+        function getActualColor(cssVarName) {
+            try {
+                // Wait for CSS to load
+                if (!document.querySelector('link[href*="main.css"]').sheet) {
+                    return '#64748b';
+                }
+                
+                // Create test element with background color instead of color property
+                const testEl = document.createElement('div');
+                testEl.style.backgroundColor = `var(${cssVarName})`;
+                testEl.style.position = 'absolute';
+                testEl.style.visibility = 'hidden';
+                document.body.appendChild(testEl);
+                
+                const computed = window.getComputedStyle(testEl).backgroundColor;
+                document.body.removeChild(testEl);
+                
+                // If we got a valid color, return it
+                if (computed && computed !== 'rgba(0, 0, 0, 0)' && computed !== 'transparent' && computed !== '') {
+                    return computed;
+                }
+                
+                // Fallback: try direct property access
+                const rootStyle = getComputedStyle(document.documentElement);
+                const directColor = rootStyle.getPropertyValue(cssVarName).trim();
+                
+                if (directColor && directColor !== '') {
+                    // For OKLCH colors, we'll return a placeholder since browsers may not support them yet
+                    if (directColor.includes('oklch')) {
+                        // Convert basic color families to hex approximations for demo
+                        const colorMap = {
+                            '--color-primary': '#3b82f6',
+                            '--color-secondary': '#8b5cf6', 
+                            '--color-tertiary': '#ec4899',
+                            '--color-neutral': '#64748b',
+                            '--color-success': '#10b981',
+                            '--color-attention': '#f59e0b',
+                            '--color-error': '#ef4444',
+                            '--color-promotion': '#f97316'
+                        };
+                        
+                        // For shades, generate approximate colors
+                        for (const [baseColor, hexValue] of Object.entries(colorMap)) {
+                            if (cssVarName.startsWith(baseColor)) {
+                                if (cssVarName.includes('-50')) return lighten(hexValue, 0.95);
+                                if (cssVarName.includes('-100')) return lighten(hexValue, 0.9);
+                                if (cssVarName.includes('-200')) return lighten(hexValue, 0.8);
+                                if (cssVarName.includes('-300')) return lighten(hexValue, 0.6);
+                                if (cssVarName.includes('-400')) return lighten(hexValue, 0.3);
+                                if (cssVarName.includes('-500') || cssVarName === baseColor) return hexValue;
+                                if (cssVarName.includes('-600')) return darken(hexValue, 0.2);
+                                if (cssVarName.includes('-700')) return darken(hexValue, 0.4);
+                                if (cssVarName.includes('-800')) return darken(hexValue, 0.6);
+                                if (cssVarName.includes('-900')) return darken(hexValue, 0.8);
+                                if (cssVarName.includes('-950')) return darken(hexValue, 0.9);
+                            }
+                        }
+                        
+                        return colorMap[cssVarName] || '#64748b';
+                    }
+                    return directColor;
+                }
+                
+                return '#64748b';
+            } catch (e) {
+                console.warn(`Failed to get color for ${cssVarName}:`, e);
+                return '#64748b';
+            }
+        }
+        
+        // Helper functions for color manipulation
+        function lighten(hex, amount) {
+            const rgb = hexToRgb(hex);
+            if (!rgb) return hex;
+            
+            const r = Math.round(rgb.r + (255 - rgb.r) * amount);
+            const g = Math.round(rgb.g + (255 - rgb.g) * amount);
+            const b = Math.round(rgb.b + (255 - rgb.b) * amount);
+            
+            return rgbToHex(r, g, b);
+        }
+        
+        function darken(hex, amount) {
+            const rgb = hexToRgb(hex);
+            if (!rgb) return hex;
+            
+            const r = Math.round(rgb.r * (1 - amount));
+            const g = Math.round(rgb.g * (1 - amount));
+            const b = Math.round(rgb.b * (1 - amount));
+            
+            return rgbToHex(r, g, b);
+        }
+        
+        function hexToRgb(hex) {
+            const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+            return result ? {
+                r: parseInt(result[1], 16),
+                g: parseInt(result[2], 16),
+                b: parseInt(result[3], 16)
+            } : null;
+        }
+        
+        function rgbToHex(r, g, b) {
+            return "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
+        }
+
+        // Check if color is light
+        function isLightColor(color) {
+            if (color.startsWith('rgb')) {
+                const rgb = color.match(/\d+/g);
+                if (rgb && rgb.length >= 3) {
+                    const brightness = (parseInt(rgb[0]) * 299 + parseInt(rgb[1]) * 587 + parseInt(rgb[2]) * 114) / 1000;
+                    return brightness > 128;
+                }
+            }
+            return false;
+        }
+
+        // Create color swatch
+        function createColorSwatch(color, label, className = '') {
+            const swatch = document.createElement('div');
+            swatch.className = `color-swatch ${className} ${isLightColor(color) ? 'light' : ''}`;
+            swatch.style.backgroundColor = color;
+            swatch.textContent = label;
+            swatch.title = `${label}: ${color}`;
+            return swatch;
+        }
+
+        // Initialize the visualization
+        function initializeColorDemo() {
+            const colorFamilies = ['primary', 'secondary', 'tertiary', 'neutral', 'success', 'attention', 'error', 'promotion'];
+            const shades = ['50', '100', '200', '300', '400', '500', '600', '700', '800', '900', '950'];
+            const aliases = ['default', 'light', 'dark', 'hover', 'hover-light'];
+            
+            // Render site colors
+            const siteColorsGrid = document.getElementById('site-colors-grid');
+            siteColorsGrid.innerHTML = '';
+            
+            colorFamilies.forEach(family => {
+                const familyDiv = document.createElement('div');
+                familyDiv.className = 'color-family';
+                
+                const nameDiv = document.createElement('div');
+                nameDiv.className = 'family-name';
+                nameDiv.textContent = family;
+                familyDiv.appendChild(nameDiv);
+                
+                const color = getActualColor(`--color-${family}`);
+                const swatch = createColorSwatch(color, family);
+                swatch.style.width = '100%';
+                swatch.style.height = '60px';
+                familyDiv.appendChild(swatch);
+                
+                siteColorsGrid.appendChild(familyDiv);
+            });
+            
+            // Render shades
+            const shadesGrid = document.getElementById('shades-grid');
+            shadesGrid.innerHTML = '';
+            
+            colorFamilies.forEach(family => {
+                const familyDiv = document.createElement('div');
+                familyDiv.className = 'color-family';
+                
+                const nameDiv = document.createElement('div');
+                nameDiv.className = 'family-name';
+                nameDiv.textContent = `${family} shades`;
+                familyDiv.appendChild(nameDiv);
+                
+                const shadeRow = document.createElement('div');
+                shadeRow.className = 'shade-row';
+                
+                shades.forEach(shade => {
+                    const color = getActualColor(`--color-${family}-${shade}`);
+                    const swatch = createColorSwatch(color, shade);
+                    shadeRow.appendChild(swatch);
+                });
+                
+                familyDiv.appendChild(shadeRow);
+                shadesGrid.appendChild(familyDiv);
+            });
+            
+            // Render aliases
+            const aliasesGrid = document.getElementById('aliases-grid');
+            aliasesGrid.innerHTML = '';
+            
+            colorFamilies.forEach(family => {
+                const familyDiv = document.createElement('div');
+                familyDiv.className = 'color-family';
+                
+                const nameDiv = document.createElement('div');
+                nameDiv.className = 'family-name';
+                nameDiv.textContent = `${family} aliases`;
+                familyDiv.appendChild(nameDiv);
+                
+                const aliasRow = document.createElement('div');
+                aliasRow.className = 'alias-row';
+                
+                aliases.forEach(alias => {
+                    const shadeMap = {
+                        'default': '500',
+                        'light': '50',
+                        'dark': '950',
+                        'hover': '600',
+                        'hover-light': '300'
+                    };
+                    const shade = shadeMap[alias];
+                    const color = getActualColor(`--color-${family}-${shade}`);
+                    const swatch = createColorSwatch(color, alias, 'alias-swatch');
+                    aliasRow.appendChild(swatch);
+                });
+                
+                familyDiv.appendChild(aliasRow);
+                aliasesGrid.appendChild(familyDiv);
+            });
+            
+            // Render skins
+            const skinsGrid = document.getElementById('skins-grid');
+            skinsGrid.innerHTML = '';
+            
+            const skins = [
+                { name: 'primary', base: 'primary' },
+                { name: 'primary-emphasised', base: 'primary' },
+                { name: 'primary-subtle', base: 'primary' },
+                { name: 'secondary', base: 'secondary' },
+                { name: 'tertiary', base: 'tertiary' },
+                { name: 'success', base: 'success' },
+                { name: 'error', base: 'error' },
+                { name: 'form', base: 'neutral' }
+            ];
+            
+            skins.forEach(skin => {
+                const skinCard = document.createElement('div');
+                skinCard.className = 'skin-card';
+                
+                const nameDiv = document.createElement('div');
+                nameDiv.className = 'skin-name';
+                nameDiv.textContent = `skin-${skin.name}`;
+                skinCard.appendChild(nameDiv);
+                
+                // Show property examples
+                const properties = ['background', 'foreground', 'border'];
+                const states = ['default', 'hover', 'focus'];
+                
+                properties.forEach(property => {
+                    states.forEach(state => {
+                        const shadeMap = {
+                            'default': '500',
+                            'hover': '600',
+                            'focus': '600'
+                        };
+                        const shade = shadeMap[state];
+                        const color = getActualColor(`--color-${skin.base}-${shade}`);
+                        
+                        const demo = document.createElement('div');
+                        demo.className = 'property-demo';
+                        demo.textContent = `${property}-${state}`;
+                        
+                        if (property === 'background') {
+                            demo.style.backgroundColor = color;
+                            demo.style.color = isLightColor(color) ? '#1e293b' : '#ffffff';
+                        } else if (property === 'foreground') {
+                            demo.style.color = color;
+                            demo.style.backgroundColor = '#f8fafc';
+                        } else if (property === 'border') {
+                            demo.style.borderColor = color;
+                            demo.style.border = `2px solid ${color}`;
+                            demo.style.backgroundColor = '#f8fafc';
+                        }
+                        
+                        skinCard.appendChild(demo);
+                    });
+                });
+                
+                skinsGrid.appendChild(skinCard);
+            });
+        }
+        
+        // Initialize when DOM and CSS are ready
+        function waitForCSSAndInitialize() {
+            const cssLink = document.querySelector('link[href*="main.css"]');
+            if (cssLink && cssLink.sheet) {
+                // CSS is loaded, wait a bit more for processing and then initialize
+                setTimeout(initializeColorDemo, 100);
+            } else {
+                // CSS not ready yet, try again
+                setTimeout(waitForCSSAndInitialize, 100);
+            }
+        }
+        
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', waitForCSSAndInitialize);
+        } else {
+            waitForCSSAndInitialize();
+        }
+    </script>
+</body>
+</html>

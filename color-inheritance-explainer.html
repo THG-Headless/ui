@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Altitude Color Inheritance Model</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="./standalone-components-css/dist/main.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f8fafc;
+            overflow: hidden;
+        }
+        
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: white;
+            padding: 15px 20px;
+            border-bottom: 1px solid #e2e8f0;
+            z-index: 100;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        
+        .header h1 {
+            margin: 0;
+            font-size: 24px;
+            color: #1e293b;
+        }
+        
+        .header p {
+            margin: 5px 0 0 0;
+            color: #64748b;
+            font-size: 14px;
+        }
+        
+        #canvas {
+            cursor: grab;
+            margin-top: 80px;
+        }
+        
+        #canvas:active {
+            cursor: grabbing;
+        }
+        
+        .tooltip {
+            position: absolute;
+            background: #1e293b;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 500;
+            pointer-events: none;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            transform: translate(-50%, -100%);
+            margin-top: -8px;
+            white-space: nowrap;
+        }
+        
+        .tooltip::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            border: 4px solid transparent;
+            border-top-color: #1e293b;
+        }
+        
+        .controls {
+            position: fixed;
+            top: 100px;
+            right: 20px;
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            font-size: 12px;
+            color: #64748b;
+            max-width: 200px;
+        }
+        
+        .controls h3 {
+            margin: 0 0 10px 0;
+            color: #1e293b;
+            font-size: 14px;
+        }
+        
+        .controls p {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Altitude Color Inheritance Model</h1>
+        <p>Hover over nodes to see how colors flow through the system. Drag to pan, scroll to zoom.</p>
+    </div>
+    
+    <div class="controls">
+        <h3>Legend</h3>
+        <p><span style="color: #3b82f6;">●</span> Site Colors</p>
+        <p><span style="color: #8b5cf6;">●</span> Generated Shades</p>
+        <p><span style="color: #10b981;">●</span> Semantic Aliases</p>
+        <p><span style="color: #f59e0b;">●</span> Skin Definitions</p>
+        <p><span style="color: #ef4444;">●</span> Property Categories</p>
+        <p><span style="color: #dc2626;">●</span> Property States</p>
+    </div>
+    
+    <canvas id="canvas"></canvas>
+    
+    <script>
+        class ColorInheritanceVisualization {
+            constructor() {
+                this.canvas = document.getElementById('canvas');
+                this.ctx = this.canvas.getContext('2d');
+                this.tooltip = null;
+                
+                this.scale = 1;
+                this.offsetX = 0;
+                this.offsetY = 0;
+                this.isDragging = false;
+                this.dragStart = { x: 0, y: 0 };
+                this.lastOffset = { x: 0, y: 0 };
+                
+                this.hoveredNode = null;
+                this.highlightedPaths = new Set();
+                
+                this.setupCanvas();
+                this.createNodes();
+                this.setupEventListeners();
+                this.animate();
+            }
+            
+            getActualColor(colorFamily, shade) {
+                // Create a temporary element to get computed CSS color
+                const tempEl = document.createElement('div');
+                tempEl.style.setProperty('--test-color', `var(--color-${colorFamily}-${shade})`);
+                tempEl.style.backgroundColor = 'var(--test-color)';
+                document.body.appendChild(tempEl);
+                
+                const computedColor = window.getComputedStyle(tempEl).backgroundColor;
+                document.body.removeChild(tempEl);
+                
+                // Convert RGB to hex if needed
+                if (computedColor.startsWith('rgb')) {
+                    const rgb = computedColor.match(/\d+/g);
+                    if (rgb && rgb.length >= 3) {
+                        const hex = '#' + rgb.slice(0, 3).map(x => parseInt(x).toString(16).padStart(2, '0')).join('');
+                        return hex;
+                    }
+                }
+                
+                return computedColor || this.colorMap[colorFamily] || '#64748b';
+            }
+            
+            setupCanvas() {
+                const rect = this.canvas.getBoundingClientRect();
+                this.canvas.width = window.innerWidth;
+                this.canvas.height = window.innerHeight - 80;
+                
+                // Center the view initially
+                this.offsetX = 50;
+                this.offsetY = 50;
+            }
+            
+            createNodes() {
+                this.nodes = [];
+                this.edges = [];
+                this.groups = [];
+                
+                // Color mapping for visual representation
+                this.colorMap = {
+                    'primary': '#3b82f6',
+                    'secondary': '#8b5cf6', 
+                    'tertiary': '#ec4899',
+                    'neutral': '#64748b',
+                    'success': '#10b981',
+                    'attention': '#f59e0b',
+                    'error': '#ef4444',
+                    'promotion': '#f97316'
+                };
+                
+                // Calculate center positions for each row
+                const centerX = 2000; // Center of our canvas
+                
+                // Layer 1: Site Colors (User-Defined Colors) - 8 colors
+                const siteColorSpacing = 350;
+                const siteColorStartX = centerX - (7 * siteColorSpacing / 2); // Center 8 items
+                const siteColors = [
+                    { name: '--color-primary', x: siteColorStartX + 0 * siteColorSpacing, y: 100 },
+                    { name: '--color-secondary', x: siteColorStartX + 1 * siteColorSpacing, y: 100 },
+                    { name: '--color-tertiary', x: siteColorStartX + 2 * siteColorSpacing, y: 100 },
+                    { name: '--color-neutral', x: siteColorStartX + 3 * siteColorSpacing, y: 100 },
+                    { name: '--color-success', x: siteColorStartX + 4 * siteColorSpacing, y: 100 },
+                    { name: '--color-attention', x: siteColorStartX + 5 * siteColorSpacing, y: 100 },
+                    { name: '--color-error', x: siteColorStartX + 6 * siteColorSpacing, y: 100 },
+                    { name: '--color-promotion', x: siteColorStartX + 7 * siteColorSpacing, y: 100 }
+                ];
+                
+                siteColors.forEach(color => {
+                    const colorName = color.name.replace('--color-', '');
+                    this.nodes.push({
+                        ...color,
+                        layer: 'site',
+                        color: this.colorMap[colorName] || '#64748b',
+                        radius: 10,
+                        children: [],
+                        parents: [],
+                        colorFamily: colorName
+                    });
+                });
+                
+                // Layer 2: Generated Shades (with grouping)
+                const shades = ['50', '100', '200', '300', '400', '500', '600', '700', '800', '900', '950'];
+                siteColors.forEach((siteColor, siteIndex) => {
+                    const baseName = siteColor.name.replace('--color-', '');
+                    const groupStartIndex = this.nodes.length;
+                    
+                    shades.forEach((shade, shadeIndex) => {
+                        const shadeSpacing = 40; // Increased spacing
+                        const shadesStartX = siteColor.x - (10 * shadeSpacing / 2); // Center 11 shades under site color
+                        const shadeNode = {
+                            name: `--color-${baseName}-${shade}`,
+                            x: shadesStartX + shadeIndex * shadeSpacing,
+                            y: 280, // Increased vertical spacing
+                            layer: 'shades',
+                            color: this.getActualColor(baseName, shade),
+                            radius: 8, // Larger radius to show color better
+                            children: [],
+                            parents: [siteIndex],
+                            group: `shades-${baseName}`,
+                            colorFamily: baseName,
+                            shade: shade
+                        };
+                        
+                        this.nodes.push(shadeNode);
+                        this.nodes[siteIndex].children.push(this.nodes.length - 1);
+                        
+                        // Add edge from site color to this shade
+                        this.edges.push({
+                            from: siteIndex,
+                            to: this.nodes.length - 1,
+                            type: 'generation'
+                        });
+                    });
+                    
+                    // Add group for this color's shades
+                    const shadeSpacing = 40;
+                    const shadesStartX = siteColor.x - (10 * shadeSpacing / 2);
+                    this.groups.push({
+                        name: `${baseName} shades`,
+                        x: shadesStartX - 10,
+                        y: 260,
+                        width: 10 * shadeSpacing + 20,
+                        height: 80,
+                        color: '#f8f0ff'
+                    });
+                });
+                
+                // Layer 3: Semantic Aliases (with grouping)
+                const aliases = ['default', 'light', 'dark', 'hover', 'hover-light'];
+                const aliasStartIndex = this.nodes.length;
+                
+                siteColors.forEach((siteColor, siteIndex) => {
+                    const baseName = siteColor.name.replace('--color-', '');
+                    
+                    aliases.forEach((alias, aliasIndex) => {
+                        const aliasSpacing = 35;
+                        const aliasStartX = siteColor.x - (4 * aliasSpacing / 2); // Center 5 aliases under site color
+                        const aliasNode = {
+                            name: `--color-${baseName}-${alias}`,
+                            x: aliasStartX + aliasIndex * aliasSpacing,
+                            y: 420, // Increased vertical spacing
+                            layer: 'aliases',
+                            color: this.colorMap[baseName] || '#64748b',
+                            radius: 5,
+                            children: [],
+                            parents: [],
+                            group: `aliases-${baseName}`,
+                            colorFamily: baseName
+                        };
+                        
+                        this.nodes.push(aliasNode);
+                        
+                        // Connect to appropriate shade
+                        let shadeIndex;
+                        switch(alias) {
+                            case 'default': shadeIndex = 5; break; // 500
+                            case 'light': shadeIndex = 0; break; // 50
+                            case 'dark': shadeIndex = 10; break; // 950
+                            case 'hover': shadeIndex = 6; break; // 600
+                            case 'hover-light': shadeIndex = 3; break; // 300
+                        }
+                        
+                        const targetShadeNodeIndex = siteColors.length + siteIndex * shades.length + shadeIndex;
+                        aliasNode.parents.push(targetShadeNodeIndex);
+                        this.nodes[targetShadeNodeIndex].children.push(this.nodes.length - 1);
+                        
+                        this.edges.push({
+                            from: targetShadeNodeIndex,
+                            to: this.nodes.length - 1,
+                            type: 'alias'
+                        });
+                    });
+                    
+                    // Add group for this color's aliases
+                    const aliasSpacing = 35;
+                    const aliasStartX = siteColor.x - (4 * aliasSpacing / 2);
+                    this.groups.push({
+                        name: `${baseName} aliases`,
+                        x: aliasStartX - 10,
+                        y: 400,
+                        width: 4 * aliasSpacing + 20,
+                        height: 60,
+                        color: '#f0fff8'
+                    });
+                });
+                
+                // Layer 4: Skins - 11 skins centered
+                const skinSpacing = 350;
+                const skinStartX = centerX - (10 * skinSpacing / 2); // Center 11 skins
+                const skins = [
+                    { name: 'skin-primary', baseColor: 'primary', x: skinStartX + 0 * skinSpacing, y: 580 },
+                    { name: 'skin-primary-emphasised', baseColor: 'primary', x: skinStartX + 1 * skinSpacing, y: 580 },
+                    { name: 'skin-primary-subtle', baseColor: 'primary', x: skinStartX + 2 * skinSpacing, y: 580 },
+                    { name: 'skin-secondary', baseColor: 'secondary', x: skinStartX + 3 * skinSpacing, y: 580 },
+                    { name: 'skin-secondary-emphasised', baseColor: 'secondary', x: skinStartX + 4 * skinSpacing, y: 580 },
+                    { name: 'skin-tertiary', baseColor: 'tertiary', x: skinStartX + 5 * skinSpacing, y: 580 },
+                    { name: 'skin-success', baseColor: 'success', x: skinStartX + 6 * skinSpacing, y: 580 },
+                    { name: 'skin-error', baseColor: 'error', x: skinStartX + 7 * skinSpacing, y: 580 },
+                    { name: 'skin-attention', baseColor: 'attention', x: skinStartX + 8 * skinSpacing, y: 580 },
+                    { name: 'skin-form', baseColor: 'neutral', x: skinStartX + 9 * skinSpacing, y: 580 },
+                    { name: 'skin-muted', baseColor: 'neutral', x: skinStartX + 10 * skinSpacing, y: 580 }
+                ];
+                
+                const skinStartIndex = this.nodes.length;
+                
+                skins.forEach(skin => {
+                    const skinNode = {
+                        name: skin.name,
+                        x: skin.x,
+                        y: skin.y,
+                        layer: 'skins',
+                        color: this.colorMap[skin.baseColor] || '#64748b',
+                        radius: 8,
+                        children: [],
+                        parents: [],
+                        colorFamily: skin.baseColor
+                    };
+                    
+                    this.nodes.push(skinNode);
+                    const currentSkinIndex = this.nodes.length - 1;
+                    
+                    // Connect to the primary alias only (default)
+                    const baseColorIndex = siteColors.findIndex(c => c.name === `--color-${skin.baseColor}`);
+                    if (baseColorIndex !== -1) {
+                        const aliasStartForColor = aliasStartIndex + baseColorIndex * aliases.length;
+                        const defaultAliasIndex = aliasStartForColor; // Connect only to 'default' alias
+                        
+                        if (defaultAliasIndex < skinStartIndex) {
+                            skinNode.parents.push(defaultAliasIndex);
+                            this.nodes[defaultAliasIndex].children.push(currentSkinIndex);
+                            
+                            this.edges.push({
+                                from: defaultAliasIndex,
+                                to: currentSkinIndex,
+                                type: 'skin'
+                            });
+                        }
+                    }
+                    
+                    // Add skin property category nodes (background, foreground, border)
+                    const categorySpacing = 100;
+                    const categoryStartX = skin.x - categorySpacing; // Center 3 categories under skin
+                    const skinPropertyCategories = [
+                        { name: 'background', x: categoryStartX, y: skin.y + 100 },
+                        { name: 'foreground', x: categoryStartX + categorySpacing, y: skin.y + 100 },
+                        { name: 'border', x: categoryStartX + 2 * categorySpacing, y: skin.y + 100 }
+                    ];
+                    
+                    skinPropertyCategories.forEach(category => {
+                        const categoryNode = {
+                            name: `--color-${category.name}`,
+                            x: category.x,
+                            y: category.y,
+                            layer: 'skin-categories',
+                            color: this.colorMap[skin.baseColor] || '#64748b',
+                            radius: 6,
+                            children: [],
+                            parents: [currentSkinIndex],
+                            group: `skin-${skin.name}`,
+                            colorFamily: skin.baseColor
+                        };
+                        
+                        this.nodes.push(categoryNode);
+                        const categoryIndex = this.nodes.length - 1;
+                        this.nodes[currentSkinIndex].children.push(categoryIndex);
+                        
+                        this.edges.push({
+                            from: currentSkinIndex,
+                            to: categoryIndex,
+                            type: 'skin-category'
+                        });
+                        
+                        // Add state nodes for each category - each connects to a specific alias
+                        const states = [
+                            { name: 'default', aliasOffset: 0 }, // default
+                            { name: 'hover', aliasOffset: 3 },   // hover
+                            { name: 'focus', aliasOffset: 3 },   // hover (same as hover)
+                            { name: 'active', aliasOffset: 3 },  // hover (same as hover)
+                            { name: 'disabled', aliasOffset: 1 } // light
+                        ];
+                        
+                        states.forEach((state, stateIndex) => {
+                            const stateSpacing = 40;
+                            const stateStartX = category.x - (4 * stateSpacing / 2); // Center 5 states under category
+                            const stateNode = {
+                                name: `--color-${category.name}-${state.name}`,
+                                x: stateStartX + stateIndex * stateSpacing,
+                                y: category.y + 100,
+                                layer: 'skin-states',
+                                color: this.colorMap[skin.baseColor] || '#64748b',
+                                radius: 4,
+                                children: [],
+                                parents: [],
+                                group: `skin-${skin.name}`,
+                                colorFamily: skin.baseColor
+                            };
+                            
+                            this.nodes.push(stateNode);
+                            const stateNodeIndex = this.nodes.length - 1;
+                            
+                            // Connect state directly to the appropriate alias, not to category
+                            if (baseColorIndex !== -1) {
+                                const aliasStartForColor = aliasStartIndex + baseColorIndex * aliases.length;
+                                const targetAliasIndex = aliasStartForColor + state.aliasOffset;
+                                
+                                if (targetAliasIndex < skinStartIndex) {
+                                    stateNode.parents.push(targetAliasIndex);
+                                    this.nodes[targetAliasIndex].children.push(stateNodeIndex);
+                                    
+                                    this.edges.push({
+                                        from: targetAliasIndex,
+                                        to: stateNodeIndex,
+                                        type: 'skin-state'
+                                    });
+                                }
+                            }
+                        });
+                    });
+                });
+                
+                // Add skin groups
+                skins.forEach(skin => {
+                    const categorySpacing = 100;
+                    const categoryStartX = skin.x - categorySpacing;
+                    this.groups.push({
+                        name: skin.name,
+                        x: categoryStartX - 120,
+                        y: skin.y - 10,
+                        width: 340,
+                        height: 220,
+                        color: '#fff8f0'
+                    });
+                });
+            }
+            
+            setupEventListeners() {
+                // Mouse events for dragging
+                this.canvas.addEventListener('mousedown', (e) => {
+                    this.isDragging = true;
+                    this.dragStart = { x: e.clientX, y: e.clientY };
+                    this.lastOffset = { x: this.offsetX, y: this.offsetY };
+                });
+                
+                this.canvas.addEventListener('mousemove', (e) => {
+                    if (this.isDragging) {
+                        this.offsetX = this.lastOffset.x + (e.clientX - this.dragStart.x);
+                        this.offsetY = this.lastOffset.y + (e.clientY - this.dragStart.y);
+                    } else {
+                        this.handleHover(e);
+                    }
+                });
+                
+                this.canvas.addEventListener('mouseup', () => {
+                    this.isDragging = false;
+                });
+                
+                this.canvas.addEventListener('mouseleave', () => {
+                    this.isDragging = false;
+                    this.hoveredNode = null;
+                    this.highlightedPaths.clear();
+                    this.hideTooltip();
+                });
+                
+                // Zoom with mouse wheel
+                this.canvas.addEventListener('wheel', (e) => {
+                    e.preventDefault();
+                    const delta = e.deltaY > 0 ? 0.9 : 1.1;
+                    const newScale = Math.max(0.5, Math.min(3, this.scale * delta));
+                    
+                    if (newScale !== this.scale) {
+                        const rect = this.canvas.getBoundingClientRect();
+                        const mouseX = e.clientX - rect.left;
+                        const mouseY = e.clientY - rect.top;
+                        
+                        this.offsetX = mouseX - (mouseX - this.offsetX) * (newScale / this.scale);
+                        this.offsetY = mouseY - (mouseY - this.offsetY) * (newScale / this.scale);
+                        this.scale = newScale;
+                    }
+                });
+                
+                // Handle window resize
+                window.addEventListener('resize', () => {
+                    this.setupCanvas();
+                });
+            }
+            
+            handleHover(e) {
+                const rect = this.canvas.getBoundingClientRect();
+                const mouseX = (e.clientX - rect.left - this.offsetX) / this.scale;
+                const mouseY = (e.clientY - rect.top - this.offsetY) / this.scale;
+                
+                let hoveredNode = null;
+                
+                for (let i = 0; i < this.nodes.length; i++) {
+                    const node = this.nodes[i];
+                    const distance = Math.sqrt(
+                        Math.pow(mouseX - node.x, 2) + Math.pow(mouseY - node.y, 2)
+                    );
+                    
+                    if (distance <= node.radius + 5) {
+                        hoveredNode = i;
+                        break;
+                    }
+                }
+                
+                if (hoveredNode !== this.hoveredNode) {
+                    this.hoveredNode = hoveredNode;
+                    this.updateHighlights();
+                    
+                    if (hoveredNode !== null) {
+                        this.showTooltip(e.clientX, e.clientY, this.nodes[hoveredNode].name);
+                    } else {
+                        this.hideTooltip();
+                    }
+                }
+            }
+            
+            updateHighlights() {
+                this.highlightedPaths.clear();
+                
+                if (this.hoveredNode !== null) {
+                    // Only highlight the direct path upstream from the hovered node
+                    this.highlightUpstreamPath(this.hoveredNode);
+                    
+                    // Only highlight direct children of the hovered node (not all descendants)
+                    const currentNode = this.nodes[this.hoveredNode];
+                    currentNode.children.forEach(childIndex => {
+                        this.highlightedPaths.add(`${this.hoveredNode}-${childIndex}`);
+                    });
+                }
+            }
+            
+            highlightUpstreamPath(nodeIndex) {
+                const currentNode = this.nodes[nodeIndex];
+                
+                // Highlight connections to all direct parents
+                currentNode.parents.forEach(parentIndex => {
+                    this.highlightedPaths.add(`${parentIndex}-${nodeIndex}`);
+                    // Recursively highlight upstream from each parent
+                    this.highlightUpstreamPath(parentIndex);
+                });
+            }
+            
+            showTooltip(x, y, text) {
+                this.hideTooltip();
+                
+                this.tooltip = document.createElement('div');
+                this.tooltip.className = 'tooltip';
+                this.tooltip.textContent = text;
+                this.tooltip.style.left = x + 'px';
+                this.tooltip.style.top = y + 'px';
+                
+                document.body.appendChild(this.tooltip);
+            }
+            
+            hideTooltip() {
+                if (this.tooltip) {
+                    document.body.removeChild(this.tooltip);
+                    this.tooltip = null;
+                }
+            }
+            
+            draw() {
+                this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+                
+                this.ctx.save();
+                this.ctx.translate(this.offsetX, this.offsetY);
+                this.ctx.scale(this.scale, this.scale);
+                
+                // Draw layer backgrounds
+                this.drawLayerBackgrounds();
+                
+                // Draw edges first
+                this.drawEdges();
+                
+                // Draw nodes
+                this.drawNodes();
+                
+                this.ctx.restore();
+            }
+            
+            drawLayerBackgrounds() {
+                const layers = [
+                    { name: 'Site Colors', y: 70, height: 60, color: '#f0f8ff' },
+                    { name: 'Generated Shades', y: 240, height: 140, color: '#f8f0ff' },
+                    { name: 'Semantic Aliases', y: 400, height: 100, color: '#f0fff8' },
+                    { name: 'Skins & Properties', y: 540, height: 300, color: '#fff8f0' }
+                ];
+                
+                layers.forEach(layer => {
+                    this.ctx.fillStyle = layer.color;
+                    this.ctx.fillRect(0, layer.y, 5000, layer.height);
+                    
+                    // Layer title
+                    this.ctx.fillStyle = '#64748b';
+                    this.ctx.font = 'bold 14px sans-serif';
+                    this.ctx.fillText(layer.name, 20, layer.y - 10);
+                });
+                
+                // Draw group borders
+                this.groups.forEach(group => {
+                    this.ctx.strokeStyle = '#cbd5e1';
+                    this.ctx.lineWidth = 1;
+                    this.ctx.setLineDash([5, 5]);
+                    this.ctx.strokeRect(group.x, group.y, group.width, group.height);
+                    
+                    // Group label
+                    this.ctx.fillStyle = '#64748b';
+                    this.ctx.font = '10px sans-serif';
+                    this.ctx.setLineDash([]);
+                    this.ctx.fillText(group.name, group.x + 5, group.y - 5);
+                });
+            }
+            
+            drawEdges() {
+                this.edges.forEach(edge => {
+                    const fromNode = this.nodes[edge.from];
+                    const toNode = this.nodes[edge.to];
+                    
+                    const isHighlighted = this.highlightedPaths.has(`${edge.from}-${edge.to}`);
+                    
+                    this.ctx.beginPath();
+                    this.ctx.moveTo(fromNode.x, fromNode.y);
+                    
+                    // Create curved connections flowing downward
+                    const midY = (fromNode.y + toNode.y) / 2;
+                    this.ctx.quadraticCurveTo(fromNode.x, midY, toNode.x, toNode.y);
+                    
+                    // Set dashed line pattern
+                    this.ctx.setLineDash(isHighlighted ? [5, 5] : [3, 3]);
+                    this.ctx.strokeStyle = isHighlighted ? '#ef4444' : '#94a3b8';
+                    this.ctx.lineWidth = isHighlighted ? 3 : 1;
+                    this.ctx.stroke();
+                    
+                    // Reset line dash for arrow
+                    this.ctx.setLineDash([]);
+                    
+                    // Draw arrow head for highlighted paths
+                    if (isHighlighted) {
+                        const angle = Math.atan2(toNode.y - fromNode.y, toNode.x - fromNode.x);
+                        const arrowLength = 8;
+                        
+                        this.ctx.beginPath();
+                        this.ctx.moveTo(toNode.x, toNode.y);
+                        this.ctx.lineTo(
+                            toNode.x - arrowLength * Math.cos(angle - Math.PI/6),
+                            toNode.y - arrowLength * Math.sin(angle - Math.PI/6)
+                        );
+                        this.ctx.moveTo(toNode.x, toNode.y);
+                        this.ctx.lineTo(
+                            toNode.x - arrowLength * Math.cos(angle + Math.PI/6),
+                            toNode.y - arrowLength * Math.sin(angle + Math.PI/6)
+                        );
+                        this.ctx.strokeStyle = '#ef4444';
+                        this.ctx.lineWidth = 2;
+                        this.ctx.stroke();
+                    }
+                });
+            }
+            
+            drawNodes() {
+                this.nodes.forEach((node, index) => {
+                    const isHovered = index === this.hoveredNode;
+                    const isInPath = this.hoveredNode !== null && this.isNodeInHighlightedPath(index);
+                    
+                    // Node circle
+                    this.ctx.beginPath();
+                    this.ctx.arc(node.x, node.y, node.radius, 0, 2 * Math.PI);
+                    
+                    if (isHovered) {
+                        this.ctx.fillStyle = '#ef4444';
+                        this.ctx.strokeStyle = '#dc2626';
+                        this.ctx.lineWidth = 3;
+                    } else if (isInPath) {
+                        this.ctx.fillStyle = node.color;
+                        this.ctx.strokeStyle = '#ef4444';
+                        this.ctx.lineWidth = 2;
+                    } else {
+                        this.ctx.fillStyle = node.color;
+                        this.ctx.strokeStyle = '#ffffff';
+                        this.ctx.lineWidth = 1;
+                    }
+                    
+                    this.ctx.fill();
+                    this.ctx.stroke();
+                    
+                    // Node labels with better visibility
+                    if (node.layer === 'site') {
+                        // Site colors - show full name below
+                        this.ctx.fillStyle = '#1e293b';
+                        this.ctx.font = 'bold 12px sans-serif';
+                        const text = node.name.replace('--color-', '');
+                        const textWidth = this.ctx.measureText(text).width;
+                        this.ctx.fillText(text, node.x - textWidth/2, node.y + node.radius + 15);
+                    } else if (node.layer === 'shades') {
+                        // Shades - show shade number below the colored circle
+                        this.ctx.fillStyle = '#1e293b';
+                        this.ctx.font = 'bold 9px sans-serif';
+                        const shade = node.shade || node.name.split('-').pop();
+                        const textWidth = this.ctx.measureText(shade).width;
+                        this.ctx.fillText(shade, node.x - textWidth/2, node.y + node.radius + 15);
+                    } else if (node.layer === 'aliases') {
+                        // Aliases - show alias name
+                        this.ctx.fillStyle = '#1e293b';
+                        this.ctx.font = '8px sans-serif';
+                        const alias = node.name.split('-').pop();
+                        const textWidth = this.ctx.measureText(alias).width;
+                        this.ctx.fillText(alias, node.x - textWidth/2, node.y + node.radius + 12);
+                    } else if (node.layer === 'skins') {
+                        // Skins - show skin name
+                        this.ctx.fillStyle = '#1e293b';
+                        this.ctx.font = 'bold 10px sans-serif';
+                        const text = node.name.replace('skin-', '');
+                        const textWidth = this.ctx.measureText(text).width;
+                        this.ctx.fillText(text, node.x - textWidth/2, node.y - node.radius - 5);
+                    } else if (node.layer === 'skin-categories') {
+                        // Property categories - show category name
+                        this.ctx.fillStyle = '#1e293b';
+                        this.ctx.font = 'bold 8px sans-serif';
+                        const prop = node.name.replace('--color-', '');
+                        const textWidth = this.ctx.measureText(prop).width;
+                        this.ctx.fillText(prop, node.x - textWidth/2, node.y - node.radius - 5);
+                    } else if (node.layer === 'skin-states') {
+                        // Property states - show state name
+                        this.ctx.fillStyle = '#64748b';
+                        this.ctx.font = '6px sans-serif';
+                        const state = node.name.split('-').pop();
+                        const textWidth = this.ctx.measureText(state).width;
+                        this.ctx.fillText(state, node.x - textWidth/2, node.y + node.radius + 8);
+                    }
+                });
+            }
+            
+            isNodeInHighlightedPath(nodeIndex) {
+                // Check if this node is part of any highlighted path
+                for (const path of this.highlightedPaths) {
+                    const [from, to] = path.split('-').map(Number);
+                    if (from === nodeIndex || to === nodeIndex) {
+                        return true;
+                    }
+                }
+                return false;
+            }
+            
+            animate() {
+                this.draw();
+                requestAnimationFrame(() => this.animate());
+            }
+        }
+        
+        // Initialize the visualization when the page loads
+        window.addEventListener('load', () => {
+            new ColorInheritanceVisualization();
+        });
+    </script>
+</body>
+</html>

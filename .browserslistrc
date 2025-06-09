@@ -1,0 +1,12 @@
+# Browser support for OKLCH polyfill
+# Target browsers that need OKLCH transformation
+
+> 0.25%
+last 2 versions
+not dead
+
+# Exclude very modern browsers that support OKLCH natively
+not chrome >= 111
+not firefox >= 113  
+not safari >= 16.4
+not edge >= 111
