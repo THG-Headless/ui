@@ -45,6 +45,10 @@ Make sure you have copied over the .npmrc file from 1Password to the root direct
 ### Bumping an alpha version and releasing it
 
 ```sh
+cd  standalone-components-css/
+```
+
+```sh
 npm version prerelease --preid=alpha
 ```
 
@@ -60,8 +64,8 @@ verify the published version and tag:
 npm dist-tag 
 ```
 
-run 
+run the following command in the destination repo: 
 
 ```sh
-npm i @thg-altitude/standalone-components-css@<version> 
+npm i @thg-altitude/standalone-components-css@<version>
 ```

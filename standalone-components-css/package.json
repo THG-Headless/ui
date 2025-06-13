@@ -1,11 +1,11 @@
 {
   "name": "@thg-altitude/standalone-components-css",
-  "version": "0.2.8-alpha.0",
+  "version": "0.2.8-alpha.1",
   "description": "Reusable pure CSS styling for components",
   "main": "dist/main.css",
   "type": "module",
   "scripts": {
-    "build": "mkdir -p dist && cp src/main.css dist/main.css",
+    "build": "",
     "prepare": "npm run build"
   },
   "keywords": [
