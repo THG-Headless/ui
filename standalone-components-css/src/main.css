@@ -699,22 +699,3 @@
   }
 }
 
-/* OKLCH Polyfill Auto-Loader */
-/* Automatically loads OKLCH polyfill from CDN for browsers that need it */
-
-/* This creates a hidden element that triggers polyfill loading */
-@supports not (color: oklch(0.7 0.15 250)) {
-  /* Add a hidden script loader to the page */
-  body::after {
-    content: '';
-    position: absolute;
-    left: -9999px;
-    top: -9999px;
-    width: 1px;
-    height: 1px;
-    opacity: 0;
-    pointer-events: none;
-    /* Use background-image to trigger script loading via CSS */
-    background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' onload='if(!window.AltitudeOklchPolyfill){var s=document.createElement(&quot;script&quot;);s.async=true;s.src=&quot;https://components.thgaltitude.com/oklch-polyfill.min.js&quot;;document.head.appendChild(s);}'><title>OKLCH Polyfill Loader</title></svg>");
-  }
-}

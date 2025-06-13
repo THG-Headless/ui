@@ -1,14 +1,19 @@
 {
   "name": "@thg-altitude/standalone-components-css",
-  "version": "1.0.0",
+  "version": "0.2.8-alpha.0",
   "description": "Reusable pure CSS styling for components",
   "main": "dist/main.css",
   "type": "module",
   "scripts": {
-    "build": "mkdir -p dist && cp -r src/* dist/ && (test -f ../public/oklch-polyfill.min.js && cp ../public/oklch-polyfill.min.js dist/ || echo 'Polyfill not found, skipping copy')",
+    "build": "mkdir -p dist && cp src/main.css dist/main.css",
     "prepare": "npm run build"
   },
-  "keywords": ["css", "components", "oklch", "design-system"],
+  "keywords": [
+    "css",
+    "components",
+    "oklch",
+    "design-system"
+  ],
   "author": "",
   "license": "ISC",
   "exports": {
