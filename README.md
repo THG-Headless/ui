@@ -36,36 +36,4 @@ npm run storybook
 
 ## Publishing to npm
 
-Make sure you have copied over the .npmrc file from 1Password to the root directory.
-
-`npm publish` will publish a package to npm tagged with the version number in package.json
-
-### Publishing alpha versions
-
-### Bumping an alpha version and releasing it
-
-```sh
-cd  standalone-components-css/
-```
-
-```sh
-npm version prerelease --preid=alpha
-```
-
-Publish an alpha version of astro-integration:
-
-```sh
-npm publish --tag alpha 
-```
-
-verify the published version and tag:
-
-```sh
-npm dist-tag 
-```
-
-run the following command in the destination repo: 
-
-```sh
-npm i @thg-altitude/standalone-components-css@<version>
-```
+Publishing is automated via GitHub Actions, triggered when a tag matching v* (e.g., v1.2.3) is pushed. This can be done through the GitHub Releases UI by creating a new release with the appropriate tag.
