@@ -33,3 +33,7 @@ npm run storybook
 2. Document your component under src/docs/registry
 3. Update the registry.json file to include your new component, following the registry item schema (see schemas/registryItem.json)
 4. Run npm run build:registry to update the published registry
+
+## Publishing to npm
+
+Publishing is automated via GitHub Actions, triggered when a tag matching v* (e.g., v1.2.3) is pushed. This can be done through the GitHub Releases UI by creating a new release with the appropriate tag.
