@@ -3,12 +3,11 @@
   "version": "1.0.0",
   "description": "Reusable pure CSS styling for components",
   "main": "dist/main.css",
-  "type": "module",
   "scripts": {
-    "build": "mkdir -p dist && cp -r src/* dist/ && (test -f ../public/oklch-polyfill.min.js && cp ../public/oklch-polyfill.min.js dist/ || echo 'Polyfill not found, skipping copy')",
+    "build": "mkdir -p dist && cp -r src/* dist/",
     "prepare": "npm run build"
   },
-  "keywords": ["css", "components", "oklch", "design-system"],
+  "keywords": [],
   "author": "",
   "license": "ISC",
   "exports": {
@@ -18,13 +17,5 @@
       "default": "./dist/main.css"
     }
   },
-  "files": [
-    "dist/",
-    "README.md"
-  ],
-  "dependencies": {},
-  "devDependencies": {
-    "rollup": "^4.28.0",
-    "@rollup/plugin-terser": "^0.4.4"
-  }
+  "dependencies": {}
 }

@@ -9,11 +9,11 @@
       "title": "Review Form",
       "dependencies": ["react"],
       "registryDependencies": [
-        "https://components.thgaltitude.com/r/react/form",
-        "https://components.thgaltitude.com/r/react/text-input-field",
-        "https://components.thgaltitude.com/r/react/rating-input-field",
-        "https://components.thgaltitude.com/r/react/text-area-field",
-        "https://components.thgaltitude.com/r/react/dropdown-field"
+        "https://components.thgaltitude.com/r/form.json",
+        "https://components.thgaltitude.com/r/text-input-field.json",
+        "https://components.thgaltitude.com/r/rating-input-field.json",
+        "https://components.thgaltitude.com/r/text-area-field.json",
+        "https://components.thgaltitude.com/r/dropdown-field.json"
       ],
       "files": [
         {
@@ -31,8 +31,8 @@
       "title": "Review",
       "dependencies": ["react"],
       "registryDependencies": [
-        "https://components.thgaltitude.com/r/react/ratings",
-        "https://components.thgaltitude.com/r/react/button"
+        "https://components.thgaltitude.com/r/ratings.json",
+        "https://components.thgaltitude.com/r/button.json"
       ],
       "files": [
         {
@@ -50,7 +50,7 @@
       "title": "Field Wrapper",
       "dependencies": ["react"],
       "registryDependencies": [
-        "https://components.thgaltitude.com/r/react/alert"
+        "https://components.thgaltitude.com/r/alert.json"
       ],
       "files": [
         {
@@ -68,8 +68,8 @@
       "title": "Form",
       "dependencies": ["react"],
       "registryDependencies": [
-        "https://components.thgaltitude.com/r/react/button",
-        "https://components.thgaltitude.com/r/react/alert"
+        "https://components.thgaltitude.com/r/button.json",
+        "https://components.thgaltitude.com/r/alert.json"
       ],
       "files": [
         {
@@ -103,9 +103,9 @@
       "title": "Review Overview",
       "dependencies": ["react"],
       "registryDependencies": [
-        "https://components.thgaltitude.com/r/react/ratings",
-        "https://components.thgaltitude.com/r/react/progress-bar",
-        "https://components.thgaltitude.com/r/react/button"
+        "https://components.thgaltitude.com/r/ratings.json",
+        "https://components.thgaltitude.com/r/progress-bar.json",
+        "https://components.thgaltitude.com/r/button.json"
       ],
       "files": [
         {
@@ -123,8 +123,8 @@
       "title": "Dropdown Field",
       "dependencies": ["react"],
       "registryDependencies": [
-        "https://components.thgaltitude.com/r/react/field-wrapper",
-        "https://components.thgaltitude.com/r/react/dropdown"
+        "https://components.thgaltitude.com/r/field-wrapper.json",
+        "https://components.thgaltitude.com/r/dropdown.json"
       ],
       "files": [
         {
@@ -142,8 +142,8 @@
       "title": "Rating Input Field",
       "dependencies": ["react"],
       "registryDependencies": [
-        "https://components.thgaltitude.com/r/react/field-wrapper",
-        "https://components.thgaltitude.com/r/react/rating-input"
+        "https://components.thgaltitude.com/r/field-wrapper.json",
+        "https://components.thgaltitude.com/r/rating-input.json"
       ],
       "files": [
         {
@@ -161,8 +161,8 @@
       "title": "Text Area Field",
       "dependencies": ["react"],
       "registryDependencies": [
-        "https://components.thgaltitude.com/r/react/field-wrapper",
-        "https://components.thgaltitude.com/r/react/text-area"
+        "https://components.thgaltitude.com/r/field-wrapper.json",
+        "https://components.thgaltitude.com/r/text-area.json"
       ],
       "files": [
         {
@@ -180,8 +180,8 @@
       "title": "Text Input Field",
       "dependencies": ["react"],
       "registryDependencies": [
-        "https://components.thgaltitude.com/r/react/field-wrapper",
-        "https://components.thgaltitude.com/r/react/text-input"
+        "https://components.thgaltitude.com/r/field-wrapper.json",
+        "https://components.thgaltitude.com/r/text-input.json"
       ],
       "files": [
         {

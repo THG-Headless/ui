@@ -1,6 +1,6 @@
-import Dropdown from "../../ui/dropdown/dropdown";
-import FieldWrapper from "../field-wrapper";
-import type { FieldProps } from "../field-wrapper";
+import Dropdown from "@registry/react/ui/dropdown/dropdown";
+import FieldWrapper from "@registry/react/component/field-wrapper";
+import type { FieldProps } from "@registry/react/component/field-wrapper";
 
 import type { SelectHTMLAttributes } from "react";
 

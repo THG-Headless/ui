@@ -14,8 +14,3 @@ routes:
     type: static
     directory: public
     filename: favicon.svg
-  - pathPrefix: oklch-polyfill.min.js
-    name: oklch-polyfill
-    type: static
-    directory: public
-    filename: oklch-polyfill.min.js
