@@ -1,5 +1,5 @@
 import React, { useState, Children, cloneElement, isValidElement } from "react";
-import Alert from "../ui/alert";
+import Alert from "@registry/react/ui/alert";
 
 interface FieldProps {
   id?: string;

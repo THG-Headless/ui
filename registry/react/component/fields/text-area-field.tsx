@@ -1,8 +1,8 @@
 import React from "react";
 import type { TextareaHTMLAttributes } from "react";
-import TextArea from "../../ui/text-area";
-import InputWrapper from "../field-wrapper";
-import type { FieldProps } from "../field-wrapper";
+import TextArea from "@registry/react/ui/text-area";
+import InputWrapper from "@registry/react/component/field-wrapper";
+import type { FieldProps } from "@registry/react/component/field-wrapper";
 
 type TextAreaFieldProps = FieldProps &
   Omit<
