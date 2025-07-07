@@ -53,7 +53,7 @@
   }
 
   .btn:disabled {
-    cursor: default;
+    cursor: not-allowed;
   }
 
   .btn .icon-container {
