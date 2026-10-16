@@ -18,14 +18,14 @@ jobs:
 
       - name: Create changelog text
         id: changelog
-        uses: loopwerk/tag-changelog@v1
+        uses: loopwerk/tag-changelog@5935b306b0f84d4ebd40175b182a0b7175509ebe # v1.6.0
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           exclude_types: other,chore
           config_file: .github/tag-changelog-config.cjs
 
       - name: Create release
-        uses: softprops/action-gh-release@v2
+        uses: softprops/action-gh-release@3bb12739c298aeb8a4eeaf626c5b8d85266b0e65 # v2.6.2
         with:
           body: ${{ steps.changelog.outputs.changes }}
 
@@ -35,7 +35,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: 18.15.0
+          node-version: "22"
           cache: 'npm'
 
       - name: Set Git Config
