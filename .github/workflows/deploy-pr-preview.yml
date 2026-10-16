@@ -24,4 +24,6 @@ jobs:
 
       - name: deploy to new environment
         id: deploy
-        run: npx @thg-altitude/cli deploy --site "Browser Components" --branch ${{ github.event.pull_request.head.ref }} --env ${{ github.event.pull_request.head.ref }} --verbose
+        env:
+          PR_HEAD_REF: ${{ github.event.pull_request.head.ref }}
+        run: npx @thg-altitude/cli deploy --site "Browser Components" --branch $PR_HEAD_REF --env $PR_HEAD_REF --verbose
