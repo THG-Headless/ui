@@ -6,7 +6,7 @@ interface TimeframeItem {
   time: number;
   label: string;
   title?: string; // Title for the section
-  description?: string; // HTML/Markdown description
+  description?: string; // Plain-text description (rendered as text, not HTML)
   codeBlock?: string; // Code block content as string
   codeLanguage?: string; // Language for the code block (default: css)
 }
@@ -252,10 +252,7 @@ const LottieTimelineNavigator: React.FC<LottieTimelineNavigatorProps> = ({
       return (
         <div className="slide-content" style={{ borderRadius: '20px' }}>
           {currentTimestamp.description && (
-            <div
-              className="description"
-              dangerouslySetInnerHTML={{ __html: currentTimestamp.description }}
-            />
+            <div className="description">{currentTimestamp.description}</div>
           )}
 
           {currentTimestamp.codeBlock && (

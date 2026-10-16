@@ -35,6 +35,11 @@ export default defineConfig({
     css: {
       devSourcemap: true,
     },
+    resolve: {
+      // Bundle astro's cookie@2 so the prerenderer doesn't resolve the
+      // hoisted cookie@0.7 that express (via shadcn) installs at the root.
+      noExternal: ["cookie"],
+    },
   },
   image: {
     service: passthroughImageService(),
@@ -52,20 +57,20 @@ export default defineConfig({
       sidebar: [
         {
           label: "Getting Started",
-          autogenerate: { directory: "setup" },
+          items: [{ autogenerate: { directory: "setup" } }],
         },
         {
           label: "Altitude Design System",
-          autogenerate: { directory: "design" },
+          items: [{ autogenerate: { directory: "design" } }],
           collapsed: true,
         },
         {
           label: "Altitude UI Library",
-          autogenerate: { directory: "components" },
+          items: [{ autogenerate: { directory: "components" } }],
         },
         {
           label: "Altitude Component Registry",
-          autogenerate: { directory: "registry" },
+          items: [{ autogenerate: { directory: "registry" } }],
         },
       ],
     }),
