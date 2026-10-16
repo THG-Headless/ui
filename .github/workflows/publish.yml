@@ -1,8 +1,7 @@
 name: Publish to NPM
 run-name: 'Create Release Notes and Publish'
 
-permissions:
-  contents: write
+permissions: {}
 
 on:
   push:
@@ -12,9 +11,13 @@ on:
 jobs:
   create-release-notes:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          persist-credentials: false
 
       - name: Create changelog text
         id: changelog
@@ -31,8 +34,12 @@ jobs:
 
   publish:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
       - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
       - uses: actions/setup-node@v4
         with:
           node-version: "22"
