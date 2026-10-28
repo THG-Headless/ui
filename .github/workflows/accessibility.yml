@@ -6,7 +6,7 @@ on:
 
 jobs:
   accessibility-test:
-    runs-on: ubuntu-latest
+    runs-on: linux_2c_8gb
 
     steps:
       - name: Checkout repository
