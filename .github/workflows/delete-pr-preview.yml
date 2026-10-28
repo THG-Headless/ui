@@ -8,7 +8,7 @@ on:
 jobs:
   run_dev_env_deletion:
     if: github.head_ref !='uat' && github.head_ref != 'main'
-    runs-on: ubuntu-latest
+    runs-on: linux_2c_8gb
     env:
       ALTITUDE_CLIENT_ID: ${{ secrets.ALTITUDE_CLIENT_ID }}
       ALTITUDE_SECRET_KEY: ${{ secrets.ALTITUDE_SECRET_KEY }}

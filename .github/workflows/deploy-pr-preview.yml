@@ -10,7 +10,7 @@ concurrency:
 
 jobs:
   publish-pr:
-    runs-on: ubuntu-latest
+    runs-on: linux_2c_8gb
     outputs:
       deployment_url: ${{ steps.details.outputs.DEPLOYMENT_URL }}
     env:

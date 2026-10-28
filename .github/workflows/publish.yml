@@ -10,7 +10,7 @@ on:
 
 jobs:
   create-release-notes:
-    runs-on: ubuntu-latest
+    runs-on: linux_2c_8gb
     permissions:
       contents: write
     steps:
@@ -33,7 +33,7 @@ jobs:
           body: ${{ steps.changelog.outputs.changes }}
 
   publish:
-    runs-on: ubuntu-latest
+    runs-on: linux_2c_8gb
     permissions:
       contents: read
     steps:
